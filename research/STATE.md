@@ -1,7 +1,7 @@
 # AMS ECAL Research — Current Research State
 
 _Last human review: 2026-09-21_
-_Last agent update: 2026-09-21 (Block 6A implemented; awaiting human review)_
+_Last agent update: 2026-09-28 (Block 6A stage 18 teach-back complete; four open questions recorded)_
 
 ## Central research question
 
@@ -168,7 +168,7 @@ Current FastMC notebooks:
 - `06_lateral_em_shower.ipynb`
 - `07_stochastic_em_events.ipynb`
 
-## Block 6A — IMPLEMENTED 2026-09-21, pending human review
+## Block 6A — IMPLEMENTED 2026-09-21, amended and committed 2026-09-28 (`fe0e699`)
 
 Implemented from the accepted model without reopening the fluctuation literature.
 
@@ -386,6 +386,52 @@ to the fitted-parameter question alone.
 
 Schema: `configs/fastmc.yaml` is now version 5. Suite: 230 passing, ruff clean.
 
+## Stage 18 ("Learn again") — COMPLETE for Block 6A, 2026-09-28
+
+The post-build teach-back skipped on 2026-09-21 has run. Recorded in Obsidian at:
+
+```text
+01 Projects/AMS ECAL QML/Tutor Sessions/
+  2026-09-28 Block 6A Teach-Back and Post-Build Probe.md
+```
+
+21 questions, 7 teaching nodes, teach-back written by the researcher. Two corrections to earlier
+material, both documentation or teaching, neither a code defect:
+
+- The 2026-09-20 tutor session claimed the ensemble mean must reproduce the deterministic profile.
+  That holds only for `T0`, the centred variable. Layer fractions and containment differ by
+  Jensen's inequality (100 GeV, 4000 events: containment -0.0039, about 10 standard errors;
+  layer 1 +130%; layer 10 -2.7%). Corrected by banner in that note. The code and tests were
+  already right: they assert centring on `T0` only.
+- Notebook 07 cell 21 and the 2026-09-21 research note describe the deterministic-limit ratio 26.9
+  as an amplification constant. It is layer 1's sensitivity (13.2) times `|z| = 2.041` for the
+  worst of five seeds. The proportionality assertion remains valid. **Fixed 2026-09-28** at the
+  researcher's request: the notebook now prints the decomposition (26.9 = 13.2 x 2.041), and the
+  research note carries a correction banner.
+
+## Open questions raised by the teach-back — NOT decided
+
+All category B: recorded, configurable, not blocking. None reopens DEC-001.
+
+1. **What `T_bar` is the mean of.** Grindhammer and Peters define `-0.812` through `<ln T>` and
+   generate `ln T = <ln T> + sigma*z` with no centring (arXiv:hep-ex/0001020 section 3.1, Eq. 11;
+   appendix A.1.2), so `exp(<ln T>)` is their **median**. The `sampling` regime centres it as a
+   mean and lands `exp(-s^2/2)` shallower than the source: 0.048 X_0 at 100 GeV, 0.15 X_0 at
+   1 GeV. The PDG `-0.5` in `deposition` is the maximum of the average profile, neither mean nor
+   median of per-shower `T`. Interpretation of verified source text.
+2. **The regime gap is half physics, half convention.** At 100 GeV the regimes differ by 0.665 X_0:
+   0.353 is the G&P sampling shift, 0.312 is PDG `-0.5` versus G&P `-0.812` for the same
+   homogeneous physics. Applying G&P's own shift to `deposition` gives 8.63 X_0, not the
+   `sampling` regime's 8.32. Relevant to Block 7, which is to be built against `deposition`.
+3. The ×27 misreading above (documentation only).
+4. The scope of "AMS publishes no mean-depth formula": verified in **two** AMS publications, and
+   should be quoted with that scope.
+
+Documentation fixes applied 2026-09-28 at the researcher's request: the stale
+`TWO KNOWN INCONSISTENCIES` comment in `configs/fastmc.yaml` rewritten (comment only, no values
+changed, but the configuration SHA-256 is now `78db5fc2...`); notebook 07 re-executed; garbled
+LaTeX repaired in notebook 07 and in DEC-001.
+
 ---
 
 # Block 7 status — BLOCKED pending evidence, 2026-09-21
@@ -572,25 +618,28 @@ No quantum advantage is assumed.
 
 # Next session — start here
 
-Block 6A is implemented but **not committed**. Review the working tree first.
+_Updated 2026-09-28._ Block 6A is committed (`fe0e699`) and pushed to `stochastic-events`; the
+mean-depth convention was settled by the regime amendment; stage 18 is complete.
 
-1. Review the Block 6A diff in VS Code and accept or reject it.
-2. Decide the mean-depth convention question (Block 7 status, finding 1). It is a one-line
-   change to `shower_max_offset_x0` either way, and it should be settled before FastMC is
-   compared against Geant4 on any longitudinal observable.
-3. Run the adversarial pass on the Block 7 evidence map, then decide whether Block 7 proceeds.
-4. Optionally close the stage-18 gap: a teach-back probe on what Block 6A actually does, which
-   this session did not run.
+**Researcher decision, 2026-09-28: Block 6B before Block 7.** In the researcher's words: "Let's
+start 6B first, block 7 is meaningless before that." Rationale: every e/p comparison in RQ-001 and
+Block 8 needs a proton population; detector response is refinement on top of it.
+
+1. **Block 6B, stage 1 (learning probe) - in progress.** Tutor session
+   `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-28 FastMC Block 6B Proton Showers.md`.
+   Then independent discovery on hadronic shower fluctuations, verification, adversarial pass,
+   reconciliation, human approval of a model - before any code.
+2. Parked: Block 7 tutor session (Q1 posted and waiting); the Block 7 adversarial pass.
+3. Queued, not started: open question 9 of the Block 7 evidence map, the depth origin of AMS's
+   fitted `T0`, as a full Research OS literature task.
 
 ## Next human decision
 
-Three, in order of cheapness:
-
-1. Accept or reject the Block 6A implementation.
-2. Which mean shower-maximum convention is correct for the AMS ECAL — the PDG electron
-   relation currently used, or the Grindhammer & Peters sampling-corrected mean?
-3. Does Block 7 proceed to a plan, or does the double-counting question need more evidence
-   first?
+1. Whether to act on open questions 1 and 2 above (which statistic `T_bar` represents; whether
+   `deposition` should use G&P homogeneous constants so the regimes differ only by the sampling
+   shift). Both are configuration-level.
+2. ~~Documentation fixes~~ - approved and applied 2026-09-28.
+3. ~~Sequencing: Block 6B versus Block 7~~ - decided 2026-09-28: 6B first.
 
 Block 6B proton phenomenology and the Geant4 detailed-transport design for RQ-001 remain the
 larger open scientific decisions, unchanged by this session.
