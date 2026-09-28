@@ -171,40 +171,38 @@ stochastic_em:
   # and the adequacy of this transfer is to be tested later against detailed
   # Geant4 transport rather than assumed here.
   #
-  # TWO KNOWN INCONSISTENCIES WITH THE SOURCE, recorded rather than fixed:
+  # RELATION TO THE SOURCE - two differences, one resolved, one retained.
   #
-  #  1. The same appendix corrects the MEAN depth for sampling geometry,
-  #       <ln T_sam> = ln( exp(<ln T_hom>) - 0.55/F_S - 0.69(1 - e_hat) ),
-  #     which this model does not apply: shower_max_offset_x0 below is the PDG
-  #     homogeneous-style electron relation. For this geometry the difference
-  #     is an energy-independent 0.665 X_0, about 0.70 of a readout layer.
-  #     Block 6A therefore pairs a homogeneous mean with a sampling width.
+  #  1. RESOLVED 2026-09-28. The mean depth previously paired a PDG
+  #     homogeneous-style mean with the sampling width below. The regime
+  #     switch at the top of this file now selects a matched mean and width,
+  #     and under regime: sampling the Grindhammer and Peters sampling depth
+  #     correction (appendix A.2.2 / A.2.3) is applied; see
+  #     longitudinal_em.sampling_shower_max.
   #
-  #  2. Grindhammer and Peters fluctuate ln T and ln alpha as a CORRELATED
-  #     pair, with rho(ln T_sam, ln alpha_sam) = 0.784 - 0.023 ln y, deriving
-  #     beta per event. Holding beta fixed and setting alpha = 1 + beta*T is
-  #     the special case rho = 1: given the depth, the profile is determined.
-  #     At 100 GeV the source value is rho = 0.57, leaving a conditional
-  #     spread of ln(alpha) at FIXED depth of sigma*sqrt(1-rho^2) = 0.124,
-  #     about 12%. Ours is zero. Concretely at T = 8.985 X_0 that residual
-  #     freedom moves the contained fraction between 0.911 and 0.948 against
-  #     our single value of 0.931, and shifts individual layer fractions by
-  #     up to 0.76 points (about 22% relative).
+  #  2. RETAINED BY DESIGN. Grindhammer and Peters fluctuate ln T and
+  #     ln alpha as a CORRELATED pair, with
+  #     rho(ln T_sam, ln alpha_sam) = 0.784 - 0.023 ln y, deriving beta per
+  #     event. Holding beta fixed and setting alpha = 1 + beta*T is the
+  #     special case rho = 1: given the depth, the profile is determined. At
+  #     100 GeV the source value is rho = 0.57, leaving a conditional spread
+  #     of ln(alpha) at FIXED depth of sigma*sqrt(1-rho^2) = 0.124, about 12%.
+  #     Ours is zero. At T = 8.985 X_0 that residual freedom moves the
+  #     contained fraction between 0.911 and 0.948 against our single value of
+  #     0.931, and shifts individual layer fractions by up to 0.76 points.
   #
-  #     This is a documented loss of one degree of freedom, NOT an error.
-  #     Depth and longitudinal width become degenerate here, which matters
-  #     for RQ-001 because shape-at-fixed-depth is one of the few
-  #     longitudinal degrees of freedom an 18-layer readout can resolve.
-  #     Against that: beta = 0.65 is AMS-specific evidence whereas the
-  #     alpha parameterization is not, and AMS itself is reported to hold b
-  #     fixed while fitting per-shower parameters - so this choice may be
-  #     MORE faithful to AMS than a two-variable model would be. That last
-  #     point is under verification; do not treat it as settled.
+  #     VERIFIED 2026-09-28 to match AMS: Kounine et al., NIM A 869 (2017)
+  #     p. 113, and Aguilar et al., Physics Reports 894 (2021) section 1.7.1,
+  #     hold b = 0.65 fixed for all showers and all energies and fit T0 per
+  #     shower. The lost degree of freedom is real and worth a Geant4
+  #     sensitivity test, but it is not a departure from AMS.
   #
-  # Both are open questions 6 and 7 of the Block 7 evidence map, not defects
-  # to be silently patched. See:
-  #   Obsidian > AMS ECAL QML > Evidence Maps >
-  #     2026-09-21 Detector Response and Double Counting in Fitted Shower Parameters
+  # OPEN QUESTION (2026-09-28, not decided): Grindhammer and Peters define
+  # their depth constants through <ln T>, so exp(<ln T>) is their MEDIAN,
+  # while src/ams_ecal/stochastic.py centres T_bar as the MEAN. Under
+  # regime: sampling this lands exp(-s^2/2) shallower than the source
+  # (0.048 X_0 at 100 GeV). See Obsidian > AMS ECAL QML > Tutor Sessions >
+  #   2026-09-28 Block 6A Teach-Back and Post-Build Probe, section 5.
   #
   # DOMAIN: the width diverges and then changes sign when the denominator
   # reaches zero, i.e. when E / E_c <= exp(-intercept / slope) = exp(2). With
