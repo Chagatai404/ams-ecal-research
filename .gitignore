@@ -40,6 +40,9 @@ dist/
 *.swp
 *.swo
 
+# Graphify outputs
+graphify-out/
+
 # Operating-system files
 .DS_Store
 Thumbs.db

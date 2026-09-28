@@ -1,6 +1,7 @@
 # AMS ECAL Research — Current Research State
 
 _Last human review: 2026-09-21_
+_Last agent update: 2026-09-21 (Block 6A implemented; awaiting human review)_
 
 ## Central research question
 
@@ -152,7 +153,9 @@ The repository currently contains:
 - deterministic lateral EM profile;
 - explicit finite-depth longitudinal leakage;
 - explicit finite-width lateral leakage;
-- deterministic track-centered `18 × 72` lateral fractions.
+- deterministic track-centered `18 × 72` lateral fractions;
+- **stochastic electromagnetic event generation (Block 6A)**, with per-event seed and
+  configuration provenance.
 
 Current FastMC notebooks:
 
@@ -163,19 +166,59 @@ Current FastMC notebooks:
 - `04_ecal_geometry_fidelity.ipynb`
 - `05_longitudinal_em_shower.ipynb`
 - `06_lateral_em_shower.ipynb`
+- `07_stochastic_em_events.ipynb`
+
+## Block 6A — IMPLEMENTED 2026-09-21, pending human review
+
+Implemented from the accepted model without reopening the fluctuation literature.
+
+New files:
+
+- `src/ams_ecal/stochastic.py` — `StochasticEMShowerModel`
+- `tests/test_stochastic.py` — 25 tests
+- `notebooks/07_stochastic_em_events.ipynb`
+
+Changed:
+
+- `configs/fastmc.yaml` — new `stochastic_em` section, schema_version 2 -> 3
+- `src/ams_ecal/fastmc_config.py` — `StochasticEMConfig`, reusable `config_digest`
+- `src/ams_ecal/longitudinal.py` — gamma integration exposed at an explicit shape
+  parameter so the deterministic and stochastic paths share one implementation
+
+Full suite: 226 passing, ruff clean. Notebook executes end to end.
+
+Verified numbers at 100 GeV: `s = 0.1069`; `T_bar = 8.985 X_0`; sampled `E[T0] = 8.987 X_0`,
+so the centring identity holds; ensemble containment sits `-0.0049` below the deterministic
+value, the sign Jensen's inequality predicts; width-law validity floor at 56.2 MeV.
+
+**Not committed.** The working tree awaits human review.
 
 ## Next engineering target
 
-**Block 6A — stochastic electromagnetic event generation**
-
-The physical model is accepted.
-
-Implementation should begin from the accepted model rather than reopening the
-full fluctuation literature unless new evidence materially contradicts it.
+Block 7 is **blocked** pending the evidence pass below. Block 6B (protons) has no accepted
+model. The next engineering step is therefore a human decision, not code.
 
 ---
 
 # Accepted evidence and decisions — Block 6
+
+> [!warning] Superseded in part on 2026-09-28
+> The equations in this section are the model as **accepted on 2026-09-21**. Three things have
+> changed since, and the amendments below the Block 7 section are authoritative where they
+> differ:
+>
+> 1. `T = ln(E/E_c) - 0.5` was believed to be the AMS-consistent mean. Verification showed AMS
+>    publishes **no** mean-depth formula, so this value is PDG and is now the `deposition`
+>    regime only.
+> 2. The mean and the fluctuation width are a **matched pair** selected by a `regime`. The
+>    default `sampling` regime uses offset `-0.812` plus a geometry-derived `-0.353` shift, and
+>    width coefficients `(-2.5, 1.25)`; `deposition` uses `-0.5` and `(-1.4, 1.26)`.
+> 3. Excluding a fluctuating beta is not a simplification away from AMS. AMS holds `b = 0.65`
+>    fixed for all showers and all energies, so Block 6A matches AMS.
+>
+> Retained unchanged: the single stochastic variable `T0`, the lognormal with centring
+> `mu = ln(T_bar) - s^2/2`, `alpha = 1 + beta*T0`, the entry-referenced origin, and the
+> deterministic lateral profile.
 
 ## Mean longitudinal model
 
@@ -287,11 +330,119 @@ information.
 
 ---
 
-# Block 7 status
+# Block 6A amendments — 2026-09-28
 
-Detector response remains planned.
+Three changes, all from reading Grindhammer & Peters and the AMS sources directly.
 
-Potential effects:
+## 1. AMS publishes no mean-depth formula. VERIFIED.
+
+Kounine et al., NIM A 869 (2017) 110-117, p. 113, and Aguilar et al., Physics Reports 894 (2021)
+section 1.7.1, p. 19: the AMS form is
+
+```text
+dE/dt = E0 (b t)^(b T0) b exp(-b t) / Gamma(b T0 + 1)
+```
+
+i.e. `alpha = 1 + b*T0` exactly, with **b = 0.65 fixed for all showers and all energies** and
+`T0` obtained per shower by fitting observed ECAL cell deposits. There is **no** published AMS
+`T_bar(E)`. Two consequences:
+
+- `T = ln(E/E_c) - 0.5` was never AMS; it is PDG, and the choice of mean is ours to make.
+- Changing `T_bar` does **not** break agreement with the published AMS functional form, which
+  holds for any `T0`. The Block 4 consistency claim survives.
+
+## 2. The rho = 1 concern is resolved in favour of the current design.
+
+Because AMS itself holds `b` fixed and fits `T0` per shower, Block 6A is structurally the same
+model AMS uses. The Grindhammer & Peters two-variable correlated `(ln T, ln alpha)` model is the
+outlier, and its `alpha` parameterization has no AMS provenance. The lost degree of freedom is
+real - about 12% conditional spread in `alpha` at fixed depth, worth roughly +/- 2% in contained
+energy - and remains worth a Geant4 sensitivity test, but it is **not** a departure from AMS.
+
+## 3. Regime switch: sampling versus true deposition.
+
+The mean depth and the fluctuation width are a **matched pair**; mixing them is incoherent, and
+the previous configuration did mix them. `configs/fastmc.yaml` now carries a top-level `regime`:
+
+| regime | describes | offset | s(E) at 100 GeV | T_bar at 100 GeV |
+|---|---|---|---|---|
+| `deposition` | true deposition, the **perfect event** | PDG -0.5 | 0.0948 | 8.985 X_0 |
+| `sampling` (default) | signal-level longitudinal shape | G&P -0.812 plus a geometry shift of -0.353 | 0.1069 | 8.319 X_0 |
+
+The sampling depth shift is computed from `configs/geometry.yaml` (`F_S = 4.897`,
+`e/mip = 0.651`), so it tracks the detector description rather than being hard-coded.
+
+**The perfect event is recoverable from the seed.** The generator draws one standard normal
+variate from the seed *first* and applies the regime transformation after, so a single seed names
+a corresponding pair of events. `model.true_deposition().generate_event(..., random_seed=s)`
+returns the true-deposition event behind the sampled event that seed `s` produced. Verified in
+the notebook: the quantile `z` agrees to twelve decimal places across regimes.
+
+**Block 7 boundary, now explicit.** Under `regime: sampling` the sampling distortion of the
+longitudinal shape is already applied, so Block 7 must not re-apply the depth shift or the extra
+shape fluctuation. Under `regime: deposition` nothing detector-related has been applied and
+Block 7 owns all of it. Building Block 7 against `deposition` shrinks the double-counting surface
+to the fitted-parameter question alone.
+
+Schema: `configs/fastmc.yaml` is now version 5. Suite: 230 passing, ruff clean.
+
+---
+
+# Block 7 status — BLOCKED pending evidence, 2026-09-21
+
+Detector response remains planned, and is now explicitly **blocked** rather than merely
+unstarted.
+
+An independent-discovery and source-verification pass ran on 2026-09-21. It did **not** reach
+specialist validation, adversarial review, or a plan. Recorded in Obsidian at:
+
+```text
+01 Projects/AMS ECAL QML/Evidence Maps/
+  2026-09-21 Detector Response and Double Counting in Fitted Shower Parameters.md
+```
+
+## What the verification established
+
+**Verified, AMS-specific.** AMS corrects dead-cell and side-leakage energy by integrating a
+parameterized shower profile over the missing region, and applies the correction to measured cell
+energies before the reconstructed total is formed (Zhang et al., Chinese Physics C 40 (2016)
+096204, eqs. 1-2). Its longitudinal parameters were fitted to 180 GeV electron test-beam data;
+its lateral parameters came from Geant4 simulation. AMS also corrects a photomultiplier
+position effect at **layer** level (Li et al., Chinese Physics C 37 (2013) 026201, eq. 6).
+
+**Not established.** That reusing such parameters as if they described true deposition introduces
+quantifiable bias. No source states this. It remains a **reasonable inference**, supported
+indirectly by Grindhammer & Peters section 3.5, and it must not be promoted further.
+
+## Consequent decision, PROPOSED not accepted
+
+Block 7 implementation does not begin until the adversarial pass has run and, for each candidate
+Block 7 effect, it is stated whether that effect was already inverted out of the deposits AMS
+fitted its shower parameters to. Adding an effect AMS never removed is safe; adding one AMS
+corrected away is a double-counting candidate.
+
+## Two findings that rebound onto Block 6A
+
+Both surfaced from reading Grindhammer & Peters directly, both category **B** under the Research
+OS triage, neither blocking:
+
+1. **Mean-depth convention.** Appendix A.2.3 confirms `sigma(ln T) = (-2.5 + 1.25 ln y)^-1` is the
+   **sampling-calorimeter** coefficient set, so the FastMC configuration comment is correct. But
+   the same appendix corrects the *mean* depth for sampling geometry, and FastMC does not apply
+   that correction. For this geometry the gap is an energy-independent **0.665 X_0**, about 0.70
+   of a readout layer, against a 1-sigma T0 spread of 0.96 X_0 at 100 GeV. Block 6A therefore
+   pairs a homogeneous-convention mean with a sampling-convention width.
+   **This is a discrepancy, not yet an error** - AMS fitted `b = 0.65` with its own convention.
+   Deciding which mean is right for AMS is a human decision and a one-line config change.
+
+2. **Imposed correlation.** Grindhammer & Peters fluctuate `ln T` and `ln alpha` as a correlated
+   pair with `rho = 0.784 - 0.023 ln y`, deriving beta per event. Fixing beta and setting
+   `alpha = 1 + beta*T` is the special case `rho = 1`. At 100 GeV the source value is **0.57**, so
+   Block 6A over-correlates shower depth and profile shape.
+
+Both are recorded in `configs/fastmc.yaml` next to the affected constants.
+
+## Remaining potential effects
 
 - sampling / visible-energy response;
 - noise;
@@ -421,26 +572,25 @@ No quantum advantage is assumed.
 
 # Next session — start here
 
-1. Implement Block 6A from the already accepted stochastic model.
-2. Keep beta fixed at `0.65`.
-3. Keep the first implementation detector-entry referenced.
-4. Use one stochastic `T0` rather than independent per-layer noise.
-5. Reuse the existing longitudinal and lateral integration code.
-6. Preserve RNG/configuration provenance.
-7. Add tests for positivity, reproducibility, leakage, finite outputs, and
-   ensemble behavior.
-8. Build the Block 6 teaching/validation notebook only after reusable tested
-   code exists.
-9. Keep the multiscale/fractal investigation as a parallel learning/research
-   track until the Geant4 detailed-transport stage.
+Block 6A is implemented but **not committed**. Review the working tree first.
+
+1. Review the Block 6A diff in VS Code and accept or reject it.
+2. Decide the mean-depth convention question (Block 7 status, finding 1). It is a one-line
+   change to `shower_max_offset_x0` either way, and it should be settled before FastMC is
+   compared against Geant4 on any longitudinal observable.
+3. Run the adversarial pass on the Block 7 evidence map, then decide whether Block 7 proceeds.
+4. Optionally close the stage-18 gap: a teach-back probe on what Block 6A actually does, which
+   this session did not run.
 
 ## Next human decision
 
-No additional longitudinal-physics decision is required before Block 6A
-implementation.
+Three, in order of cheapness:
 
-The next substantial scientific decisions will concern:
+1. Accept or reject the Block 6A implementation.
+2. Which mean shower-maximum convention is correct for the AMS ECAL — the PDG electron
+   relation currently used, or the Grindhammer & Peters sampling-corrected mean?
+3. Does Block 7 proceed to a plan, or does the double-counting question need more evidence
+   first?
 
-- Block 6B proton phenomenology;
-- Block 7 detector response;
-- Geant4 detailed-transport design for RQ-001.
+Block 6B proton phenomenology and the Geant4 detailed-transport design for RQ-001 remain the
+larger open scientific decisions, unchanged by this session.
