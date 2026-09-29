@@ -1,0 +1,54 @@
+# Geant4 proton calibration pilot (Block 6B prerequisite).
+#
+# Purpose: measure what a proton looks like in the thin AMS-like ECAL before any
+# Block 6B stochastic family is chosen. Not the full RQ-001 Geant4 study.
+schema_version: 1
+
+particle: proton
+
+# Compact grid inside the 3-180 GeV range documented by the lateral model; no
+# dataset energy range has been accepted yet (Block 8 not started).
+energies_gev: [10.0, 20.0, 50.0, 100.0]
+
+# Normal incidence. The entry point is spread uniformly over ONE readout cell
+# next to the detector centre, rather than fixed: a pencil beam at a fixed
+# point would sit at one position of the 1.35 mm fibre lattice and give an
+# artificial through-going signal. ANALYSIS CHOICE, recorded per event.
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  # FTFP_BERT is the Geant4 collaboration's recommended default for
+  # calorimetry; QGSP_BERT swaps the high-energy string model (QGS for FTF),
+  # which is the part most exercised by the first interaction at 20-100 GeV.
+  lists: [FTFP_BERT, QGSP_BERT]
+  production_cut: 0.7    # mm, the Geant4 default range cut
+
+samples:
+  baseline:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 2000
+    base_seed: 20260929
+  extended:
+    geometry: extended
+    physics_list: FTFP_BERT
+    events_per_energy: 800
+    base_seed: 20260930
+  alternate:
+    geometry: ams
+    physics_list: QGSP_BERT
+    events_per_energy: 1000
+    base_seed: 20261001
+
+# Fine prefix voxels are kept for later RQ-001 reuse.
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_proton_pilot

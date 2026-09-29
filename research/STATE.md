@@ -1,7 +1,7 @@
 # AMS ECAL Research — Current Research State
 
 _Last human review: 2026-09-21_
-_Last agent update: 2026-09-28 (Block 6A stage 18 teach-back complete; four open questions recorded)_
+_Last agent update: 2026-09-29 (Block 6A complete; Geant4 proton-pilot foundation built, no production runs yet)_
 
 ## Central research question
 
@@ -450,6 +450,66 @@ LaTeX repaired in notebook 07 and in DEC-001.
 
 ---
 
+# Geant4 proton pilot — foundation built 2026-09-29 (branch `geant4-proton-pilot`)
+
+Plan of 2026-09-29: Block 6A → minimal thin-geometry Geant4 proton study → evidence-driven
+Block 6B. Slices 2-4 are done (foundation, AMS-like transport geometry + canonical
+projection, truth/deposition recording). **No production batch has been run; no proton
+result exists yet.** Geant4 is a model, not detector truth.
+
+## What exists
+
+- Backend: `geant4_pybind` 0.1.3 (Geant4 **11.4.1**, `geant4-11-04-patch-01`), optional
+  dependency group `geant4` (`uv sync --group geant4`). Datasets in `~/.geant4_pybind`
+  (official CERN server, md5-checked). Real C++ transport; Python runs once per new track and
+  once per event, never per step.
+- `src/ams_ecal/transport_geometry.py` - fibre lattice and materials derived from
+  `configs/geometry.yaml` (single source of dimensions): 43,155 explicit 1 mm fibres
+  (480/479 per row, 1.35 x 1.73 mm, half stagger), each wholly inside one sampling and mapped
+  to its cell by the existing `coordinate_to_cell_index`.
+- `src/ams_ecal/projection.py` - any fine deposit → the alternating readout, continued past
+  18 layers for the extension; checked against the scalar readout at every boundary.
+- `src/ams_ecal/geant4_truth.py` - operational first-inelastic definition (below).
+- `src/ams_ecal/geant4_backend.py` - geometry, scorers, seeding, batch I/O, CLI
+  (`python -m ams_ecal.geant4_backend run|all`), `to_ecal_events` (backend `geant4`).
+- Per event: `fibre_grid` (fibre deposit, 18 x 72), `prefix_grid` (all-material deposit,
+  18 x 72), `extended_grid` (270 x 72, extended geometry only), sparse per-fibre and
+  3 x 3 x 4.625 mm voxel deposits, truth. Per batch `metadata.json`: commit, Geant4 and
+  dataset versions, physics list, config SHA-256, seed policy, material depths.
+- Configs: `configs/geant4_transport.yaml`, `configs/geant4_proton_pilot.yaml`
+  (10/20/50/100 GeV; baseline FTFP_BERT x 2000, extended FTFP_BERT x 800, alternate
+  QGSP_BERT x 1000 per energy).
+- Tests: 41 new (274 total; Geant4 integration tests run the real CLI in subprocesses,
+  about 3 min).
+
+## Choices made inside the approved scope - LABELLED, for review
+
+1. **First inelastic interaction** = earliest secondary of the primary created by a
+   *hadronic* process named `*Inelastic`. Not counted: hIoni/hBrems/hPairProd/Coulomb
+   scattering, msc, transport, `hadElastic` (recoils counted separately), any other hadronic
+   process (counted as `n_other_hadronic`, never merged). Read from secondaries, so it does
+   not depend on whether a model kills the projectile.
+2. **Matrix composition** - AMS publishes a density (6.8 g/cm^3) and a volume ratio
+   (1 : 0.57 : 0.15) that disagree with the explicit lattice (the ratio implies 7.21). Default
+   `average_density`: reproduces 6.8, and also reproduces the published lead:fibre ratio
+   (1 : 0.565 vs 0.57); `relative_volume` gives 1 : 0.527. Geant4 then reports the prefix as
+   **16.68 X_0 and 0.618 lambda_I** (configured 17 / 0.6). Open for the researcher.
+3. **Entry point** uniform over one 9 x 9 mm cell next to the centre, not a pencil beam
+   (a fixed point would sit at one place of the 1.35 mm fibre lattice). Recorded per event.
+4. **Materials**: whole fibre = polystyrene (cladding not modelled); glue = generic epoxy
+   C21H24O4 at 1.2 g/cm^3; grooved foils and the terminal Al foil not drawn separately.
+5. **Extension** (research instrument only): the prefix's own homogenized composite, same
+   transverse size, 2331 mm deep (total 2497.5 mm, about 9 nominal lambda_I).
+6. Seeds are 31-bit (Geant4's engine seed is a C long on Windows).
+
+## First smoke numbers (4-6 events; illustrative, NOT results)
+
+10 GeV AMS-only: one non-interacting event deposited 151 MeV in all material, 11.1 MeV in
+fibres (7.3%). 100 GeV extended: 72-86% of the primary deposited anywhere in 2.5 m. CPU about
+0.1 s/event (10 GeV, AMS-only) to about 5 s/event (100 GeV, extended).
+
+---
+
 # Block 7 status — BLOCKED pending evidence, 2026-09-21
 
 Detector response remains planned, and is now explicitly **blocked** rather than merely
@@ -641,10 +701,18 @@ mean-depth convention was settled by the regime amendment; stage 18 is complete.
 start 6B first, block 7 is meaningless before that." Rationale: every e/p comparison in RQ-001 and
 Block 8 needs a proton population; detector response is refinement on top of it.
 
-1. **Block 6B, stage 1 (learning probe) - in progress.** Tutor session
+0. **Resume the 2026-09-29 plan at Slice 5** (small baseline proton runs) on branch
+   `geant4-proton-pilot`: `uv run --group geant4 python -m ams_ecal.geant4_backend all`
+   (about 20 min on 14 workers; outputs to `data/geant4_proton_pilot/`, not committed). Then
+   Slices 6-10 (MIP analysis, P7 variance decomposition, thin vs extended correlations,
+   physics-list check, synthesis) and STOP for the Block 6B model decision. First review the
+   labelled choices in the Geant4 pilot section above, especially the matrix constraint.
+   After implementation: probe and tutor the researcher on the codebase and Geant4 first,
+   then the physics (researcher's request, 2026-09-29).
+1. **Block 6B, stage 1 (learning probe)** - paused. Tutor session
    `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-28 FastMC Block 6B Proton Showers.md`.
-   Then independent discovery on hadronic shower fluctuations, verification, adversarial pass,
-   reconciliation, human approval of a model - before any code.
+   The 2026-09-28 literature pass ended at a blocker: the thin-calorimeter regime is not
+   settled by literature, so the Geant4 pilot now precedes any 6B model.
 2. Parked: Block 7 tutor session (Q1 posted and waiting); the Block 7 adversarial pass.
 3. Queued, not started: open question 9 of the Block 7 evidence map, the depth origin of AMS's
    fitted `T0`, as a full Research OS literature task.
