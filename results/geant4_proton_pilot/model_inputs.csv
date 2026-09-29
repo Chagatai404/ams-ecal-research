@@ -1,0 +1,122 @@
+quantity,value
+status,EXPLORATORY - defined after the baseline was read; not pre-registered
+100.residual_names,"['log_energy', 'long_cog_mm', 'long_rms_mm', 'width_mm', 'log_hits']"
+100.residual_spearman,"[[1.0, 0.213, -0.303, -0.006, 0.805], [0.213, 1.0, -0.569, -0.369, -0.092], [-0.303, -0.569, 1.0, 0.438, 0.038], [-0.006, -0.369, 0.438, 1.0, 0.396], [0.805, -0.092, 0.038, 0.396, 1.0]]"
+100.residual_first_component_share,0.4046272387748402
+100.log_energy_residual.sd,0.9127558711818863
+100.log_energy_residual.skewness,-2.2108282948733042
+100.log_energy_residual.excess_kurtosis,6.104069475024993
+100.log_energy_residual.quantiles_16_50_84,"[-0.5876674154234034, 0.26086823544698223, 0.6563339723614035]"
+100.visible_fraction_vs_remaining_depth[0].remaining_mm_median,9.786190628393626
+100.visible_fraction_vs_remaining_depth[0].visible_fraction_quantiles,"[0.00041227392074118604, 0.0012272710972417071, 0.00284277112653433]"
+100.visible_fraction_vs_remaining_depth[1].remaining_mm_median,32.573072049197265
+100.visible_fraction_vs_remaining_depth[1].visible_fraction_quantiles,"[0.0014504269416152494, 0.0037685921102248504, 0.006595451814259409]"
+100.visible_fraction_vs_remaining_depth[2].remaining_mm_median,52.405242147692405
+100.visible_fraction_vs_remaining_depth[2].visible_fraction_quantiles,"[0.0030010282215704757, 0.007516949454672497, 0.011431664871552071]"
+100.visible_fraction_vs_remaining_depth[3].remaining_mm_median,71.67763928809643
+100.visible_fraction_vs_remaining_depth[3].visible_fraction_quantiles,"[0.005168328999171017, 0.011498944449640213, 0.01735523255259744]"
+100.visible_fraction_vs_remaining_depth[4].remaining_mm_median,88.282911278631
+100.visible_fraction_vs_remaining_depth[4].visible_fraction_quantiles,"[0.006487053728516229, 0.01580769283161866, 0.022466344080913594]"
+100.visible_fraction_vs_remaining_depth[5].remaining_mm_median,103.52682235848653
+100.visible_fraction_vs_remaining_depth[5].visible_fraction_quantiles,"[0.009126754678486148, 0.018737407770266466, 0.026785517598867985]"
+100.visible_fraction_vs_remaining_depth[6].remaining_mm_median,116.58809726778343
+100.visible_fraction_vs_remaining_depth[6].visible_fraction_quantiles,"[0.011166298974720936, 0.02168156763583696, 0.030959358597767873]"
+100.visible_fraction_vs_remaining_depth[7].remaining_mm_median,131.28752601704264
+100.visible_fraction_vs_remaining_depth[7].visible_fraction_quantiles,"[0.011823048333346759, 0.023514230210839347, 0.033366028952570154]"
+100.visible_fraction_vs_remaining_depth[8].remaining_mm_median,147.1139247385657
+100.visible_fraction_vs_remaining_depth[8].visible_fraction_quantiles,"[0.011281705253671965, 0.025301602127965648, 0.034217805756294434]"
+100.visible_fraction_vs_remaining_depth[9].remaining_mm_median,160.49015389549402
+100.visible_fraction_vs_remaining_depth[9].visible_fraction_quantiles,"[0.012749466496403435, 0.0263044361998132, 0.03475065688121181]"
+100.crossing_layer_energy_quantiles_16_50_84,"[0.3937183713912964, 0.5789340734481812, 0.9409173059463499]"
+100.crossing_layer_mean_by_layer,"[0.6205136179924011, 0.6442419290542603, 0.6705602407455444, 0.6788433194160461, 0.7056800723075867, 0.7102918028831482, 0.7074727416038513, 0.7083352208137512, 0.7261757850646973, 0.7457388639450073, 0.7425152063369751, 0.7745315432548523, 0.7962332963943481, 0.7773650884628296, 0.794161856174469, 0.7842459678649902, 0.7932092547416687, 0.7592952251434326]"
+100.crossing_adjacent_layer_spearman_mean,0.18132073369780666
+10.residual_names,"['log_energy', 'long_cog_mm', 'long_rms_mm', 'width_mm', 'log_hits']"
+10.residual_spearman,"[[1.0, 0.07, -0.254, 0.336, 0.896], [0.07, 1.0, -0.129, -0.159, 0.028], [-0.254, -0.129, 1.0, 0.143, -0.099], [0.336, -0.159, 0.143, 1.0, 0.471], [0.896, 0.028, -0.099, 0.471, 1.0]]"
+10.residual_first_component_share,0.4392813478259876
+10.log_energy_residual.sd,0.7599447503161995
+10.log_energy_residual.skewness,-1.5182333874036122
+10.log_energy_residual.excess_kurtosis,2.4857038114260614
+10.log_energy_residual.quantiles_16_50_84,"[-0.6770894743746503, 0.2295590602712414, 0.5918021790196943]"
+10.visible_fraction_vs_remaining_depth[0].remaining_mm_median,12.596409884535518
+10.visible_fraction_vs_remaining_depth[0].visible_fraction_quantiles,"[0.003990556795604121, 0.009643019816150143, 0.021843606062297464]"
+10.visible_fraction_vs_remaining_depth[1].remaining_mm_median,33.538020446015295
+10.visible_fraction_vs_remaining_depth[1].visible_fraction_quantiles,"[0.006261745771317026, 0.01628011854490835, 0.03090145094684721]"
+10.visible_fraction_vs_remaining_depth[2].remaining_mm_median,51.67337018462137
+10.visible_fraction_vs_remaining_depth[2].visible_fraction_quantiles,"[0.009115160553691702, 0.023709633766982235, 0.03425833519953759]"
+10.visible_fraction_vs_remaining_depth[3].remaining_mm_median,70.26934240973429
+10.visible_fraction_vs_remaining_depth[3].visible_fraction_quantiles,"[0.010995010613673938, 0.02936619305733538, 0.04046343013871187]"
+10.visible_fraction_vs_remaining_depth[4].remaining_mm_median,89.91322967115957
+10.visible_fraction_vs_remaining_depth[4].visible_fraction_quantiles,"[0.014016900406035017, 0.03311285594130193, 0.04598106240887983]"
+10.visible_fraction_vs_remaining_depth[5].remaining_mm_median,104.89393098842454
+10.visible_fraction_vs_remaining_depth[5].visible_fraction_quantiles,"[0.01462101248837194, 0.034882636363034715, 0.04596456726092494]"
+10.visible_fraction_vs_remaining_depth[6].remaining_mm_median,120.19753214390612
+10.visible_fraction_vs_remaining_depth[6].visible_fraction_quantiles,"[0.014340747043026847, 0.03603656729806291, 0.05013038171974838]"
+10.visible_fraction_vs_remaining_depth[7].remaining_mm_median,133.7252668632674
+10.visible_fraction_vs_remaining_depth[7].visible_fraction_quantiles,"[0.015219776008699188, 0.034968823477142696, 0.04957879966811792]"
+10.visible_fraction_vs_remaining_depth[8].remaining_mm_median,147.67332083885947
+10.visible_fraction_vs_remaining_depth[8].visible_fraction_quantiles,"[0.022250870275655726, 0.040141525723404625, 0.05128222581566205]"
+10.visible_fraction_vs_remaining_depth[9].remaining_mm_median,160.54635186570113
+10.visible_fraction_vs_remaining_depth[9].visible_fraction_quantiles,"[0.017186894236185662, 0.03690933125595172, 0.04954321548261407]"
+10.crossing_layer_energy_quantiles_16_50_84,"[0.37883683800697326, 0.5550242066383362, 0.8378167247772217]"
+10.crossing_layer_mean_by_layer,"[0.6153527498245239, 0.618113100528717, 0.6227303147315979, 0.6297511458396912, 0.6324292421340942, 0.6257741451263428, 0.6476578116416931, 0.6378728151321411, 0.6475169658660889, 0.6409949660301208, 0.630524218082428, 0.6458835601806641, 0.6431840062141418, 0.6218490600585938, 0.6224362850189209, 0.6269476413726807, 0.6410608887672424, 0.6320626735687256]"
+10.crossing_adjacent_layer_spearman_mean,0.09718061230324096
+20.residual_names,"['log_energy', 'long_cog_mm', 'long_rms_mm', 'width_mm', 'log_hits']"
+20.residual_spearman,"[[1.0, 0.137, -0.213, 0.226, 0.884], [0.137, 1.0, -0.314, -0.177, -0.018], [-0.213, -0.314, 1.0, 0.225, -0.05], [0.226, -0.177, 0.225, 1.0, 0.445], [0.884, -0.018, -0.05, 0.445, 1.0]]"
+20.residual_first_component_share,0.4197918003671518
+20.log_energy_residual.sd,0.8111936851972597
+20.log_energy_residual.skewness,-1.867749246547736
+20.log_energy_residual.excess_kurtosis,4.254518377109338
+20.log_energy_residual.quantiles_16_50_84,"[-0.531935297742864, 0.2289833468979845, 0.6132658167756448]"
+20.visible_fraction_vs_remaining_depth[0].remaining_mm_median,11.914267727168777
+20.visible_fraction_vs_remaining_depth[0].visible_fraction_quantiles,"[0.0015822293000968158, 0.00520616581615615, 0.011626497042054084]"
+20.visible_fraction_vs_remaining_depth[1].remaining_mm_median,33.341032622922484
+20.visible_fraction_vs_remaining_depth[1].visible_fraction_quantiles,"[0.004920460874304807, 0.011213970103002919, 0.0187179928203821]"
+20.visible_fraction_vs_remaining_depth[2].remaining_mm_median,51.477060328275286
+20.visible_fraction_vs_remaining_depth[2].visible_fraction_quantiles,"[0.006139149518079814, 0.015864531994112564, 0.024815246985873278]"
+20.visible_fraction_vs_remaining_depth[3].remaining_mm_median,71.27970649167109
+20.visible_fraction_vs_remaining_depth[3].visible_fraction_quantiles,"[0.011035921665865714, 0.01887578383888189, 0.029318916115215206]"
+20.visible_fraction_vs_remaining_depth[4].remaining_mm_median,88.4144160771958
+20.visible_fraction_vs_remaining_depth[4].visible_fraction_quantiles,"[0.011470816601328059, 0.025978926162923664, 0.03696246613145425]"
+20.visible_fraction_vs_remaining_depth[5].remaining_mm_median,104.62749586903429
+20.visible_fraction_vs_remaining_depth[5].visible_fraction_quantiles,"[0.015103836626582923, 0.028546997373907652, 0.03858067992745283]"
+20.visible_fraction_vs_remaining_depth[6].remaining_mm_median,120.4258610995987
+20.visible_fraction_vs_remaining_depth[6].visible_fraction_quantiles,"[0.016533591580804658, 0.02985871965300774, 0.04335297247005425]"
+20.visible_fraction_vs_remaining_depth[7].remaining_mm_median,134.39708943511428
+20.visible_fraction_vs_remaining_depth[7].visible_fraction_quantiles,"[0.016417003167428258, 0.03271988434571845, 0.04077274910118351]"
+20.visible_fraction_vs_remaining_depth[8].remaining_mm_median,147.37945133710087
+20.visible_fraction_vs_remaining_depth[8].visible_fraction_quantiles,"[0.016697417828717597, 0.03372937570477886, 0.04587690531861083]"
+20.visible_fraction_vs_remaining_depth[9].remaining_mm_median,159.9624724864166
+20.visible_fraction_vs_remaining_depth[9].visible_fraction_quantiles,"[0.02113901147318624, 0.033450161029302886, 0.04499561522335802]"
+20.crossing_layer_energy_quantiles_16_50_84,"[0.3830572545528412, 0.56670743227005, 0.8723094820976257]"
+20.crossing_layer_mean_by_layer,"[0.6170291900634766, 0.6259886026382446, 0.652746319770813, 0.6321253776550293, 0.660584568977356, 0.6578747034072876, 0.6755589246749878, 0.669657826423645, 0.6760480999946594, 0.6796149611473083, 0.6673732995986938, 0.661669135093689, 0.6783540844917297, 0.6734936833381653, 0.6758905649185181, 0.6605097651481628, 0.6711391806602478, 0.6758993268013]"
+20.crossing_adjacent_layer_spearman_mean,0.13984082509660756
+50.residual_names,"['log_energy', 'long_cog_mm', 'long_rms_mm', 'width_mm', 'log_hits']"
+50.residual_spearman,"[[1.0, 0.161, -0.226, 0.097, 0.849], [0.161, 1.0, -0.466, -0.287, -0.092], [-0.226, -0.466, 1.0, 0.364, 0.043], [0.097, -0.287, 0.364, 1.0, 0.421], [0.849, -0.092, 0.043, 0.421, 1.0]]"
+50.residual_first_component_share,0.4003727537858757
+50.log_energy_residual.sd,0.8203845359264506
+50.log_energy_residual.skewness,-1.986062986075879
+50.log_energy_residual.excess_kurtosis,5.189367842686197
+50.log_energy_residual.quantiles_16_50_84,"[-0.5919345612489079, 0.2158172695457794, 0.6307704386544988]"
+50.visible_fraction_vs_remaining_depth[0].remaining_mm_median,12.503104629334558
+50.visible_fraction_vs_remaining_depth[0].visible_fraction_quantiles,"[0.0009013718384044989, 0.0023388112303030766, 0.005532653818118087]"
+50.visible_fraction_vs_remaining_depth[1].remaining_mm_median,33.29097224693342
+50.visible_fraction_vs_remaining_depth[1].visible_fraction_quantiles,"[0.0029201981203896307, 0.006304575065039617, 0.011665012562262551]"
+50.visible_fraction_vs_remaining_depth[2].remaining_mm_median,53.10308815916407
+50.visible_fraction_vs_remaining_depth[2].visible_fraction_quantiles,"[0.004742613102777494, 0.01082635535262343, 0.01745485491181482]"
+50.visible_fraction_vs_remaining_depth[3].remaining_mm_median,72.21023639626912
+50.visible_fraction_vs_remaining_depth[3].visible_fraction_quantiles,"[0.007795888881636659, 0.015843377824127446, 0.021971606385232087]"
+50.visible_fraction_vs_remaining_depth[4].remaining_mm_median,89.83227301773299
+50.visible_fraction_vs_remaining_depth[4].visible_fraction_quantiles,"[0.010918997321869774, 0.021325958748214944, 0.027406462467144937]"
+50.visible_fraction_vs_remaining_depth[5].remaining_mm_median,105.8273473276027
+50.visible_fraction_vs_remaining_depth[5].visible_fraction_quantiles,"[0.01002729172796403, 0.020891354924911548, 0.03129691987741873]"
+50.visible_fraction_vs_remaining_depth[6].remaining_mm_median,121.92869791079022
+50.visible_fraction_vs_remaining_depth[6].visible_fraction_quantiles,"[0.011508589348110086, 0.02384950258196026, 0.034532093871829705]"
+50.visible_fraction_vs_remaining_depth[7].remaining_mm_median,134.96354983937456
+50.visible_fraction_vs_remaining_depth[7].visible_fraction_quantiles,"[0.012088305487602957, 0.02653190946341706, 0.036736922357208816]"
+50.visible_fraction_vs_remaining_depth[8].remaining_mm_median,148.7371840745348
+50.visible_fraction_vs_remaining_depth[8].visible_fraction_quantiles,"[0.013543118746747157, 0.027981315130499916, 0.039201233747260186]"
+50.visible_fraction_vs_remaining_depth[9].remaining_mm_median,160.10127852010092
+50.visible_fraction_vs_remaining_depth[9].visible_fraction_quantiles,"[0.014568760841021872, 0.02747511568892997, 0.039091702625901455]"
+50.crossing_layer_energy_quantiles_16_50_84,"[0.3970829510688782, 0.575272798538208, 0.9103301382064819]"
+50.crossing_layer_mean_by_layer,"[0.6194316744804382, 0.6519320607185364, 0.6650769114494324, 0.6548141837120056, 0.6960476636886597, 0.6707866191864014, 0.6977870464324951, 0.7075768113136292, 0.7087432742118835, 0.7280102372169495, 0.720742404460907, 0.71718829870224, 0.7327272295951843, 0.7232292890548706, 0.7153776288032532, 0.6942304372787476, 0.7294090390205383, 0.7053065896034241]"
+50.crossing_adjacent_layer_spearman_mean,0.15587834490980376

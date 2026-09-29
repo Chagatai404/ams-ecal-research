@@ -15,7 +15,11 @@ infrastructure for a sequence of related research papers.
 > **blocked** pending an adversarial pass on the open question of whether a
 > response model would double-count detector behaviour already absorbed into
 > AMS shower parameters fitted to observed deposits. Block 6B proton
-> phenomenology has no accepted model. The first intended publication is a
+> phenomenology has no accepted model yet: a **Geant4 proton calibration pilot**
+> (a thin vertical slice of the planned Geant4 blocks; `src/ams_ecal/geant4_backend.py`,
+> `results/geant4_proton_pilot/`, `notebooks/08_geant4_proton_pilot.ipynb`) has
+> measured protons in the thin AMS-like geometry, and the 6B model decision is
+> pending. The first intended publication is a
 > multiscale shower-information study using detailed transport and AMS-like
 > readout, with QML deliberately downstream.
 

@@ -1,0 +1,125 @@
+quantity,value
+100.baseline.n,4000
+100.baseline.p_no_inelastic.estimate,0.5265
+100.baseline.p_no_inelastic.low,0.5110088804645482
+100.baseline.p_no_inelastic.high,0.5419402690410976
+100.baseline.effective_interaction_length_mm,260.2992102166815
+100.baseline.interacting_energy_quantiles_mev,"[120.2149031395299, 1329.0571412750467, 3100.504019154425]"
+100.baseline.interacting_width_median_mm,36.22851808787484
+100.baseline.crossing_energy_mean_sd_mev,"[13.13941162142861, 6.894079146888972]"
+100.baseline.s_d_energy,0.5030213261981009
+100.baseline.s_d_long_cog,0.7023091843129464
+100.baseline.s_d_width,0.019372653679887702
+100.high_energy_model.n,1000
+100.high_energy_model.p_no_inelastic.estimate,0.506
+100.high_energy_model.p_no_inelastic.low,0.47504885836338107
+100.high_energy_model.p_no_inelastic.high,0.5369052205347923
+100.high_energy_model.effective_interaction_length_mm,245.72749769349412
+100.high_energy_model.interacting_energy_quantiles_mev,"[66.3683059499762, 1162.0315172333421, 2935.0290073541983]"
+100.high_energy_model.interacting_width_median_mm,33.13967254627947
+100.high_energy_model.crossing_energy_mean_sd_mev,"[12.602144380312735, 4.656368462813444]"
+100.high_energy_model.s_d_energy,0.4532452141467853
+100.high_energy_model.s_d_long_cog,0.6813661325037041
+100.high_energy_model.s_d_width,0.06157129120881355
+100.ks_interacting_energy.statistic,0.06878743442962865
+100.ks_interacting_energy.p_value,0.04642348793442443
+100.ks_interaction_depth.statistic,0.05119512288967082
+100.ks_interaction_depth.p_value,0.24587298019681733
+100.ks_crossing_energy.statistic,0.04664256838169881
+100.ks_crossing_energy.p_value,0.3254513854297269
+100.crossing_energy_variance_ratio.estimate,0.4561862051681979
+100.crossing_energy_variance_ratio.low,0.21394451278706142
+100.crossing_energy_variance_ratio.high,0.8209769577484805
+10.baseline.n,4000
+10.baseline.p_no_inelastic.estimate,0.53
+10.baseline.p_no_inelastic.low,0.5145116516381216
+10.baseline.p_no_inelastic.high,0.5454307817644963
+10.baseline.effective_interaction_length_mm,261.8412451296403
+10.baseline.interacting_energy_quantiles_mev,"[61.17152245514275, 291.7371084949556, 488.8975234452325]"
+10.baseline.interacting_width_median_mm,46.33097435817169
+10.baseline.crossing_energy_mean_sd_mev,"[11.382142492115795, 1.7965255496639643]"
+10.baseline.s_d_energy,0.2374740227624011
+10.baseline.s_d_long_cog,0.7347648851857582
+10.baseline.s_d_width,0.028111063443613693
+10.high_energy_model.n,1000
+10.high_energy_model.p_no_inelastic.estimate,0.543
+10.high_energy_model.p_no_inelastic.low,0.5120192033150067
+10.high_energy_model.p_no_inelastic.high,0.5736516954552356
+10.high_energy_model.effective_interaction_length_mm,271.28617915360934
+10.high_energy_model.interacting_energy_quantiles_mev,"[51.12014635896687, 297.64525286662536, 497.05589825963034]"
+10.high_energy_model.interacting_width_median_mm,46.431451963766975
+10.high_energy_model.crossing_energy_mean_sd_mev,"[11.368349597437529, 1.7922721068837253]"
+10.high_energy_model.s_d_energy,0.24833260254250436
+10.high_energy_model.s_d_long_cog,0.7548270969115507
+10.high_energy_model.s_d_width,0.040217254851077106
+10.ks_interacting_energy.statistic,0.02768867265701383
+10.ks_interacting_energy.p_value,0.9317458302809714
+10.ks_interaction_depth.statistic,0.03875762372549929
+10.ks_interaction_depth.p_value,0.6218879297316872
+10.ks_crossing_energy.statistic,0.03607839049306788
+10.ks_crossing_energy.p_value,0.6113167787095075
+10.crossing_energy_variance_ratio.estimate,0.9952704178700674
+10.crossing_energy_variance_ratio.low,0.8207987314368727
+10.crossing_energy_variance_ratio.high,1.2045978095298175
+20.baseline.n,4000
+20.baseline.p_no_inelastic.estimate,0.51175
+20.baseline.p_no_inelastic.low,0.49625555870084714
+20.baseline.p_no_inelastic.high,0.5272218943818449
+20.baseline.effective_interaction_length_mm,248.76160512008408
+20.baseline.interacting_energy_quantiles_mev,"[74.02244336011209, 450.4956155108141, 831.4799411720797]"
+20.baseline.interacting_width_median_mm,44.99735496467636
+20.baseline.crossing_energy_mean_sd_mev,"[11.911555928413021, 2.845933853815281]"
+20.baseline.s_d_energy,0.37169224046509
+20.baseline.s_d_long_cog,0.7235230859144088
+20.baseline.s_d_width,0.0036726006826483817
+20.high_energy_model.n,1000
+20.high_energy_model.p_no_inelastic.estimate,0.516
+20.high_energy_model.p_no_inelastic.low,0.48502415202019794
+20.high_energy_model.p_no_inelastic.high,0.5468533917082643
+20.high_energy_model.effective_interaction_length_mm,253.51181001172424
+20.high_energy_model.interacting_energy_quantiles_mev,"[49.25121479619712, 343.09427413356843, 772.7488354954729]"
+20.high_energy_model.interacting_width_median_mm,41.31436796238037
+20.high_energy_model.crossing_energy_mean_sd_mev,"[11.82798655280019, 2.3972037738843537]"
+20.high_energy_model.s_d_energy,0.3514009828838621
+20.high_energy_model.s_d_long_cog,0.6650615231456962
+20.high_energy_model.s_d_width,0.00608487213158842
+20.ks_interacting_energy.statistic,0.13386060013626
+20.ks_interacting_energy.p_value,1.5908982622225832e-06
+20.ks_interaction_depth.statistic,0.03620304426756038
+20.ks_interaction_depth.p_value,0.6730026736237319
+20.ks_crossing_energy.statistic,0.042118736816593005
+20.ks_crossing_energy.p_value,0.44334386294816636
+20.crossing_energy_variance_ratio.estimate,0.7095129094561702
+20.crossing_energy_variance_ratio.low,0.4688016209319712
+20.crossing_energy_variance_ratio.high,1.0379923358860377
+50.baseline.n,4000
+50.baseline.p_no_inelastic.estimate,0.5165
+50.baseline.p_no_inelastic.low,0.5010051555025283
+50.baseline.p_no_inelastic.high,0.5319631828689115
+50.baseline.effective_interaction_length_mm,251.3022375211988
+50.baseline.interacting_energy_quantiles_mev,"[117.63041678840818, 833.3523629404497, 1743.7655902047418]"
+50.baseline.interacting_width_median_mm,39.71667704362369
+50.baseline.crossing_energy_mean_sd_mev,"[12.538414409202701, 4.601881553778091]"
+50.baseline.s_d_energy,0.4233232719813967
+50.baseline.s_d_long_cog,0.7373020276529111
+50.baseline.s_d_width,0.009227370824781356
+50.high_energy_model.n,1000
+50.high_energy_model.p_no_inelastic.estimate,0.501
+50.high_energy_model.p_no_inelastic.low,0.47006583523375295
+50.high_energy_model.p_no_inelastic.high,0.5319265112492759
+50.high_energy_model.effective_interaction_length_mm,242.08525832324733
+50.high_energy_model.interacting_energy_quantiles_mev,"[63.8909640262998, 601.151671900715, 1472.9495365425962]"
+50.high_energy_model.interacting_width_median_mm,36.82948492575786
+50.high_energy_model.crossing_energy_mean_sd_mev,"[12.792672815769837, 6.696575267840458]"
+50.high_energy_model.s_d_energy,0.3376760165202745
+50.high_energy_model.s_d_long_cog,0.6427994447449499
+50.high_energy_model.s_d_width,-0.0034741050524643414
+50.ks_interacting_energy.statistic,0.1371947618090369
+50.ks_interacting_energy.p_value,5.627672804462053e-07
+50.ks_interaction_depth.statistic,0.04637921136999959
+50.ks_interaction_depth.p_value,0.34820441399417557
+50.ks_crossing_energy.statistic,0.018560169109989255
+50.ks_crossing_energy.p_value,0.9985977114134109
+50.crossing_energy_variance_ratio.estimate,2.1175546940108916
+50.crossing_energy_variance_ratio.low,0.6089822736270593
+50.crossing_energy_variance_ratio.high,4.917490937547761

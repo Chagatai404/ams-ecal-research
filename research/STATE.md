@@ -1,7 +1,7 @@
 # AMS ECAL Research — Current Research State
 
 _Last human review: 2026-09-21_
-_Last agent update: 2026-09-29 (Block 6A complete; Geant4 proton-pilot foundation built, no production runs yet)_
+_Last agent update: 2026-09-29 (Block 6A complete; Geant4 proton pilot complete; 6B model decision pending)_
 
 ## Central research question
 
@@ -450,63 +450,108 @@ LaTeX repaired in notebook 07 and in DEC-001.
 
 ---
 
-# Geant4 proton pilot — foundation built 2026-09-29 (branch `geant4-proton-pilot`)
+# Geant4 proton calibration pilot — COMPLETE 2026-09-29, awaiting the 6B model decision
 
-Plan of 2026-09-29: Block 6A → minimal thin-geometry Geant4 proton study → evidence-driven
-Block 6B. Slices 2-4 are done (foundation, AMS-like transport geometry + canonical
-projection, truth/deposition recording). **No production batch has been run; no proton
-result exists yet.** Geant4 is a model, not detector truth.
+Branch `geant4-proton-pilot`. Slices 2-10 of the 2026-09-29 plan are done; the plan now stops
+at **STOP FOR MODEL DECISION**. Block 6B is **not** implemented. Geant4 is a model, not
+detector truth: every number below is Geant4 11.4.1 in our implemented material model.
 
-## What exists
+Record: `results/geant4_proton_pilot/` (summary.json, CSV tables, figures 1-10, geometry
+audits), `notebooks/08_geant4_proton_pilot.ipynb`. Raw batches in `data/geant4_proton_pilot/`
+(ignored by git; regenerate with `uv run --group geant4 python -m ams_ecal.geant4_backend all`).
+Report: `uv run python -m ams_ecal.pilot_report`.
 
-- Backend: `geant4_pybind` 0.1.3 (Geant4 **11.4.1**, `geant4-11-04-patch-01`), optional
-  dependency group `geant4` (`uv sync --group geant4`). Datasets in `~/.geant4_pybind`
-  (official CERN server, md5-checked). Real C++ transport; Python runs once per new track and
-  once per event, never per step.
-- `src/ams_ecal/transport_geometry.py` - fibre lattice and materials derived from
-  `configs/geometry.yaml` (single source of dimensions): 43,155 explicit 1 mm fibres
-  (480/479 per row, 1.35 x 1.73 mm, half stagger), each wholly inside one sampling and mapped
-  to its cell by the existing `coordinate_to_cell_index`.
-- `src/ams_ecal/projection.py` - any fine deposit → the alternating readout, continued past
-  18 layers for the extension; checked against the scalar readout at every boundary.
-- `src/ams_ecal/geant4_truth.py` - operational first-inelastic definition (below).
-- `src/ams_ecal/geant4_backend.py` - geometry, scorers, seeding, batch I/O, CLI
-  (`python -m ams_ecal.geant4_backend run|all`), `to_ecal_events` (backend `geant4`).
-- Per event: `fibre_grid` (fibre deposit, 18 x 72), `prefix_grid` (all-material deposit,
-  18 x 72), `extended_grid` (270 x 72, extended geometry only), sparse per-fibre and
-  3 x 3 x 4.625 mm voxel deposits, truth. Per batch `metadata.json`: commit, Geant4 and
-  dataset versions, physics list, config SHA-256, seed policy, material depths.
-- Configs: `configs/geant4_transport.yaml`, `configs/geant4_proton_pilot.yaml`
-  (10/20/50/100 GeV; baseline FTFP_BERT x 2000, extended FTFP_BERT x 800, alternate
-  QGSP_BERT x 1000 per energy).
-- Tests: 41 new (274 total; Geant4 integration tests run the real CLI in subprocesses,
-  about 3 min).
+## Infrastructure (reusable for RQ-001)
 
-## Choices made inside the approved scope - LABELLED, for review
+- `geant4_pybind` 0.1.3 (Geant4 **11.4.1**), optional group `geant4`; datasets in
+  `~/.geant4_pybind`. Real C++ transport; energy scoring in C++; Python per event, per new
+  track, and per step of the primary only.
+- Geometry derived from `configs/geometry.yaml` (single source of dimensions): 43,155
+  explicit fibres in a density-matched lead+glue matrix; optional extension of 126 further
+  AMS-like superlayers. Geant4 overlap check: **no overlaps** (1000 points/volume); Geant4
+  mass 475.4153 kg equals the analytic composition; 16.68 X_0, 0.618 lambda_I (geometric).
+- Per event: `readout_grid_mev` (**detector image: scintillator only**), `deposit_grid_mev`
+  (truth accounting), `edep_scintillator/matrix/total` (close to 1e-9), fine fibre and
+  3 x 3 x 4.625 mm voxel deposits, first-interaction truth from the primary's
+  **step-defining process** (position, depth in mm/X_0/lambda_I, energy before, material,
+  every product), cross-checked by a secondary-based finder (agree exactly on occurrence and
+  depth). Metadata: commit, Geant4 + dataset versions, physics list, **production cut 0.7 mm
+  and its energy thresholds**, config SHA-256, approximations.
+- Researcher's four pre-baseline gates passed and are tests: scintillator-only readout;
+  step-based truth; geometry audit; **worker-independent, bit-for-bit reproducibility**.
 
-1. **First inelastic interaction** = earliest secondary of the primary created by a
-   *hadronic* process named `*Inelastic`. Not counted: hIoni/hBrems/hPairProd/Coulomb
-   scattering, msc, transport, `hadElastic` (recoils counted separately), any other hadronic
-   process (counted as `n_other_hadronic`, never merged). Read from secondaries, so it does
-   not depend on whether a model kills the projectile.
-2. **Matrix composition** - AMS publishes a density (6.8 g/cm^3) and a volume ratio
-   (1 : 0.57 : 0.15) that disagree with the explicit lattice (the ratio implies 7.21). Default
-   `average_density`: reproduces 6.8, and also reproduces the published lead:fibre ratio
-   (1 : 0.565 vs 0.57); `relative_volume` gives 1 : 0.527. Geant4 then reports the prefix as
-   **16.68 X_0 and 0.618 lambda_I** (configured 17 / 0.6). Open for the researcher.
-3. **Entry point** uniform over one 9 x 9 mm cell next to the centre, not a pencil beam
-   (a fixed point would sit at one place of the 1.35 mm fibre lattice). Recorded per event.
-4. **Materials**: whole fibre = polystyrene (cladding not modelled); glue = generic epoxy
-   C21H24O4 at 1.2 g/cm^3; grooved foils and the terminal Al foil not drawn separately.
-5. **Extension** (research instrument only): the prefix's own homogenized composite, same
-   transverse size, 2331 mm deep (total 2497.5 mm, about 9 nominal lambda_I).
-6. Seeds are 31-bit (Geant4's engine seed is a C long on Windows).
+## Samples (10 / 20 / 50 / 100 GeV protons, normal incidence)
 
-## First smoke numbers (4-6 events; illustrative, NOT results)
+| sample | list | geometry | events/energy | commit |
+|---|---|---|---|---|
+| baseline | FTFP_BERT | AMS-only | 4000 | `00d70fd` clean |
+| fixed_entry | FTFP_BERT | AMS-only, entry at cell centre | 1000 | `00d70fd` clean |
+| alternate | QBBC | AMS-only | 1000 | `00d70fd` clean |
+| extended | FTFP_BERT | prefix + 126 superlayers | 800 | `00d70fd` clean |
+| high_energy_model | QGSP_BERT | AMS-only | 1000 | `cb7b7dc` clean |
 
-10 GeV AMS-only: one non-interacting event deposited 151 MeV in all material, 11.1 MeV in
-fibres (7.3%). 100 GeV extended: 72-86% of the primary deposited anywhere in 2.5 m. CPU about
-0.1 s/event (10 GeV, AMS-only) to about 5 s/event (100 GeV, extended).
+QGSP_BERT was **added after** the QBBC run, beyond the researcher's plan: Geant4's own model
+table shows FTFP_BERT and QBBC both use FTFP for protons above 3 GeV, so QBBC could not test
+the model of the first interaction. QGSP_BERT uses QGS above 12 GeV with the same
+cross-sections as FTFP_BERT.
+
+## Answers to the plan's §32 questions — PROPOSED, not accepted
+
+Analysis choices fixed before reading production data: MIP scale measured from truth
+non-interacting events; thresholds 0.5 x MIP (varied 0.25-1); MIP band = 99% quantile of
+non-interacting scintillator energy (95%, 99.9% varied); S_D = bias-adjusted epsilon^2 over
+10 equal-count depth bins (5, 20 varied); 95% bootstrap / Wilson intervals.
+
+1. **Interaction.** P(no inelastic) = 0.530 / 0.512 / 0.516 / 0.526 (CI half-width ~0.016)
+   vs exp(-0.6) = 0.549; lambda_eff = 262 / 249 / 251 / 260 mm, so the prefix is
+   0.64-0.67 lambda for protons; no energy trend resolved. Depth exponential (KS p 0.25-0.91).
+2. **Detector level.** Crossing protons give 11.4-13.1 MeV scintillator (0.56 MeV per crossed
+   cell; 7.4% of the ~150-190 MeV they deposit). Detector MIP-like fraction = truth
+   non-interacting fraction within ~1 point. Only 1.4-3.6% of inelastic events are MIP-like,
+   concentrated in the last ~2 cm. 7-10% of first interactions are quasi-elastic-like, yet
+   still light the fibres.
+3. **Energy distribution.** Interacting visible energy is broad and left-tailed: the
+   log-energy residual at fixed D has sd 0.76-0.91 and skewness -1.5 to -2.2 - not
+   lognormal; a continuous low-visible tail, not a separate mode.
+4. **P7 (S_D).** Longitudinal centre ~0.70-0.74 (D dominates *where*); hits 0.36-0.57;
+   visible energy 0.24-0.50; longitudinal RMS 0.33-0.48; width 0.00-0.03. **P7 is partly
+   supported**: D is necessary, not sufficient, and irrelevant for width.
+5. **Truncation.** Same events: r(D, E) = -0.44 to -0.71 in the prefix, **+0.18 to +0.28**
+   in the full shower; hits flip likewise; S_D(full) < 0.15 for everything. Event ordering by
+   prefix energy is anti-correlated with full-shower energy (-0.20 to -0.37). Deep-calorimeter
+   correlations **do not transfer**.
+6. **Physics list.** Robust across FTFP_BERT / QBBC / QGSP_BERT: interaction probability,
+   depth law, crossing protons, the qualitative P7 pattern. **Model-dependent**: the
+   visible-energy scale at 20-100 GeV (QGSP_BERT medians ~13-28% lower; KS p 1e-6 at 20 and
+   50 GeV) and shower width (~8% narrower).
+7. **Controls.** Fixed entry changes the crossing-proton signal significantly (fibre-lattice
+   phase is part of the MIP fluctuation) but not interacting events.
+
+## Block 6B structure proposed from the pilot — FOR THE RESEARCHER'S DECISION
+
+I (Bernoulli, lambda_eff ~255 mm) → D (truncated exponential) → independent per-layer
+crossing-track deposits before D (measured distribution; adjacent layers rho ~0.1-0.18) →
+at D: log visible energy = mu(E, remaining depth) + eps, with a heavy-tailed eps of
+(exploratory) nearly energy-independent shape; longitudinal shape starting at D with its own
+residual latent; hit multiplicity following visible energy (rho ~0.8-0.9); lateral width with
+its own latent, ~independent of D. Rejected by the data: fixed visible fraction, flat
+individual profile, truncated whole-shower profile, transferred correlation matrix, separate
+low-visible class. **Open for the decision:** tabulated (empirical quantile) vs parametric
+families; how to carry the FTFP_BERT/QGSP_BERT energy-scale systematic.
+
+## New open questions (recorded, not decided)
+
+- **Backsplash**: material behind the ECAL raises the prefix signal of protons that interact
+  downstream from 11-13 to 26-45 MeV (34-47% above the MIP band) and makes prefix width
+  D-dependent. What lies behind the real AMS ECAL, and does it matter for AMS protons?
+- **Hadronic-model systematic** on the visible-energy scale (see 6).
+- **Entry-phase effect** on crossing protons: should FastMC marginalize it or model it?
+- **Incidence angle**: only normal incidence studied.
+- **Production-cut sensitivity**: required before any sub-cell / multiscale claim (researcher,
+  gate point 5).
+- **Material systematic**: composition-matched alternative (`relative_volume`, or AMS's later
+  ~58/33% description quoting 0.7 lambda_I) not yet run.
+- 98 lead + 1 aluminium foil drawn as a homogeneous matrix (systematic to revisit).
 
 ---
 
@@ -694,21 +739,19 @@ No quantum advantage is assumed.
 
 # Next session — start here
 
-_Updated 2026-09-28._ Block 6A is committed (`fe0e699`) and pushed to `stochastic-events`; the
+_Updated 2026-09-29._ Block 6A is committed (`fe0e699`) and pushed to `stochastic-events`; the
 mean-depth convention was settled by the regime amendment; stage 18 is complete.
 
 **Researcher decision, 2026-09-28: Block 6B before Block 7.** In the researcher's words: "Let's
 start 6B first, block 7 is meaningless before that." Rationale: every e/p comparison in RQ-001 and
 Block 8 needs a proton population; detector response is refinement on top of it.
 
-0. **Resume the 2026-09-29 plan at Slice 5** (small baseline proton runs) on branch
-   `geant4-proton-pilot`: `uv run --group geant4 python -m ams_ecal.geant4_backend all`
-   (about 20 min on 14 workers; outputs to `data/geant4_proton_pilot/`, not committed). Then
-   Slices 6-10 (MIP analysis, P7 variance decomposition, thin vs extended correlations,
-   physics-list check, synthesis) and STOP for the Block 6B model decision. First review the
-   labelled choices in the Geant4 pilot section above, especially the matrix constraint.
-   After implementation: probe and tutor the researcher on the codebase and Geant4 first,
-   then the physics (researcher's request, 2026-09-29).
+0. **The Geant4 proton pilot is complete; the plan stops for the Block 6B model decision.**
+   Read the pilot section above, `results/geant4_proton_pilot/` and notebook 08. Before the
+   physics, the researcher asked to be probed and tutored on the codebase and Geant4:
+   `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-29 Codebase and Geant4 Probe.md`
+   (Q1 posted). Then: decide the 6B structure (Slice 11), implement (Slice 12), validate
+   against Geant4 distributions and correlations (Slice 13), teach and record (Slice 14).
 1. **Block 6B, stage 1 (learning probe)** - paused. Tutor session
    `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-28 FastMC Block 6B Proton Showers.md`.
    The 2026-09-28 literature pass ended at a blocker: the thin-calorimeter regime is not
@@ -719,11 +762,14 @@ Block 8 needs a proton population; detector response is refinement on top of it.
 
 ## Next human decision
 
-1. Whether to act on open questions 1 and 2 above (which statistic `T_bar` represents; whether
+1. **Block 6B structure** - accept, amend or reject the proposal in the Geant4 pilot section
+   (latents I, D, visible-energy residual, longitudinal residual, lateral width; tabulated vs
+   parametric families; how to carry the hadronic-model systematic).
+2. Whether backsplash, incidence angle and the material systematic must be answered before
+   6B or after it.
+3. Carried over: whether to act on open questions 1 and 2 above (which statistic `T_bar` represents; whether
    `deposition` should use G&P homogeneous constants so the regimes differ only by the sampling
    shift). Both are configuration-level.
-2. ~~Documentation fixes~~ - approved and applied 2026-09-28.
-3. ~~Sequencing: Block 6B versus Block 7~~ - decided 2026-09-28: 6B first.
-
-Block 6B proton phenomenology and the Geant4 detailed-transport design for RQ-001 remain the
-larger open scientific decisions, unchanged by this session.
+4. ~~Documentation fixes~~ - approved and applied 2026-09-28.
+5. ~~Sequencing: Block 6B versus Block 7~~ - decided 2026-09-28: 6B first.
+6. ~~Pre-baseline gates~~ - set by the researcher 2026-09-29; all four passed.
