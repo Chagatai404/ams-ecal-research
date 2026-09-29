@@ -3,6 +3,7 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from scipy.special import gammaincc
 
 from ams_ecal.event import ECALEvent
 from ams_ecal.fastmc_config import StochasticEMConfig, load_fastmc_config
@@ -201,6 +202,103 @@ def test_records_its_own_seed_and_configuration_in_provenance(
     assert event.provenance.simulation_backend == "fastmc"
     assert event.provenance.random_seed == 4242
     assert event.provenance.configuration_sha256 == VALID_SHA256
+
+
+# --- energy accounting -------------------------------------------------
+
+
+def accounting(
+    model: StochasticEMShowerModel,
+    track: TrackState,
+    random_seed: int,
+    energy_mev: float = 100_000.0,
+) -> tuple[float, float, float, float]:
+    """Split one event's primary energy into its three destinations.
+
+    Replays the event's own draw from its seed, so the split is computed from
+    the same sampled shape parameter the event used, independently of the
+    event's cell grid. Returns (alpha, contained, longitudinal, lateral).
+    """
+
+    rng = np.random.default_rng(random_seed)
+    alpha = model.sample_shape_parameter(energy_mev, rng)
+    layer_fractions = model.longitudinal.layer_energy_fractions_for_shape(alpha)
+    cell_fractions = model.lateral.track_centered_cell_fractions(
+        track, energy_mev
+    )
+
+    longitudinal_leak = energy_mev * (1.0 - sum(layer_fractions))
+    lateral_leak = sum(
+        energy_mev * layer_fraction * (1.0 - sum(row))
+        for layer_fraction, row in zip(
+            layer_fractions, cell_fractions, strict=True
+        )
+    )
+    contained = sum(
+        energy_mev * layer_fraction * cell_fraction
+        for layer_fraction, row in zip(
+            layer_fractions, cell_fractions, strict=True
+        )
+        for cell_fraction in row
+    )
+    return alpha, contained, longitudinal_leak, lateral_leak
+
+
+def test_primary_energy_is_contained_or_leaks_and_nothing_else(
+    model: StochasticEMShowerModel,
+    track: TrackState,
+) -> None:
+    energy_mev = 100_000.0
+
+    for seed in range(20):
+        event = make_event(model, track, random_seed=seed, energy_mev=energy_mev)
+        _, contained, longitudinal, lateral = accounting(
+            model, track, seed, energy_mev
+        )
+
+        assert event.total_ecal_energy_mev == pytest.approx(contained, rel=1e-12)
+        assert longitudinal > 0.0
+        assert lateral > 0.0
+        assert contained + longitudinal + lateral == pytest.approx(
+            energy_mev, rel=1e-12
+        )
+
+
+def test_longitudinal_leakage_is_the_gamma_tail_beyond_the_detector(
+    model: StochasticEMShowerModel,
+    track: TrackState,
+) -> None:
+    # The leak is the event's own gamma profile integrated from the back face
+    # to infinity, at the event's sampled shape, not the mean model's tail.
+    energy_mev = 100_000.0
+    back_face = model.longitudinal.config.gamma_rate * (
+        model.geometry.total_depth_x0
+    )
+
+    for seed in range(20):
+        alpha, _, longitudinal, _ = accounting(model, track, seed, energy_mev)
+
+        assert longitudinal / energy_mev == pytest.approx(
+            float(gammaincc(alpha, back_face)), rel=1e-9, abs=1e-15
+        )
+
+
+def test_lateral_leakage_grows_as_the_track_nears_the_side(
+    model: StochasticEMShowerModel,
+    track: TrackState,
+) -> None:
+    # Same seed, so the same longitudinal draw: only the entry point differs.
+    near_side = TrackState(
+        x0_mm=310.0, y0_mm=310.0, z0_mm=0.0, theta_rad=0.0, phi_rad=0.0
+    )
+    _, central_contained, central_long, central_lat = accounting(
+        model, track, 7
+    )
+    _, side_contained, side_long, side_lat = accounting(model, near_side, 7)
+
+    assert side_long == pytest.approx(central_long, rel=1e-12)
+    assert side_lat > 10.0 * central_lat
+    assert side_contained < central_contained
 
 
 # --- reproducibility ---------------------------------------------------
