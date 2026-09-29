@@ -191,7 +191,23 @@ Verified numbers at 100 GeV: `s = 0.1069`; `T_bar = 8.985 X_0`; sampled `E[T0] =
 so the centring identity holds; ensemble containment sits `-0.0049` below the deterministic
 value, the sign Jensen's inequality predicts; width-law validity floor at 56.2 MeV.
 
-**Not committed.** The working tree awaits human review.
+Committed in `fe0e699` (amended documentation `8ad8cae`, `934d295`).
+
+### Block 6A — COMPLETE 2026-09-29 (`d8c10fc`)
+
+Closing slice of the 2026-09-29 plan. No physics reopened: the implemented model is the
+2026-09-28 regime amendment, which supersedes the 2026-09-21 equations quoted in that plan
+(offset -0.5 paired with the sampling width is the mismatched pair the amendment removed).
+
+Added the three checks the plan required and the suite lacked:
+
+- **energy accounting closes exactly** - primary = in-grid + out-of-back + out-of-sides, to
+  1e-12, replaying each event from its own seed;
+- **longitudinal leakage is the event's own gamma tail** beyond 17 X_0 at its *sampled* alpha;
+- **lateral leakage grows toward the side** at an unchanged longitudinal draw.
+
+Notebook 07 gained a cell showing the same three-way split for its demonstration event
+(100 GeV: 94,355.0 + 5,609.7 + 35.2 = 100,000.0 MeV). Suite: 233 passing, ruff clean.
 
 ## Next engineering target
 
