@@ -194,6 +194,29 @@ def test_rejects_a_voxel_that_straddles_readout_cells(geometry, transport) -> No
         prefix_mesh(geometry, bad)
 
 
+def test_sampling_extension_continues_the_superlayer_structure(
+    layout, geometry, transport
+) -> None:
+    from ams_ecal.transport_geometry import extension_superlayer_count
+
+    assert transport.extension_structure == "sampling"
+    assert extension_superlayer_count(geometry, transport) == 126
+    # The x/y alternation continues past superlayer 9 (index 8).
+    assert [layout.fibre_axis(s) for s in range(7, 12)] == ["y", "x", "y", "x", "y"]
+    layers, cells = layout.readout_lookup(135)
+    assert (layers >= 0).sum() == 135 * 4795
+    assert layers.max() == 269 and cells.min() == -1 and cells.max() == 71
+
+
+def test_readout_lookup_agrees_with_the_fibre_map(layout) -> None:
+    layers, cells = layout.readout_lookup()
+    mapping = layout.fibre_readout_map()
+    ids = np.flatnonzero(layers >= 0)
+    assert set(ids.tolist()) == set(mapping)
+    for fibre_id in ids[::131]:
+        assert mapping[int(fibre_id)] == (layers[fibre_id], cells[fibre_id])
+
+
 def test_rejects_unknown_configuration_keys(tmp_path) -> None:
     text = TRANSPORT.read_text(encoding="utf-8") + "\nsurprise: 1\n"
     path = tmp_path / "transport.yaml"

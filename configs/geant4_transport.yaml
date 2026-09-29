@@ -7,7 +7,7 @@
 # not fully specify, the research-instrument extension, and scoring meshes.
 #
 # Every entry below is a LABELLED ASSUMPTION unless stated otherwise.
-schema_version: 1
+schema_version: 2
 
 units:
   length: mm
@@ -47,12 +47,16 @@ materials:
 # material inventory. PROJECT APPROXIMATION.
 
 # Research instrument, not a detector: compatible material continuing behind
-# the AMS-like prefix, used only for same-event truncation studies. It is the
-# prefix's own average composition, homogenized, with no fibres.
+# the AMS-like prefix, used only for same-event truncation studies.
+#   sampling    : more AMS superlayers - the same fibre lattice and matrix,
+#                 x/y alternation continued - so the full shower is read in
+#                 the same scintillator representation as the prefix (default)
+#   homogeneous : the prefix's average composite, no fibres (truth deposit only)
 extension:
-  # 252 readout-sampling thicknesses; prefix 166.5 + 2331.0 = 2497.5 mm, about
-  # 9 nominal lambda_I. Must be a whole number of samplings and voxels.
+  # 126 superlayers; prefix 166.5 + 2331.0 = 2497.5 mm, about 9 nominal
+  # lambda_I. Must be a whole number of superlayers.
   depth: 2331.0
+  structure: sampling
 
 # Scoring meshes live in a parallel world, so they do not alter the material
 # geometry. Voxel edges must nest inside readout cells and samplings so that

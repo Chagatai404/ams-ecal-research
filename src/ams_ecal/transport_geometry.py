@@ -26,6 +26,7 @@ published average density and the published volume ratio disagree (see
 
 from collections.abc import Mapping
 from dataclasses import dataclass
+from functools import lru_cache
 from math import floor, isclose, isfinite, pi
 from pathlib import Path
 from typing import Literal
@@ -36,11 +37,13 @@ import yaml
 from ams_ecal.geometry import ECALGeometry
 from ams_ecal.readout import coordinate_to_cell_index, measured_axis_for_fiber
 
-EXPECTED_TRANSPORT_SCHEMA_VERSION = 1
+EXPECTED_TRANSPORT_SCHEMA_VERSION = 2
 
 MatrixConstraint = Literal["average_density", "relative_volume"]
+ExtensionStructure = Literal["sampling", "homogeneous"]
 
 _MATRIX_CONSTRAINTS = {"average_density", "relative_volume"}
+_EXTENSION_STRUCTURES = {"sampling", "homogeneous"}
 
 
 class TransportConfigError(ValueError):
@@ -99,6 +102,7 @@ class TransportConfig:
     glue_atoms: tuple[tuple[str, int], ...]
     matrix_constraint: MatrixConstraint
     extension_depth_mm: float
+    extension_structure: ExtensionStructure
     prefix_voxel: VoxelSize
     extension_voxel: VoxelSize
     world_half_width_mm: float
@@ -108,6 +112,10 @@ class TransportConfig:
         if self.matrix_constraint not in _MATRIX_CONSTRAINTS:
             raise TransportConfigError(
                 f"matrix_constraint must be one of {sorted(_MATRIX_CONSTRAINTS)}"
+            )
+        if self.extension_structure not in _EXTENSION_STRUCTURES:
+            raise TransportConfigError(
+                f"extension.structure must be one of {sorted(_EXTENSION_STRUCTURES)}"
             )
 
 
@@ -154,7 +162,7 @@ def load_transport_config(config_path: str | Path) -> TransportConfig:
             )
 
     extension = _mapping(raw["extension"], "extension")
-    _exact_keys(extension, {"depth"}, "extension")
+    _exact_keys(extension, {"depth", "structure"}, "extension")
 
     mesh = _mapping(raw["mesh"], "mesh")
     _exact_keys(mesh, {"prefix_voxel", "extension_voxel"}, "mesh")
@@ -182,6 +190,7 @@ def load_transport_config(config_path: str | Path) -> TransportConfig:
         glue_atoms=tuple((str(s), int(n)) for s, n in atoms.items()),
         matrix_constraint=materials["matrix_constraint"],
         extension_depth_mm=_positive(extension["depth"], "extension.depth"),
+        extension_structure=extension["structure"],
         prefix_voxel=voxel("prefix_voxel"),
         extension_voxel=voxel("extension_voxel"),
         world_half_width_mm=_positive(world["half_width"], "world.half_width"),
@@ -192,6 +201,22 @@ def load_transport_config(config_path: str | Path) -> TransportConfig:
 # ----------------------------------------------------------------------
 # Fibre lattice
 # ----------------------------------------------------------------------
+
+
+@lru_cache(maxsize=16)
+def _row_centres(geometry: ECALGeometry, staggered: bool) -> tuple[float, ...]:
+    """Fibre centres of a full or staggered row (cached; geometry is frozen)."""
+
+    structure = geometry.sampling_structure
+    pitch = structure.fiber_horizontal_pitch_mm
+    radius = structure.fiber_diameter_mm / 2
+    lower, upper = -geometry.width_x_mm / 2, geometry.width_x_mm / 2
+    first = lower + pitch / 2
+    if staggered:
+        first += structure.adjacent_row_stagger_fraction * pitch
+
+    count = floor((upper - radius - first) / pitch + 1e-9) + 1
+    return tuple(first + index * pitch for index in range(count))
 
 
 @dataclass(frozen=True, slots=True)
@@ -285,15 +310,7 @@ class FibreLayout:
     def fibre_centres_mm(self, row: int) -> tuple[float, ...]:
         """Return the measured-coordinate centres of every fibre in one row."""
 
-        structure = self.geometry.sampling_structure
-        pitch = structure.fiber_horizontal_pitch_mm
-        lower, upper = -self.geometry.width_x_mm / 2, self.geometry.width_x_mm / 2
-        first = lower + pitch / 2
-        if self.is_staggered(row):
-            first += structure.adjacent_row_stagger_fraction * pitch
-
-        count = floor((upper - self.fibre_radius_mm - first) / pitch + 1e-9) + 1
-        return tuple(first + index * pitch for index in range(count))
+        return _row_centres(self.geometry, self.is_staggered(row))
 
     @property
     def max_fibres_per_row(self) -> int:
@@ -347,8 +364,13 @@ class FibreLayout:
             self.geometry.width_x_mm * structure.superlayer_thickness_mm
         )
 
-    def fibre_readout_map(self) -> dict[int, tuple[int, int | None]]:
-        """Map every fibre id to its ``(layer, cell)`` in the 18 x 72 readout.
+    def fibre_readout_map(
+        self, n_superlayers: int | None = None
+    ) -> dict[int, tuple[int, int | None]]:
+        """Map every fibre id to its ``(layer, cell)`` in the alternating readout.
+
+        ``n_superlayers`` beyond the nine physical ones covers the sampling
+        extension, whose superlayers continue the same lattice and alternation.
 
         The cell comes from the existing readout function applied to the fibre
         centre, so fibres use exactly the half-open cell convention of the rest
@@ -357,23 +379,63 @@ class FibreLayout:
         fibre shares its light between two anodes.
         """
 
-        mapping: dict[int, tuple[int, int | None]] = {}
-        for superlayer in range(self.geometry.number_of_superlayers):
-            for row in range(self.rows_per_superlayer):
-                layer = self.layer_index(superlayer, row)
-                for index, centre in enumerate(self.fibre_centres_mm(row)):
-                    mapping[self.encode(superlayer, row, index)] = (
-                        layer,
-                        coordinate_to_cell_index(centre, self.geometry),
+        layers, cells = self.readout_lookup(n_superlayers)
+        return {
+            int(fibre_id): (
+                int(layers[fibre_id]),
+                None if cells[fibre_id] < 0 else int(cells[fibre_id]),
+            )
+            for fibre_id in np.flatnonzero(layers >= 0)
+        }
+
+    def readout_lookup(
+        self, n_superlayers: int | None = None
+    ) -> tuple[np.ndarray, np.ndarray]:
+        """Return ``(layer, cell)`` arrays indexed by fibre id; -1 = none.
+
+        A fibre's cell depends only on its row and index, so the readout
+        function is evaluated once per row position and reused for every
+        superlayer.
+        """
+
+        count = (
+            self.geometry.number_of_superlayers
+            if n_superlayers is None
+            else n_superlayers
+        )
+        stride = self.max_fibres_per_row
+        rows = self.rows_per_superlayer
+        layers = np.full(count * rows * stride, -1, np.int64)
+        cells = np.full(count * rows * stride, -1, np.int64)
+        for row in range(rows):
+            row_cells = np.array(
+                [
+                    -1 if cell is None else cell
+                    for cell in (
+                        coordinate_to_cell_index(centre, self.geometry)
+                        for centre in self.fibre_centres_mm(row)
                     )
-        return mapping
+                ],
+                np.int64,
+            )
+            for superlayer in range(count):
+                start = (superlayer * rows + row) * stride
+                layers[start : start + len(row_cells)] = self.layer_index(
+                    superlayer, row
+                )
+                cells[start : start + len(row_cells)] = row_cells
+        return layers, cells
+
+    def fibre_axis(self, superlayer: int) -> str:
+        """Return a superlayer's fibre direction, alternating past the ECAL."""
+
+        axes = self.geometry.superlayer_fiber_axes
+        return axes[superlayer] if superlayer < len(axes) else axes[superlayer % 2]
 
     def measured_axis(self, superlayer: int) -> str:
         """Return the coordinate a superlayer's fibres measure."""
 
-        return measured_axis_for_fiber(
-            self.geometry.superlayer_fiber_axes[superlayer]
-        )
+        return measured_axis_for_fiber(self.fibre_axis(superlayer))
 
 
 # ----------------------------------------------------------------------
@@ -559,6 +621,17 @@ def extension_mesh(geometry: ECALGeometry, config: TransportConfig) -> MeshGrid:
         geometry.depth_z_mm,
         config.extension_depth_mm,
     )
+
+
+def extension_superlayer_count(geometry: ECALGeometry, config: TransportConfig) -> int:
+    """Return how many whole superlayers the sampling extension holds."""
+
+    thickness = geometry.sampling_structure.superlayer_thickness_mm
+    if not _whole_multiple(config.extension_depth_mm, thickness):
+        raise TransportConfigError(
+            "extension depth must be a whole number of superlayers"
+        )
+    return round(config.extension_depth_mm / thickness)
 
 
 def extended_layer_count(geometry: ECALGeometry, config: TransportConfig) -> int:

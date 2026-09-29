@@ -55,6 +55,8 @@ checkpoints/
 # Generated datasets
 data/raw/
 data/processed/
+# Geant4 pilot raw batches (large; regenerate from committed configs)
+data/geant4_proton_pilot/
 
 # Native/CMake build products for later Geant4 work
 cmake-build-*/
