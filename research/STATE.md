@@ -750,7 +750,9 @@ Block 8 needs a proton population; detector response is refinement on top of it.
    recorded in `research/plans/2026-09-29_block6b_implementation_plan.md` (one exponential draw
    for interaction status and depth; geometry-aware crossing tracks; empirical conditional
    distributions for visible energy and morphology; FTFP_BERT nominal and QGSP_BERT systematic
-   calibrations; held-out validation). **Begin its Slice 0 only after the tutoring below.**
+   calibrations; held-out validation). **Amended 2026-09-29:** protons get both a **true
+   deposition** and a **readout (fibre)** representation, like 6A electrons, so e/p events share
+   one representation. **Begin its Slice 0 only after the tutoring below.**
    The Geant4 proton pilot is complete.
    Read the pilot section above, `results/geant4_proton_pilot/` and notebook 08. Before the
    physics, the researcher asked to be probed and tutored on the codebase and Geant4:

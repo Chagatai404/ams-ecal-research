@@ -8,6 +8,18 @@ kept as blocks. The researcher's instruction: implement it **after the tutoring*
 `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-29 Codebase and Geant4 Probe.md`).
 It is the researcher's decision on the Block 6B structure proposed in `research/STATE.md`._
 
+## Researcher amendment, 2026-09-29 (during the tutoring)
+
+**Two representations for protons, as for electrons.** Block 6A offers a `deposition` regime
+(true all-material deposit, the "perfect event") and a signal-level regime. The researcher
+decided Block 6B must likewise provide **true deposition** and **readout (fibre /
+scintillator energy)** representations, so electron and proton FastMC events can always be
+compared in one common representation. The pilot stores both per event (`deposit_grid_mev`,
+`readout_grid_mev`), so the calibration builder produces both from the same events; choosing a
+representation is explicit configuration, and provenance records it. Slice 0 must also settle
+how this pairs with Block 6A's two regimes (the 6A `sampling` regime moves the longitudinal
+*shape* toward signal level but not the energy scale).
+
 ---
 
 You are working on my AMS-02 ECAL research repository:
