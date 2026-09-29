@@ -746,7 +746,12 @@ mean-depth convention was settled by the regime amendment; stage 18 is complete.
 start 6B first, block 7 is meaningless before that." Rationale: every e/p comparison in RQ-001 and
 Block 8 needs a proton population; detector response is refinement on top of it.
 
-0. **The Geant4 proton pilot is complete; the plan stops for the Block 6B model decision.**
+0. **Block 6B structure DECIDED by the researcher, 2026-09-29**: the implementation plan is
+   recorded in `research/plans/2026-09-29_block6b_implementation_plan.md` (one exponential draw
+   for interaction status and depth; geometry-aware crossing tracks; empirical conditional
+   distributions for visible energy and morphology; FTFP_BERT nominal and QGSP_BERT systematic
+   calibrations; held-out validation). **Begin its Slice 0 only after the tutoring below.**
+   The Geant4 proton pilot is complete.
    Read the pilot section above, `results/geant4_proton_pilot/` and notebook 08. Before the
    physics, the researcher asked to be probed and tutored on the codebase and Geant4:
    `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-29 Codebase and Geant4 Probe.md`
@@ -762,9 +767,10 @@ Block 8 needs a proton population; detector response is refinement on top of it.
 
 ## Next human decision
 
-1. **Block 6B structure** - accept, amend or reject the proposal in the Geant4 pilot section
-   (latents I, D, visible-energy residual, longitudinal residual, lateral width; tabulated vs
-   parametric families; how to carry the hadronic-model systematic).
+1. ~~Block 6B structure~~ - decided 2026-09-29 by the researcher's implementation plan
+   (`research/plans/2026-09-29_block6b_implementation_plan.md`): hybrid of analytic
+   exponential interaction depth and empirical conditional distributions; QGSP_BERT as a
+   separate calibration scenario, never event noise.
 2. Whether backsplash, incidence angle and the material systematic must be answered before
    6B or after it.
 3. Carried over: whether to act on open questions 1 and 2 above (which statistic `T_bar` represents; whether
