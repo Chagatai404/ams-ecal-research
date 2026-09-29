@@ -64,7 +64,10 @@ def test_pilot_configuration_loads() -> None:
     assert pilot.particle == "proton"
     assert pilot.energies_gev == (10.0, 20.0, 50.0, 100.0)
     assert pilot.production_cut_mm == 0.7
-    assert list(pilot.samples) == ["baseline", "fixed_entry", "alternate", "extended"]
+    assert list(pilot.samples) == [
+        "baseline", "fixed_entry", "alternate", "extended", "high_energy_model"
+    ]
+    assert pilot.samples["high_energy_model"].physics_list == "QGSP_BERT"
     assert pilot.samples["baseline"].physics_list == "FTFP_BERT"
     assert pilot.samples["alternate"].physics_list == "QBBC"
     assert pilot.samples["extended"].geometry == "extended"

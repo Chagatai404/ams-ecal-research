@@ -30,7 +30,13 @@ physics:
   # recommends it for medical and space physics - researcher-cited, 2026-09-29).
   # Only enough statistics to see whether first-interaction depth, deposited
   # energy and shower variance are materially model-dependent.
-  lists: [FTFP_BERT, QBBC]
+  #
+  # QGSP_BERT added 2026-09-29 AFTER the QBBC run: Geant4's own model table
+  # shows FTFP_BERT and QBBC both use FTFP for protons above 3 GeV, so QBBC
+  # varies cross-sections and secondary cascades but NOT the model of the
+  # 10-100 GeV first interaction. QGSP_BERT uses the quark-gluon-string model
+  # there - the cheapest test of that model dependence.
+  lists: [FTFP_BERT, QBBC, QGSP_BERT]
   # Range (production) cut, mm: the Geant4 default. It decides which soft
   # secondaries are produced explicitly and which deposit locally - a
   # production threshold, not a tracking cut. Recorded, with its energy
@@ -68,6 +74,11 @@ samples:
     physics_list: FTFP_BERT
     events_per_energy: 800
     base_seed: 20260930
+  high_energy_model:
+    geometry: ams
+    physics_list: QGSP_BERT
+    events_per_energy: 1000
+    base_seed: 20261002
 
 # Fine prefix voxels are kept for later RQ-001 reuse.
 store_fine_prefix_deposits: true
