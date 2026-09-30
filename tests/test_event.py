@@ -467,3 +467,45 @@ def test_rejects_invalid_random_seed(
             provenance,
             random_seed=random_seed,
         )
+
+
+def test_model_details_default_to_empty_and_keep_old_events_valid() -> None:
+    provenance = make_provenance()
+
+    assert provenance.model_details == ()
+    assert provenance.detail("calibration_version") is None
+
+
+def test_model_details_record_named_facts() -> None:
+    provenance = replace(
+        make_provenance(),
+        model_details=(
+            ("calibration_version", "1"),
+            ("physics_list", "FTFP_BERT"),
+        ),
+    )
+
+    assert provenance.detail("physics_list") == "FTFP_BERT"
+    assert provenance.detail("calibration_version") == "1"
+    assert provenance.detail("missing") is None
+
+
+@pytest.mark.parametrize(
+    ("model_details", "error_type", "message"),
+    [
+        ([("a", "b")], TypeError, "tuple of"),
+        ((["a", "b"],), TypeError, "pairs"),
+        ((("a", "b", "c"),), TypeError, "pairs"),
+        ((("", "b"),), ValueError, "key must not be empty"),
+        ((("a", ""),), ValueError, "value must not be empty"),
+        ((("b", "1"), ("a", "2")), ValueError, "sorted"),
+        ((("a", "1"), ("a", "2")), ValueError, "unique"),
+    ],
+)
+def test_rejects_invalid_model_details(
+    model_details: object,
+    error_type: type[Exception],
+    message: str,
+) -> None:
+    with pytest.raises(error_type, match=message):
+        replace(make_provenance(), model_details=model_details)

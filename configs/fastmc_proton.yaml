@@ -1,0 +1,47 @@
+schema_version: 1
+
+# Block 6B - Geant4-calibrated proton phenomenology for the AMS ECAL FastMC.
+#
+# WORDING. Everything this model draws is a Geant4-DERIVED PHENOMENOLOGY: a
+# calibration of Geant4 11.4.1 in this project's material model, over 10-100 GeV
+# at normal incidence. It is not a true proton shower model, not the exact AMS
+# proton response, and the effective interaction length below is not a physical
+# interaction length of AMS. Later AMS or test-beam evidence may change it.
+
+calibration:
+  # Which Geant4 physics-list scenario the tables were built from. This is an
+  # EPISTEMIC scenario, chosen once per dataset - never averaged and never drawn
+  # per event.
+  #   ftfp_bert : nominal
+  #   qgsp_bert : the hadronic-model systematic (visible-energy scale 13-28%
+  #               lower at 20-100 GeV in the pilot); not built yet
+  physics_list: ftfp_bert
+  # Directory holding calibration.npz and manifest.json (see
+  # ams_ecal.proton_calibration). Relative to the repository root.
+  artifact: data/calibration/proton_6b/ftfp_bert_v1
+
+# Which physical quantity the generated events carry, as for Block 6A.
+#   readout    : energy deposited in the scintillating fibres only - the
+#                DETECTOR IMAGE (uncalibrated, undigitized).
+#   deposition : energy deposited in ALL material of the ECAL - truth
+#                accounting, the "perfect event". This is the representation
+#                directly comparable with Block 6A's `deposition` regime.
+representation: readout
+
+interaction:
+  # First-inelastic-interaction distance ~ Exponential(effective length).
+  # null: use the pooled maximum-likelihood value stored in the calibration
+  # artifact (Geant4 11.4.1, FTFP_BERT, this geometry, 10-100 GeV protons,
+  # normal incidence). A number overrides it and is recorded in provenance.
+  # Pilot values: 249-262 mm per energy, ~255 mm pooled, +-5% statistical;
+  # -4% for the composition-matched material alternative.
+  effective_length_mm: null
+
+domain:
+  # The calibrated domain. Requests outside it raise; nothing is extrapolated.
+  energy_min_gev: 10.0
+  energy_max_gev: 100.0
+  # Normal incidence only in v1. The geometry code takes a full TrackState so
+  # angle and path length can be added, but no angular calibration exists.
+  max_theta_rad: 0.0
+  extrapolation: forbid

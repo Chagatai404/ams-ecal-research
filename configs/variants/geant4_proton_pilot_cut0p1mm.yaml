@@ -1,0 +1,42 @@
+# Block 6B Slice 0 - production-cut sensitivity check (plan section 25.1).
+#
+# IDENTICAL to configs/geant4_proton_pilot.yaml except:
+#   * physics.production_cut is 0.1 mm instead of the default 0.7 mm;
+#   * one small sample, `cut_0p1mm`, with the SAME base seed as `baseline`, so
+#     event i here starts from the same seed as baseline event i (a paired
+#     comparison of the same primaries under two cuts).
+#
+# Purpose: the fibres are 1 mm across and the default cut is 0.7 mm, so the cut
+# can move soft-electron energy between the lead and the fibres, and between
+# neighbouring fibres. Decide whether hit multiplicity, lateral width and
+# small-deposit structure move by more than the stochastic and model spread.
+# If negligible: record it and stop. The cut is NOT to be optimised.
+schema_version: 2
+
+particle: proton
+energies_gev: [10.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.1
+
+samples:
+  cut_0p1mm:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 1000
+    base_seed: 20260929
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_proton_pilot

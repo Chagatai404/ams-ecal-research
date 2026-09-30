@@ -1,0 +1,43 @@
+# Block 6B Slice 0 - material-composition variant of configs/geant4_transport.yaml.
+#
+# IDENTICAL to the default transport configuration except
+#
+#   materials.matrix_constraint: relative_volume
+#
+# AMS publishes BOTH an average density (6.8 g/cm^3) and a lead:fibre:glue
+# volume ratio (1 : 0.57 : 0.15) and the two are not mutually consistent. The
+# default (average_density) reproduces the published density and the 17 X0
+# depth; this variant uses the published ratio inside the lead+glue matrix and
+# lands near 7.2 g/cm^3. It exists to size the material systematic, not to
+# replace the default.
+schema_version: 2
+
+units:
+  length: mm
+  density: g/cm^3
+
+materials:
+  absorber_nist: G4_Pb
+  fibre_nist: G4_POLYSTYRENE
+  glue:
+    density: 1.2
+    atoms: {C: 21, H: 24, O: 4}
+  matrix_constraint: relative_volume
+
+extension:
+  depth: 2331.0
+  structure: sampling
+
+mesh:
+  prefix_voxel:
+    x: 3.0
+    y: 3.0
+    z: 4.625
+  extension_voxel:
+    x: 9.0
+    y: 9.0
+    z: 9.25
+
+world:
+  half_width: 1000.0
+  upstream_gap: 10.0
