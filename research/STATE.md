@@ -622,6 +622,71 @@ implemented (D1 accepted; they follow the crossing repair). Speed is 11-14 ms/ev
 large datasets (step 7 of the sequence). Whole suite: 442 tests. Record: section 11 of the Slice 0
 file. The calibration artifact was rebuilt from a clean tree at `a5e7be3`.
 
+**Validity of D1-D6 after the literature check and the adversarial pass, 2026-09-30** (record:
+`research/plans/2026-09-30_block6b_literature_and_adversarial_reconciliation.md`). Agent findings;
+none of D1-D6 is invalid. The researcher's decision on them follows in the next block.
+
+- **D2 valid. D5 valid and strengthened. D6 valid. D4 valid but incomplete.**
+- **D1 valid with three amendments**, each measured on calibration events: (a) a back-edge factor
+  on the amplitude window (amplitude is independent of depth for interactions shallower than 60 mm,
+  |rho| <= 0.07, but 13-14% lower for the last depth tercile at 20 and 100 GeV); (b) a correlated
+  log-normal residual around amplitude x profile (46-80% per layer, lag-1 correlation +0.3-0.4);
+  (c) an albedo-strength latent shared by the upstream layers (rho about +0.4 given the amplitude).
+  The pooled interaction length is consistent across energies (likelihood ratio p = 0.61).
+- **Literature.** No verified source contradicts the model. The fast-simulation failure points
+  (sparsity, layer correlations, widths) are the rows the crossing branch failed. The elements that
+  are new here - amplitude independent of depth, an offset-universal profile, upstream activity -
+  have no external support or contradiction in this thin regime; they rest on Geant4 with one
+  physics list. Fractal connection: the only calorimeter fractal-dimension study found is a Monte
+  Carlo of an iron/RPC digital calorimeter on binary hits, not data and not this detector; nothing
+  was found testing whether fast simulation preserves multiscale structure (not found in these
+  searches). RQ-001 remains E0.
+- **Proposed (accepted below):** **D7** add to the validation contract a layer-correlation row, a
+  classifier two-sample test, CaloChallenge-style sparsity and an ungated multiscale panel, before
+  the fresh test set is generated; **D8** validate the multiscale estimators on synthetic
+  positive/negative controls on the 18 x 72 grid before any multiscale claim.
+
+**Researcher decisions on D1-D8, 2026-09-30** (the researcher's own decision, given in chat after
+reading the record above; recorded as the decision of record). Sequence steps 1-3 (commit, rebuild
+the artifact, freeze) are complete; steps 4-10 stand unchanged. D1's amendments enter at step 6, D7
+must be registered before step 9.
+
+- **D1 accepted, with amendments.** (a) A back-edge factor on the amplitude. (b) **Modified by the
+  researcher:** a correlated residual *in log-energy space*, not a "correlated log-normal
+  residual". The measured variance and autocorrelation of ln E_layer do not establish that the
+  residuals are Gaussian, so their distribution is tested on calibration events first, and the
+  family is called log-normal only if those events support it. (c) A shared upstream (albedo)
+  latent: it is required, because conditioning on the amplitude still leaves correlations of about
+  0.39-0.45.
+- **D2 accepted.** The interaction draw is shared; deposition and readout fluctuations may differ.
+- **D4 and D7 accepted together.** No old gate is deleted. D7 adds a layer-correlation row, a
+  classifier two-sample test, CaloChallenge-style standardized sparsity and an ungated multiscale
+  panel, all registered before the fresh test set is generated (step 9).
+- **D5 accepted.** Design instruction from the researcher: implement the burst latent
+  *structurally* (probability or type, onset, energy, downstream extent), not as a generic
+  event-wide scale multiplier. Basis: the energy-dependent long-range layer coupling grows toward
+  100 GeV and is concentrated in the tail.
+- **D6 accepted.** A zero-halo crossing model is already falsified by the project's own Geant4 sample.
+- **D8 accepted; it does not block Slices 3-5.** It gates every multiscale or fractal *claim*.
+- **FastMC is a smooth control.** It is not required to reproduce fractal structure. If it matches the
+  conventional energy, profile and occupancy observables while Geant4 shows multiscale structure the
+  FastMC lacks, that difference is the control experiment. Multiscale preservation is *measured*,
+  not imposed as a design requirement.
+- **Standing limitation, kept visible.** Amplitude universality, the upstream relation and profile
+  universality come from one Geant4 physics configuration (FTFP_BERT), not from AMS proton data. The
+  QGSP_BERT / alternative-physics-list slice (Slice 7) is not needed to continue development, but it
+  **is** required before any claim that these are properties of hadronic shower physics.
+- **Claim hierarchy, no skipped steps:** calibration observation -> FastMC hypothesis -> fresh-set
+  validation -> physics-list robustness -> possible physical interpretation.
+- **Citation correction (agent, abstracts read).** The statement that Geant4/data discrepancies are
+  largest in longitudinal and transverse structure belongs to arXiv:1411.7215 (CALICE Si-W ECAL,
+  pions 2-10 GeV: Monte Carlo within 20% of data, "a reasonable overall description"), not to
+  arXiv:1602.08578, which supports the two-component profile description. The support is "up to
+  about 20%", not "substantial". 1411.7215 was not in this pass's source set, is read at abstract
+  level only, and is not yet in the paper library. Details: §7 of the reconciliation record.
+- **Next:** the learn-back tutoring (Obsidian session note, 2026-09-30) precedes step 4, the D5/D6
+  crossing repair.
+
 # Block 7 status — BLOCKED pending evidence, 2026-09-21
 
 Detector response remains planned, and is now explicitly **blocked** rather than merely
