@@ -1,7 +1,7 @@
 # AMS ECAL Research — Current Research State
 
 _Last human review: 2026-09-21_
-_Last agent update: 2026-09-29 (Block 6A complete; Geant4 proton pilot complete; Block 6B Slice 0 complete — factorization D1 awaiting the researcher)_
+_Last agent update: 2026-09-30 (Block 6A complete; Geant4 proton pilot complete; Block 6B Slice 0-2 recorded; D1/D2/D4/D5/D6 accepted by the researcher, conditional on a literature check)_
 
 ## Central research question
 
@@ -555,7 +555,7 @@ families; how to carry the FTFP_BERT/QGSP_BERT energy-scale systematic.
 
 ---
 
-# Block 6B Slice 0 — dependency analysis COMPLETE 2026-09-29; PROPOSALS awaiting the researcher
+# Block 6B Slice 0 — dependency analysis COMPLETE 2026-09-29; decisions ACCEPTED 2026-09-30 (conditional)
 
 Full record: `research/plans/2026-09-29_block6b_slice0_dependency_analysis.md`. Reproduce:
 `uv run python -m ams_ecal.proton_dependency` and `uv run python -m ams_ecal.proton_checks`.
@@ -577,7 +577,33 @@ Everything is Geant4 11.4.1 in this project's material model (E3), on **calibrat
   resolution of a 750-event paired check. Material `relative_volume`: a predictable -2.6% in
   P(no inelastic); readout representation unaffected, deposition representation +5-7% for MIPs.
 
-**Proposed, NOT accepted** (decision numbers refer to the Slice 0 record, section 9):
+**Accepted by the researcher, 2026-09-30, with one condition.** In the researcher's words: "I
+accept the proposals you make but you should check the literature if our model makes sense. You
+should especially check studies about preserving the spatial structure and the fractal connection
+we are looking for. Afterwards tutor me on it again in the learn-back stage." So D1, D2, D4, D5
+and D6 below are ACCEPTED, and the model's plausibility against the literature (independent
+discovery, then verification and an adversarial pass, per `RESEARCH_PROTOCOL.md` section 2) is an
+open condition: a mismatch is a finding to reconcile, not something to smooth over. The
+learn-back tutoring follows the literature check.
+
+**Sequence set by the researcher, 2026-09-30** (steps marked done):
+
+1. commit the current evidence - DONE (`da8268f` code, `4f194c0` evidence);
+2. rebuild the calibration artifact from that clean commit - DONE (`a5e7be3`; content hash
+   unchanged, `539eaab0...`, built from `4f194c0` with no tracked changes);
+3. freeze D1/D2/D4/D5/D6 in this file - DONE (this section);
+4. implement the D5/D6 crossing repair;
+5. run a second-look diagnostic;
+6. build the interacting model under D1;
+7. optimize the batch path;
+8. freeze everything;
+9. generate a fresh Geant4 test set;
+10. final Slice 6 validation on that fresh set.
+
+The fresh test set (steps 9-10) removes the integrity problem of re-using the held-out events
+after the crossing repair: the 2026-09-29 crossing validation was the only look those events get.
+
+Decisions (numbers refer to the Slice 0 record, section 9 and 11):
 
 - **D1** replace the plan's `P(E_vis | E, R)` table and R-conditioned templates by *amplitude x
   universal profile + upstream albedo + one lateral-scale latent*, with hit multiplicity emergent.
@@ -590,11 +616,11 @@ Everything is Geant4 11.4.1 in this project's material model (E3), on **calibrat
 interaction draw and the per-layer response pass at the noise floor; the crossing branch **fails**
 the event-total (readout at 50-100 GeV, deposition at all energies), hit-multiplicity, max-cell
 and containment rows (KS 0.10-0.37). Both were predicted from calibration data: independent layers
-and cells restricted to crossed fibres. Proposed repairs, not implemented: **D5** an event-level
+and cells restricted to crossed fibres. Accepted repairs, not yet implemented: **D5** an event-level
 burst latent; **D6** a per-layer lateral spill. Interacting events (Slices 3-5) are not
-implemented and wait for D1. Speed is 11-14 ms/event, too slow for large datasets. Whole suite: 442
-tests. Record: section 11 of the Slice 0 file. The calibration artifact was built from an uncommitted
-tree and must be rebuilt from a clean commit.
+implemented (D1 accepted; they follow the crossing repair). Speed is 11-14 ms/event, too slow for
+large datasets (step 7 of the sequence). Whole suite: 442 tests. Record: section 11 of the Slice 0
+file. The calibration artifact was rebuilt from a clean tree at `a5e7be3`.
 
 # Block 7 status — BLOCKED pending evidence, 2026-09-21
 
@@ -810,10 +836,9 @@ Block 8 needs a proton population; detector response is refinement on top of it.
 
 ## Next human decision
 
-0. **Block 6B Slice 0 outcome, 2026-09-29 (new):** decisions D1, D2, D4 in
-   `research/plans/2026-09-29_block6b_slice0_dependency_analysis.md` section 9. Slices 1-2 that do
-   not depend on D1 (interaction draw, crossing-track table, calibration artifact, configuration)
-   can proceed; the interacting-event slices 3-5 wait for D1.
+0. ~~Block 6B Slice 0 outcome~~ - D1, D2, D4, D5, D6 accepted 2026-09-30 by the researcher,
+   conditional on the literature check described above; the next steps are the researcher's
+   sequence, steps 4-10.
 1. ~~Block 6B structure~~ - decided 2026-09-29 by the researcher's implementation plan
    (`research/plans/2026-09-29_block6b_implementation_plan.md`): hybrid of analytic
    exponential interaction depth and empirical conditional distributions; QGSP_BERT as a

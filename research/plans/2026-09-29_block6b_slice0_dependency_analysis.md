@@ -1,8 +1,13 @@
 # Block 6B Slice 0 — dependency analysis and proposed factorization
 
-_Written 2026-09-29 by Claude as primary worker. **Agent proposal, not accepted.** Evidence
-level E3 (controlled simulation): every number is Geant4 11.4.1 in this project's material model,
-not detector truth. The researcher decides D1–D4 in §9._
+_Written 2026-09-29 by Claude as primary worker. Evidence level E3 (controlled simulation): every
+number is Geant4 11.4.1 in this project's material model, not detector truth._
+
+> **Status, 2026-09-30.** The researcher accepted D1, D2, D4, D5 and D6, subject to one condition:
+> check the literature on whether the model makes sense, especially studies of preserving spatial
+> structure and the fractal/multifractal connection. The acceptance and the repo sequence are
+> recorded in `research/STATE.md`. Sections 3–9 were written as proposals and are left as
+> written.
 
 Plan sections implemented: §9 (dependency analysis), §25.1 (production cut), §25.2 (material),
 §31 (calibration / validation split), §32–33 (validation contract, written here *before* any
