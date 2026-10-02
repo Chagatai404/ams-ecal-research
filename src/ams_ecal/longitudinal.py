@@ -5,9 +5,27 @@ mean energy deposition. It is not a first-principles QED theorem. The physical
 chain is bremsstrahlung and pair production, followed by a branching cascade,
 followed by a gamma-profile approximation calibrated against simulation/data.
 
-This block intentionally models only the mean electron/positron profile.
-Shower-to-shower fluctuations and sampling-calorimeter corrections belong to
-the stochastic FastMC block, where their correlations can be handled together.
+The mean depth of shower maximum is
+
+    T_bar(E) = ln(E / E_c) + offset(regime) + sampling_correction(regime)
+
+and the gamma shape follows as ``alpha = 1 + beta * T_bar``, which is the
+published AMS relation. Note that AMS itself publishes NO closed-form
+``T_bar(E)``: it fits ``T0`` per shower to observed cell deposits. The offsets
+used here are therefore external (PDG for deposition, Grindhammer and Peters
+for sampling), and changing them does not break agreement with the AMS
+functional form, which holds for any ``T0``.
+
+Two regimes are supported. Under ``deposition`` the profile describes true
+energy deposition in the composite and no sampling correction is applied. Under
+``sampling`` it describes signal-level shape: the sampling correction, derived
+from the detector geometry rather than hard-coded, moves the maximum shallower
+because e/mip falls as the cascade softens and low-energy photons are absorbed
+preferentially in the lead.
+
+This block models only the mean profile. Shower-to-shower fluctuations belong
+to the stochastic FastMC block, which selects its width from the same regime so
+that mean and width stay a matched pair.
 """
 
 from dataclasses import dataclass
@@ -16,7 +34,7 @@ from typing import Literal
 
 from scipy.special import gammainc
 
-from ams_ecal.fastmc_config import LongitudinalEMConfig
+from ams_ecal.fastmc_config import LongitudinalEMConfig, ShowerRegime
 from ams_ecal.geometry import ECALGeometry
 
 ElectromagneticParticleType = Literal["electron", "positron"]
@@ -56,6 +74,31 @@ def _validate_particle_type(
     return particle_type
 
 
+def _validate_shape_parameter(shape_parameter: object) -> float:
+    """Return a gamma shape parameter inside the rising-cascade domain.
+
+    A gamma profile only has an interior maximum for ``alpha > 1``. Values at
+    or below one describe a density that is largest at the front face, which
+    is not a shower.
+    """
+
+    if isinstance(shape_parameter, bool) or not isinstance(
+        shape_parameter,
+        int | float,
+    ):
+        raise TypeError("shape_parameter must be a real number")
+
+    if not isfinite(shape_parameter):
+        raise ValueError("shape_parameter must be finite")
+
+    if shape_parameter <= 1.0:
+        raise ValueError(
+            "shape_parameter must exceed one for a developing cascade"
+        )
+
+    return float(shape_parameter)
+
+
 @dataclass(frozen=True, slots=True)
 class AMSLongitudinalGammaModel:
     """Detector-specific mean longitudinal model for electron/positron showers.
@@ -76,6 +119,7 @@ class AMSLongitudinalGammaModel:
 
     config: LongitudinalEMConfig
     geometry: ECALGeometry
+    regime: ShowerRegime = "sampling"
 
     def __post_init__(self) -> None:
         if not isinstance(self.config, LongitudinalEMConfig):
@@ -84,19 +128,99 @@ class AMSLongitudinalGammaModel:
         if not isinstance(self.geometry, ECALGeometry):
             raise TypeError("geometry must be an ECALGeometry")
 
+        if self.regime not in ("deposition", "sampling"):
+            raise ValueError(
+                "regime must be either 'deposition' or 'sampling'"
+            )
+
     @property
     def critical_energy_mev(self) -> float:
         """Return the effective ECAL critical energy from detector geometry."""
 
         return self.geometry.material_properties.effective_critical_energy_mev
 
+    @property
+    def describes_true_deposition(self) -> bool:
+        """Report whether this model describes deposition rather than signal."""
+
+        return self.regime == "deposition"
+
+    @property
+    def shower_max_offset_x0(self) -> float:
+        """Return the regime-appropriate additive offset in T_bar."""
+
+        if self.describes_true_deposition:
+            return self.config.deposition_offset_x0
+
+        return self.config.sampling_offset_x0
+
+    @property
+    def sampling_frequency(self) -> float:
+        """Return F_S = X_0,eff / (d_a + d_p) from the detector geometry."""
+
+        geometry = self.geometry
+        effective_radiation_length_mm = (
+            geometry.depth_z_mm / geometry.total_depth_x0
+        )
+        sampling_cell_mm = (
+            geometry.sampling_structure.fiber_diameter_mm
+            + geometry.sampling_structure.absorber_foil_thickness_mm
+        )
+        return effective_radiation_length_mm / sampling_cell_mm
+
+    @property
+    def electron_to_mip_ratio(self) -> float:
+        """Return e/mip = 1 / (1 + 0.007 (Z_p - Z_a))."""
+
+        sampling = self.config.sampling_shower_max
+        return 1.0 / (
+            1.0
+            + 0.007
+            * (
+                sampling.absorber_atomic_number
+                - sampling.active_atomic_number
+            )
+        )
+
+    @property
+    def sampling_shower_max_correction_x0(self) -> float:
+        """Return the sampling shift of the mean shower maximum, in X_0.
+
+        Zero when the correction is disabled, in which case the model
+        describes true energy deposition rather than detected signal. The
+        value is negative when enabled: the signal maximum is shallower.
+        """
+
+        if self.describes_true_deposition:
+            return 0.0
+
+        sampling = self.config.sampling_shower_max
+        correction_x0 = -(
+            sampling.sampling_frequency_coefficient / self.sampling_frequency
+            + sampling.transition_effect_coefficient
+            * (1.0 - self.electron_to_mip_ratio)
+        )
+
+        if not isfinite(correction_x0) or correction_x0 > 0:
+            raise ArithmeticError(
+                "sampling shower-maximum correction must be nonpositive"
+            )
+
+        return correction_x0
+
     def shower_max_depth_x0(self, primary_energy_mev: float) -> float:
-        """Return the predicted mean shower-maximum depth in X_0."""
+        """Return the predicted mean shower-maximum depth in X_0.
+
+        The offset is the homogeneous-medium term; the sampling correction is
+        added separately so the two can be inspected and disabled
+        independently.
+        """
 
         energy_mev = _validate_primary_energy(primary_energy_mev)
         shower_max_x0 = (
             log(energy_mev / self.critical_energy_mev)
-            + self.config.shower_max_offset_x0
+            + self.shower_max_offset_x0
+            + self.sampling_shower_max_correction_x0
         )
 
         # The PDG high-energy approximation is not a valid cascade model when
@@ -143,6 +267,22 @@ class AMSLongitudinalGammaModel:
             raise ValueError("depth_x0 must be nonnegative")
 
         alpha = self.shape_parameter(primary_energy_mev)
+        return self.energy_density_for_shape(depth_x0, alpha)
+
+    def energy_density_for_shape(
+        self,
+        depth_x0: float,
+        shape_parameter: float,
+    ) -> float:
+        """Return the gamma density at one depth for an explicit shape.
+
+        The shape parameter is supplied rather than derived from the primary
+        energy so that a stochastic model can evaluate the same profile at a
+        sampled shower maximum. The logarithmic evaluation avoids overflow
+        for large shape parameters.
+        """
+
+        alpha = _validate_shape_parameter(shape_parameter)
 
         if depth_x0 == 0:
             # The validated model domain guarantees alpha > 1.
@@ -166,6 +306,20 @@ class AMSLongitudinalGammaModel:
 
         _validate_particle_type(particle_type)
         alpha = self.shape_parameter(primary_energy_mev)
+        return self.layer_energy_fractions_for_shape(alpha)
+
+    def layer_energy_fractions_for_shape(
+        self,
+        shape_parameter: float,
+    ) -> tuple[float, ...]:
+        """Integrate a gamma profile of explicit shape over the 18 layers.
+
+        Fractions are never renormalized to the finite detector depth, so the
+        missing tail remains physical longitudinal leakage. The stochastic
+        block reuses this method with a sampled shape parameter.
+        """
+
+        alpha = _validate_shape_parameter(shape_parameter)
         beta = self.config.gamma_rate
 
         fractions = tuple(

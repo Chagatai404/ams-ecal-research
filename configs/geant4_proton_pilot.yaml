@@ -1,0 +1,86 @@
+# Geant4 proton calibration pilot (Block 6B prerequisite).
+#
+# Purpose: measure what a proton looks like in the thin AMS-like ECAL before any
+# Block 6B stochastic family is chosen. Not the full RQ-001 Geant4 study.
+schema_version: 2
+
+particle: proton
+
+# Compact grid inside the 3-180 GeV range documented by the lateral model; no
+# dataset energy range has been accepted yet (Block 8 not started).
+energies_gev: [10.0, 20.0, 50.0, 100.0]
+
+# Normal incidence. The entry point is spread uniformly over ONE readout cell
+# next to the detector centre, rather than fixed: a pencil beam at a fixed
+# point would sit at one position of the 1.35 mm fibre lattice and give an
+# artificial through-going signal. ANALYSIS CHOICE, recorded per event.
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  # FTFP_BERT: Geant4's standard default reference list. QBBC: the second model
+  # for a deliberately SMALL systematic check (the Geant4 Physics List Guide
+  # recommends it for medical and space physics - researcher-cited, 2026-09-29).
+  # Only enough statistics to see whether first-interaction depth, deposited
+  # energy and shower variance are materially model-dependent.
+  #
+  # QGSP_BERT added 2026-09-29 AFTER the QBBC run: Geant4's own model table
+  # shows FTFP_BERT and QBBC both use FTFP for protons above 3 GeV, so QBBC
+  # varies cross-sections and secondary cascades but NOT the model of the
+  # 10-100 GeV first interaction. QGSP_BERT uses the quark-gluon-string model
+  # there - the cheapest test of that model dependence.
+  lists: [FTFP_BERT, QBBC, QGSP_BERT]
+  # Range (production) cut, mm: the Geant4 default. It decides which soft
+  # secondaries are produced explicitly and which deposit locally - a
+  # production threshold, not a tracking cut. Recorded, with its energy
+  # equivalents per material, in every batch. With 1 mm fibres, no sub-cell or
+  # multiscale claim is to be made later without a cut-sensitivity study.
+  production_cut: 0.7
+
+# Run in this order by `python -m ams_ecal.geant4_backend all`.
+samples:
+  baseline:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 4000
+    base_seed: 20260929
+  # Control: fixed entry at the centre of the illuminated cell, SAME base seed
+  # as baseline (its events reuse baseline's leading seeds). Separates genuine
+  # shower fluctuation from the entry phase relative to the 1 mm fibre lattice.
+  fixed_entry:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 1000
+    base_seed: 20260929
+    entry_spot:
+      x_min: 4.5
+      x_max: 4.5
+      y_min: 4.5
+      y_max: 4.5
+  alternate:
+    geometry: ams
+    physics_list: QBBC
+    events_per_energy: 1000
+    base_seed: 20261001
+  extended:
+    geometry: extended
+    physics_list: FTFP_BERT
+    events_per_energy: 800
+    base_seed: 20260930
+  high_energy_model:
+    geometry: ams
+    physics_list: QGSP_BERT
+    events_per_energy: 1000
+    base_seed: 20261002
+
+# Fine prefix voxels are kept for later RQ-001 reuse.
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_proton_pilot

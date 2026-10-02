@@ -4,7 +4,7 @@ requires-python = "==3.14.*"
 
 [[package]]
 name = "ams-ecal-qml"
-version = "0.1.0"
+version = "0.3.0"
 source = { editable = "." }
 dependencies = [
     { name = "numpy" },
@@ -19,6 +19,9 @@ dev = [
     { name = "matplotlib" },
     { name = "pytest" },
     { name = "ruff" },
+]
+geant4 = [
+    { name = "geant4-pybind" },
 ]
 
 [package.metadata]
@@ -36,6 +39,7 @@ dev = [
     { name = "pytest", specifier = ">=9.1.1" },
     { name = "ruff", specifier = ">=0.16.1" },
 ]
+geant4 = [{ name = "geant4-pybind", specifier = "==0.1.3" }]
 
 [[package]]
 name = "anyio"
@@ -391,6 +395,24 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/30/3e/a80a8c077fd798951169626cde3e239adeba7dab75deb3555716415bd9b0/fqdn-1.5.1.tar.gz", hash = "sha256:105ed3677e767fb5ca086a0c1f4bb66ebc3c100be518f0e0d755d9eae164d89f", size = 6015, upload-time = "2021-03-11T07:16:29.08Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/cf/58/8acf1b3e91c58313ce5cb67df61001fc9dcd21be4fadb76c1a2d540e09ed/fqdn-1.5.1-py3-none-any.whl", hash = "sha256:3a179af3761e4df6eb2e026ff9e1a3033d3587bf980a0b1b2e1e5d08d7358014", size = 9121, upload-time = "2021-03-11T07:16:28.351Z" },
+]
+
+[[package]]
+name = "geant4-pybind"
+version = "0.1.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/7f/09/6eda658fb91f68e763f1fbdfa18087d3deda9ccf1a532db0a8d267036d8f/geant4_pybind-0.1.3.tar.gz", hash = "sha256:4a4cedca4c2a7d596fc9cdffc0fef69fe68fe1652cf11d13d711a73acdedc9e8", size = 444196, upload-time = "2026-05-08T15:49:34.767Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/92/d3/f0a3e532ff6a41d0435f4eca1cf650f74d698aade6f908b020fdd9b98f3e/geant4_pybind-0.1.3-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:578d34825ce66b20dbd2ad6f0580267113373fac6be81f68d8acd6df468230e2", size = 19097316, upload-time = "2026-05-08T01:52:02.567Z" },
+    { url = "https://files.pythonhosted.org/packages/7b/36/5ebc0f19a5331b21db9db49bd9a87016f666a2c388fbdce891cd8feba556/geant4_pybind-0.1.3-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:9fb9857e117c30cedae943d9b6f8c46bcd84396bcd7df5480f45f9560fcc0cc4", size = 17790431, upload-time = "2026-05-08T01:52:04.925Z" },
+    { url = "https://files.pythonhosted.org/packages/68/52/48b9a572d71a638728e5d0e957570c1d8838609657704b2e5c26aa818963/geant4_pybind-0.1.3-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:30b68e1f09e0db23eb134c1cda2abb39abb319ab3da8df93b9cbd3c755dc8cf1", size = 28615591, upload-time = "2026-05-08T01:52:07.666Z" },
+    { url = "https://files.pythonhosted.org/packages/40/cd/d868cd2ddaeea0e3e54fb72b9b0a1cf0515d049f278888e186d05b9b5527/geant4_pybind-0.1.3-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:d0fc1a169821a6ee1c99836b7a12933799cea64f8f57ad6fff42cce41029d85d", size = 29634665, upload-time = "2026-05-08T01:52:10.468Z" },
+    { url = "https://files.pythonhosted.org/packages/ce/27/57f1b678f8f05fa609465a1ca7640069563d48e8ab95b6b7b5e78bd8a301/geant4_pybind-0.1.3-cp314-cp314-win_amd64.whl", hash = "sha256:5b72f9f600c23a47460ad17d3db3a41744067cc85b199dd0d844f31c4030a8c9", size = 16744406, upload-time = "2026-05-08T01:52:13.08Z" },
+    { url = "https://files.pythonhosted.org/packages/2b/dc/5e85ee38fcefc6463ae8fa2d093ea56d16ab1557a56152b16fc6dc215724/geant4_pybind-0.1.3-cp314-cp314t-macosx_10_15_x86_64.whl", hash = "sha256:10fcd0678499ea1ee4c11a6a47c41f36ab5e74df55bf13e077e6a71a070a4e85", size = 19492923, upload-time = "2026-05-08T01:52:15.74Z" },
+    { url = "https://files.pythonhosted.org/packages/37/5f/b7c48c2790e3ed1794d98d72ca330f1089ccacfc337fe2f8fa9e0af3f062/geant4_pybind-0.1.3-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:e5c3effe5817a7c87b594792f6d9eac6b6ae0e5030cbf5de1cee10967dfbaa25", size = 18353762, upload-time = "2026-05-08T01:52:18.225Z" },
+    { url = "https://files.pythonhosted.org/packages/30/df/a9a3079c238d39f3704f4b788b63948e256149339e2c2fcb2b33d5a8831f/geant4_pybind-0.1.3-cp314-cp314t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:1857699ad9b9782aa1eb16f871e4080e92644ab8eee98d06fa8572143b8a9f38", size = 28713965, upload-time = "2026-05-08T01:52:20.957Z" },
+    { url = "https://files.pythonhosted.org/packages/d3/db/dd0815abd965a92d2ddf2da263e43ea3e537e24ed6e7f30cee2f8c0d96eb/geant4_pybind-0.1.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:a05c7c27320bd6011b2c6a547cc6c00bcf53707f500a24b322e6a60c54190b07", size = 29743208, upload-time = "2026-05-08T15:48:45.982Z" },
+    { url = "https://files.pythonhosted.org/packages/2a/59/4db0472279d20625b085e4ca318ffe2bc1958f77714a4bf34acc9eebbbb7/geant4_pybind-0.1.3-cp314-cp314t-win_amd64.whl", hash = "sha256:8ca4c5b5afab04745b4dbcda6574f57ed64252d52f75d9217c77283ec15b2884", size = 17297180, upload-time = "2026-05-08T15:48:49.24Z" },
 ]
 
 [[package]]

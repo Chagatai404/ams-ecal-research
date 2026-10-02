@@ -14,6 +14,10 @@ from ams_ecal.fastmc_config import (
     FastMCConfigError,
     LateralEMConfig,
     LongitudinalEMConfig,
+    SamplingShowerMaxConfig,
+    ShowerRegime,
+    StochasticEMConfig,
+    config_digest,
     load_fastmc_config,
 )
 from ams_ecal.geometry import (
@@ -43,6 +47,7 @@ from ams_ecal.readout import (
     measured_axis_for_fiber,
     project_track_to_cell_indices,
 )
+from ams_ecal.stochastic import StochasticEMShowerModel
 from ams_ecal.tracking import TrackState, project_track_to_z
 
 __all__ = [
@@ -69,10 +74,15 @@ __all__ = [
     "MaterialProperties",
     "ParticleType",
     "ReadoutGeometry",
+    "SamplingShowerMaxConfig",
     "SamplingStructure",
+    "ShowerRegime",
     "SimulationBackend",
+    "StochasticEMConfig",
+    "StochasticEMShowerModel",
     "TrackState",
     "cell_index_for_layer_projection",
+    "config_digest",
     "coordinate_to_cell_index",
     "load_fastmc_config",
     "load_geometry",

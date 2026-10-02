@@ -60,6 +60,11 @@ class EventProvenance:
     simulation_version: str
     configuration_sha256: str
     random_seed: int
+    # Optional named facts a backend needs to make the event reproducible and
+    # interpretable beyond one version string: for a proton model, the model
+    # version, calibration version, physics-list scenario and representation.
+    # Sorted key/value pairs, so equal metadata compares and hashes equal.
+    model_details: tuple[tuple[str, str], ...] = ()
 
     def __post_init__(self) -> None:
         if not isinstance(self.simulation_backend, str):
@@ -87,6 +92,28 @@ class EventProvenance:
 
         if self.random_seed < 0:
             raise ValueError("random_seed must be nonnegative")
+
+        if not isinstance(self.model_details, tuple):
+            raise TypeError("model_details must be a tuple of (key, value) pairs")
+
+        for pair in self.model_details:
+            if not isinstance(pair, tuple) or len(pair) != 2:
+                raise TypeError("model_details must contain (key, value) pairs")
+
+            _validate_nonempty_string(pair[0], "model_details key")
+            _validate_nonempty_string(pair[1], "model_details value")
+
+        keys = [key for key, _ in self.model_details]
+
+        if keys != sorted(set(keys)):
+            raise ValueError(
+                "model_details keys must be unique and in sorted order"
+            )
+
+    def detail(self, key: str) -> str | None:
+        """Return one named model detail, or ``None`` if it was not recorded."""
+
+        return dict(self.model_details).get(key)
 
 
 @dataclass(frozen=True, slots=True)

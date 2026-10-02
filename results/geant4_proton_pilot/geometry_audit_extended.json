@@ -1,0 +1,77 @@
+{
+  "variant": "extended",
+  "geant4_version": "geant4-11-04-patch-01 [MT]",
+  "overlap_check": {
+    "resolution_points_per_volume": 1000,
+    "tolerance_mm": 0.0,
+    "volumes_checked": {
+      "ECAL": 1,
+      "Fibre_x": 4795,
+      "Fibre_y": 4795,
+      "Superlayer": 135,
+      "Extension": 1
+    },
+    "volumes_with_overlaps": {},
+    "seconds": 6.421044800023083
+  },
+  "fibres_in_ams_prefix": 43155,
+  "fibres_placed_per_orientation": 4795,
+  "superlayers_total": 135,
+  "ecal_dimensions_mm": {
+    "x": 648.0,
+    "y": 648.0,
+    "z": 166.5
+  },
+  "volumes_cm3": {
+    "ecal": 69914.016,
+    "fibre": 21963.219816438137,
+    "matrix_lead_plus_glue": 47950.79618356186
+  },
+  "masses_kg": {
+    "fibre": 23.281013005424427,
+    "lead": 441.2447697781595,
+    "glue": 10.889526016415958
+  },
+  "total_mass_kg": 475.4153087999999,
+  "geant4_ecal_mass_kg": 475.4153088000074,
+  "effective_density_g_cm3": 6.799999999999998,
+  "volume_fractions": {
+    "lead": 0.5560571884453311,
+    "fibre": 0.3141461622865169,
+    "glue": 0.1297966492681519
+  },
+  "mass_fractions": {
+    "fibre": 0.04896984294466294,
+    "lead": 0.9281248660080161,
+    "glue": 0.022905291047320944
+  },
+  "radiation_length_mm": 9.979244523139952,
+  "nuclear_interaction_length_mm": 269.3255794021585,
+  "depth_x0": 16.684629744658373,
+  "depth_lambda_i": 0.6182108671949843,
+  "configured_depth_x0": 17.0,
+  "configured_depth_lambda_i": 0.6,
+  "production_cut_mm": 0.7,
+  "production_thresholds_mev": {
+    "matrix": {
+      "gamma": 0.09099596963361672,
+      "e-": 0.8780104960090225,
+      "e+": 0.8284926912744011,
+      "proton": 0.06999999999999999
+    },
+    "fibre": {
+      "gamma": 0.002125070165696396,
+      "e-": 0.2850292725932717,
+      "e+": 0.27802523217985514,
+      "proton": 0.06999999999999999
+    }
+  },
+  "approximations": [
+    "AMS has 98 lead foils and one aluminium final foil in superlayer 9; the foils are not drawn - a homogeneous lead+glue matrix, density-matched to 6.8 g/cm^3, surrounds the explicit fibres (systematic to revisit)",
+    "whole 1 mm fibre treated as scintillating polystyrene; cladding not modelled",
+    "optical glue modelled as generic epoxy C21H24O4 at 1.2 g/cm^3",
+    "fibres whose centre lies on a cell boundary are assigned to the upper cell",
+    "no upstream AMS material, mechanical structure, light guides or PMTs",
+    "extension (extended geometry only) is a research instrument, not a detector"
+  ]
+}

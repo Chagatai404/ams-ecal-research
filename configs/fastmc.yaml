@@ -1,4 +1,31 @@
-schema_version: 2
+schema_version: 5
+
+# Which physical quantity the longitudinal model describes.
+#
+#   deposition : TRUE energy deposition in the lead/fibre composite. The
+#                "perfect event". No detector effect of any kind is applied.
+#   sampling   : the SIGNAL-level longitudinal shape of a sampling
+#                calorimeter, i.e. deposition already distorted by the fact
+#                that only the fibres are read out.
+#
+# The two are not independent knobs. Grindhammer and Peters parameterize the
+# mean depth AND the fluctuation width separately for each regime, and mixing
+# a mean from one with a width from the other is incoherent. The regime
+# therefore selects a matched pair of constants in longitudinal_em and in
+# stochastic_em below.
+#
+# SEED CORRESPONDENCE. For a fixed seed the two regimes produce CORRESPONDING
+# events: the generator draws one standard normal variate from the seed and
+# only then applies the regime-dependent transformation. The same seed
+# therefore recovers the perfect event behind any sampled event.
+#
+# BLOCK 7 BOUNDARY. Under regime: sampling the shower-shape distortion due to
+# sampling is ALREADY APPLIED here, so a Block 7 response model must not
+# re-apply either the depth shift or the extra longitudinal shape fluctuation
+# that Grindhammer and Peters section 3.2 attributes to sampling. Under
+# regime: deposition nothing detector-related has been applied and Block 7
+# owns all of it.
+regime: sampling
 
 longitudinal_em:
   # AMS reports a constant scale parameter b = 0.65 for its detector-specific
@@ -26,14 +53,81 @@ longitudinal_em:
   # response model would double-count - is unquantified.
   gamma_rate: 0.65
 
-  # PDG (Particle Data Group) mean shower-maximum correction for electron-induced cascades:
+  # Additive offset in  T_bar = ln(E / E_c) + offset.
   #
-  #   t_max = ln(E / E_c) - 0.5
+  # CHANGED 2026-09-28 from the PDG value -0.5 to the Grindhammer and Peters
+  # homogeneous-medium value -0.812, together with the sampling correction
+  # below. Rationale, in order:
   #
-  # Positrons use the same mean profile at this level. The effective
-  # critical energy is a geometry/material property and is therefore read
+  #  1. AMS publishes NO closed-form mean-depth formula. Verified against
+  #     Kounine et al., NIM A 869 (2017) 110-117, p. 113, and Aguilar et al.,
+  #     Physics Reports 894 (2021), section 1.7.1, p. 19: the individual
+  #     shower parameters E0 and T0 are obtained from a fit to observed
+  #     energy depositions in the ECAL cells of each shower. There is no AMS
+  #     T_bar(E) to be faithful to, so the choice is ours to make coherently.
+  #
+  #  2. The published AMS form is  dE/dt ~ (b t)^(b T0) exp(-b t) / Gamma(b T0 + 1),
+  #     i.e. alpha = 1 + b*T0 exactly, for ANY T0. Changing T_bar therefore
+  #     does NOT break agreement with the published AMS functional form.
+  #
+  #  3. The fluctuation width used by the stochastic block is Grindhammer and
+  #     Peters appendix A.2.3, the SAMPLING-calorimeter set. Mean and width
+  #     must come from the same regime. Previously they did not: a PDG
+  #     homogeneous-style mean was paired with a sampling width.
+  #
+  # The PDG electron energy-deposition value -0.5 remains the correct choice
+  # if this block is ever redefined to emit true deposition rather than
+  # signal-level shape; see the scope note under sampling_shower_max.
+  #
+  # The effective critical energy is a geometry/material property and is read
   # from configs/geometry.yaml rather than duplicated here.
-  shower_max_offset_x0: -0.5
+  # One offset per regime, in  T_bar = ln(E / E_c) + offset.
+  #
+  #   deposition: PDG electron ENERGY-DEPOSITION maximum, t_max = ln(E/E_c) - 0.5.
+  #               This is the true-deposition value and the perfect event uses it.
+  #   sampling  : Grindhammer and Peters homogeneous base, arXiv:hep-ex/0001020
+  #               appendix A.1.1, T_hom = ln y - 0.858, in the fluctuated form
+  #               A.1.2 <ln T_hom> = ln(ln y - 0.812). The sampling_shower_max
+  #               shift below is then added on top to reach <ln T_sam>.
+  deposition_offset_x0: -0.5
+  sampling_offset_x0: -0.812
+
+  # Sampling-geometry correction to the mean depth of shower maximum, from
+  # Grindhammer and Peters arXiv:hep-ex/0001020, appendix A.2.2 / A.2.3:
+  #
+  #   <ln T_sam> = ln( exp(<ln T_hom>) - c_F / F_S - c_e * (1 - e_hat) )
+  #   F_S   = X_0,eff / (d_a + d_p)          (sampling frequency)
+  #   e_hat = 1 / (1 + 0.007 (Z_p - Z_a))    (e/mip ratio)
+  #
+  # Physically (section 3.3): low-energy photons late in the cascade are
+  # absorbed preferentially in the high-Z absorber, so e/mip falls with depth
+  # and the SIGNAL maximum appears shallower than the true energy-deposition
+  # maximum. Both terms are therefore negative.
+  #
+  # F_S and X_0,eff, d_a and d_p are derived from configs/geometry.yaml so the
+  # correction tracks the detector description rather than being hard-coded.
+  #
+  # SCOPE NOTE - this moves a block boundary. Applying this correction makes
+  # the longitudinal model describe SIGNAL-level shape, matching the sampling
+  # width already in use and matching the fact that AMS fits T0 to observed
+  # deposits. It therefore departs from the 2026-09-20 factorization in which
+  # Block 6 produced true deposition and Block 7 owned all sampling effects.
+  # CONSEQUENCE: a Block 7 response model must NOT re-apply either this depth
+  # shift or the additional longitudinal shape fluctuation that Grindhammer
+  # and Peters section 3.2 attributes to sampling. Doing so would double
+  # count. Setting the top-level regime to "deposition" restores the
+  # true-deposition reading, which also swaps the offset to the PDG -0.5 and
+  # the fluctuation width to the homogeneous set - the three move together.
+  # Applied only under regime: sampling.
+  sampling_shower_max:
+    sampling_frequency_coefficient: 0.55
+    transition_effect_coefficient: 0.69
+    absorber_atomic_number: 82.0
+    # Effective atomic number of the polystyrene-based scintillating fibre.
+    # PROJECT PHENOMENOLOGICAL ASSUMPTION: not verified against a source.
+    # The correction is weakly sensitive to it - moving Z_a from 4 to 6
+    # changes the shift by under 0.02 X_0.
+    active_atomic_number: 5.3
 
 lateral_em:
   # AMS test-beam parametrization of the layer-dependent lateral scale:
@@ -49,3 +143,81 @@ lateral_em:
   entrance_scale_cells: 0.176
   calibration_cell_moliere_fraction: 0.5
   calibration_energy_unit_mev: 1000.0
+
+stochastic_em:
+  # Shower-to-shower fluctuation of the depth of shower maximum T0, expressed
+  # as the standard deviation of ln(T0):
+  #
+  #   s(E) = 1 / (fluctuation_width_intercept
+  #               + fluctuation_width_log_slope * ln(E / E_c))
+  #
+  # PROVENANCE: TRANSFERRED APPROXIMATION.
+  #
+  # The law is taken from the sampling-calorimeter shower parametrization of
+  #   G. Grindhammer and S. Peters,
+  #   "The Parameterized Simulation of Electromagnetic Showers in Homogeneous
+  #    and Sampling Calorimeters", arXiv:hep-ex/0001020,
+  #   Appendix A.2.3 "Sampling Calorimeters - Fluctuated longitudinal profiles":
+  #       sigma(ln T_sam) = (-2.5 + 1.25 ln y)^-1,   y = E / E_c
+  #   which retains the structure used by the Geant4 GFlash parametrization.
+  #
+  # VERIFIED 2026-09-21 against the paper: these are the SAMPLING-calorimeter
+  # coefficients, not the homogeneous ones. Appendix A.1.2 gives the
+  # homogeneous set as (-1.4 + 1.26 ln y)^-1, which is NOT what is used here.
+  #
+  # It is NOT an AMS-specific fitted fluctuation law. No AMS publication known
+  # to this project reports a measured width for the AMS ECAL shower-maximum
+  # distribution. FastMC is deliberately a simple phenomenological generator,
+  # and the adequacy of this transfer is to be tested later against detailed
+  # Geant4 transport rather than assumed here.
+  #
+  # RELATION TO THE SOURCE - two differences, one resolved, one retained.
+  #
+  #  1. RESOLVED 2026-09-28. The mean depth previously paired a PDG
+  #     homogeneous-style mean with the sampling width below. The regime
+  #     switch at the top of this file now selects a matched mean and width,
+  #     and under regime: sampling the Grindhammer and Peters sampling depth
+  #     correction (appendix A.2.2 / A.2.3) is applied; see
+  #     longitudinal_em.sampling_shower_max.
+  #
+  #  2. RETAINED BY DESIGN. Grindhammer and Peters fluctuate ln T and
+  #     ln alpha as a CORRELATED pair, with
+  #     rho(ln T_sam, ln alpha_sam) = 0.784 - 0.023 ln y, deriving beta per
+  #     event. Holding beta fixed and setting alpha = 1 + beta*T is the
+  #     special case rho = 1: given the depth, the profile is determined. At
+  #     100 GeV the source value is rho = 0.57, leaving a conditional spread
+  #     of ln(alpha) at FIXED depth of sigma*sqrt(1-rho^2) = 0.124, about 12%.
+  #     Ours is zero. At T = 8.985 X_0 that residual freedom moves the
+  #     contained fraction between 0.911 and 0.948 against our single value of
+  #     0.931, and shifts individual layer fractions by up to 0.76 points.
+  #
+  #     VERIFIED 2026-09-28 to match AMS: Kounine et al., NIM A 869 (2017)
+  #     p. 113, and Aguilar et al., Physics Reports 894 (2021) section 1.7.1,
+  #     hold b = 0.65 fixed for all showers and all energies and fit T0 per
+  #     shower. The lost degree of freedom is real and worth a Geant4
+  #     sensitivity test, but it is not a departure from AMS.
+  #
+  # OPEN QUESTION (2026-09-28, not decided): Grindhammer and Peters define
+  # their depth constants through <ln T>, so exp(<ln T>) is their MEDIAN,
+  # while src/ams_ecal/stochastic.py centres T_bar as the MEAN. Under
+  # regime: sampling this lands exp(-s^2/2) shallower than the source
+  # (0.048 X_0 at 100 GeV). See Obsidian > AMS ECAL QML > Tutor Sessions >
+  #   2026-09-28 Block 6A Teach-Back and Post-Build Probe, section 5.
+  #
+  # DOMAIN: the width diverges and then changes sign when the denominator
+  # reaches zero, i.e. when E / E_c <= exp(-intercept / slope) = exp(2). With
+  # the geometry's effective critical energy of 7.6 MeV this places a lower
+  # validity floor near 56 MeV, above the ln(E/E_c) - 0.5 > 0 floor of the mean
+  # model. src/ams_ecal/stochastic.py raises rather than extrapolating.
+  # One pair per regime, sigma(ln T) = 1 / (intercept + slope * ln(E / E_c)).
+  #
+  #   deposition: appendix A.1.2, sigma(ln T_hom) = (-1.4  + 1.26 ln y)^-1
+  #   sampling  : appendix A.2.3, sigma(ln T_sam) = (-2.5  + 1.25 ln y)^-1
+  #
+  # The sampling width is the wider of the two at every energy, because
+  # section 3.2 attributes additional longitudinal shape fluctuation to the
+  # sampling process itself. At 100 GeV: 0.0948 against 0.1069.
+  deposition_width_intercept: -1.4
+  deposition_width_log_slope: 1.26
+  sampling_width_intercept: -2.5
+  sampling_width_log_slope: 1.25

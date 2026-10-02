@@ -202,10 +202,10 @@ Only human-accepted conclusions update `research/STATE.md`.
 ```text
 FastMC engineering             Multiscale research preparation
 ------------------             -------------------------------
-Block 6 stochastic EM          scaling laws
-Block 6B proton model          fractal dimensions
-Block 7 detector response      generalized dimensions
-Block 8 datasets               finite-resolution bias
+Stochastic generation stochastic EM          scaling laws
+Proton model model          fractal dimensions
+Detector response      generalized dimensions
+Dataset generation datasets               finite-resolution bias
 Geant4 reference               estimator validation
              \                 /
               \               /

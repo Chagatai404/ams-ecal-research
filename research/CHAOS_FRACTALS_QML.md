@@ -149,11 +149,11 @@ The intended progression is:
 ```text
 mean deterministic shower
         ↓
-Block 6 stochastic event generation
+Stochastic generation stochastic event generation
         ↓
-Block 7 detector response / digitization
+Detector response / digitization
         ↓
-Block 8 validated event datasets
+Dataset generation validated event datasets
         ↓
 multiscale / multifractal characterization
 ```

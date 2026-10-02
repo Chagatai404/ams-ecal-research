@@ -1,0 +1,43 @@
+# Block 6B Slice 0 - material-composition systematic (plan section 25.2).
+#
+# IDENTICAL to configs/geant4_proton_pilot.yaml (production cut 0.7 mm) except
+# for one small sample, `material_relative_volume`, with the SAME base seed as
+# `baseline`. Run it with the matching TRANSPORT variant
+#
+#   --transport-config configs/variants/geant4_transport_relative_volume.yaml
+#
+# which composes the lead+glue matrix from AMS's published lead:fibre:glue
+# volume ratio instead of density-matching it to 6.8 g/cm^3. The two published
+# AMS descriptions are not mutually consistent, so this is a systematic on the
+# material model, not a correction. Decide whether the effective interaction
+# length, visible-energy scale and key morphology move by more than the
+# stochastic and model spread.
+schema_version: 2
+
+particle: proton
+energies_gev: [10.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  material_relative_volume:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 1000
+    base_seed: 20260929
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_proton_pilot

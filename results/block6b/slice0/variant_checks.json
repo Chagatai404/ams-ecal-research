@@ -1,0 +1,931 @@
+{
+  "convention": {
+    "material_if_shift_exceeds_fraction": 0.05,
+    "and_exceeds_sigmas": 2.0,
+    "model_scale_for_comparison": "FTFP_BERT vs QGSP_BERT visible energy, about 13-28%"
+  },
+  "cut_0p1mm": {
+    "10": {
+      "n_events": 750,
+      "interaction": {
+        "baseline": {
+          "no_inelastic_fraction": [
+            0.5133333333333333,
+            0.4775854251300447,
+            0.5489453523510557
+          ],
+          "lambda_eff_mm": 250.01082449897794,
+          "lambda_eff_relative_error": 0.052342392259021375
+        },
+        "variant": {
+          "no_inelastic_fraction": [
+            0.5106666666666667,
+            0.47492780069225554,
+            0.5462968212926249
+          ],
+          "lambda_eff_mm": 248.65462432168272,
+          "lambda_eff_relative_error": 0.052199575097188054
+        },
+        "status_agreement": 0.9946666666666667
+      },
+      "crossing": {
+        "n": 382,
+        "fibre_energy_mean": {
+          "ratio": 1.0258090815318708,
+          "interval": [
+            1.0037360375883988,
+            1.0494011917023711
+          ],
+          "standard_error": 0.011649274008666407,
+          "material": false
+        },
+        "fibre_energy_median": {
+          "ratio": 1.0225977986592139,
+          "interval": [
+            1.0034284145260783,
+            1.0496834036400946
+          ],
+          "standard_error": 0.011799742120922517,
+          "material": false
+        },
+        "fibre_energy_sd": {
+          "ratio": 0.8919281317230631,
+          "interval": [
+            0.7382498911320242,
+            1.0869009570004402
+          ],
+          "standard_error": 0.0889415984358204,
+          "material": false
+        },
+        "total_deposit_mean": {
+          "ratio": 0.9978613148887612,
+          "interval": [
+            0.9796784220791718,
+            1.0161839911823651
+          ],
+          "standard_error": 0.009312645179386061,
+          "material": false
+        },
+        "cells_above_tenth_mip": {
+          "ratio": 1.0009611423863791,
+          "interval": [
+            0.9897698167800137,
+            1.012545409315036
+          ],
+          "standard_error": 0.005810100136485242,
+          "material": false
+        },
+        "track_cell_containment": {
+          "ratio": 1.0004383620987307,
+          "interval": [
+            0.9985014622713003,
+            1.0025295889905184
+          ],
+          "standard_error": 0.0010275833467392958,
+          "material": false
+        },
+        "fibre_energy_ks": {
+          "statistic": 0.11518324607329844,
+          "p_value": 0.012531496034909238
+        }
+      },
+      "interacting": {
+        "n": 364,
+        "depth_shift_median_abs_mm": 0.47577377901846774,
+        "fibre_energy_median": {
+          "ratio": 0.9386118470443712,
+          "interval": [
+            0.8486723361132861,
+            1.0216684420046123
+          ],
+          "standard_error": 0.04413165966615464,
+          "material": false
+        },
+        "fibre_energy_mean": {
+          "ratio": 0.969623814644462,
+          "interval": [
+            0.9108013132622139,
+            1.0361746205821092
+          ],
+          "standard_error": 0.031982986561197774,
+          "material": false
+        },
+        "total_deposit_median": {
+          "ratio": 0.913703937410666,
+          "interval": [
+            0.821725755360114,
+            1.0013035363830116
+          ],
+          "standard_error": 0.04581065842420856,
+          "material": false
+        },
+        "fibre_over_deposit_median": {
+          "ratio": 1.0196724493273455,
+          "interval": [
+            0.9805177770331637,
+            1.043635203487968
+          ],
+          "standard_error": 0.016101384299694956,
+          "material": false
+        },
+        "amplitude_A3_median": {
+          "ratio": 1.0268047867352965,
+          "interval": [
+            0.9012223890209847,
+            1.1249072483034943
+          ],
+          "standard_error": 0.05706246410268102,
+          "material": false
+        },
+        "hit_cells_mean": {
+          "ratio": 0.9812902913091949,
+          "interval": [
+            0.9327475244588319,
+            1.0323094488861704
+          ],
+          "standard_error": 0.025398450109014915,
+          "material": false
+        },
+        "cells_above_tenth_mip_mean": {
+          "ratio": 0.9758492115075429,
+          "interval": [
+            0.9260099198724999,
+            1.0293748105121807
+          ],
+          "standard_error": 0.02636859455093898,
+          "material": false
+        },
+        "lateral_width_median": {
+          "ratio": 1.0115379584395876,
+          "interval": [
+            0.9608351207186091,
+            1.0608134105854932
+          ],
+          "standard_error": 0.025504665782368385,
+          "material": false
+        },
+        "core_fraction_mean": {
+          "ratio": 0.9829321370165675,
+          "interval": [
+            0.9545420855585096,
+            1.0113790458168526
+          ],
+          "standard_error": 0.014499224555699733,
+          "material": false
+        },
+        "max_cell_fraction_mean": {
+          "ratio": 1.0674813711872617,
+          "interval": [
+            0.9701138515064835,
+            1.1567131519265623
+          ],
+          "standard_error": 0.04760186235206091,
+          "material": false
+        },
+        "participation_median": {
+          "ratio": 1.006982263596879,
+          "interval": [
+            0.9197978705270794,
+            1.1158933015679107
+          ],
+          "standard_error": 0.05002434465327328,
+          "material": false
+        },
+        "long_cog_median": {
+          "ratio": 1.0316486094105508,
+          "interval": [
+            0.9849367184959879,
+            1.0567840364945962
+          ],
+          "standard_error": 0.018328397448624575,
+          "material": false
+        },
+        "long_rms_median": {
+          "ratio": 0.9994107333749471,
+          "interval": [
+            0.978050096452435,
+            1.0352664640424067
+          ],
+          "standard_error": 0.01459601214029891,
+          "material": false
+        },
+        "fibre_energy_ks": {
+          "statistic": 0.07692307692307698,
+          "p_value": 0.23191341012751887
+        },
+        "hit_cells_ks": {
+          "statistic": 0.06593406593406598,
+          "p_value": 0.4078485158762856
+        },
+        "lateral_width_ks": {
+          "statistic": 0.0357142857142857,
+          "p_value": 0.9747240405259932
+        }
+      },
+      "material_flags": [],
+      "variant_metadata": {
+        "production_cut_mm": 0.1,
+        "matrix_constraint": "average_density",
+        "composite_density_g_cm3": 6.799999999999998,
+        "prefix_depth_lambda_i": 0.6182108671949843,
+        "prefix_depth_x0": 16.684629744658373,
+        "configuration_sha256": "1bb8c13adb7911719235786b70dc43e959ce668b54adb16482f9d2a74e034f37",
+        "git_commit": "5b89df563c2cac14d1b385c4654a499ca8969746"
+      }
+    },
+    "100": {
+      "n_events": 750,
+      "interaction": {
+        "baseline": {
+          "no_inelastic_fraction": [
+            0.5293333333333333,
+            0.4935524257415739,
+            0.5648152847168472
+          ],
+          "lambda_eff_mm": 261.45010239064527,
+          "lambda_eff_relative_error": 0.05322462954123495
+        },
+        "variant": {
+          "no_inelastic_fraction": [
+            0.5293333333333333,
+            0.4935524257415739,
+            0.5648152847168472
+          ],
+          "lambda_eff_mm": 261.4025196328327,
+          "lambda_eff_relative_error": 0.05322462954123495
+        },
+        "status_agreement": 1.0
+      },
+      "crossing": {
+        "n": 397,
+        "fibre_energy_mean": {
+          "ratio": 0.9966063282577308,
+          "interval": [
+            0.9517908774140067,
+            1.052365370401626
+          ],
+          "standard_error": 0.025656758415209015,
+          "material": false
+        },
+        "fibre_energy_median": {
+          "ratio": 1.0312009157678077,
+          "interval": [
+            1.0051964704947627,
+            1.061735117892913
+          ],
+          "standard_error": 0.014423124336262857,
+          "material": false
+        },
+        "fibre_energy_sd": {
+          "ratio": 0.6588357483866665,
+          "interval": [
+            0.4768071716537052,
+            0.9976693833043897
+          ],
+          "standard_error": 0.13287301317619502,
+          "material": true
+        },
+        "total_deposit_mean": {
+          "ratio": 0.9675562248843508,
+          "interval": [
+            0.9232554002737727,
+            1.0177122751601513
+          ],
+          "standard_error": 0.02409614155264759,
+          "material": false
+        },
+        "cells_above_tenth_mip": {
+          "ratio": 0.9962512926577043,
+          "interval": [
+            0.9779690860166039,
+            1.0149188308109405
+          ],
+          "standard_error": 0.00942595530467769,
+          "material": false
+        },
+        "track_cell_containment": {
+          "ratio": 0.9997305701265717,
+          "interval": [
+            0.9973036114841005,
+            1.0022850340664777
+          ],
+          "standard_error": 0.001270771066932963,
+          "material": false
+        },
+        "fibre_energy_ks": {
+          "statistic": 0.10327455919395462,
+          "p_value": 0.02891731567626168
+        }
+      },
+      "interacting": {
+        "n": 353,
+        "depth_shift_median_abs_mm": 0.04240016428815352,
+        "fibre_energy_median": {
+          "ratio": 1.0284033334125902,
+          "interval": [
+            0.890542440575888,
+            1.1883671153002395
+          ],
+          "standard_error": 0.07597568232764068,
+          "material": false
+        },
+        "fibre_energy_mean": {
+          "ratio": 1.0216325496509784,
+          "interval": [
+            0.9505646284812213,
+            1.0936889729289778
+          ],
+          "standard_error": 0.03651131235912158,
+          "material": false
+        },
+        "total_deposit_median": {
+          "ratio": 1.0470480420932224,
+          "interval": [
+            0.9063294262828541,
+            1.2122514729580443
+          ],
+          "standard_error": 0.07804133843754851,
+          "material": false
+        },
+        "fibre_over_deposit_median": {
+          "ratio": 1.0168321485713783,
+          "interval": [
+            0.9938849491524474,
+            1.036065123315531
+          ],
+          "standard_error": 0.01076024851099069,
+          "material": false
+        },
+        "amplitude_A3_median": {
+          "ratio": 1.054405528884569,
+          "interval": [
+            0.9227410709475438,
+            1.1580894923815288
+          ],
+          "standard_error": 0.06003786261071047,
+          "material": false
+        },
+        "hit_cells_mean": {
+          "ratio": 1.0044364049275782,
+          "interval": [
+            0.9580923902573865,
+            1.055648385032499
+          ],
+          "standard_error": 0.024886733360998076,
+          "material": false
+        },
+        "cells_above_tenth_mip_mean": {
+          "ratio": 0.9991170985278364,
+          "interval": [
+            0.9533950536292926,
+            1.0519609331472082
+          ],
+          "standard_error": 0.025144357019876433,
+          "material": false
+        },
+        "lateral_width_median": {
+          "ratio": 0.9801122052798943,
+          "interval": [
+            0.9332015692960868,
+            1.0188432497955324
+          ],
+          "standard_error": 0.02184736747434838,
+          "material": false
+        },
+        "core_fraction_mean": {
+          "ratio": 1.0122738059669723,
+          "interval": [
+            0.9927505303003663,
+            1.0311696030936757
+          ],
+          "standard_error": 0.009800783875844226,
+          "material": false
+        },
+        "max_cell_fraction_mean": {
+          "ratio": 1.0088577018167284,
+          "interval": [
+            0.9377506899287753,
+            1.080022760591527
+          ],
+          "standard_error": 0.03629389557723255,
+          "material": false
+        },
+        "participation_median": {
+          "ratio": 0.9586104087660288,
+          "interval": [
+            0.8715962991742799,
+            1.047976534323464
+          ],
+          "standard_error": 0.04499495794622041,
+          "material": false
+        },
+        "long_cog_median": {
+          "ratio": 1.0310183831243822,
+          "interval": [
+            1.0009698263234275,
+            1.057155325072533
+          ],
+          "standard_error": 0.014333035395179975,
+          "material": false
+        },
+        "long_rms_median": {
+          "ratio": 0.9767925505823734,
+          "interval": [
+            0.9515780019411085,
+            0.9948462038836537
+          ],
+          "standard_error": 0.011037806617996228,
+          "material": false
+        },
+        "fibre_energy_ks": {
+          "statistic": 0.04249291784702547,
+          "p_value": 0.9081064152232319
+        },
+        "hit_cells_ks": {
+          "statistic": 0.04532577903682722,
+          "p_value": 0.8621077592873074
+        },
+        "lateral_width_ks": {
+          "statistic": 0.06515580736543908,
+          "p_value": 0.4424274254272084
+        }
+      },
+      "material_flags": [
+        "crossing.fibre_energy_sd"
+      ],
+      "variant_metadata": {
+        "production_cut_mm": 0.1,
+        "matrix_constraint": "average_density",
+        "composite_density_g_cm3": 6.799999999999998,
+        "prefix_depth_lambda_i": 0.6182108671949843,
+        "prefix_depth_x0": 16.684629744658373,
+        "configuration_sha256": "1bb8c13adb7911719235786b70dc43e959ce668b54adb16482f9d2a74e034f37",
+        "git_commit": "5b89df563c2cac14d1b385c4654a499ca8969746"
+      }
+    }
+  },
+  "material_relative_volume": {
+    "10": {
+      "n_events": 750,
+      "interaction": {
+        "baseline": {
+          "no_inelastic_fraction": [
+            0.5133333333333333,
+            0.4775854251300447,
+            0.5489453523510557
+          ],
+          "lambda_eff_mm": 250.01082449897794,
+          "lambda_eff_relative_error": 0.052342392259021375
+        },
+        "variant": {
+          "no_inelastic_fraction": [
+            0.496,
+            0.4603289278645915,
+            0.5317118388910783
+          ],
+          "lambda_eff_mm": 238.14476446180316,
+          "lambda_eff_relative_error": 0.05143444998736397
+        },
+        "status_agreement": 0.9826666666666667
+      },
+      "crossing": {
+        "n": 372,
+        "fibre_energy_mean": {
+          "ratio": 0.9997563482645119,
+          "interval": [
+            0.9785590837177051,
+            1.024847868592609
+          ],
+          "standard_error": 0.011808363488495907,
+          "material": false
+        },
+        "fibre_energy_median": {
+          "ratio": 0.9886242237489173,
+          "interval": [
+            0.96900948570162,
+            1.0141134124223887
+          ],
+          "standard_error": 0.011506103755298133,
+          "material": false
+        },
+        "fibre_energy_sd": {
+          "ratio": 1.1143130265379906,
+          "interval": [
+            0.8116599776689233,
+            1.4911709239451842
+          ],
+          "standard_error": 0.17334462915210738,
+          "material": false
+        },
+        "total_deposit_mean": {
+          "ratio": 1.0668770120819973,
+          "interval": [
+            1.047427006068593,
+            1.0863200187276532
+          ],
+          "standard_error": 0.009921686902821452,
+          "material": true
+        },
+        "cells_above_tenth_mip": {
+          "ratio": 1.0049365303244004,
+          "interval": [
+            0.9934339640699092,
+            1.014254516696
+          ],
+          "standard_error": 0.005311365465839471,
+          "material": false
+        },
+        "track_cell_containment": {
+          "ratio": 0.9989231759116421,
+          "interval": [
+            0.9956729362160752,
+            1.001661129512603
+          ],
+          "standard_error": 0.001527600330746882,
+          "material": false
+        },
+        "fibre_energy_ks": {
+          "statistic": 0.05645161290322581,
+          "p_value": 0.5944520734622112
+        }
+      },
+      "interacting": {
+        "n": 365,
+        "depth_shift_median_abs_mm": 2.607150444473845,
+        "fibre_energy_median": {
+          "ratio": 0.9466393359740712,
+          "interval": [
+            0.8559100959170679,
+            1.0533478800478269
+          ],
+          "standard_error": 0.05036678166600994,
+          "material": false
+        },
+        "fibre_energy_mean": {
+          "ratio": 0.9836939818196498,
+          "interval": [
+            0.9174928179739256,
+            1.0474856220586517
+          ],
+          "standard_error": 0.033161429613450547,
+          "material": false
+        },
+        "total_deposit_median": {
+          "ratio": 0.9908098323884013,
+          "interval": [
+            0.9029223966683436,
+            1.0681808586778503
+          ],
+          "standard_error": 0.042157770920792516,
+          "material": false
+        },
+        "fibre_over_deposit_median": {
+          "ratio": 0.9919012344777084,
+          "interval": [
+            0.9611237803746449,
+            1.016680409055773
+          ],
+          "standard_error": 0.014172609357430666,
+          "material": false
+        },
+        "amplitude_A3_median": {
+          "ratio": 1.010179158679929,
+          "interval": [
+            0.900391192558265,
+            1.094488231327892
+          ],
+          "standard_error": 0.049514550706537507,
+          "material": false
+        },
+        "hit_cells_mean": {
+          "ratio": 1.027074151208408,
+          "interval": [
+            0.9791889095728831,
+            1.0830411846498722
+          ],
+          "standard_error": 0.026492927315558454,
+          "material": false
+        },
+        "cells_above_tenth_mip_mean": {
+          "ratio": 1.0354982054349684,
+          "interval": [
+            0.9837480425904148,
+            1.0953466865247077
+          ],
+          "standard_error": 0.02846904181997267,
+          "material": false
+        },
+        "lateral_width_median": {
+          "ratio": 1.0433812139935215,
+          "interval": [
+            0.9961440411701075,
+            1.0916985018952903
+          ],
+          "standard_error": 0.024376137940097655,
+          "material": false
+        },
+        "core_fraction_mean": {
+          "ratio": 0.9831262510085678,
+          "interval": [
+            0.9586030854291118,
+            1.0115248836426645
+          ],
+          "standard_error": 0.013500458727947116,
+          "material": false
+        },
+        "max_cell_fraction_mean": {
+          "ratio": 0.9519977246726414,
+          "interval": [
+            0.8788736404388394,
+            1.0335021147408456
+          ],
+          "standard_error": 0.03944603936275669,
+          "material": false
+        },
+        "participation_median": {
+          "ratio": 1.0466172089600438,
+          "interval": [
+            0.9504642533632642,
+            1.1727649422053608
+          ],
+          "standard_error": 0.056709359398494016,
+          "material": false
+        },
+        "long_cog_median": {
+          "ratio": 1.0067467589205885,
+          "interval": [
+            0.9609913553977504,
+            1.0380239783357195
+          ],
+          "standard_error": 0.01965117932091048,
+          "material": false
+        },
+        "long_rms_median": {
+          "ratio": 0.993765770353687,
+          "interval": [
+            0.9688687274251597,
+            1.0238212377446023
+          ],
+          "standard_error": 0.01401849753047005,
+          "material": false
+        },
+        "fibre_energy_ks": {
+          "statistic": 0.06301369863013706,
+          "p_value": 0.4639217173959076
+        },
+        "hit_cells_ks": {
+          "statistic": 0.06575342465753425,
+          "p_value": 0.40957275036414975
+        },
+        "lateral_width_ks": {
+          "statistic": 0.07671232876712325,
+          "p_value": 0.23327980034414553
+        }
+      },
+      "material_flags": [
+        "crossing.total_deposit_mean"
+      ],
+      "variant_metadata": {
+        "production_cut_mm": 0.7,
+        "matrix_constraint": "relative_volume",
+        "composite_density_g_cm3": 7.2094251484032394,
+        "prefix_depth_lambda_i": 0.644211587146902,
+        "prefix_depth_x0": 17.861950953444392,
+        "configuration_sha256": "88d853f268798ab3d0e65f18e6b42877e3a24fa7b63d13d7281859b859aa5ad3",
+        "git_commit": "5b89df563c2cac14d1b385c4654a499ca8969746"
+      }
+    },
+    "100": {
+      "n_events": 750,
+      "interaction": {
+        "baseline": {
+          "no_inelastic_fraction": [
+            0.5293333333333333,
+            0.4935524257415739,
+            0.5648152847168472
+          ],
+          "lambda_eff_mm": 261.45010239064527,
+          "lambda_eff_relative_error": 0.05322462954123495
+        },
+        "variant": {
+          "no_inelastic_fraction": [
+            0.516,
+            0.4802440607302581,
+            0.5515928722470624
+          ],
+          "lambda_eff_mm": 251.02106301516815,
+          "lambda_eff_relative_error": 0.0524863881081478
+        },
+        "status_agreement": 0.9866666666666667
+      },
+      "crossing": {
+        "n": 387,
+        "fibre_energy_mean": {
+          "ratio": 0.9940140070949258,
+          "interval": [
+            0.9501230270585078,
+            1.0422850261651024
+          ],
+          "standard_error": 0.02351071405780475,
+          "material": false
+        },
+        "fibre_energy_median": {
+          "ratio": 1.0194725937339089,
+          "interval": [
+            0.9965314490609174,
+            1.0475151035673844
+          ],
+          "standard_error": 0.013006034312874242,
+          "material": false
+        },
+        "fibre_energy_sd": {
+          "ratio": 0.7835290325308533,
+          "interval": [
+            0.5502521370533823,
+            1.0496432169444252
+          ],
+          "standard_error": 0.12739568364567422,
+          "material": false
+        },
+        "total_deposit_mean": {
+          "ratio": 1.0476665495725161,
+          "interval": [
+            0.9975830707584301,
+            1.0962185130222937
+          ],
+          "standard_error": 0.02516210261833254,
+          "material": false
+        },
+        "cells_above_tenth_mip": {
+          "ratio": 1.0037110669317428,
+          "interval": [
+            0.9872738868208482,
+            1.0207064071825256
+          ],
+          "standard_error": 0.008528704173897304,
+          "material": false
+        },
+        "track_cell_containment": {
+          "ratio": 0.9999556269336838,
+          "interval": [
+            0.9976853344665014,
+            1.0022834348893277
+          ],
+          "standard_error": 0.0011729848017413948,
+          "material": false
+        },
+        "fibre_energy_ks": {
+          "statistic": 0.06718346253229973,
+          "p_value": 0.34717638485490904
+        }
+      },
+      "interacting": {
+        "n": 353,
+        "depth_shift_median_abs_mm": 2.993464364537715,
+        "fibre_energy_median": {
+          "ratio": 1.0607034695909459,
+          "interval": [
+            0.9239926722303481,
+            1.2339828452190644
+          ],
+          "standard_error": 0.07907912576242764,
+          "material": false
+        },
+        "fibre_energy_mean": {
+          "ratio": 1.025754912759855,
+          "interval": [
+            0.9603054728258562,
+            1.1001702167679772
+          ],
+          "standard_error": 0.03567978161788801,
+          "material": false
+        },
+        "total_deposit_median": {
+          "ratio": 1.1357722378700612,
+          "interval": [
+            0.960585394365261,
+            1.3318824996957566
+          ],
+          "standard_error": 0.09471864931900396,
+          "material": false
+        },
+        "fibre_over_deposit_median": {
+          "ratio": 0.9572294558397025,
+          "interval": [
+            0.9354916448226813,
+            0.9729891199142439
+          ],
+          "standard_error": 0.009565682421316973,
+          "material": false
+        },
+        "amplitude_A3_median": {
+          "ratio": 1.1440648115919185,
+          "interval": [
+            1.0059064500873887,
+            1.276822857541798
+          ],
+          "standard_error": 0.06911132843224727,
+          "material": true
+        },
+        "hit_cells_mean": {
+          "ratio": 1.0599574844527773,
+          "interval": [
+            1.012510939321834,
+            1.1147001420805895
+          ],
+          "standard_error": 0.02606867417315195,
+          "material": true
+        },
+        "cells_above_tenth_mip_mean": {
+          "ratio": 1.0714257370739257,
+          "interval": [
+            1.0250088107056465,
+            1.1247763124733365
+          ],
+          "standard_error": 0.025450893308084185,
+          "material": true
+        },
+        "lateral_width_median": {
+          "ratio": 1.028194838393734,
+          "interval": [
+            0.9780652891900908,
+            1.0601013288469376
+          ],
+          "standard_error": 0.020927561136950715,
+          "material": false
+        },
+        "core_fraction_mean": {
+          "ratio": 0.9976775216177363,
+          "interval": [
+            0.9791674783631367,
+            1.015271572578844
+          ],
+          "standard_error": 0.009210228116251853,
+          "material": false
+        },
+        "max_cell_fraction_mean": {
+          "ratio": 0.9369240695995318,
+          "interval": [
+            0.868456946413098,
+            1.0118692647420136
+          ],
+          "standard_error": 0.03658477508390703,
+          "material": false
+        },
+        "participation_median": {
+          "ratio": 1.032700072102847,
+          "interval": [
+            0.935008382646697,
+            1.1254349403063988
+          ],
+          "standard_error": 0.04857820348461782,
+          "material": false
+        },
+        "long_cog_median": {
+          "ratio": 1.008499655768353,
+          "interval": [
+            0.9878359511430557,
+            1.044853580804497
+          ],
+          "standard_error": 0.01454531368914319,
+          "material": false
+        },
+        "long_rms_median": {
+          "ratio": 0.9739076970321067,
+          "interval": [
+            0.9478247158430061,
+            0.9970931557209215
+          ],
+          "standard_error": 0.012568479560692705,
+          "material": false
+        },
+        "fibre_energy_ks": {
+          "statistic": 0.0651558073654391,
+          "p_value": 0.4424274254272084
+        },
+        "hit_cells_ks": {
+          "statistic": 0.06798866855524077,
+          "p_value": 0.3887010712868924
+        },
+        "lateral_width_ks": {
+          "statistic": 0.0538243626062323,
+          "p_value": 0.6867689062883032
+        }
+      },
+      "material_flags": [
+        "interacting.amplitude_A3_median",
+        "interacting.hit_cells_mean",
+        "interacting.cells_above_tenth_mip_mean"
+      ],
+      "variant_metadata": {
+        "production_cut_mm": 0.7,
+        "matrix_constraint": "relative_volume",
+        "composite_density_g_cm3": 7.2094251484032394,
+        "prefix_depth_lambda_i": 0.644211587146902,
+        "prefix_depth_x0": 17.861950953444392,
+        "configuration_sha256": "88d853f268798ab3d0e65f18e6b42877e3a24fa7b63d13d7281859b859aa5ad3",
+        "git_commit": "5b89df563c2cac14d1b385c4654a499ca8969746"
+      }
+    }
+  }
+}

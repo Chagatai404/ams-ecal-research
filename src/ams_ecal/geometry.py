@@ -125,7 +125,7 @@ class ReadoutGeometry:
                 )
 
         # AMS-02 alternates superlayers and starts with an x-fiber layer in the
-        # package convention established in Block 0.
+        # package convention established in the ECAL geometry.
         expected_axes = tuple(
             "x" if index % 2 == 0 else "y"
             for index in range(self.number_of_superlayers)
@@ -316,7 +316,7 @@ class ECALGeometry:
     agreement between transverse segmentation and active width or between cell
     count and PMT-anode count.
 
-    Compatibility properties preserve the flat API used by Blocks 0-3 while
+    Compatibility properties preserve the flat API used by the original geometry, tracking, cell-mapping and event-model code while
     new code can access the structured component objects directly.
     """
 
@@ -563,7 +563,7 @@ class ECALGeometry:
     ) -> tuple[tuple[float, float], ...]:
         """Return radiation-length bounds for each ideal readout slice.
 
-        Block 4 can integrate a continuous longitudinal shower profile over
+        Longitudinal profile can integrate a continuous longitudinal shower profile over
         these finite intervals rather than sampling the profile at one point.
         """
 

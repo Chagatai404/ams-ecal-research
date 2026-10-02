@@ -1,0 +1,76 @@
+# Detailed-transport assumptions for the Geant4 backend.
+#
+# Physical DIMENSIONS are deliberately absent: foil and fibre sizes, pitches,
+# active area, depth and readout segmentation are read from geometry.yaml,
+# which stays the single source for them. This file holds only what Geant4
+# needs beyond the readout geometry: material choices the AMS literature does
+# not fully specify, the research-instrument extension, and scoring meshes.
+#
+# Every entry below is a LABELLED ASSUMPTION unless stated otherwise.
+schema_version: 2
+
+units:
+  length: mm
+  density: g/cm^3
+
+materials:
+  # Absorber: NIST lead. AMS-specific (lead foils), per geometry.yaml.
+  absorber_nist: G4_Pb
+
+  # Fibre: whole fibre treated as scintillating polystyrene. PROJECT
+  # ASSUMPTION - the fibre cladding is not modelled, so the "sensitive" volume
+  # is the full 1 mm fibre, slightly larger than the true scintillating core.
+  fibre_nist: G4_POLYSTYRENE
+
+  # Optical glue: composition is not published in the sources the project
+  # holds. PROJECT ASSUMPTION - a generic bisphenol-A epoxy, C21 H24 O4, at a
+  # cured-epoxy density. It is about 9-13% of the volume, so its composition
+  # barely moves X0 or lambda_I.
+  glue:
+    density: 1.2
+    atoms: {C: 21, H: 24, O: 4}
+
+  # How the non-fibre material (lead + glue) of a superlayer is composed.
+  # AMS publishes BOTH an average density (6.8 g/cm^3) and a lead:fibre:glue
+  # volume ratio (1 : 0.57 : 0.15), and the two are not mutually consistent:
+  # the ratio alone implies about 7.2 g/cm^3 with the explicit fibre lattice.
+  #   average_density : choose the lead share of the lead+glue matrix so the
+  #                     superlayer reproduces the published average density
+  #                     (default; closest to the published 17 X0 depth)
+  #   relative_volume : use the published lead:glue ratio inside the matrix
+  # The choice is reported with both material depths in every batch metadata.
+  matrix_constraint: average_density
+
+# The explicit fibre lattice sits in a homogeneous lead+glue matrix. The grooved
+# foils themselves, and the position of the single terminal aluminium foil, are
+# NOT represented: the density-matched matrix already carries the published
+# material inventory. PROJECT APPROXIMATION.
+
+# Research instrument, not a detector: compatible material continuing behind
+# the AMS-like prefix, used only for same-event truncation studies.
+#   sampling    : more AMS superlayers - the same fibre lattice and matrix,
+#                 x/y alternation continued - so the full shower is read in
+#                 the same scintillator representation as the prefix (default)
+#   homogeneous : the prefix's average composite, no fibres (truth deposit only)
+extension:
+  # 126 superlayers; prefix 166.5 + 2331.0 = 2497.5 mm, about 9 nominal
+  # lambda_I. Must be a whole number of superlayers.
+  depth: 2331.0
+  structure: sampling
+
+# Scoring meshes live in a parallel world, so they do not alter the material
+# geometry. Voxel edges must nest inside readout cells and samplings so that
+# projecting voxel centres to the 18 x 72 readout is exact.
+mesh:
+  prefix_voxel:
+    x: 3.0
+    y: 3.0
+    z: 4.625
+  extension_voxel:
+    x: 9.0
+    y: 9.0
+    z: 9.25
+
+world:
+  half_width: 1000.0
+  upstream_gap: 10.0

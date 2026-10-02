@@ -17,6 +17,9 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.16.1",
 ]
+geant4 = [
+    "geant4-pybind==0.1.3",
+]
 
 [build-system]
 requires = ["hatchling"]

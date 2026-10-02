@@ -8,11 +8,21 @@ The repository is intentionally broader than a single QML study. It provides
 the shared detector, simulation, preprocessing, validation, and analysis
 infrastructure for a sequence of related research papers.
 
-> **Current status:** detector/event foundations and deterministic FastMC
-> Blocks 0–5 are complete. The Block 6A stochastic electromagnetic model has
-> been accepted and is the next implementation target. The first intended
-> publication is now a multiscale shower-information study using detailed
-> transport and AMS-like readout, with QML deliberately downstream.
+> **Current status:** the detector and event foundations and the deterministic FastMC
+> (geometry, tracker projection, cell mapping, event model, longitudinal and lateral
+> profiles) are complete, and **stochastic electromagnetic event
+> generation is implemented** (`src/ams_ecal/stochastic.py`,
+> `notebooks/07_stochastic_em_events.ipynb`). Detector response is
+> **blocked** pending an adversarial pass on the open question of whether a
+> response model would double-count detector behaviour already absorbed into
+> AMS shower parameters fitted to observed deposits. Proton model
+> phenomenology has no accepted model yet: a **Geant4 proton calibration pilot**
+> (a thin vertical slice of the planned Geant4 blocks; `src/ams_ecal/geant4_backend.py`,
+> `results/geant4_proton_pilot/`, `notebooks/08_geant4_proton_pilot.ipynb`) has
+> measured protons in the thin AMS-like geometry, and the proton model model decision is
+> pending. The first intended publication is a
+> multiscale shower-information study using detailed transport and AMS-like
+> readout, with QML deliberately downstream.
 
 ---
 
@@ -125,10 +135,10 @@ The code independently checks detector invariants such as:
 
 Complete:
 
-- Block 0 — ECAL geometry
-- Block 1 — tracker state and projection
-- Block 2 — alternating readout and cell mapping
-- Block 3 — canonical `ECALEvent`
+- ECAL geometry — ECAL geometry
+- Tracker projection — tracker state and projection
+- Cell mapping — alternating readout and cell mapping
+- Event model — canonical `ECALEvent`
 
 The canonical event contains:
 
@@ -181,7 +191,7 @@ Its role is to support:
 
 FastMC is **not** intended to replace detailed transport.
 
-## Block 4 — longitudinal electromagnetic profile
+## Longitudinal profile — longitudinal electromagnetic profile
 
 Complete.
 
@@ -216,7 +226,7 @@ The continuous profile is integrated over each finite readout interval rather
 than evaluated only at layer centers. Longitudinal leakage beyond the finite
 17 X₀ detector is retained rather than renormalized away.
 
-## Block 5 — lateral electromagnetic profile
+## Lateral profile — lateral electromagnetic profile
 
 Complete.
 
@@ -231,36 +241,31 @@ with an energy- and layer-dependent lateral scale.
 The profile is projected into the alternating ECAL readout and integrated over
 finite cells. Lateral leakage is retained explicitly.
 
-## Block 6A — stochastic electromagnetic generation
+## EM event generator — stochastic electromagnetic generation
 
-**Physical model accepted; implementation pending.**
+**Implemented.** `src/ams_ecal/stochastic.py`, `tests/test_stochastic.py`,
+`notebooks/07_stochastic_em_events.ipynb`.
 
-The first stochastic model deliberately remains simple.
-
-For every event:
-
-```text
-beta = 0.65
-```
-
-The event-level stochastic variable is the shower maximum `T0`.
-
-The accepted model is:
+The first stochastic model deliberately remains simple: one random variable per
+event, the depth of shower maximum `T0`, re-shapes the whole longitudinal
+profile coherently. Independent per-layer jitter would destroy the correlation a
+real shower has, where a late-starting shower is deeper in every layer at once.
 
 ```text
-T_bar(E) = ln(E / E_c) - 0.5
+T_bar(E) = ln(E / E_c) + offset(regime) + sampling_correction(regime)
 
-s(E) =
-    1 / (-2.5 + 1.25 * ln(E / E_c))
+s(E)     = 1 / (intercept(regime) + slope(regime) * ln(E / E_c))
 
-mu(E) =
-    ln(T_bar(E)) - 0.5 * s(E)^2
+mu(E)    = ln(T_bar(E)) - 0.5 * s(E)^2
 
-ln(T0) ~ Normal(mu(E), s(E)^2)
+ln(T0)   ~ Normal(mu(E), s(E)^2)
 
-alpha_event =
-    1 + 0.65 * T0
+alpha    = 1 + 0.65 * T0
 ```
+
+The `-0.5 s^2` term is the centring that makes `E[T0] = T_bar(E)` exactly, so
+the stochastic model reduces on average to the validated mean model instead of
+biasing it deep by `exp(s^2/2)`.
 
 Then:
 
@@ -269,14 +274,51 @@ Then:
 3. distribute each layer energy with the existing deterministic lateral
    fractions around the projected track;
 4. preserve longitudinal and lateral leakage;
-5. produce a reproducible `ECALEvent`.
+5. produce a reproducible `ECALEvent` carrying its own seed and a SHA-256
+   digest of the configuration that produced it.
 
-The width law is a **transferred approximation** from Grindhammer & Peters for
-sampling calorimeters. It is not an AMS-specific fitted fluctuation law.
+### Two regimes, and the perfect event
 
-Explicitly excluded from Block 6A:
+The mean depth and the fluctuation width are a **matched pair**. A top-level
+`regime` in `configs/fastmc.yaml` selects both together:
 
-- fluctuating beta;
+| regime | describes | offset | `s(E)` at 100 GeV | `T_bar` at 100 GeV |
+|---|---|---|---|---|
+| `deposition` | true deposition in the composite — the **perfect event** | PDG `-0.5` | 0.0948 | 8.985 `X_0` |
+| `sampling` (default) | signal-level longitudinal shape | G&P `-0.812` plus a geometry shift of `-0.353` | 0.1069 | 8.319 `X_0` |
+
+The sampling regime peaks shallower, because `e/mip` falls with depth as the
+cascade softens, and fluctuates more, because sampling adds longitudinal shape
+fluctuation. Its depth shift is computed from `configs/geometry.yaml`
+(`F_S = 4.897`, `e/mip = 0.651`) rather than hard-coded.
+
+**The perfect event is recoverable from the seed.** The generator draws one
+standard normal variate from the seed *first* and applies the regime
+transformation afterwards, so a single seed names a corresponding pair of
+events:
+
+```python
+model.true_deposition().generate_event(..., random_seed=seed)
+```
+
+returns the true-deposition event behind the sampled event that `seed`
+produced.
+
+### Provenance, which is not uniform
+
+`beta = 0.65` is **AMS-specific evidence**, held fixed for all showers and all
+energies exactly as AMS does. Both width laws and the sampling depth shift are
+**transferred approximations** from Grindhammer & Peters
+(arXiv:hep-ex/0001020, appendices A.1.2, A.2.2, A.2.3). AMS publishes **no**
+closed-form mean-depth formula at all — it fits `T0` per shower to observed
+cell deposits — so the offsets are external choices, not AMS values. Because
+the published AMS form is `alpha = 1 + b*T0` for any `T0`, choosing an offset
+does not break agreement with it.
+
+Explicitly excluded from the EM event generator:
+
+- fluctuating beta — AMS holds `b` fixed, so this matches AMS rather than
+  simplifying away from it;
 - an explicit shower-start variable;
 - independent random jitter of all 18 layers;
 - a two-variable correlated `(T, alpha)` model;
@@ -286,14 +328,22 @@ Explicitly excluded from Block 6A:
 These simplifications will later be judged against Geant4 rather than expanded
 pre-emptively.
 
-## Block 6B — proton phenomenology
+### Boundary with the detector response
+
+Under `regime: sampling` the longitudinal **shape** has already been moved to
+signal level, so a detector response response model must not re-apply the depth shift or
+the extra shape fluctuation. Under `regime: deposition` nothing
+detector-related has been applied and the detector response owns all of it, which makes it
+the cleaner base to build the detector response against.
+
+## Proton model — proton phenomenology
 
 Planned separately.
 
 A phenomenological proton generator must never be presented as equivalent to
 full hadronic transport.
 
-## Block 7 — detector response
+## Detector response
 
 Planned.
 
@@ -310,7 +360,7 @@ Candidate effects include:
 Potential double counting with parameters fitted from observed AMS shower
 depositions must be monitored rather than assumed away.
 
-## Block 8 — validated FastMC datasets
+## Dataset generation — validated FastMC datasets
 
 Planned.
 
@@ -329,14 +379,14 @@ Datasets will preserve:
 Geant4 is the detailed-transport reference for both FastMC validation and the
 first publication's multiscale-structure question.
 
-Planned blocks:
+Planned Geant4 work, in order:
 
-- Block 9 — Geant4/C++ foundation
-- Block 10 — ECAL geometry
-- Block 11 — physics-list selection
-- Block 12 — primary generation
-- Block 13 — sensitive detector and export
-- Block 14 — FastMC–Geant4 validation
+1. Geant4/C++ foundation
+2. ECAL geometry
+3. Physics-list selection
+4. Primary generation
+5. Sensitive detector and export
+6. FastMC–Geant4 validation
 
 Geant4 should provide both:
 
