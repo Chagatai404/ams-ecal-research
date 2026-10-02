@@ -8,8 +8,9 @@ Before substantial work:
 
 1. Read `RESEARCH_PROTOCOL.md`.
 2. Read `research/STATE.md`.
-3. Inspect the relevant source, tests, notebook, and configuration files.
-4. Use installed Scientific Research OS skills when the task matches them.
+3. Read `research/DECISIONS.md` (the master list of accepted decisions).
+4. Inspect the relevant source, tests, notebook, and configuration files.
+5. Use installed Scientific Research OS skills when the task matches them.
 
 ## Authority
 

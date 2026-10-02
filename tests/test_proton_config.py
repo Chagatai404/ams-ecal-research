@@ -1,4 +1,4 @@
-"""Block 6B proton configuration."""
+"""Proton model configuration."""
 
 from pathlib import Path
 

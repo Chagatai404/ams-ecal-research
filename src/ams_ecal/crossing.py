@@ -1,6 +1,6 @@
 """Exact fibre geometry of a straight track through the AMS ECAL.
 
-Block 6B's crossing-proton response is conditioned on WHERE the track lies
+Proton model's crossing-proton response is conditioned on WHERE the track lies
 relative to the fibre lattice. This module answers only the geometric part,
 with the lattice and the fibre-to-cell map of ``ams_ecal.transport_geometry``
 - the same ones the Geant4 backend used - so there is no second, approximate
@@ -14,7 +14,7 @@ detector mapping:
 * the depth of each fibre row, so the fibres upstream of an interaction point
   can be selected.
 
-VALIDATION (Slice 0, ``ams_ecal.proton_dependency.crossing_section``): the
+VALIDATION (dependency analysis (step 0), ``ams_ecal.proton_dependency.crossing_section``): the
 Geant4 energy in the fibres crossed by the straight track is 0.195-0.204
 MeV/mm of chord against 0.205 for a polystyrene MIP, so this is the geometry
 Geant4 saw. It explains only 3-5% of the per-event variance of a crossing

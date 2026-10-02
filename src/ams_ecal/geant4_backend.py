@@ -1,6 +1,6 @@
 """Geant4 detailed-transport backend for the AMS-like ECAL.
 
-Scope: the thin vertical slice the Block 6B proton calibration pilot needs,
+Scope: the thin vertical slice the proton model calibration pilot needs,
 built so that the full RQ-001 study can grow from it rather than replace it.
 Geant4 performs all particle transport in C++ through ``geant4_pybind``; this
 module builds the geometry, configures scoring, and reads each finished event.
@@ -30,7 +30,7 @@ WHAT ONE EVENT PRODUCES
 Energy scoring never runs Python per step: primitive scorers on the fibre and
 matrix volumes, and voxel meshes in a parallel world, accumulate in C++. Python
 runs per event, per new track, and per step of the primary proton only (other
-steps return at once).
+Steps return at once).
 
 REPRODUCIBILITY. Every event gets its own seed, spawned from the batch seed and
 the primary energy. The Geant4 engine and the entry-point draw are both seeded

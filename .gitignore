@@ -57,6 +57,8 @@ data/raw/
 data/processed/
 # Geant4 pilot raw batches (large; regenerate from committed configs)
 data/geant4_proton_pilot/
+data/geant4_electron_probe/
+data/geant4_electron_sample/
 
 # Native/CMake build products for later Geant4 work
 cmake-build-*/

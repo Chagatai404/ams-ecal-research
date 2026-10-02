@@ -1,4 +1,4 @@
-"""Validated configuration for the Block 6B proton FastMC.
+"""Validated configuration for the proton model FastMC.
 
 Kept apart from ``fastmc_config`` because that schema is the electromagnetic
 one, locked to exact keys. The physics that can be calibrated (tables, the
@@ -89,7 +89,7 @@ class ProtonDomainConfig:
 
 @dataclass(frozen=True, slots=True)
 class ProtonConfig:
-    """Top-level configuration of the Block 6B proton generator."""
+    """Top-level configuration of the proton model generator."""
 
     calibration: ProtonCalibrationRef
     representation: ProtonRepresentation

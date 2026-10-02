@@ -1,10 +1,10 @@
 """Stochastic electromagnetic event generation for the AMS ECAL FastMC.
 
-Blocks 4 and 5 produce the *mean* electromagnetic shower: at a given primary
+longitudinal and lateral shower profiles produce the *mean* electromagnetic shower: at a given primary
 energy and track, every event is identical. This module adds the first source
 of event-to-event variation in the project.
 
-The accepted Block 6A model gives the whole longitudinal fluctuation to a
+The accepted EM event generator model gives the whole longitudinal fluctuation to a
 single random variable, the depth of shower maximum ``T0``:
 
     T_bar(E) = ln(E / E_c) + offset(regime)
@@ -38,7 +38,7 @@ SEED CORRESPONDENCE. ``sample_shower_max_depth_x0`` draws one standard normal
 variate from the generator and only then applies the regime transformation, so
 one seed names a CORRESPONDING PAIR of events. ``true_deposition()`` returns
 the perfect event lying behind any sampled event of the same seed. That is what
-keeps the Block 6/7 boundary usable.
+keeps the stochastic generation and detector response boundary usable.
 
 PROVENANCE. ``beta`` is AMS-specific evidence. Both width laws and the sampling
 depth shift are TRANSFERRED APPROXIMATIONS from Grindhammer and Peters,
@@ -50,16 +50,16 @@ later against detailed Geant4 transport.
 SCOPE. The lateral profile is deliberately left deterministic here, so every
 event-to-event difference enters through the longitudinal shape. A stochastic
 lateral model, a fluctuating ``beta``, an explicit shower-start variable, and
-independent per-layer noise are all explicitly excluded from Block 6A.
+independent per-layer noise are all explicitly excluded from the EM event generator.
 
 BLOCK 7 BOUNDARY. Detector impurities - photostatistics, light attenuation,
-noise, thresholds, gains, saturation and dead channels - are Block 7 and are
+noise, thresholds, gains, saturation and dead channels - are the detector response and are
 applied nowhere in this module, in either regime. Under ``regime: sampling``
-the longitudinal SHAPE has already been moved to signal level, so a Block 7
+the longitudinal SHAPE has already been moved to signal level, so a detector response
 model must not re-apply the depth shift or the extra shape fluctuation that
 Grindhammer and Peters section 3.2 attributes to sampling. Under
-``regime: deposition`` nothing detector-related has been applied and Block 7
-owns all of it; that is the cleaner base to build Block 7 against.
+``regime: deposition`` nothing detector-related has been applied and the detector response
+owns all of it; that is the cleaner base to build the detector response against.
 """
 
 from collections.abc import Iterator, Sequence
@@ -95,7 +95,7 @@ def _validate_seed(random_seed: object, name: str = "random_seed") -> int:
 class StochasticEMShowerModel:
     """Event-by-event electromagnetic shower generator for the AMS ECAL.
 
-    Composes the two deterministic Block 4/5 models rather than reimplementing
+    Composes the two deterministic longitudinal and lateral shower profiles models rather than reimplementing
     them: the gamma profile is integrated at a *sampled* shape parameter, and
     the mean lateral grid is applied unchanged to the resulting layer energies.
     """
@@ -147,7 +147,7 @@ class StochasticEMShowerModel:
 
         recovers the perfect, true-deposition event behind the sampled event
         that the same seed produced. Detector impurities - noise, thresholds,
-        gains, dead channels - remain Block 7 and are applied to neither.
+        gains, dead channels - remain the detector response and are applied to neither.
         """
 
         return replace(
@@ -301,7 +301,7 @@ class StochasticEMShowerModel:
     ) -> EnergyGrid:
         """Draw one event's full 18 x 72 ideal energy deposition.
 
-        The lateral grid is the deterministic Block 5 result: only the
+        The lateral grid is the deterministic the lateral profile result: only the
         longitudinal weights fluctuate. Lateral leakage is preserved because
         the mean cell fractions are themselves unnormalized.
         """

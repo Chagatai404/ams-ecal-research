@@ -1,4 +1,4 @@
-"""Scientific report of the Geant4 proton calibration pilot (Slices 6-10).
+"""Scientific report of the Geant4 proton calibration pilot (steps 6-10).
 
 Reads the stored batches and writes reproducible outputs - no notebook-only
 analysis. Every threshold used here is an ANALYSIS CHOICE fixed before the
@@ -19,7 +19,7 @@ Question -> section:
                      first-interaction depth D (S_D, law of total variance).
 * truncation       - same-event correlations in the 0.6 lambda_I prefix vs the
                      extended calorimeter, event ordering, and backsplash.
-* physics_list     - FTFP_BERT vs QBBC on the quantities that would shape 6B.
+* physics_list     - FTFP_BERT vs QBBC on the quantities that would shape proton model.
 * high_energy_model - FTFP_BERT vs QGSP_BERT: QBBC shares FTFP for protons
                      above 3 GeV, so only this varies the first-interaction model.
 * fixed_entry      - uniform vs fixed entry: entry phase against the fibres.
@@ -371,7 +371,7 @@ def _backsplash(p: Pilot, energy: float, band: float) -> dict[str, Any]:
 
 
 def comparison_section(p: Pilot, other: str) -> dict[str, Any]:
-    """Compare a control sample with the baseline on 6B-relevant quantities."""
+    """Compare a control sample with the baseline on proton model-relevant quantities."""
 
     out = {}
     for energy, batch in p.samples[other].items():
@@ -446,7 +446,7 @@ def threshold_sensitivity(p: Pilot) -> dict[str, Any]:
 
 
 # ----------------------------------------------------------------------
-# Exploratory inputs to the Block 6B model decision
+# Exploratory inputs to the proton model model decision
 # ----------------------------------------------------------------------
 
 RESIDUAL_OBSERVABLES = ("log_energy", "long_cog_mm", "long_rms_mm", "width_mm", "log_hits")
@@ -619,7 +619,7 @@ def figures(p: Pilot, summary: dict[str, Any], out: Path) -> list[str]:
     ax.legend(fontsize=8)
     save(fig, "fig4_mip_like_vs_depth.png")
 
-    # 5. P7 variance fractions.
+    # 5. Depth-dominance hypothesis variance fractions.
     fig, ax = plt.subplots(figsize=(9, 4))
     width = 0.8 / len(energies)
     for j, e in enumerate(energies):
@@ -631,7 +631,7 @@ def figures(p: Pilot, summary: dict[str, Any], out: Path) -> list[str]:
                color=colours[e], capsize=2, label=f"{e:g} GeV")
     ax.set_xticks(np.arange(len(P7_OBSERVABLES)) + 0.4 - width / 2, P7_OBSERVABLES, rotation=20)
     ax.set_ylabel("S_D (epsilon^2, 95% bootstrap)")
-    ax.set_title("P7: share of variance associated with first-interaction depth")
+    ax.set_title("Depth-dominance hypothesis: share of variance associated with first-interaction depth")
     ax.axhline(0.5, color="k", lw=0.5, ls=":")
     ax.legend(fontsize=8)
     save(fig, "fig5_p7_variance_fraction.png")
@@ -677,7 +677,7 @@ def figures(p: Pilot, summary: dict[str, Any], out: Path) -> list[str]:
         axes[1].set_xlabel("log visible energy minus its mean at fixed D")
         axes[1].set_ylabel("density")
         axes[1].set_title("not lognormal: a heavy low-visible tail")
-        fig.suptitle("EXPLORATORY: inputs to the Block 6B family choice")
+        fig.suptitle("EXPLORATORY: inputs to the proton-model family choice")
         save(fig, "fig9_model_inputs.png")
 
     # 7. Physics-list and fixed-entry controls: interacting-energy CDFs.

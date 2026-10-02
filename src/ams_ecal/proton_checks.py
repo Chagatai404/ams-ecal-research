@@ -1,4 +1,4 @@
-"""Block 6B Slice 0: paired configuration-variant checks (plan sections 25.1, 25.2).
+"""Proton model the dependency analysis (step 0): paired configuration-variant checks (plan sections 25.1, 25.2).
 
 Two compact Geant4 samples were run at the SAME base seed as the baseline, so
 event ``i`` of a variant starts from the same seed and the same entry point as
@@ -9,7 +9,7 @@ event ``i`` of the baseline:
                                 lead:fibre:glue volume ratio instead of being
                                 density-matched to 6.8 g/cm^3.
 
-The question for each is narrow: is the change to the quantities Block 6B will
+The question for each is narrow: is the change to the quantities the proton model will
 calibrate bigger than what is already accepted as stochastic or model spread?
 It is not to tune either setting.
 
@@ -148,7 +148,7 @@ def compare_variant(
     geometry: ECALGeometry,
     depth_mm: float,
 ) -> dict[str, Any]:
-    """Compare a variant with the baseline on the quantities 6B calibrates."""
+    """Compare a variant with the baseline on the quantities proton model calibrates."""
 
     base_occ, var_occ = baseline["truth_occurred"], variant["truth_occurred"]
     out: dict[str, Any] = {"n_events": len(base_occ)}

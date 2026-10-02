@@ -408,7 +408,7 @@ def test_lateral_shape_stays_deterministic_within_every_layer(
     model: StochasticEMShowerModel,
     track: TrackState,
 ) -> None:
-    # Block 6A deliberately fluctuates only the longitudinal weights, so two
+    # EM event generator deliberately fluctuates only the longitudinal weights, so two
     # events differ layer-by-layer only by one scalar factor per layer.
     energy_mev = 100_000.0
     first = make_event(model, track, random_seed=3, energy_mev=energy_mev)

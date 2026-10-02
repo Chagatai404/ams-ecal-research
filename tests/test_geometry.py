@@ -168,7 +168,7 @@ def test_loads_documented_geometry() -> None:
 
 
 def test_preserves_stage_i_flat_geometry_api() -> None:
-    """Keep Blocks 0-3 working while new code uses structured components."""
+    """Keep the original geometry, tracking, cell-mapping and event-model code working while new code uses structured components."""
 
     geometry = load_geometry(CONFIG_PATH)
 

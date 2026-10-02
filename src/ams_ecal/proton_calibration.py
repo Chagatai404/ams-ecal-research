@@ -1,13 +1,13 @@
-"""Block 6B proton calibration: the data split, the tables and the artifact.
+"""Proton model calibration: the data split, the tables and the artifact.
 
-Block 6B turns the Geant4 proton pilot into a fast phenomenological generator.
+Proton model turns the Geant4 proton pilot into a fast phenomenological generator.
 Every distribution the generator draws from is built from PILOT EVENTS, so the
 events used to build it and the events used to judge it must be separated
 before either is looked at.
 
 THE SPLIT. Within every stored batch (one sample at one energy) an event is
 VALIDATION when its recorded ``event_index`` leaves remainder 3 on division by
-4; otherwise it is CALIBRATION. The rule is fixed here, before any 6B model
+4; otherwise it is CALIBRATION. The rule is fixed here, before any proton model model
 choice was made, and depends on nothing but the event index:
 
 * deterministic - no random number is drawn, so it cannot change between runs;
@@ -20,9 +20,9 @@ choice was made, and depends on nothing but the event index:
 
 HONEST CAVEAT. The PILOT REPORT (``ams_ecal.pilot_report``) was run on every
 event before this split existed, and its summary statistics informed the plan
-for 6B. The split therefore protects the *fitted tables and every choice made
+for proton model. The split therefore protects the *fitted tables and every choice made
 from now on*; it does not make the held-out events unseen in aggregate. What it
-guarantees is that no table, threshold, binning or dependency decision in 6B is
+guarantees is that no table, threshold, binning or dependency decision in proton model is
 computed from a validation event.
 
 THE ARTIFACT. The runtime model never reads raw Geant4 events. It loads one
@@ -45,8 +45,8 @@ the primary energy and on the EXACT chord path the track cuts through that
 layer's fibres (``ams_ecal.crossing``). Quantile functions are interpolated
 linearly in ``ln E`` between the anchor energies, value by value, so the
 interpolation is deterministic and monotone; nothing is extrapolated. Layers
-are drawn independently: the Slice 0 analysis shows this under-disperses the
-event total (see ``research/plans/2026-09-29_block6b_slice0_dependency_analysis.md``).
+are drawn independently: the dependency analysis (step 0) analysis shows this under-disperses the
+event total (see ``research/plans/2026-09-29_proton_dependency_analysis.md``).
 """
 
 import argparse
@@ -238,7 +238,7 @@ def content_sha256(arrays: dict[str, np.ndarray]) -> str:
 
 @dataclass(frozen=True, slots=True)
 class ProtonCalibration:
-    """A finalized Block 6B calibration: tables plus provenance."""
+    """A finalized the proton model calibration: tables plus provenance."""
 
     manifest: dict[str, Any]
     crossing: CrossingTable

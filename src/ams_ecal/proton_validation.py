@@ -1,9 +1,9 @@
-"""Block 6B validation against HELD-OUT Geant4 events.
+"""Proton model validation against HELD-OUT Geant4 events.
 
 This is the only place the validation events (``event_index % 4 == 3``) are
 read, and they are read here only to COMPARE: nothing in the model was fitted
 to them. The comparison follows the contract written before the generator
-existed (``research/plans/2026-09-29_block6b_slice0_dependency_analysis.md``,
+existed (``research/plans/2026-09-29_proton_dependency_analysis.md``,
 section 8):
 
 * every aspect passes or fails SEPARATELY - there is no single "realism score";
@@ -15,7 +15,7 @@ section 8):
   CALIBRATION events and the held-out events, which no model built from the
   calibration events could be expected to beat.
 
-Slice 2 covers the rows that exist: the interaction draw and the crossing
+Crossing branch (step 2) covers the rows that exist: the interaction draw and the crossing
 proton. Rows for interacting events are added with their slices.
 
     uv run python -m ams_ecal.proton_validation
@@ -341,10 +341,10 @@ def build_validation(
 ) -> dict[str, Any]:
     result: dict[str, Any] = {
         "status": (
-            "Block 6B Slice 2 validation: interaction draw and crossing branch only, against "
+            "Proton model, step 2 (crossing branch) validation: interaction draw and crossing branch only, against "
             "HELD-OUT Geant4 events (event_index % 4 == 3). Interacting events are not yet generated."
         ),
-        "contract": "research/plans/2026-09-29_block6b_slice0_dependency_analysis.md section 8",
+        "contract": "research/plans/2026-09-29_proton_dependency_analysis.md section 8",
         "model": {
             "calibration_content_sha256": model.calibration.content_sha256,
             "physics_list": model.calibration.physics_list,

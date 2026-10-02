@@ -8,17 +8,18 @@ The repository is intentionally broader than a single QML study. It provides
 the shared detector, simulation, preprocessing, validation, and analysis
 infrastructure for a sequence of related research papers.
 
-> **Current status:** detector/event foundations and deterministic FastMC
-> Blocks 0–5 are complete, and **Block 6A stochastic electromagnetic event
+> **Current status:** the detector and event foundations and the deterministic FastMC
+> (geometry, tracker projection, cell mapping, event model, longitudinal and lateral
+> profiles) are complete, and **stochastic electromagnetic event
 > generation is implemented** (`src/ams_ecal/stochastic.py`,
-> `notebooks/07_stochastic_em_events.ipynb`). Block 7 detector response is
+> `notebooks/07_stochastic_em_events.ipynb`). Detector response is
 > **blocked** pending an adversarial pass on the open question of whether a
 > response model would double-count detector behaviour already absorbed into
-> AMS shower parameters fitted to observed deposits. Block 6B proton
+> AMS shower parameters fitted to observed deposits. Proton model
 > phenomenology has no accepted model yet: a **Geant4 proton calibration pilot**
 > (a thin vertical slice of the planned Geant4 blocks; `src/ams_ecal/geant4_backend.py`,
 > `results/geant4_proton_pilot/`, `notebooks/08_geant4_proton_pilot.ipynb`) has
-> measured protons in the thin AMS-like geometry, and the 6B model decision is
+> measured protons in the thin AMS-like geometry, and the proton model model decision is
 > pending. The first intended publication is a
 > multiscale shower-information study using detailed transport and AMS-like
 > readout, with QML deliberately downstream.
@@ -134,10 +135,10 @@ The code independently checks detector invariants such as:
 
 Complete:
 
-- Block 0 — ECAL geometry
-- Block 1 — tracker state and projection
-- Block 2 — alternating readout and cell mapping
-- Block 3 — canonical `ECALEvent`
+- ECAL geometry — ECAL geometry
+- Tracker projection — tracker state and projection
+- Cell mapping — alternating readout and cell mapping
+- Event model — canonical `ECALEvent`
 
 The canonical event contains:
 
@@ -190,7 +191,7 @@ Its role is to support:
 
 FastMC is **not** intended to replace detailed transport.
 
-## Block 4 — longitudinal electromagnetic profile
+## Longitudinal profile — longitudinal electromagnetic profile
 
 Complete.
 
@@ -225,7 +226,7 @@ The continuous profile is integrated over each finite readout interval rather
 than evaluated only at layer centers. Longitudinal leakage beyond the finite
 17 X₀ detector is retained rather than renormalized away.
 
-## Block 5 — lateral electromagnetic profile
+## Lateral profile — lateral electromagnetic profile
 
 Complete.
 
@@ -240,7 +241,7 @@ with an energy- and layer-dependent lateral scale.
 The profile is projected into the alternating ECAL readout and integrated over
 finite cells. Lateral leakage is retained explicitly.
 
-## Block 6A — stochastic electromagnetic generation
+## EM event generator — stochastic electromagnetic generation
 
 **Implemented.** `src/ams_ecal/stochastic.py`, `tests/test_stochastic.py`,
 `notebooks/07_stochastic_em_events.ipynb`.
@@ -314,7 +315,7 @@ cell deposits — so the offsets are external choices, not AMS values. Because
 the published AMS form is `alpha = 1 + b*T0` for any `T0`, choosing an offset
 does not break agreement with it.
 
-Explicitly excluded from Block 6A:
+Explicitly excluded from the EM event generator:
 
 - fluctuating beta — AMS holds `b` fixed, so this matches AMS rather than
   simplifying away from it;
@@ -327,22 +328,22 @@ Explicitly excluded from Block 6A:
 These simplifications will later be judged against Geant4 rather than expanded
 pre-emptively.
 
-### Boundary with Block 7
+### Boundary with the detector response
 
 Under `regime: sampling` the longitudinal **shape** has already been moved to
-signal level, so a Block 7 response model must not re-apply the depth shift or
+signal level, so a detector response response model must not re-apply the depth shift or
 the extra shape fluctuation. Under `regime: deposition` nothing
-detector-related has been applied and Block 7 owns all of it, which makes it
-the cleaner base to build Block 7 against.
+detector-related has been applied and the detector response owns all of it, which makes it
+the cleaner base to build the detector response against.
 
-## Block 6B — proton phenomenology
+## Proton model — proton phenomenology
 
 Planned separately.
 
 A phenomenological proton generator must never be presented as equivalent to
 full hadronic transport.
 
-## Block 7 — detector response
+## Detector response
 
 Planned.
 
@@ -359,7 +360,7 @@ Candidate effects include:
 Potential double counting with parameters fitted from observed AMS shower
 depositions must be monitored rather than assumed away.
 
-## Block 8 — validated FastMC datasets
+## Dataset generation — validated FastMC datasets
 
 Planned.
 
@@ -378,14 +379,14 @@ Datasets will preserve:
 Geant4 is the detailed-transport reference for both FastMC validation and the
 first publication's multiscale-structure question.
 
-Planned blocks:
+Planned Geant4 work, in order:
 
-- Block 9 — Geant4/C++ foundation
-- Block 10 — ECAL geometry
-- Block 11 — physics-list selection
-- Block 12 — primary generation
-- Block 13 — sensitive detector and export
-- Block 14 — FastMC–Geant4 validation
+1. Geant4/C++ foundation
+2. ECAL geometry
+3. Physics-list selection
+4. Primary generation
+5. Sensitive detector and export
+6. FastMC–Geant4 validation
 
 Geant4 should provide both:
 

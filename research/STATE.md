@@ -1,7 +1,7 @@
 # AMS ECAL Research — Current Research State
 
 _Last human review: 2026-09-21_
-_Last agent update: 2026-09-30 (Block 6A complete; Geant4 proton pilot complete; Block 6B Slice 0-2 recorded; D1/D2/D4/D5/D6 accepted by the researcher, conditional on a literature check)_
+_Last agent update: 2026-09-30 (EM event generator complete; Geant4 proton pilot complete; the proton model dependency analysis and crossing branch (steps 0-2) recorded; interacting-proton factorization, shared interaction draw, validation contract, burst latent and lateral spill accepted by the researcher, conditional on a literature check)_
 
 ## Central research question
 
@@ -141,7 +141,7 @@ See:
 
 # Current development state
 
-Stage II FastMC Blocks 0–5 are complete.
+FastMC foundations are complete: geometry, tracker projection, cell mapping, event model, and the longitudinal and lateral shower profiles.
 
 The repository currently contains:
 
@@ -154,7 +154,7 @@ The repository currently contains:
 - explicit finite-depth longitudinal leakage;
 - explicit finite-width lateral leakage;
 - deterministic track-centered `18 × 72` lateral fractions;
-- **stochastic electromagnetic event generation (Block 6A)**, with per-event seed and
+- **stochastic electromagnetic event generation**, with per-event seed and
   configuration provenance.
 
 Current FastMC notebooks:
@@ -168,7 +168,7 @@ Current FastMC notebooks:
 - `06_lateral_em_shower.ipynb`
 - `07_stochastic_em_events.ipynb`
 
-## Block 6A — IMPLEMENTED 2026-09-21, amended and committed 2026-09-28 (`fe0e699`)
+## EM event generator — IMPLEMENTED 2026-09-21, amended and committed 2026-09-28 (`fe0e699`)
 
 Implemented from the accepted model without reopening the fluctuation literature.
 
@@ -193,7 +193,7 @@ value, the sign Jensen's inequality predicts; width-law validity floor at 56.2 M
 
 Committed in `fe0e699` (amended documentation `8ad8cae`, `934d295`).
 
-### Block 6A — COMPLETE 2026-09-29 (`d8c10fc`)
+### EM event generator — COMPLETE 2026-09-29 (`d8c10fc`)
 
 Closing slice of the 2026-09-29 plan. No physics reopened: the implemented model is the
 2026-09-28 regime amendment, which supersedes the 2026-09-21 equations quoted in that plan
@@ -211,16 +211,16 @@ Notebook 07 gained a cell showing the same three-way split for its demonstration
 
 ## Next engineering target
 
-Block 7 is **blocked** pending the evidence pass below. Block 6B (protons) has no accepted
+Detector response is **blocked** pending the evidence pass below. Proton model (protons) has no accepted
 model. The next engineering step is therefore a human decision, not code.
 
 ---
 
-# Accepted evidence and decisions — Block 6
+# Accepted evidence and decisions — stochastic generation
 
 > [!warning] Superseded in part on 2026-09-28
 > The equations in this section are the model as **accepted on 2026-09-21**. Three things have
-> changed since, and the amendments below the Block 7 section are authoritative where they
+> changed since, and the amendments below the detector response section are authoritative where they
 > differ:
 >
 > 1. `T = ln(E/E_c) - 0.5` was believed to be the AMS-consistent mean. Verification showed AMS
@@ -230,7 +230,7 @@ model. The next engineering step is therefore a human decision, not code.
 >    default `sampling` regime uses offset `-0.812` plus a geometry-derived `-0.353` shift, and
 >    width coefficients `(-2.5, 1.25)`; `deposition` uses `-0.5` and `(-1.4, 1.26)`.
 > 3. Excluding a fluctuating beta is not a simplification away from AMS. AMS holds `b = 0.65`
->    fixed for all showers and all energies, so Block 6A matches AMS.
+>    fixed for all showers and all energies, so the EM event generator matches AMS.
 >
 > Retained unchanged: the single stochastic variable `T0`, the lognormal with centring
 > `mu = ln(T_bar) - s^2/2`, `alpha = 1 + beta*T0`, the entry-referenced origin, and the
@@ -274,14 +274,14 @@ The project therefore keeps beta fixed in the first stochastic FastMC model.
 
 ## Origin convention
 
-The accepted Block 6A baseline is **detector-entry referenced**.
+The accepted EM event generator baseline is **detector-entry referenced**.
 
 Do not sample an explicit shower-start depth in the first model.
 
 A first-bremsstrahlung-relative alternative may remain architecturally possible
 for later Geant4 comparison, but it is not part of the baseline.
 
-## Accepted Block 6A stochastic model
+## Accepted EM event generator stochastic model
 
 For each event:
 
@@ -319,7 +319,7 @@ It is not an AMS-specific fitted fluctuation law.
 This is accepted because FastMC is deliberately a simple phenomenological
 generator whose adequacy will later be tested against Geant4.
 
-### Explicitly excluded from Block 6A
+### Explicitly excluded from the EM event generator
 
 - fluctuating beta;
 - explicit shower-start sampling;
@@ -346,7 +346,7 @@ information.
 
 ---
 
-# Block 6A amendments — 2026-09-28
+# EM event generator amendments — 2026-09-28
 
 Three changes, all from reading Grindhammer & Peters and the AMS sources directly.
 
@@ -365,11 +365,11 @@ i.e. `alpha = 1 + b*T0` exactly, with **b = 0.65 fixed for all showers and all e
 
 - `T = ln(E/E_c) - 0.5` was never AMS; it is PDG, and the choice of mean is ours to make.
 - Changing `T_bar` does **not** break agreement with the published AMS functional form, which
-  holds for any `T0`. The Block 4 consistency claim survives.
+  holds for any `T0`. The longitudinal profile consistency claim survives.
 
 ## 2. The rho = 1 concern is resolved in favour of the current design.
 
-Because AMS itself holds `b` fixed and fits `T0` per shower, Block 6A is structurally the same
+Because AMS itself holds `b` fixed and fits `T0` per shower, the EM event generator is structurally the same
 model AMS uses. The Grindhammer & Peters two-variable correlated `(ln T, ln alpha)` model is the
 outlier, and its `alpha` parameterization has no AMS provenance. The lost degree of freedom is
 real - about 12% conditional spread in `alpha` at fixed depth, worth roughly +/- 2% in contained
@@ -394,21 +394,21 @@ a corresponding pair of events. `model.true_deposition().generate_event(..., ran
 returns the true-deposition event behind the sampled event that seed `s` produced. Verified in
 the notebook: the quantile `z` agrees to twelve decimal places across regimes.
 
-**Block 7 boundary, now explicit.** Under `regime: sampling` the sampling distortion of the
-longitudinal shape is already applied, so Block 7 must not re-apply the depth shift or the extra
+**Detector response boundary, now explicit.** Under `regime: sampling` the sampling distortion of the
+longitudinal shape is already applied, so the detector response must not re-apply the depth shift or the extra
 shape fluctuation. Under `regime: deposition` nothing detector-related has been applied and
-Block 7 owns all of it. Building Block 7 against `deposition` shrinks the double-counting surface
+Detector response owns all of it. Building the detector response against `deposition` shrinks the double-counting surface
 to the fitted-parameter question alone.
 
 Schema: `configs/fastmc.yaml` is now version 5. Suite: 230 passing, ruff clean.
 
-## Stage 18 ("Learn again") — COMPLETE for Block 6A, 2026-09-28
+## Post-build teach-back ("Learn again") — COMPLETE for the EM event generator, 2026-09-28
 
 The post-build teach-back skipped on 2026-09-21 has run. Recorded in Obsidian at:
 
 ```text
 01 Projects/AMS ECAL QML/Tutor Sessions/
-  2026-09-28 Block 6A Teach-Back and Post-Build Probe.md
+  2026-09-28 Block EM event generator Teach-Back and Post-Build Probe.md
 ```
 
 21 questions, 7 teaching nodes, teach-back written by the researcher. Two corrections to earlier
@@ -438,7 +438,7 @@ All category B: recorded, configurable, not blocking. None reopens DEC-001.
 2. **The regime gap is half physics, half convention.** At 100 GeV the regimes differ by 0.665 X_0:
    0.353 is the G&P sampling shift, 0.312 is PDG `-0.5` versus G&P `-0.812` for the same
    homogeneous physics. Applying G&P's own shift to `deposition` gives 8.63 X_0, not the
-   `sampling` regime's 8.32. Relevant to Block 7, which is to be built against `deposition`.
+   `sampling` regime's 8.32. Relevant to the detector response, which is to be built against `deposition`.
 3. The ×27 misreading above (documentation only).
 4. The scope of "AMS publishes no mean-depth formula": verified in **two** AMS publications, and
    should be quoted with that scope.
@@ -450,10 +450,10 @@ LaTeX repaired in notebook 07 and in DEC-001.
 
 ---
 
-# Geant4 proton calibration pilot — COMPLETE 2026-09-29, awaiting the 6B model decision
+# Geant4 proton calibration pilot — COMPLETE 2026-09-29, awaiting the proton model model decision
 
-Branch `geant4-proton-pilot`. Slices 2-10 of the 2026-09-29 plan are done; the plan now stops
-at **STOP FOR MODEL DECISION**. Block 6B is **not** implemented. Geant4 is a model, not
+Branch `geant4-proton-pilot`. steps 2-10 of the 2026-09-29 plan are done; the plan now stops
+at **STOP FOR MODEL DECISION**. Proton model is **not** implemented. Geant4 is a model, not
 detector truth: every number below is Geant4 11.4.1 in our implemented material model.
 
 Record: `results/geant4_proton_pilot/` (summary.json, CSV tables, figures 1-10, geometry
@@ -513,21 +513,21 @@ non-interacting scintillator energy (95%, 99.9% varied); S_D = bias-adjusted eps
 3. **Energy distribution.** Interacting visible energy is broad and left-tailed: the
    log-energy residual at fixed D has sd 0.76-0.91 and skewness -1.5 to -2.2 - not
    lognormal; a continuous low-visible tail, not a separate mode.
-4. **P7 (S_D).** Longitudinal centre ~0.70-0.74 (D dominates *where*); hits 0.36-0.57;
-   visible energy 0.24-0.50; longitudinal RMS 0.33-0.48; width 0.00-0.03. **P7 is partly
+4. **Depth-dominance hypothesis (S_D).** Longitudinal centre ~0.70-0.74 (D dominates *where*); hits 0.36-0.57;
+   visible energy 0.24-0.50; longitudinal RMS 0.33-0.48; width 0.00-0.03. **the depth-dominance hypothesis is partly
    supported**: D is necessary, not sufficient, and irrelevant for width.
 5. **Truncation.** Same events: r(D, E) = -0.44 to -0.71 in the prefix, **+0.18 to +0.28**
    in the full shower; hits flip likewise; S_D(full) < 0.15 for everything. Event ordering by
    prefix energy is anti-correlated with full-shower energy (-0.20 to -0.37). Deep-calorimeter
    correlations **do not transfer**.
 6. **Physics list.** Robust across FTFP_BERT / QBBC / QGSP_BERT: interaction probability,
-   depth law, crossing protons, the qualitative P7 pattern. **Model-dependent**: the
+   depth law, crossing protons, the qualitative the depth-dominance hypothesis pattern. **Model-dependent**: the
    visible-energy scale at 20-100 GeV (QGSP_BERT medians ~13-28% lower; KS p 1e-6 at 20 and
    50 GeV) and shower width (~8% narrower).
 7. **Controls.** Fixed entry changes the crossing-proton signal significantly (fibre-lattice
    phase is part of the MIP fluctuation) but not interacting events.
 
-## Block 6B structure proposed from the pilot — FOR THE RESEARCHER'S DECISION
+## Proton model structure proposed from the pilot — FOR THE RESEARCHER'S DECISION
 
 I (Bernoulli, lambda_eff ~255 mm) → D (truncated exponential) → independent per-layer
 crossing-track deposits before D (measured distribution; adjacent layers rho ~0.1-0.18) →
@@ -555,9 +555,9 @@ families; how to carry the FTFP_BERT/QGSP_BERT energy-scale systematic.
 
 ---
 
-# Block 6B Slice 0 — dependency analysis COMPLETE 2026-09-29; decisions ACCEPTED 2026-09-30 (conditional)
+# Proton model the dependency analysis (step 0) — dependency analysis COMPLETE 2026-09-29; decisions ACCEPTED 2026-09-30 (conditional)
 
-Full record: `research/plans/2026-09-29_block6b_slice0_dependency_analysis.md`. Reproduce:
+Full record: `research/plans/2026-09-29_proton_dependency_analysis.md`. Reproduce:
 `uv run python -m ams_ecal.proton_dependency` and `uv run python -m ams_ecal.proton_checks`.
 Everything is Geant4 11.4.1 in this project's material model (E3), on **calibration events only**:
 `event_index % 4 == 3` is held out for validation (`src/ams_ecal/proton_calibration.py`).
@@ -580,8 +580,8 @@ Everything is Geant4 11.4.1 in this project's material model (E3), on **calibrat
 **Accepted by the researcher, 2026-09-30, with one condition.** In the researcher's words: "I
 accept the proposals you make but you should check the literature if our model makes sense. You
 should especially check studies about preserving the spatial structure and the fractal connection
-we are looking for. Afterwards tutor me on it again in the learn-back stage." So D1, D2, D4, D5
-and D6 below are ACCEPTED, and the model's plausibility against the literature (independent
+we are looking for. Afterwards tutor me on it again in the learn-back stage." So interacting-proton factorization, shared interaction draw, validation contract and burst latent
+and the lateral spill below are ACCEPTED, and the model's plausibility against the literature (independent
 discovery, then verification and an adversarial pass, per `RESEARCH_PROTOCOL.md` section 2) is an
 open condition: a mismatch is a finding to reconcile, not something to smooth over. The
 learn-back tutoring follows the literature check.
@@ -591,43 +591,43 @@ learn-back tutoring follows the literature check.
 1. commit the current evidence - DONE (`da8268f` code, `4f194c0` evidence);
 2. rebuild the calibration artifact from that clean commit - DONE (`a5e7be3`; content hash
    unchanged, `539eaab0...`, built from `4f194c0` with no tracked changes);
-3. freeze D1/D2/D4/D5/D6 in this file - DONE (this section);
-4. implement the D5/D6 crossing repair;
+3. freeze interacting-proton factorization, shared interaction draw, validation contract, burst latent and lateral spill in this file - DONE (this section);
+4. implement the burst latent and lateral spill crossing repair;
 5. run a second-look diagnostic;
-6. build the interacting model under D1;
+6. build the interacting model under the interacting-proton factorization;
 7. optimize the batch path;
 8. freeze everything;
 9. generate a fresh Geant4 test set;
-10. final Slice 6 validation on that fresh set.
+10. final the final validation (step 6) validation on that fresh set.
 
 The fresh test set (steps 9-10) removes the integrity problem of re-using the held-out events
 after the crossing repair: the 2026-09-29 crossing validation was the only look those events get.
 
-Decisions (numbers refer to the Slice 0 record, section 9 and 11):
+Decisions (numbers refer to the dependency analysis (step 0) record, section 9 and 11):
 
-- **D1** replace the plan's `P(E_vis | E, R)` table and R-conditioned templates by *amplitude x
+- **Interacting-proton factorization** replace the plan's `P(E_vis | E, R)` table and R-conditioned templates by *amplitude x
   universal profile + upstream albedo + one lateral-scale latent*, with hit multiplicity emergent.
-- **D2** couple the deposition and readout representations through shared latent draws; until an
+- **Shared interaction draw** couple the deposition and readout representations through shared latent draws; until an
   electron fibre-energy scale exists, the common e/p representation is `deposition`, because
-  Block 6A's `sampling` regime moves the shape to signal level but not the energy scale.
-- **D4** pre-registered validation contract for Slice 6.
+  EM event generator's `sampling` regime moves the shape to signal level but not the energy scale.
+- **Validation contract** pre-registered validation contract for the final validation (step 6).
 
-**Slices 1-2 implemented (crossing branch) and validated ONCE on held-out events** - result: the
+**interaction draw and crossing branch (steps 1-2) implemented (crossing branch) and validated ONCE on held-out events** - result: the
 interaction draw and the per-layer response pass at the noise floor; the crossing branch **fails**
 the event-total (readout at 50-100 GeV, deposition at all energies), hit-multiplicity, max-cell
 and containment rows (KS 0.10-0.37). Both were predicted from calibration data: independent layers
-and cells restricted to crossed fibres. Accepted repairs, not yet implemented: **D5** an event-level
-burst latent; **D6** a per-layer lateral spill. Interacting events (Slices 3-5) are not
-implemented (D1 accepted; they follow the crossing repair). Speed is 11-14 ms/event, too slow for
-large datasets (step 7 of the sequence). Whole suite: 442 tests. Record: section 11 of the Slice 0
+and cells restricted to crossed fibres. Accepted repairs, not yet implemented: **the burst latent** an event-level
+burst latent; **the lateral spill** a per-layer lateral spill. Interacting events (interacting-event model (steps 3-5)) are not
+implemented (interacting-proton factorization accepted; they follow the crossing repair). Speed is 11-14 ms/event, too slow for
+large datasets (step 7 of the sequence). Whole suite: 442 tests. Record: section 11 of the dependency analysis (step 0)
 file. The calibration artifact was rebuilt from a clean tree at `a5e7be3`.
 
-**Validity of D1-D6 after the literature check and the adversarial pass, 2026-09-30** (record:
-`research/plans/2026-09-30_block6b_literature_and_adversarial_reconciliation.md`). Agent findings;
-none of D1-D6 is invalid. The researcher's decision on them follows in the next block.
+**Validity of the six proton-model decisions after the literature check and the adversarial pass, 2026-09-30** (record:
+`research/plans/2026-09-30_proton_model_literature_and_adversarial_reconciliation.md`). Agent findings;
+none of the six proton-model decisions is invalid. The researcher's decision on them follows in the next block.
 
-- **D2 valid. D5 valid and strengthened. D6 valid. D4 valid but incomplete.**
-- **D1 valid with three amendments**, each measured on calibration events: (a) a back-edge factor
+- **Shared interaction draw valid. Burst latent valid and strengthened. Lateral spill valid. Validation contract valid but incomplete.**
+- **Interacting-proton factorization valid with three amendments**, each measured on calibration events: (a) a back-edge factor
   on the amplitude window (amplitude is independent of depth for interactions shallower than 60 mm,
   |rho| <= 0.07, but 13-14% lower for the last depth tercile at 20 and 100 GeV); (b) a correlated
   log-normal residual around amplitude x profile (46-80% per layer, lag-1 correlation +0.3-0.4);
@@ -641,40 +641,40 @@ none of D1-D6 is invalid. The researcher's decision on them follows in the next 
   Carlo of an iron/RPC digital calorimeter on binary hits, not data and not this detector; nothing
   was found testing whether fast simulation preserves multiscale structure (not found in these
   searches). RQ-001 remains E0.
-- **Proposed (accepted below):** **D7** add to the validation contract a layer-correlation row, a
+- **Proposed (accepted below):** **the added validation checks** add to the validation contract a layer-correlation row, a
   classifier two-sample test, CaloChallenge-style sparsity and an ungated multiscale panel, before
-  the fresh test set is generated; **D8** validate the multiscale estimators on synthetic
+  the fresh test set is generated; **the estimator-validity gate** validate the multiscale estimators on synthetic
   positive/negative controls on the 18 x 72 grid before any multiscale claim.
 
-**Researcher decisions on D1-D8, 2026-09-30** (the researcher's own decision, given in chat after
+**Researcher decisions on the eight proton-model decisions, 2026-09-30** (the researcher's own decision, given in chat after
 reading the record above; recorded as the decision of record). Sequence steps 1-3 (commit, rebuild
-the artifact, freeze) are complete; steps 4-10 stand unchanged. D1's amendments enter at step 6, D7
+the artifact, freeze) are complete; steps 4-10 stand unchanged. Interacting-proton factorization's amendments enter at step 6, the added validation checks
 must be registered before step 9.
 
-- **D1 accepted, with amendments.** (a) A back-edge factor on the amplitude. (b) **Modified by the
+- **Interacting-proton factorization accepted, with amendments.** (a) A back-edge factor on the amplitude. (b) **Modified by the
   researcher:** a correlated residual *in log-energy space*, not a "correlated log-normal
   residual". The measured variance and autocorrelation of ln E_layer do not establish that the
   residuals are Gaussian, so their distribution is tested on calibration events first, and the
   family is called log-normal only if those events support it. (c) A shared upstream (albedo)
   latent: it is required, because conditioning on the amplitude still leaves correlations of about
   0.39-0.45.
-- **D2 accepted.** The interaction draw is shared; deposition and readout fluctuations may differ.
-- **D4 and D7 accepted together.** No old gate is deleted. D7 adds a layer-correlation row, a
+- **Shared interaction draw accepted.** The interaction draw is shared; deposition and readout fluctuations may differ.
+- **Validation contract and the added validation checks accepted together.** No old gate is deleted. Added validation checks adds a layer-correlation row, a
   classifier two-sample test, CaloChallenge-style standardized sparsity and an ungated multiscale
   panel, all registered before the fresh test set is generated (step 9).
-- **D5 accepted.** Design instruction from the researcher: implement the burst latent
+- **Burst latent accepted.** Design instruction from the researcher: implement the burst latent
   *structurally* (probability or type, onset, energy, downstream extent), not as a generic
   event-wide scale multiplier. Basis: the energy-dependent long-range layer coupling grows toward
   100 GeV and is concentrated in the tail.
-- **D6 accepted.** A zero-halo crossing model is already falsified by the project's own Geant4 sample.
-- **D8 accepted; it does not block Slices 3-5.** It gates every multiscale or fractal *claim*.
+- **Lateral spill accepted.** A zero-halo crossing model is already falsified by the project's own Geant4 sample.
+- **Estimator-validity gate accepted; it does not block interacting-event model (steps 3-5).** It gates every multiscale or fractal *claim*.
 - **FastMC is a smooth control.** It is not required to reproduce fractal structure. If it matches the
   conventional energy, profile and occupancy observables while Geant4 shows multiscale structure the
   FastMC lacks, that difference is the control experiment. Multiscale preservation is *measured*,
   not imposed as a design requirement.
 - **Standing limitation, kept visible.** Amplitude universality, the upstream relation and profile
   universality come from one Geant4 physics configuration (FTFP_BERT), not from AMS proton data. The
-  QGSP_BERT / alternative-physics-list slice (Slice 7) is not needed to continue development, but it
+  QGSP_BERT / alternative-physics-list slice (alternative physics-list calibration (step 7)) is not needed to continue development, but it
   **is** required before any claim that these are properties of hadronic shower physics.
 - **Claim hierarchy, no skipped steps:** calibration observation -> FastMC hypothesis -> fresh-set
   validation -> physics-list robustness -> possible physical interpretation.
@@ -683,11 +683,12 @@ must be registered before step 9.
   pions 2-10 GeV: Monte Carlo within 20% of data, "a reasonable overall description"), not to
   arXiv:1602.08578, which supports the two-component profile description. The support is "up to
   about 20%", not "substantial". 1411.7215 was not in this pass's source set, is read at abstract
-  level only, and is not yet in the paper library. Details: §7 of the reconciliation record.
-- **Next:** the learn-back tutoring (Obsidian session note, 2026-09-30) precedes step 4, the D5/D6
+  level only (first PDF page confirmed), and was added to the paper library on 2026-09-30 as
+  `FastMC/1411.7215.pdf`. Details: §7 of the reconciliation record.
+- **Next:** the learn-back tutoring (Obsidian session note, 2026-09-30) precedes step 4, the burst latent and lateral spill
   crossing repair.
 
-# Block 7 status — BLOCKED pending evidence, 2026-09-21
+# Detector response status — BLOCKED pending evidence, 2026-09-21
 
 Detector response remains planned, and is now explicitly **blocked** rather than merely
 unstarted.
@@ -715,12 +716,12 @@ indirectly by Grindhammer & Peters section 3.5, and it must not be promoted furt
 
 ## Consequent decision, PROPOSED not accepted
 
-Block 7 implementation does not begin until the adversarial pass has run and, for each candidate
-Block 7 effect, it is stated whether that effect was already inverted out of the deposits AMS
+Detector response implementation does not begin until the adversarial pass has run and, for each candidate
+Detector response effect, it is stated whether that effect was already inverted out of the deposits AMS
 fitted its shower parameters to. Adding an effect AMS never removed is safe; adding one AMS
 corrected away is a double-counting candidate.
 
-## Two findings that rebound onto Block 6A
+## Two findings that rebound onto the EM event generator
 
 Both surfaced from reading Grindhammer & Peters directly, both category **B** under the Research
 OS triage, neither blocking:
@@ -729,7 +730,7 @@ OS triage, neither blocking:
    **sampling-calorimeter** coefficient set, so the FastMC configuration comment is correct. But
    the same appendix corrects the *mean* depth for sampling geometry, and FastMC does not apply
    that correction. For this geometry the gap is an energy-independent **0.665 X_0**, about 0.70
-   of a readout layer, against a 1-sigma T0 spread of 0.96 X_0 at 100 GeV. Block 6A therefore
+   of a readout layer, against a 1-sigma T0 spread of 0.96 X_0 at 100 GeV. EM event generator therefore
    pairs a homogeneous-convention mean with a sampling-convention width.
    **This is a discrepancy, not yet an error** - AMS fitted `b = 0.65` with its own convention.
    Deciding which mean is right for AMS is a human decision and a one-line config change.
@@ -737,7 +738,7 @@ OS triage, neither blocking:
 2. **Imposed correlation.** Grindhammer & Peters fluctuate `ln T` and `ln alpha` as a correlated
    pair with `rho = 0.784 - 0.023 ln y`, deriving beta per event. Fixing beta and setting
    `alpha = 1 + beta*T` is the special case `rho = 1`. At 100 GeV the source value is **0.57**, so
-   Block 6A over-correlates shower depth and profile shape.
+   EM event generator over-correlates shower depth and profile shape.
 
 Both are recorded in `configs/fastmc.yaml` next to the affected constants.
 
@@ -754,11 +755,11 @@ Both are recorded in `configs/fastmc.yaml` next to the affected constants.
 Because some AMS shower parameters were fitted to observed deposits, overlap
 with later response modeling must be watched for possible double counting.
 
-This is a Block 7 concern, not a Block 6A blocker.
+This is a detector response concern, not a EM event generator blocker.
 
 ---
 
-# Block 8 status
+# Dataset generation status
 
 FastMC dataset generation and validation remains planned.
 
@@ -871,48 +872,62 @@ No quantum advantage is assumed.
 
 # Next session — start here
 
-_Updated 2026-09-29._ Block 6A is committed (`fe0e699`) and pushed to `stochastic-events`; the
+_Updated 2026-09-29._ the EM event generator is committed (`fe0e699`) and pushed to `stochastic-events`; the
 mean-depth convention was settled by the regime amendment; stage 18 is complete.
 
-**Researcher decision, 2026-09-28: Block 6B before Block 7.** In the researcher's words: "Let's
-start 6B first, block 7 is meaningless before that." Rationale: every e/p comparison in RQ-001 and
-Block 8 needs a proton population; detector response is refinement on top of it.
+**Researcher decision, 2026-09-28: the proton model before the detector response.** In the researcher's words: "Let's
+start proton model first, block 7 is meaningless before that." Rationale: every e/p comparison in RQ-001 and
+Dataset generation needs a proton population; detector response is refinement on top of it.
 
-0. **Block 6B structure DECIDED by the researcher, 2026-09-29**: the implementation plan is
-   recorded in `research/plans/2026-09-29_block6b_implementation_plan.md` (one exponential draw
+0. **Proton model structure DECIDED by the researcher, 2026-09-29**: the implementation plan is
+   recorded in `research/plans/2026-09-29_proton_shower_model_implementation_plan.md` (one exponential draw
    for interaction status and depth; geometry-aware crossing tracks; empirical conditional
    distributions for visible energy and morphology; FTFP_BERT nominal and QGSP_BERT systematic
    calibrations; held-out validation). **Amended 2026-09-29:** protons get both a **true
-   deposition** and a **readout (fibre)** representation, like 6A electrons, so e/p events share
-   one representation. **Begin its Slice 0 only after the tutoring below.**
+   deposition** and a **readout (fibre)** representation, like EM-generator electrons, so e/p events share
+   one representation. **Begin its dependency analysis (step 0) only after the tutoring below.**
    The Geant4 proton pilot is complete.
    Read the pilot section above, `results/geant4_proton_pilot/` and notebook 08. Before the
    physics, the researcher asked to be probed and tutored on the codebase and Geant4:
    `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-29 Codebase and Geant4 Probe.md`
-   (Q1 posted). Then: decide the 6B structure (Slice 11), implement (Slice 12), validate
-   against Geant4 distributions and correlations (Slice 13), teach and record (Slice 14).
-1. **Block 6B, stage 1 (learning probe)** - paused. Tutor session
-   `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-28 FastMC Block 6B Proton Showers.md`.
+   (Q1 posted). Then: decide the proton model structure (step 11), implement (step 12), validate
+   against Geant4 distributions and correlations (step 13), teach and record (step 14).
+1. **Proton model, stage 1 (learning probe)** - paused. Tutor session
+   `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-28 FastMC Block proton model Proton Showers.md`.
    The 2026-09-28 literature pass ended at a blocker: the thin-calorimeter regime is not
-   settled by literature, so the Geant4 pilot now precedes any 6B model.
-2. Parked: Block 7 tutor session (Q1 posted and waiting); the Block 7 adversarial pass.
-3. Queued, not started: open question 9 of the Block 7 evidence map, the depth origin of AMS's
+   settled by literature, so the Geant4 pilot now precedes any proton model model.
+2. Parked: the detector response tutor session (Q1 posted and waiting); the detector response adversarial pass.
+3. Queued, not started: open question 9 of the detector response evidence map, the depth origin of AMS's
    fitted `T0`, as a full Research OS literature task.
 
 ## Next human decision
 
-0. ~~Block 6B Slice 0 outcome~~ - D1, D2, D4, D5, D6 accepted 2026-09-30 by the researcher,
+0. ~~the proton model the dependency analysis (step 0) outcome~~ - interacting-proton factorization, shared interaction draw, validation contract, burst latent and lateral spill accepted 2026-09-30 by the researcher,
    conditional on the literature check described above; the next steps are the researcher's
    sequence, steps 4-10.
-1. ~~Block 6B structure~~ - decided 2026-09-29 by the researcher's implementation plan
-   (`research/plans/2026-09-29_block6b_implementation_plan.md`): hybrid of analytic
+1. ~~the proton model structure~~ - decided 2026-09-29 by the researcher's implementation plan
+   (`research/plans/2026-09-29_proton_shower_model_implementation_plan.md`): hybrid of analytic
    exponential interaction depth and empirical conditional distributions; QGSP_BERT as a
    separate calibration scenario, never event noise.
 2. Whether backsplash, incidence angle and the material systematic must be answered before
-   6B or after it.
+   proton model or after it.
 3. Carried over: whether to act on open questions 1 and 2 above (which statistic `T_bar` represents; whether
    `deposition` should use G&P homogeneous constants so the regimes differ only by the sampling
    shift). Both are configuration-level.
 4. ~~Documentation fixes~~ - approved and applied 2026-09-28.
-5. ~~Sequencing: Block 6B versus Block 7~~ - decided 2026-09-28: 6B first.
+5. ~~Sequencing: the proton model versus the detector response~~ - decided 2026-09-28: proton model first.
 6. ~~Pre-baseline gates~~ - set by the researcher 2026-09-29; all four passed.
+
+---
+
+# Typed research and knowledge graphs — adopted 2026-10-01
+
+The Research OS v0.6 records now exist alongside the narrative state above. They link to this file and to the plans; they do not replace them, and they record only what is already documented.
+
+- **Research graph:** `research/questions/RQ-001_*.md` (frontmatter added) and `research/graph/` hold RQ-001 to RQ-004, H-001 to H-007, EXP-001 to EXP-008 and DEC-001 to DEC-011. Read with `python <research-os>/scripts/research.py --root . status --project ams-ecal-qml --learning-root "<vault>/02 Knowledge/Capability Records"`. The graph validates with 0 errors; the warnings are expected: no verified EvidenceAtoms are linked, and EXP-002 to EXP-004 have no formal result validation.
+- **Not attested by the graph:** experiment approval for EXP-005 to EXP-008 (`awaiting`); the 2026-09-28 regime amendment to the EM event generator; any evidence-atom verification.
+- **Knowledge graph:** 81 capability records in the vault at `02 Knowledge/Capability Records/`, with views in `02 Knowledge/Knowledge Graphs/` (hub: `Knowledge Graph Hub`). Retrieval history exists only where the tutor sessions of 2026-09-20 to 2026-09-30 recorded assessed answers; every other capability, including all programming skills, is `unknown`.
+
+- **Proposed plan, 2026-10-02 (not approved):** `research/plans/2026-10-02_weekend_multiscale_check_and_proton_model_completion_plan.md` — weekend estimator controls (estimator-validity gate) then a proton-only exploratory first look, an electron timing probe, the proton model steps 4-10 with a proposed early sealed test set, learning gates, and the detector response evidence pass. Per-item approval table at its end. Vault dashboard: `01 Projects/AMS ECAL QML/Weekend Plan Dashboard 2026-10-02.md`.
+- **Estimator-validity gate estimator pre-registration, 2026-10-02 (draft, criteria awaiting the researcher):** `research/plans/2026-10-02_multiscale_estimator_validity_preregistration.md` — scale-window rule from Koo and Ju (arXiv:2605.27925, full text pp. 1-4, transferred approximation), calibrated-baseline criteria, evidence depth per source. No estimator output may be read before the criteria are confirmed.
+- **Estimator-validity gate controls run, 2026-10-02 (synthetic only):** NOT USABLE at <=300 hits; USABLE on 2 of 13 windows at 1000 and 4 of 14 at 3000 hits (`research/plans/2026-10-02_multiscale_estimator_controls_results.md`, `results/multiscale_controls/`). One deviation found and corrected, declared in the pre-registration addendum. Next: an eligibility count, not a structure measurement. The estimators may not be read on Geant4 events until the researcher approves.

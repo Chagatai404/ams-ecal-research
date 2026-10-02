@@ -8,8 +8,9 @@ Before substantial work:
 
 1. Read `RESEARCH_PROTOCOL.md`.
 2. Read `research/STATE.md`.
-3. Inspect the relevant source, tests, notebook, and configuration files.
-4. Use installed Scientific Research OS skills when appropriate.
+3. Read `research/DECISIONS.md` (the master list of accepted decisions).
+4. Inspect the relevant source, tests, notebook, and configuration files.
+5. Use installed Scientific Research OS skills when appropriate.
 
 ## Authority
 
@@ -190,7 +191,7 @@ For the current multifractal direction:
 7. compare with conventional observables;
 8. only then design specialized ML/QML architectures.
 
-For Block 6 stochastic FastMC work:
+For the stochastic generation stochastic FastMC work:
 
 1. probe the researcher's current understanding;
 2. identify missing prerequisites;

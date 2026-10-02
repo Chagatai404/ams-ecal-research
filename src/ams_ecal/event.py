@@ -61,7 +61,7 @@ class EventProvenance:
     configuration_sha256: str
     random_seed: int
     # Optional named facts a backend needs to make the event reproducible and
-    # interpretable beyond one version string: for a Block 6B proton, the model
+    # interpretable beyond one version string: for a proton model, the model
     # version, calibration version, physics-list scenario and representation.
     # Sorted key/value pairs, so equal metadata compares and hashes equal.
     model_details: tuple[tuple[str, str], ...] = ()

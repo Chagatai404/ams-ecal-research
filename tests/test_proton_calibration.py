@@ -1,4 +1,4 @@
-"""The Block 6B calibration / validation split, crossing table and artifact."""
+"""The proton model calibration / validation split, crossing table and artifact."""
 
 import json
 

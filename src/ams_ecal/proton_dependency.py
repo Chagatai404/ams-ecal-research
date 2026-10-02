@@ -1,4 +1,4 @@
-"""Block 6B Slice 0: which dependencies must the proton generator keep explicit?
+"""Proton model the dependency analysis (step 0): which dependencies must the proton generator keep explicit?
 
 The plan (section 9) asks for one small dependency analysis on the EXISTING
 Geant4 pilot events before the generator's factorization is frozen: after
@@ -530,7 +530,7 @@ def build_summary(data: Path = DATA) -> dict[str, Any]:
     depth_mm = geometry.number_of_layers * layer_mm
     summary: dict[str, Any] = {
         "status": (
-            "Block 6B Slice 0. CALIBRATION events only (event_index % 4 != 3). "
+            "Proton model, step 0 (dependency analysis). CALIBRATION events only (event_index % 4 != 3). "
             "Exploratory: the first partial-correlation table was read before the "
             "0.20 / 0.10 decision convention below was adopted."
         ),

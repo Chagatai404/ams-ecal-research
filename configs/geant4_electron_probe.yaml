@@ -1,0 +1,37 @@
+# Geant4 ELECTRON TIMING PROBE (weekend plan, Track C step 1; approved 2026-10-02).
+#
+# Purpose: measure the wall-clock cost per electron event in the existing AMS-like
+# fibre geometry, to decide whether a full electron sample is affordable. This is a
+# measurement of cost, NOT a physics result. 20 events per energy. Nothing from this
+# probe is to be analysed for shower structure, and it is not part of the proton
+# calibration. Same geometry, physics list, cut and entry spot as the proton pilot.
+schema_version: 2
+
+particle: e-
+
+energies_gev: [10.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  probe:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 20
+    base_seed: 20261003
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_electron_probe

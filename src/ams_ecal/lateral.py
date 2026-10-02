@@ -15,7 +15,7 @@ fractions are therefore obtained from the one-dimensional marginal of the
 radially symmetric density.  The marginal integrates over an effectively
 infinite fiber direction.  This is the ideal fiducial-volume approximation;
 finite fiber-end leakage remains a documented refinement for later validation.
-No shower-to-shower fluctuations are generated here.  They belong to Block 6.
+No shower-to-shower fluctuations are generated here.  They belong to the stochastic generation.
 """
 
 from dataclasses import dataclass

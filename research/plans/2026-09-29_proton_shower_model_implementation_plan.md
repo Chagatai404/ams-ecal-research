@@ -1,4 +1,4 @@
-# Block 6B implementation plan — researcher's specification, 2026-09-29
+# Proton model implementation plan — researcher's specification, 2026-09-29
 
 _Received in chat on 2026-09-29, after the Geant4 proton pilot. Recorded below in full so it
 survives across sessions: the researcher's wording is kept, but many of the original's
@@ -6,26 +6,26 @@ one-item-per-line code blocks are flattened into prose lists; the pseudocode and
 kept as blocks. The researcher's instruction: implement it **after the tutoring**
 (the codebase-and-Geant4 probe in Obsidian,
 `01 Projects/AMS ECAL QML/Tutor Sessions/2026-09-29 Codebase and Geant4 Probe.md`).
-It is the researcher's decision on the Block 6B structure proposed in `research/STATE.md`._
+It is the researcher's decision on the proton model structure proposed in `research/STATE.md`._
 
 ## Researcher amendment, 2026-09-29 (during the tutoring)
 
-**Two representations for protons, as for electrons.** Block 6A offers a `deposition` regime
+**Two representations for protons, as for electrons.** the EM event generator offers a `deposition` regime
 (true all-material deposit, the "perfect event") and a signal-level regime. The researcher
-decided Block 6B must likewise provide **true deposition** and **readout (fibre /
+decided the proton model must likewise provide **true deposition** and **readout (fibre /
 scintillator energy)** representations, so electron and proton FastMC events can always be
 compared in one common representation. The pilot stores both per event (`deposit_grid_mev`,
 `readout_grid_mev`), so the calibration builder produces both from the same events; choosing a
-representation is explicit configuration, and provenance records it. Slice 0 must also settle
-how this pairs with Block 6A's two regimes (the 6A `sampling` regime moves the longitudinal
+representation is explicit configuration, and provenance records it. Dependency analysis (step 0) must also settle
+how this pairs with the EM event generator's two regimes (the EM event generator `sampling` regime moves the longitudinal
 *shape* toward signal level but not the energy scale).
 
 ---
 
 You are working on my AMS-02 ECAL research repository:
 https://github.com/Chagatai404/ams-ecal-research
-Your task is to implement Block 6B — proton phenomenology using the results of the completed Geant4 proton pilot.
-Do not reopen Block 6A physics.
+Your task is to implement the proton model — proton phenomenology using the results of the completed Geant4 proton pilot.
+Do not reopen the EM event generator physics.
 Do not repeat the broad hadronic literature search.
 Do not expand this into the full RQ-001 Geant4 program.
 This task is specifically:
@@ -37,17 +37,17 @@ Before editing anything, inspect at minimum: README.md, RESEARCH_PROTOCOL.md, AG
 research/STATE.md, research/PUBLICATION_ROADMAP.md,
 research/questions/RQ-001_multiscale_shower_information.md, results/geant4_proton_pilot/,
 notebooks/08_geant4_proton_pilot.ipynb. Then inspect: src/ams_ecal/, tests/, configs/, existing
-FastMC code, Block 6A implementation, geometry/readout code, ECALEvent, provenance/config
+FastMC code, the EM event generator implementation, geometry/readout code, ECALEvent, provenance/config
 machinery. Use the actual repository state as authoritative. Do not assume filenames or APIs
 from this prompt if the repo already contains a better existing abstraction.
 
-## 2. Scientific status entering Block 6B
+## 2. Scientific status entering the proton model
 
-Block 6A is complete. The Geant4 proton pilot is complete using Geant4 11.4.1 and the exact
+EM event generator is complete. The Geant4 proton pilot is complete using Geant4 11.4.1 and the exact
 AMS-like geometry. Approximately 32,000 proton events were generated across 10, 20, 50 and
 100 GeV with: FTFP_BERT nominal, QBBC comparison, QGSP_BERT alternate high-energy model,
 fixed-entry control, extended calorimeter control. The following pilot results now define the
-scientific basis of 6B.
+scientific basis of proton model.
 
 ## 3. Interaction probability
 
@@ -58,7 +58,7 @@ useful nominal calibration. The effective proton depth of the ECAL is therefore 
 0.64–0.67 lambda rather than exactly 0.6 for these Geant4 proton samples. No significant energy
 dependence of the interaction-depth distribution was resolved across the pilot energy range.
 
-For Block 6B v1: model the first inelastic interaction distance with one exponential
+For the proton model v1: model the first inelastic interaction distance with one exponential
 interaction-length parameter. Do not separately sample "interaction yes/no" and then
 "interaction depth" unless the code architecture genuinely requires that representation.
 Prefer one latent draw:
@@ -81,7 +81,7 @@ material/geometry model over the tested energy range. Keep it configurable. Its 
 should include at least: Geant4 version, physics list, geometry/config hash, energy range,
 particle, incidence assumptions.
 
-## 5. Current corrected interpretation of P7
+## 5. Current corrected interpretation of the depth-dominance hypothesis
 
 The original proposition "first-interaction depth dominates proton event-to-event variation" is
 only partly supported. The pilot found approximately: longitudinal centre S_D ~ 0.72;
@@ -89,7 +89,7 @@ hit/cell multiplicity S_D ~ 0.36–0.57; visible/deposited energy S_D ~ 0.24–0
 width S_D ~ 0. Therefore the accepted interpretation is: first-interaction depth is the
 dominant observed driver of longitudinal position, an important but incomplete driver of
 visible energy and multiplicity, and not a meaningful direct driver of lateral width in the
-tested normal-incidence thin-ECAL regime. The Block 6B factorization should reflect this.
+tested normal-incidence thin-ECAL regime. The proton model factorization should reflect this.
 
 ## 6. Truncation result
 
@@ -98,7 +98,7 @@ deep calorimeters do not transfer directly into the AMS ECAL. Interaction depth 
 deposited/visible energy was approximately -0.44 to -0.71 in the AMS-like thin ECAL and
 +0.18 to +0.28 in the extended calorimeter; the correlation can reverse sign under truncation.
 Consequences: do not import deep-calorimeter covariance matrices, whole-shower longitudinal
-parameterizations, or generic hadronic correlation structures into 6B. Use the thin-geometry
+parameterizations, or generic hadronic correlation structures into proton model. Use the thin-geometry
 pilot directly.
 
 ## 7. Detector-level mixture result
@@ -114,7 +114,7 @@ response.
 
 ## 8. Models rejected by the Geant4 pilot
 
-Do not implement as the 6B baseline: fixed visible-energy fraction; flat per-layer proton
+Do not implement as the proton model baseline: fixed visible-energy fraction; flat per-layer proton
 shower; generic whole-hadronic-shower profile truncated at the ECAL edge; transferred
 deep-calorimeter correlation matrix; independent low-visible interaction class; lognormal
 visible-energy distribution; interaction-depth-controlled lateral width.
@@ -131,10 +131,10 @@ substantial dependence between: lateral width and E_vis; hit multiplicity and lo
 morphology; longitudinal shape and E_vis. Use simple interpretable diagnostics (binned
 conditional correlations, partial correlations where justified, conditional
 medians/quantiles, simple 2D plots). Do not fit complex ML dependency models. The purpose is
-merely to decide which arrows belong in the 6B generative graph. Record this result before
+merely to decide which arrows belong in the proton model generative graph. Record this result before
 implementing the final factorization.
 
-## 10. Proposed high-level 6B generative graph
+## 10. Proposed high-level proton model generative graph
 
 ```
 primary energy E, track state / geometry
@@ -193,7 +193,7 @@ Anchor energies 10, 20, 50, 100 GeV. Do not simply snap every event to the neare
 if interpolation is straightforward. Likely: interpolation in log(E) for energy-dependent
 quantities, and remaining-depth bins or simple interpolation in R. Keep interpolation
 deterministic and testable. Do not extrapolate beyond the validated range unless explicitly
-configured and visibly labelled. For 6B v1, restricting the validated domain to 10–100 GeV is
+configured and visibly labelled. For proton model v1, restricting the validated domain to 10–100 GeV is
 acceptable. Outside-domain use should raise, warn clearly, or require explicit extrapolation
 configuration, following existing project conventions.
 
@@ -241,7 +241,7 @@ phenomenological rather than microscopic.
 
 ## 21. Energy accounting
 
-Preserve Block 6A's explicit energy accounting. Distinguish conceptually: sensitive/readout
+Preserve the EM event generator's explicit energy accounting. Distinguish conceptually: sensitive/readout
 deposit; passive-material deposit if represented internally; longitudinal leakage; lateral
 leakage; energy carried beyond the detector. Do not pretend FastMC can reconstruct the
 microscopic nuclear invisible-energy decomposition unless explicitly modeled. Do not introduce
@@ -284,8 +284,8 @@ on track angle and path length.
 ## 26. Backsplash
 
 Extended geometry: 26–45 MeV returning into the ECAL region vs 11–13 MeV without. Do not use
-extended-geometry ECAL lateral width as a 6B calibration source; use the AMS-only simulation
-for width. Backsplash is not a 6B blocker; record as a caveat.
+extended-geometry ECAL lateral width as a proton model calibration source; use the AMS-only simulation
+for width. Backsplash is not a proton model blocker; record as a caveat.
 
 ## 27. Event-level algorithm target
 
@@ -324,8 +324,8 @@ schema version. The runtime model loads a compact finalized artifact, not raw Ge
 
 ## 30. Calibration construction must be reproducible
 
-Add a script/module that rebuilds the 6B calibration artifact from the accepted pilot outputs
-(pilot events → calibration builder → versioned compact 6B calibration). Deterministic where
+Add a script/module that rebuilds the proton model calibration artifact from the accepted pilot outputs
+(pilot events → calibration builder → versioned compact proton model calibration). Deterministic where
 possible.
 
 ## 31. Train/calibration versus validation split
@@ -334,7 +334,7 @@ Deterministic split of the existing pilot data into calibration and validation s
 IDs or another reproducible method). The validation subset stays untouched while choosing /
 interpolating the model where practical. Not a full ML train/val/test system.
 
-## 32. Block 6B validation
+## 32. Proton model validation
 
 Compare FastMC protons with held-out Geant4 AMS projections at matched energy, normal
 incidence, entry conditions. At minimum: interaction (no-interaction fraction, depth
@@ -348,7 +348,7 @@ validate only means.
 ## 33. Statistical comparison
 
 Quantile tables, ECDF comparisons, Wasserstein distance, KS where appropriate, correlation
-difference, conditional distribution plots. No single arbitrary "6B realism score"; aspects
+difference, conditional distribution plots. No single arbitrary "proton model realism score"; aspects
 pass or fail separately.
 
 ## 34. Acceptance philosophy
@@ -364,7 +364,7 @@ C (reversible choice) / D (future refinement).
 If the simplest conditional/tabulated model cannot reproduce the held-out joint distributions
 without a large complicated latent architecture: STOP. Report what fails, why, which
 observable/correlation cannot be represented, what minimal additional variable would fix it.
-Do not silently grow 6B into a large generative ML model, normalizing flow, diffusion model or
+Do not silently grow proton model into a large generative ML model, normalizing flow, diffusion model or
 high-dimensional copula.
 
 ## 36. Tests
@@ -385,7 +385,7 @@ Benchmark enough for large downstream datasets. Do not micro-optimize prematurel
 
 ## 38. Provenance
 
-Every proton event identifies: FastMC version, Block 6B model version, calibration version,
+Every proton event identifies: FastMC version, the proton model model version, calibration version,
 nominal/systematic physics-list calibration, geometry/config hash, seed, primary energy,
 TrackState. If EventProvenance cannot represent the calibration version cleanly, extend it
 minimally.
@@ -402,7 +402,7 @@ length of AMS.
 After code and validation: teach (1) why a thin hadronic calorimeter needs a different model
 than a contained shower; (2) exponential interaction depth; (3) why one exponential draw
 determines both status and position; (4) truth non-interacting vs detector MIP-like;
-(5) remaining depth R; (6) the P7 variance-decomposition result; (7) why longitudinal and
+(5) remaining depth R; (6) the depth-dominance hypothesis variance-decomposition result; (7) why longitudinal and
 lateral variables need different conditioning; (8) why empirical conditional CDFs instead of
 forced analytic laws; (9) why physics-list differences are epistemic systematics, not event
 noise; (10) how the generator maps these ideas into 18×72 events; (11) where the model is
@@ -410,7 +410,7 @@ validated and where uncertain. The notebook calls tested production code.
 
 ## 41. Research-state update
 
-When 6B passes validation, update research/STATE.md. Accepted: exponential effective
+When proton model passes validation, update research/STATE.md. Accepted: exponential effective
 interaction depth; geometry-aware crossing-track response; continuous interacting
 visible-energy tail; remaining-depth-conditioned longitudinal model; no direct
 interaction-depth control of lateral width unless new analysis supports it; FTFP_BERT nominal
@@ -423,34 +423,34 @@ validation against AMS/test-beam data. Keep Geant4-model dependence explicit.
 
 ## 42. Scope boundary
 
-Not in this task: Block 7 detector response; full RQ-001 multifractal analysis; e-vs-p ML
+Not in this task: the detector response; full RQ-001 multifractal analysis; e-vs-p ML
 benchmarks; QML; full angular proton calibration; Geant4 production redesign; learned
 generative shower model.
 
 ## 43. Implementation slices
 
-- Slice 0 — reconcile and dependency analysis: inspect pilot artifacts and FastMC
+- Dependency analysis (step 0) — reconcile and dependency analysis: inspect pilot artifacts and FastMC
   architecture; compute remaining conditional dependencies; run the small production-cut /
-  material checks; write the final 6B dependency graph. Do not implement the generator until
+  material checks; write the final proton model dependency graph. Do not implement the generator until
   this is clear.
-- Slice 1 — calibration builder: pilot events → deterministic builder → compact versioned
+- Interaction draw (step 1) — calibration builder: pilot events → deterministic builder → compact versioned
   artifact; nominal FTFP_BERT first, then QGSP_BERT systematic; tests.
-- Slice 2 — interaction + crossing-track component: S_int ~ Exp(lambda_eff);
+- Crossing branch (step 2) — interaction + crossing-track component: S_int ~ Exp(lambda_eff);
   geometry-aware crossing-track deposits; non-interacting branch; pre-interaction track branch.
   Validate before adding shower deposition.
-- Slice 3 — interacting visible energy: P(E_vis | E, R) by empirical conditional
+- Step 3 — interacting visible energy: P(E_vis | E, R) by empirical conditional
   sampling/interpolation; validate on held-out events.
-- Slice 4 — longitudinal morphology: simplest accepted conditional model; interaction-origin
+- Step 4 — longitudinal morphology: simplest accepted conditional model; interaction-origin
   consistency, finite-depth behaviour, energy accounting; validate.
-- Slice 5 — lateral/activity model: only supported dependencies; width not driven by depth;
+- Step 5 — lateral/activity model: only supported dependencies; width not driven by depth;
   multiplicity emergent where possible; validate.
-- Slice 6 — joint validation: matched FastMC vs held-out Geant4; marginals, conditionals,
+- Final validation (step 6) — joint validation: matched FastMC vs held-out Geant4; marginals, conditionals,
   correlations, tails; resolve only material discrepancies.
-- Slice 7 — systematic calibration: validate the QGSP_BERT path as an explicit epistemic
+- Alternative physics-list calibration (step 7) — systematic calibration: validate the QGSP_BERT path as an explicit epistemic
   scenario.
-- Slice 8 — notebook and documentation; reproduction commands and validation results.
+- Step 8 — notebook and documentation; reproduction commands and validation results.
 
-## 44. Final report before declaring Block 6B complete
+## 44. Final report before declaring the proton model complete
 
 Model (exact factorization); calibration (tabulated vs fitted); interaction (final lambda_eff,
 uncertainty/provenance); crossing tracks (geometry dependence); visible energy
@@ -475,4 +475,4 @@ Central design rule: use analytic physics where the pilot established it, and em
 conditional distributions where the physics remains phenomenological. Do not invent a prettier
 probability law than the evidence supports.
 
-Begin with Slice 0.
+Begin with the dependency analysis (step 0).

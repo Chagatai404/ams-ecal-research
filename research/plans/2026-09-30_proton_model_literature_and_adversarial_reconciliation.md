@@ -1,4 +1,4 @@
-# Block 6B — literature check, adversarial pass and validity of decisions D1–D6
+# Proton model — literature check, adversarial pass and validity of decisions the six proton-model decisions
 
 _Written 2026-09-30 by Claude as primary worker. Agent report: the researcher decides what is
 accepted. Evidence labels follow `RESEARCH_PROTOCOL.md` §3 and §4; every statement about the
@@ -47,7 +47,7 @@ checked. *Not verified*: taken from a scout only.
 
 **Reading.** The observables on which our crossing branch failed — sparsity / hit multiplicity,
 width and halo, layer correlations — are the same ones the field reports as failure points. That
-supports D5 and D6 as repairs aimed at the right structure. It does not show that a repaired
+supports the burst latent and the lateral spill as repairs aimed at the right structure. It does not show that a repaired
 phenomenological model will pass.
 
 ### 2.2 Hadronic showers in thin calorimeters
@@ -131,9 +131,9 @@ Both are true and already recorded. Triage of its objections:
 | A9 layer-1 energy is unstable under a 1 mm track offset | not tested | the threshold (30%) is invented; low priority |
 | A10 upstream scatter may be correlated between layers | **tested, right** | see §3.3 |
 | A11 information lost in binning (< 0.60 threshold) | not tested | invented threshold; the readout representation is fixed by the detector |
-| A13 "FATAL: the quanta mechanism is falsified" | rejected | the quanta mechanism is **not implemented anywhere**. The crossing failure came from putting energy only in crossed fibres; D6 addresses that. The report itself later lists no fatal item. |
-| M1 the "gate" test: `D_box` at 9/18/36/72/166 mm on held-out events; "flat `D_box` voids the claim"; fractional-Brownian-motion control | **rejected as designed, accepted in spirit** | it mixes the longitudinal (166 mm) and lateral axes, treats a flat `D_box` as meaning something it does not, uses fBm where a multiplicative cascade is the right positive control, uses ad-hoc thresholds (RMSE < 0.2, ±0.15), and uses the held-out events. Its core point stands: **estimator validity on the actual grid has to be shown before any multiscale statement** → D8. |
-| "run the multiscale test before Slices 3–5" | rejected | the interacting model is needed for conventional-observable fidelity and for an e/p population regardless of the multiscale outcome |
+| A13 "FATAL: the quanta mechanism is falsified" | rejected | the quanta mechanism is **not implemented anywhere**. The crossing failure came from putting energy only in crossed fibres; the lateral spill addresses that. The report itself later lists no fatal item. |
+| M1 the "gate" test: `D_box` at 9/18/36/72/166 mm on held-out events; "flat `D_box` voids the claim"; fractional-Brownian-motion control | **rejected as designed, accepted in spirit** | it mixes the longitudinal (166 mm) and lateral axes, treats a flat `D_box` as meaning something it does not, uses fBm where a multiplicative cascade is the right positive control, uses ad-hoc thresholds (RMSE < 0.2, ±0.15), and uses the held-out events. Its core point stands: **estimator validity on the actual grid has to be shown before any multiscale statement** → the estimator-validity gate. |
+| "run the multiscale test before interacting-event model (steps 3–5)" | rejected | the interacting model is needed for conventional-observable fidelity and for an e/p population regardless of the multiscale outcome |
 
 ### 3.1 Amplitude versus depth (calibration events)
 
@@ -169,33 +169,33 @@ latent that the amplitude does not explain.
 Median Pearson correlation of fibre energy between layers 0.02 / 0.06 / 0.12 / 0.16 at 10 / 20 /
 50 / 100 GeV; the 90th percentile of the pair correlations is 0.06 / 0.19 / 0.37 / 0.48. Median
 Spearman is at most 0.09. The coupling is a tail effect that grows with energy — the signature of
-the bursts D5 targets.
+the bursts the burst latent targets.
 
 ---
 
-## 4. Validity of decisions D1–D6
+## 4. Validity of decisions the six proton-model decisions
 
 "Valid" means: consistent with the literature that could be checked, not contradicted by the
 adversarial checks, and safe to build on. "Amended" lists what the evidence says the decision must
-additionally contain. None is invalid. Two amendments change the accepted wording of D1, so they
+additionally contain. None is invalid. Two amendments change the accepted wording of the interacting-proton factorization, so they
 are for the researcher to confirm.
 
 | decision | verdict | evidence for | evidence against / limits | amendments |
 |---|---|---|---|---|
-| **D1** amplitude × universal profile + upstream albedo + one lateral scale, hits emergent | **VALID WITH THREE AMENDMENTS** | independence of A from depth where truncation is absent (|ρ| ≤ 0.07); pooled λ consistent (p = 0.61); PC1 79–91%; core-plus-halo lateral shape matches CALICE decomposition; two-population picture matches the thin Si-W ECAL study; visible-energy fluctuation width plausible against invisible-energy literature | no external data in this thin regime; Geant4 with one physics list; QGSP_BERT transition zone (≈ 9.5–25 GeV) overlaps the 10 and 20 GeV anchors | **(a)** a back-edge factor on the amplitude window (−13% for the last depth tercile at 20 and 100 GeV); **(b)** a correlated log-normal residual around `A·g(k)` (46–80% per layer, lag-1 ≈ +0.3–0.4); **(c)** an albedo-strength latent shared by the upstream layers (ρ ≈ +0.4 given A), not independent per-layer noise |
-| **D2** shared interaction draw only; `deposition` as the common e/p representation | **VALID** | measured fibre–deposit correlation for crossing protons 0.45–0.52 (event total), 0.15–0.24 (layer) | 6A `sampling` regime is not in fibre units, so the readout-level e/p comparison still needs an electron scale | none |
-| **D4** pre-registered validation contract | **VALID BUT INCOMPLETE** | rows chosen match the field's failure points | lacks the field's omnibus and correlation metrics, and any scale-dependent row | **D7** below |
-| **D5** event-level burst latent (crossing) | **VALID, STRENGTHENED** | event-total variance 1.4–5.5× the layer sum; layer coupling grows with energy (§3.4); layer correlations are a reported failure point of generators | a single-latent burst may not capture 10 GeV single-layer bursts and 100 GeV cascades together | none; validate the two burst types separately |
-| **D6** per-layer lateral spill | **VALID** | 17–24% of fibre energy outside crossed fibres; hits 17–22 vs ≤ 19; sparsity and widths are reported failure points | needs the same core-plus-halo kernel as D1's lateral model, calibrated once | none |
+| **Interacting-proton factorization** amplitude × universal profile + upstream albedo + one lateral scale, hits emergent | **VALID WITH THREE AMENDMENTS** | independence of A from depth where truncation is absent (|ρ| ≤ 0.07); pooled λ consistent (p = 0.61); PC1 79–91%; core-plus-halo lateral shape matches CALICE decomposition; two-population picture matches the thin Si-W ECAL study; visible-energy fluctuation width plausible against invisible-energy literature | no external data in this thin regime; Geant4 with one physics list; QGSP_BERT transition zone (≈ 9.5–25 GeV) overlaps the 10 and 20 GeV anchors | **(a)** a back-edge factor on the amplitude window (−13% for the last depth tercile at 20 and 100 GeV); **(b)** a correlated log-normal residual around `A·g(k)` (46–80% per layer, lag-1 ≈ +0.3–0.4); **(c)** an albedo-strength latent shared by the upstream layers (ρ ≈ +0.4 given A), not independent per-layer noise |
+| **Shared interaction draw** shared interaction draw only; `deposition` as the common e/p representation | **VALID** | measured fibre–deposit correlation for crossing protons 0.45–0.52 (event total), 0.15–0.24 (layer) | EM event generator `sampling` regime is not in fibre units, so the readout-level e/p comparison still needs an electron scale | none |
+| **Validation contract** pre-registered validation contract | **VALID BUT INCOMPLETE** | rows chosen match the field's failure points | lacks the field's omnibus and correlation metrics, and any scale-dependent row | **the added validation checks** below |
+| **Burst latent** event-level burst latent (crossing) | **VALID, STRENGTHENED** | event-total variance 1.4–5.5× the layer sum; layer coupling grows with energy (§3.4); layer correlations are a reported failure point of generators | a single-latent burst may not capture 10 GeV single-layer bursts and 100 GeV cascades together | none; validate the two burst types separately |
+| **Lateral spill** per-layer lateral spill | **VALID** | 17–24% of fibre energy outside crossed fibres; hits 17–22 vs ≤ 19; sparsity and widths are reported failure points | needs the same core-plus-halo kernel as the interacting-proton factorization's lateral model, calibrated once | none |
 
-**Ordering.** The researcher's sequence is unchanged. D1's amendments enter at step 6 (interacting
-model); D7 must be registered before step 9 (the fresh test set) is generated.
+**Ordering.** The researcher's sequence is unchanged. Interacting-proton factorization's amendments enter at step 6 (interacting
+model); the added validation checks must be registered before step 9 (the fresh test set) is generated.
 
 ---
 
 ## 5. Two new proposals (both accepted by the researcher on 2026-09-30, see §7)
 
-**D7 — amend the validation contract (§8 of the Slice 0 record) before the fresh test set exists.**
+**Added validation checks — amend the validation contract (§8 of the dependency analysis (step 0) record) before the fresh test set exists.**
 Additions only; nothing is removed.
 1. A **layer-to-layer correlation matrix** row (Pearson, and a tail-sensitive statistic), as in
    CaloChallenge Sec. 8.2. Gated.
@@ -207,10 +207,10 @@ Additions only; nothing is removed.
 4. An **ungated multiscale panel**: coarse-graining moments `Σ p^q` (q > 0 only, q ∈ {0.5, 1, 2, 3})
    at lateral aggregation of 1, 2, 4, 8 cells and at layer-pair aggregation, FastMC versus Geant4.
    Reported as a *measurement of difference*, not a pass/fail, because FastMC is a smooth control
-   and its difference from Geant4 is a finding for RQ-001. Its interpretation depends on D8.
+   and its difference from Geant4 is a finding for RQ-001. Its interpretation depends on the estimator-validity gate.
 
-**D8 — estimator-validity study on the actual readout grid, before any multiscale claim.** This is
-step 3 of the multifractal direction in `CLAUDE.md` ("validate estimators on controlled cases").
+**Estimator-validity gate — estimator-validity study on the actual readout grid, before any multiscale claim.** This is
+Step 3 of the multifractal direction in `CLAUDE.md` ("validate estimators on controlled cases").
 On synthetic data only (plus calibration events for the smooth null): multiplicative cascades with
 known `τ(q)` projected onto the 18 × 72 alternating-view grid as positive controls; a smooth
 kernel with Poisson quanta and a within-layer cell-shuffle as negative controls; bias and variance
@@ -218,7 +218,7 @@ of the moment slopes against the scale window, for q > 0. Output: the usable sca
 whether *any* difference between cascade-like and smooth patterns is detectable at this
 resolution. If it is not, no multiscale statement about FastMC or about e/p is meaningful and RQ-001's
 multiscale arm needs a finer readout (fibre-level Geant4) than the AMS grid. About one to two days.
-It gates multiscale **claims**, not Slices 3–5.
+It gates multiscale **claims**, not interacting-event model (steps 3–5).
 
 ---
 
@@ -229,7 +229,7 @@ It gates multiscale **claims**, not Slices 3–5.
 - Any external constraint on albedo, non-interacting fractions and visible-energy distributions for a
   lead / fibre calorimeter of about 0.6 lambda_I.
 - Whether the amplitude / profile universality survives a different Geant4 physics list; the
-  QGSP_BERT slice (Slice 7) is the test, and its 10 and 20 GeV points sit in a model-transition zone.
+  QGSP_BERT slice (alternative physics-list calibration (step 7)) is the test, and its 10 and 20 GeV points sit in a model-transition zone.
 - Whether the adversarial reviewer's remaining objections (A9, A11, A12) matter; they are cheap and
   can be run when convenient.
 
@@ -242,8 +242,8 @@ inherited citations from now on.
 ## 7. Researcher's decision, 2026-09-30
 
 The researcher answered §4 and §5 in chat. The decision of record is in `research/STATE.md`
-(Block 6B, "Researcher decisions on D1-D8"). Summary: D1 accepted with amendments (b) modified;
-D2, D5, D6 accepted; D4 and D7 accepted together; D8 accepted and does not block Slices 3-5.
+(proton model, "Researcher decisions on the eight proton-model decisions"). Summary: the interacting-proton factorization accepted with amendments (b) modified;
+shared interaction draw, burst latent and lateral spill accepted; the validation contract and the added validation checks accepted together; the estimator-validity gate accepted and does not block interacting-event model (steps 3-5).
 
 **Citation check on the decision text (agent, abstracts read on 2026-09-30).** The decision text
 cited four papers. Three match what it says. One claim was attached to the wrong paper and is
@@ -260,5 +260,6 @@ So the supported statement is: model-versus-data disagreement is *up to about 20
 and transverse energy distributions the most sensitive; it is not shown to be "substantial" beyond
 that. Arguably 1411.7215 matters more to this project than 1602.08578: it is a thin silicon-tungsten
 ECAL tested against Geant4 hadronic models, though with pions at 2-10 GeV (below our 10-100 GeV
-range). It was **not in the source set of this pass**; only its abstract has been read; it is not yet
-in the paper library. Evidence class for using it: *transferred approximation*.
+range). It was **not in the source set of this pass**; only its abstract has been read (the first
+PDF page confirms title and identifier); it was added to the paper library on 2026-09-30 as
+`FastMC/1411.7215.pdf`. Evidence class for using it: *transferred approximation*.

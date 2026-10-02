@@ -1,4 +1,4 @@
-"""Block 6B proton generator: the interaction draw and the crossing branch."""
+"""Proton model generator: the interaction draw and the crossing branch."""
 
 from dataclasses import replace
 from math import exp, log1p
@@ -306,7 +306,7 @@ def test_generate_event_returns_crossing_events_and_refuses_interacting_ones(mod
         random_seed=crossing,
     )
     assert event == generate(model, crossing)
-    with pytest.raises(NotImplementedError, match="decision D1"):
+    with pytest.raises(NotImplementedError, match="interacting-proton factorization"):
         model.generate_event(
             event_id="b", primary_energy_mev=ENERGY_MEV, track=track(), random_seed=interacting
         )

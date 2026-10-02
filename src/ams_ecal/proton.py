@@ -1,4 +1,4 @@
-"""Geant4-calibrated proton phenomenology for the AMS ECAL FastMC (Block 6B).
+"""Geant4-calibrated proton phenomenology for the AMS ECAL FastMC.
 
 WORDING. This is a Geant4-DERIVED PHENOMENOLOGY of a proton in the thin AMS-like
 ECAL (17 X0, ~0.6 lambda_I): a calibration of Geant4 11.4.1 in this project's
@@ -6,7 +6,7 @@ material model over 10-100 GeV at normal incidence. It is not a true proton
 shower model, not the exact AMS proton response, and its effective interaction
 length is not a physical interaction length of AMS.
 
-WHAT IS IMPLEMENTED (Slices 1-2 of the plan)
+WHAT IS IMPLEMENTED (interaction draw and crossing branch (steps 1-2) of the plan)
 
 * THE INTERACTION DRAW. One uniform variate gives ``S_int ~ Exponential(lambda)``
   by inversion. ``S_int >= L`` (the path length through the ECAL) means the
@@ -18,14 +18,14 @@ WHAT IS IMPLEMENTED (Slices 1-2 of the plan)
   draw from the calibrated quantile function conditioned on that chord and on
   the primary energy, and is spread over cells in proportion to chord.
 
-WHAT IS NOT YET IMPLEMENTED: interacting events (Slices 3-5). They wait for the
+WHAT IS NOT YET IMPLEMENTED: interacting events (interacting-event model (steps 3-5)). They wait for the
 researcher's decision on the interacting-event factorization
-(``research/plans/2026-09-29_block6b_slice0_dependency_analysis.md``, D1).
+(``research/plans/2026-09-29_proton_dependency_analysis.md``, the interacting-proton factorization).
 ``generate_event`` therefore raises ``NotImplementedError`` for an interacting
 draw rather than returning something wrong; ``generate_crossing_event`` forces
 the crossing branch and is what the crossing validation uses.
 
-KNOWN LIMITATIONS OF THE CROSSING BRANCH (Slice 0 / Slice 2 findings)
+KNOWN LIMITATIONS OF THE CROSSING BRANCH (dependency analysis (step 0) / crossing branch (step 2) findings)
 
 * Layers are drawn INDEPENDENTLY. The real event total has 1.5x (10 GeV) to
   5.5x (100 GeV) the summed layer variance, because rare bursts (a hard
@@ -83,7 +83,7 @@ class InteractionDraw:
 def spawn_event_seeds(base_seed: int, count: int) -> tuple[int, ...]:
     """Derive ``count`` independent per-event seeds from one base seed.
 
-    The same construction as Block 6A: ``SeedSequence`` spawning gives
+    The same construction as the EM event generator: ``SeedSequence`` spawning gives
     statistically independent streams, unlike ``base + index``.
     """
 
@@ -97,7 +97,7 @@ def spawn_event_seeds(base_seed: int, count: int) -> tuple[int, ...]:
 
 @dataclass(frozen=True, slots=True)
 class ProtonShowerModel:
-    """Block 6B proton generator (crossing branch)."""
+    """Proton model generator (crossing branch)."""
 
     config: ProtonConfig
     calibration: ProtonCalibration
@@ -274,8 +274,8 @@ class ProtonShowerModel:
         if draw.interacts:
             raise NotImplementedError(
                 f"seed {random_seed} draws an interaction at {draw.depth_mm:.1f} mm; interacting "
-                "events (Block 6B Slices 3-5) wait for the researcher's decision D1 in "
-                "research/plans/2026-09-29_block6b_slice0_dependency_analysis.md"
+                "events (proton model steps 3-5) wait for the researcher's decision on the interacting-proton factorization in "
+                "research/plans/2026-09-29_proton_dependency_analysis.md"
             )
         return self.generate_crossing_event(
             event_id=event_id,

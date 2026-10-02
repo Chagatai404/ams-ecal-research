@@ -1,4 +1,4 @@
-"""Block 6B Slice 0 dependency diagnostics, on synthetic data with known answers."""
+"""Proton model the dependency analysis (step 0) dependency diagnostics, on synthetic data with known answers."""
 
 import json
 

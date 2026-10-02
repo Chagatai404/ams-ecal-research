@@ -1,0 +1,38 @@
+# Geant4 ELECTRON SAMPLE for the first real e/p multiscale comparison
+# (weekend plan, Track C step 2; launched 2026-10-02 at the researcher's "go").
+#
+# Matched to the proton pilot baseline: same AMS-only geometry, FTFP_BERT, production
+# cut, entry spot and energies. 1000 events per energy. Seeds are DISJOINT from the
+# proton pilot (20260929..20264929) and the timing probe (20261003..20261023).
+# Raw batches are git-ignored; regenerate from this committed config. Geant4 is a
+# model, not detector truth, and this is one physics list.
+schema_version: 2
+
+particle: e-
+
+energies_gev: [10.0, 20.0, 50.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  baseline:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 1000
+    base_seed: 20270000
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_electron_sample

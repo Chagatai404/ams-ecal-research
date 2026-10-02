@@ -1,9 +1,9 @@
-# Block 6B Slice 0 — dependency analysis and proposed factorization
+# Proton model the dependency analysis (step 0) — dependency analysis and proposed factorization
 
 _Written 2026-09-29 by Claude as primary worker. Evidence level E3 (controlled simulation): every
 number is Geant4 11.4.1 in this project's material model, not detector truth._
 
-> **Status, 2026-09-30.** The researcher accepted D1, D2, D4, D5 and D6, subject to one condition:
+> **Status, 2026-09-30.** The researcher accepted interacting-proton factorization, shared interaction draw, validation contract and burst latent and the lateral spill, subject to one condition:
 > check the literature on whether the model makes sense, especially studies of preserving spatial
 > structure and the fractal/multifractal connection. The acceptance and the repo sequence are
 > recorded in `research/STATE.md`. Sections 3–9 were written as proposals and are left as
@@ -11,7 +11,7 @@ number is Geant4 11.4.1 in this project's material model, not detector truth._
 
 Plan sections implemented: §9 (dependency analysis), §25.1 (production cut), §25.2 (material),
 §31 (calibration / validation split), §32–33 (validation contract, written here *before* any
-generator exists). Slice 0 forbids implementing the generator until this is clear.
+generator exists). Dependency analysis (step 0) forbids implementing the generator until this is clear.
 
 Reproduce every number below:
 
@@ -28,7 +28,7 @@ tests `tests/test_proton_{calibration,dependency,checks}.py` (32 tests). Variant
 
 ## 1. Integrity of the analysis
 
-**Split (fixed before any 6B choice).** Within every batch, an event is *validation* when
+**Split (fixed before any proton model choice).** Within every batch, an event is *validation* when
 `event_index % 4 == 3`, otherwise *calibration*. Deterministic, interleaved, identical for every
 sample; a `fixed_entry` event shares the fate of its baseline twin (same seed). Calibration is
 3000 events/energy (1408 / 1449 / 1453 / 1432 interacting at 10 / 20 / 50 / 100 GeV); validation
@@ -178,7 +178,7 @@ lateral scale** carries 67–75% of the variance of the log layer RMS. Depth `D`
 
 ---
 
-## 3. Proposed factorization (replaces the plan's §10 sketch; **for decision D1**)
+## 3. Proposed factorization (replaces the plan's §10 sketch; **for decision the interacting-proton factorization**)
 
 ```text
 E, TrackState (normal incidence in v1; API keeps angle and path length)
@@ -209,7 +209,7 @@ E, TrackState (normal incidence in v1; API keeps angle and path length)
 
 ### What this changes relative to the plan's literal graph
 
-| plan §10 / §14 / §17 | Slice 0 evidence | proposal |
+| plan §10 / §14 / §17 | Dependency analysis (step 0) evidence | proposal |
 |---|---|---|
 | `E_vis ~ P(E_vis \| E, R)` as a 2-D conditional table | `A` is independent of `D`; `E_vis(R)` follows from profile truncation | draw `A` once (1-D pooled shape × smooth scale); `E_vis(E, R)` **emerges** |
 | "MIP track before `S_int`" (§12) | 4–9% of the median visible energy sits in six upstream layers as albedo, correlated with `A` | add an explicit upstream component |
@@ -296,28 +296,28 @@ check says nothing about *fibre-level* structure, which remains an RQ-001 questi
 
 ---
 
-## 7. Two representations for protons, and how they pair with Block 6A (**proposal, decision D2**)
+## 7. Two representations for protons, and how they pair with the EM event generator (**proposal, decision the shared interaction draw**)
 
 The researcher's amendment requires protons in **true deposition** and **readout (fibre)**
-representations, like 6A electrons. Slice 0 findings:
+representations, like EM-generator electrons. Dependency analysis (step 0) findings:
 
 1. The two Geant4 energies are strongly rank-correlated given `R` (0.94, 0.96, 0.98, 0.99) but
    not identically: their ratio varies by **component** (crossing ≈ 0.07, shower ≈ 0.09,
    albedo ≈ 0.125) and with energy. So the two representations are *not* related by one constant.
 2. **Proposal.** One set of latent draws per seed (S_int, `A`'s quantile, the lateral scale, …)
-   drives both, so **one seed names a corresponding pair**, exactly the 6A property
+   drives both, so **one seed names a corresponding pair**, exactly the EM event generator property
    (`as_representation("deposition")` ≙ `true_deposition()`). Each representation has its own
    calibrated tables; the pairing is comonotone in the shared quantiles, exact in each
    marginal, approximate in the joint (rank correlation 0.94–0.99 ⇒ documented limitation).
-3. **Pairing with 6A regimes.** Both 6A regimes emit energy in *deposited-energy units*
+3. **Pairing with EM-generator regimes.** Both EM-generator regimes emit energy in *deposited-energy units*
    (fractions of the primary energy, ≈ 94% contained at 100 GeV); the `sampling` regime moves the
    longitudinal **shape** to signal level but not the **energy scale**. Therefore:
    - `proton deposition` ↔ `electron deposition`: same physical quantity; directly comparable now.
-   - `proton readout` ↔ `electron sampling`: **not** comparable in energy scale — 6A `sampling`
+   - `proton readout` ↔ `electron sampling`: **not** comparable in energy scale — EM event generator `sampling`
      is not fibre MeV. A readout-level e/p comparison needs an electron fibre-energy scale from
-     Block 7 (sampling fraction) or a small Geant4 electron calibration through the same backend
-     (which would also test Block 6A itself). **Until then, the common e/p representation is
-     `deposition`.** Not resolved by 6B; flagged for the researcher.
+     Detector response (sampling fraction) or a small Geant4 electron calibration through the same backend
+     (which would also test the EM event generator itself). **Until then, the common e/p representation is
+     `deposition`.** Not resolved by proton model; flagged for the researcher.
 
 ---
 
@@ -344,7 +344,7 @@ calibration sample is called "at the floor".
 
 Sanity checks before any comparison: seeds reproduce events bit-for-bit; energies non-negative
 and finite; energy accounting closes; ECALEvent valid; no held-out event was read while fitting
-(asserted in the builder). Seed policy: `SeedSequence.spawn`, as in Block 6A. Reproduction
+(asserted in the builder). Seed policy: `SeedSequence.spawn`, as in the EM event generator. Reproduction
 command and commit: to be recorded with the results.
 
 **Failure criterion (plan §35).** If the tables-plus-kernel model cannot reproduce the held-out
@@ -357,18 +357,18 @@ fails, why, and the minimal additional variable that would fix it.
 
 | # | decision | recommendation | triage |
 |---|---|---|---|
-| **D1** | Adopt the §3 factorization (amplitude × universal profile + upstream albedo + lateral scale) in place of the plan's `P(E_vis \| E, R)` table plus `R`-conditioned templates? | **Yes** — it follows from the dependency analysis §9 delegated, has fewer tables, and predicts the truncation sign flip | A: shapes Slices 1, 3–5 |
-| **D2** | Coupling of the two representations (§7) and using `deposition` as the e/p common representation until an electron fibre-energy scale exists | Accept as proposed | B |
-| **D3** | Order of the open checks: production cut (done, negligible), material (done, B), backsplash and incidence angle | After 6B v1; API keeps angle / path length | C |
-| **D4** | Validation contract §8 | Accept before Slice 6 | B |
+| **Interacting-proton factorization** | Adopt the §3 factorization (amplitude × universal profile + upstream albedo + lateral scale) in place of the plan's `P(E_vis \| E, R)` table plus `R`-conditioned templates? | **Yes** — it follows from the dependency analysis §9 delegated, has fewer tables, and predicts the truncation sign flip | A: shapes steps 1, 3–5 |
+| **Shared interaction draw** | Coupling of the two representations (§7) and using `deposition` as the e/p common representation until an electron fibre-energy scale exists | Accept as proposed | B |
+| **Open-check order** | Order of the open checks: production cut (done, negligible), material (done, B), backsplash and incidence angle | After proton model v1; API keeps angle / path length | C |
+| **Validation contract** | Validation contract §8 | Accept before the final validation (step 6) | B |
 
-Slices 1–2 that do **not** depend on D1 — the `S_int` draw, the crossing-track table with exact
+interaction draw and crossing branch (steps 1–2) that do **not** depend on the interacting-proton factorization — the `S_int` draw, the crossing-track table with exact
 chords, `lambda_eff` provenance, the calibration artifact format and the proton configuration —
 can proceed without waiting.
 
-## 10. Not examined in Slice 0
+## 10. Not examined in the dependency analysis (step 0)
 
-Incidence angle; QGSP_BERT dependency structure (Slice 7); energies between anchors; backsplash
+Incidence angle; QGSP_BERT dependency structure (alternative physics-list calibration (step 7)); energies between anchors; backsplash
 (extended geometry only); fibre-level structure; whether the amplitude scale is `E^0.54` outside
 10–100 GeV (not claimed).
 
@@ -379,7 +379,7 @@ clean of tracked changes, configuration hashes in each `metadata.json`.
 
 ---
 
-## 11. Addendum, later the same day — what Slices 1–2 found while building the crossing branch
+## 11. Addendum, later the same day — what interaction draw and crossing branch (steps 1–2) found while building the crossing branch
 
 Written after the crossing branch was implemented and **before** its held-out validation was read.
 Three findings from calibration events change or qualify §3 and §7.
@@ -389,7 +389,7 @@ Three findings from calibration events change or qualify §3 and §7.
 GeV, mean per-layer 0.15–0.24). The §7 proposal of a shared comonotone quantile therefore does
 **not** hold for crossing tracks (it is fine for interacting events, 0.94–0.99). Implemented instead:
 one seed shares the *interaction draw*; the layer fluctuations of the two representations are
-drawn independently (real correlation 0.2, modelled 0). D2 is amended accordingly: **the
+drawn independently (real correlation 0.2, modelled 0). Shared interaction draw is amended accordingly: **the
 deposition and readout representations of one seed are corresponding only in interaction status
 and depth, not in their crossing-layer fluctuations.**
 
@@ -401,7 +401,7 @@ over ≥ 12 layers). The top 10% of crossing events by total carry on average 1.
 (100 GeV) layers above 3× the median layer energy, against 0.2–0.3 in the other 90%. The plan's
 §35 asks for the minimal additional variable when a table cannot reproduce a joint distribution:
 here it is **one event-level "burst" latent** (probability, onset layer, energy, extent). It is
-**not** added: the bulk model is validated first, and the burst is proposed as decision **D5**
+**not** added: the bulk model is validated first, and the burst is proposed as decision **the burst latent**
 below rather than grown silently.
 
 **(c) Layer energy depends on the exact chord path**, through a monotone rise of the median
@@ -428,7 +428,7 @@ Whole suite: 442 passing, ruff clean. Calibration artifact
 records `tracked_changes: true` because it was built with uncommitted edits; **rebuild it from a
 clean commit before relying on it** (`uv run python -m ams_ecal.proton_calibration build`).
 
-### D5 (new, for the researcher)
+### Burst latent (new, for the researcher)
 
 Add the event-level burst latent to the crossing branch if the held-out validation shows the
 event-total tail failing, as §11(b) predicts. Recommendation: yes if and only if the validation
@@ -481,13 +481,13 @@ calibration-side analysis above; a confirmed prediction is not a pass.
 
 **Minimal additional variables (plan §35: report, do not grow silently).**
 
-- *D5 — an event-level burst latent* (probability, onset layer, energy, downstream extent) repairs
+- *Burst latent — an event-level burst latent* (probability, onset layer, energy, downstream extent) repairs
   items 1 and 2 and does not touch the rows that pass.
-- *D6 — a per-layer lateral spill*: a small fraction of a layer's energy placed at cell offsets
-  drawn from an empirical kernel (core plus halo, Slice 0 F6). It repairs item 3 and is the same
+- *Lateral spill — a per-layer lateral spill*: a small fraction of a layer's energy placed at cell offsets
+  drawn from an empirical kernel (core plus halo, the dependency analysis (step 0) F6). It repairs item 3 and is the same
   kernel the interacting events need.
 
-The condition I attached to D5 — "yes if the validation flags the tail" — is met.
+The condition I attached to the burst latent — "yes if the validation flags the tail" — is met.
 
 **Integrity note.** The direction of both fixes was identified from calibration events before this
 run (the variance ratios, the burst structure, the 17–24% of fibre energy outside the crossed
