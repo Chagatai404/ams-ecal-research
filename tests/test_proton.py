@@ -19,7 +19,7 @@ from ams_ecal.tracking import TrackState
 ROOT = Path(__file__).parents[1]
 GEOMETRY = ROOT / "configs" / "geometry.yaml"
 CONFIG = ROOT / "configs" / "fastmc_proton.yaml"
-ARTIFACT = ROOT / "data" / "calibration" / "proton_6b" / "ftfp_bert_v1"
+ARTIFACT = ROOT / "data" / "calibration" / "proton_model" / "ftfp_bert_v2"
 
 LENGTH_MM = 255.0
 DEPTH_MM = 166.5

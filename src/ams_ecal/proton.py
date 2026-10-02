@@ -25,21 +25,25 @@ researcher's decision on the interacting-event factorization
 draw rather than returning something wrong; ``generate_crossing_event`` forces
 the crossing branch and is what the crossing validation uses.
 
-KNOWN LIMITATIONS OF THE CROSSING BRANCH (dependency analysis (step 0) / crossing branch (step 2) findings)
+TWO CROSSING PATHS, chosen by the calibration artifact.
 
-* Layers are drawn INDEPENDENTLY. The real event total has 1.5x (10 GeV) to
-  5.5x (100 GeV) the summed layer variance, because rare bursts (a hard
-  delta-ray, a small cascade) span several layers. The event-total tail is
-  therefore under-represented; the minimal additional variable is an
-  event-level burst.
-* The two representations (``readout`` and ``deposition``) draw their layer
-  fluctuations independently from the same seed: the real per-layer rank
-  correlation of a crossing proton is only 0.15-0.24. What one seed shares
-  between them is the interaction draw.
+* Schema-2 artifact with a crossing STRUCTURE (``ams_ecal.proton_structure``): a burst
+  latent (onset, amplitude, downstream extent, fibre share), a lateral spill that splits a
+  layer's energy over cells off the track, and a coupling of the bulk layer draws. One seed
+  gives the SAME burst in both representations. Model version ``2-crossing-structure``.
+  Calibrated and tested; NOT yet validated (the repaired branch is validated once, on the
+  sealed Geant4 set).
+* Schema-1 artifact (the per-layer table alone): layers are drawn INDEPENDENTLY and every
+  layer's energy goes to the crossed cells. This is the branch whose first validation
+  failed (event total, hit cells, maximum cell, containment): the real event total has 1.5x
+  (10 GeV) to 5.5x (100 GeV) the summed layer variance because rare bursts span several
+  layers. Kept so that the failed record stays reproducible. Model version ``1-slice2``.
 
-REPRODUCIBILITY. Each event builds its own generator from its seed. Draw order:
-one variate for the interaction, then 18 for the ``readout`` layers, then 18
-for the ``deposition`` layers, whichever representation is generated.
+REPRODUCIBILITY. Each event builds its own generator from its seed. Draw order after the
+interaction variate: schema 1 draws 18 uniforms for the ``readout`` layers, then 18 for the
+``deposition`` layers; schema 2 draws the burst uniforms and jitter normals, the bulk normals
+(``readout`` then ``deposition``) and the spill uniforms (``readout`` then ``deposition``).
+Both representations' draws are made whichever representation is generated.
 """
 
 from dataclasses import dataclass, replace
@@ -59,10 +63,22 @@ from ams_ecal.proton_config import (
     ProtonRepresentation,
     load_proton_config,
 )
+from ams_ecal.proton_structure import (
+    BURST_UNIFORMS,
+    N_LAYERS,
+    REPRESENTATIONS,
+    SPILL_DRAWS,
+    coupled_uniforms,
+    reference_for,
+    sample_bulk,
+    sample_bursts,
+    sample_spill,
+)
 from ams_ecal.tracking import TrackState
 
 MODEL_NAME = "block6b-proton"
-MODEL_VERSION = "1-slice2"  # crossing branch only
+MODEL_VERSION = "1-slice2"  # crossing branch, layers drawn independently (schema 1 artifact)
+MODEL_VERSION_STRUCTURED = "2-crossing-structure"  # crossing branch with burst, spill, bulk coupling
 
 PROTON_CONFIG = PROJECT_ROOT / "configs" / "fastmc_proton.yaml"
 GEOMETRY_CONFIG = PROJECT_ROOT / "configs" / "geometry.yaml"
@@ -209,7 +225,61 @@ class ProtonShowerModel:
         )
         return energies, crossed
 
-    def _provenance(self, random_seed: int, status: str) -> EventProvenance:
+    @property
+    def model_version(self) -> str:
+        return MODEL_VERSION if self.calibration.structure is None else MODEL_VERSION_STRUCTURED
+
+    def _structured_crossing_grid(
+        self, primary_energy_mev: float, track: TrackState, rng: np.random.Generator
+    ) -> tuple[np.ndarray, dict[str, str]]:
+        """Crossing event with the burst latent, the bulk coupling and the lateral spill.
+
+        Draw order, fixed whichever representation is generated (after the interaction
+        variate): burst uniforms, burst jitter normals, bulk normals for ``readout`` then
+        ``deposition``, spill uniforms for ``readout`` then ``deposition``.
+        """
+
+        structure = self.calibration.structure
+        if structure is None:
+            raise ValueError("this calibration carries no crossing structure")
+        table = self.calibration.crossing
+        crossed = self.crossing.cross(track)
+        chords = crossed.layer_path_mm(N_LAYERS)[None, :]
+        bins = table.chord_bin(chords)
+        energy_gev = np.array([primary_energy_mev / 1000.0])
+
+        burst_uniforms = rng.random((1, BURST_UNIFORMS))
+        burst_normals = rng.standard_normal((1, N_LAYERS))
+        bulk_normals = {name: rng.standard_normal((1, N_LAYERS)) for name in REPRESENTATIONS}
+        spill_uniforms = {name: rng.random((1, N_LAYERS, SPILL_DRAWS)) for name in REPRESENTATIONS}
+
+        name = self.representation
+        burst = sample_bursts(structure.burst, energy_gev, burst_uniforms, burst_normals)
+        bulk = sample_bulk(
+            table.quantiles_mev[name],
+            table.levels,
+            table.energies_gev,
+            bins,
+            energy_gev,
+            coupled_uniforms(structure.coupling_factor(name), bulk_normals[name]),
+        )
+        total = bulk + burst.excess_mev[name]
+        ratio = total / reference_for(
+            structure.reference_median_mev[name], table.energies_gev, energy_gev, bins
+        )
+        spill = sample_spill(structure.spill[name], ratio, spill_uniforms[name])
+        grid = self.crossing.place_layer_energies(
+            track, crossed, total[0], spill.fraction[0], spill.offset[0], spill.weight[0], spill.cells[0]
+        )
+        latent = {
+            "burst_onset_layer": str(int(burst.onset[0])) if burst.has_burst[0] else "none",
+            "spill_layers": str(int((spill.cells[0] > 0).sum())),
+        }
+        return grid, latent
+
+    def _provenance(
+        self, random_seed: int, status: str, latent: dict[str, str] | None = None
+    ) -> EventProvenance:
         details = {
             "calibration_content_sha256": self.calibration.content_sha256,
             "calibration_schema_version": str(self.calibration.manifest["schema_version"]),
@@ -218,13 +288,14 @@ class ProtonShowerModel:
             "geant4_version": str(self.calibration.manifest["source"]["geant4_version"]),
             "interaction_status": status,
             "model": MODEL_NAME,
-            "model_version": MODEL_VERSION,
+            "model_version": self.model_version,
             "physics_list": self.calibration.physics_list,
             "representation": self.representation,
         }
+        details.update(latent or {})
         return EventProvenance(
             simulation_backend="fastmc",
-            simulation_version=f"{MODEL_NAME}-{MODEL_VERSION}",
+            simulation_version=f"{MODEL_NAME}-{self.model_version}",
             configuration_sha256=self.configuration_sha256,
             random_seed=random_seed,
             model_details=tuple(sorted(details.items())),
@@ -248,8 +319,12 @@ class ProtonShowerModel:
         self._check_request(primary_energy_mev, track)
         rng = np.random.default_rng(random_seed)
         self._draw_interaction(rng, track)  # keeps the draw order fixed
-        layer_energy, crossed = self._crossing_layer_energies(primary_energy_mev, track, rng)
-        grid = self.crossing.spread_layer_energies(track, crossed, layer_energy)
+        latent: dict[str, str] | None = None
+        if self.calibration.structure is None:
+            layer_energy, crossed = self._crossing_layer_energies(primary_energy_mev, track, rng)
+            grid = self.crossing.spread_layer_energies(track, crossed, layer_energy)
+        else:
+            grid, latent = self._structured_crossing_grid(primary_energy_mev, track, rng)
         return ECALEvent(
             event_id=event_id,
             particle_type="proton",
@@ -257,7 +332,7 @@ class ProtonShowerModel:
             track=track,
             geometry=self.geometry,
             cell_energies_mev=tuple(tuple(float(v) for v in row) for row in grid),
-            provenance=self._provenance(random_seed, "crossing"),
+            provenance=self._provenance(random_seed, "crossing", latent),
         )
 
     def generate_event(

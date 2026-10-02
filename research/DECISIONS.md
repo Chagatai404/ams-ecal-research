@@ -9,6 +9,8 @@ Old labels (Block 6B, D5, C2, ...) are translated in `research/NAMES.md`.
 
 | Date | Decision | Status | Details | Record |
 |---|---|---|---|---|
+| 2026-10-02 | Proton steps 4-8 (crossing repair, interacting model, batch path, freeze) started on branch `fastmc-validated-dataset`, reading the chat message "plan and implement the remaining part of the stochastic event generation" as the "approval to start" of item 7 of the weekend plan | accepted 2026-10-02 (researcher: "Yes to all") | `research/plans/2026-10-02_fastmc_validated_dataset_and_detector_response_plan.md` section 7 | |
+| 2026-10-02 | Crossing repair refinements: shared burst latent across readout and deposition; downstream extent as a latent; three-parameter bulk coupling (a third element beyond the two accepted repairs) | accepted 2026-10-02 (researcher: "Yes to all"; Q6, Q7) | same plan, section 5c | |
 | 2026-10-02 | Acceptance rules for the multiscale estimator controls: at most 10% false positives against the baseline's 95% interval; detection power at least 90%; only unsaturated windows count; recovery shown against a 15% reference line; verdict USABLE only if all rules hold | accepted | `research/plans/2026-10-02_multiscale_estimator_validity_preregistration.md` | DEC-013 |
 | 2026-10-02 | Fraction of cascade replicates that must keep the ordering D0 >= D1 >= D2: 0.90 | **interpretation, awaiting the researcher** (the verdict does not depend on it) | same file, section 7 | DEC-013 |
 | 2026-10-02 | The first multiscale check uses orders q = 0, 1, 2 only, and box sides 1, 2, 3, 6, 9, 18 on the 18 x 72 image | accepted | same file | DEC-013 |
@@ -107,3 +109,9 @@ Fixed before the production data was read.
 | Which statistic `T_bar` represents; whether `deposition` should use G&P homogeneous constants | researcher |
 | Snippet-level sources in the estimator pre-registration still to be verified | source-verifier pass |
 | Production-cut sensitivity before any sub-cell multiscale claim | follow-up to the first check |
+| Numbers of the added validation checks (`2026-10-02_added_validation_checks_preregistration.md`) and scikit-learn as a `validation` dependency group | ACCEPTED 2026-10-02 ("Yes to all"); the sealed Geant4 sets may now be generated, after the frozen artifact is rebuilt from a clean commit |
+| First validated dataset = perfect-event (`deposition`) version, detector-level version second | ACCEPTED 2026-10-02 (\"Yes to all\") |
+| Sealed sets: add off-anchor energies 14, 30, 70 GeV; add an electron sealed set; use the electron sample for the EM contract | ACCEPTED 2026-10-02 (\"Yes to all\") |
+| If the EM generator separates from Geant4 electrons at cell level, extend it with a calibrated cell-level fluctuation (reverses DEC-001's exclusion) | researcher, after the electron contract (Q4) |
+| Split the detector response into a Geant4-calibrated sampling response (R-A) and the evidence-gated instrumental effects (R-B) | ACCEPTED 2026-10-02 (\"Yes to all\") |
+| Detector-response evidence pass is incomplete: the discovery scout's result is thin and unreviewed; per-paper outcomes (Research OS v0.7 rule) are not recorded | source-verification pass, then adversarial pass |

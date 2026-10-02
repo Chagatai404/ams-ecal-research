@@ -165,3 +165,65 @@ class FibreCrossingGeometry:
             weights = crossed.chord_mm[here]
             np.add.at(grid[layer], crossed.cell[here], energy[layer] * weights / weights.sum())
         return grid
+
+    def place_layer_energies(
+        self,
+        track: TrackState,
+        crossed: CrossedFibres,
+        layer_energy_mev: np.ndarray,
+        spill_fraction: np.ndarray,
+        spill_offset: np.ndarray,
+        spill_weight: np.ndarray,
+        spill_cells: np.ndarray,
+    ) -> np.ndarray:
+        """Distribute each layer's energy over the crossed cells and a lateral spill.
+
+        ``(1 - f)`` of a layer's energy goes to the crossed cells in proportion to chord (to the
+        track's own cell when no fibre is crossed), as in ``spread_layer_energies``. The
+        remaining ``f`` goes to ``spill_cells`` cells placed at the signed ``spill_offset`` from
+        the layer's reference cell (the crossed cell with the longest chord) in the shares
+        ``spill_weight``. A target outside the grid is reflected, then clipped; one that falls on
+        a crossed or an already used cell moves outward until it is free. Energy is conserved
+        layer by layer.
+        """
+
+        energy = np.asarray(layer_energy_mev, dtype=float)
+        if energy.shape != (self.n_layers,):
+            raise ValueError(f"layer_energy_mev must have shape ({self.n_layers},)")
+        if np.any(energy < 0) or not np.all(np.isfinite(energy)):
+            raise ValueError("layer energies must be finite and nonnegative")
+        n_cells = self.geometry.cells_per_layer
+        grid = np.zeros((self.n_layers, n_cells))
+        for layer in range(self.n_layers):
+            if energy[layer] == 0.0:
+                continue
+            here = (crossed.layer == layer) & (crossed.cell >= 0)
+            if here.any():
+                cells, weights = crossed.cell[here], crossed.chord_mm[here]
+                reference = int(cells[np.argmax(weights)])
+            else:
+                reference = self.track_cell(track, layer)
+                cells, weights = np.array([reference]), np.array([1.0])
+            fraction = float(spill_fraction[layer]) if spill_cells[layer] > 0 else 0.0
+            np.add.at(grid[layer], cells, (1.0 - fraction) * energy[layer] * weights / weights.sum())
+            if fraction == 0.0:
+                continue
+            blocked = {int(c) for c in cells}
+            for j in range(int(spill_cells[layer])):
+                offset = int(spill_offset[layer, j])
+                direction = 1 if offset > 0 else -1
+                target = reference + offset
+                if not 0 <= target < n_cells:
+                    target = reference - offset
+                    direction = -direction
+                target = int(np.clip(target, 0, n_cells - 1))
+                while target in blocked and 0 <= target + direction < n_cells:
+                    target += direction
+                if target in blocked:  # no free cell outward: fall back to the reference cell
+                    target = reference
+                blocked.add(target)
+                grid[layer, target] += fraction * energy[layer] * float(spill_weight[layer, j])
+            used_weight = float(spill_weight[layer, : int(spill_cells[layer])].sum())
+            if abs(used_weight - 1.0) > 1e-9:  # keep the books exact if the weights are not normalised
+                grid[layer, reference] += fraction * energy[layer] * (1.0 - used_weight)
+        return grid

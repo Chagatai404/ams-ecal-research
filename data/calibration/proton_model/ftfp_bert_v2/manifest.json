@@ -1,0 +1,293 @@
+{
+  "builder": {
+    "git_commit": "ca448eb8f37830c9c625777ed3c825bd3d1a3d2d",
+    "module": "ams_ecal.proton_calibration",
+    "tracked_changes": true
+  },
+  "content_sha256": "6e682b31f505722710c1f5b8a51ea1bf99d7266e5814bce8fbf7e9bf8e57cafe",
+  "counts": {
+    "10": {
+      "calibration_events": 3000,
+      "crossing": 1592,
+      "interacting": 1408
+    },
+    "100": {
+      "calibration_events": 3000,
+      "crossing": 1568,
+      "interacting": 1432
+    },
+    "20": {
+      "calibration_events": 3000,
+      "crossing": 1551,
+      "interacting": 1449
+    },
+    "50": {
+      "calibration_events": 3000,
+      "crossing": 1547,
+      "interacting": 1453
+    }
+  },
+  "created_utc": "2026-10-02T16:47:18Z",
+  "crossing": {
+    "chord_edges_mm": [
+      1.9846388597462397,
+      2.853687714814815,
+      2.9829670227024776,
+      3.3450266847849144,
+      3.641195714896741
+    ],
+    "layers_independent": false,
+    "layers_per_bin": [
+      [
+        4221,
+        4239,
+        4326,
+        4273,
+        4208,
+        4203
+      ],
+      [
+        3859,
+        3836,
+        3721,
+        3667,
+        3753,
+        4078
+      ],
+      [
+        3661,
+        3684,
+        3697,
+        3754,
+        3926,
+        3688
+      ],
+      [
+        3842,
+        3709,
+        3910,
+        3729,
+        3680,
+        3468
+      ]
+    ],
+    "levels": [
+      0.0,
+      0.001,
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2,
+      0.25,
+      0.3,
+      0.35000000000000003,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6000000000000001,
+      0.6500000000000001,
+      0.7000000000000001,
+      0.7500000000000001,
+      0.8,
+      0.8500000000000001,
+      0.9000000000000001,
+      0.9500000000000001,
+      0.97,
+      0.98,
+      0.99,
+      0.995,
+      0.999,
+      1.0
+    ],
+    "n_chord_bins": 6,
+    "representations": [
+      "readout",
+      "deposition"
+    ],
+    "table_built_from": "layers of crossing events without a burst"
+  },
+  "energies_gev": [
+    10.0,
+    20.0,
+    50.0,
+    100.0
+  ],
+  "interaction": {
+    "definition": "pooled maximum-likelihood exponential rate of the first inelastic interaction depth, censored by the ECAL depth, over all anchor energies (no energy trend was resolved); an EFFECTIVE length of this geometry and material model, not a physical interaction length of AMS",
+    "ecal_depth_mm": 166.5,
+    "effective_length_mm": 255.65299342506117,
+    "per_energy": {
+      "10": {
+        "effective_length_mm": 262.3709183075296,
+        "n_crossing": 1592,
+        "n_interacting": 1408,
+        "standard_error_mm": 6.992208466755582
+      },
+      "100": {
+        "effective_length_mm": 257.2763246063292,
+        "n_crossing": 1568,
+        "n_interacting": 1432,
+        "standard_error_mm": 6.798738134795135
+      },
+      "20": {
+        "effective_length_mm": 252.6815886870459,
+        "n_crossing": 1551,
+        "n_interacting": 1449,
+        "standard_error_mm": 6.63803298364297
+      },
+      "50": {
+        "effective_length_mm": 250.50648067853183,
+        "n_crossing": 1547,
+        "n_interacting": 1453,
+        "standard_error_mm": 6.571827547740112
+      }
+    },
+    "standard_error_mm": 3.3737996445635265
+  },
+  "kind": "proton_calibration",
+  "physics_list": "ftfp_bert",
+  "schema_version": 2,
+  "source": {
+    "approximations": [
+      "AMS has 98 lead foils and one aluminium final foil in superlayer 9; the foils are not drawn - a homogeneous lead+glue matrix, density-matched to 6.8 g/cm^3, surrounds the explicit fibres (systematic to revisit)",
+      "whole 1 mm fibre treated as scintillating polystyrene; cladding not modelled",
+      "optical glue modelled as generic epoxy C21H24O4 at 1.2 g/cm^3",
+      "fibres whose centre lies on a cell boundary are assigned to the upper cell",
+      "no upstream AMS material, mechanical structure, light guides or PMTs",
+      "extension (extended geometry only) is a research instrument, not a detector"
+    ],
+    "entry_spot_mm": {
+      "x_max_mm": 9.0,
+      "x_min_mm": 0.0,
+      "y_max_mm": 9.0,
+      "y_min_mm": 0.0
+    },
+    "geant4_datasets": {
+      "G4ABLADATA": "G4ABLA3.3",
+      "G4CHANNELINGDATA": "G4CHANNELING2.0",
+      "G4ENSDFSTATEDATA": "G4ENSDFSTATE3.0",
+      "G4INCLDATA": "G4INCL1.3",
+      "G4LEDATA": "G4EMLOW8.8",
+      "G4LEVELGAMMADATA": "PhotonEvaporation6.1.2",
+      "G4NEUTRONHPDATA": "G4NDL4.7.1",
+      "G4PARTICLEXSDATA": "G4PARTICLEXS4.2",
+      "G4PIIDATA": "G4PII1.3",
+      "G4RADIOACTIVEDATA": "RadioactiveDecay6.1.2",
+      "G4REALSURFACEDATA": "RealSurface2.2",
+      "G4SAIDXSDATA": "G4SAIDDATA2.0"
+    },
+    "geant4_pybind_version": "0.1.3",
+    "geant4_version": "geant4-11-04-patch-01 [MT]",
+    "geometry_variant": "ams",
+    "incidence": {
+      "phi_rad": 0.0,
+      "theta_rad": 0.0
+    },
+    "materials": {
+      "composite_density_g_cm3": 6.799999999999998,
+      "matrix_constraint": "average_density",
+      "prefix_depth_lambda_i": 0.6182108671949843,
+      "prefix_depth_x0": 16.684629744658373
+    },
+    "particle": "proton",
+    "physics_list_as_run": "FTFP_BERT",
+    "pilot_batches": {
+      "10": {
+        "base_seed": 20260929,
+        "configuration_sha256": "0929ba397848f6f47df8a5ff1f0359d29d348fa8b14e4d1292d47b0f2fa4a2e9",
+        "created_utc": "2026-09-29T09:44:53Z",
+        "git_commit": "00d70fdc81364111eea6b065cd4d27a2fa7b560a"
+      },
+      "100": {
+        "base_seed": 20260929,
+        "configuration_sha256": "0929ba397848f6f47df8a5ff1f0359d29d348fa8b14e4d1292d47b0f2fa4a2e9",
+        "created_utc": "2026-09-29T10:11:18Z",
+        "git_commit": "00d70fdc81364111eea6b065cd4d27a2fa7b560a"
+      },
+      "20": {
+        "base_seed": 20260929,
+        "configuration_sha256": "0929ba397848f6f47df8a5ff1f0359d29d348fa8b14e4d1292d47b0f2fa4a2e9",
+        "created_utc": "2026-09-29T09:49:53Z",
+        "git_commit": "00d70fdc81364111eea6b065cd4d27a2fa7b560a"
+      },
+      "50": {
+        "base_seed": 20260929,
+        "configuration_sha256": "0929ba397848f6f47df8a5ff1f0359d29d348fa8b14e4d1292d47b0f2fa4a2e9",
+        "created_utc": "2026-09-29T09:59:17Z",
+        "git_commit": "00d70fdc81364111eea6b065cd4d27a2fa7b560a"
+      }
+    },
+    "production_cut_mm": 0.7,
+    "sample": "baseline"
+  },
+  "split_rule": {
+    "used": "calibration events only",
+    "validation_modulus": 4,
+    "validation_residue": 3
+  },
+  "structure": {
+    "amplitude_bins": 3,
+    "burst_probability": {
+      "10": 0.11118090452261306,
+      "100": 0.20854591836734693,
+      "20": 0.17923920051579625,
+      "50": 0.19521654815772463
+    },
+    "burst_ratio": 3.0,
+    "bursts_calibrated": {
+      "10": 177,
+      "100": 327,
+      "20": 278,
+      "50": 302
+    },
+    "spill": {
+      "cell_threshold_mev": 0.01,
+      "distance_edges_cells": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        10,
+        15,
+        25,
+        72
+      ],
+      "k_max": 6,
+      "layers_per_ratio_bin": {
+        "deposition": [
+          56317,
+          42329,
+          8893,
+          2850,
+          1583,
+          535,
+          137
+        ],
+        "readout": [
+          56317,
+          34931,
+          12617,
+          4847,
+          2893,
+          855,
+          184
+        ]
+      },
+      "ratio_edges": [
+        1.0,
+        1.5,
+        2.2,
+        3.0,
+        5.0,
+        10.0
+      ]
+    }
+  },
+  "wording": "Geant4-calibrated proton phenomenology; not a true proton shower model"
+}

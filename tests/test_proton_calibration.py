@@ -241,7 +241,8 @@ def pilot(tmp_path_factory):
 
 @pytest.fixture(scope="module")
 def calibration(pilot) -> ProtonCalibration:
-    return build_calibration(pilot, energies_gev=(10.0, 100.0))
+    # the table-only build: these synthetic batches have no bursts to calibrate a structure on
+    return build_calibration(pilot, energies_gev=(10.0, 100.0), structure=False)
 
 
 def test_no_validation_event_reaches_a_table(calibration) -> None:
@@ -257,7 +258,7 @@ def test_the_pooled_interaction_length_recovers_the_truth(calibration) -> None:
 
 
 def test_the_build_is_deterministic(pilot, calibration) -> None:
-    again = build_calibration(pilot, energies_gev=(10.0, 100.0))
+    again = build_calibration(pilot, energies_gev=(10.0, 100.0), structure=False)
 
     assert again.content_sha256 == calibration.content_sha256
     for name, array in calibration.arrays().items():
@@ -329,4 +330,113 @@ def test_a_mismatched_physics_list_is_refused(pilot) -> None:
 
 def test_too_little_data_in_a_chord_bin_is_refused(pilot) -> None:
     with pytest.raises(ValueError, match="crossing layers"):
-        build_calibration(pilot, energies_gev=(10.0, 100.0), min_layers_per_bin=10_000)
+        build_calibration(
+            pilot, energies_gev=(10.0, 100.0), min_layers_per_bin=10_000, structure=False
+        )
+
+
+# --- the builder with the crossing structure ------------------------------------------------
+
+
+def write_burst_batch(root, energy_gev, n=1600, seed=0) -> None:
+    """A pilot batch whose crossing events carry planted bursts (20% of events)."""
+
+    write_pilot_batch(root, energy_gev, n=n, seed=seed, poison=True)
+    path = root / "baseline" / f"E{energy_gev:g}GeV" / "events.npz"
+    with np.load(path) as data:
+        arrays = {name: data[name] for name in data.files}
+    rng = np.random.default_rng(seed + 100)
+    deposit = np.zeros((n, 18, 72), dtype=np.float32)
+    readout = np.zeros((n, 18, 72), dtype=np.float32)
+    deposit[:, :, 36] = rng.gamma(25.0, 8.0 / 25.0, (n, 18))
+    readout[:, :, 36] = rng.gamma(40.0, 0.6 / 40.0, (n, 18))
+    has = rng.random(n) < 0.2
+    onset = rng.integers(0, 18, n)
+    offset = np.arange(18)[None, :] - onset[:, None]
+    shape = np.where(offset >= 0, (offset + 1.0) * np.exp(-offset / 3.0), 0.0)
+    burst = np.where(has[:, None], rng.uniform(80.0, 240.0, n)[:, None] * shape / shape.max(), 0.0)
+    deposit[:, :, 36] += burst
+    readout[:, :, 36] += 0.06 * burst
+    held_out = validation_mask(arrays["event_index"])
+    deposit[held_out] = 1.0e6
+    readout[held_out] = 1.0e6
+    arrays["deposit_grid_mev"], arrays["readout_grid_mev"] = deposit, readout
+    np.savez(path, **arrays)
+
+
+@pytest.fixture(scope="module")
+def burst_pilot(tmp_path_factory):
+    root = tmp_path_factory.mktemp("burst_pilot")
+    write_burst_batch(root, 10.0, seed=1)
+    write_burst_batch(root, 100.0, seed=2)
+    return root
+
+
+@pytest.fixture(scope="module")
+def structured(burst_pilot) -> ProtonCalibration:
+    return build_calibration(burst_pilot, energies_gev=(10.0, 100.0), n_chord_bins=3)
+
+
+def test_a_pilot_with_bursts_builds_a_structured_artifact(structured) -> None:
+    assert structured.manifest["schema_version"] == CALIBRATION_SCHEMA_VERSION == 2
+    assert structured.structure is not None
+    assert structured.structure.burst.probability == pytest.approx([0.2, 0.2], abs=0.05)
+    assert structured.manifest["crossing"]["layers_independent"] is False
+    assert structured.manifest["crossing"]["table_built_from"] == (
+        "layers of crossing events without a burst"
+    )
+    assert structured.manifest["structure"]["burst_ratio"] == 3.0
+    assert set(structured.manifest["structure"]["burst_probability"]) == {"10", "100"}
+
+
+def test_no_validation_event_reaches_the_structure(structured) -> None:
+    arrays = structured.arrays()
+
+    for name, array in arrays.items():
+        if array.dtype.kind == "f":
+            assert np.nanmax(array) < 1000.0, name  # a leaked 1e6 MeV event would set the maximum
+
+
+def test_the_structured_build_is_deterministic(burst_pilot, structured) -> None:
+    again = build_calibration(burst_pilot, energies_gev=(10.0, 100.0), n_chord_bins=3)
+
+    assert again.content_sha256 == structured.content_sha256
+
+
+def test_the_structure_survives_a_save_and_load(structured, tmp_path) -> None:
+    structured.save(tmp_path / "artifact")
+
+    loaded = ProtonCalibration.load(tmp_path / "artifact")
+
+    assert loaded.structure is not None
+    assert loaded.content_sha256 == structured.content_sha256
+    assert np.array_equal(
+        loaded.structure.burst.amplitude_quantiles_mev,
+        structured.structure.burst.amplitude_quantiles_mev,
+    )
+    assert np.array_equal(loaded.structure.bulk_coupling["readout"], structured.structure.bulk_coupling["readout"])
+
+
+def test_a_tampered_structure_array_is_detected_on_load(structured, tmp_path) -> None:
+    directory = structured.save(tmp_path / "artifact")
+    with np.load(directory / "calibration.npz") as data:
+        arrays = {name: data[name] for name in data.files}
+    arrays["burst_probability"] = np.asarray(arrays["burst_probability"]) * 0.5
+    np.savez_compressed(directory / "calibration.npz", **arrays)
+
+    with pytest.raises(ValueError, match="content hash"):
+        ProtonCalibration.load(directory)
+
+
+def test_a_table_only_artifact_loads_without_a_structure(calibration, tmp_path) -> None:
+    calibration.save(tmp_path / "artifact")
+
+    loaded = ProtonCalibration.load(tmp_path / "artifact")
+
+    assert loaded.structure is None
+    assert loaded.manifest["crossing"]["layers_independent"] is True
+
+
+def test_a_pilot_without_bursts_cannot_calibrate_a_structure(pilot) -> None:
+    with pytest.raises(ValueError, match="too few to calibrate"):
+        build_calibration(pilot, energies_gev=(10.0, 100.0))

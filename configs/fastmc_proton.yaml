@@ -18,7 +18,10 @@ calibration:
   physics_list: ftfp_bert
   # Directory holding calibration.npz and manifest.json (see
   # ams_ecal.proton_calibration). Relative to the repository root.
-  artifact: data/calibration/proton_6b/ftfp_bert_v1
+  # v2 carries the crossing structure (burst latent, lateral spill, bulk coupling) next to the
+  # per-layer table. v1 (the table alone, layers independent) stays on disk as the record of
+  # the first crossing validation: data/calibration/proton_6b/ftfp_bert_v1
+  artifact: data/calibration/proton_model/ftfp_bert_v2
 
 # Which physical quantity the generated events carry, as for Block 6A.
 #   readout    : energy deposited in the scintillating fibres only - the
