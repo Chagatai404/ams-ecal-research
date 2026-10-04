@@ -65,3 +65,5 @@ cmake-build-*/
 CMakeFiles/
 CMakeCache.txt
 compile_commands.json
+data/geant4_proton_sealed/
+data/geant4_electron_sealed/
