@@ -1,10 +1,10 @@
 {
   "builder": {
-    "git_commit": "501b875a05d64d42ab8866aff8d8a676536f328a",
+    "git_commit": "1688c2be951115ab64cf9c02da261660619aebdb",
     "module": "ams_ecal.proton_calibration",
     "tracked_changes": true
   },
-  "content_sha256": "a212caab91043619e36fa3559e869eefd82ed1abe433a0770c5e1fa1dad3cdaf",
+  "content_sha256": "cee305f1de265bac96e519c7c57270240737c305fab1f86cc6e506ae2e61f7cb",
   "counts": {
     "10": {
       "calibration_events": 3000,
@@ -27,7 +27,7 @@
       "interacting": 1453
     }
   },
-  "created_utc": "2026-10-04T17:37:54Z",
+  "created_utc": "2026-10-04T19:13:24Z",
   "crossing": {
     "chord_edges_mm": [
       1.9846388597462397,

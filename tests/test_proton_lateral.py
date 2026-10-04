@@ -22,6 +22,7 @@ from ams_ecal.proton_lateral import (
     event_grid,
     extract_lateral_inputs,
     layer_statistics,
+    place_excess,
     place_quanta,
     track_cells,
 )
@@ -36,7 +37,11 @@ HALO = HALO / HALO.sum()
 
 
 def planted_inputs(
-    energy_gev: float, n: int = 700, seed: int = 0, tail_index: float = EQUAL_WEIGHTS
+    energy_gev: float,
+    n: int = 700,
+    seed: int = 0,
+    tail_index: float = EQUAL_WEIGHTS,
+    quantum_slope: float = 0.0,
 ) -> LateralCalibrationInputs:
     """Events whose layers were placed with KNOWN lateral parameters."""
 
@@ -61,6 +66,8 @@ def planted_inputs(
                 HALO,
                 0.5,
                 tail_index,
+                quantum_slope,
+                float(np.exp(4.0)),
             )[0]
     return LateralCalibrationInputs(
         energy_gev=energy_gev,
@@ -370,3 +377,128 @@ def test_layer_statistics_describe_a_known_layer() -> None:
     assert stats_["core"][0] == pytest.approx(0.8)
     assert stats_["top"][0] == pytest.approx(0.6)
     assert stats_["hits"][0] == 3 and stats_["occupied"][0] == 3
+
+
+# --- the quantum that grows with the layer's energy -----------------------------------------
+
+
+def test_a_quantum_that_grows_with_energy_lights_more_cells_in_weak_layers() -> None:
+    weak = np.full(400, 5.0)  # far below the reference energy
+    flat = place_quanta(
+        np.random.default_rng(31), weak, np.full(400, 0.3), np.full(400, 36), np.full(400, 0.5),
+        HALO, 2.0, EQUAL_WEIGHTS, 0.0, 50.0,
+    )
+    graded = place_quanta(
+        np.random.default_rng(31), weak, np.full(400, 0.3), np.full(400, 36), np.full(400, 0.5),
+        HALO, 2.0, EQUAL_WEIGHTS, 0.6, 50.0,
+    )
+
+    assert (graded > 0).sum(axis=1).mean() > 1.3 * (flat > 0).sum(axis=1).mean()
+    assert graded.sum(axis=1) == pytest.approx(weak)  # still exactly conserved
+
+
+def test_at_the_reference_energy_the_slope_changes_nothing() -> None:
+    at_reference = np.full(50, 50.0)
+    args = (np.full(50, 0.4), np.full(50, 36), np.full(50, 0.5), HALO, 2.0, EQUAL_WEIGHTS)
+
+    flat = place_quanta(np.random.default_rng(32), at_reference, *args, 0.0, 50.0)
+    graded = place_quanta(np.random.default_rng(32), at_reference, *args, 0.7, 50.0)
+
+    assert np.array_equal(flat, graded)
+
+
+def test_the_builder_finds_a_planted_quantum_slope_and_no_slope_when_none_is_planted() -> None:
+    graded = [planted_inputs(e, n=500, seed=40 + i, quantum_slope=0.6) for i, e in enumerate(ENERGIES)]
+    flat = [planted_inputs(e, n=500, seed=50 + i, quantum_slope=0.0) for i, e in enumerate(ENERGIES)]
+
+    fitted_graded = build_lateral(graded, ecal_depth_mm=DEPTH, seed=3)
+    fitted_flat = build_lateral(flat, ecal_depth_mm=DEPTH, seed=3)
+
+    assert fitted_graded.quantum_slope[0] >= 0.4
+    assert fitted_flat.quantum_slope[0] <= 0.2
+    assert 20.0 < fitted_graded.quantum_reference_mev[0] < 150.0  # the median layer energy
+
+
+def test_an_artifact_without_the_quantum_slope_loads_with_a_constant_quantum(table) -> None:
+    arrays = table.arrays()
+    del arrays["lateral_quantum_slope"], arrays["lateral_quantum_reference_mev"]
+
+    loaded = LateralTable.from_arrays(arrays)
+
+    assert np.array_equal(loaded.quantum_slope, np.zeros(2))
+    assert np.array_equal(loaded.quantum_reference_mev, np.ones(2))
+
+
+def test_the_quantum_slope_is_validated(table) -> None:
+    with pytest.raises(ValueError, match="quantum_slope"):
+        replace(table, quantum_slope=np.array([-0.1, 0.0]))
+    with pytest.raises(ValueError, match="quantum_reference_mev"):
+        replace(table, quantum_reference_mev=np.zeros(2))
+    with pytest.raises(ValueError, match="finite"):
+        replace(table, quantum_slope=np.array([np.nan, 0.0]))
+
+
+# --- backsplash in front of the interaction -------------------------------------------------
+
+
+def excess_grid(table, excess, seed=60, event=0.0, centres=None):
+    return place_excess(
+        table,
+        0,
+        np.random.default_rng(seed),
+        50.0,
+        np.asarray(excess, dtype=float),
+        np.full(N_LAYERS, 36) if centres is None else centres,
+        event,
+        np.zeros(N_LAYERS),
+    )
+
+
+def test_the_excess_keeps_its_energy_layer_by_layer_and_only_where_there_is_some(table) -> None:
+    excess = np.zeros(N_LAYERS)
+    excess[[2, 5, 9]] = (4.0, 60.0, 300.0)
+
+    grid = excess_grid(table, excess)
+
+    assert grid.sum(axis=1) == pytest.approx(excess)
+    assert np.count_nonzero(grid.sum(axis=1)) == 3
+
+
+def test_no_excess_gives_an_empty_grid(table) -> None:
+    assert not excess_grid(table, np.zeros(N_LAYERS)).any()
+
+
+def test_the_excess_is_deterministic_in_its_generator_and_centred_on_the_track_cells(table) -> None:
+    excess = np.full(N_LAYERS, 80.0)
+    centres = np.full(N_LAYERS, 20)
+
+    first = excess_grid(table, excess, seed=61, centres=centres)
+
+    assert np.array_equal(first, excess_grid(table, excess, seed=61, centres=centres))
+    assert not np.array_equal(first, excess_grid(table, excess, seed=62, centres=centres))
+    assert first[:, 18:23].sum() > first.sum() * 0.4  # the core sits at the track cell
+
+
+def test_the_excess_follows_the_events_lateral_latent(table) -> None:
+    excess = np.full(N_LAYERS, 80.0)
+
+    narrow = excess_grid(table, excess, seed=63, event=-2.5)
+    broad = excess_grid(table, excess, seed=63, event=2.5)
+
+    # a larger event-level core fraction concentrates the layers: more energy on and beside the centre
+    assert broad[:, 35:38].sum() > narrow[:, 35:38].sum()
+
+
+def test_the_excess_uses_the_law_of_the_interaction_layer_not_a_later_offset(table) -> None:
+    offsets = np.arange(N_LAYERS)
+    graded = replace(
+        table, logit_mean=np.broadcast_to(np.where(offsets == 0, 6.0, -6.0), table.logit_mean.shape).copy()
+    )
+    excess = np.full(N_LAYERS, 200.0)
+
+    grid = place_excess(
+        graded, 0, np.random.default_rng(70), 50.0, excess, np.full(N_LAYERS, 36), 0.0, np.zeros(N_LAYERS)
+    )
+
+    core = grid[:, 35:38].sum() / grid.sum()
+    assert core > 0.8  # offset 0 is nearly all core; a later offset would be nearly all halo

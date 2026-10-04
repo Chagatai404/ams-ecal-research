@@ -299,6 +299,7 @@ def extract_crossing_inputs(
     spill_count: dict[str, np.ndarray] = {}
     spill_fraction: dict[str, np.ndarray] = {}
     spill_distance: dict[str, np.ndarray] = {}
+    spill_share: dict[str, np.ndarray] = {}
     for name in REPRESENTATIONS:
         grid = arrays[_GRID_KEY[name]][rows].astype(float)
         total = grid.sum(axis=2)
@@ -311,11 +312,15 @@ def extract_crossing_inputs(
             np.where(lit, outside, 0.0).sum(axis=2), total, out=np.zeros_like(total), where=total > 0
         )
         distances = np.zeros((n, n_layers, K_MAX), dtype=np.int64)
+        shares = np.zeros((n, n_layers, K_MAX))
+        lit_total = np.where(lit, outside, 0.0).sum(axis=2)
         for i, layer in zip(*np.nonzero(count), strict=True):
             cells = np.flatnonzero(lit[i, layer])
             strongest = cells[np.argsort(outside[i, layer, cells])[::-1][:K_MAX]]
             distances[i, layer, : len(strongest)] = _distance_to_mask(masks[i, layer])[strongest]
+            shares[i, layer, : len(strongest)] = outside[i, layer, strongest] / lit_total[i, layer]
         spill_distance[name] = distances
+        spill_share[name] = shares
     return CrossingCalibrationInputs(
         energy_gev=float(energy_gev),
         chord_mm=chord,
@@ -323,6 +328,7 @@ def extract_crossing_inputs(
         spill_count=spill_count,
         spill_fraction=spill_fraction,
         spill_distance=spill_distance,
+        spill_share=spill_share,
     )
 
 

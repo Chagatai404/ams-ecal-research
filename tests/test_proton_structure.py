@@ -397,6 +397,242 @@ def test_the_spill_rejects_malformed_draws(built) -> None:
         sample_spill(structure.spill["readout"], np.ones((2, N_LAYERS)), np.zeros((2, N_LAYERS, 3)))
 
 
+# --- the spill's ranks, weights, event coupling and tilt ---------------------------------
+
+
+def spill_with(structure, **changes):
+    """The readout spill table with some fields replaced; every layer spills 4 cells."""
+
+    table = structure.spill["readout"]
+    forced = {
+        "probability": np.ones_like(table.probability),
+        "cells_pmf": np.tile(np.eye(K_MAX)[3], (len(table.probability), 1)),
+        "distance_pmf": np.full(table.distance_pmf.shape, 1.0 / table.distance_pmf.shape[-1]),
+    }
+    return replace(table, **{**forced, **changes})
+
+
+def draw_from(table, n: int = 600, seed: int = 8, event_normal=None):
+    rng = np.random.default_rng(seed)
+    return sample_spill(
+        table, np.full((n, N_LAYERS), 6.0), rng.random((n, N_LAYERS, SPILL_DRAWS)), event_normal
+    )
+
+
+def near_share(draw) -> float:
+    energy = draw.weight * draw.fraction[..., None]
+    return float(energy[np.abs(draw.offset) == 1].sum() / energy.sum())
+
+
+def test_the_spill_cells_are_ordered_strongest_first(built) -> None:
+    structure, *_ = built
+
+    draw = draw_from(spill_with(structure, distance_tilt=0.0))
+
+    assert np.all(np.diff(draw.weight, axis=-1) <= 1e-12)
+    assert draw.weight[..., 0].mean() > 1.0 / K_MAX  # not equal shares
+
+
+def test_a_distance_tilt_moves_spill_energy_to_the_near_cells(built) -> None:
+    structure, *_ = built
+
+    flat = near_share(draw_from(spill_with(structure, distance_tilt=0.0)))
+    tilted = near_share(draw_from(spill_with(structure, distance_tilt=2.0)))
+    draw = draw_from(spill_with(structure, distance_tilt=2.0))
+
+    assert tilted > flat + 0.05
+    assert np.allclose(draw.weight.sum(axis=-1), 1.0)  # still a split of the spill
+
+
+def test_the_presence_coupling_clusters_spill_in_events_and_keeps_the_marginal(built) -> None:
+    structure, *_ = built
+    table = spill_with(
+        structure, probability=np.full(len(SPILL_R_EDGES) + 1, 0.3), presence_coupling=0.7
+    )
+    normal = np.random.default_rng(9).standard_normal(3000)
+
+    coupled = draw_from(table, 3000, event_normal=normal).cells > 0
+    independent = draw_from(table, 3000).cells > 0
+
+    assert coupled.mean() == pytest.approx(0.3, abs=0.02)
+    assert independent.mean() == pytest.approx(0.3, abs=0.02)
+    assert coupled.sum(axis=1).var() > 2.0 * independent.sum(axis=1).var()
+
+
+def test_without_an_event_normal_the_coupling_does_nothing(built) -> None:
+    structure, *_ = built
+    coupled = spill_with(structure, presence_coupling=0.8)
+    plain = spill_with(structure, presence_coupling=0.0)
+
+    assert np.array_equal(draw_from(coupled).cells, draw_from(plain).cells)
+
+
+def test_the_fitted_concentration_follows_planted_dirichlet_shares() -> None:
+    from ams_ecal.proton_structure import _fit_concentration
+
+    rng = np.random.default_rng(10)
+    count = rng.integers(2, 5, 6000)
+    used = np.arange(K_MAX)[None, :] < count[:, None]
+
+    def top_share(alpha: float) -> np.ndarray:
+        gamma = np.where(used, rng.gamma(alpha, size=(6000, K_MAX)), 0.0)
+        return gamma.max(axis=1) / gamma.sum(axis=1)
+
+    assert _fit_concentration(count, top_share(0.3)) in (0.2, 0.3, 0.45)
+    assert _fit_concentration(count, top_share(3.0)) >= 2.5
+    assert _fit_concentration(count[:10], top_share(0.3)[:10]) == 1.0  # too few layers: the default
+
+
+def test_the_fitted_presence_coupling_follows_a_planted_event_latent() -> None:
+    from ams_ecal.proton_structure import _fit_presence_coupling
+
+    rng = np.random.default_rng(11)
+    n = 4000
+    probability = np.full((n, N_LAYERS), 0.25)
+    threshold = stats.norm.ppf(0.75)
+
+    def observed(rho: float) -> np.ndarray:
+        event = rng.standard_normal((n, 1))
+        return (
+            np.sqrt(rho) * event + np.sqrt(1 - rho) * rng.standard_normal((n, N_LAYERS)) > threshold
+        )
+
+    assert 0.5 <= _fit_presence_coupling(probability, observed(0.6)) <= 0.7
+    assert _fit_presence_coupling(probability, observed(0.0)) <= 0.1
+
+
+def planted_rank_inputs(energy_gev: float, strongest_distance: int, weakest_distance: int):
+    base = synthetic_inputs(energy_gev, n=800, seed=int(energy_gev))
+    lit = base.spill_count["readout"] > 0
+    count = 2 * lit.astype(int)
+    distance = np.zeros((800, N_LAYERS, K_MAX), dtype=np.int64)
+    distance[..., 0] = strongest_distance * lit
+    distance[..., 1] = weakest_distance * lit
+    share = np.zeros((800, N_LAYERS, K_MAX))
+    share[..., 0] = 0.5 * lit
+    share[..., 1] = 0.5 * lit
+    names = ("deposition", "readout")
+    return replace(
+        base,
+        spill_count={k: count for k in names},
+        spill_fraction={k: 0.3 * lit for k in names},
+        spill_distance={k: distance for k in names},
+        spill_share={k: share for k in names},
+    )
+
+
+def test_distances_are_calibrated_rank_by_rank_from_the_inputs() -> None:
+    inputs = [planted_rank_inputs(e, 1, 4) for e in ENERGIES]
+
+    structure, *_ = build_structure(
+        inputs, n_chord_bins=3, bulk_levels=BULK_LEVELS, min_layers_per_bin=20
+    )
+
+    pmf = structure.spill["readout"].distance_pmf
+    assert pmf.shape == (2, K_MAX, 9)
+    edges = np.array([1, 2, 3, 4, 5, 7, 10, 15, 25, 72])
+    assert pmf[0, 0, np.searchsorted(edges, 1, side="right") - 1] > 0.9  # strongest next to the track
+    assert pmf[0, 1, np.searchsorted(edges, 4, side="right") - 1] > 0.9  # second cell four away
+
+
+def test_the_tilt_is_fitted_up_only_when_the_strongest_cell_is_the_far_one() -> None:
+    far_first = [planted_rank_inputs(e, 2, 1) for e in ENERGIES]  # strongest at 2, weaker at 1
+    near_first = [planted_rank_inputs(e, 1, 2) for e in ENERGIES]
+
+    tilted = build_structure(
+        far_first, n_chord_bins=3, bulk_levels=BULK_LEVELS, min_layers_per_bin=20
+    )[0]
+    untilted = build_structure(
+        near_first, n_chord_bins=3, bulk_levels=BULK_LEVELS, min_layers_per_bin=20
+    )[0]
+
+    assert tilted.spill["readout"].distance_tilt > 0.0
+    assert untilted.spill["readout"].distance_tilt == 0.0
+
+
+def test_the_built_table_carries_the_fitted_concentration_and_coupling() -> None:
+    names = ("deposition", "readout")
+
+    def with_shares(energy_gev: float, top: float):
+        planted = planted_rank_inputs(energy_gev, 1, 2)
+        share = planted.spill_share["readout"].copy()
+        lit = share[..., 0] > 0
+        share[..., 0] = top * lit
+        share[..., 1] = (1.0 - top) * lit
+        return replace(planted, spill_share={k: share for k in names})
+
+    def clustered(energy_gev: float):
+        planted = planted_rank_inputs(energy_gev, 1, 2)
+        rng = np.random.default_rng(int(energy_gev) + 99)
+        event_spills = rng.random(800) < 0.3  # a latent of the whole event, independent of r
+        layer_spills = rng.random((800, N_LAYERS)) < 0.9
+        count = 2 * (event_spills[:, None] & layer_spills).astype(int)
+        return replace(planted, spill_count={k: count for k in names})
+
+    def build(inputs):
+        return build_structure(
+            inputs, n_chord_bins=3, bulk_levels=BULK_LEVELS, min_layers_per_bin=20
+        )[0].spill["readout"]
+
+    concentrated = build([with_shares(e, 0.97) for e in ENERGIES])
+    even = build([with_shares(e, 0.55) for e in ENERGIES])
+    event_level = build([clustered(e) for e in ENERGIES])
+
+    assert concentrated.concentration < even.concentration
+    assert concentrated.concentration <= 0.3 and even.concentration >= 2.5
+    assert event_level.presence_coupling >= 0.5
+
+
+def test_inputs_without_shares_fall_back_to_the_defaults(built) -> None:
+    structure, *_ = built  # the synthetic inputs of the fixture carry no spill_share
+
+    table = structure.spill["readout"]
+    assert (table.concentration, table.distance_tilt) == (1.0, 0.0)
+    assert 0.0 <= table.presence_coupling < 1.0
+
+
+def test_an_artifact_without_the_ranks_loads_with_one_law_for_every_rank(built) -> None:
+    structure, *_ = built
+    arrays = structure.arrays()
+    legacy = arrays["spill_distance_pmf_readout"][:, 0, :].copy()
+    for name in ("readout", "deposition"):
+        arrays[f"spill_distance_pmf_{name}"] = arrays[f"spill_distance_pmf_{name}"][:, 0, :]
+        for key in ("concentration", "presence_coupling", "distance_tilt"):
+            del arrays[f"spill_{key}_{name}"]
+
+    loaded = CrossingStructure.from_arrays(arrays, structure.burst.energies_gev)
+
+    table = loaded.spill["readout"]
+    for rank in range(K_MAX):
+        assert np.array_equal(table.distance_pmf[:, rank, :], legacy)
+    assert (table.concentration, table.presence_coupling, table.distance_tilt) == (1.0, 0.0, 0.0)
+
+
+def test_the_new_spill_fields_round_trip_and_are_validated(built) -> None:
+    structure, *_ = built
+    arrays = replace(
+        structure,
+        spill={
+            n: replace(t, concentration=0.4, presence_coupling=0.3, distance_tilt=1.5)
+            for n, t in structure.spill.items()
+        },
+    ).arrays()
+
+    loaded = CrossingStructure.from_arrays(arrays, structure.burst.energies_gev).spill["readout"]
+
+    assert (loaded.concentration, loaded.presence_coupling, loaded.distance_tilt) == (0.4, 0.3, 1.5)
+    table = structure.spill["readout"]
+    for bad in ({"concentration": 0.0}, {"presence_coupling": 1.0}, {"distance_tilt": -0.1}):
+        with pytest.raises(ValueError):
+            replace(table, **bad)
+    inputs = synthetic_inputs(10.0, n=50)
+    with pytest.raises(ValueError, match="spill_share"):
+        replace(
+            inputs,
+            spill_share={k: np.zeros((50, N_LAYERS, 2)) for k in ("readout", "deposition")},
+        )
+
+
 # --- placement on the cells --------------------------------------------------------------
 
 

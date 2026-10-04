@@ -161,3 +161,26 @@ def test_the_artifact_round_trips_with_every_table(model, tmp_path) -> None:
     for name, array in model.calibration.arrays().items():
         assert np.array_equal(array, loaded.arrays()[name]), name
     assert loaded.interacting is not None and loaded.lateral is not None
+
+
+def test_energy_in_front_of_the_interaction_is_split_into_the_protons_own_deposit_and_backsplash(
+    model, interacting_seeds, monkeypatch
+) -> None:
+    import ams_ecal.proton as proton_module
+
+    def front_hits_and_layer_energy(cap: float):
+        monkeypatch.setattr(proton_module, "UPSTREAM_MIP_CAP", cap)
+        hits, energy = [], []
+        for seed in interacting_seeds[:12]:
+            result = event(model, seed, "deposition")
+            grid = np.array(result.cell_energies_mev)
+            front = int(dict(result.provenance.model_details)["interaction_layer"])
+            hits.append(int((grid[:front] > 0.28).sum()))
+            energy.append(grid.sum(axis=1))
+        return np.array(hits), np.array(energy)
+
+    all_backsplash_hits, all_backsplash_energy = front_hits_and_layer_energy(0.0)
+    all_own_hits, all_own_energy = front_hits_and_layer_energy(1e9)
+
+    assert all_backsplash_energy == pytest.approx(all_own_energy)  # the split moves energy between cells only
+    assert all_backsplash_hits.sum() > 1.2 * all_own_hits.sum()  # backsplash lights more cells

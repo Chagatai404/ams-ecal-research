@@ -156,7 +156,9 @@ class CrossingCalibrationInputs:
     ``spill_*`` describe, per representation, the cells OUTSIDE the cells the track crosses
     that hold more than ``SPILL_CELL_MEV``: how many (capped at ``K_MAX``), the share of the
     layer energy they hold, and their distance in cells from the nearest crossed cell (0 pads
-    unused slots).
+    unused slots), strongest cell first. ``spill_share`` (optional) is the share of the spill's
+    energy each of those cells holds, in the same order; with it the spill's weights and
+    distances are calibrated rank by rank, without it they fall back to equal expectation.
     """
 
     energy_gev: float
@@ -165,6 +167,7 @@ class CrossingCalibrationInputs:
     spill_count: dict[str, np.ndarray]
     spill_fraction: dict[str, np.ndarray]
     spill_distance: dict[str, np.ndarray]
+    spill_share: dict[str, np.ndarray] | None = None
 
     def __post_init__(self) -> None:
         n = len(self.chord_mm)
@@ -179,6 +182,8 @@ class CrossingCalibrationInputs:
                 raise ValueError(f"spill_fraction[{name!r}] must have shape (n, {N_LAYERS})")
             if self.spill_distance[name].shape != (n, N_LAYERS, K_MAX):
                 raise ValueError(f"spill_distance[{name!r}] must have shape (n, {N_LAYERS}, {K_MAX})")
+            if self.spill_share is not None and self.spill_share[name].shape != (n, N_LAYERS, K_MAX):
+                raise ValueError(f"spill_share[{name!r}] must have shape (n, {N_LAYERS}, {K_MAX})")
 
     @property
     def n_events(self) -> int:
@@ -247,8 +252,13 @@ class SpillTable:
     probability: np.ndarray  # (R,) P(layer spills | r bin)
     cells_pmf: np.ndarray  # (R, K_MAX) P(K = k + 1 | spills, r bin)
     fraction_quantiles: np.ndarray  # (R, Q) share of the layer energy that spills
-    distance_pmf: np.ndarray  # (2, N_DISTANCE_BINS) ordinary / shower-like layers
+    distance_pmf: np.ndarray  # (2, K_MAX, N_DISTANCE_BINS) ordinary / shower-like layers, by energy rank
     counts: np.ndarray  # (R,) calibration layers per r bin
+    concentration: float = 1.0  # Dirichlet concentration of the spill cells' shares
+    # correlation of the layers' presence draws through one event-level normal (0 = independent)
+    presence_coupling: float = 0.0
+    # the share of a spill cell is also scaled by distance ** -tilt: near cells hold more energy
+    distance_tilt: float = 0.0
 
     def __post_init__(self) -> None:
         r, q = len(SPILL_R_EDGES) + 1, len(self.levels)
@@ -256,7 +266,7 @@ class SpillTable:
             "probability": (r,),
             "cells_pmf": (r, K_MAX),
             "fraction_quantiles": (r, q),
-            "distance_pmf": (2, N_DISTANCE_BINS),
+            "distance_pmf": (2, K_MAX, N_DISTANCE_BINS),
             "counts": (r,),
         }
         for name, shape in shapes.items():
@@ -268,6 +278,12 @@ class SpillTable:
                 raise ValueError(f"{name} must be finite and nonnegative")
         if np.any(self.probability > 1) or np.any(self.fraction_quantiles > 1):
             raise ValueError("probabilities and spill fractions must not exceed 1")
+        if not np.isfinite(self.concentration) or self.concentration <= 0:
+            raise ValueError("concentration must be positive and finite")
+        if not 0.0 <= self.presence_coupling < 1.0:
+            raise ValueError("presence_coupling must lie in [0, 1)")
+        if not np.isfinite(self.distance_tilt) or self.distance_tilt < 0:
+            raise ValueError("distance_tilt must be finite and nonnegative")
         if np.any(np.diff(self.fraction_quantiles, axis=-1) < 0):
             raise ValueError("fraction_quantiles must be non-decreasing")
         for name in ("cells_pmf", "distance_pmf"):
@@ -297,6 +313,9 @@ class CrossingStructure:
             out[f"spill_fraction_quantiles_{name}"] = np.asarray(spill.fraction_quantiles, dtype=float)
             out[f"spill_distance_pmf_{name}"] = np.asarray(spill.distance_pmf, dtype=float)
             out[f"spill_counts_{name}"] = np.asarray(spill.counts, dtype=np.int64)
+            out[f"spill_concentration_{name}"] = np.array([spill.concentration], dtype=float)
+            out[f"spill_presence_coupling_{name}"] = np.array([spill.presence_coupling], dtype=float)
+            out[f"spill_distance_tilt_{name}"] = np.array([spill.distance_tilt], dtype=float)
         burst = self.burst
         out["spill_levels"] = np.asarray(self.spill[REPRESENTATIONS[0]].levels, dtype=float)
         out["burst_levels"] = np.asarray(burst.levels, dtype=float)
@@ -324,14 +343,29 @@ class CrossingStructure:
             share_quantiles=arrays["burst_share_quantiles"],
             counts=arrays["burst_counts"],
         )
+        def distance_by_rank(name: str) -> np.ndarray:
+            pmf = np.asarray(arrays[f"spill_distance_pmf_{name}"], dtype=float)
+            if pmf.ndim == 2:  # an artifact built before the ranks existed: one law for every rank
+                pmf = np.repeat(pmf[:, None, :], K_MAX, axis=1)
+            return pmf
+
         spill = {
             name: SpillTable(
                 levels=arrays["spill_levels"],
                 probability=arrays[f"spill_probability_{name}"],
                 cells_pmf=arrays[f"spill_cells_pmf_{name}"],
                 fraction_quantiles=arrays[f"spill_fraction_quantiles_{name}"],
-                distance_pmf=arrays[f"spill_distance_pmf_{name}"],
+                distance_pmf=distance_by_rank(name),
                 counts=arrays[f"spill_counts_{name}"],
+                concentration=float(arrays[f"spill_concentration_{name}"][0])
+                if f"spill_concentration_{name}" in arrays
+                else 1.0,
+                presence_coupling=float(arrays[f"spill_presence_coupling_{name}"][0])
+                if f"spill_presence_coupling_{name}" in arrays
+                else 0.0,
+                distance_tilt=float(arrays[f"spill_distance_tilt_{name}"][0])
+                if f"spill_distance_tilt_{name}" in arrays
+                else 0.0,
             )
             for name in REPRESENTATIONS
         }
@@ -618,6 +652,122 @@ def _burst_table(
     )
 
 
+CONCENTRATION_GRID = (0.1, 0.15, 0.2, 0.3, 0.45, 0.7, 1.0, 1.5, 2.5, 4.0)
+CONCENTRATION_LAYERS = 20_000
+MIN_RANK_SAMPLES = 30
+
+
+def _fit_concentration(count: np.ndarray, top_share: np.ndarray) -> float:
+    """Dirichlet concentration that reproduces the mean share of the strongest spill cell.
+
+    Only layers with 2 to ``K_MAX - 1`` spill cells enter: there the recorded cells are all the
+    cells, so the shares sum to one. The simulation uses the data's own cell counts and the same
+    seed for every candidate, so the candidates are compared on common random numbers.
+    """
+
+    keep = (count >= 2) & (count < K_MAX)
+    if keep.sum() < 50:
+        return 1.0
+    k = count[keep][:CONCENTRATION_LAYERS]
+    target = float(top_share[keep][:CONCENTRATION_LAYERS].mean())
+    used = np.arange(K_MAX)[None, :] < k[:, None]
+    best, best_error = 1.0, np.inf
+    for alpha in CONCENTRATION_GRID:
+        gamma = np.where(used, np.random.default_rng(0).gamma(alpha, size=(len(k), K_MAX)), 0.0)
+        top = float((gamma.max(axis=1) / gamma.sum(axis=1)).mean())
+        if abs(top - target) < best_error:
+            best, best_error = alpha, abs(top - target)
+    return float(best)
+
+
+COUPLING_GRID = (0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9)
+COUPLING_EVENTS = 20_000
+
+
+def _clustering_ratio(lit: np.ndarray, probability: np.ndarray) -> float:
+    """Variance of the number of spilling layers per event over its independent-layer value."""
+
+    independent = max(float((probability * (1.0 - probability)).sum(axis=1).mean()), 1e-12)
+    return float(lit.sum(axis=1).var() / independent)
+
+
+def _fit_presence_coupling(probability: np.ndarray, observed: np.ndarray) -> float:
+    """Coupling that gives the simulated spilling-layer counts the observed clustering.
+
+    ``probability`` is each calibration layer's own presence probability ``(events, layers)``,
+    ``observed`` whether it spilled. The simulation uses the same probabilities, so the
+    clustering that the layers' energies already imply (a burst raises every layer's
+    probability) is not counted twice.
+    """
+
+    n = min(len(observed), COUPLING_EVENTS)
+    probability, observed = probability[:n], observed[:n]
+    target = _clustering_ratio(observed.astype(float), probability)
+    threshold = stats.norm.ppf(1.0 - np.clip(probability, 1e-9, 1.0 - 1e-9))
+    best, best_error = 0.0, np.inf
+    for rho in COUPLING_GRID:
+        rng = np.random.default_rng(0)
+        event = rng.standard_normal((n, 1))
+        layer = rng.standard_normal(probability.shape)
+        simulated = (np.sqrt(rho) * event + np.sqrt(1.0 - rho) * layer > threshold).astype(float)
+        error = abs(_clustering_ratio(simulated, probability) - target)
+        if error < best_error:
+            best, best_error = rho, error
+    return float(best)
+
+
+TILT_GRID = (0.0, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0)
+TILT_EVENTS = 2000
+
+
+def _near_energy_share(distance: np.ndarray, weight: np.ndarray, spill_energy: np.ndarray) -> float:
+    """Share of the spill energy held by cells next to the crossed cells (distance 1)."""
+
+    energy = weight * spill_energy[..., None]
+    total = float(energy.sum())
+    return float(energy[distance == 1].sum() / total) if total > 0 else 0.0
+
+
+def _fit_distance_tilt(
+    table: SpillTable,
+    ratio: np.ndarray,
+    layer_energy: np.ndarray,
+    distance: np.ndarray,
+    share: np.ndarray,
+    fraction: np.ndarray,
+) -> float:
+    """Tilt that gives the simulated spill the data's share of energy in the cells next to the track.
+
+    All arrays are per calibration layer, ``(events, N_LAYERS[, K_MAX])``. The data's share is read
+    from the recorded cells (``share`` of the spill, at ``distance``); the simulation draws the
+    same layers' spills from ``table`` with each tilt on common random numbers.
+    """
+
+    n = min(len(ratio), TILT_EVENTS)
+    target = _near_energy_share(distance[:n], share[:n], (fraction * layer_energy)[:n])
+    best, best_error = 0.0, np.inf
+    for tilt in TILT_GRID:
+        candidate = SpillTable(
+            levels=table.levels,
+            probability=table.probability,
+            cells_pmf=table.cells_pmf,
+            fraction_quantiles=table.fraction_quantiles,
+            distance_pmf=table.distance_pmf,
+            counts=table.counts,
+            concentration=table.concentration,
+            presence_coupling=0.0,
+            distance_tilt=tilt,
+        )
+        uniforms = np.random.default_rng(0).random((n, N_LAYERS, SPILL_DRAWS))
+        draw = sample_spill(candidate, ratio[:n], uniforms)
+        simulated = _near_energy_share(
+            np.abs(draw.offset), draw.weight, draw.fraction * layer_energy[:n]
+        )
+        if abs(simulated - target) < best_error:
+            best, best_error = tilt, abs(simulated - target)
+    return float(best)
+
+
 def _spill_table(
     inputs: Sequence[CrossingCalibrationInputs],
     reference: dict[str, np.ndarray],
@@ -626,17 +776,22 @@ def _spill_table(
     levels: np.ndarray,
 ) -> SpillTable:
     n_r = len(SPILL_R_EDGES) + 1
-    r_all, count_all, fraction_all, distance_all = [], [], [], []
+    r_all, count_all, fraction_all, distance_all, share_all = [], [], [], [], []
+    energy_all = []
     for a, entry in enumerate(inputs):
         bins = np.searchsorted(chord_edges, entry.chord_mm, side="right")
         r_all.append((entry.layer_energy_mev[name] / reference[name][a][bins]).ravel())
+        energy_all.append(entry.layer_energy_mev[name].ravel())
         count_all.append(entry.spill_count[name].ravel())
         fraction_all.append(entry.spill_fraction[name].ravel())
         distance_all.append(entry.spill_distance[name].reshape(-1, K_MAX))
+        if entry.spill_share is not None:
+            share_all.append(entry.spill_share[name].reshape(-1, K_MAX))
     r = np.concatenate(r_all)
     count = np.concatenate(count_all)
     fraction = np.concatenate(fraction_all)
     distance = np.concatenate(distance_all)
+    share = np.concatenate(share_all) if len(share_all) == len(inputs) else None
     r_bin = np.searchsorted(SPILL_R_EDGES, r, side="right")
 
     spills = count > 0
@@ -661,13 +816,43 @@ def _spill_table(
             quantiles[b] = fallback_q
     quantiles = np.maximum.accumulate(np.clip(quantiles, 0.0, 1.0), axis=1)
 
-    distance_pmf = np.zeros((2, N_DISTANCE_BINS))
+    distance_pmf = np.zeros((2, K_MAX, N_DISTANCE_BINS))
     shower_like = r >= SPILL_DISTANCE_SPLIT_R
     for group, selected in enumerate((~shower_like, shower_like)):
-        d = distance[selected]
-        d = d[d > 0]
-        histogram = np.histogram(d, bins=DISTANCE_EDGES)[0] + 0.5
-        distance_pmf[group] = histogram / histogram.sum()
+        pooled = distance[selected]
+        pooled = pooled[pooled > 0]
+        pooled_pmf = np.histogram(pooled, bins=DISTANCE_EDGES)[0] + 0.5
+        pooled_pmf = pooled_pmf / pooled_pmf.sum()
+        for rank in range(K_MAX):  # rank 0 is the strongest spill cell of its layer
+            d = distance[selected, rank]
+            d = d[d > 0]
+            if len(d) >= MIN_RANK_SAMPLES:
+                histogram = np.histogram(d, bins=DISTANCE_EDGES)[0] + 0.5
+                distance_pmf[group, rank] = histogram / histogram.sum()
+            else:
+                distance_pmf[group, rank] = distance_pmf[group, rank - 1] if rank else pooled_pmf
+    concentration = _fit_concentration(count, share[:, 0]) if share is not None else 1.0
+    probability_by_layer = probability[r_bin].reshape(-1, N_LAYERS)
+    presence_coupling = _fit_presence_coupling(probability_by_layer, (count > 0).reshape(-1, N_LAYERS))
+    distance_tilt = 0.0
+    if share is not None:
+        untilted = SpillTable(
+            levels=np.asarray(levels, dtype=float),
+            probability=probability,
+            cells_pmf=cells,
+            fraction_quantiles=quantiles,
+            distance_pmf=distance_pmf,
+            counts=n_per_bin,
+            concentration=concentration,
+        )
+        distance_tilt = _fit_distance_tilt(
+            untilted,
+            r.reshape(-1, N_LAYERS),
+            np.concatenate(energy_all).reshape(-1, N_LAYERS),
+            distance.reshape(-1, N_LAYERS, K_MAX),
+            share.reshape(-1, N_LAYERS, K_MAX),
+            fraction.reshape(-1, N_LAYERS),
+        )
     return SpillTable(
         levels=np.asarray(levels, dtype=float),
         probability=probability,
@@ -675,6 +860,9 @@ def _spill_table(
         fraction_quantiles=quantiles,
         distance_pmf=distance_pmf,
         counts=n_per_bin,
+        concentration=concentration,
+        presence_coupling=presence_coupling,
+        distance_tilt=distance_tilt,
     )
 
 
@@ -821,34 +1009,49 @@ class SpillDraw:
     weight: np.ndarray  # (n, N_LAYERS, K_MAX) shares of the spilled energy, summing to 1 over used cells
 
 
-def sample_spill(table: SpillTable, ratio: np.ndarray, uniforms: np.ndarray) -> SpillDraw:
+def sample_spill(
+    table: SpillTable,
+    ratio: np.ndarray,
+    uniforms: np.ndarray,
+    event_normal: np.ndarray | None = None,
+) -> SpillDraw:
     """Draw the spill of each layer from its ratio ``r`` to the reference median.
 
     ``uniforms`` has shape ``(n, N_LAYERS, SPILL_DRAWS)``: presence, K, fraction, then per cell
-    distance bin, position inside the bin, side, split weight.
+    distance bin, position inside the bin, side, split weight. ``event_normal`` (shape ``(n,)``)
+    is the event-level normal that couples the layers' presence draws with the table's
+    ``presence_coupling``; without it the layers are independent.
     """
 
     n = ratio.shape[0]
     if uniforms.shape != (n, N_LAYERS, SPILL_DRAWS):
         raise ValueError(f"uniforms must have shape (n, {N_LAYERS}, {SPILL_DRAWS})")
     r_bin = np.searchsorted(SPILL_R_EDGES, ratio, side="right")
-    spills = uniforms[..., 0] < table.probability[r_bin]
+    presence = uniforms[..., 0]
+    if event_normal is not None and table.presence_coupling > 0.0:
+        rho = table.presence_coupling
+        layer_normal = stats.norm.ppf(np.clip(presence, 1e-12, 1.0 - 1e-12))
+        event = np.asarray(event_normal, dtype=float)[:, None]
+        presence = ndtr(np.sqrt(rho) * event + np.sqrt(1.0 - rho) * layer_normal)
+    spills = presence < table.probability[r_bin]
     k = 1 + _pmf_draw(table.cells_pmf[r_bin], uniforms[..., 1])
     fraction = interpolate_levels(table.levels, table.fraction_quantiles[r_bin], uniforms[..., 2])
     cells = np.where(spills, k, 0)
 
     per_cell = uniforms[..., 3:].reshape(n, N_LAYERS, K_MAX, 4)
     group = (ratio >= SPILL_DISTANCE_SPLIT_R).astype(int)
-    pmf = np.broadcast_to(
-        table.distance_pmf[group][:, :, None, :], (n, N_LAYERS, K_MAX, N_DISTANCE_BINS)
-    ).copy()
+    pmf = table.distance_pmf[group]  # (n, N_LAYERS, K_MAX, N_DISTANCE_BINS): the law of each rank
     bins = _pmf_draw(pmf, per_cell[..., 0])
     low, high = DISTANCE_EDGES[bins], DISTANCE_EDGES[bins + 1]
     distance = low + np.floor(per_cell[..., 1] * (high - low)).astype(int)
     side = np.where(per_cell[..., 2] < 0.5, -1, 1)
-    gamma = -np.log1p(-per_cell[..., 3] * (1.0 - 1e-12))  # standard exponential: Dirichlet(1, ..., 1)
+    # Dirichlet(alpha, ..., alpha) by normalised gamma variates, strongest first: the strongest
+    # share goes to the cell of rank 0, which the calibration puts nearest the track.
+    gamma = stats.gamma.ppf(per_cell[..., 3] * (1.0 - 1e-12), table.concentration)
     used = np.arange(K_MAX)[None, None, :] < cells[..., None]
-    gamma = np.where(used, gamma, 0.0)
+    gamma = np.sort(np.where(used, gamma, 0.0), axis=-1)[..., ::-1]
+    if table.distance_tilt > 0.0:
+        gamma = gamma * np.maximum(distance, 1).astype(float) ** (-table.distance_tilt)
     total = gamma.sum(axis=-1, keepdims=True)
     weight = np.where(total > 0, gamma / np.where(total > 0, total, 1.0), 0.0)
     offset = np.where(used, side * distance, 0)

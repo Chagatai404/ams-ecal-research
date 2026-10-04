@@ -18,7 +18,9 @@ THE MODEL. Per layer at offset ``k = l - l_D`` from the interaction layer:
 * the core fraction ``c`` is ``sigmoid(mu_k + b (ln e - ln e_ref) + s_event z_event + s_layer eps)``:
   a mean by offset, an energy slope, one event-level normal shared by all layers (the
   lateral-scale latent) and a layer term;
-* the energy is cut into ``N = max(1, Poisson(e / q))`` QUANTA; each lands in the core with
+* the energy is cut into ``N = max(1, Poisson(e / q(e)))`` QUANTA, with a quantum that grows
+  with the layer's energy, ``q(e) = q (e / e_q)^kappa`` (measured: a layer of 10-30 MeV lights
+  several times more cells than one quantum size fitted to the strong layers gives); each lands in the core with
   probability ``c`` (on the track cell with probability ``sigmoid(a + b logit c)`` - measured:
   the more concentrated the layer, the more of its core sits on one cell - else on a
   neighbour) or in the halo, whose distance follows an empirical pmf; the side is random;
@@ -42,6 +44,7 @@ CALIBRATION touches CALIBRATION events only (the caller enforces the split).
 
 from __future__ import annotations
 
+import itertools
 from collections.abc import Sequence
 from dataclasses import dataclass
 
@@ -68,6 +71,8 @@ TAIL_GRID = (0.5, 0.7, 1.0, 1.4, 2.0, 3.0, EQUAL_WEIGHTS)
 GRANULARITY_LAYERS = 4000
 CORE_CLIP = 0.02
 MATCH_ITERATIONS = 8
+QUANTUM_SLOPE_GRID = (0.0, 0.2, 0.4, 0.6, 0.8)
+MIN_USABLE_MEV = 0.5
 
 
 @dataclass(frozen=True, slots=True)
@@ -106,6 +111,8 @@ class LateralTable:
     layer_sd: np.ndarray  # (A, 2) sd of the layer term
     quantum_mev: np.ndarray  # (2,) energy of one quantum
     tail_index: np.ndarray  # (2,) Pareto tail index of a quantum's weight
+    quantum_slope: np.ndarray  # (2,) kappa: the quantum grows as (layer energy) ** kappa
+    quantum_reference_mev: np.ndarray  # (2,) the layer energy at which the quantum is quantum_mev
     energy_slope: np.ndarray  # (A, 2) slope of the logit core fraction in ln layer energy
     log_energy_ref: np.ndarray  # (A, 2) ln energy at which the slope term vanishes
     counts: np.ndarray  # (A,) layers used per energy
@@ -122,6 +129,8 @@ class LateralTable:
             "layer_sd": (a, 2),
             "quantum_mev": (2,),
             "tail_index": (2,),
+            "quantum_slope": (2,),
+            "quantum_reference_mev": (2,),
             "energy_slope": (a, 2),
             "log_energy_ref": (a, 2),
             "counts": (a,),
@@ -137,6 +146,12 @@ class LateralTable:
             raise ValueError("every halo pmf must sum to 1")
         if np.any(self.quantum_mev <= 0) or np.any(self.tail_index <= 0):
             raise ValueError("quantum_mev and tail_index must be positive")
+        if not np.all(np.isfinite(self.quantum_slope)) or not np.all(
+            np.isfinite(self.quantum_reference_mev)
+        ):
+            raise ValueError("quantum_slope and quantum_reference_mev must be finite")
+        if np.any(self.quantum_reference_mev <= 0) or np.any(self.quantum_slope < 0):
+            raise ValueError("quantum_reference_mev must be positive and quantum_slope nonnegative")
         for name in ("energy_slope", "log_energy_ref", "centre_intercept", "centre_slope", "centre_first"):
             if not np.all(np.isfinite(getattr(self, name))):
                 raise ValueError(f"{name} must be finite")
@@ -153,6 +168,8 @@ class LateralTable:
             "lateral_layer_sd": self.layer_sd,
             "lateral_quantum_mev": self.quantum_mev,
             "lateral_tail_index": self.tail_index,
+            "lateral_quantum_slope": self.quantum_slope,
+            "lateral_quantum_reference_mev": self.quantum_reference_mev,
             "lateral_energy_slope": self.energy_slope,
             "lateral_log_energy_ref": self.log_energy_ref,
             "lateral_counts": np.asarray(self.counts, dtype=np.int64),
@@ -171,6 +188,10 @@ class LateralTable:
             layer_sd=arrays["lateral_layer_sd"],
             quantum_mev=arrays["lateral_quantum_mev"],
             tail_index=arrays["lateral_tail_index"],
+            quantum_slope=np.asarray(arrays.get("lateral_quantum_slope", np.zeros(2)), dtype=float),
+            quantum_reference_mev=np.asarray(
+                arrays.get("lateral_quantum_reference_mev", np.ones(2)), dtype=float
+            ),
             energy_slope=arrays["lateral_energy_slope"],
             log_energy_ref=arrays["lateral_log_energy_ref"],
             counts=arrays["lateral_counts"],
@@ -215,8 +236,14 @@ def place_quanta(
     halo_pmf: np.ndarray,
     quantum_mev: float,
     tail_index: float,
+    quantum_slope: float = 0.0,
+    quantum_reference_mev: float = 1.0,
 ) -> np.ndarray:
-    """Cell energies ``(m, N_CELLS)`` of ``m`` layers; each row sums exactly to its layer energy."""
+    """Cell energies ``(m, N_CELLS)`` of ``m`` layers; each row sums exactly to its layer energy.
+
+    A layer of energy ``e`` is cut into Poisson(``e / q(e)``) quanta with
+    ``q(e) = quantum_mev (e / quantum_reference_mev) ** quantum_slope``.
+    """
 
     energy = np.asarray(energy_mev, dtype=float)
     probability = cell_probabilities(
@@ -229,7 +256,8 @@ def place_quanta(
     for i in range(len(energy)):
         if energy[i] <= 0.0:
             continue
-        n_quanta = max(1, int(rng.poisson(energy[i] / quantum_mev)))
+        quantum = quantum_mev * (energy[i] / quantum_reference_mev) ** quantum_slope
+        n_quanta = max(1, int(rng.poisson(energy[i] / quantum)))
         counts = rng.multinomial(n_quanta, probability[i])
         cell_of_quantum = np.repeat(np.arange(N_CELLS), counts)
         if tail_index >= EQUAL_WEIGHTS:
@@ -353,6 +381,8 @@ def _energy_weighted_shifts(
             np.asarray(parameters["halo"]),
             float(parameters["quantum"]),
             float(parameters["tail"]),
+            float(parameters["quantum_slope"]),
+            float(parameters["quantum_reference"]),
         )
         got_core, got_centre = shares(simulated)
         delta_core += tilt(target_core, got_core)
@@ -384,40 +414,55 @@ def _granularity(
     pool: list[tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]],
     centre_relation: tuple[float, float],
     halo_pmf: np.ndarray,
-) -> tuple[float, float]:
-    """Pick ``(quantum, shape)`` by matching hits, occupied cells and top-cell share of data layers."""
+) -> tuple[float, float, float, float]:
+    """Pick ``(quantum, shape, slope, reference)`` by matching hits, occupied cells and top-cell share.
+
+    The quantum is the one at the reference energy (the median of the usable layers); ``slope`` is
+    the exponent of its growth with the layer's energy.
+    """
 
     grids = np.concatenate([p[0] for p in pool])
     centres = np.concatenate([p[1] for p in pool])
     take = rng.choice(len(grids), size=min(GRANULARITY_LAYERS, len(grids)), replace=False)
     grids, centres = grids[take], centres[take]
     data = layer_statistics(grids, centres)
-    usable = data["energy"] > 0.5
+    usable = data["energy"] > MIN_USABLE_MEV
+    reference = float(np.median(data["energy"][usable]))
     edges = np.quantile(data["energy"][usable], np.linspace(0, 1, 7))
     which = np.clip(np.searchsorted(edges, data["energy"], side="right") - 1, 0, 5)
     core = np.clip(data["core"], CORE_CLIP, 1 - CORE_CLIP)
     centre_probability = expit(centre_relation[0] + centre_relation[1] * logit(core))
-    best = (np.inf, 0.0, 0.0)
-    for quantum in QUANTUM_GRID_MEV[name]:
-        for shape in TAIL_GRID:
-            sim = layer_statistics(
-                place_quanta(rng, data["energy"], core, centres, centre_probability, halo_pmf, quantum, shape),
+    best = (np.inf, 0.0, 0.0, 0.0)
+    for quantum, shape, slope in itertools.product(QUANTUM_GRID_MEV[name], TAIL_GRID, QUANTUM_SLOPE_GRID):
+        sim = layer_statistics(
+            place_quanta(
+                rng,
+                data["energy"],
+                core,
                 centres,
-            )
-            cost = 0.0
-            for b in range(6):
-                m = usable & (which == b)
-                if m.sum() < 20:
-                    continue
-                hits_data = np.median(data["hits"][m])
-                occ_data = np.mean(data["occupied"][m])
-                cost += abs(np.median(sim["hits"][m]) - hits_data) / (1 + hits_data)
-                cost += abs(np.mean(sim["occupied"][m]) - occ_data) / (1 + occ_data)
-                cost += abs(np.median(sim["top"][m]) - np.median(data["top"][m]))
-                cost += abs(np.quantile(sim["top"][m], 0.9) - np.quantile(data["top"][m], 0.9))
-            if cost < best[0]:
-                best = (cost, quantum, shape)
-    return best[1], best[2]
+                centre_probability,
+                halo_pmf,
+                quantum,
+                shape,
+                slope,
+                reference,
+            ),
+            centres,
+        )
+        cost = 0.0
+        for b in range(6):
+            m = usable & (which == b)
+            if m.sum() < 20:
+                continue
+            hits_data = np.median(data["hits"][m])
+            occ_data = np.mean(data["occupied"][m])
+            cost += abs(np.median(sim["hits"][m]) - hits_data) / (1 + hits_data)
+            cost += abs(np.mean(sim["occupied"][m]) - occ_data) / (1 + occ_data)
+            cost += abs(np.median(sim["top"][m]) - np.median(data["top"][m]))
+            cost += abs(np.quantile(sim["top"][m], 0.9) - np.quantile(data["top"][m], 0.9))
+        if cost < best[0]:
+            best = (cost, quantum, shape, slope)
+    return best[1], best[2], best[3], reference
 
 
 def build_lateral(
@@ -435,6 +480,7 @@ def build_lateral(
     event_sd, layer_sd = np.empty((n_a, 2)), np.empty((n_a, 2))
     counts = np.zeros(n_a, dtype=np.int64)
     quantum, shape = np.empty(2), np.empty(2)
+    quantum_slope, quantum_reference = np.empty(2), np.empty(2)
     energy_slope, log_energy_ref = np.empty((n_a, 2)), np.empty((n_a, 2))
 
     for r, name in enumerate(REPRESENTATIONS):
@@ -506,7 +552,7 @@ def build_lateral(
                     logit_mean[a, r, k] = logit_mean[a, r, k - 1]
         relation = (float(centre_intercept[:, r].mean()), float(centre_slope[:, r].mean()))
         pooled_halo = halo[:, r].mean(axis=0)
-        quantum[r], shape[r] = _granularity(
+        quantum[r], shape[r], quantum_slope[r], quantum_reference[r] = _granularity(
             rng, name, pool, relation, pooled_halo / pooled_halo.sum()
         )
         for a in range(n_a):
@@ -529,6 +575,8 @@ def build_lateral(
                     "halo": halo[a, r],
                     "quantum": quantum[r],
                     "tail": shape[r],
+                    "quantum_slope": quantum_slope[r],
+                    "quantum_reference": quantum_reference[r],
                 },
             )
             logit_mean[a, r] += delta_core
@@ -544,6 +592,8 @@ def build_lateral(
         layer_sd=layer_sd,
         quantum_mev=quantum,
         tail_index=shape,
+        quantum_slope=quantum_slope,
+        quantum_reference_mev=quantum_reference,
         energy_slope=energy_slope,
         log_energy_ref=log_energy_ref,
         counts=counts,
@@ -636,6 +686,55 @@ def event_grid(
         halo,
         float(table.quantum_mev[representation]),
         float(table.tail_index[representation]),
+        float(table.quantum_slope[representation]),
+        float(table.quantum_reference_mev[representation]),
+    )
+    return out
+
+
+def place_excess(
+    table: LateralTable,
+    representation: int,
+    rng: np.random.Generator,
+    energy_gev: float,
+    excess_mev: np.ndarray,
+    centre_cells: np.ndarray,
+    event_normal: float,
+    layer_normals: np.ndarray,
+) -> np.ndarray:
+    """Cell energies ``(N_LAYERS, N_CELLS)`` of energy placed laterally in layers IN FRONT of the interaction.
+
+    ``excess_mev`` is, per layer, the energy above what the crossing proton itself deposits
+    (backsplash from the shower behind). It is laid out with the lateral law of the interaction
+    layer (offset 0) and the event's own lateral latents; a layer with no excess stays empty.
+    """
+
+    out = np.zeros((N_LAYERS, N_CELLS))
+    layers = np.flatnonzero(excess_mev > 0.0)
+    if len(layers) == 0:
+        return out
+    fractions = core_fractions(
+        table,
+        representation,
+        np.array([energy_gev]),
+        np.zeros((1, len(layers)), dtype=int),
+        excess_mev[None, layers],
+        np.array([event_normal]),
+        layer_normals[None, layers],
+    )[0]
+    relation, halo = blended_kernel(table, representation, energy_gev)
+    centre = expit(relation[0] + relation[1] * logit(np.clip(fractions, CORE_CLIP, 1 - CORE_CLIP)))
+    out[layers] = place_quanta(
+        rng,
+        excess_mev[layers],
+        fractions,
+        centre_cells[layers],
+        centre,
+        halo,
+        float(table.quantum_mev[representation]),
+        float(table.tail_index[representation]),
+        float(table.quantum_slope[representation]),
+        float(table.quantum_reference_mev[representation]),
     )
     return out
 

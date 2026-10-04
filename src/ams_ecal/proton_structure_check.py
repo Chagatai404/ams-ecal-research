@@ -93,9 +93,16 @@ def in_sample_section(
         "n_calibration": int(cal.sum()),
         "seconds_per_1000_events": 1000 * generated["seconds"] / n_events,
     }
-    names = ["energy_mev"]
-    if representation == "readout":
-        names += ["n_hit_cells", "max_cell_fraction", "containment_fraction"]
+    # the lateral observables are compared in BOTH representations: an earlier version compared them
+    # for the readout only and missed a deposition lateral shape that was far from the data
+    names = [
+        "energy_mev",
+        "n_hit_cells",
+        "max_cell_fraction",
+        "containment_fraction",
+        "core_fraction",
+        "width_mm",
+    ]
     for name in names:
         out[name] = compare_distribution(model_obs[name], cal_obs[name])
     out["layer_energy_pooled"] = compare_distribution(
@@ -217,9 +224,16 @@ def interacting_section(
         "n_calibration": int(cal.sum()),
         "seconds_per_1000_events": 1000 * generated["seconds"] / n_events,
     }
-    names = ["energy_mev"]
-    if representation == "readout":
-        names += ["n_hit_cells", "max_cell_fraction", "containment_fraction"]
+    # the lateral observables are compared in BOTH representations: an earlier version compared them
+    # for the readout only and missed a deposition lateral shape that was far from the data
+    names = [
+        "energy_mev",
+        "n_hit_cells",
+        "max_cell_fraction",
+        "containment_fraction",
+        "core_fraction",
+        "width_mm",
+    ]
     for name in names:
         out[name] = compare_distribution(model_obs[name], cal_obs[name])
     out["layer_energy_pooled"] = compare_distribution(

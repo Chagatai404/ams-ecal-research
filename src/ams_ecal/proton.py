@@ -68,7 +68,7 @@ from ams_ecal.proton_interacting import (
     interaction_layer,
     sample_interacting_layers,
 )
-from ams_ecal.proton_lateral import event_grid, track_cells
+from ams_ecal.proton_lateral import event_grid, place_excess, track_cells
 from ams_ecal.proton_structure import (
     BURST_UNIFORMS,
     N_LAYERS,
@@ -86,6 +86,10 @@ MODEL_NAME = "block6b-proton"
 MODEL_VERSION = "1-slice2"  # crossing branch, layers drawn independently (schema 1 artifact)
 MODEL_VERSION_STRUCTURED = "2-crossing-structure"  # crossing branch with burst, spill, bulk coupling
 MODEL_VERSION_FULL = "3-crossing-and-interacting"  # both branches
+# a layer in front of the interaction keeps up to this multiple of its crossing median as the
+# proton's own deposit; what is above it is backsplash and is spread laterally (calibration-event
+# front layers above ~10 MeV light 7-20 cells, where crossing placement lights 2-4)
+UPSTREAM_MIP_CAP = 0.5
 
 PROTON_CONFIG = PROJECT_ROOT / "configs" / "fastmc_proton.yaml"
 GEOMETRY_CONFIG = PROJECT_ROOT / "configs" / "geometry.yaml"
@@ -254,7 +258,8 @@ class ProtonShowerModel:
 
         Draw order, fixed whichever representation is generated (after the interaction
         variate): burst uniforms, burst jitter normals, bulk normals for ``readout`` then
-        ``deposition``, spill uniforms for ``readout`` then ``deposition``.
+        ``deposition``, spill uniforms for ``readout`` then ``deposition``, then one event-level
+        normal that couples the layers' spill presence.
         """
 
         structure = self.calibration.structure
@@ -270,6 +275,7 @@ class ProtonShowerModel:
         burst_normals = rng.standard_normal((1, N_LAYERS))
         bulk_normals = {name: rng.standard_normal((1, N_LAYERS)) for name in REPRESENTATIONS}
         spill_uniforms = {name: rng.random((1, N_LAYERS, SPILL_DRAWS)) for name in REPRESENTATIONS}
+        spill_event = rng.standard_normal(1)  # one event-level normal shared by both representations
 
         name = self.representation
         burst = sample_bursts(structure.burst, energy_gev, burst_uniforms, burst_normals)
@@ -285,7 +291,7 @@ class ProtonShowerModel:
         ratio = total / reference_for(
             structure.reference_median_mev[name], table.energies_gev, energy_gev, bins
         )
-        spill = sample_spill(structure.spill[name], ratio, spill_uniforms[name])
+        spill = sample_spill(structure.spill[name], ratio, spill_uniforms[name], spill_event)
         grid = self.crossing.place_layer_energies(
             track, crossed, total[0], spill.fraction[0], spill.offset[0], spill.weight[0], spill.cells[0]
         )
@@ -382,6 +388,7 @@ class ProtonShowerModel:
         lateral_event = float(rng.standard_normal())
         lateral_layers = rng.standard_normal((len(REPRESENTATIONS), N_LAYERS))
         spill_uniforms = rng.random((len(REPRESENTATIONS), 1, N_LAYERS, SPILL_DRAWS))
+        spill_event = rng.standard_normal(1)
 
         r = REPRESENTATIONS.index(self.representation)
         name = self.representation
@@ -404,12 +411,25 @@ class ProtonShowerModel:
         )[name][0]
         first_layer = int(interaction_layer(np.array([draw.depth_mm]), self.calibration.depth_mm)[0])
 
-        # in front of the interaction: crossing placement with the spill of a layer far above its median
+        # in front of the interaction: the proton's own deposit (up to UPSTREAM_MIP_CAP times the
+        # crossing median) is placed as for a crossing proton; the backsplash above it is spread
+        # laterally like the interaction layer
         in_front = np.where(np.arange(N_LAYERS) < first_layer, layer_energy, 0.0)
         reference = reference_for(structure.reference_median_mev[name], table.energies_gev, energy_gev, bins)
-        spill = sample_spill(structure.spill[name], in_front[None, :] / reference, spill_uniforms[r])
+        own = np.minimum(in_front, UPSTREAM_MIP_CAP * reference[0])
+        spill = sample_spill(structure.spill[name], own[None, :] / reference, spill_uniforms[r], spill_event)
         grid = self.crossing.place_layer_energies(
-            track, crossed, in_front, spill.fraction[0], spill.offset[0], spill.weight[0], spill.cells[0]
+            track, crossed, own, spill.fraction[0], spill.offset[0], spill.weight[0], spill.cells[0]
+        )
+        grid = grid + place_excess(
+            lateral,
+            r,
+            np.random.default_rng([random_seed, 4 + r]),
+            float(energy_gev[0]),
+            in_front - own,
+            track_cells(self.crossing, track),
+            lateral_event,
+            lateral_layers[r],
         )
         # from the interaction layer on: quanta around the track cell
         grid = grid + event_grid(
