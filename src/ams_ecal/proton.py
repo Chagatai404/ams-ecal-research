@@ -63,6 +63,12 @@ from ams_ecal.proton_config import (
     ProtonRepresentation,
     load_proton_config,
 )
+from ams_ecal.proton_interacting import (
+    N_NORMALS,
+    interaction_layer,
+    sample_interacting_layers,
+)
+from ams_ecal.proton_lateral import event_grid, track_cells
 from ams_ecal.proton_structure import (
     BURST_UNIFORMS,
     N_LAYERS,
@@ -79,6 +85,7 @@ from ams_ecal.tracking import TrackState
 MODEL_NAME = "block6b-proton"
 MODEL_VERSION = "1-slice2"  # crossing branch, layers drawn independently (schema 1 artifact)
 MODEL_VERSION_STRUCTURED = "2-crossing-structure"  # crossing branch with burst, spill, bulk coupling
+MODEL_VERSION_FULL = "3-crossing-and-interacting"  # both branches
 
 PROTON_CONFIG = PROJECT_ROOT / "configs" / "fastmc_proton.yaml"
 GEOMETRY_CONFIG = PROJECT_ROOT / "configs" / "geometry.yaml"
@@ -226,7 +233,18 @@ class ProtonShowerModel:
         return energies, crossed
 
     @property
+    def has_interacting_branch(self) -> bool:
+        calibration = self.calibration
+        return (
+            calibration.structure is not None
+            and calibration.interacting is not None
+            and calibration.lateral is not None
+        )
+
+    @property
     def model_version(self) -> str:
+        if self.has_interacting_branch:
+            return MODEL_VERSION_FULL
         return MODEL_VERSION if self.calibration.structure is None else MODEL_VERSION_STRUCTURED
 
     def _structured_crossing_grid(
@@ -301,6 +319,19 @@ class ProtonShowerModel:
             model_details=tuple(sorted(details.items())),
         )
 
+    def _crossing_grid_for_seed(
+        self, primary_energy_mev: float, track: TrackState, random_seed: int
+    ) -> tuple[np.ndarray, dict[str, str] | None]:
+        """The ``(N_LAYERS, 72)`` grid of a crossing proton and its latent description."""
+
+        self._check_request(primary_energy_mev, track)
+        rng = np.random.default_rng(random_seed)
+        self._draw_interaction(rng, track)  # keeps the draw order fixed
+        if self.calibration.structure is None:
+            layer_energy, crossed = self._crossing_layer_energies(primary_energy_mev, track, rng)
+            return self.crossing.spread_layer_energies(track, crossed, layer_energy), None
+        return self._structured_crossing_grid(primary_energy_mev, track, rng)
+
     def generate_crossing_event(
         self,
         *,
@@ -316,15 +347,7 @@ class ProtonShowerModel:
         ``generate_event``.
         """
 
-        self._check_request(primary_energy_mev, track)
-        rng = np.random.default_rng(random_seed)
-        self._draw_interaction(rng, track)  # keeps the draw order fixed
-        latent: dict[str, str] | None = None
-        if self.calibration.structure is None:
-            layer_energy, crossed = self._crossing_layer_energies(primary_energy_mev, track, rng)
-            grid = self.crossing.spread_layer_energies(track, crossed, layer_energy)
-        else:
-            grid, latent = self._structured_crossing_grid(primary_energy_mev, track, rng)
+        grid, latent = self._crossing_grid_for_seed(primary_energy_mev, track, random_seed)
         return ECALEvent(
             event_id=event_id,
             particle_type="proton",
@@ -335,6 +358,125 @@ class ProtonShowerModel:
             provenance=self._provenance(random_seed, "crossing", latent),
         )
 
+    def _interacting_grid_for_seed(
+        self, primary_energy_mev: float, track: TrackState, random_seed: int
+    ) -> tuple[np.ndarray, dict[str, str]]:
+        """The ``(N_LAYERS, 72)`` grid of an interacting proton and its latent description."""
+
+        if not self.has_interacting_branch:
+            raise NotImplementedError("this calibration carries no interacting branch")
+        self._check_request(primary_energy_mev, track)
+        rng = np.random.default_rng(random_seed)
+        draw = self._draw_interaction(rng, track)
+        if not draw.interacts:
+            raise ValueError(f"seed {random_seed} draws no interaction; use generate_crossing_event")
+        structure = self.calibration.structure
+        interacting, lateral = self.calibration.interacting, self.calibration.lateral
+        table = self.calibration.crossing
+        crossed = self.crossing.cross(track)
+        bins = table.chord_bin(crossed.layer_path_mm(N_LAYERS)[None, :])
+        energy_gev = np.array([primary_energy_mev / 1000.0])
+
+        normals = rng.standard_normal((1, N_NORMALS))
+        bulk_normals = rng.standard_normal((1, len(REPRESENTATIONS), N_LAYERS))
+        lateral_event = float(rng.standard_normal())
+        lateral_layers = rng.standard_normal((len(REPRESENTATIONS), N_LAYERS))
+        spill_uniforms = rng.random((len(REPRESENTATIONS), 1, N_LAYERS, SPILL_DRAWS))
+
+        r = REPRESENTATIONS.index(self.representation)
+        name = self.representation
+        bulk_uniforms = np.stack(
+            [
+                coupled_uniforms(structure.coupling_factor(rep), bulk_normals[:, i])
+                for i, rep in enumerate(REPRESENTATIONS)
+            ],
+            axis=1,
+        )
+        layer_energy = sample_interacting_layers(
+            interacting,
+            table,
+            energy_gev,
+            np.array([draw.depth_mm]),
+            self.calibration.depth_mm,
+            bins,
+            normals,
+            bulk_uniforms,
+        )[name][0]
+        first_layer = int(interaction_layer(np.array([draw.depth_mm]), self.calibration.depth_mm)[0])
+
+        # in front of the interaction: crossing placement with the spill of a layer far above its median
+        in_front = np.where(np.arange(N_LAYERS) < first_layer, layer_energy, 0.0)
+        reference = reference_for(structure.reference_median_mev[name], table.energies_gev, energy_gev, bins)
+        spill = sample_spill(structure.spill[name], in_front[None, :] / reference, spill_uniforms[r])
+        grid = self.crossing.place_layer_energies(
+            track, crossed, in_front, spill.fraction[0], spill.offset[0], spill.weight[0], spill.cells[0]
+        )
+        # from the interaction layer on: quanta around the track cell
+        grid = grid + event_grid(
+            lateral,
+            r,
+            np.random.default_rng([random_seed, 2 + r]),
+            float(energy_gev[0]),
+            layer_energy,
+            first_layer,
+            track_cells(self.crossing, track),
+            lateral_event,
+            lateral_layers[r],
+        )
+        latent = {
+            "interaction_depth_mm": f"{draw.depth_mm:.4f}",
+            "interaction_layer": str(first_layer),
+        }
+        return grid, latent
+
+    def generate_interacting_event(
+        self,
+        *,
+        event_id: str,
+        primary_energy_mev: float,
+        track: TrackState,
+        random_seed: int,
+    ) -> ECALEvent:
+        """Generate the event of a proton whose seed draws an inelastic interaction.
+
+        Layers in front of the interaction layer are a crossing response plus an albedo (placed on
+        the crossed cells with the crossing spill); the interaction layer and everything behind it
+        are cut into quanta around the track cell (``ams_ecal.proton_lateral``). Draw order after
+        the interaction variate: the layer-energy normals, the bulk normals, the lateral-scale
+        latent, the lateral layer normals and the spill uniforms. Each representation places its
+        quanta from its own generator ``default_rng([seed, 2 + r])``, so the readout event is the
+        same whether or not the deposition one is generated.
+        """
+
+        grid, latent = self._interacting_grid_for_seed(primary_energy_mev, track, random_seed)
+        return ECALEvent(
+            event_id=event_id,
+            particle_type="proton",
+            primary_energy_mev=float(primary_energy_mev),
+            track=track,
+            geometry=self.geometry,
+            cell_energies_mev=tuple(tuple(float(v) for v in row) for row in grid),
+            provenance=self._provenance(random_seed, "interacting", latent),
+        )
+
+    def generate_grid(
+        self, primary_energy_mev: float, track: TrackState, random_seed: int
+    ) -> tuple[np.ndarray, str, dict[str, str] | None]:
+        """The cell energies, interaction status and latent description of one event, without the
+        canonical ``ECALEvent`` (its validation of 1296 values dominates a batch's cost).
+
+        Identical, event for event, to ``generate_event`` for the same seed.
+        """
+
+        draw = self.interaction_for_seed(primary_energy_mev, track, random_seed)
+        if draw.interacts:
+            if not self.has_interacting_branch:
+                raise NotImplementedError("this calibration carries no interacting branch")
+            grid, latent = self._interacting_grid_for_seed(primary_energy_mev, track, random_seed)
+            return grid, "interacting", latent
+        grid, latent = self._crossing_grid_for_seed(primary_energy_mev, track, random_seed)
+        return grid, "crossing", latent
+
     def generate_event(
         self,
         *,
@@ -343,9 +485,16 @@ class ProtonShowerModel:
         track: TrackState,
         random_seed: int,
     ) -> ECALEvent:
-        """Generate one proton event from its seed (crossing branch only)."""
+        """Generate one proton event from its seed: crossing or interacting, as the seed draws."""
 
         draw = self.interaction_for_seed(primary_energy_mev, track, random_seed)
+        if draw.interacts and self.has_interacting_branch:
+            return self.generate_interacting_event(
+                event_id=event_id,
+                primary_energy_mev=primary_energy_mev,
+                track=track,
+                random_seed=random_seed,
+            )
         if draw.interacts:
             raise NotImplementedError(
                 f"seed {random_seed} draws an interaction at {draw.depth_mm:.1f} mm; interacting "

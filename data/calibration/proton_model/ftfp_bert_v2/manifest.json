@@ -1,10 +1,10 @@
 {
   "builder": {
-    "git_commit": "e822e047dd67a661b7a1f88aca56ab1799ea42e3",
+    "git_commit": "501b875a05d64d42ab8866aff8d8a676536f328a",
     "module": "ams_ecal.proton_calibration",
-    "tracked_changes": false
+    "tracked_changes": true
   },
-  "content_sha256": "6e682b31f505722710c1f5b8a51ea1bf99d7266e5814bce8fbf7e9bf8e57cafe",
+  "content_sha256": "a212caab91043619e36fa3559e869eefd82ed1abe433a0770c5e1fa1dad3cdaf",
   "counts": {
     "10": {
       "calibration_events": 3000,
@@ -27,7 +27,7 @@
       "interacting": 1453
     }
   },
-  "created_utc": "2026-10-02T17:23:11Z",
+  "created_utc": "2026-10-04T17:37:54Z",
   "crossing": {
     "chord_edges_mm": [
       1.9846388597462397,
@@ -116,6 +116,15 @@
     50.0,
     100.0
   ],
+  "interacting": {
+    "events_per_energy": {
+      "10": 1408,
+      "100": 1432,
+      "20": 1449,
+      "50": 1453
+    },
+    "form": "empirical per-offset ln-energy tables + Gaussian copula (common factor, AR chain) + back-edge shift + log-space amplitude mapping by depth group; upstream ln-energy tables tied to the amplitude score"
+  },
   "interaction": {
     "definition": "pooled maximum-likelihood exponential rate of the first inelastic interaction depth, censored by the ECAL depth, over all anchor energies (no energy trend was resolved); an EFFECTIVE length of this geometry and material model, not a physical interaction length of AMS",
     "ecal_depth_mm": 166.5,
@@ -149,6 +158,17 @@
     "standard_error_mm": 3.3737996445635265
   },
   "kind": "proton_calibration",
+  "lateral": {
+    "form": "core fraction by offset with an energy slope and one event-level lateral-scale latent; quanta with Pareto weights; empirical halo pmf; centre-cell share tied to the core fraction",
+    "quantum_mev": [
+      0.6,
+      1.5
+    ],
+    "tail_index": [
+      1.4,
+      1.0
+    ]
+  },
   "physics_list": "ftfp_bert",
   "schema_version": 2,
   "source": {

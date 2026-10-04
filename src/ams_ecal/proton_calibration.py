@@ -64,6 +64,12 @@ from ams_ecal.crossing import FibreCrossingGeometry
 from ams_ecal.geant4_backend import PROJECT_ROOT, _git_state, load_batch
 from ams_ecal.geometry import ECALGeometry, load_geometry
 from ams_ecal.pilot_analysis import censored_exponential_rate
+from ams_ecal.proton_interacting import (
+    InteractingTable,
+    build_interacting,
+    extract_interacting_inputs,
+)
+from ams_ecal.proton_lateral import LateralTable, build_lateral, extract_lateral_inputs
 from ams_ecal.proton_structure import (
     K_MAX,
     SPILL_CELL_MEV,
@@ -348,6 +354,8 @@ class ProtonCalibration:
     effective_length_error_mm: float
     depth_mm: float
     structure: CrossingStructure | None = None
+    interacting: InteractingTable | None = None
+    lateral: LateralTable | None = None
 
     @property
     def physics_list(self) -> str:
@@ -364,6 +372,8 @@ class ProtonCalibration:
             self.effective_length_error_mm,
             self.depth_mm,
             self.structure,
+            self.interacting,
+            self.lateral,
         )
 
     def save(self, directory: str | Path) -> Path:
@@ -416,6 +426,10 @@ class ProtonCalibration:
             effective_length_error_mm=float(arrays["effective_length_error_mm"]),
             depth_mm=float(arrays["depth_mm"]),
             structure=structure,
+            interacting=(
+                InteractingTable.from_arrays(arrays) if "inter_energies_gev" in arrays else None
+            ),
+            lateral=LateralTable.from_arrays(arrays) if "lateral_energies_gev" in arrays else None,
         )
 
 
@@ -425,6 +439,8 @@ def _arrays(
     length_error_mm: float,
     depth_mm: float,
     structure: CrossingStructure | None = None,
+    interacting: InteractingTable | None = None,
+    lateral: LateralTable | None = None,
 ) -> dict[str, np.ndarray]:
     arrays = {
         "energies_gev": np.asarray(crossing.energies_gev, dtype=float),
@@ -439,6 +455,10 @@ def _arrays(
         arrays[f"crossing_quantiles_{name}"] = np.asarray(crossing.quantiles_mev[name], dtype=float)
     if structure is not None:
         arrays.update(structure.arrays())
+    if interacting is not None:
+        arrays.update(interacting.arrays())
+    if lateral is not None:
+        arrays.update(lateral.arrays())
     return arrays
 
 
@@ -562,6 +582,24 @@ def build_calibration(
                 for name in REPRESENTATIONS:
                     quantiles[name][a, b] = np.quantile(entry["layer_energy"][name][selected], levels)
 
+    interacting_table: InteractingTable | None = None
+    lateral_table: LateralTable | None = None
+    if structure:
+        lateral_table = build_lateral(
+            [
+                extract_lateral_inputs(float(energy), per_energy[float(energy)]["arrays"], crossing_geometry)
+                for energy in anchors
+            ],
+            ecal_depth_mm=depth_mm,
+        )
+        interacting_table = build_interacting(
+            [
+                extract_interacting_inputs(float(energy), per_energy[float(energy)]["arrays"], crossing_geometry)
+                for energy in anchors
+            ],
+            ecal_depth_mm=depth_mm,
+        )
+
     crossing_table = CrossingTable(
         energies_gev=anchors,
         chord_edges_mm=chord_edges,
@@ -592,7 +630,15 @@ def build_calibration(
             "n_crossing": rate.n_crossing,
         }
 
-    arrays = _arrays(crossing_table, length_mm, length_error_mm, depth_mm, crossing_structure)
+    arrays = _arrays(
+        crossing_table,
+        length_mm,
+        length_error_mm,
+        depth_mm,
+        crossing_structure,
+        interacting_table,
+        lateral_table,
+    )
     first_metadata = next(iter(per_energy.values()))["metadata"]
     git = _git_state()
     manifest = {
@@ -669,6 +715,19 @@ def build_calibration(
             ),
         },
         "structure": None if crossing_structure is None else describe_structure(crossing_structure),
+        "lateral": None
+        if lateral_table is None
+        else {
+            "quantum_mev": [float(x) for x in lateral_table.quantum_mev],
+            "tail_index": [float(x) for x in lateral_table.tail_index],
+            "form": "core fraction by offset with an energy slope and one event-level lateral-scale latent; quanta with Pareto weights; empirical halo pmf; centre-cell share tied to the core fraction",
+        },
+        "interacting": None
+        if interacting_table is None
+        else {
+            "events_per_energy": {f"{e:g}": int(c) for e, c in zip(anchors, interacting_table.counts, strict=True)},
+            "form": "empirical per-offset ln-energy tables + Gaussian copula (common factor, AR chain) + back-edge shift + log-space amplitude mapping by depth group; upstream ln-energy tables tied to the amplitude score",
+        },
         "builder": {
             "module": "ams_ecal.proton_calibration",
             "git_commit": git["commit"],
@@ -682,6 +741,8 @@ def build_calibration(
         effective_length_error_mm=float(length_error_mm),
         depth_mm=float(depth_mm),
         structure=crossing_structure,
+        interacting=interacting_table,
+        lateral=lateral_table,
     )
 
 
