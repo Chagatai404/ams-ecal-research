@@ -1,0 +1,793 @@
+{
+  "status": "SYSTEMATIC against other Geant4 hadronic lists, not independent validation. The model is calibrated on FTFP_BERT calibration events; ftfp_vs_alternative is the physics-list effect itself.",
+  "created_utc": "2026-10-05T08:04:32Z",
+  "model_calibration_content_sha256": "cee305f1de265bac96e519c7c57270240737c305fab1f86cc6e506ae2e61f7cb",
+  "QGSP_BERT": {
+    "10": {
+      "crossing readout": {
+        "n_alternative": 543,
+        "model_vs_alternative": {
+          "energy_mev": 0.038245856353591234,
+          "n_hit_cells": 0.012257826887661083,
+          "max_cell_fraction": 0.03974677716390418,
+          "containment_fraction": 0.04540331491712707,
+          "core_fraction": 0.06728821362799264,
+          "width_mm": 0.08091252302025775
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.035109941975068726,
+          "n_hit_cells": 0.006280250238300145,
+          "max_cell_fraction": 0.040719250025449516,
+          "containment_fraction": 0.01798587782374117,
+          "core_fraction": 0.024996066890622545,
+          "width_mm": 0.03319659994262292
+        },
+        "median_energy_mev": {
+          "model": 11.036972116941824,
+          "ftfp": 11.092384349554777,
+          "alternative": 11.058801800012589
+        }
+      },
+      "crossing deposition": {
+        "n_alternative": 543,
+        "model_vs_alternative": {
+          "energy_mev": 0.046913443830570944,
+          "n_hit_cells": 0.03345672191528537,
+          "max_cell_fraction": 0.05453867403314916,
+          "containment_fraction": 0.24646777163904232,
+          "core_fraction": 0.18872191528545113,
+          "width_mm": 0.12866298342541438
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.026293992985183756,
+          "n_hit_cells": 0.032955986192472475,
+          "max_cell_fraction": 0.03432563369332853,
+          "containment_fraction": 0.02669077431355671,
+          "core_fraction": 0.02795631009559768,
+          "width_mm": 0.03333194517708249
+        },
+        "median_energy_mev": {
+          "model": 149.2862501513061,
+          "ftfp": 148.9418640844524,
+          "alternative": 148.8648493885994
+        }
+      },
+      "interacting readout": {
+        "n_alternative": 457,
+        "model_vs_alternative": {
+          "energy_mev": 0.045167396061269155,
+          "n_hit_cells": 0.10620897155361042,
+          "max_cell_fraction": 0.10880743982494534,
+          "containment_fraction": 0.16938512035010939,
+          "core_fraction": 0.20141794310722094,
+          "width_mm": 0.1187702407002188
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.03475762134473839,
+          "n_hit_cells": 0.035755358563755696,
+          "max_cell_fraction": 0.050994939824945296,
+          "containment_fraction": 0.026354560373980485,
+          "core_fraction": 0.025753120648498162,
+          "width_mm": 0.03619361696837081
+        },
+        "median_energy_mev": {
+          "model": 289.70420514621,
+          "ftfp": 293.34633057339437,
+          "alternative": 297.64525286662536
+        }
+      },
+      "interacting deposition": {
+        "n_alternative": 457,
+        "model_vs_alternative": {
+          "energy_mev": 0.05278993435448576,
+          "n_hit_cells": 0.07767286652078774,
+          "max_cell_fraction": 0.05598030634573303,
+          "containment_fraction": 0.11742888402625817,
+          "core_fraction": 0.16274070021881826,
+          "width_mm": 0.047536105032822795
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.0318017082753133,
+          "n_hit_cells": 0.035407238412572095,
+          "max_cell_fraction": 0.045162373184802096,
+          "containment_fraction": 0.04250640292420926,
+          "core_fraction": 0.034278956136860994,
+          "width_mm": 0.03260518201710766
+        },
+        "median_energy_mev": {
+          "model": 2943.883656774866,
+          "ftfp": 3023.480185429742,
+          "alternative": 2972.3927750962725
+        }
+      }
+    },
+    "20": {
+      "crossing readout": {
+        "n_alternative": 516,
+        "model_vs_alternative": {
+          "energy_mev": 0.04662403100775192,
+          "n_hit_cells": 0.018015503875969063,
+          "max_cell_fraction": 0.029046511627906946,
+          "containment_fraction": 0.039523255813953495,
+          "core_fraction": 0.04425193798449617,
+          "width_mm": 0.0663527131782945
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.04400761699128847,
+          "n_hit_cells": 0.01865263221027691,
+          "max_cell_fraction": 0.03959935825348987,
+          "containment_fraction": 0.03147631685484234,
+          "core_fraction": 0.02363066588697464,
+          "width_mm": 0.046736539067068525
+        },
+        "median_energy_mev": {
+          "model": 11.27116000611526,
+          "ftfp": 11.329097509384155,
+          "alternative": 11.428035765886307
+        }
+      },
+      "crossing deposition": {
+        "n_alternative": 516,
+        "model_vs_alternative": {
+          "energy_mev": 0.060899224806201524,
+          "n_hit_cells": 0.06133333333333335,
+          "max_cell_fraction": 0.04305813953488369,
+          "containment_fraction": 0.20339147286821713,
+          "core_fraction": 0.178608527131783,
+          "width_mm": 0.09403100775193796
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.03194113325236536,
+          "n_hit_cells": 0.0218651132802542,
+          "max_cell_fraction": 0.03189240250101211,
+          "containment_fraction": 0.02374686998635539,
+          "core_fraction": 0.03182492915298463,
+          "width_mm": 0.028747394779062296
+        },
+        "median_energy_mev": {
+          "model": 155.6568129661542,
+          "ftfp": 155.42013582587242,
+          "alternative": 154.18523009493947
+        }
+      },
+      "interacting readout": {
+        "n_alternative": 484,
+        "model_vs_alternative": {
+          "energy_mev": 0.13036776859504134,
+          "n_hit_cells": 0.15121487603305783,
+          "max_cell_fraction": 0.09965702479338845,
+          "containment_fraction": 0.09326859504132234,
+          "core_fraction": 0.12584710743801653,
+          "width_mm": 0.09755371900826448
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.13216866576550373,
+          "n_hit_cells": 0.12504491555874953,
+          "max_cell_fraction": 0.05053927188314544,
+          "containment_fraction": 0.10645272601794342,
+          "core_fraction": 0.08922511392867116,
+          "width_mm": 0.12412236424094131
+        },
+        "median_energy_mev": {
+          "model": 458.7754622940462,
+          "ftfp": 452.33691706719856,
+          "alternative": 343.09427413356843
+        }
+      },
+      "interacting deposition": {
+        "n_alternative": 484,
+        "model_vs_alternative": {
+          "energy_mev": 0.12646694214876036,
+          "n_hit_cells": 0.08180578512396694,
+          "max_cell_fraction": 0.10888842975206614,
+          "containment_fraction": 0.05290082644628091,
+          "core_fraction": 0.09030991735537186,
+          "width_mm": 0.04764876033057852
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.10981925408802884,
+          "n_hit_cells": 0.12430773003895534,
+          "max_cell_fraction": 0.052267451476937676,
+          "containment_fraction": 0.10092312167410977,
+          "core_fraction": 0.09611786983328485,
+          "width_mm": 0.10423689178629889
+        },
+        "median_energy_mev": {
+          "model": 5157.948387658086,
+          "ftfp": 4977.801187591396,
+          "alternative": 4084.566273114274
+        }
+      }
+    },
+    "50": {
+      "crossing readout": {
+        "n_alternative": 501,
+        "model_vs_alternative": {
+          "energy_mev": 0.052489021956087956,
+          "n_hit_cells": 0.03737225548902212,
+          "max_cell_fraction": 0.05304690618762481,
+          "containment_fraction": 0.03765668662674648,
+          "core_fraction": 0.03148502994011973,
+          "width_mm": 0.06366666666666665
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.020194904309029038,
+          "n_hit_cells": 0.021258065639890217,
+          "max_cell_fraction": 0.0417123090599667,
+          "containment_fraction": 0.018854340446450346,
+          "core_fraction": 0.021273548571893064,
+          "width_mm": 0.031889678948502476
+        },
+        "median_energy_mev": {
+          "model": 11.507236085762171,
+          "ftfp": 11.641476713120937,
+          "alternative": 11.650290757417679
+        }
+      },
+      "crossing deposition": {
+        "n_alternative": 501,
+        "model_vs_alternative": {
+          "energy_mev": 0.09143712574850316,
+          "n_hit_cells": 0.11568063872255507,
+          "max_cell_fraction": 0.06264570858283447,
+          "containment_fraction": 0.1414820359281438,
+          "core_fraction": 0.1357095808383234,
+          "width_mm": 0.10427445109780431
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.05494763543372205,
+          "n_hit_cells": 0.04074075507678898,
+          "max_cell_fraction": 0.05099045606266461,
+          "containment_fraction": 0.03130519826539546,
+          "core_fraction": 0.039118917949492016,
+          "width_mm": 0.04328511690258785
+        },
+        "median_energy_mev": {
+          "model": 160.959637152232,
+          "ftfp": 160.251888366617,
+          "alternative": 162.19990073144436
+        }
+      },
+      "interacting readout": {
+        "n_alternative": 499,
+        "model_vs_alternative": {
+          "energy_mev": 0.1254028056112223,
+          "n_hit_cells": 0.13069438877755502,
+          "max_cell_fraction": 0.10122144288577162,
+          "containment_fraction": 0.04311222444889784,
+          "core_fraction": 0.07883466933867722,
+          "width_mm": 0.09785270541082162
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.13585602036833477,
+          "n_hit_cells": 0.15170602733340038,
+          "max_cell_fraction": 0.08772396823930034,
+          "containment_fraction": 0.11281475545723241,
+          "core_fraction": 0.09494005216213575,
+          "width_mm": 0.1265835180340033
+        },
+        "median_energy_mev": {
+          "model": 808.3590868385127,
+          "ftfp": 829.3586014627944,
+          "alternative": 601.151671900715
+        }
+      },
+      "interacting deposition": {
+        "n_alternative": 499,
+        "model_vs_alternative": {
+          "energy_mev": 0.12351402805611217,
+          "n_hit_cells": 0.08472845691382765,
+          "max_cell_fraction": 0.10774949899799596,
+          "containment_fraction": 0.047890781563126206,
+          "core_fraction": 0.08102304609218436,
+          "width_mm": 0.045128256513026044
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.11899504445918674,
+          "n_hit_cells": 0.14741527101001722,
+          "max_cell_fraction": 0.05642392837981536,
+          "containment_fraction": 0.15372658600063172,
+          "core_fraction": 0.12299892282845115,
+          "width_mm": 0.14304314065157153
+        },
+        "median_energy_mev": {
+          "model": 9950.045794469765,
+          "ftfp": 9938.365684323519,
+          "alternative": 7131.676206531176
+        }
+      }
+    },
+    "100": {
+      "crossing readout": {
+        "n_alternative": 506,
+        "model_vs_alternative": {
+          "energy_mev": 0.04053557312252962,
+          "n_hit_cells": 0.026409090909090938,
+          "max_cell_fraction": 0.04379644268774707,
+          "containment_fraction": 0.03972924901185773,
+          "core_fraction": 0.052677865612648256,
+          "width_mm": 0.08986166007905139
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.038489654755182706,
+          "n_hit_cells": 0.04532346535452125,
+          "max_cell_fraction": 0.05570148019682178,
+          "containment_fraction": 0.02615300072598209,
+          "core_fraction": 0.04505626361216422,
+          "width_mm": 0.08682040009679765
+        },
+        "median_energy_mev": {
+          "model": 11.67440965462362,
+          "ftfp": 11.716320782899857,
+          "alternative": 11.673333138227463
+        }
+      },
+      "crossing deposition": {
+        "n_alternative": 506,
+        "model_vs_alternative": {
+          "energy_mev": 0.11828260869565216,
+          "n_hit_cells": 0.06647035573122528,
+          "max_cell_fraction": 0.04034387351778668,
+          "containment_fraction": 0.222598814229249,
+          "core_fraction": 0.18928260869565228,
+          "width_mm": 0.1494743083003952
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.08416602807130757,
+          "n_hit_cells": 0.09175607001693958,
+          "max_cell_fraction": 0.03914505525530371,
+          "containment_fraction": 0.06965899007824472,
+          "core_fraction": 0.07132521981124462,
+          "width_mm": 0.08440298055981288
+        },
+        "median_energy_mev": {
+          "model": 165.29823786413755,
+          "ftfp": 165.6369265317917,
+          "alternative": 161.46862350031734
+        }
+      },
+      "interacting readout": {
+        "n_alternative": 494,
+        "model_vs_alternative": {
+          "energy_mev": 0.08153441295546554,
+          "n_hit_cells": 0.07250202429149796,
+          "max_cell_fraction": 0.08141093117408915,
+          "containment_fraction": 0.04421052631578948,
+          "core_fraction": 0.08789473684210525,
+          "width_mm": 0.07694331983805668
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.06319125596544006,
+          "n_hit_cells": 0.11116922624567438,
+          "max_cell_fraction": 0.05969398140818316,
+          "containment_fraction": 0.11331508832243908,
+          "core_fraction": 0.08507113292470536,
+          "width_mm": 0.12345350914889286
+        },
+        "median_energy_mev": {
+          "model": 1409.4459286295073,
+          "ftfp": 1330.313178277629,
+          "alternative": 1162.0315172333421
+        }
+      },
+      "interacting deposition": {
+        "n_alternative": 494,
+        "model_vs_alternative": {
+          "energy_mev": 0.07791295546558707,
+          "n_hit_cells": 0.0826174089068826,
+          "max_cell_fraction": 0.15868218623481783,
+          "containment_fraction": 0.09388663967611338,
+          "core_fraction": 0.10976518218623488,
+          "width_mm": 0.048829959514170074
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.05961764639359465,
+          "n_hit_cells": 0.10917037975256139,
+          "max_cell_fraction": 0.045826453757944474,
+          "containment_fraction": 0.11890168050121008,
+          "core_fraction": 0.09503143871711939,
+          "width_mm": 0.16139201139936216
+        },
+        "median_energy_mev": {
+          "model": 17973.224765636725,
+          "ftfp": 16681.619799928405,
+          "alternative": 15123.074892529567
+        }
+      }
+    }
+  },
+  "QBBC": {
+    "10": {
+      "crossing readout": {
+        "n_alternative": 517,
+        "model_vs_alternative": {
+          "energy_mev": 0.043857833655706,
+          "n_hit_cells": 0.04251063829787238,
+          "max_cell_fraction": 0.07383365570599609,
+          "containment_fraction": 0.042603481624758216,
+          "core_fraction": 0.06335396518375243,
+          "width_mm": 0.08178723404255317
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.04774476832907282,
+          "n_hit_cells": 0.03526943226772161,
+          "max_cell_fraction": 0.040776901917712355,
+          "containment_fraction": 0.02261549527132764,
+          "core_fraction": 0.03185778991670149,
+          "width_mm": 0.03089188690065403
+        },
+        "median_energy_mev": {
+          "model": 11.036972116941824,
+          "ftfp": 11.092384349554777,
+          "alternative": 11.061640717089176
+        }
+      },
+      "crossing deposition": {
+        "n_alternative": 517,
+        "model_vs_alternative": {
+          "energy_mev": 0.08257059961315277,
+          "n_hit_cells": 0.05957446808510636,
+          "max_cell_fraction": 0.04907640232108315,
+          "containment_fraction": 0.2584294003868472,
+          "core_fraction": 0.1962166344294004,
+          "width_mm": 0.15833849129593802
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.05611957271852486,
+          "n_hit_cells": 0.057993060077952574,
+          "max_cell_fraction": 0.03613084766190722,
+          "containment_fraction": 0.05196072237395877,
+          "core_fraction": 0.04356283350990932,
+          "width_mm": 0.057016222310780185
+        },
+        "median_energy_mev": {
+          "model": 149.2862501513061,
+          "ftfp": 148.9418640844524,
+          "alternative": 147.51454544067383
+        }
+      },
+      "interacting readout": {
+        "n_alternative": 483,
+        "model_vs_alternative": {
+          "energy_mev": 0.04389440993788818,
+          "n_hit_cells": 0.09581780538302287,
+          "max_cell_fraction": 0.10258074534161488,
+          "containment_fraction": 0.2096304347826088,
+          "core_fraction": 0.22847515527950324,
+          "width_mm": 0.15632608695652173
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.03168231225296447,
+          "n_hit_cells": 0.035024644739318656,
+          "max_cell_fraction": 0.04065499717673632,
+          "containment_fraction": 0.06415866741953702,
+          "core_fraction": 0.03895221626199885,
+          "width_mm": 0.06895527479766606
+        },
+        "median_energy_mev": {
+          "model": 289.70420514621,
+          "ftfp": 293.34633057339437,
+          "alternative": 304.0547406324497
+        }
+      },
+      "interacting deposition": {
+        "n_alternative": 483,
+        "model_vs_alternative": {
+          "energy_mev": 0.04762732919254653,
+          "n_hit_cells": 0.08011283643892342,
+          "max_cell_fraction": 0.07565113871635609,
+          "containment_fraction": 0.19357453416149073,
+          "core_fraction": 0.21420807453416157,
+          "width_mm": 0.1482660455486542
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.03633187464709209,
+          "n_hit_cells": 0.057712215320910976,
+          "max_cell_fraction": 0.035352555053641876,
+          "containment_fraction": 0.09604537220026349,
+          "core_fraction": 0.057337250611707136,
+          "width_mm": 0.1661637728213815
+        },
+        "median_energy_mev": {
+          "model": 2943.883656774866,
+          "ftfp": 3023.480185429742,
+          "alternative": 3125.075752632687
+        }
+      }
+    },
+    "20": {
+      "crossing readout": {
+        "n_alternative": 514,
+        "model_vs_alternative": {
+          "energy_mev": 0.06649221789883264,
+          "n_hit_cells": 0.03944747081712063,
+          "max_cell_fraction": 0.061964980544747084,
+          "containment_fraction": 0.024023346303501933,
+          "core_fraction": 0.036505836575875486,
+          "width_mm": 0.0583891050583657
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.0448524486524321,
+          "n_hit_cells": 0.039167651345811794,
+          "max_cell_fraction": 0.031152237667677718,
+          "containment_fraction": 0.013121947181058038,
+          "core_fraction": 0.01852827471670091,
+          "width_mm": 0.026478461241272733
+        },
+        "median_energy_mev": {
+          "model": 11.27116000611526,
+          "ftfp": 11.329097509384155,
+          "alternative": 11.465372644364834
+        }
+      },
+      "crossing deposition": {
+        "n_alternative": 514,
+        "model_vs_alternative": {
+          "energy_mev": 0.07304669260700392,
+          "n_hit_cells": 0.08002334630350194,
+          "max_cell_fraction": 0.060558365758754895,
+          "containment_fraction": 0.19975680933852147,
+          "core_fraction": 0.1452782101167316,
+          "width_mm": 0.09578599221789885
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.046542082803362694,
+          "n_hit_cells": 0.03347532782916507,
+          "max_cell_fraction": 0.037686242338945464,
+          "containment_fraction": 0.027207249245497445,
+          "core_fraction": 0.020569132002197676,
+          "width_mm": 0.030149997365826464
+        },
+        "median_energy_mev": {
+          "model": 155.6568129661542,
+          "ftfp": 155.42013582587242,
+          "alternative": 156.2641125023365
+        }
+      },
+      "interacting readout": {
+        "n_alternative": 486,
+        "model_vs_alternative": {
+          "energy_mev": 0.04642181069958856,
+          "n_hit_cells": 0.0925432098765433,
+          "max_cell_fraction": 0.1274238683127572,
+          "containment_fraction": 0.16777983539094654,
+          "core_fraction": 0.1981028806584363,
+          "width_mm": 0.1205658436213991
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.03942693556220134,
+          "n_hit_cells": 0.06842522301459497,
+          "max_cell_fraction": 0.04814303606574133,
+          "containment_fraction": 0.037446003629578506,
+          "core_fraction": 0.036806993328732496,
+          "width_mm": 0.04770850906116608
+        },
+        "median_energy_mev": {
+          "model": 458.7754622940462,
+          "ftfp": 452.33691706719856,
+          "alternative": 435.7989848895614
+        }
+      },
+      "interacting deposition": {
+        "n_alternative": 486,
+        "model_vs_alternative": {
+          "energy_mev": 0.04613374485596711,
+          "n_hit_cells": 0.09309053497942382,
+          "max_cell_fraction": 0.06074074074074076,
+          "containment_fraction": 0.14039094650205763,
+          "core_fraction": 0.18435390946502062,
+          "width_mm": 0.12422839506172834
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.04039823121948727,
+          "n_hit_cells": 0.023451678041050028,
+          "max_cell_fraction": 0.06028423178181633,
+          "containment_fraction": 0.04027042915931808,
+          "core_fraction": 0.04686501546404931,
+          "width_mm": 0.08063031976075441
+        },
+        "median_energy_mev": {
+          "model": 5157.948387658086,
+          "ftfp": 4977.801187591396,
+          "alternative": 4815.375139710695
+        }
+      }
+    },
+    "50": {
+      "crossing readout": {
+        "n_alternative": 515,
+        "model_vs_alternative": {
+          "energy_mev": 0.06499514563106801,
+          "n_hit_cells": 0.05492233009708736,
+          "max_cell_fraction": 0.06297087378640787,
+          "containment_fraction": 0.029033980582524266,
+          "core_fraction": 0.03703883495145632,
+          "width_mm": 0.06269417475728145
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.031516056758775224,
+          "n_hit_cells": 0.043743920271618664,
+          "max_cell_fraction": 0.035639289322898726,
+          "containment_fraction": 0.020532066448685535,
+          "core_fraction": 0.03399125146697962,
+          "width_mm": 0.04159758003275993
+        },
+        "median_energy_mev": {
+          "model": 11.507236085762171,
+          "ftfp": 11.641476713120937,
+          "alternative": 11.69835940003395
+        }
+      },
+      "crossing deposition": {
+        "n_alternative": 515,
+        "model_vs_alternative": {
+          "energy_mev": 0.07257281553398065,
+          "n_hit_cells": 0.10997572815533996,
+          "max_cell_fraction": 0.07558252427184464,
+          "containment_fraction": 0.14706310679611656,
+          "core_fraction": 0.11331553398058258,
+          "width_mm": 0.07067475728155337
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.08811165989920988,
+          "n_hit_cells": 0.049587990536020254,
+          "max_cell_fraction": 0.046258025241463274,
+          "containment_fraction": 0.03515730414645321,
+          "core_fraction": 0.03458620191915451,
+          "width_mm": 0.03740907864265945
+        },
+        "median_energy_mev": {
+          "model": 160.959637152232,
+          "ftfp": 160.251888366617,
+          "alternative": 163.6378971338272
+        }
+      },
+      "interacting readout": {
+        "n_alternative": 485,
+        "model_vs_alternative": {
+          "energy_mev": 0.07575257731958762,
+          "n_hit_cells": 0.07967010309278344,
+          "max_cell_fraction": 0.059974226804123676,
+          "containment_fraction": 0.1879536082474227,
+          "core_fraction": 0.21062886597938146,
+          "width_mm": 0.17472680412371133
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.0725409923301239,
+          "n_hit_cells": 0.08402523041556387,
+          "max_cell_fraction": 0.021108123257249478,
+          "containment_fraction": 0.07432187936796247,
+          "core_fraction": 0.06719833121660845,
+          "width_mm": 0.08049325604330887
+        },
+        "median_energy_mev": {
+          "model": 808.3590868385127,
+          "ftfp": 829.3586014627944,
+          "alternative": 897.7257570947346
+        }
+      },
+      "interacting deposition": {
+        "n_alternative": 485,
+        "model_vs_alternative": {
+          "energy_mev": 0.06148453608247417,
+          "n_hit_cells": 0.23161340206185566,
+          "max_cell_fraction": 0.16731958762886598,
+          "containment_fraction": 0.21788659793814436,
+          "core_fraction": 0.23720103092783507,
+          "width_mm": 0.21189175257731957
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.06691310548385487,
+          "n_hit_cells": 0.10215764043110231,
+          "max_cell_fraction": 0.02721706245875935,
+          "containment_fraction": 0.12093429165395453,
+          "core_fraction": 0.08429910388034711,
+          "width_mm": 0.11693829332841404
+        },
+        "median_energy_mev": {
+          "model": 9950.045794469765,
+          "ftfp": 9938.365684323519,
+          "alternative": 11260.506579570903
+        }
+      }
+    },
+    "100": {
+      "crossing readout": {
+        "n_alternative": 524,
+        "model_vs_alternative": {
+          "energy_mev": 0.04498854961832066,
+          "n_hit_cells": 0.041389312977099246,
+          "max_cell_fraction": 0.06535877862595424,
+          "containment_fraction": 0.04589694656488548,
+          "core_fraction": 0.06530916030534353,
+          "width_mm": 0.04333587786259535
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.03716018850288205,
+          "n_hit_cells": 0.02377706807914004,
+          "max_cell_fraction": 0.03235024926000935,
+          "containment_fraction": 0.023246416887365645,
+          "core_fraction": 0.056117580620034274,
+          "width_mm": 0.048342810406605374
+        },
+        "median_energy_mev": {
+          "model": 11.67440965462362,
+          "ftfp": 11.716320782899857,
+          "alternative": 11.816349565982819
+        }
+      },
+      "crossing deposition": {
+        "n_alternative": 524,
+        "model_vs_alternative": {
+          "energy_mev": 0.08127099236641222,
+          "n_hit_cells": 0.09262213740458014,
+          "max_cell_fraction": 0.0477137404580153,
+          "containment_fraction": 0.14940839694656488,
+          "core_fraction": 0.12091221374045813,
+          "width_mm": 0.09826335877862596
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.05899964947811187,
+          "n_hit_cells": 0.025354416575790628,
+          "max_cell_fraction": 0.04296814145505534,
+          "containment_fraction": 0.02847016669263125,
+          "core_fraction": 0.025037973204549008,
+          "width_mm": 0.038562276055460365
+        },
+        "median_energy_mev": {
+          "model": 165.29823786413755,
+          "ftfp": 165.6369265317917,
+          "alternative": 163.36414869874716
+        }
+      },
+      "interacting readout": {
+        "n_alternative": 476,
+        "model_vs_alternative": {
+          "energy_mev": 0.053021008403361214,
+          "n_hit_cells": 0.06658403361344539,
+          "max_cell_fraction": 0.0817100840336134,
+          "containment_fraction": 0.13309663865546206,
+          "core_fraction": 0.1670042016806722,
+          "width_mm": 0.12050000000000005
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.0511184920895732,
+          "n_hit_cells": 0.04201680672268904,
+          "max_cell_fraction": 0.024781700389653105,
+          "containment_fraction": 0.029693441622459016,
+          "core_fraction": 0.024042298483639146,
+          "width_mm": 0.045062438383174475
+        },
+        "median_energy_mev": {
+          "model": 1409.4459286295073,
+          "ftfp": 1330.313178277629,
+          "alternative": 1318.761670751613
+        }
+      },
+      "interacting deposition": {
+        "n_alternative": 476,
+        "model_vs_alternative": {
+          "energy_mev": 0.05899999999999994,
+          "n_hit_cells": 0.19300840336134462,
+          "max_cell_fraction": 0.19497899159663862,
+          "containment_fraction": 0.2013361344537815,
+          "core_fraction": 0.2280294117647058,
+          "width_mm": 0.16830252100840343
+        },
+        "ftfp_vs_alternative": {
+          "energy_mev": 0.0488826815642458,
+          "n_hit_cells": 0.05078400075113848,
+          "max_cell_fraction": 0.02094972067039108,
+          "containment_fraction": 0.07058354067884126,
+          "core_fraction": 0.055273226609079296,
+          "width_mm": 0.09400967090746915
+        },
+        "median_energy_mev": {
+          "model": 17973.224765636725,
+          "ftfp": 16681.619799928405,
+          "alternative": 17137.77312422105
+        }
+      }
+    }
+  }
+}

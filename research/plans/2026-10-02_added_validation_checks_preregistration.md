@@ -47,3 +47,7 @@ D0, D1, D2 on the combined 18 x 72 image (DEC-012: combined is primary), box sid
 
 - **Q2.** Confirm or amend: the lag set and 0.10 (section 1); AUC 0.60 and the 99th-percentile null (section 2); occupancy 0.02 and the three thresholds (section 3).
 - **Q2b.** May `scikit-learn` be added as a `validation` dependency group, or should the scipy logistic-regression fallback be primary?
+
+## Amendment 2026-10-05 (dry run became a development pass)
+
+Rule 3 above says the harness dry run on stand-ins is "to catch bugs, not to tune". That is not what happened. The dry run on pilot calibration events (`results/added_checks/dry_run.json`) exposed a deposition lateral shape far from Geant4, and the model repairs of commit 8c8a5b9 were selected using calibration-event diagnostics that followed. No sealed or held-out event was read. The calibration events used are therefore development data: nothing measured on them is validation evidence, and the in-sample numbers in `research/STATE.md` say so. The models are frozen again after the EM work, and the validation uses a sample that was not exposed. Researcher's decision of 2026-10-05, recorded in `research/DECISIONS.md`. The KS thresholds of the inherited contract are not re-opened by this amendment; their re-registration is in the dataset-level registration's amendment.

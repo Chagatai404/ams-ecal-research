@@ -223,3 +223,26 @@ be forced into the shower-physics interpretation.
 
 **Understanding lives in Obsidian. Evidence and reproducibility live in Git.
 The human researcher decides what becomes accepted knowledge or conclusion.**
+
+---
+
+## Record index: the validated-FastMC-dataset branch (2026-10-02 to 2026-10-05)
+
+Branch `fastmc-validated-dataset`. Read in this order for a tutoring session on the processes. "Decision" IDs are in `DECISIONS.md`; commits are in `git log`. The Obsidian vault has no note for this branch yet (its newest research session is 2026-09-29, its newest tutor session 2026-10-02); the repository is the only record of it.
+
+| process | what was done | where it is recorded | commits |
+|---|---|---|---|
+| plan and approvals | the plan (tracks A-E), the researcher's "Yes to all" on Q1-Q7 | `plans/2026-10-02_fastmc_validated_dataset_and_detector_response_plan.md`, `DECISIONS.md` | |
+| pre-registration | the added validation checks (layer correlations, classifier two-sample test, sparsity, ungated multiscale panel), numbers confirmed before any sealed event existed; amended 2026-10-05 | `plans/2026-10-02_added_validation_checks_preregistration.md` | |
+| crossing repair | burst latent, lateral spill, bulk coupling; in-sample check | `STATE.md` (branch sections), `results/proton_model/crossing_structure_in_sample.json`; DEC-008, DEC-009 | e822e04, f4b79ea (superseded) |
+| sealed Geant4 sets | configs, hash manifests, guard, opening ledger (no opening yet), generation logs | `sealed/README.md`, `sealed/*_manifest.json`, `sealed/generation_log_part*.txt`, `src/ams_ecal/sealed_set.py` | 7f75f73, 467117f, 35bd01f |
+| interacting model | per-offset tables, copula, back-edge, upstream albedo, amplitude mapping; lateral quanta; batch path | `STATE.md`, `results/proton_model/interacting_in_sample.json`; DEC-005 (formulation accepted 2026-10-05) | 501b875, 958f6dd |
+| harness and dataset | added-checks harness, dataset assembler, checks D1-D9, mutation-tested decision rules; dataset-level registration (amended 2026-10-05) | `plans/2026-10-04_dataset_level_checks_preregistration.md`, `src/ams_ecal/added_checks.py`, `src/ams_ecal/dataset.py` | 1688c2b |
+| dry run and repairs | the dry run exposed a deposition lateral shape far from Geant4 (my in-sample check had compared lateral shape for readout only); repairs; artifact frozen `cee305f1` | `results/added_checks/dry_run.json`, `STATE.md` (2026-10-04 later), amendment in the 2026-10-02 registration | 8c8a5b9, 4701165 |
+| reviewer agents | physics, simulation, statistics, ML, adversarial, reproducibility, literature scout; my assessment of each finding | `reviews/2026-10-05_reviewer_agents_round1.md` | bfe964b |
+| EM out-of-sample check | the DEC-001 EM generator against exploration Geant4 electrons: strong disagreement | `results/em_generator/exploration_comparison.json`, `STATE.md` (2026-10-05) | bfe964b (tag `fastmc-pre-em-repair-2026-10-05`) |
+| decisions of 2026-10-05 | DEC-005 accepted; EM: smooth null kept, new production generator; thresholds; protocol wording; sealed proton set stays closed | `DECISIONS.md` (rows of 2026-10-05) | |
+| EM production plan | gated plan, no implementation | `plans/2026-10-05_em_production_generator_plan.md` | |
+| physics-list systematic | the proton model against QGSP_BERT and QBBC pilot samples (a systematic, not validation) | `results/proton_model/physics_list_systematic.json` | |
+
+Other places that hold records: `RESEARCH_PROTOCOL.md` and `CLAUDE.md` (the rules), `NAMES.md` (translation of old labels), `results/` (every numeric result, each with a status line), the git history (about 80 commits, one per step), the assistant's file memory and claude-mem (what happened, never a substitute for these), and the Obsidian vault `01 Projects/AMS ECAL QML` (evidence maps, research sessions, tutor sessions: the learning record, to be extended for this branch when the tutoring starts).

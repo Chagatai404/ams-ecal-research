@@ -42,3 +42,10 @@ D9. The classifier of the generator registration (section 2 features, fixed sett
 
 - **Q8.** Confirm or amend the thresholds KS 0.05 (D1, D2, D4) and AUC 0.55 (D5).
 - **Q9.** Confirm that v0 is `deposition` only for both classes, 10-100 GeV log-uniform, normal incidence, 70/15/15, and that D9 is reported rather than gated.
+
+## Amendment 2026-10-05 (Q8, Q9 answered in part)
+
+- **AUC 0.55 (D5) is confirmed**, to be reported with a bootstrap or seed-to-seed uncertainty, not as a single point estimate.
+- **KS 0.05 (D1, D2, D4) is not confirmed as a universal threshold.** D1, D2 and D4 compare samples drawn by the same code from the same distribution, so there KS 0.05 is a consistency check of the sampling code at the planned sample sizes. A KS threshold used to compare a generator with Geant4 must instead come from a split-Geant4 self-comparison noise floor plus physics-motivated tolerances per observable class, registered before any sealed opening and not adjusted to what the generators are observed to give.
+- Q9 (v0 is `deposition` only, 10-100 GeV log-uniform, normal incidence, 70/15/15, D9 reported rather than gated) is not yet answered.
+- The electron generator in the dataset is the new production EM generator once it exists (decision of 2026-10-05); the smooth DEC-001 generator is a separate null and is not mixed into the e/p dataset.
