@@ -4,13 +4,13 @@ _Drafted 2026-10-05 on branch `fastmc-validated-dataset`, after the first out-of
 
 ## 1. Why
 
-`results/em_generator/exploration_comparison.json` (module `ams_ecal.em_exploration_check`, unsealed exploration electrons, `deposition` representation): KS 0.57-0.75 on event energy, 0.90-0.94 on longitudinal RMS, 0.64-0.73 on core fraction, 0.76-0.80 on containment, 0.72-1.0 on hit cells, 0.29-0.68 on width; classifier AUC 1.00 at every energy; layer-correlation row material at every energy. The generator was never fitted to these events, so this is an honest out-of-sample falsification of its adequacy as a PRODUCTION generator. It is not a defect in its other role.
+`results/em_generator/exploration_comparison.json` (module `ams_ecal.electron_studies.em_exploration_check`, unsealed exploration electrons, `deposition` representation): KS 0.57-0.75 on event energy, 0.90-0.94 on longitudinal RMS, 0.64-0.73 on core fraction, 0.76-0.80 on containment, 0.72-1.0 on hit cells, 0.29-0.68 on width; classifier AUC 1.00 at every energy; layer-correlation row material at every energy. The generator was never fitted to these events, so this is an honest out-of-sample falsification of its adequacy as a PRODUCTION generator. It is not a defect in its other role.
 
 ## 2. Two models with two roles
 
 | name | what | role |
 |---|---|---|
-| `em_smooth_null` | the DEC-001 generator, unchanged (`ams_ecal.stochastic`) | permanent smooth analytic reference: control for the multiscale estimators, interpretable baseline. Never mixed into the e/p dataset. |
+| `em_smooth_null` | the DEC-001 generator, unchanged (`ams_ecal.electron_model.stochastic`) | permanent smooth analytic reference: control for the multiscale estimators, interpretable baseline. Never mixed into the e/p dataset. |
 | `em_production` | NEW, calibrated to Geant4 electrons | the electron half of datasets. Supersedes DEC-001 for dataset generation only. |
 
 The AMS-inspired mean longitudinal profile may stay inside `em_production` as a prior (physics constraint). Scientific upside: smooth null -> calibrated FastMC -> full Geant4 is a controlled hierarchy for the multiscale project; a statistic that moves monotonically along it is measuring shower structure that the simple parameterisation erased.
@@ -56,7 +56,7 @@ Stage 1 visible energy and leakage. Stage 2 longitudinal fluctuations and shower
 
 ### 8.1 What the DEC-001 code does and what the evidence says (reconciliation)
 
-Read in `src/ams_ecal/stochastic.py` (lines 169-263) and `longitudinal.py` (lines 311-340): one standard normal per event gives `T0 = exp(mu(E) + s(E) z)` with `s(E) = 1/(intercept + slope ln(E/E_c))` (the width law has the Grindhammer-Peters form; the shower-maximum width therefore already agrees with the measured sigma(ln T), `results/em_generator/longitudinal_fluctuations.json`), then `alpha = 1 + beta T0` with `beta` FIXED, a gamma profile integrated over the 18 layers, and a deterministic lateral grid (`lateral.track_centered_cell_fractions`).
+Read in `src/ams_ecal/electron_model/stochastic.py` (lines 169-263) and `longitudinal.py` (lines 311-340): one standard normal per event gives `T0 = exp(mu(E) + s(E) z)` with `s(E) = 1/(intercept + slope ln(E/E_c))` (the width law has the Grindhammer-Peters form; the shower-maximum width therefore already agrees with the measured sigma(ln T), `results/em_generator/longitudinal_fluctuations.json`), then `alpha = 1 + beta T0` with `beta` FIXED, a gamma profile integrated over the 18 layers, and a deterministic lateral grid (`lateral.track_centered_cell_fractions`).
 
 | element | DEC-001 | measured in Geant4 electrons (exploration) | literature (verified) |
 |---|---|---|---|
@@ -87,3 +87,26 @@ A stage is accepted when its contract rows reach the registered tolerances on th
 - **F3.** `deposition` only for `em_production` (the detector response later), as proposed.
 - **F4.** Whether a per-layer mean correction table (named parameters) is acceptable if the free-beta gamma profile does not remove the first-layer deficit.
 - **F5.** Approve the first implementation step as ANALYSIS only: the stage-1 test (free beta against the first-layer deficit and the leakage), with no generator code.
+
+## 9. Resolution of the section 8.4 decisions (2026-10-05)
+
+The researcher's answers to F1-F5 are recorded one row each in `DECISIONS.md` (with DEC-014) and are not repeated here. In short: the Grindhammer-Peters
+forms are the structural prior with the AMS mean constraint kept as a separate question (F1); the GP spot model is the lateral route (F2); `deposition` only (F3);
+a per-layer mean correction only if conditions are met (F4); and the next step is analysis only (F5). The analysis is
+`research/plans/2026-10-05_em_longitudinal_structure_analysis_note.md`.
+
+## 10. Depth-origin and mean-beta calibration (2026-10-06; analysis only, nothing implemented)
+
+Approved scope (`DECISIONS.md`, 2026-10-06 rows): one common depth origin z0 and one mean beta calibrated on the exposed Geant4 deposition profile at 10, 20, 50, 100 GeV;
+the origin is a calibrated coordinate convention, not a physical shower start; the sampling-set widths are approved in principle and frozen only after this calibration;
+the copula and any first-layer floor are gated; the sealed electron set stays unopened as the final fresh validation set.
+
+Result, in one paragraph (details and numbers in `research/plans/2026-10-06_em_depth_origin_calibration_note.md`): z0 = -0.98 X0 and beta = 0.571 for the primary form, with a spread of
+about 1 X0 in z0 across model forms; beta = 0.65 is disfavoured on the deposition profile and marginal on the readout profile; the covariant sampling-set widths and the
+T-alpha correlation survive at the calibrated coordinate; ln T stays right-skewed at every origin; the first-layer floor is rejected as not applicable; the mean profile is much
+improved but not adequate (chi-square per dof 36, 100 GeV worst). **The implementation gate is not met** (conditions 1, 3 and 6).
+
+Revisions of section 8 that follow from it: stage 1 (mean profile) must carry a named origin with its model form, and an energy-dependence test (beta or origin) comes before
+freezing; stage 2 (widths) keeps the covariant sampling-set widths; the original bivariate Gaussian is not assumed for ln T; no first-layer floor. Open before the first implementation
+slice: the energy dependence and the depth law (why the 100 GeV profile is not reached), and whether the skewed ln T marginal changes the leakage tail and the contained-fraction
+distribution.
