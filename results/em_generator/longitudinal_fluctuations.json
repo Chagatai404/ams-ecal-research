@@ -1,0 +1,264 @@
+{
+  "status": "EXPLORATION analysis of the unsealed Geant4 electrons. Estimator comparison with a planted-correlation control. Not a validation.",
+  "created_utc": "2026-10-05T09:17:59Z",
+  "10": {
+    "n_events": 1000,
+    "critical_energy_mev": 7.6,
+    "grindhammer_peters_sampling": {
+      "ln_y": 7.182192124683898,
+      "sigma_ln_t": 0.15437482454373463,
+      "sigma_ln_alpha": 0.20601855271830177,
+      "rho": 0.6188095811322704
+    },
+    "least_squares": {
+      "mean": [
+        1.8762867478914043,
+        1.4722207109056191
+      ],
+      "std": [
+        0.15417833965653752,
+        0.20886890919150525
+      ],
+      "rho": 0.6169044374473931
+    },
+    "cumulative": {
+      "mean": [
+        1.8668291210386883,
+        1.413582195395968
+      ],
+      "std": [
+        0.14627033959577368,
+        0.18552815671912395
+      ],
+      "rho": 0.6919186611846381
+    },
+    "control_recovered_rho": {
+      "planted_rho_0": {
+        "least_squares": 0.02221219771415569,
+        "cumulative": -0.0654517912710947
+      },
+      "planted_rho_0.6": {
+        "least_squares": 0.5208365280044949,
+        "cumulative": 0.3589328440243029
+      }
+    },
+    "lateral_coupling_spearman": {
+      "width_mm": {
+        "with_ln_t": -0.2742014982014982,
+        "with_ln_alpha": -0.12171321771321772
+      },
+      "n_hit_cells": {
+        "with_ln_t": -0.5617310212004746,
+        "with_ln_alpha": -0.2910923069075631
+      },
+      "core_fraction": {
+        "with_ln_t": 0.3778879738879739,
+        "with_ln_alpha": 0.12334741534741538
+      },
+      "containment_fraction": {
+        "with_ln_t": 0.40428677628677623,
+        "with_ln_alpha": 0.1562194322194322
+      },
+      "max_cell_fraction": {
+        "with_ln_t": -0.3280817440817441,
+        "with_ln_alpha": 0.2257904857904858
+      }
+    },
+    "contained_fraction_median": 0.9506348419657482
+  },
+  "20": {
+    "n_events": 1000,
+    "critical_energy_mev": 7.6,
+    "grindhammer_peters_sampling": {
+      "ln_y": 7.875339305243843,
+      "sigma_ln_t": 0.1361623488342173,
+      "sigma_ln_alpha": 0.18513314044900028,
+      "rho": 0.6028671959793916
+    },
+    "least_squares": {
+      "mean": [
+        1.9921470998313053,
+        1.5670766273780485
+      ],
+      "std": [
+        0.14898961990469106,
+        0.20456649197397042
+      ],
+      "rho": 0.5988467178100338
+    },
+    "cumulative": {
+      "mean": [
+        1.9849724500401056,
+        1.515857750494707
+      ],
+      "std": [
+        0.14149794574896302,
+        0.18317550478153383
+      ],
+      "rho": 0.6785515027077421
+    },
+    "control_recovered_rho": {
+      "planted_rho_0": {
+        "least_squares": -0.017807364188003744,
+        "cumulative": -0.12049996477663319
+      },
+      "planted_rho_0.6": {
+        "least_squares": 0.43846256651281884,
+        "cumulative": 0.2756177646178503
+      }
+    },
+    "lateral_coupling_spearman": {
+      "width_mm": {
+        "with_ln_t": -0.36594888594888597,
+        "with_ln_alpha": -0.10662107862107864
+      },
+      "n_hit_cells": {
+        "with_ln_t": -0.6116294740314169,
+        "with_ln_alpha": -0.27748558021694336
+      },
+      "core_fraction": {
+        "with_ln_t": 0.4996546276546277,
+        "with_ln_alpha": 0.14635073035073037
+      },
+      "containment_fraction": {
+        "with_ln_t": 0.4936039456039457,
+        "with_ln_alpha": 0.14983229383229385
+      },
+      "max_cell_fraction": {
+        "with_ln_t": -0.3201527121527122,
+        "with_ln_alpha": 0.30796728796728795
+      }
+    },
+    "contained_fraction_median": 0.9359719290374191
+  },
+  "50": {
+    "n_events": 1000,
+    "critical_energy_mev": 7.6,
+    "grindhammer_peters_sampling": {
+      "ln_y": 8.791630037117997,
+      "sigma_ln_t": 0.11779204633170463,
+      "sigma_ln_alpha": 0.1632549716343406,
+      "rho": 0.5817925091462861
+    },
+    "least_squares": {
+      "mean": [
+        2.1145130076019236,
+        1.6654328395499174
+      ],
+      "std": [
+        0.12438790685668494,
+        0.1678943512771129
+      ],
+      "rho": 0.5946052282094448
+    },
+    "cumulative": {
+      "mean": [
+        2.109790620366687,
+        1.6289320025057068
+      ],
+      "std": [
+        0.11756380661539627,
+        0.15264250100681725
+      ],
+      "rho": 0.6541364790885849
+    },
+    "control_recovered_rho": {
+      "planted_rho_0": {
+        "least_squares": 0.003423052951870734,
+        "cumulative": -0.09647824451351701
+      },
+      "planted_rho_0.6": {
+        "least_squares": 0.5221290181662601,
+        "cumulative": 0.39416692505631507
+      }
+    },
+    "lateral_coupling_spearman": {
+      "width_mm": {
+        "with_ln_t": -0.5642430242430243,
+        "with_ln_alpha": -0.2020972900972901
+      },
+      "n_hit_cells": {
+        "with_ln_t": -0.6418113989359086,
+        "with_ln_alpha": -0.29101072087219476
+      },
+      "core_fraction": {
+        "with_ln_t": 0.6619981579981581,
+        "with_ln_alpha": 0.1982083862083862
+      },
+      "containment_fraction": {
+        "with_ln_t": 0.6915685995685996,
+        "with_ln_alpha": 0.2281761121761122
+      },
+      "max_cell_fraction": {
+        "with_ln_t": -0.28518515718515725,
+        "with_ln_alpha": 0.33837469437469436
+      }
+    },
+    "contained_fraction_median": 0.9146450844185727
+  },
+  "100": {
+    "n_events": 1000,
+    "critical_energy_mev": 7.6,
+    "grindhammer_peters_sampling": {
+      "ln_y": 9.484777217677943,
+      "sigma_ln_t": 0.10688360878805019,
+      "sigma_ln_alpha": 0.14985821909473085,
+      "rho": 0.5658501239934074
+    },
+    "least_squares": {
+      "mean": [
+        2.205592586753818,
+        1.7393502510035956
+      ],
+      "std": [
+        0.11911509919991932,
+        0.15971674098718508
+      ],
+      "rho": 0.5130154036357975
+    },
+    "cumulative": {
+      "mean": [
+        2.2020161091979644,
+        1.7064737842319666
+      ],
+      "std": [
+        0.1125150078030451,
+        0.15244035827683658
+      ],
+      "rho": 0.5593187847499776
+    },
+    "control_recovered_rho": {
+      "planted_rho_0": {
+        "least_squares": 0.04183531461678214,
+        "cumulative": -0.010330886760646472
+      },
+      "planted_rho_0.6": {
+        "least_squares": 0.5963569942128806,
+        "cumulative": 0.5400996765138404
+      }
+    },
+    "lateral_coupling_spearman": {
+      "width_mm": {
+        "with_ln_t": -0.6965818925818926,
+        "with_ln_alpha": -0.3147789147789148
+      },
+      "n_hit_cells": {
+        "with_ln_t": -0.6806776151515976,
+        "with_ln_alpha": -0.2386633029864008
+      },
+      "core_fraction": {
+        "with_ln_t": 0.7770892530892531,
+        "with_ln_alpha": 0.3236176196176196
+      },
+      "containment_fraction": {
+        "with_ln_t": 0.8292488892488893,
+        "with_ln_alpha": 0.3637556317556318
+      },
+      "max_cell_fraction": {
+        "with_ln_t": -0.24253149853149858,
+        "with_ln_alpha": 0.376023472023472
+      }
+    },
+    "contained_fraction_median": 0.8903807513739805
+  }
+}

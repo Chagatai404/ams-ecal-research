@@ -33,7 +33,7 @@ Stage 1 visible energy and leakage. Stage 2 longitudinal fluctuations and shower
 | probe the researcher's current understanding | not done: part of the planned tutoring session |
 | missing prerequisites identified | not done |
 | independent external review of shower-fluctuation literature | DONE as discovery, thin (2026-10-05, abstract depth, air-shower papers wrongly used and struck); see `plans/2026-10-05_em_literature_verification_record.md` |
-| independent verification of implementation-affecting claims | PARTLY DONE: Grindhammer-Peters verified from the full text; AMS-02 ECAL geometry verified; fluctuation numbers for THIS detector and rear-leakage fluctuations NOT found; adversarial counterevidence pass not done |
+| independent verification of implementation-affecting claims | DONE for what exists: Grindhammer-Peters verified from the full text; AMS-02 ECAL geometry verified; no published fluctuation numbers for THIS detector (the Geant4 electrons supply them: `results/em_generator/longitudinal_fluctuations.json`); adversarial pass done (its headline refuted by a control, see the record, section 4b); a fuller counterevidence search is still open |
 | reconcile external evidence with the deterministic generator | partly: the comparison above is the data side of it |
 | formulate the stochastic physical model | not done |
 | researcher approval | not given |
