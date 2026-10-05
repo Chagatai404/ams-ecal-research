@@ -46,7 +46,7 @@ Stage 1 visible energy and leakage. Stage 2 longitudinal fluctuations and shower
 - Tolerances: from a split-Geant4 self-comparison noise floor plus physics-motivated tolerance per observable class (energy/leakage, longitudinal, lateral, sparsity, correlations); registered BEFORE any sealed opening.
 - Geant4 EM sensitivity: a different EM option (for example `FTFP_BERT_EMZ`; availability in the installed 11.4.1 build to be verified) on electrons. It needs its own approval under the Geant4 workflow. It is not the QGSP_BERT comparison, which changes only hadronic physics.
 
-## 7. Questions for the researcher
+## 7. Questions for the researcher (answered 2026-10-05: Q10 yes; Q11 use the existing sealed electron set; Q12 literature first, tutoring after)
 
 - **Q10.** Approve the two-role naming and keeping the DEC-001 code untouched as `em_smooth_null`?
 - **Q11.** Use the existing sealed electron set as the untouched validation sample, or generate a new one?
