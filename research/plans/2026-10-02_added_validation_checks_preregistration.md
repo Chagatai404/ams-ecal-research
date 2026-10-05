@@ -35,7 +35,7 @@ Material iff the layer-averaged occupancy at any t differs by >= **0.02** absolu
 
 ## 4. Multiscale panel — UNGATED, report only
 
-D0, D1, D2 on the combined 18 x 72 image (DEC-012: combined is primary), box sides 1, 2, 3, 6, 9, 18 (DEC-013), only over windows that `ams_ecal.multiscale.reliable_windows` marks reliable for the event's hit count. FastMC versus Geant4 distributions per energy and class. **No verdict and no threshold.** It is labelled exploratory: the estimator-validity gate found the estimators usable on 2 of 13 windows at 1000 hits and 4 of 14 at 3000, and FastMC is a smooth control that is not required to reproduce multiscale structure (DEC-010). A difference here is a measurement for the control experiment, not a failure of the dataset.
+D0, D1, D2 on the combined 18 x 72 image (DEC-012: combined is primary), box sides 1, 2, 3, 6, 9, 18 (DEC-013), only over windows that `ams_ecal.multiscale_estimators.multiscale.reliable_windows` marks reliable for the event's hit count. FastMC versus Geant4 distributions per energy and class. **No verdict and no threshold.** It is labelled exploratory: the estimator-validity gate found the estimators usable on 2 of 13 windows at 1000 hits and 4 of 14 at 3000, and FastMC is a smooth control that is not required to reproduce multiscale structure (DEC-010). A difference here is a measurement for the control experiment, not a failure of the dataset.
 
 ## 5. What is not in this registration
 

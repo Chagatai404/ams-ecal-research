@@ -1,6 +1,6 @@
 # Sealed Geant4 validation sets
 
-Sealed 2026-10-04. Never opened for analysis. Opened only through `ams_ecal.sealed_set.open_set`
+Sealed 2026-10-04. Never opened for analysis. Opened only through `ams_ecal.validation.sealed_set.open_set`
 (final flag, stated purpose, committed hash manifest, opening ledger `opening_ledger.jsonl`).
 
 | set | config | events | energies (GeV) | base seed |

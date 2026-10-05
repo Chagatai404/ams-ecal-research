@@ -1,6 +1,6 @@
 """Physics-informed tools for AMS-02 ECAL research."""
 
-from ams_ecal.event import (
+from ams_ecal.detector.event import (
     EVENT_SCHEMA_VERSION,
     ECALEvent,
     EnergyGrid,
@@ -8,19 +8,7 @@ from ams_ecal.event import (
     ParticleType,
     SimulationBackend,
 )
-from ams_ecal.fastmc_config import (
-    EXPECTED_FASTMC_SCHEMA_VERSION,
-    FastMCConfig,
-    FastMCConfigError,
-    LateralEMConfig,
-    LongitudinalEMConfig,
-    SamplingShowerMaxConfig,
-    ShowerRegime,
-    StochasticEMConfig,
-    config_digest,
-    load_fastmc_config,
-)
-from ams_ecal.geometry import (
+from ams_ecal.detector.geometry import (
     AbsorberMaterial,
     ActiveVolume,
     CoordinateSystem,
@@ -33,22 +21,34 @@ from ams_ecal.geometry import (
     SamplingStructure,
     load_geometry,
 )
-from ams_ecal.lateral import (
-    CALIBRATION_ENERGY_RANGE_MEV,
-    AMSLateralShowerModel,
-)
-from ams_ecal.longitudinal import (
-    AMSLongitudinalGammaModel,
-    ElectromagneticParticleType,
-)
-from ams_ecal.readout import (
+from ams_ecal.detector.readout import (
     cell_index_for_layer_projection,
     coordinate_to_cell_index,
     measured_axis_for_fiber,
     project_track_to_cell_indices,
 )
-from ams_ecal.stochastic import StochasticEMShowerModel
-from ams_ecal.tracking import TrackState, project_track_to_z
+from ams_ecal.detector.tracking import TrackState, project_track_to_z
+from ams_ecal.electron_model.fastmc_config import (
+    EXPECTED_FASTMC_SCHEMA_VERSION,
+    FastMCConfig,
+    FastMCConfigError,
+    LateralEMConfig,
+    LongitudinalEMConfig,
+    SamplingShowerMaxConfig,
+    ShowerRegime,
+    StochasticEMConfig,
+    config_digest,
+    load_fastmc_config,
+)
+from ams_ecal.electron_model.lateral import (
+    CALIBRATION_ENERGY_RANGE_MEV,
+    AMSLateralShowerModel,
+)
+from ams_ecal.electron_model.longitudinal import (
+    AMSLongitudinalGammaModel,
+    ElectromagneticParticleType,
+)
+from ams_ecal.electron_model.stochastic import StochasticEMShowerModel
 
 __all__ = [
     "CALIBRATION_ENERGY_RANGE_MEV",

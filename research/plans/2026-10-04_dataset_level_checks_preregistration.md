@@ -6,7 +6,7 @@ _Drafted 2026-10-04 on branch `fastmc-validated-dataset`, before any dataset has
 
 The dataset is a labelled mixture of electron and proton events from the two FastMC generators, in one representation (`deposition` for version v0, the perfect-event dataset; DEC-006). These checks ask whether the DATASET, not each generator, can mislead a downstream user: through the sampling design, through leaked seeds or splits, or through a label that is predictable from something other than the physics.
 
-## 1. Design that the checks assume (fixed in `ams_ecal.dataset`, recorded in the dataset provenance)
+## 1. Design that the checks assume (fixed in `ams_ecal.validation.dataset`, recorded in the dataset provenance)
 
 - Energy: log-uniform over 10-100 GeV, **the same distribution for both classes**, drawn from a stream that does not depend on the class.
 - Entry point: uniform over the illuminated cell (0-9 mm in x and y), normal incidence, the same for both classes.

@@ -74,7 +74,7 @@ are listed as candidate extras, not part of the first check.
 after projection, and (b) on the negative controls its value stays within the baseline's own spread, over the same
 hit counts and scale range. Otherwise the result is "not usable here", which is a valid, reportable outcome.
 
-**Output:** `src/ams_ecal/multiscale.py` plus tests; a results folder with the control tables; a verified teaching
+**Output:** `src/ams_ecal/multiscale_estimators/multiscale.py` plus tests; a results folder with the control tables; a verified teaching
 visual of the controls. Cost: one day of build, minutes of compute. No Geant4.
 
 ## 3. Proton first look — first look at existing proton Geant4 events (EXP-001, stage 1, exploratory)

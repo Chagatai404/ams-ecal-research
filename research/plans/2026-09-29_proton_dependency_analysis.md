@@ -16,11 +16,11 @@ generator exists). Dependency analysis (step 0) forbids implementing the generat
 Reproduce every number below:
 
 ```bash
-uv run python -m ams_ecal.proton_dependency      # results/block6b/slice0/summary.json     (13 s)
-uv run python -m ams_ecal.proton_checks          # results/block6b/slice0/variant_checks.json
+uv run python -m ams_ecal.proton_model.proton_dependency      # results/block6b/slice0/summary.json     (13 s)
+uv run python -m ams_ecal.proton_model.proton_checks          # results/block6b/slice0/variant_checks.json
 ```
 
-Code: `src/ams_ecal/proton_calibration.py` (split), `proton_dependency.py`, `proton_checks.py`;
+Code: `src/ams_ecal/proton_model/proton_calibration.py` (split), `proton_dependency.py`, `proton_checks.py`;
 tests `tests/test_proton_{calibration,dependency,checks}.py` (32 tests). Variant Geant4 configs:
 `configs/variants/`.
 
@@ -415,18 +415,18 @@ medians flat). No layer-position term is included.
 
 | piece | file | tests |
 |---|---|---|
-| split, crossing quantile table, versioned artifact, deterministic builder | `src/ams_ecal/proton_calibration.py` | `tests/test_proton_calibration.py` (33) |
-| exact chord / cell geometry (reuses `FibreLayout`) | `src/ams_ecal/crossing.py` | `tests/test_crossing.py` (18) |
-| proton configuration | `configs/fastmc_proton.yaml`, `src/ams_ecal/proton_config.py` | `tests/test_proton_config.py` (21) |
-| interaction draw + crossing generator | `src/ams_ecal/proton.py` | `tests/test_proton.py` (29) |
-| provenance: optional `EventProvenance.model_details` | `src/ams_ecal/event.py` | `tests/test_event.py` (+9) |
-| held-out comparison | `src/ams_ecal/proton_validation.py` | `tests/test_proton_validation.py` (11) |
+| split, crossing quantile table, versioned artifact, deterministic builder | `src/ams_ecal/proton_model/proton_calibration.py` | `tests/proton_model/test_proton_calibration.py` (33) |
+| exact chord / cell geometry (reuses `FibreLayout`) | `src/ams_ecal/detector/crossing.py` | `tests/detector/test_crossing.py` (18) |
+| proton configuration | `configs/fastmc_proton.yaml`, `src/ams_ecal/proton_model/proton_config.py` | `tests/proton_model/test_proton_config.py` (21) |
+| interaction draw + crossing generator | `src/ams_ecal/proton_model/proton.py` | `tests/proton_model/test_proton.py` (29) |
+| provenance: optional `EventProvenance.model_details` | `src/ams_ecal/detector/event.py` | `tests/detector/test_event.py` (+9) |
+| held-out comparison | `src/ams_ecal/proton_model/proton_validation.py` | `tests/proton_model/test_proton_validation.py` (11) |
 
 Whole suite: 442 passing, ruff clean. Calibration artifact
 `data/calibration/proton_6b/ftfp_bert_v1/` (20 kB): pooled effective interaction length
 **255.7 ± 3.4 mm** (per energy 262 / 253 / 251 / 257 ± 7 mm, no energy trend resolved). Its manifest
 records `tracked_changes: true` because it was built with uncommitted edits; **rebuild it from a
-clean commit before relying on it** (`uv run python -m ams_ecal.proton_calibration build`).
+clean commit before relying on it** (`uv run python -m ams_ecal.proton_model.proton_calibration build`).
 
 ### Burst latent (new, for the researcher)
 
@@ -440,7 +440,7 @@ any other row. Triage B.
 20,000 FastMC crossing events per energy and representation against the held-out Geant4 crossing
 events (528 / 496 / 519 / 538 at 10 / 20 / 50 / 100 GeV), under the §8 contract, which was not
 changed. Data: `results/block6b/slice2/crossing_validation.json` and `.png`; reproduce with
-`uv run python -m ams_ecal.proton_validation` (36 minutes). The KS distance is given; **F** = material
+`uv run python -m ams_ecal.proton_model.proton_validation` (36 minutes). The KS distance is given; **F** = material
 discrepancy under the contract; "floor" = calibration-vs-held-out distance.
 
 | row (readout unless stated) | 10 GeV | 20 | 50 | 100 |

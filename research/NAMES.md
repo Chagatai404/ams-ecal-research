@@ -25,7 +25,7 @@ and (4) the research records: question, hypothesis, experiment, decision (RQ-, H
 | README roadmap | Blocks 9-14 | Geant4/C++ foundation, ECAL geometry, physics-list selection, primary generation, sensitive detector and export, FastMC-Geant4 validation | planned |
 
 A notebook for the multiscale estimator controls was removed on 2026-10-02: notebooks explain a finished model, so the controls are run by
-`python -m ams_ecal.multiscale_controls` and recorded in `research/plans/2026-10-02_multiscale_estimator_controls_results.md`.
+`python -m ams_ecal.multiscale_estimators.multiscale_controls` and recorded in `research/plans/2026-10-02_multiscale_estimator_controls_results.md`.
 (That work had been mislabelled "Block 8a".)
 
 ## Steps of the proton model plans (formerly "Slices")
@@ -82,3 +82,21 @@ Steps keep their numbers. The pilot plan (2026-09-29) numbered its own steps 1-1
 | Comments inside `configs/*.yaml` (including the two electron configs) | the files are hashed into provenance digests that the generated data records; editing a comment changes the digest. They still say "Block 6B", "Slice 0" or "Track C" |
 | Vault note titles that contain "Block" | they live in the vault; the repo refers to them by their existing titles |
 | The researcher's own verbatim quotes | kept word for word |
+
+## Electron generator slices of 2026-10-05 and 2026-10-06 (formerly "F1" to "F6")
+
+The researcher's decision rows F1-F5 stay in `DECISIONS.md` as record IDs next to a title; files, results and tests no longer carry the labels.
+
+| Old label | Name now | Where |
+|---|---|---|
+| F1 | structural prior for the electron longitudinal model | `DECISIONS.md` |
+| F2 | spot model for the electron lateral structure | `DECISIONS.md` |
+| F3 | `deposition` only for the production electron generator | `DECISIONS.md` |
+| F4 | conditional per-layer mean correction | `DECISIONS.md` |
+| F5 | longitudinal-structure analysis of Geant4 electrons | `src/ams_ecal/electron_studies/em_longitudinal_structure_analysis.py`, `research/plans/2026-10-05_em_longitudinal_structure_analysis_note.md`, `results/em_generator/longitudinal_structure*` (was `f5_*`, `f5/`) |
+| F6 | depth-origin and mean-beta calibration | `src/ams_ecal/electron_studies/em_depth_origin_calibration.py`, `research/plans/2026-10-06_em_depth_origin_calibration_note.md`, `results/em_generator/depth_origin_calibration*` (was `f6_*`, `f6/`) |
+
+## Module folders (2026-10-06)
+
+`src/ams_ecal/` was flat; it is now grouped by role (`detector`, `electron_model`, `electron_studies`, `proton_model`, `multiscale_estimators`,
+`validation`, `geant4_simulation`) and `tests/` mirrors it. An old `ams_ecal.<name>` is now `ams_ecal.<folder>.<name>`; `MODULE_MAP.md` lists every module.

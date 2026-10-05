@@ -12,6 +12,11 @@ researcher's Obsidian knowledge vault.
 : The current human-approved project state. Read this before substantial
 scientific work.
 
+`MODULE_MAP.md`
+
+: What each module in `src/ams_ecal/` is for in the model, which test checks it, and whether it is a generator, a calibration,
+an analysis, a control or a validation. Start here when a file name is unclear.
+
 `PUBLICATION_ROADMAP.md`
 
 : The accepted multi-paper program. The first paper studies multiscale shower
@@ -235,9 +240,9 @@ Branch `fastmc-validated-dataset`. Read in this order for a tutoring session on 
 | plan and approvals | the plan (tracks A-E), the researcher's "Yes to all" on Q1-Q7 | `plans/2026-10-02_fastmc_validated_dataset_and_detector_response_plan.md`, `DECISIONS.md` | |
 | pre-registration | the added validation checks (layer correlations, classifier two-sample test, sparsity, ungated multiscale panel), numbers confirmed before any sealed event existed; amended 2026-10-05 | `plans/2026-10-02_added_validation_checks_preregistration.md` | |
 | crossing repair | burst latent, lateral spill, bulk coupling; in-sample check | `STATE.md` (branch sections), `results/proton_model/crossing_structure_in_sample.json`; DEC-008, DEC-009 | e822e04, f4b79ea (superseded) |
-| sealed Geant4 sets | configs, hash manifests, guard, opening ledger (no opening yet), generation logs | `sealed/README.md`, `sealed/*_manifest.json`, `sealed/generation_log_part*.txt`, `src/ams_ecal/sealed_set.py` | 7f75f73, 467117f, 35bd01f |
+| sealed Geant4 sets | configs, hash manifests, guard, opening ledger (no opening yet), generation logs | `sealed/README.md`, `sealed/*_manifest.json`, `sealed/generation_log_part*.txt`, `src/ams_ecal/validation/sealed_set.py` | 7f75f73, 467117f, 35bd01f |
 | interacting model | per-offset tables, copula, back-edge, upstream albedo, amplitude mapping; lateral quanta; batch path | `STATE.md`, `results/proton_model/interacting_in_sample.json`; DEC-005 (formulation accepted 2026-10-05) | 501b875, 958f6dd |
-| harness and dataset | added-checks harness, dataset assembler, checks D1-D9, mutation-tested decision rules; dataset-level registration (amended 2026-10-05) | `plans/2026-10-04_dataset_level_checks_preregistration.md`, `src/ams_ecal/added_checks.py`, `src/ams_ecal/dataset.py` | 1688c2b |
+| harness and dataset | added-checks harness, dataset assembler, checks D1-D9, mutation-tested decision rules; dataset-level registration (amended 2026-10-05) | `plans/2026-10-04_dataset_level_checks_preregistration.md`, `src/ams_ecal/validation/added_checks.py`, `src/ams_ecal/validation/dataset.py` | 1688c2b |
 | dry run and repairs | the dry run exposed a deposition lateral shape far from Geant4 (my in-sample check had compared lateral shape for readout only); repairs; artifact frozen `cee305f1` | `results/added_checks/dry_run.json`, `STATE.md` (2026-10-04 later), amendment in the 2026-10-02 registration | 8c8a5b9, 4701165 |
 | reviewer agents | physics, simulation, statistics, ML, adversarial, reproducibility, literature scout; my assessment of each finding | `reviews/2026-10-05_reviewer_agents_round1.md` | bfe964b |
 | EM out-of-sample check | the DEC-001 EM generator against exploration Geant4 electrons: strong disagreement | `results/em_generator/exploration_comparison.json`, `STATE.md` (2026-10-05) | bfe964b (tag `fastmc-pre-em-repair-2026-10-05`) |

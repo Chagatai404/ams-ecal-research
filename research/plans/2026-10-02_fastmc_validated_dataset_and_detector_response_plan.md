@@ -95,13 +95,13 @@ v0.7.0 was already installed in `~/.claude` (all 15 skills and the 10 agent defi
 
 | item | state |
 |---|---|
-| `src/ams_ecal/proton_structure.py` (new) | burst latent with onset, amplitude, **downstream extent** and fibre share; lateral spill as a conditional split; bulk coupling; builder; vectorised samplers |
-| `src/ams_ecal/proton_calibration.py` | artifact schema 2 (loads schema 1 too); `build_calibration(structure=True)`; bulk table rebuilt from burst-free events |
-| `src/ams_ecal/crossing.py` | `place_layer_energies` (exact energy conservation per layer) |
-| `src/ams_ecal/proton.py` | structured crossing path, fixed draw order, burst latent in the provenance; schema-1 path kept |
+| `src/ams_ecal/proton_model/proton_structure.py` (new) | burst latent with onset, amplitude, **downstream extent** and fibre share; lateral spill as a conditional split; bulk coupling; builder; vectorised samplers |
+| `src/ams_ecal/proton_model/proton_calibration.py` | artifact schema 2 (loads schema 1 too); `build_calibration(structure=True)`; bulk table rebuilt from burst-free events |
+| `src/ams_ecal/detector/crossing.py` | `place_layer_energies` (exact energy conservation per layer) |
+| `src/ams_ecal/proton_model/proton.py` | structured crossing path, fixed draw order, burst latent in the provenance; schema-1 path kept |
 | artifact | `data/calibration/proton_model/ftfp_bert_v2` (development build from an unclean tree, `tracked_changes: true`; the **frozen** artifact is rebuilt from a clean commit before the sealed set is generated). `ftfp_bert_v1` is untouched. |
 | tests | 529 passing (484 before), ruff clean; three mutation checks confirmed the new tests catch a broken bulk selection, a spill that ignores the layer ratio, and an untruncated burst |
-| in-sample check | `uv run python -m ams_ecal.proton_structure_check` (calibration events only) -> `results/proton_model/crossing_structure_in_sample.json` |
+| in-sample check | `uv run python -m ams_ecal.proton_model.proton_structure_check` (calibration events only) -> `results/proton_model/crossing_structure_in_sample.json` |
 
 **Beyond the two accepted repairs, for the researcher (Q6 and Q7):**
 
