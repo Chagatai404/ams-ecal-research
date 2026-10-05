@@ -275,7 +275,14 @@ def test_an_assembled_dataset_regenerates_bit_identically_and_saves_with_its_has
     assert "smooth by design" in manifest["not_comparable_between_classes"]
     loaded = np.load(events)
     assert np.array_equal(loaded["grids_mev"], dataset.grids_mev)
-    assert set(loaded.files) >= {"seed", "label", "split", "interaction_depth_mm"}
+    # the training file holds no label proxy: neither the interaction flag, nor the depth, nor the seeds
+    assert set(loaded.files) == {"grids_mev", "label", "split", "energy_mev", "entry_x_mm", "entry_y_mm"}
+    provenance = np.load(tmp_path / "ds" / "provenance.npz")
+    assert set(provenance.files) == {"seed", "interacting", "interaction_depth_mm"}
+    assert manifest["provenance_sha256"] == hashlib.sha256(
+        (tmp_path / "ds" / "provenance.npz").read_bytes()
+    ).hexdigest()
+    assert np.array_equal(provenance["seed"], dataset.provenance["seed"])
     assert SPLITS == ("train", "validation", "test")
 
 

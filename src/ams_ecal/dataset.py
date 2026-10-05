@@ -50,6 +50,11 @@ NUISANCE_AUC_MATERIAL = 0.55
 REGENERATION_EVENTS = 100
 DEFAULT_CHUNK = 250
 
+TRAINING_FIELDS = ("label", "split", "energy_mev", "entry_x_mm", "entry_y_mm")
+"""Stored beside the grids in ``events.npz``. Everything else is reproducibility information and is
+written to ``provenance.npz``: ``interacting`` is a perfect proxy for the label (no electron
+interacts), so a training file that carried it would hand the label to any model that read it."""
+
 PROVENANCE_FIELDS = (
     "label",
     "seed",
@@ -552,11 +557,16 @@ def _sha256(path: Path) -> str:
 
 
 def save_dataset(dataset: Dataset, checks: dict[str, Any], directory: Path, *, status: str) -> Path:
-    """Write ``events.npz``, ``checks.json`` and ``manifest.json`` (with the events' SHA-256)."""
+    """Write ``events.npz`` (grids + ``TRAINING_FIELDS``), ``provenance.npz`` (the rest),
+    ``checks.json`` and ``manifest.json`` (with both files' SHA-256)."""
 
     directory.mkdir(parents=True, exist_ok=True)
     events = directory / "events.npz"
-    np.savez_compressed(events, grids_mev=dataset.grids_mev, **dataset.provenance)
+    provenance = directory / "provenance.npz"
+    training = {k: v for k, v in dataset.provenance.items() if k in TRAINING_FIELDS}
+    reproducibility = {k: v for k, v in dataset.provenance.items() if k not in TRAINING_FIELDS}
+    np.savez_compressed(events, grids_mev=dataset.grids_mev, **training)
+    np.savez_compressed(provenance, **reproducibility)
     (directory / "checks.json").write_text(json.dumps(checks, indent=2), encoding="utf-8")
     manifest = {
         "status": status,
@@ -566,6 +576,9 @@ def save_dataset(dataset: Dataset, checks: dict[str, Any], directory: Path, *, s
         "classes": CLASS_NAMES,
         "splits": list(SPLITS),
         "events_sha256": _sha256(events),
+        "provenance_sha256": _sha256(provenance),
+        "training_file_fields": ["grids_mev", *TRAINING_FIELDS],
+        "provenance_file_fields": sorted(reproducibility),
         "model_versions": dataset.model_versions,
         "flagged_checks": checks["flagged"],
         "not_comparable_between_classes": (
