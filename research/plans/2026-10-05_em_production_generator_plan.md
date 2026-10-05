@@ -32,8 +32,8 @@ Stage 1 visible energy and leakage. Stage 2 longitudinal fluctuations and shower
 |---|---|
 | probe the researcher's current understanding | not done: part of the planned tutoring session |
 | missing prerequisites identified | not done |
-| independent external review of shower-fluctuation literature | **thin**: the 2026-10-05 scout returned a source map at abstract/snippet depth with unverified items and gaps (no layer-correlation data, no leakage quantification); the 2026-09-20 EM evidence map in the vault exists (inherited). A source-verification pass on the implementation-affecting claims is required |
-| independent verification of implementation-affecting claims | not done |
+| independent external review of shower-fluctuation literature | DONE as discovery, thin (2026-10-05, abstract depth, air-shower papers wrongly used and struck); see `plans/2026-10-05_em_literature_verification_record.md` |
+| independent verification of implementation-affecting claims | PARTLY DONE: Grindhammer-Peters verified from the full text; AMS-02 ECAL geometry verified; fluctuation numbers for THIS detector and rear-leakage fluctuations NOT found; adversarial counterevidence pass not done |
 | reconcile external evidence with the deterministic generator | partly: the comparison above is the data side of it |
 | formulate the stochastic physical model | not done |
 | researcher approval | not given |
