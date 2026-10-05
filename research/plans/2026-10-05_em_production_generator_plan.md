@@ -51,3 +51,39 @@ Stage 1 visible energy and leakage. Stage 2 longitudinal fluctuations and shower
 - **Q10.** Approve the two-role naming and keeping the DEC-001 code untouched as `em_smooth_null`?
 - **Q11.** Use the existing sealed electron set as the untouched validation sample, or generate a new one?
 - **Q12.** When should the tutoring on the generator's physics (probe, prerequisites) take place relative to the literature verification?
+
+## 8. Reconciliation and PROPOSED formulation (2026-10-05, for the researcher's approval; nothing implemented)
+
+### 8.1 What the DEC-001 code does and what the evidence says (reconciliation)
+
+Read in `src/ams_ecal/stochastic.py` (lines 169-263) and `longitudinal.py` (lines 311-340): one standard normal per event gives `T0 = exp(mu(E) + s(E) z)` with `s(E) = 1/(intercept + slope ln(E/E_c))` (the width law has the Grindhammer-Peters form; the shower-maximum width therefore already agrees with the measured sigma(ln T), `results/em_generator/longitudinal_fluctuations.json`), then `alpha = 1 + beta T0` with `beta` FIXED, a gamma profile integrated over the 18 layers, and a deterministic lateral grid (`lateral.track_centered_cell_fractions`).
+
+| element | DEC-001 | measured in Geant4 electrons (exploration) | literature (verified) |
+|---|---|---|---|
+| sigma(ln T) | G-P width law | agrees with the formula within about 11% | G-P App. A.2.2 |
+| second longitudinal variable | none: alpha locked to T0 through fixed beta (rho = 1) | sigma(ln alpha) 0.16-0.21, rho(ln T, ln alpha) 0.5-0.7 | G-P: bivariate Gaussian, rho 0.57-0.62 |
+| mean profile | gamma, fixed beta | layer 0 holds 2-7% and layer 1 22-41% of Geant4's energy; middle layers +15%, last layers -11 to -24% | G-P has no thin-calorimeter regime |
+| leakage / contained fraction | follows from the profile | median 0.951 / 0.936 / 0.915 / 0.890 at 10 / 20 / 50 / 100 GeV; model 3-5% high at 100 GeV with no low tail | not found for this detector |
+| lateral | deterministic grid | width, hit cells, core fraction, containment correlate with ln T (Spearman up to 0.7-0.8 at 100 GeV); too wide and too smooth in the model | G-P: lateral parameters deterministic in tau, fluctuations from spot generation coupled through tau_i |
+| layer residuals around the profile | none | relative rms about 4-10% in the middle layers at 100 GeV, up to 25% or more at the ends | not found |
+
+### 8.2 Proposed model `em_production` (hierarchical; each stage frozen before the next; nothing here is fitted to classifier AUC)
+
+1. **Mean profile and leakage (stage 1).** Mean `<ln T>(E)` and `<ln alpha>(E)` as smooth functions of `ln y` with free coefficients fitted to the Geant4 profile fits, replacing the fixed beta; Grindhammer-Peters forms as the starting structure. First test, before any model code: how much of the first-layer deficit and of the leakage misfit disappears when beta is free; if a per-layer mean correction is still needed it is added as a named, interpolated table (a stated number of parameters), not hidden.
+2. **Longitudinal fluctuations (stage 2).** `(ln T, ln alpha)` bivariate with `sigma(ln T)`, `sigma(ln alpha)` and `rho` as functions of `ln y`, starting from the Grindhammer-Peters sampling forms, coefficients calibrated. If the bivariate distribution is measurably non-Gaussian (skewness of ln alpha 0.3-0.6 was reported, unchecked), use a Gaussian copula with empirical marginals, as in the proton model. Plus a layer-level multiplicative residual around the profile, with its measured scale per layer.
+3. **Lateral structure (stage 3).** One event-level lateral latent coupled to the longitudinal variables with the measured coupling (not assumed), a depth-dependent core-plus-halo radial law, and cell-level granularity through the same quanta mechanism as the proton lateral model (`proton_lateral.py`), with its own calibration for electrons. Sharing the mechanism is a choice with a consequence: the two classes then differ by calibrated parameters, not by one being smooth and the other not.
+4. **Correlations (stage 4).** Layer-to-layer correlation of the residuals through the same Gaussian copula with a common factor and an AR chain used for the protons; checked against the layer-correlation row.
+
+Representation: `deposition` only. The fibre-energy scale is the separate detector-response step R-A.
+
+### 8.3 Stop rule and discipline
+
+A stage is accepted when its contract rows reach the registered tolerances on the calibration data; it is then frozen. A stage that cannot reach them with a smooth model is recorded as a residual, not tuned further. No parameter is added without a named meaning and a measured need. The sealed electron set is opened once, at the end, through `sealed_set.open_set`.
+
+### 8.4 Decisions needed to proceed
+
+- **F1.** Approve the structural prior (Grindhammer-Peters forms with coefficients calibrated to Geant4, copula if the marginals are non-Gaussian) for stages 1-2.
+- **F2.** Reuse the proton quanta mechanism for the electron lateral structure (stage 3), or implement the Grindhammer-Peters spot model.
+- **F3.** `deposition` only for `em_production` (the detector response later), as proposed.
+- **F4.** Whether a per-layer mean correction table (named parameters) is acceptable if the free-beta gamma profile does not remove the first-layer deficit.
+- **F5.** Approve the first implementation step as ANALYSIS only: the stage-1 test (free beta against the first-layer deficit and the leakage), with no generator code.
