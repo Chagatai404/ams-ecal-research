@@ -43,7 +43,7 @@ event, configuration and geometry classes (`from ams_ecal import ECALEvent, load
 | `event.py` | `test_event.py` | The canonical event record (`ECALEvent`) and its provenance (`EventProvenance`) that every generator fills. | infrastructure |
 | `transport_geometry.py` | `test_transport_geometry.py` | Detailed-transport geometry derived from the canonical ECAL. | infrastructure |
 
-## 2. `electron_model/` — the electron / EM generator (DEC-001 baseline)
+## 2. `electron_model/` — the electron / EM generators (DEC-001 baseline; em_production Slice 1 candidate)
 
 | Module | Test | What it is in the model | Status |
 |---|---|---|---|
@@ -51,6 +51,8 @@ event, configuration and geometry classes (`from ams_ecal import ECALEvent, load
 | `lateral.py` | `test_lateral.py` | Mean lateral profile of an EM shower (deterministic in the scaled depth). | generator |
 | `stochastic.py` | `test_stochastic.py` | Event generation: lognormal T0, alpha = 1 + 0.65 T0, lateral spots. This is **DEC-001**: kept as the historical baseline and null control; not rewritten. | generator |
 | `fastmc_config.py` | `test_fastmc_config.py` | Validated loading of `configs/fastmc.yaml` (electron model parameters, E_c = 7.6 MeV). | infrastructure |
+| `em_production.py` | `test_em_production.py` | **em_production Slice 1**: the gamma-family longitudinal generator (calibrated origin convention and beta, empirical in-prefix tail correction, covariant widths, skew-normal ln T with a Gaussian copula) on DEC-001's lateral grid; the verified parameter artifact. Candidate, development. | generator |
+| `em_production_calibration.py` | `test_em_production_calibration.py` | Calibrates the Slice 1 parameters on the exposed baseline electrons (origin fixed at the front face; contained-fraction tolerance) → `data/calibration/em_production/gamma_baseline_v1/parameters.json`. | calibration |
 
 ## 3. `electron_studies/` — evidence about the generator, not the generator
 
@@ -65,8 +67,9 @@ Results: `results/em_generator/`. Plan and notes: `research/plans/2026-10-05_em_
 | 4 | `em_depth_origin_calibration.py`, `em_depth_origin_calibration_plots.py` | `test_em_depth_origin_calibration.py` | Can one common depth origin z0 plus one mean beta explain the Geant4 mean profile at 10–100 GeV? Identifiability surface, bootstrap, per-energy fits, calibrated-coordinate GP checks, the first-layer-floor gate, deposition versus readout. (Decision rows 2026-10-06.) | calibration + control | `depth_origin_calibration*.json/csv`, `depth_origin_calibration/*.png` |
 | 5 | `em_profile_shape_study.py`, `em_profile_shape_study_plots.py` | `test_em_profile_shape_study.py` | Why can the single gamma not reach the 100 GeV profile? Residual structure of the per-event fits, held-out score of the extensions (energy-dependent beta or origin, depth law, a tail component with the literature decay length), the ln T skewness controls and consequence for the leakage, the AMS b = 0.65 table on deposition and readout, the literature formulas against the electrons. | analysis + control | `profile_shape_study*.json/csv`, `profile_shape_study/*.png` |
 | 6 | `em_extended_tail_study.py`, `em_extended_tail_study_plots.py` | `test_em_extended_tail_study.py` | What does the extended-depth sample (`configs/geant4_electron_extended.yaml`, 270 layers) say about the tail: is it the same physics as the baseline, did the prefix-only fits predict the energy behind layer 17, the decay length and its energy dependence, how much of the event-level leakage the prefix shape explains. | analysis + control | `extended_tail_study*.json/csv`, `extended_tail_study/*.png` |
+| 7 | `em_production_development_check.py`, `em_production_development_check_plots.py` | `test_em_production_development_check.py` | How close is Slice 1 to Geant4 (calibration set and a development hold-out) and to DEC-001, against the Geant4 sample-to-sample floor? Not a validation; the sealed set is not read. | analysis + control | `em_production_development_check*.json`, `em_production_development_check/*.png` |
 
-Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6, then `research/plans/2026-10-05_em_production_generator_plan.md` and `DECISIONS.md` (DEC-014 and the F-rows).
+Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `research/plans/2026-10-05_em_production_generator_plan.md` and `DECISIONS.md` (DEC-014 and the F-rows).
 
 ## 4. `proton_model/` — the proton model
 

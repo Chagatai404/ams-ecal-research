@@ -133,3 +133,12 @@ correction; no additive gamma-based family fits prefix and tail together; the ev
 
 Revision of section 8: the far tail is not a stage of the generator. Stage 1 (mean profile) is a gamma core with a named empirical in-prefix tail correction (energy-weighted, calibrated on the prefix and its containment);
 any quantity behind the prefix is calibrated directly from the extended sample. Open: the choice between implementing now with named limitations and first looking for a better functional family.
+
+## 13. Implementation Slice 1 (2026-10-06): the gamma-family longitudinal generator
+
+The researcher approved the first implementation slice and locked the gamma density as the baseline physics family. Implemented in `src/ams_ecal/electron_model/em_production.py` (generator, parameter
+artifact), `em_production_calibration.py` (calibration) and checked by `src/ams_ecal/electron_studies/em_production_development_check.py`; the note is
+`research/plans/2026-10-06_em_production_slice1_note.md`. It realises stages 1 and 2 of section 8.2 in the form the evidence supports: a gamma core at a fixed front-face origin, an empirical in-prefix tail correction, covariant
+Grindhammer-Peters widths, a skew-normal ln T with a Gaussian copula, no first-layer floor. Stage 3 (lateral) and stage 4 (layer-to-layer residuals) are NOT part of the slice; DEC-001's lateral grid is used unchanged.
+Development result: far closer to Geant4 than DEC-001 on all metrics but the centre of gravity, not at the sample-to-sample floor; named residuals in the note. The sealed electron set is opened once, after the remaining stages, through
+`sealed_set.open_set`.
