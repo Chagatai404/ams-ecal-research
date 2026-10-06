@@ -1,0 +1,279 @@
+{
+  "builder": {
+    "git_commit": "e7ebd4d07f9e8e0bccb4c1316ec0cbe1e4f86386",
+    "module": "ams_ecal.electron_model.em_production_calibration",
+    "tracked_changes": false
+  },
+  "calibration": {
+    "central_fit": {
+      "at_bound": [],
+      "chi2": 1283.800092840214,
+      "chi2_per_dof": 18.879413130003144,
+      "contained_difference_model_minus_geant4": [
+        0.004206084283127853,
+        0.007061081776862599,
+        0.0047502266192067655,
+        0.008852675973213597
+      ],
+      "contained_fraction_geant4": [
+        0.9433350356569289,
+        0.9266382164311412,
+        0.9045555750508308,
+        0.876958561060791
+      ],
+      "contained_fraction_model": [
+        0.9475411199400567,
+        0.9336992982080038,
+        0.9093058016700376,
+        0.8858112370340046
+      ],
+      "contained_penalty_active": true,
+      "contained_tolerance": 0.003,
+      "dof": 68,
+      "energies_gev": [
+        10.0,
+        20.0,
+        50.0,
+        100.0
+      ],
+      "free_parameters": [
+        "beta",
+        "tail_weight",
+        "tail_weight_log_energy_slope",
+        "tail_shape"
+      ],
+      "origin_fixed_at_x0": 0.0,
+      "relative_residual_by_layer": [
+        [
+          -0.15014210969719285,
+          0.007899825226215068,
+          -0.017235062388128705,
+          -0.029039963438578464,
+          -0.04619627649916912,
+          -0.04437106132047074,
+          -0.0382734820761912,
+          -0.021584351123961,
+          -0.007088327692951225,
+          0.008430699838679966,
+          0.0285881374015017,
+          0.048776045249031647,
+          0.06509062698478571,
+          0.08378204870015346,
+          0.09021690886727644,
+          0.08687331370083297,
+          0.09978785596815981,
+          0.14065468570132963
+        ],
+        [
+          0.021064289990807762,
+          0.0805786032183869,
+          0.019802867407629876,
+          0.00805430265744856,
+          -0.011536799991804899,
+          -0.01782516188515505,
+          -0.026501573087268873,
+          -0.018428234155759515,
+          -0.00832290275695207,
+          0.0030066570022312497,
+          0.012130946698341695,
+          0.027495238133776176,
+          0.03210799718896683,
+          0.03542223932034804,
+          0.03883876798780172,
+          0.04868019251635289,
+          0.05333441407441414,
+          0.0939036685168425
+        ],
+        [
+          0.08483514645515398,
+          0.10293324035276362,
+          0.038018305418141156,
+          0.014549651275938052,
+          -0.007693215792458492,
+          -0.009884344075641361,
+          -0.015272942565420517,
+          -0.01504926013452954,
+          -0.014429680447209436,
+          -0.007797797065605326,
+          -0.0019216059233589855,
+          0.007367321203811843,
+          0.012808054210854925,
+          0.019761607529379374,
+          0.026312474393694895,
+          0.032300392588791436,
+          0.04548102485319505,
+          0.10122731165696339
+        ],
+        [
+          -0.058979768728865144,
+          0.006084454676171199,
+          -0.009399429911788722,
+          0.013424590180863543,
+          0.011992259434460766,
+          0.016641456970743897,
+          0.007960343986242551,
+          0.005859011563749769,
+          -0.0014879504993434705,
+          -0.0006698943908440311,
+          -0.0016898837131572304,
+          0.0037474725479290077,
+          0.008783156427520516,
+          0.014023223761678048,
+          0.017023150574935888,
+          0.025238231146698285,
+          0.02493886009691628,
+          0.07259669789673362
+        ]
+      ],
+      "rms_relative_layers_0_3": [
+        0.07704775661069778,
+        0.04299314177373244,
+        0.06973044159960859,
+        0.03075793642382225
+      ],
+      "rms_relative_layers_4_17": [
+        0.06867884757608424,
+        0.03807938538174498,
+        0.03332667468955012,
+        0.02334643958605668
+      ],
+      "scaled_sd": {
+        "beta": 0.005331065697945883,
+        "tail_shape": 0.07664031477698488,
+        "tail_weight": 0.007229272848297802,
+        "tail_weight_log_energy_slope": 0.003715277131623795
+      }
+    },
+    "created_utc": "2026-10-06T13:25:24Z",
+    "data": {
+      "batches": {
+        "10": {
+          "base_seed": 20270000,
+          "configuration_sha256": "29e1474ae1865ade531ec83a731adae2f195e7314ebe77f5bbdc56ad49e0dfc9",
+          "events": 1000,
+          "sample": "baseline"
+        },
+        "100": {
+          "base_seed": 20270000,
+          "configuration_sha256": "29e1474ae1865ade531ec83a731adae2f195e7314ebe77f5bbdc56ad49e0dfc9",
+          "events": 1000,
+          "sample": "baseline"
+        },
+        "20": {
+          "base_seed": 20270000,
+          "configuration_sha256": "29e1474ae1865ade531ec83a731adae2f195e7314ebe77f5bbdc56ad49e0dfc9",
+          "events": 1000,
+          "sample": "baseline"
+        },
+        "50": {
+          "base_seed": 20270000,
+          "configuration_sha256": "29e1474ae1865ade531ec83a731adae2f195e7314ebe77f5bbdc56ad49e0dfc9",
+          "events": 1000,
+          "sample": "baseline"
+        }
+      },
+      "sample": "geant4_electron_sample/baseline (exposed development data; deposition representation)",
+      "sealed_data_read": false
+    },
+    "history": [
+      {
+        "chi2": 1283.800092840214,
+        "iteration": 1,
+        "origin_at_which_moments_were_measured": 0.0,
+        "parameters": {
+          "beta": 0.5252868505434332,
+          "calibrated_energy_range_gev": [
+            10.0,
+            100.0
+          ],
+          "energy_reference_gev": 30.0,
+          "ln_t_skewness": 0.7390774272212434,
+          "origin_x0": 0.0,
+          "rho_intercept": 0.9107090357732792,
+          "rho_log_slope": -0.03958321212234759,
+          "tail_rate_per_x0": 0.2777777777777778,
+          "tail_shape": 1.9308768443371582,
+          "tail_weight": 0.043514490449609436,
+          "tail_weight_log_energy_slope": -0.020339918513666292,
+          "x_max_offset_x0": -0.5
+        }
+      }
+    ],
+    "measured_fluctuations_at_final_origin": {
+      "10": {
+        "beta_median": 0.5197350630120339,
+        "mean_ln_alpha": 1.4722207106823006,
+        "mean_ln_t": 1.87628674849067,
+        "pearson": 0.6169044409356318,
+        "sd_ln_alpha": 0.20897341968618308,
+        "sd_ln_t": 0.15425548686510152,
+        "skewness_ln_t": 0.6064839977774067
+      },
+      "100": {
+        "beta_median": 0.5281876620213493,
+        "mean_ln_alpha": 1.7393502515118378,
+        "mean_ln_t": 2.2055925869785655,
+        "pearson": 0.5130154056274402,
+        "sd_ln_alpha": 0.15979665953582153,
+        "sd_ln_t": 0.11917470127423829,
+        "skewness_ln_t": 0.7227362496479551
+      },
+      "20": {
+        "beta_median": 0.5243369359476326,
+        "mean_ln_alpha": 1.5670766243480685,
+        "mean_ln_t": 1.9921470999306148,
+        "pearson": 0.5988467067338636,
+        "sd_ln_alpha": 0.20466885104010196,
+        "sd_ln_t": 0.14906417009723516,
+        "skewness_ln_t": 0.7468443357573564
+      },
+      "50": {
+        "beta_median": 0.5220699047518587,
+        "mean_ln_alpha": 1.665432839025721,
+        "mean_ln_t": 2.1145130081592804,
+        "pearson": 0.5946052239654361,
+        "sd_ln_alpha": 0.16797836139867947,
+        "sd_ln_t": 0.12445014730507477,
+        "skewness_ln_t": 0.8802451257022552
+      }
+    },
+    "method": {
+      "converged": true,
+      "fixed_by_sources": {
+        "tail_rate_per_x0": 0.2777777777777778,
+        "x_max_offset_x0": -0.5
+      },
+      "iterations": 1,
+      "origin_convention": "front face",
+      "origin_convergence_x0": 0.03,
+      "quadrature": {
+        "kind": "scrambled Sobol",
+        "points": 2048,
+        "seed": 20261006
+      },
+      "widths": "Grindhammer and Peters sampling set with the covariant factor (fixed, not fitted)"
+    }
+  },
+  "kind": "em_production_parameters",
+  "model": "em-production-gamma-baseline",
+  "parameters": {
+    "beta": 0.5252868505434332,
+    "calibrated_energy_range_gev": [
+      10.0,
+      100.0
+    ],
+    "energy_reference_gev": 30.0,
+    "ln_t_skewness": 0.7390774272212434,
+    "origin_x0": 0.0,
+    "rho_intercept": 0.9107090357732792,
+    "rho_log_slope": -0.03958321212234759,
+    "tail_rate_per_x0": 0.2777777777777778,
+    "tail_shape": 1.9308768443371582,
+    "tail_weight": 0.043514490449609436,
+    "tail_weight_log_energy_slope": -0.020339918513666292,
+    "x_max_offset_x0": -0.5
+  },
+  "parameters_sha256": "438f28d83b1e714595a453e7492d2814764ce83f5f98aa8d049da4ce3c898a19",
+  "schema_version": 1,
+  "status": "CANDIDATE DEVELOPMENT parameters calibrated on exposed Geant4 electrons; not validated"
+}
