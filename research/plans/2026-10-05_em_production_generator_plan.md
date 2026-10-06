@@ -110,3 +110,15 @@ Revisions of section 8 that follow from it: stage 1 (mean profile) must carry a 
 freezing; stage 2 (widths) keeps the covariant sampling-set widths; the original bivariate Gaussian is not assumed for ln T; no first-layer floor. Open before the first implementation
 slice: the energy dependence and the depth law (why the 100 GeV profile is not reached), and whether the skewed ln T marginal changes the leakage tail and the contained-fraction
 distribution.
+
+## 11. Profile shape study (2026-10-06; analysis only, nothing implemented)
+
+The researcher asked for the three analyses proposed at the end of section 10 before any implementation, with the profile details checked in the literature. Result, in one paragraph
+(numbers and locators in `research/plans/2026-10-06_em_profile_shape_study_note.md`): the single gamma is a good bulk description and a poor description of the two ends. A slowly decaying
+tail component with the decay length of lead taken from Leroy and Rancoita (3.3-3.9 X0) cuts the mean-profile chi-square per dof from 35.6 to 16.4 with held-out gains of +27% to +52%;
+energy-dependent beta or origin and a free depth law do not. The ln T skewness is real and matters for the leakage distribution only together with the tail; the AMS 0.65 is an origin
+convention that becomes compatible with the core once the tail is present. The tail rate, shape and weight are not identified by the 18-layer prefix.
+
+Revisions of section 8 that follow: stage 1 (mean profile) is a gamma core plus a tail component with a named origin; stage 2 (widths) keeps the covariant sampling-set widths; the ln T marginal is
+skewed (skew-normal or empirical) and is chosen jointly with the tail; no first-layer floor. Open before the first implementation slice: the tail's rate, shape and weight (an extended-depth electron
+sample would measure it), whether the tail weight fluctuates event by event, and the entrance energy (layer 0 = 34.6 MeV + 0.416 MeV/GeV x E).

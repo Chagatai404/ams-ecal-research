@@ -80,6 +80,7 @@ CALIBRATION_JSON = RESULTS_DIR / "depth_origin_calibration.json"
 CALIBRATION_PLOTS = RESULTS_DIR / "depth_origin_calibration"
 
 DELTA_DEC001 = -0.5  # x_max = ln y + delta in the DEC-001 deposition regime
+ENERGY_REFERENCE_GEV = 30.0  # energy-dependent parameters are linear in ln(E / this)
 GAUSS_HERMITE_NODES = 12
 Z0_GRID = np.linspace(-6.0, 1.0, 71)
 BETA_GRID = np.linspace(0.30, 1.10, 81)
@@ -102,13 +103,33 @@ GATE = {
     "max_layers_4_17_degradation": 0.05,
 }
 
-DEFAULTS = {"z0": 0.0, "beta": BETA_AMS, "delta": DELTA_DEC001, "floor_a": 0.0, "floor_b": 0.0}
+DEFAULTS = {
+    "z0": 0.0,
+    "beta": BETA_AMS,
+    "delta": DELTA_DEC001,
+    "floor_a": 0.0,
+    "floor_b": 0.0,
+    "z0_slope": 0.0,
+    "beta_slope": 0.0,
+    "depth_slope": 1.0,
+    "tail_w": 0.0,
+    "tail_w_slope": 0.0,
+    "tail_alpha": 4.0,
+    "tail_kappa": 0.278,
+}
 PARAMETER_BOUNDS = {
     "z0": (-8.0, 2.0),
     "beta": (0.2, 1.6),
     "delta": (-4.0, 3.0),
     "floor_a": (0.0, 500.0),
     "floor_b": (0.0, 5.0),
+    "z0_slope": (-3.0, 3.0),
+    "beta_slope": (-0.5, 0.5),
+    "depth_slope": (0.5, 1.5),
+    "tail_w": (0.0, 0.5),
+    "tail_w_slope": (-0.2, 0.2),
+    "tail_alpha": (1.05, 12.0),
+    "tail_kappa": (0.15, 0.6),
 }
 
 
@@ -180,10 +201,13 @@ def make_targets(loaded: dict[float, EnergyData], representation: str, bounds: n
 # ----------------------------------------------------------------------
 
 
-def x_max_of_energy(energy_mev: float, critical_energy_mev: float, delta: float) -> float:
-    """Depth of the profile maximum from the front face, DEC-001 law ``ln(E / E_c) + delta`` (X0)."""
+def x_max_of_energy(energy_mev: float, critical_energy_mev: float, delta: float, slope: float = 1.0) -> float:
+    """Depth of the profile maximum from the front face, ``slope * ln(E / E_c) + delta`` (X0).
 
-    return float(np.log(energy_mev / critical_energy_mev) + delta)
+    DEC-001 is ``slope = 1``; the slope is a free parameter only in the shape study.
+    """
+
+    return float(slope * np.log(energy_mev / critical_energy_mev) + delta)
 
 
 def ensemble_mean_fractions(
@@ -250,20 +274,50 @@ def predict(spec: ModelSpec, params: dict[str, float], targets: Targets) -> tupl
     energies = targets.energies_mev
     x_max = np.array(
         [
-            params.get(f"xmax_{k}", x_max_of_energy(e, targets.critical_energy_mev, params["delta"]))
+            params.get(
+                f"xmax_{k}",
+                x_max_of_energy(e, targets.critical_energy_mev, params["delta"], params["depth_slope"]),
+            )
             for k, e in enumerate(energies)
         ]
     )
-    model = ensemble_mean_fractions(
-        params["z0"],
-        params["beta"],
-        x_max,
-        energies,
-        targets.critical_energy_mev,
-        targets.bounds,
-        fluctuate=spec.fluctuate,
-        covariant=spec.covariant,
-    )
+    if params["z0_slope"] == 0.0 and params["beta_slope"] == 0.0:
+        model = ensemble_mean_fractions(
+            params["z0"],
+            params["beta"],
+            x_max,
+            energies,
+            targets.critical_energy_mev,
+            targets.bounds,
+            fluctuate=spec.fluctuate,
+            covariant=spec.covariant,
+        )
+    else:  # parameters that depend on the energy: one ensemble per energy
+        ln_ratio = np.log(targets.energies_gev / ENERGY_REFERENCE_GEV)
+        model = np.array(
+            [
+                ensemble_mean_fractions(
+                    params["z0"] + params["z0_slope"] * ln_ratio[k],
+                    params["beta"] + params["beta_slope"] * ln_ratio[k],
+                    x_max[k : k + 1],
+                    energies[k : k + 1],
+                    targets.critical_energy_mev,
+                    targets.bounds,
+                    fluctuate=spec.fluctuate,
+                    covariant=spec.covariant,
+                )[0]
+                for k in range(len(energies))
+            ]
+        )
+    if params["tail_w"] != 0.0 or params["tail_w_slope"] != 0.0:
+        # a slowly decaying tail component (a second gamma density with rate kappa) mixed into the core profile
+        ln_ratio = np.log(targets.energies_gev / ENERGY_REFERENCE_GEV)
+        weight = np.clip(params["tail_w"] + params["tail_w_slope"] * ln_ratio, 0.0, 0.95)[:, None]
+        tail_depth = (params["tail_alpha"] - 1.0) / params["tail_kappa"]
+        tail = profile_fractions_batch(
+            np.array([np.log(tail_depth)]), np.array([np.log(params["tail_alpha"])]), targets.bounds, params["z0"]
+        )[0]
+        model = (1.0 - weight) * model + weight * tail[None, :]
     if params["floor_a"] > 0.0 or params["floor_b"] > 0.0:
         floor_mev = params["floor_a"] + params["floor_b"] * targets.energies_gev
         share = (floor_mev / energies)[:, None]
@@ -298,6 +352,13 @@ def default_starts(spec: ModelSpec, targets: Targets) -> list[np.ndarray]:
         "delta": [DELTA_DEC001],
         "floor_a": [20.0],
         "floor_b": [0.2],
+        "z0_slope": [0.0],
+        "beta_slope": [0.0],
+        "depth_slope": [1.0],
+        "tail_w": [0.05],
+        "tail_w_slope": [0.0],
+        "tail_alpha": [4.0],
+        "tail_kappa": [0.278],
     }
     starts = []
     for i in range(3):
