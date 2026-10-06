@@ -122,3 +122,14 @@ convention that becomes compatible with the core once the tail is present. The t
 Revisions of section 8 that follow: stage 1 (mean profile) is a gamma core plus a tail component with a named origin; stage 2 (widths) keeps the covariant sampling-set widths; the ln T marginal is
 skewed (skew-normal or empirical) and is chosen jointly with the tail; no first-layer floor. Open before the first implementation slice: the tail's rate, shape and weight (an extended-depth electron
 sample would measure it), whether the tail weight fluctuates event by event, and the entrance energy (layer 0 = 34.6 MeV + 0.416 MeV/GeV x E).
+
+## 12. Extended-depth electrons (2026-10-06; analysis only, nothing implemented)
+
+The researcher approved a development sample of electrons with the extended depth to measure the tail the 18-layer prefix could not constrain
+(`configs/geant4_electron_extended.yaml`, 1000 events at each of 10, 20, 50, 100 GeV; exposed development data, no sealed set). Result (numbers and locators in
+`research/plans/2026-10-06_em_extended_tail_note.md`): the tail is an energy-independent exponential of rate 0.27-0.28 per X0 beyond about layer 20, in agreement with the
+literature value for lead; 5.1-11.3% of E is behind the prefix, nearly all in layers 18-29. The tail components fitted on the prefix extrapolate wrongly and are only an empirical in-prefix shape
+correction; no additive gamma-based family fits prefix and tail together; the event-level energy behind the prefix is mostly set by the prefix shape.
+
+Revision of section 8: the far tail is not a stage of the generator. Stage 1 (mean profile) is a gamma core with a named empirical in-prefix tail correction (energy-weighted, calibrated on the prefix and its containment);
+any quantity behind the prefix is calibrated directly from the extended sample. Open: the choice between implementing now with named limitations and first looking for a better functional family.

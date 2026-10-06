@@ -80,6 +80,7 @@ CALIBRATION_JSON = RESULTS_DIR / "depth_origin_calibration.json"
 CALIBRATION_PLOTS = RESULTS_DIR / "depth_origin_calibration"
 
 DELTA_DEC001 = -0.5  # x_max = ln y + delta in the DEC-001 deposition regime
+TAIL_ONSET_OFF = 1.0e9  # the tail is a gamma density unless an onset is given
 ENERGY_REFERENCE_GEV = 30.0  # energy-dependent parameters are linear in ln(E / this)
 GAUSS_HERMITE_NODES = 12
 Z0_GRID = np.linspace(-6.0, 1.0, 71)
@@ -116,6 +117,7 @@ DEFAULTS = {
     "tail_w_slope": 0.0,
     "tail_alpha": 4.0,
     "tail_kappa": 0.278,
+    "tail_onset": TAIL_ONSET_OFF,
 }
 PARAMETER_BOUNDS = {
     "z0": (-8.0, 2.0),
@@ -130,6 +132,7 @@ PARAMETER_BOUNDS = {
     "tail_w_slope": (-0.2, 0.2),
     "tail_alpha": (1.05, 12.0),
     "tail_kappa": (0.15, 0.6),
+    "tail_onset": (-6.0, 20.0),
 }
 
 
@@ -268,6 +271,14 @@ def _parameters(spec: ModelSpec, theta: np.ndarray) -> dict[str, float]:
     return params
 
 
+def exponential_tail_fractions(bounds: np.ndarray, start: float, kappa: float) -> np.ndarray:
+    """Layer fractions of a density ``kappa exp(-kappa (x - start))`` for ``x >= start`` (zero in front)."""
+
+    front = np.maximum(bounds[:, 0], start) - start
+    back = np.maximum(bounds[:, 1], start) - start
+    return np.exp(-kappa * front) - np.exp(-kappa * back)
+
+
 def predict(spec: ModelSpec, params: dict[str, float], targets: Targets) -> tuple[np.ndarray, np.ndarray]:
     """``(model fractions, per-energy amplitude)`` for the targets' energies."""
 
@@ -313,11 +324,20 @@ def predict(spec: ModelSpec, params: dict[str, float], targets: Targets) -> tupl
         # a slowly decaying tail component (a second gamma density with rate kappa) mixed into the core profile
         ln_ratio = np.log(targets.energies_gev / ENERGY_REFERENCE_GEV)
         weight = np.clip(params["tail_w"] + params["tail_w_slope"] * ln_ratio, 0.0, 0.95)[:, None]
-        tail_depth = (params["tail_alpha"] - 1.0) / params["tail_kappa"]
-        tail = profile_fractions_batch(
-            np.array([np.log(tail_depth)]), np.array([np.log(params["tail_alpha"])]), targets.bounds, params["z0"]
-        )[0]
-        model = (1.0 - weight) * model + weight * tail[None, :]
+        if params["tail_onset"] < 0.5 * TAIL_ONSET_OFF:
+            # an exponential tail of rate kappa that starts ``tail_onset`` X0 behind the profile maximum
+            tail = np.array(
+                [
+                    exponential_tail_fractions(targets.bounds, float(x_max[k]) + params["tail_onset"], params["tail_kappa"])
+                    for k in range(len(energies))
+                ]
+            )
+        else:
+            tail_depth = (params["tail_alpha"] - 1.0) / params["tail_kappa"]
+            tail = profile_fractions_batch(
+                np.array([np.log(tail_depth)]), np.array([np.log(params["tail_alpha"])]), targets.bounds, params["z0"]
+            )[0][None, :]
+        model = (1.0 - weight) * model + weight * tail
     if params["floor_a"] > 0.0 or params["floor_b"] > 0.0:
         floor_mev = params["floor_a"] + params["floor_b"] * targets.energies_gev
         share = (floor_mev / energies)[:, None]
@@ -359,6 +379,7 @@ def default_starts(spec: ModelSpec, targets: Targets) -> list[np.ndarray]:
         "tail_w_slope": [0.0],
         "tail_alpha": [4.0],
         "tail_kappa": [0.278],
+        "tail_onset": [4.0],
     }
     starts = []
     for i in range(3):

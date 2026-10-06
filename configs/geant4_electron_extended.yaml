@@ -1,0 +1,44 @@
+# Geant4 ELECTRONS with the EXTENDED DEPTH (research instrument), a DEVELOPMENT sample.
+#
+# Purpose (researcher's go, 2026-10-06: "Yes go on and do that"): the 18-layer AMS-like prefix cannot
+# constrain the slowly decaying tail of the longitudinal profile (research/plans/
+# 2026-10-06_em_profile_shape_study_note.md, section 4). The same events are followed through 126 more
+# superlayers (prefix 166.5 mm + 2331.0 mm of compatible material, about 250 X0) so the energy behind the
+# prefix is measured, not inferred. The extension is a research instrument, not a detector.
+#
+# EXPOSED development data, like the 4000-electron sample: it may be viewed, summarised and used to
+# calibrate. It is NOT a sealed set and never enters a validation. The sealed electron set
+# (configs/geant4_electron_sealed.yaml) is untouched. Same geometry, physics list, cut, entry spot and
+# energies as configs/geant4_electron_sample.yaml. Seeds: base seed used nowhere else (the others are
+# 20260929..20261003, 20270000, 20271001, 20271002). Raw batches are git-ignored; regenerate from this
+# committed config. Geant4 is a model, not detector truth, and this is one physics list.
+schema_version: 2
+
+particle: e-
+
+energies_gev: [10.0, 20.0, 50.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  extended:
+    geometry: extended
+    physics_list: FTFP_BERT
+    events_per_energy: 1000
+    base_seed: 20271010
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_electron_extended

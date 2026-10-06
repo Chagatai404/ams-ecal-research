@@ -59,6 +59,7 @@ data/processed/
 data/geant4_proton_pilot/
 data/geant4_electron_probe/
 data/geant4_electron_sample/
+data/geant4_electron_extended/
 
 # Native/CMake build products for later Geant4 work
 cmake-build-*/
