@@ -231,7 +231,7 @@ The human researcher decides what becomes accepted knowledge or conclusion.**
 
 ---
 
-## Record index: the validated-FastMC-dataset branch (2026-10-02 to 2026-10-05)
+## Record index: the validated-FastMC-dataset branch (2026-10-02 to 2026-10-06)
 
 Branch `fastmc-validated-dataset`. Read in this order for a tutoring session on the processes. "Decision" IDs are in `DECISIONS.md`; commits are in `git log`. The Obsidian vault has no note for this branch yet (its newest research session is 2026-09-29, its newest tutor session 2026-10-02); the repository is the only record of it.
 
@@ -249,5 +249,11 @@ Branch `fastmc-validated-dataset`. Read in this order for a tutoring session on 
 | decisions of 2026-10-05 | DEC-005 accepted; EM: smooth null kept, new production generator; thresholds; protocol wording; sealed proton set stays closed | `DECISIONS.md` (rows of 2026-10-05) | |
 | EM production plan | gated plan, no implementation | `plans/2026-10-05_em_production_generator_plan.md` | |
 | physics-list systematic | the proton model against QGSP_BERT and QBBC pilot samples (a systematic, not validation) | `results/proton_model/physics_list_systematic.json` | |
+| longitudinal structure (analysis) | joint T/alpha structure of Geant4 electrons, event beta, origin degeneracy, confounders of the lateral coupling | `plans/2026-10-05_em_longitudinal_structure_analysis_note.md`, `results/em_generator/longitudinal_structure*`; decisions F1-F5, DEC-014 | b664936 |
+| repository grouping | `src/ams_ecal` and `tests` grouped into role folders; the F5/F6 labels replaced by descriptive names | `MODULE_MAP.md`, `NAMES.md` | 9bd6b92 |
+| depth-origin calibration (analysis) | common origin and mean beta on the Geant4 deposition profile; identifiability; the AMS 0.65 as a convention; the first-layer floor gate (closed) | `plans/2026-10-06_em_depth_origin_calibration_note.md`, `results/em_generator/depth_origin_calibration*` | a431041 |
+| profile shape study (analysis) | why a single gamma cannot reach the 100 GeV profile; tail component; skewed ln T and the leakage; AMS beta on readout; literature read directly in the library PDFs | `plans/2026-10-06_em_profile_shape_study_note.md`, `results/em_generator/profile_shape_study*` | a2a0de4 |
+| extended-depth electrons (data and analysis) | 270-layer development sample; the tail measured (rate 0.27-0.28 per X0); prefix-fitted tail components are an empirical correction, not a physical tail | `configs/geant4_electron_extended.yaml`, `plans/2026-10-06_em_extended_tail_note.md`, `results/em_generator/extended_tail_study*` | 528a246 |
+| em_production Slice 1 (implementation) | the gamma-family longitudinal electron generator (candidate, development), its calibrated artifact and development check; DEC-001 unchanged; sealed set unopened | `plans/2026-10-06_em_production_slice1_note.md`, `data/calibration/em_production/gamma_baseline_v1/parameters.json`, `results/em_generator/em_production_*` | e7ebd4d, 646237a |
 
 Other places that hold records: `RESEARCH_PROTOCOL.md` and `CLAUDE.md` (the rules), `NAMES.md` (translation of old labels), `results/` (every numeric result, each with a status line), the git history (about 80 commits, one per step), the assistant's file memory and claude-mem (what happened, never a substitute for these), and the Obsidian vault `01 Projects/AMS ECAL QML` (evidence maps, research sessions, tutor sessions: the learning record, to be extended for this branch when the tutoring starts).
