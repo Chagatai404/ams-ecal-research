@@ -1,0 +1,44 @@
+{
+  "thresholds": {
+    "mean_relative_reduction_minimum": 0.3,
+    "transfer_fraction_minimum": 0.7,
+    "spot_number_gap_maximum": 0.05,
+    "added_parameters_maximum": 2,
+    "profile_error_regression_points": 0.2,
+    "ks_regression": 0.03,
+    "coupling_regression": 0.05
+  },
+  "criteria": {
+    "A_improves_at_every_energy": false,
+    "A_mean_relative_reduction": 0.13576764634972055,
+    "A_mean_relative_reduction_ok": false,
+    "B1_improvement_transfers": {
+      "width_mm": {
+        "holdout_improvement": -0.11025000000000004,
+        "calibration_improvement": -0.10504166666666667,
+        "ok": false
+      },
+      "n_hit_cells": {
+        "holdout_improvement": 0.4306875,
+        "calibration_improvement": 0.49243750000000003,
+        "ok": true
+      }
+    },
+    "B1_ok": false,
+    "B2_spot_number_gap": 0.010481540115650834,
+    "B2_ok": true,
+    "B3_not_collapsed_and_converged": true,
+    "C1_added_parameters": 2,
+    "C1_ok": true,
+    "C2_changes_on_holdout": {
+      "profile_error_layers_3_17_mean_points": -0.0077279448911111714,
+      "coupling_abs_difference": 0.07111778413748349,
+      "ks_core_fraction": -0.009833333333333305,
+      "ks_containment_fraction": 0.007291666666666696,
+      "ks_max_cell_fraction": 0.01564583333333336
+    },
+    "C2_ok": false
+  },
+  "adopted": false,
+  "verdict": "E1 NOT ADOPTED: Slice 2 stays the candidate; E1 is recorded as a result"
+}
