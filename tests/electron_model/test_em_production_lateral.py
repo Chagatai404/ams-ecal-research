@@ -277,6 +277,72 @@ def test_the_two_population_mean_profile_equals_the_single_population_one(model)
     assert (0.5 * np.abs(equal_profile - finer_profile).sum(axis=1))[3:].max() < 0.02
 
 
+def test_the_mean_second_moment_matches_the_direct_sum_for_one_event(model) -> None:
+    z = np.zeros((1, 2))
+    axis = axes(model, 1, seed=8)
+
+    moments = model.mean_second_moments_mm2(50_000.0, z, axis)
+
+    ln_t, ln_alpha = model.longitudinal.draw_shape(50_000.0, z[:, 0], z[:, 1])
+    tau = model.depth_coordinate(50_000.0, ln_t, ln_alpha)
+    probabilities = model.strip_probabilities(50_000.0, axis, tau)[..., :-1]
+    edges = model.cell_edges_mm
+    offsets = 0.5 * (edges[:-1] + edges[1:])[None, None, :] - axis[:, :, None]
+    assert moments.shape == (18,)
+    assert moments == pytest.approx((probabilities * offsets**2).sum(axis=2)[0])
+    assert (moments > 0).all()
+
+
+def test_a_heavier_tail_raises_the_second_moment_far_more_than_the_central_profile(model) -> None:
+    heavy = replace(model, parameters=replace(PARAMETERS, tail_scale=PARAMETERS.tail_scale * 1.5))
+    z = np.random.default_rng(3).standard_normal((300, 2))
+    axis = axes(model, 300, seed=2)
+
+    light_moment, heavy_moment = (m.mean_second_moments_mm2(50_000.0, z, axis) for m in (model, heavy))
+    light_profile, heavy_profile = (m.mean_cell_fractions(50_000.0, z, axis) for m in (model, heavy))
+
+    moment_change = np.abs(heavy_moment / light_moment - 1.0)[3:].mean()
+    profile_change = 0.5 * np.abs(heavy_profile - light_profile).sum(axis=1)[3:].mean()
+    assert moment_change > 5.0 * profile_change
+
+
+def test_the_tail_exponent_one_is_the_closed_form_and_larger_exponents_match_numerical_integration() -> None:
+    from math import gamma, pi, sqrt
+
+    from scipy import integrate
+
+    x, radius = np.array([-80.0, -9.0, 0.0, 4.0, 30.0, 150.0]), 12.0
+    assert lat.strip_cdf(x, radius, 1.0) == pytest.approx(0.5 * (1.0 + x / np.sqrt(x * x + radius * radius)))
+    assert lat.strip_cdf(x, radius, 1.0 + 1e-7) == pytest.approx(lat.strip_cdf(x, radius, 1.0), abs=1e-6)
+
+    s = 1.7
+
+    def density(t: float) -> float:
+        return gamma(s + 0.5) / (sqrt(pi) * gamma(s) * radius) * (1.0 + t * t / radius**2) ** (-(s + 0.5))
+
+    numeric = np.array([integrate.quad(density, -np.inf, xi, limit=400)[0] for xi in x])
+    assert lat.strip_cdf(x, radius, s) == pytest.approx(numeric, abs=1e-6)
+
+
+def test_a_faster_tail_removes_far_energy_and_the_default_is_unchanged(model) -> None:
+    faster = replace(model, parameters=replace(PARAMETERS, tail_exponent=1.8))
+    axis = axes(model, 50, seed=11)
+    tau = np.full((50, 18), 1.0)
+
+    base = model.strip_probabilities(50_000.0, axis, tau)
+    fast = faster.strip_probabilities(50_000.0, axis, tau)
+
+    assert PARAMETERS.tail_exponent == 1.0
+    assert fast.sum(axis=-1) == pytest.approx(1.0)
+    far = slice(0, 36 - 12)  # cells at least 108 mm from the axis cell
+    assert fast[..., far].sum() < 0.6 * base[..., far].sum()
+
+
+def test_a_tail_exponent_below_one_is_refused() -> None:
+    with pytest.raises(ValueError, match="tail_exponent"):
+        replace(PARAMETERS, tail_exponent=0.8)
+
+
 def test_an_artifact_with_the_extension_keys_round_trips(tmp_path) -> None:
     extended = replace(PARAMETERS, spot_tail_refinement=2.5, front_spot_limit=14.0)
     longitudinal = json.loads(LONGITUDINAL_ARTIFACT.read_text(encoding="utf-8"))["parameters_sha256"]

@@ -123,6 +123,47 @@ def test_the_spot_fit_recovers_a_planted_spot_structure(template, monkeypatch) -
     assert fitted.spot_energy_exponent == pytest.approx(0.9, abs=0.15)
 
 
+def test_the_moment_target_adds_no_parameter_and_pulls_the_fit_toward_the_far_tail(template) -> None:
+    truth_parameters = replace(cal.START, tail_scale=cal.START.tail_scale * 1.2)
+    truth = replace(template, parameters=truth_parameters)
+    observed = observed_from(truth)
+    z, axis = cal.quadrature(template)
+    moments = {e: truth.mean_second_moments_mm2(1000.0 * e, z, axis) for e in ENERGIES}
+
+    plain, plain_record = cal.fit_radial_law(template, observed, max_nfev=25)
+    weighted, weighted_record = cal.fit_radial_law(template, observed, max_nfev=25, moments=moments, moment_weight=0.02)
+
+    def moment_error(parameters) -> float:
+        model = replace(template, parameters=parameters)
+        return max(
+            float(np.abs(model.mean_second_moments_mm2(1000.0 * e, z, axis) / moments[e] - 1.0)[3:].max())
+            for e in ENERGIES
+        )
+
+    assert weighted_record["free_parameters"] == plain_record["free_parameters"] == list(lat.RADIAL_NAMES)
+    assert weighted_record["second_moment_weight"] == 0.02
+    assert plain_record["second_moment_weight"] == 0.0
+    assert moment_error(weighted) <= moment_error(plain) + 1e-9
+    assert moment_error(weighted) < 0.05
+
+
+def test_without_moments_the_radial_fit_is_the_cumulative_one(template) -> None:
+    observed = observed_from(template)
+
+    _, record = cal.fit_radial_law(template, observed, max_nfev=3, moments=None, moment_weight=0.02)
+
+    assert record["second_moment_weight"] == 0.0
+
+
+@needs_sample
+def test_the_observed_second_moments_are_positive_per_layer(template) -> None:
+    moments = cal.observed_second_moments(template, (50.0,), max_events=120)
+
+    assert moments[50.0].shape == (18,)
+    assert (moments[50.0] > 0).all()
+    assert (moments[50.0] < 324.0**2).all()  # a second moment cannot exceed the squared largest possible offset
+
+
 @needs_sample
 def test_the_observed_loader_reads_the_exposed_baseline_with_its_targets() -> None:
     observed = cal.load_observed((50.0,), max_events=120)

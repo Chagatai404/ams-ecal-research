@@ -45,7 +45,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-from scipy.special import gammainc
+from scipy.special import betainc, gammainc
 
 from ams_ecal.detector.event import ECALEvent, EnergyGrid, EventProvenance
 from ams_ecal.detector.geometry import ECALGeometry
@@ -102,11 +102,16 @@ class LateralParameters:
     # particles of a cascade at most doubles per layer, about one radiation length); n0 = 0 switches the cap off.
     spot_tail_refinement: float = 1.0
     front_spot_limit: float = 0.0
+    # Faster-falling tail (opt-in; 1 reproduces Slice 2 exactly): the tail component's survival function is
+    # (R_T^2 / (r^2 + R_T^2))^s with s = tail_exponent; s = 1 is the Grindhammer-Peters Cauchy-like tail.
+    tail_exponent: float = 1.0
 
     def __post_init__(self) -> None:
         for name, value in asdict(self).items():
             if not isfinite(float(value)):
                 raise ValueError(f"{name} must be finite")
+        if self.tail_exponent < 1.0:
+            raise ValueError("tail_exponent must be at least 1 (a tail not heavier than the Cauchy-like one)")
         if self.spot_tail_refinement < 1.0:
             raise ValueError("spot_tail_refinement must be at least 1 (tail spots are not coarser than core spots)")
         if self.front_spot_limit < 0.0:
@@ -161,10 +166,19 @@ def lateral_parameters_digest(parameters: LateralParameters) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
-def strip_cdf(x: np.ndarray, radius: np.ndarray) -> np.ndarray:
-    """CDF of the strip marginal of the radial density ``2 r R^2 / (r^2 + R^2)^2``."""
+def strip_cdf(x: np.ndarray, radius: np.ndarray, exponent: float = 1.0) -> np.ndarray:
+    """CDF of the strip marginal of the radial law with survival function ``(R^2 / (r^2 + R^2))^s``.
 
-    return 0.5 * (1.0 + x / np.sqrt(x * x + radius * radius))
+    ``s = 1`` is the Grindhammer-Peters density ``2 r R^2 / (r^2 + R^2)^2`` and gives the closed form
+    ``(1 + x / sqrt(x^2 + R^2)) / 2``; ``s > 1`` falls faster. The marginal density is
+    ``Gamma(s + 1/2) / (sqrt(pi) Gamma(s) R) (1 + x^2 / R^2)^(-(s + 1/2))`` (a scaled Student-t), whose CDF is
+    ``1/2 + sign(x) I_z(1/2, s) / 2`` with ``z = x^2 / (x^2 + R^2)``, which reduces to the closed form at ``s = 1``.
+    """
+
+    if exponent == 1.0:
+        return 0.5 * (1.0 + x / np.sqrt(x * x + radius * radius))
+    z = x * x / (x * x + radius * radius)
+    return 0.5 + 0.5 * np.sign(x) * betainc(0.5, exponent, z)
 
 
 def conditional_binomial_counts(rng: np.random.Generator, totals: np.ndarray, probabilities: np.ndarray) -> np.ndarray:
@@ -302,7 +316,7 @@ class EMProductionLateralModel:
         core, tail, weight = self.radial_parameters(energy_mev, tau)
         offsets = self.cell_edges_mm[None, None, :] - np.asarray(axis_mm, dtype=float)[:, :, None]
         cdf = weight[..., None] * strip_cdf(offsets, core[..., None]) + (1.0 - weight[..., None]) * strip_cdf(
-            offsets, tail[..., None]
+            offsets, tail[..., None], self.parameters.tail_exponent
         )
         cells = np.diff(cdf, axis=-1)
         outside = np.clip(1.0 - cells.sum(axis=-1, keepdims=True), 0.0, 1.0)
@@ -316,8 +330,8 @@ class EMProductionLateralModel:
         core, tail, weight = self.radial_parameters(energy_mev, tau)
         offsets = self.cell_edges_mm[None, None, :] - np.asarray(axis_mm, dtype=float)[:, :, None]
         out = []
-        for radius in (core, tail):
-            cells = np.diff(strip_cdf(offsets, radius[..., None]), axis=-1)
+        for radius, exponent in ((core, 1.0), (tail, self.parameters.tail_exponent)):
+            cells = np.diff(strip_cdf(offsets, radius[..., None], exponent), axis=-1)
             outside = np.clip(1.0 - cells.sum(axis=-1, keepdims=True), 0.0, 1.0)
             out.append(np.concatenate([cells, outside], axis=-1))
         return out[0], out[1], weight
@@ -462,6 +476,32 @@ class EMProductionLateralModel:
         weights = self.longitudinal.layer_fractions(energy_mev, ln_t, ln_alpha)
         probabilities = self.strip_probabilities(energy_mev, axis_mm, tau)[..., :-1]
         return (weights[..., None] * probabilities).sum(axis=0) / weights.sum(axis=0)[:, None]
+
+    def mean_second_moments_mm2(
+        self,
+        energy_mev: float,
+        z: np.ndarray,
+        axis_mm: np.ndarray,
+        *,
+        allow_extrapolation: bool = False,
+    ) -> np.ndarray:
+        """Energy-weighted mean second moment of the measured coordinate about the track, per layer, in mm^2.
+
+        ``sum_i f_il sum_c p_ilc d_ilc^2 / sum_i f_il`` with ``d`` the offset of the cell centre from the axis: the
+        layer's mean contribution to the event width squared, the far-tail statistic the width is built from, with
+        the same quadrature ensemble and the same energy weights as :meth:`mean_cell_fractions`.
+        """
+
+        z = np.asarray(z, dtype=float)
+        self.longitudinal.check_energy(energy_mev, allow_extrapolation)
+        ln_t, ln_alpha = self.longitudinal.draw_shape(energy_mev, z[:, 0], z[:, 1], allow_extrapolation=True)
+        tau = self.depth_coordinate(energy_mev, ln_t, ln_alpha)
+        weights = self.longitudinal.layer_fractions(energy_mev, ln_t, ln_alpha)
+        probabilities = self.strip_probabilities(energy_mev, axis_mm, tau)[..., :-1]
+        edges = self.cell_edges_mm
+        offsets = 0.5 * (edges[:-1] + edges[1:])[None, None, :] - np.asarray(axis_mm, dtype=float)[:, :, None]
+        moment = (probabilities * offsets**2).sum(axis=2)
+        return (weights * moment).sum(axis=0) / weights.sum(axis=0)
 
     # ---- events
 

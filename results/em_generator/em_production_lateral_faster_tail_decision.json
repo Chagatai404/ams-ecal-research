@@ -1,0 +1,45 @@
+{
+  "thresholds": {
+    "mean_relative_reduction_minimum": 0.3,
+    "transfer_fraction_minimum": 0.7,
+    "profile_gap_maximum_points": 0.2,
+    "profile_regression_points": 0.3,
+    "coupling_regression": 0.05,
+    "spot_number_regression": 0.1,
+    "ks_regression": {
+      "core_fraction": 0.03,
+      "containment_fraction": 0.03,
+      "max_cell_fraction": 0.03,
+      "n_hit_cells": 0.05
+    },
+    "added_parameters_maximum": 1
+  },
+  "criteria": {
+    "A_improves_at_every_energy": true,
+    "A_mean_relative_reduction": 0.7351931405646982,
+    "A_ok": true,
+    "B1_width_improvement": {
+      "holdout": 0.51075,
+      "calibration": 0.5633958333333333
+    },
+    "B1_ok": true,
+    "B2_profile_error_gap_points": 0.03552202543946015,
+    "B2_ok": true,
+    "B3_parameters_at_bound": [],
+    "B3_ok": true,
+    "C1_added_parameters": 1,
+    "C1_ok": true,
+    "C2_changes_on_holdout": {
+      "profile_error_layers_3_17_mean_points": 0.40641033788872916,
+      "coupling_abs_difference": -0.05563496493031028,
+      "spot_number_rms_log_ratio": -0.0008035000326830355,
+      "ks_core_fraction": -0.02633333333333332,
+      "ks_containment_fraction": -0.1595625,
+      "ks_max_cell_fraction": 0.01860416666666667,
+      "ks_n_hit_cells": 0.0
+    },
+    "C2_ok": false
+  },
+  "adopted": false,
+  "verdict": "TAIL-SENSITIVE CALIBRATION NOT ADOPTED: Slice 2 stays the candidate; the result is recorded"
+}

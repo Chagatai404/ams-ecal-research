@@ -117,6 +117,67 @@ of the same events): H1 the far tail of the mean radial law, H2 spot granularity
 - **H3 (the depth coupling) is not the cause of the width excess**, but it is not excluded as a cause of the width's spread; not tested separately.
 - **What this suggests (not done, needs approval).** The radial fit needs a target that sees the tail, for example the second moment of the mean profile (the mean width^2 per layer and energy) added to the cumulative residual, with the same twelve constants. That adds no parameter; whether the Grindhammer-Peters structure can satisfy both is the open question. A truncation of the tail would add a parameter and is NOT proposed first.
 
-## 8. Next steps (not started)
+## 8. Tail-sensitive radial calibration (2026-10-08): the width is curable without a new parameter, but not without breaking the core
 
-A tail-sensitive radial calibration (the second moment as a second target, no new parameter), layer-to-layer residual noise (stage 4), the pre-stated gamma-inadequacy thresholds (still pending), then the single opening of the sealed electron set. Each needs approval; E1 is recorded here and stays opt-in, off.
+The researcher: "Yes, run the tail-sensitive radial calibration as well, again if it doesn't cause overfitting and doesn't complicate parameterization". The rule was written in code before the first run
+(`src/ams_ecal/electron_studies/em_production_lateral_tail_decision.py`): the width KS must improve at every energy by 30% on average on the hold-out (A); the improvement must transfer from the calibration set, the
+profile-error gap must stay within 0.2 points and no constant may end at a bound (B: no overfitting); no parameter may be added and nothing that worked may get materially worse (C).
+**What was changed:** the SAME twelve radial constants (no parameter added); the radial residual gets a second target, the relative error of each (energy, layer) second moment of the mean profile (`mean_second_moments_mm2`, the quantity the
+width is built from; `observed_second_moments` from the exposed electrons), added to the cumulative residual with a fixed weight; the spot constants are then refitted as in Slice 2. Command `python -m ams_ecal.electron_model.em_production_lateral_calibration --tail-sensitive [--moment-weight W --tag NAME]`.
+
+**Two variants were run, and this is stated openly: the first weight was a poor choice.**
+1. **Weight 0.02** (fixed before running): the moment term has 18 residuals per energy against 1296 cumulative ones, so it carried about a tenth of the squared weight and the fit barely moved (the constants changed by 1-3%); the layer second moments stayed 14-37% too large on average (worst 35-52%).
+   Hold-out width KS improved by 0.03 (4% on average), the containment KS drifted by 0.032 (above the 0.03 allowance). Not adopted (A fails; C2 fails narrowly). Artifact `gp_lateral_tail_v1`, results `em_production_lateral_tail_*`.
+2. **Weight 0.4** (the "balanced" weight, defined BEFORE its run from the principle that a 5% moment error should count like the whole fitted cumulative residual of the layer, `0.05 x w = sqrt(72) x 0.0025`): the layer second moments are matched
+   (layers 3-17 mean error -0.0% to +3%, worst 4-10%). Artifact `gp_lateral_tail_balanced_v1`, results `em_production_lateral_tail_balanced_*`.
+
+| hold-out, 10 / 20 / 50 / 100 GeV | Slice 2 | balanced (0.4) | floor |
+|---|---|---|---|
+| **width KS** | 0.68 / 0.68 / 0.70 / 0.71 | **0.23 / 0.19 / 0.20 / 0.20** | 0.08-0.16 |
+| core-fraction KS | 0.17 / 0.10 / 0.19 / 0.20 | **0.56 / 0.72 / 0.77 / 0.77** | 0.04-0.10 |
+| containment KS | 0.19 / 0.16 / 0.40 / 0.51 | **0.72 / 0.87 / 0.93 / 0.97** | 0.07-0.13 |
+| largest-cell-fraction KS | 0.34 / 0.25 / 0.16 / 0.09 | 0.33 / 0.27 / 0.24 / 0.22 | 0.03-0.06 |
+| hit-cells KS | 1.0 | 1.0 | 0.06-0.13 |
+| profile error layers 3-17, mean (points) | 1.4 / 1.2 / 1.8 / 2.2 | 3.8 / 3.6 / 3.3 / 4.0 | 0.4-0.9 |
+| profile error layers 3-17, worst | 3.3 / 2.8 / 3.4 / 4.0 | 7.9 / 6.6 / 5.7 / 5.6 | |
+| Spearman(width, centre of gravity); Geant4 -0.23 / -0.41 / -0.56 / -0.62 | -0.34 / -0.35 / -0.43 / -0.51 | -0.31 / -0.33 / -0.43 / -0.54 | |
+
+**Verdict: NOT ADOPTED (both variants); Slice 2 stays the candidate.** For the balanced variant: A holds (width KS reduced by 70% on average, at every energy), B holds (the hold-out improvement 0.49 against 0.51 on the calibration set, the profile-error gap 0.08, no constant at a bound),
+C1 holds (no parameter added), **C2 fails**: the profile error rises by 2.0 points, the core-fraction KS by 0.54 and the containment KS by 0.56.
+- **No overfitting and no added complexity; the cost is structural.** The width is a far-tail statistic and the width excess is curable with the same twelve constants, but only by trading the core: the Grindhammer-Peters radial law with a Cauchy-like tail couples the
+  tail to the body, so lowering the far tail lowers the energy at 5-50 mm and the central mass moves. The twelve-constant structure cannot hold the near and the far profile together.
+- **Two tries, one forking path.** A weight between 0.02 and 0.4 would trade less but was not run: with two variants already tried, a third would be tuning the weight to the verdict. The trade-off curve itself is the result.
+- **Hit cells are unchanged by the radial law** (KS 1.0 in both), as the E1 trial found for the spots from the other side: the cell occupancy is neither a pure radial-law nor a pure spot-granularity effect.
+
+## 9. A faster-falling tail (2026-10-08): one added parameter; it passes every criterion but one, by 0.11 points
+
+The researcher approved it ("try it") after section 8 asked whether to add a parameter. The rule is the same as in section 8, fixed in code before the run, with ONE approved change: C1 allows exactly one added parameter
+(`em_production_lateral_tail_decision.py --max-added-parameters 1`).
+**What was added:** `tail_exponent` `s`: the tail component's survival function is `(R_T^2 / (r^2 + R_T^2))^s`; `s = 1` is the Grindhammer-Peters Cauchy-like tail (Slice 2), `s > 1` falls faster. The strip marginal stays closed form
+(a scaled Student-t, CDF `1/2 + sign(x) I_z(1/2, s) / 2`, `z = x^2/(x^2 + R^2)`, exactly the old formula at `s = 1`, checked against numerical integration to 3e-12). Opt-in, default 1: Slice 2 is unchanged.
+Calibration: thirteen radial constants (the twelve plus `s`, bounded to 1-4, started at 1.5), cumulative profile plus the second-moment target at the weight 0.4 fixed in advance (section 8: no new weight fork), then the spot refit.
+Command `python -m ams_ecal.electron_model.em_production_lateral_calibration --tail-sensitive --faster-tail --moment-weight 0.4 --tag faster_tail`; artifact `gp_lateral_faster_tail_v1`; results `em_production_lateral_faster_tail_*`.
+Result: `s = 1.81`, the tail scale 1.58 R_M, nothing at a bound; the layer second moments are matched (layers 3-17 mean -1% to +2%, worst 6-9%).
+
+| hold-out, 10 / 20 / 50 / 100 GeV | Slice 2 | faster tail (s = 1.81) | floor |
+|---|---|---|---|
+| **width KS** | 0.68 / 0.68 / 0.70 / 0.71 | **0.19 / 0.15 / 0.19 / 0.20** | 0.08-0.16 |
+| core-fraction KS | 0.17 / 0.10 / 0.19 / 0.20 | 0.06 / 0.11 / 0.11 / 0.28 | 0.04-0.10 |
+| containment KS | 0.19 / 0.16 / 0.40 / 0.51 | **0.13 / 0.10 / 0.12 / 0.27** | 0.07-0.13 |
+| largest-cell-fraction KS | 0.34 / 0.25 / 0.16 / 0.09 | 0.31 / 0.25 / 0.20 / 0.16 | 0.03-0.06 |
+| hit-cells KS | 1.0 | 1.0 | 0.06-0.13 |
+| profile error layers 3-17, mean (points) | 1.4 / 1.2 / 1.8 / 2.2 | **2.5 / 1.8 / 1.7 / 2.3** | 0.4-0.9 |
+| profile error layers 3-17, worst | 3.3 / 2.8 / 3.4 / 4.0 | 5.2 / 3.6 / 4.3 / 6.4 | |
+| profile error layers 0-2, worst | 3.8 / 4.9 / 7.9 / 11.2 | 4.2 / 6.6 / 9.3 / 10.3 | |
+| Spearman(width, centre of gravity); Geant4 -0.23 / -0.41 / -0.56 / -0.62 | -0.34 / -0.35 / -0.43 / -0.51 | -0.35 / -0.40 / -0.50 / -0.62 | |
+
+**Verdict by the pre-stated rule: NOT ADOPTED, because one sub-criterion fails.** A holds (width KS reduced by 74% on average, at every energy); B holds (the improvement transfers: 0.51 on the hold-out against 0.56 on the calibration set; the profile-error gap 0.036; nothing at a bound: no overfitting);
+C1 holds (one added parameter); C2 fails on one item: **the hold-out profile error (layers 3-17 mean) rises by 0.41 points against the 0.3 allowed**. Every other C2 item holds: the core-fraction KS changes by -0.026, the containment KS by -0.16, the largest-cell KS by +0.019, the coupling difference by -0.056, the spot number by -0.001.
+- **It is the closest candidate so far**, and the only one that cures the width without breaking the core: the Cauchy-like tail forced a trade (section 8); a faster tail does not (containment and coupling improve).
+- **Where the profile error comes from:** the rise is at 10 GeV (1.4 to 2.5, worst layer 3.3 to 5.2) and at 100 GeV (worst 4.0 to 6.4); at 20 and 50 GeV the mean profile error is 1.8 / 1.7 against 1.2 / 1.8. The thirteen-constant fit with the moment target costs profile accuracy in the layers near the shower maximum at the extreme energies.
+- **The threshold was not relaxed after the fact.** Whether 0.41 against 0.3 is acceptable given the gains is the researcher's decision (adopting it would be an explicit override of the rule written before the run); it is not made here. Hit cells are unchanged (KS 1.0): a radial-law change does not move them either.
+
+## 10. Next steps (not started)
+
+The researcher's decision on the faster-tail candidate (override the 0.3-point threshold, or refine within the rule, for example by letting the exponent depend on energy, a second added parameter that needs approval), a combined radial-and-spot study of the hit-cell count, layer-to-layer residual noise (stage 4),
+the pre-stated gamma-inadequacy thresholds (still pending), then the single opening of the sealed electron set. Each needs approval; E1 stays opt-in, off; the tail-sensitive and faster-tail artifacts are recorded results, not candidates.

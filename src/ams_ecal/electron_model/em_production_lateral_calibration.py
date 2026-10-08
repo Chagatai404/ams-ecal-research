@@ -54,6 +54,12 @@ OUTER = np.r_[0 : AXIS_CELL - 4, AXIS_CELL + 5 : 72]
 E1_RESULTS_JSON = PROJECT_ROOT / "results" / "em_generator" / "em_production_lateral_e1_calibration.json"
 E1_ARTIFACT = PROJECT_ROOT / "data" / "calibration" / "em_production" / "gp_lateral_e1_v1" / "parameters.json"
 E1_NAMES = (*lateral.SPOT_NAMES, "spot_tail_refinement", "front_spot_limit")
+TAIL_RESULTS_JSON = PROJECT_ROOT / "results" / "em_generator" / "em_production_lateral_tail_calibration.json"
+TAIL_ARTIFACT = PROJECT_ROOT / "data" / "calibration" / "em_production" / "gp_lateral_tail_v1" / "parameters.json"
+# Tail-sensitive radial calibration: the relative error of the layer's second moment is added to the cumulative residual
+# with this FIXED weight (a 10% moment error counts like a cumulative residual of 0.002, the size of the fit's own rms).
+# It is stated here once, before the candidate was run, and is not tuned.
+MOMENT_WEIGHT = 0.02
 
 # Start of the radial fit: the converged solution of a first run that began at the published constants of Grindhammer
 # and Peters Appendix A.1.3 (homogeneous, Z = 82; core 0.0251 + 0.00319 ln E + 0.085 tau, tail 0.4056 / 0.645 / -2.59 /
@@ -90,7 +96,11 @@ RADIAL_BOUNDS = {
     "weight_centre": (-1.0, 2.0),
     "weight_width_intercept": (0.2, 5.0),
     "weight_width_log_energy_slope": (-1.0, 1.0),
+    "tail_exponent": (1.0, 4.0),
 }
+# the faster-falling tail: the twelve constants plus the exponent of the tail component's survival function
+FASTER_TAIL_NAMES = (*lateral.RADIAL_NAMES, "tail_exponent")
+FASTER_TAIL_START_EXPONENT = 1.5
 
 
 def load_observed(
@@ -149,18 +159,29 @@ def fit_radial_law(
     template: lateral.EMProductionLateralModel,
     observed: dict[float, dict[str, Any]],
     max_nfev: int = 200,
+    moments: dict[float, np.ndarray] | None = None,
+    moment_weight: float = 0.0,
+    names: tuple[str, ...] = lateral.RADIAL_NAMES,
 ) -> tuple[lateral.LateralParameters, dict[str, Any]]:
+    """The radial constants (twelve; thirteen with the faster-tail exponent). With ``moments`` and a weight the
+    relative error of the layer's second moment (the quantity the width is built from) is added to the cumulative
+    residual; no parameter is added by that."""
+
     z, axis = quadrature(template)
-    names = lateral.RADIAL_NAMES
     lower = np.array([RADIAL_BOUNDS[n][0] for n in names])
     upper = np.array([RADIAL_BOUNDS[n][1] for n in names])
     targets = {e: np.cumsum(o["profile"], axis=1) for e, o in observed.items()}
+    use_moments = moments is not None and moment_weight > 0.0
 
     def residual(values: np.ndarray) -> np.ndarray:
         model = replace(template, parameters=template.parameters.with_values(names, values))
-        return np.concatenate(
-            [(np.cumsum(predicted_profile(model, e, z, axis), axis=1) - targets[e]).ravel() for e in observed]
-        )
+        parts = [(np.cumsum(predicted_profile(model, e, z, axis), axis=1) - targets[e]).ravel() for e in observed]
+        if use_moments:
+            parts += [
+                moment_weight * (model.mean_second_moments_mm2(1000.0 * e, z, axis) / moments[e] - 1.0)
+                for e in observed
+            ]
+        return np.concatenate(parts)
 
     start = template.parameters.vector(names)
     best = None
@@ -180,7 +201,50 @@ def fit_radial_law(
         "evaluations": int(best.nfev),
         "parameters_at_bound": at_bound,
         "quadrature_points": len(z),
+        "second_moment_weight": moment_weight if use_moments else 0.0,
     }
+
+
+def observed_second_moments(
+    model: lateral.EMProductionLateralModel,
+    energies: tuple[float, ...] = ENERGIES_GEV,
+    max_events: int | None = None,
+) -> dict[float, np.ndarray]:
+    """Per energy, the energy-weighted mean second moment of the cell offsets about the track, per layer, in mm^2.
+
+    ``sum_events sum_cells E_cell (x_cell - axis)^2 / sum_events E_layer``: the layer's mean contribution to the
+    event width squared (exposed baseline electrons only).
+    """
+
+    edges = model.cell_edges_mm
+    centres = 0.5 * (edges[:-1] + edges[1:])
+    out = {}
+    for energy in energies:
+        arrays = np.load(DATA / f"E{energy:g}GeV" / "events.npz")
+        grid = arrays["deposit_grid_mev"].astype(float)
+        entry_x, entry_y = arrays["entry_x_mm"], arrays["entry_y_mm"]
+        if max_events is not None:
+            grid, entry_x, entry_y = grid[:max_events], entry_x[:max_events], entry_y[:max_events]
+        offsets = centres[None, None, :] - model.axis_for_entry(entry_x, entry_y)[:, :, None]
+        out[energy] = (grid * offsets**2).sum(axis=(0, 2)) / grid.sum(axis=(0, 2))
+    return out
+
+
+def second_moment_errors(
+    model: lateral.EMProductionLateralModel, moments: dict[float, np.ndarray]
+) -> dict[str, dict[str, float]]:
+    """Relative error of the model's layer second moments against Geant4: layers 3-17 mean and worst, layers 0-2 worst."""
+
+    z, axis = quadrature(model)
+    out = {}
+    for energy, observed_moment in moments.items():
+        relative = model.mean_second_moments_mm2(1000.0 * energy, z, axis) / observed_moment - 1.0
+        out[f"{energy:g}"] = {
+            "layers_0_2_max_abs": float(np.abs(relative[:3]).max()),
+            "layers_3_17_max_abs": float(np.abs(relative[3:]).max()),
+            "layers_3_17_mean": float(relative[3:].mean()),
+        }
+    return out
 
 
 def profile_errors(
@@ -452,10 +516,13 @@ def calibrate(
     template: lateral.EMProductionLateralModel | None = None,
     max_nfev: int = 200,
     max_spot_iterations: int = 400,
+    moments: dict[float, np.ndarray] | None = None,
+    moment_weight: float = 0.0,
+    radial_names: tuple[str, ...] = lateral.RADIAL_NAMES,
 ) -> tuple[lateral.LateralParameters, dict[str, Any], lateral.EMProductionLateralModel]:
     if template is None:
         template = lateral.build_model(START)
-    radial, radial_record = fit_radial_law(template, observed, max_nfev)
+    radial, radial_record = fit_radial_law(template, observed, max_nfev, moments, moment_weight, radial_names)
     radial_model = replace(template, parameters=radial)
     final, spot_record = fit_spot_structure(radial_model, observed, max_spot_iterations)
     model = replace(template, parameters=final)
@@ -475,6 +542,12 @@ def calibrate(
         "profile_errors_points": profile_errors(model, observed),
         "longitudinal_parameters_sha256": template.longitudinal_sha256,
     }
+    if moments is not None:
+        record["second_moment_relative_errors"] = second_moment_errors(model, moments)
+        record["method"]["radial_target"] = (
+            "cumulative mean cell profile per (energy, layer), equal weights, PLUS the relative error of the layer "
+            f"second moment with the fixed weight {moment_weight} (tail-sensitive; no parameter added)"
+        )
     return final, record, model
 
 
@@ -488,8 +561,47 @@ def main(argv: list[str] | None = None) -> None:
         action="store_true",
         help="fit extension E1 on top of the Slice 2 artifact into its own artifact and results file",
     )
+    parser.add_argument(
+        "--tail-sensitive",
+        action="store_true",
+        help="refit the twelve radial constants with the layer second moment as a second target (own artifact)",
+    )
+    parser.add_argument(
+        "--faster-tail",
+        action="store_true",
+        help="thirteen radial constants: add the tail exponent (needs --tail-sensitive)",
+    )
+    parser.add_argument("--moment-weight", type=float, default=MOMENT_WEIGHT, help="weight of the second-moment target")
+    parser.add_argument("--tag", default="tail", help="name of the tail-sensitive variant (its artifact and results)")
     args = parser.parse_args(argv)
     observed = load_observed(max_events=args.max_events)
+    if args.tail_sensitive:
+        artifact = TAIL_ARTIFACT.parents[1] / f"gp_lateral_{args.tag}_v1" / "parameters.json"
+        results_path = TAIL_RESULTS_JSON.parent / f"em_production_lateral_{args.tag}_calibration.json"
+        template = lateral.build_model(START)
+        names = FASTER_TAIL_NAMES if args.faster_tail else lateral.RADIAL_NAMES
+        if args.faster_tail:
+            template = replace(
+                template, parameters=replace(template.parameters, tail_exponent=FASTER_TAIL_START_EXPONENT)
+            )
+        moments = observed_second_moments(template, tuple(observed), args.max_events)
+        parameters, record, model = calibrate(
+            observed, template, moments=moments, moment_weight=args.moment_weight, radial_names=names
+        )
+        lateral.write_parameters_artifact(
+            parameters,
+            artifact,
+            record,
+            "ams_ecal.electron_model.em_production_lateral_calibration --tail-sensitive",
+            model.longitudinal_sha256,
+        )
+        results_path.parent.mkdir(parents=True, exist_ok=True)
+        results_path.write_text(json.dumps({"parameters": parameters.as_dict(), **record}, indent=2), encoding="utf-8")
+        print(json.dumps(record["profile_errors_points"], indent=2))
+        print(json.dumps(record["second_moment_relative_errors"], indent=2))
+        print("radial at bound:", record["radial_fit"]["parameters_at_bound"])
+        print("spot rms log ratio", record["spot_fit"]["root_mean_square_log_ratio"])
+        return
     if args.extension:
         base = lateral.load_em_production_lateral(args.artifact)
         parameters, record, model = calibrate_extension(observed, base)
