@@ -1,0 +1,2581 @@
+{
+  "status": "analysis only; exposed baseline Geant4 electrons; the sealed sets are not read; no generator changed; radii in mm; two-component fits use the closed-form strip marginal",
+  "sealed_data_read": false,
+  "composite_moliere_radius_mm": 18.0,
+  "per_energy": {
+    "10": {
+      "events": 1000,
+      "shower_maximum_x0": 6.682192124683898,
+      "centre_of_gravity_layers": {
+        "mean": 8.487179410054035,
+        "sd": 0.7929195540588763
+      },
+      "layers": [
+        {
+          "layer": 0,
+          "depth_x0": 0.4634268537074148,
+          "tau": 0.0693525186136933,
+          "core_mm": 0.500000000000001,
+          "tail_mm": 33.91626988413447,
+          "core_weight": 0.6929527905536994,
+          "tv_points": {
+            "two_component_fit": 1.3098308512383126,
+            "one_component_fit": 22.05243737323752,
+            "dec001": 17.748384739779013,
+            "grindhammer_peters_published": 10.833462133734857
+          },
+          "central3_fraction": {
+            "geant4": 0.8049300198818081,
+            "two_component_fit": 0.805233235508415,
+            "dec001": 0.9823693928531493
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.07327842743717693,
+            "core_mm": 0.6960750315274563,
+            "tail_mm": 37.7253568116083,
+            "core_weight": 0.8503417401276789
+          },
+          "outside_moliere_radius": 0.24010376871148084,
+          "outside_3p5_moliere_radii": 0.06903737196712388,
+          "spots": {
+            "relative_variance_raw": 0.07775449281634857,
+            "relative_variance_conditioned": 0.07704480528120522,
+            "spot_number_raw": 12.860993156523312,
+            "spot_number_conditioned": 12.979460410732534,
+            "explained_variance_fraction": 0.009127286532748524
+          },
+          "layer_energy_share": 0.003954939607788409
+        },
+        {
+          "layer": 1,
+          "depth_x0": 1.3902805611222444,
+          "tau": 0.2080575558410799,
+          "core_mm": 0.9332711703222187,
+          "tail_mm": 28.765550996931605,
+          "core_weight": 0.8522306341083484,
+          "tv_points": {
+            "two_component_fit": 0.6221978061024711,
+            "one_component_fit": 8.667885414504342,
+            "dec001": 6.786132240960371,
+            "grindhammer_peters_published": 3.6421638163285364
+          },
+          "central3_fraction": {
+            "geant4": 0.9136790733845882,
+            "two_component_fit": 0.9122202261917564,
+            "dec001": 0.9814881935939712
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.2198352823115308,
+            "core_mm": 0.9201962225029328,
+            "tail_mm": 27.975564202380156,
+            "core_weight": 0.8973822360029937
+          },
+          "outside_moliere_radius": 0.10847450235962913,
+          "outside_3p5_moliere_radii": 0.02567929434515187,
+          "spots": {
+            "relative_variance_raw": 0.04218937630723734,
+            "relative_variance_conditioned": 0.04049966854192483,
+            "spot_number_raw": 23.70264951815502,
+            "spot_number_conditioned": 24.691560104123088,
+            "explained_variance_fraction": 0.04005055094930743
+          },
+          "layer_energy_share": 0.014212010461516059
+        },
+        {
+          "layer": 2,
+          "depth_x0": 2.317134268537074,
+          "tau": 0.3467625930684665,
+          "core_mm": 1.2474522632857075,
+          "tail_mm": 24.198625668116094,
+          "core_weight": 0.8906485220702475,
+          "tv_points": {
+            "two_component_fit": 0.4465729644909302,
+            "one_component_fit": 5.590082601888209,
+            "dec001": 5.219428007231004,
+            "grindhammer_peters_published": 3.6200864109251385
+          },
+          "central3_fraction": {
+            "geant4": 0.9394176001995721,
+            "two_component_fit": 0.9391528501736047,
+            "dec001": 0.9787573679919249
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.36639213718588465,
+            "core_mm": 1.1443174134784093,
+            "tail_mm": 21.45477202288778,
+            "core_weight": 0.9268475801676417
+          },
+          "outside_moliere_radius": 0.07465653026383767,
+          "outside_3p5_moliere_radii": 0.014408189004759268,
+          "spots": {
+            "relative_variance_raw": 0.017733372992478055,
+            "relative_variance_conditioned": 0.016706057662110915,
+            "spot_number_raw": 56.39085133009771,
+            "spot_number_conditioned": 59.85852678265231,
+            "explained_variance_fraction": 0.057931186063863604
+          },
+          "layer_energy_share": 0.03361269937110941
+        },
+        {
+          "layer": 3,
+          "depth_x0": 3.2439879759519035,
+          "tau": 0.4854676302958531,
+          "core_mm": 1.6766893514274588,
+          "tail_mm": 20.678948811396474,
+          "core_weight": 0.8989149419062249,
+          "tv_points": {
+            "two_component_fit": 0.6591176981196115,
+            "one_component_fit": 4.373071656969338,
+            "dec001": 4.900340582709166,
+            "grindhammer_peters_published": 5.4536431866040385
+          },
+          "central3_fraction": {
+            "geant4": 0.9461261226327231,
+            "two_component_fit": 0.9458550008643531,
+            "dec001": 0.9739377515559556
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.5129489920602385,
+            "core_mm": 1.3684386044538854,
+            "tail_mm": 17.15341066994141,
+            "core_weight": 0.9392919783144864
+          },
+          "outside_moliere_radius": 0.06524299350769627,
+          "outside_3p5_moliere_radii": 0.010467880225512935,
+          "spots": {
+            "relative_variance_raw": 0.009732921330997048,
+            "relative_variance_conditioned": 0.00911983072497806,
+            "spot_number_raw": 102.7440750820863,
+            "spot_number_conditioned": 109.65115802655491,
+            "explained_variance_fraction": 0.06299142725693674
+          },
+          "layer_energy_share": 0.05739709096390352
+        },
+        {
+          "layer": 4,
+          "depth_x0": 4.170841683366733,
+          "tau": 0.6241726675232397,
+          "core_mm": 2.151507920001792,
+          "tail_mm": 18.43636622687956,
+          "core_weight": 0.8958750747898275,
+          "tv_points": {
+            "two_component_fit": 0.22514182357625825,
+            "one_component_fit": 3.83097747838419,
+            "dec001": 4.58384463928766,
+            "grindhammer_peters_published": 7.261199683341861
+          },
+          "central3_fraction": {
+            "geant4": 0.9444560334357189,
+            "two_component_fit": 0.9441345310990612,
+            "dec001": 0.9666988772928782
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.6595058469345924,
+            "core_mm": 1.5925597954293618,
+            "tail_mm": 14.381498280705749,
+            "core_weight": 0.9361298440878588
+          },
+          "outside_moliere_radius": 0.06592837011284819,
+          "outside_3p5_moliere_radii": 0.00925733148280937,
+          "spots": {
+            "relative_variance_raw": 0.00657003469907918,
+            "relative_variance_conditioned": 0.006492420869318361,
+            "spot_number_raw": 152.2061976537437,
+            "spot_number_conditioned": 154.02575096845038,
+            "explained_variance_fraction": 0.011813305913239258
+          },
+          "layer_energy_share": 0.08052144767848815
+        },
+        {
+          "layer": 5,
+          "depth_x0": 5.0976953907815625,
+          "tau": 0.7628777047506263,
+          "core_mm": 2.501525011278733,
+          "tail_mm": 15.364178011294664,
+          "core_weight": 0.8600122056555201,
+          "tv_points": {
+            "two_component_fit": 0.3278895825587446,
+            "one_component_fit": 3.894964475986616,
+            "dec001": 4.774786229512936,
+            "grindhammer_peters_published": 8.677159570982667
+          },
+          "central3_fraction": {
+            "geant4": 0.93540289720581,
+            "two_component_fit": 0.9350852575612926,
+            "dec001": 0.9566998383937307
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.8060627018089461,
+            "core_mm": 1.8166809864048383,
+            "tail_mm": 12.667747201046469,
+            "core_weight": 0.9193470936788954
+          },
+          "outside_moliere_radius": 0.07529850507381565,
+          "outside_3p5_moliere_radii": 0.00921223203326108,
+          "spots": {
+            "relative_variance_raw": 0.006467582115318538,
+            "relative_variance_conditioned": 0.006189883198593553,
+            "spot_number_raw": 154.61728698140365,
+            "spot_number_conditioned": 161.55393695105863,
+            "explained_variance_fraction": 0.042937053101691935
+          },
+          "layer_energy_share": 0.09640545736925735
+        },
+        {
+          "layer": 6,
+          "depth_x0": 6.024549098196393,
+          "tau": 0.901582741978013,
+          "core_mm": 2.697025106000384,
+          "tail_mm": 14.371854928939575,
+          "core_weight": 0.8192566941286578,
+          "tv_points": {
+            "two_component_fit": 0.7303503555566271,
+            "one_component_fit": 4.346415702818184,
+            "dec001": 4.982250573771848,
+            "grindhammer_peters_published": 8.743158713799636
+          },
+          "central3_fraction": {
+            "geant4": 0.9239883402555525,
+            "two_component_fit": 0.9235889259982297,
+            "dec001": 0.9436685887180014
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.9526195566833001,
+            "core_mm": 2.0408021773803147,
+            "tail_mm": 11.690541357282047,
+            "core_weight": 0.8912356900813819
+          },
+          "outside_moliere_radius": 0.08835457995861334,
+          "outside_3p5_moliere_radii": 0.010439450752362568,
+          "spots": {
+            "relative_variance_raw": 0.006687143221652638,
+            "relative_variance_conditioned": 0.00582441683312715,
+            "spot_number_raw": 149.5406882810659,
+            "spot_number_conditioned": 171.69100849931723,
+            "explained_variance_fraction": 0.1290126979383397
+          },
+          "layer_energy_share": 0.10400152637510018
+        },
+        {
+          "layer": 7,
+          "depth_x0": 6.951402805611222,
+          "tau": 1.0402877792053995,
+          "core_mm": 2.828977390950959,
+          "tail_mm": 12.915192472982385,
+          "core_weight": 0.7277101101804552,
+          "tv_points": {
+            "two_component_fit": 0.6340803770398655,
+            "one_component_fit": 5.0600851032001755,
+            "dec001": 5.113605847218302,
+            "grindhammer_peters_published": 9.786200823883245
+          },
+          "central3_fraction": {
+            "geant4": 0.904889768807581,
+            "two_component_fit": 0.9044818898615549,
+            "dec001": 0.9274615778265226
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.0991764115576539,
+            "core_mm": 2.2649233683557912,
+            "tail_mm": 11.230718249901633,
+            "core_weight": 0.8541737405466762
+          },
+          "outside_moliere_radius": 0.11008126474177699,
+          "outside_3p5_moliere_radii": 0.012446205569015637,
+          "spots": {
+            "relative_variance_raw": 0.008550555011541193,
+            "relative_variance_conditioned": 0.006766525367857887,
+            "spot_number_raw": 116.951472582802,
+            "spot_number_conditioned": 147.78633724631626,
+            "explained_variance_fraction": 0.2086448939601342
+          },
+          "layer_energy_share": 0.10302569891234502
+        },
+        {
+          "layer": 8,
+          "depth_x0": 7.878256513026051,
+          "tau": 1.178992816432786,
+          "core_mm": 3.1916339231622497,
+          "tail_mm": 12.985711384263794,
+          "core_weight": 0.675218815825806,
+          "tv_points": {
+            "two_component_fit": 0.49077537845550934,
+            "one_component_fit": 5.317693095067724,
+            "dec001": 4.871977214526155,
+            "grindhammer_peters_published": 10.563116871213486
+          },
+          "central3_fraction": {
+            "geant4": 0.8864085923086095,
+            "two_component_fit": 0.885889557460369,
+            "dec001": 0.908094095403193
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.2457332664320078,
+            "core_mm": 2.489044559331268,
+            "tail_mm": 11.13926876766939,
+            "core_weight": 0.8104597147143402
+          },
+          "outside_moliere_radius": 0.13175557310348304,
+          "outside_3p5_moliere_radii": 0.014964956956008635,
+          "spots": {
+            "relative_variance_raw": 0.01090980633266877,
+            "relative_variance_conditioned": 0.007410831875425612,
+            "spot_number_raw": 91.66065551553918,
+            "spot_number_conditioned": 134.93761790980705,
+            "explained_variance_fraction": 0.32071829238303584
+          },
+          "layer_energy_share": 0.09663169725506969
+        },
+        {
+          "layer": 9,
+          "depth_x0": 8.80511022044088,
+          "tau": 1.3176978536601727,
+          "core_mm": 3.176650684346805,
+          "tail_mm": 12.82895326224952,
+          "core_weight": 0.5752453547172721,
+          "tv_points": {
+            "two_component_fit": 0.5624050359174504,
+            "one_component_fit": 5.995032818238262,
+            "dec001": 4.673860038076025,
+            "grindhammer_peters_published": 10.877055398728656
+          },
+          "central3_fraction": {
+            "geant4": 0.8626351784004516,
+            "two_component_fit": 0.8618519283875479,
+            "dec001": 0.885740905160156
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.3922901213063616,
+            "core_mm": 2.713165750306744,
+            "tail_mm": 11.31524325373378,
+            "core_weight": 0.7621997124190651
+          },
+          "outside_moliere_radius": 0.1604564601403108,
+          "outside_3p5_moliere_radii": 0.018370804723864247,
+          "spots": {
+            "relative_variance_raw": 0.013208051597690552,
+            "relative_variance_conditioned": 0.008162454464558466,
+            "spot_number_raw": 75.71139411469679,
+            "spot_number_conditioned": 122.51216889993313,
+            "explained_variance_fraction": 0.3820091930905476
+          },
+          "layer_energy_share": 0.08659071081639251
+        },
+        {
+          "layer": 10,
+          "depth_x0": 9.73196392785571,
+          "tau": 1.4564028908875593,
+          "core_mm": 3.327680090471866,
+          "tail_mm": 13.356228660144746,
+          "core_weight": 0.513668306037057,
+          "tv_points": {
+            "two_component_fit": 1.105221624238057,
+            "one_component_fit": 6.338074978663985,
+            "dec001": 4.763515631672324,
+            "grindhammer_peters_published": 10.874094806728458
+          },
+          "central3_fraction": {
+            "geant4": 0.8390521988030624,
+            "two_component_fit": 0.8379918563822678,
+            "dec001": 0.860713515153904
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.5388469761807155,
+            "core_mm": 2.9372869412822205,
+            "tail_mm": 11.690640436144767,
+            "core_weight": 0.7112410096642887
+          },
+          "outside_moliere_radius": 0.18966288089073813,
+          "outside_3p5_moliere_radii": 0.02234739786504575,
+          "spots": {
+            "relative_variance_raw": 0.016074256224279198,
+            "relative_variance_conditioned": 0.009010561159168987,
+            "spot_number_raw": 62.2112765932871,
+            "spot_number_conditioned": 110.98087925216709,
+            "explained_variance_fraction": 0.4394414874662085
+          },
+          "layer_energy_share": 0.07454578387805988
+        },
+        {
+          "layer": 11,
+          "depth_x0": 10.658817635270541,
+          "tau": 1.595107928114946,
+          "core_mm": 3.2403306930500797,
+          "tail_mm": 13.964342709778148,
+          "core_weight": 0.42769922194675886,
+          "tv_points": {
+            "two_component_fit": 1.1151612563027955,
+            "one_component_fit": 7.1152364955393494,
+            "dec001": 4.692705423954202,
+            "grindhammer_peters_published": 11.09573116431416
+          },
+          "central3_fraction": {
+            "geant4": 0.8082766000250644,
+            "two_component_fit": 0.8068213274382948,
+            "dec001": 0.8334235126685021
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.6854038310550694,
+            "core_mm": 3.161408132257697,
+            "tail_mm": 12.220073971098454,
+            "core_weight": 0.659142551615106
+          },
+          "outside_moliere_radius": 0.22845349553812164,
+          "outside_3p5_moliere_radii": 0.02792967101353651,
+          "spots": {
+            "relative_variance_raw": 0.020838658853778287,
+            "relative_variance_conditioned": 0.011572617630632411,
+            "spot_number_raw": 47.98773313661155,
+            "spot_number_conditioned": 86.41087366033996,
+            "explained_variance_fraction": 0.444656313449166
+          },
+          "layer_energy_share": 0.062368929807599345
+        },
+        {
+          "layer": 12,
+          "depth_x0": 11.58567134268537,
+          "tau": 1.7338129653423324,
+          "core_mm": 3.440492644226708,
+          "tail_mm": 14.833463575494616,
+          "core_weight": 0.38209246323540796,
+          "tv_points": {
+            "two_component_fit": 1.0210875365278915,
+            "one_component_fit": 7.410782930925469,
+            "dec001": 4.284201342941544,
+            "grindhammer_peters_published": 10.929585058058656
+          },
+          "central3_fraction": {
+            "geant4": 0.7809068061370776,
+            "two_component_fit": 0.7791408850091143,
+            "dec001": 0.8043412274819078
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.831960685929423,
+            "core_mm": 3.385529323233173,
+            "tail_mm": 12.873707903377214,
+            "core_weight": 0.6071726734496287
+          },
+          "outside_moliere_radius": 0.2633778027911554,
+          "outside_3p5_moliere_radii": 0.03359214883995924,
+          "spots": {
+            "relative_variance_raw": 0.025796064785908557,
+            "relative_variance_conditioned": 0.015605174491719553,
+            "spot_number_raw": 38.76560274985289,
+            "spot_number_conditioned": 64.0813084487214,
+            "explained_variance_fraction": 0.3950560048118623
+          },
+          "layer_energy_share": 0.05116796706385876
+        },
+        {
+          "layer": 13,
+          "depth_x0": 12.5125250501002,
+          "tau": 1.8725180025697192,
+          "core_mm": 3.6112945690914375,
+          "tail_mm": 15.919837565865281,
+          "core_weight": 0.33332893692782645,
+          "tv_points": {
+            "two_component_fit": 1.3299814073398406,
+            "one_component_fit": 7.75275349165139,
+            "dec001": 4.45230420318217,
+            "grindhammer_peters_published": 11.009503329126035
+          },
+          "central3_fraction": {
+            "geant4": 0.7487040515281376,
+            "two_component_fit": 0.746149667362038,
+            "dec001": 0.7739568536898345
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.9785175408037772,
+            "core_mm": 3.6096505142086497,
+            "tail_mm": 13.632428896814265,
+            "core_weight": 0.5563252362441619
+          },
+          "outside_moliere_radius": 0.30550235084676175,
+          "outside_3p5_moliere_radii": 0.04110689859405349,
+          "spots": {
+            "relative_variance_raw": 0.032367840599765114,
+            "relative_variance_conditioned": 0.01986228031532438,
+            "spot_number_raw": 30.894862971095353,
+            "spot_number_conditioned": 50.34668648938904,
+            "explained_variance_fraction": 0.3863575713645687
+          },
+          "layer_energy_share": 0.04109091049083835
+        },
+        {
+          "layer": 14,
+          "depth_x0": 13.43937875751503,
+          "tau": 2.011223039797106,
+          "core_mm": 2.997980549010778,
+          "tail_mm": 16.61714988932845,
+          "core_weight": 0.2663957608046844,
+          "tv_points": {
+            "two_component_fit": 1.6043693472883738,
+            "one_component_fit": 8.280612848405745,
+            "dec001": 4.262810528781083,
+            "grindhammer_peters_published": 10.346374680957954
+          },
+          "central3_fraction": {
+            "geant4": 0.7185001097390697,
+            "two_component_fit": 0.7157940551694068,
+            "dec001": 0.7427483682827541
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 2.125074395678131,
+            "core_mm": 3.833771705184126,
+            "tail_mm": 14.484549118372476,
+            "core_weight": 0.5073468910998112
+          },
+          "outside_moliere_radius": 0.3447340026667729,
+          "outside_3p5_moliere_radii": 0.04832008428517352,
+          "spots": {
+            "relative_variance_raw": 0.041516551996016664,
+            "relative_variance_conditioned": 0.02705266881085433,
+            "spot_number_raw": 24.086778692410338,
+            "spot_number_conditioned": 36.96492967077505,
+            "explained_variance_fraction": 0.3483883533138803
+          },
+          "layer_energy_share": 0.032847961522040364
+        },
+        {
+          "layer": 15,
+          "depth_x0": 14.366232464929858,
+          "tau": 2.149928077024492,
+          "core_mm": 3.2717489791810106,
+          "tail_mm": 18.07277577827027,
+          "core_weight": 0.24404619990005533,
+          "tv_points": {
+            "two_component_fit": 1.6283308898155011,
+            "one_component_fit": 8.162625245636749,
+            "dec001": 4.193991725270247,
+            "grindhammer_peters_published": 10.497237980857124
+          },
+          "central3_fraction": {
+            "geant4": 0.6863164337170311,
+            "two_component_fit": 0.6830828418538839,
+            "dec001": 0.7111580460833554
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 2.2716312505524847,
+            "core_mm": 4.057892896159602,
+            "tail_mm": 15.423556714108786,
+            "core_weight": 0.46076987375654765
+          },
+          "outside_moliere_radius": 0.38730696821947375,
+          "outside_3p5_moliere_radii": 0.05813666156387278,
+          "spots": {
+            "relative_variance_raw": 0.046024507822740056,
+            "relative_variance_conditioned": 0.03356000935207866,
+            "spot_number_raw": 21.727554455365933,
+            "spot_number_conditioned": 29.797369527194764,
+            "explained_variance_fraction": 0.2708230692801209
+          },
+          "layer_energy_share": 0.026145337053554405
+        },
+        {
+          "layer": 16,
+          "depth_x0": 15.293086172344688,
+          "tau": 2.288633114251879,
+          "core_mm": 3.3781406602625563,
+          "tail_mm": 18.909794145701884,
+          "core_weight": 0.20309743232457877,
+          "tv_points": {
+            "two_component_fit": 2.0341343961634712,
+            "one_component_fit": 7.514931575620605,
+            "dec001": 4.539479035147082,
+            "grindhammer_peters_published": 10.48827641924226
+          },
+          "central3_fraction": {
+            "geant4": 0.6578054918230566,
+            "two_component_fit": 0.6536789789048632,
+            "dec001": 0.679577517455368
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 2.4181881054268386,
+            "core_mm": 4.282014087135079,
+            "tail_mm": 16.446583419300907,
+            "core_weight": 0.4169463130166164
+          },
+          "outside_moliere_radius": 0.42499236285982905,
+          "outside_3p5_moliere_radii": 0.06644415016268587,
+          "spots": {
+            "relative_variance_raw": 0.05921263729547657,
+            "relative_variance_conditioned": 0.045019408535527196,
+            "spot_number_raw": 16.888286785976224,
+            "spot_number_conditioned": 22.212641892237368,
+            "explained_variance_fraction": 0.23969931771699082
+          },
+          "layer_energy_share": 0.020277311754359328
+        },
+        {
+          "layer": 17,
+          "depth_x0": 16.21993987975952,
+          "tau": 2.427338151479266,
+          "core_mm": 2.0361780191717234,
+          "tail_mm": 19.57489964095698,
+          "core_weight": 0.1378696498974157,
+          "tv_points": {
+            "two_component_fit": 2.0435188854493256,
+            "one_component_fit": 7.401280497209525,
+            "dec001": 4.12853961139091,
+            "grindhammer_peters_published": 10.913405865782634
+          },
+          "central3_fraction": {
+            "geant4": 0.6238370288649095,
+            "two_component_fit": 0.619716893252375,
+            "dec001": 0.6483402155719478
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 2.5647449603011925,
+            "core_mm": 4.506135278110555,
+            "tail_mm": 17.553363250511982,
+            "core_weight": 0.3760813759961155
+          },
+          "outside_moliere_radius": 0.4688787396660131,
+          "outside_3p5_moliere_radii": 0.0760480153205805,
+          "spots": {
+            "relative_variance_raw": 0.07087467917600547,
+            "relative_variance_conditioned": 0.0577972813083112,
+            "spot_number_raw": 14.109411310584791,
+            "spot_number_conditioned": 17.301851875448005,
+            "explained_variance_fraction": 0.1845143853874629
+          },
+          "layer_energy_share": 0.015202519618719436
+        }
+      ],
+      "energy_weighted_outside_moliere_radius": 0.16008201684290957,
+      "energy_weighted_outside_3p5_moliere_radii": 0.021187927192202406
+    },
+    "20": {
+      "events": 1000,
+      "shower_maximum_x0": 7.375339305243843,
+      "centre_of_gravity_layers": {
+        "mean": 9.133783176684064,
+        "sd": 0.8288257096562862
+      },
+      "layers": [
+        {
+          "layer": 0,
+          "depth_x0": 0.4634268537074148,
+          "tau": 0.06283464862123968,
+          "core_mm": 0.5000000000000001,
+          "tail_mm": 37.18023394638624,
+          "core_weight": 0.5983792708596285,
+          "tv_points": {
+            "two_component_fit": 2.358050979959883,
+            "one_component_fit": 32.629154237662405,
+            "dec001": 25.0867849036603,
+            "grindhammer_peters_published": 17.448726672536328
+          },
+          "central3_fraction": {
+            "geant4": 0.731528435568856,
+            "two_component_fit": 0.7342124061592089,
+            "dec001": 0.9823693928531493
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.06604025166078403,
+            "core_mm": 0.7248066057582142,
+            "tail_mm": 38.22028266216849,
+            "core_weight": 0.8392996642248591
+          },
+          "outside_moliere_radius": 0.3258236352931656,
+          "outside_3p5_moliere_radii": 0.10378465167307808,
+          "spots": {
+            "relative_variance_raw": 0.081920400766572,
+            "relative_variance_conditioned": 0.08089388678675721,
+            "spot_number_raw": 12.206971531419248,
+            "spot_number_conditioned": 12.361873557096846,
+            "explained_variance_fraction": 0.012530626928203059
+          },
+          "layer_energy_share": 0.002301391808753255
+        },
+        {
+          "layer": 1,
+          "depth_x0": 1.3902805611222444,
+          "tau": 0.18850394586371902,
+          "core_mm": 0.7420218543590374,
+          "tail_mm": 30.474140094316063,
+          "core_weight": 0.815124106689153,
+          "tv_points": {
+            "two_component_fit": 0.8464259209348068,
+            "one_component_fit": 11.49276657730687,
+            "dec001": 9.18847272026182,
+            "grindhammer_peters_published": 4.376198031748979
+          },
+          "central3_fraction": {
+            "geant4": 0.889718902786753,
+            "two_component_fit": 0.8880596724064993,
+            "dec001": 0.9815729404983674
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.1981207549823521,
+            "core_mm": 0.9267899229797023,
+            "tail_mm": 29.1096070527593,
+            "core_weight": 0.8871608240480031
+          },
+          "outside_moliere_radius": 0.13844117193047847,
+          "outside_3p5_moliere_radii": 0.03516833855428258,
+          "spots": {
+            "relative_variance_raw": 0.045030182883382217,
+            "relative_variance_conditioned": 0.04316915616397782,
+            "spot_number_raw": 22.207327085252334,
+            "spot_number_conditioned": 23.16468721791793,
+            "explained_variance_fraction": 0.04132842907220757
+          },
+          "layer_energy_share": 0.008852464537207897
+        },
+        {
+          "layer": 2,
+          "depth_x0": 2.317134268537074,
+          "tau": 0.3141732431061984,
+          "core_mm": 1.1744854219671224,
+          "tail_mm": 25.79271879724989,
+          "core_weight": 0.8817649881969772,
+          "tv_points": {
+            "two_component_fit": 0.39255430239640754,
+            "one_component_fit": 6.3591841333517,
+            "dec001": 5.310508585137506,
+            "grindhammer_peters_published": 3.2904565037644726
+          },
+          "central3_fraction": {
+            "geant4": 0.9329322777297528,
+            "two_component_fit": 0.93235933066753,
+            "dec001": 0.979111907749609
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.33020125830392016,
+            "core_mm": 1.1287732402011903,
+            "tail_mm": 22.768139505506344,
+            "core_weight": 0.9195111315351123
+          },
+          "outside_moliere_radius": 0.0832493030843902,
+          "outside_3p5_moliere_radii": 0.01727938515500102,
+          "spots": {
+            "relative_variance_raw": 0.01761567105778452,
+            "relative_variance_conditioned": 0.016860393965038398,
+            "spot_number_raw": 56.7676358578512,
+            "spot_number_conditioned": 59.31059511857157,
+            "explained_variance_fraction": 0.0428752949727883
+          },
+          "layer_energy_share": 0.023043373171666416
+        },
+        {
+          "layer": 3,
+          "depth_x0": 3.2439879759519035,
+          "tau": 0.4398425403486777,
+          "core_mm": 1.5810546631786107,
+          "tail_mm": 22.324010610317345,
+          "core_weight": 0.8990122831018401,
+          "tv_points": {
+            "two_component_fit": 0.19462660844151497,
+            "one_component_fit": 4.719085353736145,
+            "dec001": 4.399207451323474,
+            "grindhammer_peters_published": 4.879268121258386
+          },
+          "central3_fraction": {
+            "geant4": 0.9442013837367406,
+            "two_component_fit": 0.9438644640558261,
+            "dec001": 0.9747880631153618
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.46228176162548823,
+            "core_mm": 1.3307565574226783,
+            "tail_mm": 18.402174037944967,
+            "core_weight": 0.9365694894990539
+          },
+          "outside_moliere_radius": 0.06808281586248013,
+          "outside_3p5_moliere_radii": 0.011831651113253492,
+          "spots": {
+            "relative_variance_raw": 0.0074350947390352095,
+            "relative_variance_conditioned": 0.006534070142766499,
+            "spot_number_raw": 134.4972774522792,
+            "spot_number_conditioned": 153.0439646576252,
+            "explained_variance_fraction": 0.12118535511568063
+          },
+          "layer_energy_share": 0.04267560694507613
+        },
+        {
+          "layer": 4,
+          "depth_x0": 4.170841683366733,
+          "tau": 0.5655118375911571,
+          "core_mm": 1.9571313194772055,
+          "tail_mm": 19.414604966247282,
+          "core_weight": 0.8956523672125479,
+          "tv_points": {
+            "two_component_fit": 0.3460534827748513,
+            "one_component_fit": 4.141684106453896,
+            "dec001": 4.135665488293873,
+            "grindhammer_peters_published": 6.465069481594157
+          },
+          "central3_fraction": {
+            "geant4": 0.9444060401174139,
+            "two_component_fit": 0.9441307952570557,
+            "dec001": 0.9683223054424522
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.5943622649470564,
+            "core_mm": 1.5327398746441667,
+            "tail_mm": 15.44851969741695,
+            "core_weight": 0.9392963382174683
+          },
+          "outside_moliere_radius": 0.06657823683477468,
+          "outside_3p5_moliere_radii": 0.009913715670413334,
+          "spots": {
+            "relative_variance_raw": 0.0044220635182821745,
+            "relative_variance_conditioned": 0.004128709303924029,
+            "spot_number_raw": 226.13876889503996,
+            "spot_number_conditioned": 242.2064442874617,
+            "explained_variance_fraction": 0.0663387608851228
+          },
+          "layer_energy_share": 0.06458057534085196
+        },
+        {
+          "layer": 5,
+          "depth_x0": 5.0976953907815625,
+          "tau": 0.6911811348336364,
+          "core_mm": 2.244561265774096,
+          "tail_mm": 16.745522061995302,
+          "core_weight": 0.870643617503493,
+          "tv_points": {
+            "two_component_fit": 0.40173568453480324,
+            "one_component_fit": 4.18909065906247,
+            "dec001": 4.053408064788898,
+            "grindhammer_peters_published": 7.611696621276659
+          },
+          "central3_fraction": {
+            "geant4": 0.9378522522059909,
+            "two_component_fit": 0.9375806399967099,
+            "dec001": 0.9594169260565661
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.7264427682686243,
+            "core_mm": 1.7347231918656543,
+            "tail_mm": 13.507754441962945,
+            "core_weight": 0.9291811551749157
+          },
+          "outside_moliere_radius": 0.0733447241143376,
+          "outside_3p5_moliere_radii": 0.009639789818229397,
+          "spots": {
+            "relative_variance_raw": 0.0041897858118732445,
+            "relative_variance_conditioned": 0.0039044231379233934,
+            "spot_number_raw": 238.67568532170432,
+            "spot_number_conditioned": 256.11978125195213,
+            "explained_variance_fraction": 0.06810913177021483
+          },
+          "layer_energy_share": 0.08308826093583797
+        },
+        {
+          "layer": 6,
+          "depth_x0": 6.024549098196393,
+          "tau": 0.8168504320761157,
+          "core_mm": 2.469884987915439,
+          "tail_mm": 14.989448184627717,
+          "core_weight": 0.8347618057434377,
+          "tv_points": {
+            "two_component_fit": 0.1922030285401399,
+            "one_component_fit": 4.422652844173102,
+            "dec001": 3.9813407022857468,
+            "grindhammer_peters_published": 8.138923436039923
+          },
+          "central3_fraction": {
+            "geant4": 0.9289018976375016,
+            "two_component_fit": 0.9286088259192814,
+            "dec001": 0.9478189782492021
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.8585232715901925,
+            "core_mm": 1.9367065090871427,
+            "tail_mm": 12.296818826956837,
+            "core_weight": 0.9080377197395585
+          },
+          "outside_moliere_radius": 0.08309092463812455,
+          "outside_3p5_moliere_radii": 0.010133965978074123,
+          "spots": {
+            "relative_variance_raw": 0.0042213660077000505,
+            "relative_variance_conditioned": 0.003809742321259608,
+            "spot_number_raw": 236.89014365869576,
+            "spot_number_conditioned": 262.484944039305,
+            "explained_variance_fraction": 0.09750959421419836
+          },
+          "layer_energy_share": 0.09613121989316206
+        },
+        {
+          "layer": 7,
+          "depth_x0": 6.951402805611222,
+          "tau": 0.9425197293185951,
+          "core_mm": 2.653468863345693,
+          "tail_mm": 13.49524055835763,
+          "core_weight": 0.7720683220916108,
+          "tv_points": {
+            "two_component_fit": 0.339553485041065,
+            "one_component_fit": 4.872590020771639,
+            "dec001": 3.768638802394138,
+            "grindhammer_peters_published": 8.940873998336386
+          },
+          "central3_fraction": {
+            "geant4": 0.9152289881281447,
+            "two_component_fit": 0.9148544889125121,
+            "dec001": 0.9333711413353969
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.9906037749117605,
+            "core_mm": 2.1386898263086307,
+            "tail_mm": 11.615346635920075,
+            "core_weight": 0.8778257559169096
+          },
+          "outside_moliere_radius": 0.09843946594935268,
+          "outside_3p5_moliere_radii": 0.011367214171087176,
+          "spots": {
+            "relative_variance_raw": 0.005233366443788086,
+            "relative_variance_conditioned": 0.004309761139552768,
+            "spot_number_raw": 191.08159360538997,
+            "spot_number_conditioned": 232.03142067956273,
+            "explained_variance_fraction": 0.17648397339567556
+          },
+          "layer_energy_share": 0.10075244131937727
+        },
+        {
+          "layer": 8,
+          "depth_x0": 7.878256513026051,
+          "tau": 1.0681890265610745,
+          "core_mm": 2.8029225870476493,
+          "tail_mm": 12.97398840751486,
+          "core_weight": 0.7116067044366498,
+          "tv_points": {
+            "two_component_fit": 0.7780575010153028,
+            "one_component_fit": 5.348500483806948,
+            "dec001": 2.9733077736913747,
+            "grindhammer_peters_published": 9.19736575161142
+          },
+          "central3_fraction": {
+            "geant4": 0.9005860599864097,
+            "two_component_fit": 0.9000832750961433,
+            "dec001": 0.9160418174802034
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.1226842782333286,
+            "core_mm": 2.3406731435301187,
+            "tail_mm": 11.321752835911918,
+            "core_weight": 0.8405082275824066
+          },
+          "outside_moliere_radius": 0.11544748201305001,
+          "outside_3p5_moliere_radii": 0.013138891415762006,
+          "spots": {
+            "relative_variance_raw": 0.005364797956934882,
+            "relative_variance_conditioned": 0.0037869961259248304,
+            "spot_number_raw": 186.40030957872995,
+            "spot_number_conditioned": 264.06153234597986,
+            "explained_variance_fraction": 0.2941027497541606
+          },
+          "layer_energy_share": 0.09893737855088684
+        },
+        {
+          "layer": 9,
+          "depth_x0": 8.80511022044088,
+          "tau": 1.1938583238035536,
+          "core_mm": 2.800468320551398,
+          "tail_mm": 12.484037546125549,
+          "core_weight": 0.6117937143793253,
+          "tv_points": {
+            "two_component_fit": 0.9638957765408672,
+            "one_component_fit": 6.0705152358362575,
+            "dec001": 2.9097853569467604,
+            "grindhammer_peters_published": 9.906307849662804
+          },
+          "central3_fraction": {
+            "geant4": 0.8792759602562885,
+            "two_component_fit": 0.8786320780373633,
+            "dec001": 0.8959325595625656
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.2547647815548966,
+            "core_mm": 2.5426564607516067,
+            "tail_mm": 11.316252203572073,
+            "core_weight": 0.7979464256873152
+          },
+          "outside_moliere_radius": 0.14054464586353185,
+          "outside_3p5_moliere_radii": 0.01587428243629513,
+          "spots": {
+            "relative_variance_raw": 0.00801216693445487,
+            "relative_variance_conditioned": 0.004485794082715005,
+            "spot_number_raw": 124.8101803395635,
+            "spot_number_conditioned": 222.92597064436688,
+            "explained_variance_fraction": 0.4401272315701934
+          },
+          "layer_energy_share": 0.09232465795941294
+        },
+        {
+          "layer": 10,
+          "depth_x0": 9.73196392785571,
+          "tau": 1.3195276210460332,
+          "core_mm": 2.8894520723799175,
+          "tail_mm": 12.863848243946784,
+          "core_weight": 0.5552605039326209,
+          "tv_points": {
+            "two_component_fit": 0.6605778983064428,
+            "one_component_fit": 6.616264815352718,
+            "dec001": 3.0329644162640816,
+            "grindhammer_peters_published": 9.770788565441451
+          },
+          "central3_fraction": {
+            "geant4": 0.8598776449654637,
+            "two_component_fit": 0.8590452590339666,
+            "dec001": 0.8732661240932054
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.3868452848764647,
+            "core_mm": 2.7446397779730947,
+            "tail_mm": 11.528800903273623,
+            "core_weight": 0.7518302452888186
+          },
+          "outside_moliere_radius": 0.16430228601439797,
+          "outside_3p5_moliere_radii": 0.018965835819307074,
+          "spots": {
+            "relative_variance_raw": 0.010168439017773668,
+            "relative_variance_conditioned": 0.00473238002114048,
+            "spot_number_raw": 98.34351155099372,
+            "spot_number_conditioned": 211.31016434284686,
+            "explained_variance_fraction": 0.5346011307272792
+          },
+          "layer_energy_share": 0.08295863921828703
+        },
+        {
+          "layer": 11,
+          "depth_x0": 10.658817635270541,
+          "tau": 1.4451969182885125,
+          "core_mm": 2.8175809164069214,
+          "tail_mm": 13.293332377163393,
+          "core_weight": 0.4759696273827774,
+          "tv_points": {
+            "two_component_fit": 0.9458964190962791,
+            "one_component_fit": 7.269284651586955,
+            "dec001": 2.9649869625960115,
+            "grindhammer_peters_published": 9.966403164368307
+          },
+          "central3_fraction": {
+            "geant4": 0.8340197935396952,
+            "two_component_fit": 0.8329643168723019,
+            "dec001": 0.8483613637373718
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.518925788198033,
+            "core_mm": 2.946623095194583,
+            "tail_mm": 11.910534977452423,
+            "core_weight": 0.703638408991309
+          },
+          "outside_moliere_radius": 0.19632547219413204,
+          "outside_3p5_moliere_radii": 0.023287137519737315,
+          "spots": {
+            "relative_variance_raw": 0.013894327388077079,
+            "relative_variance_conditioned": 0.00564737403662476,
+            "spot_number_raw": 71.97181785554544,
+            "spot_number_conditioned": 177.0734492730121,
+            "explained_variance_fraction": 0.5935482244739063
+          },
+          "layer_energy_share": 0.07171318115820306
+        },
+        {
+          "layer": 12,
+          "depth_x0": 11.58567134268537,
+          "tau": 1.5708662155309918,
+          "core_mm": 3.129054192805616,
+          "tail_mm": 14.149249165022145,
+          "core_weight": 0.4433706342765763,
+          "tv_points": {
+            "two_component_fit": 1.3300222194063425,
+            "one_component_fit": 7.403395751182066,
+            "dec001": 2.592817042433307,
+            "grindhammer_peters_published": 10.006224672744496
+          },
+          "central3_fraction": {
+            "geant4": 0.8109755165633845,
+            "two_component_fit": 0.8095519300360448,
+            "dec001": 0.8216018046892721
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.6510062915196009,
+            "core_mm": 3.1486064124160706,
+            "tail_mm": 12.42769286783346,
+            "core_weight": 0.6546223543694208
+          },
+          "outside_moliere_radius": 0.2255913363946679,
+          "outside_3p5_moliere_radii": 0.02781987910660239,
+          "spots": {
+            "relative_variance_raw": 0.016122199353515783,
+            "relative_variance_conditioned": 0.007048217175026909,
+            "spot_number_raw": 62.02627681699824,
+            "spot_number_conditioned": 141.87985062991226,
+            "explained_variance_fraction": 0.5628253304354596
+          },
+          "layer_energy_share": 0.060986180296644425
+        },
+        {
+          "layer": 13,
+          "depth_x0": 12.5125250501002,
+          "tau": 1.6965355127734711,
+          "core_mm": 3.035028288430979,
+          "tail_mm": 14.620280685534913,
+          "core_weight": 0.36727057789564577,
+          "tv_points": {
+            "two_component_fit": 1.3442146379368562,
+            "one_component_fit": 7.775489576641112,
+            "dec001": 2.653864008279616,
+            "grindhammer_peters_published": 10.179688592816467
+          },
+          "central3_fraction": {
+            "geant4": 0.7822763620565558,
+            "two_component_fit": 0.7806358566371598,
+            "dec001": 0.7934037587378175
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.7830867948411688,
+            "core_mm": 3.3505897296375586,
+            "tail_mm": 13.05730254773334,
+            "core_weight": 0.6058075445601925
+          },
+          "outside_moliere_radius": 0.2616581141998082,
+          "outside_3p5_moliere_radii": 0.033184984574041405,
+          "spots": {
+            "relative_variance_raw": 0.019534236378893618,
+            "relative_variance_conditioned": 0.008879827648185831,
+            "spot_number_raw": 51.1921725837454,
+            "spot_number_conditioned": 112.6147983518917,
+            "explained_variance_fraction": 0.5454223305201569
+          },
+          "layer_energy_share": 0.050779011151094865
+        },
+        {
+          "layer": 14,
+          "depth_x0": 13.43937875751503,
+          "tau": 1.8222048100159507,
+          "core_mm": 3.0376643647202877,
+          "tail_mm": 15.614867988426079,
+          "core_weight": 0.3357857251215693,
+          "tv_points": {
+            "two_component_fit": 1.2511773609774879,
+            "one_component_fit": 8.435366863477697,
+            "dec001": 3.2229495169985265,
+            "grindhammer_peters_published": 9.377659049785715
+          },
+          "central3_fraction": {
+            "geant4": 0.7572978588947346,
+            "two_component_fit": 0.7551889994159988,
+            "dec001": 0.764188045078067
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.915167298162737,
+            "core_mm": 3.5525730468590466,
+            "tail_mm": 13.784122287975084,
+            "core_weight": 0.5580066353948554
+          },
+          "outside_moliere_radius": 0.2945123631443566,
+          "outside_3p5_moliere_radii": 0.03922133729180953,
+          "spots": {
+            "relative_variance_raw": 0.024879723153100605,
+            "relative_variance_conditioned": 0.012633390096848472,
+            "spot_number_raw": 40.193373288214275,
+            "spot_number_conditioned": 79.15531716617065,
+            "explained_variance_fraction": 0.49222143594173995
+          },
+          "layer_energy_share": 0.04149045566186789
+        },
+        {
+          "layer": 15,
+          "depth_x0": 14.366232464929858,
+          "tau": 1.9478741072584298,
+          "core_mm": 2.7897419752527783,
+          "tail_mm": 16.594324260662987,
+          "core_weight": 0.28238245784019994,
+          "tv_points": {
+            "two_component_fit": 1.6464002293640083,
+            "one_component_fit": 8.962474860483292,
+            "dec001": 3.275586719219442,
+            "grindhammer_peters_published": 9.584806428048829
+          },
+          "central3_fraction": {
+            "geant4": 0.7255251342881159,
+            "two_component_fit": 0.722739382318671,
+            "dec001": 0.7343575360475263
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 2.047247801484305,
+            "core_mm": 3.754556364080535,
+            "tail_mm": 14.598472133551628,
+            "core_weight": 0.5118399009612268
+          },
+          "outside_moliere_radius": 0.33632166120899354,
+          "outside_3p5_moliere_radii": 0.047111109085084694,
+          "spots": {
+            "relative_variance_raw": 0.030642060129124675,
+            "relative_variance_conditioned": 0.01589919725942645,
+            "spot_number_raw": 32.63488145986371,
+            "spot_number_conditioned": 62.8962571935581,
+            "explained_variance_fraction": 0.48113158213162777
+          },
+          "layer_energy_share": 0.03316543347999636
+        },
+        {
+          "layer": 16,
+          "depth_x0": 15.293086172344688,
+          "tau": 2.073543404500909,
+          "core_mm": 3.2154611826684087,
+          "tail_mm": 17.792398280606715,
+          "core_weight": 0.2658797865133159,
+          "tv_points": {
+            "two_component_fit": 1.6546985835204868,
+            "one_component_fit": 8.641340909402603,
+            "dec001": 3.2040712633041175,
+            "grindhammer_peters_published": 9.436239306099964
+          },
+          "central3_fraction": {
+            "geant4": 0.6992413215874655,
+            "two_component_fit": 0.6959016023098721,
+            "dec001": 0.7042812070683435
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 2.179328304805873,
+            "core_mm": 3.956539681302023,
+            "tail_mm": 15.494698330306104,
+            "core_weight": 0.4677593537158094
+          },
+          "outside_moliere_radius": 0.37102436809542777,
+          "outside_3p5_moliere_radii": 0.054919318347470006,
+          "spots": {
+            "relative_variance_raw": 0.03346930998091487,
+            "relative_variance_conditioned": 0.019881404871877,
+            "spot_number_raw": 29.87811820949484,
+            "spot_number_conditioned": 50.29825640815443,
+            "explained_variance_fraction": 0.4059810350672324
+          },
+          "layer_energy_share": 0.026290222085221505
+        },
+        {
+          "layer": 17,
+          "depth_x0": 16.21993987975952,
+          "tau": 2.1992127017433885,
+          "core_mm": 3.002899279690762,
+          "tail_mm": 18.746956415635932,
+          "core_weight": 0.227705186598706,
+          "tv_points": {
+            "two_component_fit": 2.1274416710223005,
+            "one_component_fit": 8.674892509183252,
+            "dec001": 3.299629204423034,
+            "grindhammer_peters_published": 9.506956250859117
+          },
+          "central3_fraction": {
+            "geant4": 0.6714471273250755,
+            "two_component_fit": 0.6673692585628689,
+            "dec001": 0.6742843189691949
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 2.311408808127441,
+            "core_mm": 4.1585229985235115,
+            "tail_mm": 16.4700876372109,
+            "core_weight": 0.4260739581670682
+          },
+          "outside_moliere_radius": 0.40800515421982847,
+          "outside_3p5_moliere_radii": 0.06333875412402115,
+          "spots": {
+            "relative_variance_raw": 0.03989276447638322,
+            "relative_variance_conditioned": 0.027185883893461344,
+            "spot_number_raw": 25.06720236427853,
+            "spot_number_conditioned": 36.783795734539886,
+            "explained_variance_fraction": 0.31852594699082426
+          },
+          "layer_energy_share": 0.01992950648645203
+        }
+      ],
+      "energy_weighted_outside_moliere_radius": 0.15550988879116406,
+      "energy_weighted_outside_3p5_moliere_radii": 0.020300467129269376
+    },
+    "50": {
+      "events": 1000,
+      "shower_maximum_x0": 8.291630037117997,
+      "centre_of_gravity_layers": {
+        "mean": 9.864667569811328,
+        "sd": 0.7234195713902496
+      },
+      "layers": [
+        {
+          "layer": 0,
+          "depth_x0": 0.4634268537074148,
+          "tau": 0.05589092272965095,
+          "core_mm": 0.5000000000000001,
+          "tail_mm": 39.294774299296215,
+          "core_weight": 0.472239243012299,
+          "tv_points": {
+            "two_component_fit": 2.9021795482162736,
+            "one_component_fit": 35.61864609054048,
+            "dec001": 34.55462676728468,
+            "grindhammer_peters_published": 26.25545704953408
+          },
+          "central3_fraction": {
+            "geant4": 0.6406369021841117,
+            "two_component_fit": 0.6424615999114452,
+            "dec001": 0.9823693928531493
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.05841296500331406,
+            "core_mm": 0.7657560372252122,
+            "tail_mm": 38.729507189246526,
+            "core_weight": 0.8229717053711603
+          },
+          "outside_moliere_radius": 0.4365899397011262,
+          "outside_3p5_moliere_radii": 0.14784268280492802,
+          "spots": {
+            "relative_variance_raw": 0.0697988662487073,
+            "relative_variance_conditioned": 0.06936996028396689,
+            "spot_number_raw": 14.326880273911616,
+            "spot_number_conditioned": 14.415461619215094,
+            "explained_variance_fraction": 0.006144884405602569
+          },
+          "layer_energy_share": 0.0012880235550466659
+        },
+        {
+          "layer": 1,
+          "depth_x0": 1.3902805611222444,
+          "tau": 0.16767276818895285,
+          "core_mm": 0.6780479943330137,
+          "tail_mm": 32.54453414027738,
+          "core_weight": 0.7556541808097339,
+          "tv_points": {
+            "two_component_fit": 0.9889307572460069,
+            "one_component_fit": 16.229728405439044,
+            "dec001": 13.182088560820237,
+            "grindhammer_peters_published": 7.301658441189485
+          },
+          "central3_fraction": {
+            "geant4": 0.8498872119191793,
+            "two_component_fit": 0.8475628410154252,
+            "dec001": 0.981684762360355
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.17523889500994216,
+            "core_mm": 0.9444113897322682,
+            "tail_mm": 30.358673221057682,
+            "core_weight": 0.872343125338146
+          },
+          "outside_moliere_radius": 0.18817892248171963,
+          "outside_3p5_moliere_radii": 0.05155739335068535,
+          "spots": {
+            "relative_variance_raw": 0.042593727889758536,
+            "relative_variance_conditioned": 0.04061104380810672,
+            "spot_number_raw": 23.47763507782669,
+            "spot_number_conditioned": 24.623843817586913,
+            "explained_variance_fraction": 0.046548733343637294
+          },
+          "layer_energy_share": 0.004814916861336969
+        },
+        {
+          "layer": 2,
+          "depth_x0": 2.317134268537074,
+          "tau": 0.27945461364825475,
+          "core_mm": 1.1034499040577501,
+          "tail_mm": 28.820252946171664,
+          "core_weight": 0.8588448385054741,
+          "tv_points": {
+            "two_component_fit": 0.4512515822332458,
+            "one_component_fit": 8.285344644180203,
+            "dec001": 6.7912118190846495,
+            "grindhammer_peters_published": 3.7303737454343158
+          },
+          "central3_fraction": {
+            "geant4": 0.915924371756773,
+            "two_component_fit": 0.9150298591011795,
+            "dec001": 0.9795774964167948
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.29206482501657033,
+            "core_mm": 1.1230667422393243,
+            "tail_mm": 24.28311810664426,
+            "core_weight": 0.9081835553182421
+          },
+          "outside_moliere_radius": 0.10476039117398664,
+          "outside_3p5_moliere_radii": 0.02469132365945342,
+          "spots": {
+            "relative_variance_raw": 0.017925519654128166,
+            "relative_variance_conditioned": 0.016251455467644203,
+            "spot_number_raw": 55.78638830532896,
+            "spot_number_conditioned": 61.532950201964844,
+            "explained_variance_fraction": 0.09338999475523901
+          },
+          "layer_energy_share": 0.013575141270192041
+        },
+        {
+          "layer": 3,
+          "depth_x0": 3.2439879759519035,
+          "tau": 0.3912364591075566,
+          "core_mm": 1.4458801323632722,
+          "tail_mm": 24.25898359862763,
+          "core_weight": 0.8897647012722837,
+          "tv_points": {
+            "two_component_fit": 0.2726651370740422,
+            "one_component_fit": 5.577110402930312,
+            "dec001": 4.800441875101674,
+            "grindhammer_peters_published": 4.27821589397878
+          },
+          "central3_fraction": {
+            "geant4": 0.9376118738357883,
+            "two_component_fit": 0.9371610318319171,
+            "dec001": 0.9758982835144151
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.4088907550231984,
+            "core_mm": 1.30172209474638,
+            "tail_mm": 19.910484198121004,
+            "core_weight": 0.930402317753672
+          },
+          "outside_moliere_radius": 0.07679843267620695,
+          "outside_3p5_moliere_radii": 0.014702820833470477,
+          "spots": {
+            "relative_variance_raw": 0.006684053362851458,
+            "relative_variance_conditioned": 0.00580877212624753,
+            "spot_number_raw": 149.60981693500332,
+            "spot_number_conditioned": 172.15342214603288,
+            "explained_variance_fraction": 0.13095066557495694
+          },
+          "layer_energy_share": 0.02845463368387345
+        },
+        {
+          "layer": 4,
+          "depth_x0": 4.170841683366733,
+          "tau": 0.5030183045668586,
+          "core_mm": 1.7461273570340912,
+          "tail_mm": 21.283796227651848,
+          "core_weight": 0.8956082390391888,
+          "tv_points": {
+            "two_component_fit": 0.23372268183656414,
+            "one_component_fit": 4.629270107852434,
+            "dec001": 4.1760622177097755,
+            "grindhammer_peters_published": 5.330659767115771
+          },
+          "central3_fraction": {
+            "geant4": 0.9428321240977376,
+            "two_component_fit": 0.9426037622699327,
+            "dec001": 0.9704316845768401
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.5257166850298265,
+            "core_mm": 1.4803774472534361,
+            "tail_mm": 16.80350846659707,
+            "core_weight": 0.9395465362916057
+          },
+          "outside_moliere_radius": 0.06921104079145698,
+          "outside_3p5_moliere_radii": 0.01138160772042472,
+          "spots": {
+            "relative_variance_raw": 0.003264640930209112,
+            "relative_variance_conditioned": 0.0027414116580323604,
+            "spot_number_raw": 306.3124004684786,
+            "spot_number_conditioned": 364.77556994039594,
+            "explained_variance_fraction": 0.1602716143558357
+          },
+          "layer_energy_share": 0.0478290292848349
+        },
+        {
+          "layer": 5,
+          "depth_x0": 5.0976953907815625,
+          "tau": 0.6148001500261604,
+          "core_mm": 2.053474889526406,
+          "tail_mm": 18.271943619123633,
+          "core_weight": 0.8830376370282806,
+          "tv_points": {
+            "two_component_fit": 0.19196605415211523,
+            "one_component_fit": 4.300954986413597,
+            "dec001": 3.936708142620035,
+            "grindhammer_peters_published": 6.641530808260085
+          },
+          "central3_fraction": {
+            "geant4": 0.9407071201039059,
+            "two_component_fit": 0.9404301598503036,
+            "dec001": 0.9629379317433594
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.6425426150364546,
+            "core_mm": 1.6590327997604923,
+            "tail_mm": 14.639556325496248,
+            "core_weight": 0.9366501971776495
+          },
+          "outside_moliere_radius": 0.07070285122463302,
+          "outside_3p5_moliere_radii": 0.010012402148073238,
+          "spots": {
+            "relative_variance_raw": 0.003929953280084231,
+            "relative_variance_conditioned": 0.003404487106171312,
+            "spot_number_raw": 254.45595118590492,
+            "spot_number_conditioned": 293.73000067684217,
+            "explained_variance_fraction": 0.13370799509902986
+          },
+          "layer_energy_share": 0.06688855486310755
+        },
+        {
+          "layer": 6,
+          "depth_x0": 6.024549098196393,
+          "tau": 0.7265819954854623,
+          "core_mm": 2.3011611556220797,
+          "tail_mm": 16.17489920661619,
+          "core_weight": 0.8566478249523412,
+          "tv_points": {
+            "two_component_fit": 0.3128667498531215,
+            "one_component_fit": 4.396083572371974,
+            "dec001": 3.8839878589893497,
+            "grindhammer_peters_published": 7.525057114656608
+          },
+          "central3_fraction": {
+            "geant4": 0.9339161874071453,
+            "two_component_fit": 0.9336620635311795,
+            "dec001": 0.9531975525453013
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.7593685450430828,
+            "core_mm": 1.8376881522675483,
+            "tail_mm": 13.180722500096074,
+            "core_weight": 0.9230802842232588
+          },
+          "outside_moliere_radius": 0.07781778636018129,
+          "outside_3p5_moliere_radii": 0.010006476141300376,
+          "spots": {
+            "relative_variance_raw": 0.002078766729847917,
+            "relative_variance_conditioned": 0.0018545153823032608,
+            "spot_number_raw": 481.05445678032385,
+            "spot_number_conditioned": 539.224430027658,
+            "explained_variance_fraction": 0.10787711017535018
+          },
+          "layer_energy_share": 0.08312174158955858
+        },
+        {
+          "layer": 7,
+          "depth_x0": 6.951402805611222,
+          "tau": 0.8383638409447642,
+          "core_mm": 2.5466380305357466,
+          "tail_mm": 14.695934262001286,
+          "core_weight": 0.817936634889353,
+          "tv_points": {
+            "two_component_fit": 0.38049540036964974,
+            "one_component_fit": 4.640687532991501,
+            "dec001": 3.771072638390101,
+            "grindhammer_peters_published": 8.398936079373204
+          },
+          "central3_fraction": {
+            "geant4": 0.9239549055392695,
+            "two_component_fit": 0.9235855431723415,
+            "dec001": 0.9410501473290407
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.8761944750497108,
+            "core_mm": 2.0163435047746043,
+            "tail_mm": 12.251740102296704,
+            "core_weight": 0.9003951846360284
+          },
+          "outside_moliere_radius": 0.08887036645706592,
+          "outside_3p5_moliere_radii": 0.010729933170079663,
+          "spots": {
+            "relative_variance_raw": 0.0022555416812306025,
+            "relative_variance_conditioned": 0.001983992937110784,
+            "spot_number_raw": 443.35248083485175,
+            "spot_number_conditioned": 504.0340523874361,
+            "explained_variance_fraction": 0.12039180937311
+          },
+          "layer_energy_share": 0.09369713979757681
+        },
+        {
+          "layer": 8,
+          "depth_x0": 7.878256513026051,
+          "tau": 0.950145686404066,
+          "core_mm": 2.6796951700176868,
+          "tail_mm": 13.782613145950531,
+          "core_weight": 0.7671639568870819,
+          "tv_points": {
+            "two_component_fit": 0.36088573493103543,
+            "one_component_fit": 5.109174477365194,
+            "dec001": 3.5467754958855386,
+            "grindhammer_peters_published": 8.654130886192386
+          },
+          "central3_fraction": {
+            "geant4": 0.9118545876899313,
+            "two_component_fit": 0.9114501453092526,
+            "dec001": 0.926421222656284
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.9930204050563389,
+            "core_mm": 2.1949988572816603,
+            "tail_mm": 11.723659382319028,
+            "core_weight": 0.8702244483910897
+          },
+          "outside_moliere_radius": 0.10269038865682267,
+          "outside_3p5_moliere_radii": 0.012020237483613746,
+          "spots": {
+            "relative_variance_raw": 0.0025817202581660433,
+            "relative_variance_conditioned": 0.0017649001845290318,
+            "spot_number_raw": 387.3386347095414,
+            "spot_number_conditioned": 566.6042809479634,
+            "explained_variance_fraction": 0.31638597212590713
+          },
+          "layer_energy_share": 0.09831557799220651
+        },
+        {
+          "layer": 9,
+          "depth_x0": 8.80511022044088,
+          "tau": 1.0619275318633679,
+          "core_mm": 2.831201927606846,
+          "tail_mm": 13.297020054407996,
+          "core_weight": 0.7033026187207023,
+          "tv_points": {
+            "two_component_fit": 0.43803626750717706,
+            "one_component_fit": 5.660883931264278,
+            "dec001": 3.4668784190474327,
+            "grindhammer_peters_published": 9.320935435027746
+          },
+          "central3_fraction": {
+            "geant4": 0.8955813296978788,
+            "two_component_fit": 0.895050302364691,
+            "dec001": 0.9093344949824039
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.109846335062967,
+            "core_mm": 2.3736542097887163,
+            "tail_mm": 11.501789875710415,
+            "core_weight": 0.8341738791463776
+          },
+          "outside_moliere_radius": 0.12172823571583877,
+          "outside_3p5_moliere_radii": 0.014071076236477931,
+          "spots": {
+            "relative_variance_raw": 0.0035019507706646005,
+            "relative_variance_conditioned": 0.0019946280766116025,
+            "spot_number_raw": 285.5551278381392,
+            "spot_number_conditioned": 501.3465977570924,
+            "explained_variance_fraction": 0.4304237245936322
+          },
+          "layer_energy_share": 0.09690300521076782
+        },
+        {
+          "layer": 10,
+          "depth_x0": 9.73196392785571,
+          "tau": 1.1737093773226699,
+          "core_mm": 2.911634606236925,
+          "tail_mm": 13.240265724386582,
+          "core_weight": 0.6430537060659303,
+          "tv_points": {
+            "two_component_fit": 0.5129789656893582,
+            "one_component_fit": 6.240156800324805,
+            "dec001": 3.6010949790895377,
+            "grindhammer_peters_published": 9.376987608686388
+          },
+          "central3_fraction": {
+            "geant4": 0.8789067743849284,
+            "two_component_fit": 0.878241037852244,
+            "dec001": 0.8899103608240205
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.2266722650695951,
+            "core_mm": 2.5523095622957723,
+            "tail_mm": 11.516792946888078,
+            "core_weight": 0.7937561663459706
+          },
+          "outside_moliere_radius": 0.1417197509736804,
+          "outside_3p5_moliere_radii": 0.01646948358237715,
+          "spots": {
+            "relative_variance_raw": 0.004501240421177019,
+            "relative_variance_conditioned": 0.0020085175035237297,
+            "spot_number_raw": 222.16098373579263,
+            "spot_number_conditioned": 497.8796541457103,
+            "explained_variance_fraction": 0.5537857755666099
+          },
+          "layer_energy_share": 0.0913212748217887
+        },
+        {
+          "layer": 11,
+          "depth_x0": 10.658817635270541,
+          "tau": 1.285491222781972,
+          "core_mm": 2.9810764692054152,
+          "tail_mm": 13.326892465041091,
+          "core_weight": 0.5725302580462062,
+          "tv_points": {
+            "two_component_fit": 0.596540208933918,
+            "one_component_fit": 6.754904083293621,
+            "dec001": 3.5932777454931344,
+            "grindhammer_peters_published": 9.750934510495107
+          },
+          "central3_fraction": {
+            "geant4": 0.8583781292809074,
+            "two_component_fit": 0.8575054046940752,
+            "dec001": 0.8683535109223193
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.3434981950762235,
+            "core_mm": 2.7309649148028288,
+            "tail_mm": 11.718102331569995,
+            "core_weight": 0.750344820630344
+          },
+          "outside_moliere_radius": 0.16664064927350475,
+          "outside_3p5_moliere_radii": 0.019588306889787046,
+          "spots": {
+            "relative_variance_raw": 0.006458744500045099,
+            "relative_variance_conditioned": 0.002102420237727861,
+            "spot_number_raw": 154.82885257235634,
+            "spot_number_conditioned": 475.642301217917,
+            "explained_variance_fraction": 0.6744846869676946
+          },
+          "layer_energy_share": 0.08261965135082215
+        },
+        {
+          "layer": 12,
+          "depth_x0": 11.58567134268537,
+          "tau": 1.3972730682412737,
+          "core_mm": 2.977271337405035,
+          "tail_mm": 13.543394741945772,
+          "core_weight": 0.5069073042112502,
+          "tv_points": {
+            "two_component_fit": 0.7806901136951102,
+            "one_component_fit": 7.154449578176136,
+            "dec001": 3.6927769156297807,
+            "grindhammer_peters_published": 9.654861077416577
+          },
+          "central3_fraction": {
+            "geant4": 0.8380326241984253,
+            "two_component_fit": 0.8369219824171747,
+            "dec001": 0.8449337012558716
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.4603241250828514,
+            "core_mm": 2.909620267309884,
+            "tail_mm": 12.069065009036269,
+            "core_weight": 0.7051478445126861
+          },
+          "outside_moliere_radius": 0.19174212446429037,
+          "outside_3p5_moliere_radii": 0.02291078575548485,
+          "spots": {
+            "relative_variance_raw": 0.008128345401227931,
+            "relative_variance_conditioned": 0.002459310672202103,
+            "spot_number_raw": 123.02626803345883,
+            "spot_number_conditioned": 406.61800532284326,
+            "explained_variance_fraction": 0.6974401860641182
+          },
+          "layer_energy_share": 0.07273962611133648
+        },
+        {
+          "layer": 13,
+          "depth_x0": 12.5125250501002,
+          "tau": 1.5090549137005755,
+          "core_mm": 3.0760493832816493,
+          "tail_mm": 14.342653996512066,
+          "core_weight": 0.457300740961281,
+          "tv_points": {
+            "two_component_fit": 0.8969811327365801,
+            "one_component_fit": 7.678282278781354,
+            "dec001": 3.6986187164500492,
+            "grindhammer_peters_published": 9.8137510537749
+          },
+          "central3_fraction": {
+            "geant4": 0.8128334826000491,
+            "two_component_fit": 0.8113975722160096,
+            "dec001": 0.8199636555830382
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.5771500550894795,
+            "core_mm": 3.08827561981694,
+            "tail_mm": 12.543353400821196,
+            "core_weight": 0.6591970822529764
+          },
+          "outside_moliere_radius": 0.22373142476546054,
+          "outside_3p5_moliere_radii": 0.02782948067514588,
+          "spots": {
+            "relative_variance_raw": 0.010633274091427935,
+            "relative_variance_conditioned": 0.0031709304173460646,
+            "spot_number_raw": 94.0444111006369,
+            "spot_number_conditioned": 315.36485144223315,
+            "explained_variance_fraction": 0.7017917162595926
+          },
+          "layer_energy_share": 0.06230090713405497
+        },
+        {
+          "layer": 14,
+          "depth_x0": 13.43937875751503,
+          "tau": 1.6208367591598776,
+          "core_mm": 2.988286189674697,
+          "tail_mm": 14.763072196517204,
+          "core_weight": 0.3993523738199411,
+          "tv_points": {
+            "two_component_fit": 0.9348117188502271,
+            "one_component_fit": 8.146359911466813,
+            "dec001": 3.7063271958727544,
+            "grindhammer_peters_published": 9.396707264687992
+          },
+          "central3_fraction": {
+            "geant4": 0.790181932633149,
+            "two_component_fit": 0.7886001649575488,
+            "dec001": 0.79377734302028
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.6939759850961078,
+            "core_mm": 3.2669309723239968,
+            "tail_mm": 13.122317132664865,
+            "core_weight": 0.6133492741920765
+          },
+          "outside_moliere_radius": 0.2522660862233049,
+          "outside_3p5_moliere_radii": 0.03216272578790777,
+          "spots": {
+            "relative_variance_raw": 0.013073166716805798,
+            "relative_variance_conditioned": 0.004136886087722115,
+            "spot_number_raw": 76.49256080506352,
+            "spot_number_conditioned": 241.72770987528637,
+            "explained_variance_fraction": 0.6835589893912948
+          },
+          "layer_energy_share": 0.05221820179025663
+        },
+        {
+          "layer": 15,
+          "depth_x0": 14.366232464929858,
+          "tau": 1.7326186046191794,
+          "core_mm": 3.1764957145315345,
+          "tail_mm": 15.814424568077438,
+          "core_weight": 0.36558338642503874,
+          "tv_points": {
+            "two_component_fit": 1.1387658051546896,
+            "one_component_fit": 8.635174836212533,
+            "dec001": 3.5642366000821797,
+            "grindhammer_peters_published": 9.417176977106555
+          },
+          "central3_fraction": {
+            "geant4": 0.7632404997728857,
+            "two_component_fit": 0.7611177900471222,
+            "dec001": 0.7667108485697197
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.8108019151027357,
+            "core_mm": 3.4455863248310528,
+            "tail_mm": 13.793029227155811,
+            "core_weight": 0.568295260148931
+          },
+          "outside_moliere_radius": 0.2874150314359104,
+          "outside_3p5_moliere_radii": 0.03853345585609334,
+          "spots": {
+            "relative_variance_raw": 0.01475415679763198,
+            "relative_variance_conditioned": 0.005516152129120302,
+            "spot_number_raw": 67.7775093294724,
+            "spot_number_conditioned": 181.28579063671995,
+            "explained_variance_fraction": 0.6261289476057598
+          },
+          "layer_energy_share": 0.04297731357053741
+        },
+        {
+          "layer": 16,
+          "depth_x0": 15.293086172344688,
+          "tau": 1.8444004500784812,
+          "core_mm": 3.1448858048371524,
+          "tail_mm": 16.489039932183235,
+          "core_weight": 0.31485946283284166,
+          "tv_points": {
+            "two_component_fit": 1.303026072122784,
+            "one_component_fit": 8.698118970169633,
+            "dec001": 3.764225951498015,
+            "grindhammer_peters_published": 9.285309849657189
+          },
+          "central3_fraction": {
+            "geant4": 0.7364921403741264,
+            "two_component_fit": 0.7339923573616685,
+            "dec001": 0.7390870387747123
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.927627845109364,
+            "core_mm": 3.6242416773381088,
+            "tail_mm": 14.546845607379582,
+            "core_weight": 0.5245743579823937
+          },
+          "outside_moliere_radius": 0.32193844174923414,
+          "outside_3p5_moliere_radii": 0.044707825075228226,
+          "spots": {
+            "relative_variance_raw": 0.017361771900533552,
+            "relative_variance_conditioned": 0.007489352749138426,
+            "spot_number_raw": 57.59780774272634,
+            "spot_number_conditioned": 133.52288688966345,
+            "explained_variance_fraction": 0.5686297002376659
+          },
+          "layer_energy_share": 0.03456851602245121
+        },
+        {
+          "layer": 17,
+          "depth_x0": 16.21993987975952,
+          "tau": 1.9561822955377832,
+          "core_mm": 3.3983510375579233,
+          "tail_mm": 17.6814793725516,
+          "core_weight": 0.2969647463735848,
+          "tv_points": {
+            "two_component_fit": 1.523739607696512,
+            "one_component_fit": 8.79843089054094,
+            "dec001": 3.9172393275759916,
+            "grindhammer_peters_published": 9.065383897942692
+          },
+          "central3_fraction": {
+            "geant4": 0.7113133520179189,
+            "two_component_fit": 0.7081523672907426,
+            "dec001": 0.7112043947651198
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 2.044453775115992,
+            "core_mm": 3.8028970298451643,
+            "tail_mm": 15.378344092354418,
+            "core_weight": 0.4825915657140238
+          },
+          "outside_moliere_radius": 0.3554631065317329,
+          "outside_3p5_moliere_radii": 0.05219553612408824,
+          "spots": {
+            "relative_variance_raw": 0.02134205939096513,
+            "relative_variance_conditioned": 0.010743584938476785,
+            "spot_number_raw": 46.855834372916064,
+            "spot_number_conditioned": 93.07880057974197,
+            "explained_variance_fraction": 0.49660036355137616
+          },
+          "layer_energy_share": 0.026366745090251064
+        }
+      ],
+      "energy_weighted_outside_moliere_radius": 0.1504247551233276,
+      "energy_weighted_outside_3p5_moliere_radii": 0.019568704196516736
+    },
+    "100": {
+      "events": 1000,
+      "shower_maximum_x0": 8.984777217677943,
+      "centre_of_gravity_layers": {
+        "mean": 10.424949945402465,
+        "sd": 0.7012297029977582
+      },
+      "layers": [
+        {
+          "layer": 0,
+          "depth_x0": 0.4634268537074148,
+          "tau": 0.05157911459347063,
+          "core_mm": 0.5000000000000001,
+          "tail_mm": 40.79613076714068,
+          "core_weight": 0.35714821903389754,
+          "tv_points": {
+            "two_component_fit": 3.7320166304739626,
+            "one_component_fit": 30.733269605373604,
+            "dec001": 43.66449202011897,
+            "grindhammer_peters_published": 34.41002182481291
+          },
+          "central3_fraction": {
+            "geant4": 0.5566807745091327,
+            "two_component_fit": 0.5578410707796375,
+            "dec001": 0.9823693928531493
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.05371958055874715,
+            "core_mm": 0.7983792183314169,
+            "tail_mm": 39.03263705248136,
+            "core_weight": 0.8089195860871329
+          },
+          "outside_moliere_radius": 0.5383736211865998,
+          "outside_3p5_moliere_radii": 0.18994833187879273,
+          "spots": {
+            "relative_variance_raw": 0.05942849995011712,
+            "relative_variance_conditioned": 0.05757380535726926,
+            "spot_number_raw": 16.826943315738685,
+            "spot_number_conditioned": 17.36900998283137,
+            "explained_variance_fraction": 0.031208840781857927
+          },
+          "layer_energy_share": 0.0008538284422801004
+        },
+        {
+          "layer": 1,
+          "depth_x0": 1.3902805611222444,
+          "tau": 0.15473734378041187,
+          "core_mm": 0.5867159037146404,
+          "tail_mm": 35.19108959725653,
+          "core_weight": 0.6930026006527982,
+          "tv_points": {
+            "two_component_fit": 1.40510116154798,
+            "one_component_fit": 21.908098102402928,
+            "dec001": 17.648016875437857,
+            "grindhammer_peters_published": 10.816434661354863
+          },
+          "central3_fraction": {
+            "geant4": 0.8053098223880258,
+            "two_component_fit": 0.8015480047423461,
+            "dec001": 0.9817691949560785
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.16115874167624145,
+            "core_mm": 0.9626799108353784,
+            "tail_mm": 31.152753936362707,
+            "core_weight": 0.8598138501655661
+          },
+          "outside_moliere_radius": 0.24407036813255983,
+          "outside_3p5_moliere_radii": 0.07306938860031002,
+          "spots": {
+            "relative_variance_raw": 0.04627225271775937,
+            "relative_variance_conditioned": 0.043285598141919734,
+            "spot_number_raw": 21.61122360088162,
+            "spot_number_conditioned": 23.102372219076596,
+            "explained_variance_fraction": 0.06454525985706672
+          },
+          "layer_energy_share": 0.0030437364335026145
+        },
+        {
+          "layer": 2,
+          "depth_x0": 2.317134268537074,
+          "tau": 0.25789557296735316,
+          "core_mm": 1.007859794716153,
+          "tail_mm": 30.49206492815184,
+          "core_weight": 0.8343446721159814,
+          "tv_points": {
+            "two_component_fit": 0.5689612730529676,
+            "one_component_fit": 10.20283753193883,
+            "dec001": 8.278377880271071,
+            "grindhammer_peters_published": 4.321189981478131
+          },
+          "central3_fraction": {
+            "geant4": 0.8994289085264702,
+            "two_component_fit": 0.8983015071206395,
+            "dec001": 0.9799273382098118
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.26859790279373574,
+            "core_mm": 1.12698060333934,
+            "tail_mm": 25.284852065125584,
+            "core_weight": 0.8982894543857171
+          },
+          "outside_moliere_radius": 0.12545404421940698,
+          "outside_3p5_moliere_radii": 0.03165419096029675,
+          "spots": {
+            "relative_variance_raw": 0.016402940506619633,
+            "relative_variance_conditioned": 0.014612748763069396,
+            "spot_number_raw": 60.964678838921365,
+            "spot_number_conditioned": 68.43339444302818,
+            "explained_variance_fraction": 0.10913846470562882
+          },
+          "layer_energy_share": 0.00907061733769249
+        },
+        {
+          "layer": 3,
+          "depth_x0": 3.2439879759519035,
+          "tau": 0.3610538021542944,
+          "core_mm": 1.3398685762169504,
+          "tail_mm": 26.487977705124134,
+          "core_weight": 0.8806117109760807,
+          "tv_points": {
+            "two_component_fit": 0.3201127708670875,
+            "one_component_fit": 6.528777088719319,
+            "dec001": 5.427802032294634,
+            "grindhammer_peters_published": 3.789610561883368
+          },
+          "central3_fraction": {
+            "geant4": 0.9299390767194736,
+            "two_component_fit": 0.9295054616601836,
+            "dec001": 0.9767273926278827
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.37603706391123004,
+            "core_mm": 1.2912812958433013,
+            "tail_mm": 20.946196508092594,
+            "core_weight": 0.9240719148319709
+          },
+          "outside_moliere_radius": 0.08652498060668454,
+          "outside_3p5_moliere_radii": 0.018332478132916143,
+          "spots": {
+            "relative_variance_raw": 0.005440261754948545,
+            "relative_variance_conditioned": 0.004645084428996749,
+            "spot_number_raw": 183.8146848523207,
+            "spot_number_conditioned": 215.28133993809476,
+            "explained_variance_fraction": 0.1461652695715404
+          },
+          "layer_energy_share": 0.020228036823440935
+        },
+        {
+          "layer": 4,
+          "depth_x0": 4.170841683366733,
+          "tau": 0.4642120313412357,
+          "core_mm": 1.6559354130395838,
+          "tail_mm": 23.140319281850598,
+          "core_weight": 0.8935760614612961,
+          "tv_points": {
+            "two_component_fit": 0.40857144513214877,
+            "one_component_fit": 5.120403452705528,
+            "dec001": 4.249172963999652,
+            "grindhammer_peters_published": 4.903538593608612
+          },
+          "central3_fraction": {
+            "geant4": 0.9395152049176869,
+            "two_component_fit": 0.9391949262460019,
+            "dec001": 0.9719982602267015
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.48347622502872434,
+            "core_mm": 1.4555819883472627,
+            "tail_mm": 17.77167743675514,
+            "core_weight": 0.9374746746557241
+          },
+          "outside_moliere_radius": 0.0738039878411743,
+          "outside_3p5_moliere_radii": 0.01326819543169884,
+          "spots": {
+            "relative_variance_raw": 0.002434360678289044,
+            "relative_variance_conditioned": 0.001832016485162941,
+            "spot_number_raw": 410.7854718976302,
+            "spot_number_conditioned": 545.8466166100352,
+            "explained_variance_fraction": 0.2474342436181035
+          },
+          "layer_energy_share": 0.036373677994781195
+        },
+        {
+          "layer": 5,
+          "depth_x0": 5.0976953907815625,
+          "tau": 0.5673702605281769,
+          "core_mm": 1.9517536548340642,
+          "tail_mm": 19.876245117956966,
+          "core_weight": 0.8878154442643054,
+          "tv_points": {
+            "two_component_fit": 0.4589358056910646,
+            "one_component_fit": 4.568683198798924,
+            "dec001": 3.833788675309746,
+            "grindhammer_peters_published": 6.173631198045536
+          },
+          "central3_fraction": {
+            "geant4": 0.9401385232210725,
+            "two_component_fit": 0.9398710527050652,
+            "dec001": 0.9655435414396977
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.5909153861462186,
+            "core_mm": 1.619882680851224,
+            "tail_mm": 15.485260701605393,
+            "core_weight": 0.939278048800395
+          },
+          "outside_moliere_radius": 0.07195282208700933,
+          "outside_3p5_moliere_radii": 0.011007000760560475,
+          "spots": {
+            "relative_variance_raw": 0.0017835723765772325,
+            "relative_variance_conditioned": 0.001371035552051565,
+            "spot_number_raw": 560.6725093595875,
+            "spot_number_conditioned": 729.3756886928558,
+            "explained_variance_fraction": 0.23129805661004177
+          },
+          "layer_energy_share": 0.05427646406831204
+        },
+        {
+          "layer": 6,
+          "depth_x0": 6.024549098196393,
+          "tau": 0.6705284897151182,
+          "core_mm": 2.1395218070204227,
+          "tail_mm": 17.532565428571793,
+          "core_weight": 0.8705129093444396,
+          "tv_points": {
+            "two_component_fit": 0.3428572841105147,
+            "one_component_fit": 4.495933181285816,
+            "dec001": 4.108217593803335,
+            "grindhammer_peters_published": 6.583290146350586
+          },
+          "central3_fraction": {
+            "geant4": 0.9367116986048017,
+            "two_component_fit": 0.9364915302454337,
+            "dec001": 0.9571740115394762
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.6983545472637129,
+            "core_mm": 1.7841833733551855,
+            "tail_mm": 13.87837459430217,
+            "core_weight": 0.9306003829622438
+          },
+          "outside_moliere_radius": 0.07516790935824982,
+          "outside_3p5_moliere_radii": 0.010310478612376271,
+          "spots": {
+            "relative_variance_raw": 0.0012674260551286483,
+            "relative_variance_conditioned": 0.0011266116176899806,
+            "spot_number_raw": 789.0006647358188,
+            "spot_number_conditioned": 887.6173335141114,
+            "explained_variance_fraction": 0.11110268474350915
+          },
+          "layer_energy_share": 0.07182079483822693
+        },
+        {
+          "layer": 7,
+          "depth_x0": 6.951402805611222,
+          "tau": 0.7736867189020594,
+          "core_mm": 2.341284421340587,
+          "tail_mm": 15.504763501452198,
+          "core_weight": 0.8349040080838352,
+          "tv_points": {
+            "two_component_fit": 0.3888607175504739,
+            "one_component_fit": 4.722756516479046,
+            "dec001": 3.958600774709306,
+            "grindhammer_peters_published": 7.419063202166129
+          },
+          "central3_fraction": {
+            "geant4": 0.9284107597148301,
+            "two_component_fit": 0.928123712700642,
+            "dec001": 0.9467374637508108
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.8057937083812072,
+            "core_mm": 1.9484840658591471,
+            "tail_mm": 12.793548040076061,
+            "core_weight": 0.9127749841536613
+          },
+          "outside_moliere_radius": 0.0842108090959149,
+          "outside_3p5_moliere_radii": 0.010580093675337058,
+          "spots": {
+            "relative_variance_raw": 0.0014981203833373108,
+            "relative_variance_conditioned": 0.0012855574111789575,
+            "spot_number_raw": 667.5030999660619,
+            "spot_number_conditioned": 777.8726887684628,
+            "explained_variance_fraction": 0.14188644285370056
+          },
+          "layer_energy_share": 0.08538736301493222
+        },
+        {
+          "layer": 8,
+          "depth_x0": 7.878256513026051,
+          "tau": 0.8768449480890007,
+          "core_mm": 2.5640012323026347,
+          "tail_mm": 14.412311862333695,
+          "core_weight": 0.7975251131395641,
+          "tv_points": {
+            "two_component_fit": 0.3818125446098518,
+            "one_component_fit": 4.947685396702448,
+            "dec001": 3.4355051358359514,
+            "grindhammer_peters_published": 8.058785892499346
+          },
+          "central3_fraction": {
+            "geant4": 0.9188058309381892,
+            "two_component_fit": 0.9183980296525235,
+            "dec001": 0.9341414726332136
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 0.9132328694987015,
+            "core_mm": 2.1127847583631088,
+            "tail_mm": 12.112024706965327,
+            "core_weight": 0.8872416705710683
+          },
+          "outside_moliere_radius": 0.09495727843397758,
+          "outside_3p5_moliere_radii": 0.011388207562315292,
+          "spots": {
+            "relative_variance_raw": 0.0016334318844856625,
+            "relative_variance_conditioned": 0.0012310048770872387,
+            "spot_number_raw": 612.2079588980728,
+            "spot_number_conditioned": 812.3444663892523,
+            "explained_variance_fraction": 0.24636901680484868
+          },
+          "layer_energy_share": 0.09440434490652258
+        },
+        {
+          "layer": 9,
+          "depth_x0": 8.80511022044088,
+          "tau": 0.9800031772759419,
+          "core_mm": 2.7025286972665206,
+          "tail_mm": 13.53411714197054,
+          "core_weight": 0.7385213262388328,
+          "tv_points": {
+            "two_component_fit": 0.4892579419982392,
+            "one_component_fit": 5.431598093526136,
+            "dec001": 3.281650654146355,
+            "grindhammer_peters_published": 8.697634256072224
+          },
+          "central3_fraction": {
+            "geant4": 0.9050845505571239,
+            "two_component_fit": 0.9045868245917316,
+            "dec001": 0.9193666480689995
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.0206720306161958,
+            "core_mm": 2.2770854508670704,
+            "tail_mm": 11.744387353346518,
+            "core_weight": 0.855457618797384
+          },
+          "outside_moliere_radius": 0.11071751654905558,
+          "outside_3p5_moliere_radii": 0.012891597642759994,
+          "spots": {
+            "relative_variance_raw": 0.0022239766413734204,
+            "relative_variance_conditioned": 0.001182750700829224,
+            "spot_number_raw": 449.6450103821452,
+            "spot_number_conditioned": 845.4867110194076,
+            "explained_variance_fraction": 0.468182048846154
+          },
+          "layer_energy_share": 0.09732774420518271
+        },
+        {
+          "layer": 10,
+          "depth_x0": 9.73196392785571,
+          "tau": 1.0831614064628832,
+          "core_mm": 2.7163631228808875,
+          "tail_mm": 13.242706374917665,
+          "core_weight": 0.6832086589370563,
+          "tv_points": {
+            "two_component_fit": 0.5680529212583579,
+            "one_component_fit": 6.0448198658523005,
+            "dec001": 4.0376150821963135,
+            "grindhammer_peters_published": 8.37499691034697
+          },
+          "central3_fraction": {
+            "geant4": 0.8918269997163831,
+            "two_component_fit": 0.8912362618311213,
+            "dec001": 0.9024700405879741
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.1281111917336901,
+            "core_mm": 2.4413861433710315,
+            "tail_mm": 11.623461309779358,
+            "core_weight": 0.81882891447858
+          },
+          "outside_moliere_radius": 0.1264639098819195,
+          "outside_3p5_moliere_radii": 0.01467281985859748,
+          "spots": {
+            "relative_variance_raw": 0.0031321683784632072,
+            "relative_variance_conditioned": 0.001206115735570917,
+            "spot_number_raw": 319.26763799673125,
+            "spot_number_conditioned": 829.1078297943342,
+            "explained_variance_fraction": 0.6149262779535832
+          },
+          "layer_energy_share": 0.09563120956744568
+        },
+        {
+          "layer": 11,
+          "depth_x0": 10.658817635270541,
+          "tau": 1.1863196356498245,
+          "core_mm": 2.8629301587272074,
+          "tail_mm": 13.32688187307023,
+          "core_weight": 0.6243516495763477,
+          "tv_points": {
+            "two_component_fit": 0.553831400349231,
+            "one_component_fit": 6.569662382074519,
+            "dec001": 3.822896190150947,
+            "grindhammer_peters_published": 8.946298390576892
+          },
+          "central3_fraction": {
+            "geant4": 0.8735677989277265,
+            "two_component_fit": 0.8728233856742288,
+            "dec001": 0.8835800210940157
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.2355503528511844,
+            "core_mm": 2.605686835874993,
+            "tail_mm": 11.698943586603118,
+            "core_weight": 0.778661919286917
+          },
+          "outside_moliere_radius": 0.14841226909230282,
+          "outside_3p5_moliere_radii": 0.017376311164966556,
+          "spots": {
+            "relative_variance_raw": 0.004461259733934778,
+            "relative_variance_conditioned": 0.0011756997880501493,
+            "spot_number_raw": 224.15193457432076,
+            "spot_number_conditioned": 850.5572682448635,
+            "explained_variance_fraction": 0.7364646180299401
+          },
+          "layer_energy_share": 0.08960732321649487
+        },
+        {
+          "layer": 12,
+          "depth_x0": 11.58567134268537,
+          "tau": 1.2894778648367657,
+          "core_mm": 2.909638431356926,
+          "tail_mm": 13.379161989664508,
+          "core_weight": 0.5622852385126724,
+          "tv_points": {
+            "two_component_fit": 0.6294956708616534,
+            "one_component_fit": 6.984201100706766,
+            "dec001": 3.6114024340017945,
+            "grindhammer_peters_published": 8.996427265813816
+          },
+          "central3_fraction": {
+            "geant4": 0.8557103817602297,
+            "two_component_fit": 0.8547916209245852,
+            "dec001": 0.8628849455236723
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.3429895139686787,
+            "core_mm": 2.7699875283789543,
+            "tail_mm": 11.933338555578716,
+            "core_weight": 0.7361321620419022
+          },
+          "outside_moliere_radius": 0.17008655774099385,
+          "outside_3p5_moliere_radii": 0.020085866060044075,
+          "spots": {
+            "relative_variance_raw": 0.005911694408058904,
+            "relative_variance_conditioned": 0.0012581803419403836,
+            "spot_number_raw": 169.15624032202783,
+            "spot_number_conditioned": 794.7986204090471,
+            "explained_variance_fraction": 0.7871709437102813
+          },
+          "layer_energy_share": 0.08117745885619203
+        },
+        {
+          "layer": 13,
+          "depth_x0": 12.5125250501002,
+          "tau": 1.392636094023707,
+          "core_mm": 2.9546557277326575,
+          "tail_mm": 13.851618200668083,
+          "core_weight": 0.5022771253907578,
+          "tv_points": {
+            "two_component_fit": 0.8067443272571235,
+            "one_component_fit": 7.4565285476144885,
+            "dec001": 3.5492587830074926,
+            "grindhammer_peters_published": 9.251703540244769
+          },
+          "central3_fraction": {
+            "geant4": 0.8330500927373703,
+            "two_component_fit": 0.831902310452562,
+            "dec001": 0.8406182244661775
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.450428675086173,
+            "core_mm": 2.934288220882916,
+            "tail_mm": 12.298882950790837,
+            "core_weight": 0.6922677719320743
+          },
+          "outside_moliere_radius": 0.19829730980113927,
+          "outside_3p5_moliere_radii": 0.02405352216880328,
+          "spots": {
+            "relative_variance_raw": 0.007544286245721682,
+            "relative_variance_conditioned": 0.0016487209928409002,
+            "spot_number_raw": 132.55064394820567,
+            "spot_number_conditioned": 606.5307619313481,
+            "explained_variance_fraction": 0.7814609707080137
+          },
+          "layer_energy_share": 0.07144265572880222
+        },
+        {
+          "layer": 14,
+          "depth_x0": 13.43937875751503,
+          "tau": 1.4957943232106483,
+          "core_mm": 2.9865324682687038,
+          "tail_mm": 14.402557607141295,
+          "core_weight": 0.46110269683755056,
+          "tv_points": {
+            "two_component_fit": 0.9069187680931255,
+            "one_component_fit": 7.8570797964695345,
+            "dec001": 4.013482342284543,
+            "grindhammer_peters_published": 8.734509723408589
+          },
+          "central3_fraction": {
+            "geant4": 0.8138375905446026,
+            "two_component_fit": 0.8124242913676225,
+            "dec001": 0.8170422053739692
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.5578678362036673,
+            "core_mm": 3.098588913386877,
+            "tail_mm": 12.775220004316157,
+            "core_weight": 0.6479443019424928
+          },
+          "outside_moliere_radius": 0.22270052231444312,
+          "outside_3p5_moliere_radii": 0.027799659590934396,
+          "spots": {
+            "relative_variance_raw": 0.009205723406250735,
+            "relative_variance_conditioned": 0.0020590406848216263,
+            "spot_number_raw": 108.62807363091038,
+            "spot_number_conditioned": 485.66306016757,
+            "explained_variance_fraction": 0.7763303768801563
+          },
+          "layer_energy_share": 0.061493842153772474
+        },
+        {
+          "layer": 15,
+          "depth_x0": 14.366232464929858,
+          "tau": 1.5989525523975894,
+          "core_mm": 2.9974749801510026,
+          "tail_mm": 15.074679828899686,
+          "core_weight": 0.40933637085564817,
+          "tv_points": {
+            "two_component_fit": 0.9715364040121179,
+            "one_component_fit": 8.48329330799838,
+            "dec001": 3.9338233031988024,
+            "grindhammer_peters_published": 8.764698782009505
+          },
+          "central3_fraction": {
+            "geant4": 0.7888373073695483,
+            "two_component_fit": 0.7871526368200521,
+            "dec001": 0.7924327560929292
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.6653069973211616,
+            "core_mm": 3.2628896058908388,
+            "tail_mm": 13.347640882090818,
+            "core_weight": 0.6038879612754835
+          },
+          "outside_moliere_radius": 0.25454056290173915,
+          "outside_3p5_moliere_radii": 0.03291169112349346,
+          "spots": {
+            "relative_variance_raw": 0.011077137466463835,
+            "relative_variance_conditioned": 0.0029579743571692225,
+            "spot_number_raw": 90.27603052029568,
+            "spot_number_conditioned": 338.0691917008363,
+            "explained_variance_fraction": 0.7329658166539392
+          },
+          "layer_energy_share": 0.051571117389620655
+        },
+        {
+          "layer": 16,
+          "depth_x0": 15.293086172344688,
+          "tau": 1.7021107815845307,
+          "core_mm": 3.102756990689954,
+          "tail_mm": 15.724884701800084,
+          "core_weight": 0.3761957714899347,
+          "tv_points": {
+            "two_component_fit": 1.1619248237125448,
+            "one_component_fit": 8.769267757526391,
+            "dec001": 3.7543594210434392,
+            "grindhammer_peters_published": 8.283718743960792
+          },
+          "central3_fraction": {
+            "geant4": 0.7684664976183628,
+            "two_component_fit": 0.7664055065756599,
+            "dec001": 0.767065811760438
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.772746158438656,
+            "core_mm": 3.4271902983948,
+            "tail_mm": 14.005755762283071,
+            "core_weight": 0.5606846402029688
+          },
+          "outside_moliere_radius": 0.2808657477701837,
+          "outside_3p5_moliere_radii": 0.03749457274086441,
+          "spots": {
+            "relative_variance_raw": 0.01376139576782998,
+            "relative_variance_conditioned": 0.004248768205370776,
+            "spot_number_raw": 72.66704750529016,
+            "spot_number_conditioned": 235.36233366082942,
+            "explained_variance_fraction": 0.6912545589813555
+          },
+          "layer_energy_share": 0.04283240338956789
+        },
+        {
+          "layer": 17,
+          "depth_x0": 16.21993987975952,
+          "tau": 1.8052690107714722,
+          "core_mm": 3.151722381316575,
+          "tail_mm": 16.522316821091994,
+          "core_weight": 0.3406832985994373,
+          "tv_points": {
+            "two_component_fit": 1.299546486176253,
+            "one_component_fit": 9.039968322250031,
+            "dec001": 3.84977998482231,
+            "grindhammer_peters_published": 7.915666989623678
+          },
+          "central3_fraction": {
+            "geant4": 0.7448861184807389,
+            "two_component_fit": 0.7423922410574455,
+            "dec001": 0.7412065555578065
+          },
+          "grindhammer_peters_published": {
+            "tau_hom": 1.8801853195561502,
+            "core_mm": 3.5914909908987616,
+            "tail_mm": 14.74249034503972,
+            "core_weight": 0.5187925605921676
+          },
+          "outside_moliere_radius": 0.31162290336755655,
+          "outside_3p5_moliere_radii": 0.043279886843501286,
+          "spots": {
+            "relative_variance_raw": 0.016547438620545845,
+            "relative_variance_conditioned": 0.0064867245778533755,
+            "spot_number_raw": 60.4323136003881,
+            "spot_number_conditioned": 154.1610080708754,
+            "explained_variance_fraction": 0.6079922260718197
+          },
+          "layer_energy_share": 0.033457381633230344
+        }
+      ],
+      "energy_weighted_outside_moliere_radius": 0.1456547289131539,
+      "energy_weighted_outside_3p5_moliere_radii": 0.01886630018669778
+    }
+  },
+  "conventions": {
+    "axis": "the entry point; the energy centroid of the prefix is within 0.2-0.65 mm (sd) of it",
+    "observable": "deposit_grid_mev normalised by the layer total, mean over events (ratio of sums)",
+    "sub_cell_positions": 24,
+    "tau": "layer-centre depth over ln(E / E_c) - 0.5"
+  }
+}
