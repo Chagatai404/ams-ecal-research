@@ -1,0 +1,4303 @@
+{
+  "status": "DEVELOPMENT on exposed events; not the registered test; sealed sets not read",
+  "sealed_data_read": false,
+  "bootstraps": 60,
+  "per_energy": {
+    "10": {
+      "deposit_grid_mev": {
+        "events": {
+          "electron": 1000,
+          "proton": 1408
+        },
+        "features": {
+          "D0@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.6113318499682137,
+              "ks_matched": NaN,
+              "ks_matched_low": 0.38637123745819396,
+              "ks_matched_high": 0.7153246048961884,
+              "split_half_floor": 0.051652892561983466,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.6113318499682137,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05165289256198355,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.40654799745708836,
+              "ks_matched": NaN,
+              "ks_matched_low": 0.3242570556826849,
+              "ks_matched_high": 0.4683725055432372,
+              "split_half_floor": 0.051652892561983466,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.40654799745708836,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.051652892561983466,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.385092180546726,
+              "ks_matched": NaN,
+              "ks_matched_low": 0.32281644281644284,
+              "ks_matched_high": 0.4399234171156417,
+              "split_half_floor": 0.051652892561983466,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.385092180546726,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05371900826446281,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.5098537825810554,
+              "ks_matched": NaN,
+              "ks_matched_low": 0.3381282427802251,
+              "ks_matched_high": 0.5341475379356703,
+              "split_half_floor": 0.04958677685950413,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.5098537825810554,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.051652892561983466,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.416958041958042,
+              "ks_matched": NaN,
+              "ks_matched_low": 0.16556469907528754,
+              "ks_matched_high": 0.6878342245989305,
+              "split_half_floor": 0.05165289256198355,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.416958041958042,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05165289256198349,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.6330260648442467,
+              "ks_matched": NaN,
+              "ks_matched_low": 0.4665476190476191,
+              "ks_matched_high": 0.7322532537960954,
+              "split_half_floor": 0.05268595041322316,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.6330260648442467,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05268595041322316,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.4419103623649079,
+              "ks_matched": NaN,
+              "ks_matched_low": 0.4260148744964363,
+              "ks_matched_high": 0.5661298850901214,
+              "split_half_floor": 0.05371900826446281,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.4419103623649079,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05165289256198355,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.3450413223140496,
+              "ks_matched": NaN,
+              "ks_matched_low": 0.35945150191875086,
+              "ks_matched_high": 0.4673754665980177,
+              "split_half_floor": 0.051652892561983466,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.026,
+              "eligible_fraction_b": 0.6875,
+              "ks": 0.3450413223140496,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05371900826446282,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08902884264330048,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09291712303760494,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09054399415845193,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08557867834976271,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08736765242789335,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08335158817086524,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08587075575027389,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08964950711938652,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08225629791894853,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08687477181453085,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08822562979189488,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09211391018619937,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08771449434100043,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08598028477546547,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09200438116100765,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08672873311427526,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08853596202993791,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08630887185104053,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09034319094560055,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08870025556772543,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09043446513326035,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0919861263234758,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08742241694048919,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09142022635998542,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0870390653523184,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08649142022635997,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08817086527929896,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08355239138371662,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08895582329317266,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08941219423147136,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08913837166849214,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.23508522727272727,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09246075209930629,
+              "material_by_the_registered_rule": false
+            }
+          }
+        }
+      },
+      "readout_grid_mev": {
+        "events": {
+          "electron": 1000,
+          "proton": 1408
+        },
+        "features": {
+          "D0@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06574394463667821,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06574394463667821,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06574394463667821,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06920415224913493,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06574394463667821,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06574394463667821,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0692041522491349,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06920415224913495,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0692041522491349,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0692041522491349,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06920415224913495,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06747404844290655,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0692041522491349,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06747404844290655,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06574394463667821,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.41051136363636365,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06920415224913501,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.004261363636363636,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": NaN,
+              "material_by_the_registered_rule": false
+            }
+          }
+        }
+      }
+    },
+    "20": {
+      "deposit_grid_mev": {
+        "events": {
+          "electron": 1000,
+          "proton": 1449
+        },
+        "features": {
+          "D0@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.6056510711108345,
+              "ks_matched": 0.3251075426373416,
+              "ks_matched_low": 0.27213071591588783,
+              "ks_matched_high": 0.4054977299369042,
+              "split_half_floor": 0.053452115812917644,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.6056510711108345,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.053452115812917644,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.5789099511789549,
+              "ks_matched": 0.47484208870345396,
+              "ks_matched_low": 0.4281710818493247,
+              "ks_matched_high": 0.5644183359150609,
+              "split_half_floor": 0.05345211581291753,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.5789099511789549,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.055679287305122505,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.41257598791824734,
+              "ks_matched": 0.4533286076183144,
+              "ks_matched_low": 0.39656378283372884,
+              "ks_matched_high": 0.5276319213550272,
+              "split_half_floor": 0.053452115812917644,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.41257598791824734,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05345211581291759,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.32898777164362847,
+              "ks_matched": 0.37144864371221253,
+              "ks_matched_low": 0.31772215286740313,
+              "ks_matched_high": 0.44152026665059785,
+              "split_half_floor": 0.05456570155902002,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.32898777164362847,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.053452115812917644,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.500816361777801,
+              "ks_matched": 0.292992099394469,
+              "ks_matched_low": 0.23136911216468722,
+              "ks_matched_high": 0.3911171023332256,
+              "split_half_floor": 0.055679287305122505,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.500816361777801,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05122494432071273,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.8085757147935196,
+              "ks_matched": 0.5732683372360533,
+              "ks_matched_low": 0.5006502448970072,
+              "ks_matched_high": 0.6384622474885137,
+              "split_half_floor": 0.055679287305122505,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.8085757147935196,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.055679287305122505,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.6541266937247585,
+              "ks_matched": 0.5190495979358631,
+              "ks_matched_low": 0.43726967513936565,
+              "ks_matched_high": 0.5956952509208284,
+              "split_half_floor": 0.05345211581291759,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.6541266937247585,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05345211581291759,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.334826816831713,
+              "ks_matched": 0.45303613757935635,
+              "ks_matched_low": 0.39122321622991324,
+              "ks_matched_high": 0.555753308411529,
+              "split_half_floor": 0.05233853006681516,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.898,
+              "eligible_fraction_b": 0.7653554175293306,
+              "ks": 0.334826816831713,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0556792873051225,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06399454911719393,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06622230122052379,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06790496504325155,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06754354781372196,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06688588695343048,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06794643915155824,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06657779357743812,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06395307500888733,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06782794169925345,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0666607417940514,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07019196587273374,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06509657542362837,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06692736106173722,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0696824268278232,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06529209621993123,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0680293873681716,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06398862424457874,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06545799265315796,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06898921673184025,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06551131650669506,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06758502192202867,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0649069794999408,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06709325749496381,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07072520440810523,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06686811233558482,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06342576134613104,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06809456096693917,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06766204526602676,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06711695698542477,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06261405379784335,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06880554568076787,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.40096618357487923,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06408934707903777,
+              "material_by_the_registered_rule": false
+            }
+          }
+        }
+      },
+      "readout_grid_mev": {
+        "events": {
+          "electron": 1000,
+          "proton": 1449
+        },
+        "features": {
+          "D0@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05764411027568922,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05513784461152893,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06015037593984962,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06015037593984962,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05764411027568922,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05513784461152882,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06015037593984962,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05889724310776945,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05764411027568922,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05639097744360905,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05513784461152882,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05513784461152893,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05764411027568922,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06015037593984962,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05513784461152893,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.001,
+              "eligible_fraction_b": 0.5507246376811594,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06015037593984962,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666666,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.14583333333333337,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.14583333333333337,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666669,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666666,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.14583333333333337,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.14583333333333337,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.14583333333333337,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.14583333333333337,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.15625,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.14583333333333337,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666669,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.06625258799171843,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.16666666666666663,
+              "material_by_the_registered_rule": false
+            }
+          }
+        }
+      }
+    },
+    "50": {
+      "deposit_grid_mev": {
+        "events": {
+          "electron": 1000,
+          "proton": 1453
+        },
+        "features": {
+          "D0@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.7097004567592803,
+              "ks_matched": 0.44650404465473276,
+              "ks_matched_low": 0.42582912639271364,
+              "ks_matched_high": 0.5256638265642651,
+              "split_half_floor": 0.05082965931863723,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.7097004567592803,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05284368737474948,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.5143101084277555,
+              "ks_matched": 0.552767615947268,
+              "ks_matched_low": 0.5197219110151156,
+              "ks_matched_high": 0.6198458707563872,
+              "split_half_floor": 0.05054308617234468,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.5143101084277555,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05125250501002007,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.4082418553006788,
+              "ks_matched": 0.5366819617122754,
+              "ks_matched_low": 0.49863307041579547,
+              "ks_matched_high": 0.5990587407594148,
+              "split_half_floor": 0.049561122244488956,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.4082418553006788,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.051951903807615246,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.42885490532549353,
+              "ks_matched": 0.5100359871331331,
+              "ks_matched_low": 0.4615380520631697,
+              "ks_matched_high": 0.5710954024320336,
+              "split_half_floor": 0.05162725450901806,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.42885490532549353,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.052587174348697474,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.5482810541634071,
+              "ks_matched": 0.27278894442687424,
+              "ks_matched_low": 0.2719720356573942,
+              "ks_matched_high": 0.35920404850891025,
+              "split_half_floor": 0.05042016806722682,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.5482810541634071,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.050745490981964014,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.7695005930300047,
+              "ks_matched": 0.5220356694552718,
+              "ks_matched_low": 0.48456014619392795,
+              "ks_matched_high": 0.5808125418548037,
+              "split_half_floor": 0.0504268537074148,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.7695005930300047,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.04949699398797597,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.6566726390255802,
+              "ks_matched": 0.5055319871171778,
+              "ks_matched_low": 0.46832618408206766,
+              "ks_matched_high": 0.5669834283198937,
+              "split_half_floor": 0.050865731462925806,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.6566726390255802,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05071543086172341,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.2789529024823143,
+              "ks_matched": 0.4046960568643345,
+              "ks_matched_low": 0.37802446397287,
+              "ks_matched_high": 0.45516952510544645,
+              "split_half_floor": 0.05105811623246495,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.999,
+              "eligible_fraction_b": 0.8189951823812801,
+              "ks": 0.2789529024823143,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05164529058116224,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05754147812971344,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05446914551773896,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05446258771066953,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05944324217981509,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.060600695127549314,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.058161190897763795,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06031215161649944,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.060066233851400114,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06271886681093841,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05734146501409937,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05999081907010295,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.059990819070102924,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0574726211554856,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05563643517607715,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05752508361204006,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.060033444816053466,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05732834939996062,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05524952455898752,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05498065446914552,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.057531641419109436,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05720375106564374,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.057875926290248514,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05723981900452496,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05570529215030495,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.056980785625286925,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06023345793166765,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05768902878877305,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06018427437864782,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05559380943012651,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05544625877106696,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06000393468424159,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.002,
+              "eligible_fraction_b": 0.5375086028905712,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05709882615253464,
+              "material_by_the_registered_rule": false
+            }
+          }
+        }
+      },
+      "readout_grid_mev": {
+        "events": {
+          "electron": 1000,
+          "proton": 1453
+        },
+        "features": {
+          "D0@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.783013698630137,
+              "ks_matched": 0.6958951965065502,
+              "ks_matched_low": 0.5826055996518751,
+              "ks_matched_high": 0.8256863611814579,
+              "split_half_floor": 0.051785476349100606,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.783013698630137,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0536020430823895,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.7566280295047418,
+              "ks_matched": 0.5779039301310043,
+              "ks_matched_low": 0.4956730769230769,
+              "ks_matched_high": 0.6647478070175439,
+              "split_half_floor": 0.05225405285365313,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.7566280295047418,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0522140795025538,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.6164805057955742,
+              "ks_matched": 0.42069868995633186,
+              "ks_matched_low": 0.34765997067366927,
+              "ks_matched_high": 0.523855033340408,
+              "split_half_floor": 0.05536309127248501,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.6164805057955742,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05590495225405284,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.2908746048472076,
+              "ks_matched": 0.31152838427947593,
+              "ks_matched_low": 0.25959624606816895,
+              "ks_matched_high": 0.37120629862217636,
+              "split_half_floor": 0.051554519209415894,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.2908746048472076,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.053002442815900525,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.6744783983140148,
+              "ks_matched": 0.4608733624454149,
+              "ks_matched_low": 0.40743113106920564,
+              "ks_matched_high": 0.6822853957636565,
+              "split_half_floor": 0.05096158116811016,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.6744783983140148,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05431934266044862,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.9325605900948367,
+              "ks_matched": 0.8646288209606988,
+              "ks_matched_low": 0.8356070842819026,
+              "ks_matched_high": 0.9108930897111774,
+              "split_half_floor": 0.051525649566955406,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.9325605900948367,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.052709304907839205,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.880927291886196,
+              "ks_matched": 0.7816593886462883,
+              "ks_matched_low": 0.7544777881054604,
+              "ks_matched_high": 0.8705237404856833,
+              "split_half_floor": 0.05375305351987561,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.880927291886196,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0516055962691539,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.4520547945205479,
+              "ks_matched": 0.5021834061135371,
+              "ks_matched_low": 0.46383431284589566,
+              "ks_matched_high": 0.632031826700692,
+              "split_half_floor": 0.05282922496113701,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.025,
+              "eligible_fraction_b": 0.6531314521679285,
+              "ks": 0.4520547945205479,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.052269598045747295,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08387096774193548,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08387096774193548,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09677419354838707,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09032258064516134,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09677419354838707,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09032258064516129,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09032258064516127,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.09677419354838701,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.08387096774193553,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.21335168616655195,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0903225806451613,
+              "material_by_the_registered_rule": false
+            }
+          }
+        }
+      }
+    },
+    "100": {
+      "deposit_grid_mev": {
+        "events": {
+          "electron": 1000,
+          "proton": 1432
+        },
+        "features": {
+          "D0@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.7092776831345827,
+              "ks_matched": 0.45540977274101935,
+              "ks_matched_low": 0.4381410328638328,
+              "ks_matched_high": 0.5337692124536556,
+              "split_half_floor": 0.05200000000000003,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.7092776831345827,
+              "ks_matched": 0.962882096069869,
+              "ks_matched_low": 0.9486953078174502,
+              "ks_matched_high": 0.9934217423714141,
+              "split_half_floor": 0.04999999999999996,
+              "material_by_the_registered_rule": true
+            }
+          },
+          "D1@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.4674821124361158,
+              "ks_matched": 0.5910287188030614,
+              "ks_matched_low": 0.5455047980066438,
+              "ks_matched_high": 0.6529542232505162,
+              "split_half_floor": 0.05399999999999999,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.4674821124361158,
+              "ks_matched": 0.7489082969432315,
+              "ks_matched_low": 0.7154930690224808,
+              "ks_matched_high": 0.8316048034934499,
+              "split_half_floor": 0.05199999999999999,
+              "material_by_the_registered_rule": true
+            }
+          },
+          "D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.3439659284497445,
+              "ks_matched": 0.6043286824363012,
+              "ks_matched_low": 0.5734613608259322,
+              "ks_matched_high": 0.6644980267679356,
+              "split_half_floor": 0.051999999999999935,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.3439659284497445,
+              "ks_matched": 0.594129063561378,
+              "ks_matched_low": 0.48647654315050376,
+              "ks_matched_high": 0.7112551387704841,
+              "split_half_floor": 0.05200000000000003,
+              "material_by_the_registered_rule": true
+            }
+          },
+          "D0-D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.5150289608177172,
+              "ks_matched": 0.6263250114734399,
+              "ks_matched_low": 0.5853592738410472,
+              "ks_matched_high": 0.6744985055372181,
+              "split_half_floor": 0.053999999999999965,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.5150289608177172,
+              "ks_matched": 0.7751091703056768,
+              "ks_matched_low": 0.7387208724069337,
+              "ks_matched_high": 0.8406641528406233,
+              "split_half_floor": 0.04899999999999999,
+              "material_by_the_registered_rule": true
+            }
+          },
+          "D0@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.582580919931857,
+              "ks_matched": 0.34235493310500403,
+              "ks_matched_low": 0.31667015263151077,
+              "ks_matched_high": 0.41674763648687446,
+              "split_half_floor": 0.05400000000000005,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.582580919931857,
+              "ks_matched": 0.8275109170305677,
+              "ks_matched_low": 0.8052610770833134,
+              "ks_matched_high": 0.9501679177250716,
+              "split_half_floor": 0.05299999999999999,
+              "material_by_the_registered_rule": true
+            }
+          },
+          "D1@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.717465076660988,
+              "ks_matched": 0.573338473470275,
+              "ks_matched_low": 0.5593520039581101,
+              "ks_matched_high": 0.632298862772459,
+              "split_half_floor": 0.05199999999999999,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.717465076660988,
+              "ks_matched": 0.9279475982532751,
+              "ks_matched_low": 0.9082864947583701,
+              "ks_matched_high": 0.9532724928884703,
+              "split_half_floor": 0.05400000000000005,
+              "material_by_the_registered_rule": true
+            }
+          },
+          "D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.5780272572402045,
+              "ks_matched": 0.5516738710864293,
+              "ks_matched_low": 0.5339836396371953,
+              "ks_matched_high": 0.6162845215230677,
+              "split_half_floor": 0.050000000000000044,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.5780272572402045,
+              "ks_matched": 0.6855895196506551,
+              "ks_matched_low": 0.648496495216444,
+              "ks_matched_high": 0.7323683493865382,
+              "split_half_floor": 0.04999999999999999,
+              "material_by_the_registered_rule": true
+            }
+          },
+          "D0-D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.18602214650766602,
+              "ks_matched": 0.4524876391067427,
+              "ks_matched_low": 0.43062577410439407,
+              "ks_matched_high": 0.508838890654555,
+              "split_half_floor": 0.05199999999999996,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 1.0,
+              "eligible_fraction_b": 0.8198324022346368,
+              "ks": 0.18602214650766602,
+              "ks_matched": 0.6532427624130681,
+              "ks_matched_low": 0.5830282986557068,
+              "ks_matched_high": 0.8519614994064729,
+              "split_half_floor": 0.050000000000000044,
+              "material_by_the_registered_rule": true
+            }
+          },
+          "D0@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.4374696275011092,
+              "ks_matched": 0.1159494376800818,
+              "ks_matched_low": 0.09864029555284337,
+              "ks_matched_high": 0.26749982732421607,
+              "split_half_floor": 0.21082621082621078,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.4374696275011092,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.20940170940170943,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.6070062752223795,
+              "ks_matched": 0.41225950367134484,
+              "ks_matched_low": 0.3343869390048099,
+              "ks_matched_high": 0.5590102883507996,
+              "split_half_floor": 0.21438746438746442,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.6070062752223795,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.21367521367521367,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.48847429694267774,
+              "ks_matched": 0.3162468630913653,
+              "ks_matched_low": 0.2324260439881283,
+              "ks_matched_high": 0.47375182032134266,
+              "split_half_floor": 0.21581196581196582,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.48847429694267774,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.21509971509971515,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.2593758583532295,
+              "ks_matched": 0.2836230132911981,
+              "ks_matched_low": 0.23698104276346174,
+              "ks_matched_high": 0.42825736699948413,
+              "split_half_floor": 0.21225071225071235,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.2593758583532295,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.2101139601139601,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.608738828202582,
+              "ks_matched": 0.29658890231434143,
+              "ks_matched_low": 0.23797617656734738,
+              "ks_matched_high": 0.4101499168112145,
+              "split_half_floor": 0.20512820512820507,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.608738828202582,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.21082621082621078,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.7226224936085698,
+              "ks_matched": 0.5370387582489078,
+              "ks_matched_low": 0.4810846293066456,
+              "ks_matched_high": 0.6340152220709047,
+              "split_half_floor": 0.2115384615384615,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.7226224936085698,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.20655270655270663,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.6512920196919436,
+              "ks_matched": 0.5026024723487312,
+              "ks_matched_low": 0.44771094260263344,
+              "ks_matched_high": 0.6002017446983653,
+              "split_half_floor": 0.20868945868945873,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.6512920196919436,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.2065527065527064,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.3982125124131083,
+              "ks_matched": 0.4639371688818663,
+              "ks_matched_low": 0.3624889361482298,
+              "ks_matched_high": 0.5373817287721722,
+              "split_half_floor": 0.21296296296296302,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.3982125124131083,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.2101139601139601,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.3665828561769739,
+              "ks_matched": 0.11441583790315085,
+              "ks_matched_low": 0.08868770764119599,
+              "ks_matched_high": 0.286169727131211,
+              "split_half_floor": 0.21723646723646733,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.3665828561769739,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.2129629629629629,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.6597434976441505,
+              "ks_matched": 0.45650153359977697,
+              "ks_matched_low": 0.4175966609757381,
+              "ks_matched_high": 0.5204163809780346,
+              "split_half_floor": 0.20584045584045582,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.6597434976441505,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.20797720797720798,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.6251980815145048,
+              "ks_matched": 0.47211636769216464,
+              "ks_matched_low": 0.4201843742895791,
+              "ks_matched_high": 0.5573636788080685,
+              "split_half_floor": 0.20655270655270663,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.6251980815145048,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.20797720797720792,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.28904054596547574,
+              "ks_matched": 0.36885398271214803,
+              "ks_matched_low": 0.25656859584017044,
+              "ks_matched_high": 0.5197071915363498,
+              "split_half_floor": 0.20868945868945868,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.28904054596547574,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.21367521367521367,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.5554945171036785,
+              "ks_matched": 0.304907519286179,
+              "ks_matched_low": 0.2361318088386434,
+              "ks_matched_high": 0.4382731213550179,
+              "split_half_floor": 0.20655270655270652,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.5554945171036785,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.20726495726495733,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.8241881298992162,
+              "ks_matched": 0.686402081977879,
+              "ks_matched_low": 0.6452772797131148,
+              "ks_matched_high": 0.7479475308641975,
+              "split_half_floor": 0.2101139601139601,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.8241881298992162,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.20940170940170943,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.7269327473641953,
+              "ks_matched": 0.562412863649038,
+              "ks_matched_low": 0.5090895207087667,
+              "ks_matched_high": 0.6323171450279883,
+              "split_half_floor": 0.20584045584045582,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.7269327473641953,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.21723646723646733,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.16423334530626046,
+              "ks_matched": 0.2399386560089228,
+              "ks_matched_low": 0.18344908140438615,
+              "ks_matched_high": 0.37715801654258235,
+              "split_half_floor": 0.20299145299145302,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.053,
+              "eligible_fraction_b": 0.6236033519553073,
+              "ks": 0.16423334530626046,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.21367521367521367,
+              "material_by_the_registered_rule": false
+            }
+          }
+        }
+      },
+      "readout_grid_mev": {
+        "events": {
+          "electron": 1000,
+          "proton": 1432
+        },
+        "features": {
+          "D0@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.7568515950069349,
+              "ks_matched": 0.35784848235371014,
+              "ks_matched_low": 0.31063636509084547,
+              "ks_matched_high": 0.4996120121306971,
+              "split_half_floor": 0.057583102493074856,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.7568515950069349,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05740997229916894,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.6505520110957004,
+              "ks_matched": 0.5680316590508991,
+              "ks_matched_low": 0.5121431285705659,
+              "ks_matched_high": 0.644234639564494,
+              "split_half_floor": 0.059637580794090456,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.6505520110957004,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06121883656509691,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.5225561719833565,
+              "ks_matched": 0.5598153592562826,
+              "ks_matched_low": 0.48144287906616173,
+              "ks_matched_high": 0.6149515427462205,
+              "split_half_floor": 0.061176515851031045,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.5225561719833565,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06169975377039087,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9-18": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.4177253814147019,
+              "ks_matched": 0.49918474873685575,
+              "ks_matched_low": 0.4421616762283319,
+              "ks_matched_high": 0.5762375492809659,
+              "split_half_floor": 0.06179208987380734,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.4177253814147019,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.060080024622960915,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.6263079056865464,
+              "ks_matched": 0.30798989043673264,
+              "ks_matched_low": 0.27076532457959845,
+              "ks_matched_high": 0.4133287932263893,
+              "split_half_floor": 0.06016851338873502,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.6263079056865464,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.060380116959064326,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.8840651872399445,
+              "ks_matched": 0.6275451863705311,
+              "ks_matched_low": 0.5888012182974852,
+              "ks_matched_high": 0.7316534870869931,
+              "split_half_floor": 0.0647006771314251,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.8840651872399445,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.059995383194829166,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.7741955617198335,
+              "ks_matched": 0.5125036734768479,
+              "ks_matched_low": 0.5008980848900153,
+              "ks_matched_high": 0.6172861655996486,
+              "split_half_floor": 0.06005309325946451,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.7741955617198335,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.06145737149892275,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.24733425797503467,
+              "ks_matched": 0.39114737097966384,
+              "ks_matched_low": 0.38073274295457715,
+              "ks_matched_high": 0.4895118313763658,
+              "split_half_floor": 0.062465373961218845,
+              "material_by_the_registered_rule": true
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.721,
+              "eligible_fraction_b": 0.6983240223463687,
+              "ks": 0.24733425797503467,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.05933364112034467,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.068359375,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.072265625,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@1-2-3-6-9": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.072265625,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D1@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.07421875,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          },
+          "D0-D2@2-3-6": {
+            "occupied_cells": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.078125,
+              "material_by_the_registered_rule": false
+            },
+            "total_energy": {
+              "eligible_fraction_a": 0.0,
+              "eligible_fraction_b": 0.3575418994413408,
+              "ks": NaN,
+              "ks_matched": NaN,
+              "ks_matched_low": NaN,
+              "ks_matched_high": NaN,
+              "split_half_floor": 0.0703125,
+              "material_by_the_registered_rule": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
