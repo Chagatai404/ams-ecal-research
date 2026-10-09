@@ -51,7 +51,7 @@ All with provenance: clean commit, per-file SHA-256, disjoint seeds, a manifest;
 | G-dev | design and debug the observables, choose windows, set tolerances | existing exposed electron and proton Geant4 (section 2) | exists |
 | G-train | the classical-ML ladder and the sample-efficiency curves (they need statistics the exposed sets do not have) | e- and p, 10/20/50/100 GeV, **10,000 per class per energy**, fine deposits stored, entry spot as the pilot | NEW Geant4 run, about 4-6 h on 12 workers (scaled from the recorded timings) |
 | G-final | the one registered test: survival through readout, incremental information, e/p separation | the **sealed** sets (7 energies; the 14, 30, 70 GeV interpolation points included) | exists, unopened: opened ONCE, through the opening ledger |
-| G-syst | is the structure a Geant4 artefact | protons with `QGSP_BERT`, cut 0.1 mm, electron EM-option variant, at 2 energies x 2000 | NEW, small; needs approval to run Geant4 |
+| G-syst | is the structure a Geant4 artefact | electrons with `FTFP_BERT_EMZ` and `FTFP_BERT_EMV` and with a 0.1 mm cut, at 20 and 100 GeV x 2000 each; the proton variants (QBBC, QGSP_BERT, 0.1 mm) already exist | NEW, small; needs approval to run Geant4 |
 | F-v0 | the FastMC arm: does a smooth, calibrated generator preserve the observables | FastMC electrons (Slice 2 candidate or its successor) and protons at the G-train energies and counts, perfect-event version | uses existing generators; labelled candidate, not validated |
 
 Matching rules, written before any look: equal events per class per energy; the same entry spot; energy matched by construction (the same grid); containment and

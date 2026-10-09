@@ -438,7 +438,13 @@ class ECALTransport:
         detector.RegisterParallelWorld(self._scoring_world())
         self.run_manager.SetUserInitialization(detector)
 
-        physics = getattr(g4, physics_list)()
+        if hasattr(g4, physics_list):
+            physics = getattr(g4, physics_list)()
+        else:  # reference lists with non-default EM constructors (FTFP_BERT_EMZ, _EMV, ...) exist only in the factory
+            factory = g4.G4PhysListFactory()
+            if not factory.IsReferencePhysList(physics_list):
+                raise PilotConfigError(f"unknown Geant4 physics list {physics_list!r}")
+            physics = factory.GetReferencePhysList(physics_list)
         parallel = g4.G4ParallelWorldPhysics("scoring")
         physics.RegisterPhysics(parallel)
         self._keep += [detector, physics, parallel]

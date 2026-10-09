@@ -1,0 +1,67 @@
+{
+  "thresholds": {
+    "occupancy_relative_tolerance": 0.1,
+    "hit_cell_ks_remaining_fraction_maximum": 0.5,
+    "transfer_fraction_minimum": 0.7,
+    "profile_gap_maximum_points": 0.2,
+    "profile_regression_points": 0.3,
+    "profile_regression_per_energy_points": 0.5,
+    "coupling_regression": 0.05,
+    "spot_number_regression": 0.1,
+    "added_parameters_maximum": 1,
+    "ks_regression": {
+      "core_fraction": 0.03,
+      "containment_fraction": 0.03,
+      "max_cell_fraction": 0.03,
+      "width_mm": 0.03
+    }
+  },
+  "criteria": {
+    "A1_occupied_cell_ratio_to_holdout": {
+      "10": 0.9715089307886374,
+      "20": 0.9741977806534908,
+      "50": 0.991315047546232,
+      "100": 1.0225936506048556
+    },
+    "A1_ok": true,
+    "A2_hit_cell_ks": {
+      "base": 1.0,
+      "candidate": 0.2011875
+    },
+    "A2_ok": true,
+    "B1_hit_cell_ks_improvement": {
+      "holdout": 0.7988125,
+      "calibration": 0.7862916666666666
+    },
+    "B1_ok": true,
+    "B2_profile_error_gap_points": 0.025918310689970525,
+    "B2_ok": true,
+    "B3_quantum_mev": 1.359656212728559,
+    "B3_measured_range_mev": [
+      1.179572314760155,
+      1.4659973838999176
+    ],
+    "B3_ok": true,
+    "C1_added_parameters": 1,
+    "C1_ok": true,
+    "C2_changes_on_holdout": {
+      "profile_error_layers_3_17_mean_points": -0.00876233350183453,
+      "coupling_abs_difference": 0.07575548113046454,
+      "spot_number_rms_log_ratio": 0.5551844715482678,
+      "ks_core_fraction": -0.009416666666666684,
+      "ks_containment_fraction": 0.005666666666666598,
+      "ks_max_cell_fraction": 0.00810416666666669,
+      "ks_width_mm": 0.10797916666666685
+    },
+    "C2_ok": false,
+    "C3_profile_regression_per_energy_points": {
+      "10": -0.009538464088553411,
+      "20": -0.01450814253113708,
+      "50": -0.010524229567789423,
+      "100": -0.00047849781985842554
+    },
+    "C3_ok": true
+  },
+  "adopted": false,
+  "verdict": "E2 NOT ADOPTED: its base stays the candidate; the result is recorded"
+}

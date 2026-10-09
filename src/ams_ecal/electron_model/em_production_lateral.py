@@ -105,11 +105,20 @@ class LateralParameters:
     # Faster-falling tail (opt-in; 1 reproduces Slice 2 exactly): the tail component's survival function is
     # (R_T^2 / (r^2 + R_T^2))^s with s = tail_exponent; s = 1 is the Grindhammer-Peters Cauchy-like tail.
     tail_exponent: float = 1.0
+    # Extension E2 (opt-in; 0 reproduces Slice 2 exactly): the tail component's spots carry a fixed absolute energy
+    # ``tail_quantum_mev`` (independent of the primary energy and the layer) instead of an equal share of the layer
+    # energy; the core component is unchanged. The tail's energy share ``(1 - p) E_l`` is carried by
+    # ``(1 - p) E_l / tail_quantum_mev`` spots (at least one), each sharing that energy equally.
+    tail_quantum_mev: float = 0.0
 
     def __post_init__(self) -> None:
         for name, value in asdict(self).items():
             if not isfinite(float(value)):
                 raise ValueError(f"{name} must be finite")
+        if self.tail_quantum_mev < 0.0:
+            raise ValueError("tail_quantum_mev must not be negative")
+        if self.tail_quantum_mev > 0.0 and self.spot_tail_refinement > 1.0:
+            raise ValueError("tail_quantum_mev and spot_tail_refinement (extension E1) are alternatives, not both")
         if self.tail_exponent < 1.0:
             raise ValueError("tail_exponent must be at least 1 (a tail not heavier than the Cauchy-like one)")
         if self.spot_tail_refinement < 1.0:
@@ -378,7 +387,7 @@ class EMProductionLateralModel:
         )
         fractions = self.longitudinal.layer_fractions(energy_mev, ln_t, ln_alpha)
         tau = self.depth_coordinate(energy_mev, ln_t, ln_alpha)
-        two_populations = self.parameters.spot_tail_refinement > 1.0
+        two_populations = self.parameters.spot_tail_refinement > 1.0 or self.parameters.tail_quantum_mev > 0.0
         core_p, tail_p, weight = self.component_probabilities(energy_mev, axis, tau) if two_populations else (None,) * 3
         return PreparedBatch(
             energy_mev=float(energy_mev),
@@ -404,15 +413,18 @@ class EMProductionLateralModel:
 
         weight = prepared.core_weight
         kappa = self.parameters.spot_tail_refinement
+        quantum = self.parameters.tail_quantum_mev
+        layer_energy = prepared.energy_mev * prepared.layer_fractions
         n_core = np.where(weight > 1e-12, np.maximum(np.rint(counts_per_layer[None, :] * weight), 1), 0).astype(
             np.int64
         )
-        n_tail = np.where(
-            1.0 - weight > 1e-12, np.maximum(np.rint(kappa * counts_per_layer[None, :] * (1.0 - weight)), 1), 0
-        ).astype(np.int64)
+        if quantum > 0.0:  # extension E2: the tail's spot number follows from its energy and the fixed quantum
+            tail_spots = layer_energy * (1.0 - weight) / quantum
+        else:
+            tail_spots = kappa * counts_per_layer[None, :] * (1.0 - weight)
+        n_tail = np.where(1.0 - weight > 1e-12, np.maximum(np.rint(tail_spots), 1), 0).astype(np.int64)
         core_counts = conditional_binomial_counts(rng, n_core, prepared.core_probabilities)[..., :-1]
         tail_counts = conditional_binomial_counts(rng, n_tail, prepared.tail_probabilities)[..., :-1]
-        layer_energy = prepared.energy_mev * prepared.layer_fractions
         core_energy = np.where(n_core > 0, layer_energy * weight / np.maximum(n_core, 1), 0.0)
         tail_energy = np.where(n_tail > 0, layer_energy * (1.0 - weight) / np.maximum(n_tail, 1), 0.0)
         return core_energy[..., None] * core_counts + tail_energy[..., None] * tail_counts

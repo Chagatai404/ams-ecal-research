@@ -1,0 +1,13 @@
+{
+  "status": "measured on the exposed baseline electrons (calibration set); not fitted; the sealed sets are not read",
+  "far_mm": 108.0,
+  "cell_threshold_mev": 0.2798003852367401,
+  "tail_quantum_mev": 1.359656212728559,
+  "per_energy_mev": {
+    "10": 1.179572314760155,
+    "20": 1.1993945338161378,
+    "50": 1.297419092061045,
+    "100": 1.4659973838999176
+  },
+  "occupied_cells_used": 174762
+}
