@@ -20,6 +20,21 @@ Command: `python -m ams_ecal.electron_studies.em_lateral_structure_study`.
 | a general parameterisation trades accuracy for generality; the parameters should be extracted from detailed simulation of the same detector | Geant4 Physics Reference Manual, GFlash chapter (web) | supports calibrating, not transferring |
 | competing approach: binned empirical radial histograms per layer and PCA bin, no closed-form law | AtlFast3, arXiv:2109.02551 (in the library; not read in detail here) | competing model, not adopted |
 
+**Reading depth of each source (added 2026-10-08 under the Research OS v0.8 literature-reliability rule: reading depth is not independent claim verification, and a snippet or abstract is a gap, not support).**
+
+| source | what was actually read | status of the claims taken from it |
+|---|---|---|
+| Grindhammer and Peters, hep-ex/0001020 | full-text extraction of Sec. 3.4-3.5 and Appendix A (Eqs. 22-26, 29, 31-41, A.1.3, A.2.4-A.2.5), and pages 9-10 read as images for Eqs. 31-40 | full-text read by the coordinator (not a separate verifier); exact locators recorded; the E-in-GeV unit and Z = 82 for the composite are ASSUMPTIONS, not read |
+| Kounine et al., NIM A 869 | pages 113-114 read as images (Eqs. 1-3, Fig. 8) and text extraction of Eq. 5 and Fig. 11 | full-text read by the coordinator; the parameters R_C, R_T, Q_C are not given in the paper (they are cited from its ref. [3]) |
+| Chin. Phys. C 40 (2016) 096204 | text extraction of the lateral-distribution paragraph (Eq. 2) | full-text read by the coordinator |
+| PDG Review 2025, Sec. 34.5 | text extraction of the transverse-development paragraph (Eq. 34.37, 10% and 99% statements) | full-text read by the coordinator |
+| Geant4 Physics Reference Manual, GFlash chapter | **a web-search result snippet only; the page was not fetched or read** | CANDIDATE support only: "supports calibrating, not transferring" is qualified as snippet-level, not verified |
+| AtlFast3, arXiv:2109.02551 | **title and a search snippet only; the library PDF was not read** | named as a competing approach, not characterised beyond that |
+| Nishimura-Kamata-Greisen | search snippets only | dismissed as out of regime (air showers); not verified |
+| Longo and Sestili (1975), Bock et al. (1981), Peters' thesis | not retrieved | unknown |
+
+No literature manifest (the opt-in v0.8 format) was assembled for this slice, and none of these claims received an independent source verifier; the Grindhammer-Peters and AMS equations are used as a transferred structure that the Geant4 comparison then tests (the radial law's adequacy is an empirical result of this project, not a literature fact).
+
 Not usable: the Nishimura-Kamata-Greisen function (air showers). Not read: Longo and Sestili (1975), Bock et al. (1981) and Peters' thesis (cited by Grindhammer and Peters for the radial fits), which I could not retrieve. If you want the radial law's origin cross-checked, those are the sources to add to the library.
 
 **Reconciliation with the repository.** DEC-001's lateral law is a *single-component* `3R^2/(pi(r+R)^4)` with `R = A(E) layer^2 + B`. It is not the law the AMS papers use. Its provenance (the "AMS test-beam parametrization" of the module docstring) was not found in the papers read here, and it was not checked against them.

@@ -1,0 +1,1288 @@
+{
+  "status": "diagnostic on exposed electrons; the sealed sets are not read; no model is changed",
+  "sealed_data_read": false,
+  "cell_threshold_mev": 0.2798003852367401,
+  "distance_bins_mm": [
+    0.0,
+    9.0,
+    27.0,
+    54.0,
+    108.0,
+    216.0,
+    700.0
+  ],
+  "per_energy": {
+    "10": {
+      "geant4_baseline": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.99525,
+            "empty_fraction": 0.0033055555555555555,
+            "mean_energy_of_occupied_cell_mev": 208.24133091876695,
+            "energy_per_event_mev": 7461.085571411196,
+            "energy_per_occupied_cell_mev": 208.24152422370693
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9655138888888889,
+            "empty_fraction": 0.025180555555555557,
+            "mean_energy_of_occupied_cell_mev": 21.2590798151936,
+            "energy_per_event_mev": 1477.958569894431,
+            "energy_per_occupied_cell_mev": 21.260390550432717
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.8278425925925926,
+            "empty_fraction": 0.13357407407407407,
+            "mean_energy_of_occupied_cell_mev": 4.100216958774183,
+            "energy_per_event_mev": 367.1366829608116,
+            "energy_per_occupied_cell_mev": 4.106352779545356
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.3203240740740741,
+            "empty_fraction": 0.618875,
+            "mean_energy_of_occupied_cell_mev": 1.5960806857111276,
+            "energy_per_event_mev": 111.98282817609935,
+            "energy_per_occupied_cell_mev": 1.6184828468868238
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.028025462962962964,
+            "empty_fraction": 0.9604444444444444,
+            "mean_energy_of_occupied_cell_mev": 1.1793200463521802,
+            "energy_per_event_mev": 14.693277446099838,
+            "energy_per_occupied_cell_mev": 1.213618356826616
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.0009305555555555556,
+            "empty_fraction": 0.9982800925925925,
+            "mean_energy_of_occupied_cell_mev": 1.1871698610669938,
+            "energy_per_event_mev": 0.49343080387534494,
+            "energy_per_occupied_cell_mev": 1.2274398106351865
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.07413636363636364,
+            "empty_fraction": 0.9086363636363637,
+            "mean_energy_of_occupied_cell_mev": 1.3782750954886402,
+            "energy_per_event_mev": 20.589566305548274,
+            "energy_per_occupied_cell_mev": 1.4026545613153671
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.15287205387205388,
+            "empty_fraction": 0.8268451178451178,
+            "mean_energy_of_occupied_cell_mev": 2.9234168466680326,
+            "energy_per_event_mev": 266.7640033110995,
+            "energy_per_occupied_cell_mev": 2.9377354283978976
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.16570959595959597,
+            "empty_fraction": 0.8162020202020202,
+            "mean_energy_of_occupied_cell_mev": 3.140468753258804,
+            "energy_per_event_mev": 206.95264977023837,
+            "energy_per_occupied_cell_mev": 3.1537564159375564
+          }
+        },
+        "occupied_cells_per_event": 276.452
+      },
+      "geant4_holdout": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9951388888888889,
+            "empty_fraction": 0.00325,
+            "mean_energy_of_occupied_cell_mev": 208.2368962337658,
+            "energy_per_event_mev": 7460.095608600154,
+            "energy_per_occupied_cell_mev": 208.2371419009115
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9667916666666667,
+            "empty_fraction": 0.024625,
+            "mean_energy_of_occupied_cell_mev": 21.256783901241242,
+            "energy_per_event_mev": 1479.747765983893,
+            "energy_per_occupied_cell_mev": 21.25799488548741
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.826787037037037,
+            "empty_fraction": 0.1345925925925926,
+            "mean_energy_of_occupied_cell_mev": 4.13606183166645,
+            "energy_per_event_mev": 369.87161448728375,
+            "energy_per_occupied_cell_mev": 4.142224076772913
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.32431944444444444,
+            "empty_fraction": 0.6118472222222222,
+            "mean_energy_of_occupied_cell_mev": 1.6052837998601093,
+            "energy_per_event_mev": 114.01562219566463,
+            "energy_per_occupied_cell_mev": 1.6275623056209532
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.029340277777777778,
+            "empty_fraction": 0.9568425925925926,
+            "mean_energy_of_occupied_cell_mev": 1.1800130035726746,
+            "energy_per_event_mev": 15.388427592890427,
+            "energy_per_occupied_cell_mev": 1.214077127644215
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.0009351851851851852,
+            "empty_fraction": 0.9977546296296296,
+            "mean_energy_of_occupied_cell_mev": 1.1584937619690847,
+            "energy_per_event_mev": 0.4875961539253484,
+            "energy_per_occupied_cell_mev": 1.2069211730825455
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.07341919191919193,
+            "empty_fraction": 0.9087979797979798,
+            "mean_energy_of_occupied_cell_mev": 1.3874017307754558,
+            "energy_per_event_mev": 20.525972236618763,
+            "energy_per_occupied_cell_mev": 1.4119813054013044
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.15311784511784512,
+            "empty_fraction": 0.8253619528619529,
+            "mean_energy_of_occupied_cell_mev": 2.919762028134001,
+            "energy_per_event_mev": 266.87084396209974,
+            "energy_per_occupied_cell_mev": 2.934194343852799
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.16903030303030303,
+            "empty_fraction": 0.8102878787878788,
+            "mean_energy_of_occupied_cell_mev": 3.159348579592227,
+            "energy_per_event_mev": 212.36644423104568,
+            "energy_per_occupied_cell_mev": 3.1726790401435054
+          }
+        },
+        "occupied_cells_per_event": 277.859
+      },
+      "slice2": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9640138888888888,
+            "empty_fraction": 0.035986111111111115,
+            "mean_energy_of_occupied_cell_mev": 215.39823053300836,
+            "energy_per_event_mev": 7475.287891532788,
+            "energy_per_occupied_cell_mev": 215.39823053300833
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.7883888888888889,
+            "empty_fraction": 0.2116111111111111,
+            "mean_energy_of_occupied_cell_mev": 26.031318477334857,
+            "energy_per_event_mev": 1477.6417620474358,
+            "energy_per_occupied_cell_mev": 26.031318477334857
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.33996296296296297,
+            "empty_fraction": 0.6600370370370371,
+            "mean_energy_of_occupied_cell_mev": 9.902405661098909,
+            "energy_per_event_mev": 363.5767262529075,
+            "energy_per_occupied_cell_mev": 9.902405661098909
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.07175694444444444,
+            "empty_fraction": 0.9282430555555555,
+            "mean_energy_of_occupied_cell_mev": 7.608942971307536,
+            "energy_per_event_mev": 117.93481158378115,
+            "energy_per_occupied_cell_mev": 7.608942971307536
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.010420138888888889,
+            "empty_fraction": 0.9895798611111111,
+            "mean_energy_of_occupied_cell_mev": 7.236299598738056,
+            "energy_per_event_mev": 32.57420264371936,
+            "energy_per_occupied_cell_mev": 7.236299598738057
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.001912037037037037,
+            "empty_fraction": 0.998087962962963,
+            "mean_energy_of_occupied_cell_mev": 7.147575815459145,
+            "energy_per_event_mev": 5.903897623569255,
+            "energy_per_occupied_cell_mev": 7.147575815459145
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.01176010101010101,
+            "empty_fraction": 0.988239898989899,
+            "mean_energy_of_occupied_cell_mev": 7.296404499358308,
+            "energy_per_event_mev": 16.98967787675582,
+            "energy_per_occupied_cell_mev": 7.296404499358308
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.05430218855218855,
+            "empty_fraction": 0.9456978114478114,
+            "mean_energy_of_occupied_cell_mev": 8.54240257542575,
+            "energy_per_event_mev": 275.53946627164527,
+            "energy_per_occupied_cell_mev": 8.54240257542575
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.057977272727272725,
+            "empty_fraction": 0.9420227272727273,
+            "mean_energy_of_occupied_cell_mev": 9.907247439155721,
+            "energy_per_event_mev": 227.4604939555762,
+            "energy_per_occupied_cell_mev": 9.907247439155721
+          }
+        },
+        "occupied_cells_per_event": 149.0115
+      },
+      "faster_tail": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9595555555555556,
+            "empty_fraction": 0.04044444444444444,
+            "mean_energy_of_occupied_cell_mev": 218.68233947682003,
+            "energy_per_event_mev": 7554.162734887273,
+            "energy_per_occupied_cell_mev": 218.68233947682006
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.7887777777777778,
+            "empty_fraction": 0.21122222222222223,
+            "mean_energy_of_occupied_cell_mev": 24.88843317856296,
+            "energy_per_event_mev": 1413.4638970769477,
+            "energy_per_occupied_cell_mev": 24.88843317856296
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.3654537037037037,
+            "empty_fraction": 0.6345462962962963,
+            "mean_energy_of_occupied_cell_mev": 9.819870457353666,
+            "energy_per_event_mev": 387.58046708129183,
+            "energy_per_occupied_cell_mev": 9.819870457353666
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.06336111111111112,
+            "empty_fraction": 0.9366388888888889,
+            "mean_energy_of_occupied_cell_mev": 7.555181733457009,
+            "energy_per_event_mev": 103.40021720409263,
+            "energy_per_occupied_cell_mev": 7.555181733457009
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.005193287037037037,
+            "empty_fraction": 0.994806712962963,
+            "mean_energy_of_occupied_cell_mev": 7.300301838134683,
+            "energy_per_event_mev": 16.378227173855166,
+            "energy_per_occupied_cell_mev": 7.3003018381346845
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.0005671296296296297,
+            "empty_fraction": 0.9994328703703703,
+            "mean_energy_of_occupied_cell_mev": 7.319666136083354,
+            "energy_per_event_mev": 1.7933182033404218,
+            "energy_per_occupied_cell_mev": 7.319666136083354
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.017042929292929294,
+            "empty_fraction": 0.9829570707070707,
+            "mean_energy_of_occupied_cell_mev": 7.256271153373237,
+            "energy_per_event_mev": 24.48628700705799,
+            "energy_per_occupied_cell_mev": 7.256271153373237
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.0544006734006734,
+            "empty_fraction": 0.9455993265993266,
+            "mean_energy_of_occupied_cell_mev": 8.685470434826048,
+            "energy_per_event_mev": 280.6622916309689,
+            "energy_per_occupied_cell_mev": 8.685470434826048
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.05039141414141414,
+            "empty_fraction": 0.9496085858585859,
+            "mean_energy_of_occupied_cell_mev": 10.22318471684055,
+            "energy_per_event_mev": 204.00365102455316,
+            "energy_per_occupied_cell_mev": 10.22318471684055
+          }
+        },
+        "occupied_cells_per_event": 146.9795
+      }
+    },
+    "20": {
+      "geant4_baseline": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9969444444444444,
+            "empty_fraction": 0.0016666666666666668,
+            "mean_energy_of_occupied_cell_mev": 410.5185187222201,
+            "energy_per_event_mev": 14733.51687541893,
+            "energy_per_occupied_cell_mev": 410.51872040732604
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9799722222222222,
+            "empty_fraction": 0.014069444444444445,
+            "mean_energy_of_occupied_cell_mev": 40.56482418288452,
+            "energy_per_event_mev": 2862.2345864698045,
+            "energy_per_occupied_cell_mev": 40.56569894937221
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.9106944444444445,
+            "empty_fraction": 0.06694444444444445,
+            "mean_energy_of_occupied_cell_mev": 7.080484951393296,
+            "energy_per_event_mev": 696.7138882054454,
+            "energy_per_occupied_cell_mev": 7.083665174169543
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.47905555555555557,
+            "empty_fraction": 0.44961111111111113,
+            "mean_energy_of_occupied_cell_mev": 2.022977138593297,
+            "energy_per_event_mev": 211.08882552900326,
+            "energy_per_occupied_cell_mev": 2.0399785991824504
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.05299768518518518,
+            "empty_fraction": 0.9248564814814815,
+            "mean_energy_of_occupied_cell_mev": 1.201251686715382,
+            "energy_per_event_mev": 28.25154723454077,
+            "energy_per_occupied_cell_mev": 1.233961442871403
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.0018726851851851851,
+            "empty_fraction": 0.9960023148148148,
+            "mean_energy_of_occupied_cell_mev": 1.1468364180828938,
+            "energy_per_event_mev": 0.9586241779841885,
+            "energy_per_occupied_cell_mev": 1.1849495401535088
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.10531818181818182,
+            "empty_fraction": 0.8716515151515152,
+            "mean_energy_of_occupied_cell_mev": 1.5641261801578807,
+            "energy_per_event_mev": 33.07168016551209,
+            "energy_per_occupied_cell_mev": 1.585943517264283
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.1973097643097643,
+            "empty_fraction": 0.7769511784511784,
+            "mean_energy_of_occupied_cell_mev": 4.056502519921759,
+            "energy_per_event_mev": 476.9067030992502,
+            "energy_per_occupied_cell_mev": 4.069100383092867
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.22090909090909092,
+            "empty_fraction": 0.757729797979798,
+            "mean_energy_of_occupied_cell_mev": 4.87098989760223,
+            "energy_per_event_mev": 427.03450188221143,
+            "energy_per_occupied_cell_mev": 4.881510080958064
+          }
+        },
+        "occupied_cells_per_event": 331.983
+      },
+      "geant4_holdout": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9973888888888889,
+            "empty_fraction": 0.0015277777777777779,
+            "mean_energy_of_occupied_cell_mev": 410.37621574796145,
+            "energy_per_event_mev": 14734.975300669617,
+            "energy_per_occupied_cell_mev": 410.3764078613496
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9808194444444445,
+            "empty_fraction": 0.013402777777777777,
+            "mean_energy_of_occupied_cell_mev": 40.79081156702493,
+            "energy_per_event_mev": 2880.6613997227914,
+            "energy_per_occupied_cell_mev": 40.79159149411336
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.9102222222222223,
+            "empty_fraction": 0.06709259259259259,
+            "mean_energy_of_occupied_cell_mev": 7.204400420572104,
+            "energy_per_event_mev": 708.5277804431522,
+            "energy_per_occupied_cell_mev": 7.207517297802248
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.48664814814814816,
+            "empty_fraction": 0.4402361111111111,
+            "mean_energy_of_occupied_cell_mev": 2.0378875950056288,
+            "energy_per_event_mev": 215.9620922836951,
+            "energy_per_occupied_cell_mev": 2.0545120845893594
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.055141203703703706,
+            "empty_fraction": 0.9198356481481481,
+            "mean_energy_of_occupied_cell_mev": 1.1960834784297267,
+            "energy_per_event_mev": 29.28621493647193,
+            "energy_per_occupied_cell_mev": 1.2294284428223807
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.0019375,
+            "empty_fraction": 0.9955393518518518,
+            "mean_energy_of_occupied_cell_mev": 1.088268874722712,
+            "energy_per_event_mev": 0.950924574819846,
+            "energy_per_occupied_cell_mev": 1.136110603130043
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.10508585858585859,
+            "empty_fraction": 0.8711313131313131,
+            "mean_energy_of_occupied_cell_mev": 1.5538340604072658,
+            "energy_per_event_mev": 32.79229841282626,
+            "energy_per_occupied_cell_mev": 1.5760224161496736
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.19865993265993265,
+            "empty_fraction": 0.7752760942760942,
+            "mean_energy_of_occupied_cell_mev": 4.0774099045796115,
+            "energy_per_event_mev": 482.58236214236706,
+            "energy_per_occupied_cell_mev": 4.089542406548651
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.22542171717171716,
+            "empty_fraction": 0.7494469696969697,
+            "mean_energy_of_occupied_cell_mev": 4.910632745510018,
+            "energy_per_event_mev": 439.3523516829457,
+            "energy_per_occupied_cell_mev": 4.921777943505951
+          }
+        },
+        "occupied_cells_per_event": 334.603
+      },
+      "slice2": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9668472222222222,
+            "empty_fraction": 0.03315277777777778,
+            "mean_energy_of_occupied_cell_mev": 427.73305874981344,
+            "energy_per_event_mev": 14887.890709375382,
+            "energy_per_occupied_cell_mev": 427.73305874981344
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.8700763888888889,
+            "empty_fraction": 0.12992361111111111,
+            "mean_energy_of_occupied_cell_mev": 45.78082474936022,
+            "energy_per_event_mev": 2867.9626568360454,
+            "energy_per_occupied_cell_mev": 45.780824749360214
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.47780555555555554,
+            "empty_fraction": 0.5221944444444444,
+            "mean_energy_of_occupied_cell_mev": 12.798106004289258,
+            "energy_per_event_mev": 660.4206641393386,
+            "energy_per_occupied_cell_mev": 12.798106004289258
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.11289351851851852,
+            "empty_fraction": 0.8871064814814815,
+            "mean_energy_of_occupied_cell_mev": 8.425666493065135,
+            "energy_per_event_mev": 205.4598774333933,
+            "energy_per_occupied_cell_mev": 8.425666493065133
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.016783564814814814,
+            "empty_fraction": 0.9832164351851852,
+            "mean_energy_of_occupied_cell_mev": 7.731482904380932,
+            "energy_per_event_mev": 56.057116798213954,
+            "energy_per_occupied_cell_mev": 7.7314829043809326
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.0031770833333333334,
+            "empty_fraction": 0.9968229166666667,
+            "mean_energy_of_occupied_cell_mev": 7.689771275069785,
+            "energy_per_event_mev": 10.554211075033278,
+            "energy_per_occupied_cell_mev": 7.689771275069783
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.016467171717171717,
+            "empty_fraction": 0.9835328282828283,
+            "mean_energy_of_occupied_cell_mev": 8.38494155358918,
+            "energy_per_event_mev": 27.33910193547752,
+            "energy_per_occupied_cell_mev": 8.38494155358918
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.07701515151515151,
+            "empty_fraction": 0.9229848484848485,
+            "mean_energy_of_occupied_cell_mev": 10.212097052059828,
+            "energy_per_event_mev": 467.17280384058097,
+            "energy_per_occupied_cell_mev": 10.212097052059828
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.08990782828282828,
+            "empty_fraction": 0.9100921717171717,
+            "mean_energy_of_occupied_cell_mev": 12.3015985414333,
+            "energy_per_event_mev": 437.9799636699205,
+            "energy_per_occupied_cell_mev": 12.3015985414333
+          }
+        },
+        "occupied_cells_per_event": 182.063
+      },
+      "faster_tail": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9634861111111112,
+            "empty_fraction": 0.03651388888888889,
+            "mean_energy_of_occupied_cell_mev": 431.26152395477044,
+            "energy_per_event_mev": 14958.52158913319,
+            "energy_per_occupied_cell_mev": 431.26152395477044
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.8784166666666666,
+            "empty_fraction": 0.12158333333333333,
+            "mean_energy_of_occupied_cell_mev": 43.99745374331657,
+            "energy_per_event_mev": 2782.6629594498,
+            "energy_per_occupied_cell_mev": 43.99745374331657
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.526912037037037,
+            "empty_fraction": 0.47308796296296296,
+            "mean_energy_of_occupied_cell_mev": 12.921334449622046,
+            "energy_per_event_mev": 735.307918857417,
+            "energy_per_occupied_cell_mev": 12.921334449622046
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.10387731481481481,
+            "empty_fraction": 0.8961226851851852,
+            "mean_energy_of_occupied_cell_mev": 8.313692733182505,
+            "energy_per_event_mev": 186.53848070078243,
+            "energy_per_occupied_cell_mev": 8.313692733182505
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.008646990740740742,
+            "empty_fraction": 0.9913530092592593,
+            "mean_energy_of_occupied_cell_mev": 7.690275694674961,
+            "energy_per_event_mev": 28.727024857458318,
+            "energy_per_occupied_cell_mev": 7.690275694674961
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.000988425925925926,
+            "empty_fraction": 0.999011574074074,
+            "mean_energy_of_occupied_cell_mev": 7.706629534745977,
+            "energy_per_event_mev": 3.2907308113365317,
+            "energy_per_occupied_cell_mev": 7.706629534745976
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.024055555555555556,
+            "empty_fraction": 0.9759444444444444,
+            "mean_energy_of_occupied_cell_mev": 8.416600083487994,
+            "energy_per_event_mev": 40.08826619765332,
+            "energy_per_occupied_cell_mev": 8.416600083487994
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.0781456228956229,
+            "empty_fraction": 0.9218543771043771,
+            "mean_energy_of_occupied_cell_mev": 10.68623276292342,
+            "energy_per_event_mev": 496.0388955057608,
+            "energy_per_occupied_cell_mev": 10.68623276292342
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.08162878787878788,
+            "empty_fraction": 0.9183712121212121,
+            "mean_energy_of_occupied_cell_mev": 12.923031508850121,
+            "energy_per_event_mev": 417.7369935235801,
+            "energy_per_occupied_cell_mev": 12.923031508850121
+          }
+        },
+        "occupied_cells_per_event": 181.438
+      }
+    },
+    "50": {
+      "geant4_baseline": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9988333333333334,
+            "empty_fraction": 0.0006388888888888889,
+            "mean_energy_of_occupied_cell_mev": 1006.3442764415797,
+            "energy_per_event_mev": 36186.130798082275,
+            "energy_per_occupied_cell_mev": 1006.3443683765025
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.992625,
+            "empty_fraction": 0.004458333333333333,
+            "mean_energy_of_occupied_cell_mev": 95.6882497539577,
+            "energy_per_event_mev": 6838.772222428253,
+            "energy_per_occupied_cell_mev": 95.68865133733861
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.963037037037037,
+            "empty_fraction": 0.024416666666666666,
+            "mean_energy_of_occupied_cell_mev": 15.747387629755357,
+            "energy_per_event_mev": 1638.0107833810755,
+            "energy_per_occupied_cell_mev": 15.748892233107796
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.7018101851851852,
+            "empty_fraction": 0.23143981481481482,
+            "mean_energy_of_occupied_cell_mev": 3.264891689829576,
+            "energy_per_event_mev": 496.47708635632785,
+            "energy_per_occupied_cell_mev": 3.275109250261083
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.1151412037037037,
+            "empty_fraction": 0.8410185185185185,
+            "mean_energy_of_occupied_cell_mev": 1.3010558124871079,
+            "energy_per_event_mev": 66.20539198199548,
+            "energy_per_occupied_cell_mev": 1.3310024322389071
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.004074074074074074,
+            "empty_fraction": 0.991625,
+            "mean_energy_of_occupied_cell_mev": 1.194638347337869,
+            "energy_per_event_mev": 2.1824978426994224,
+            "energy_per_occupied_cell_mev": 1.2400555924428538
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.16176767676767675,
+            "empty_fraction": 0.8051616161616162,
+            "mean_energy_of_occupied_cell_mev": 1.942663056405492,
+            "energy_per_event_mev": 62.80292007855809,
+            "energy_per_occupied_cell_mev": 1.9607530464738712
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.2650420875420875,
+            "empty_fraction": 0.7018855218855219,
+            "mean_energy_of_occupied_cell_mev": 6.598877692248719,
+            "energy_per_event_mev": 1040.5543576328478,
+            "energy_per_occupied_cell_mev": 6.609422032158337
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.2970580808080808,
+            "empty_fraction": 0.6767373737373737,
+            "mean_energy_of_occupied_cell_mev": 9.338063180455999,
+            "energy_per_event_mev": 1099.5184818506925,
+            "energy_per_occupied_cell_mev": 9.346865149408702
+          }
+        },
+        "occupied_cells_per_event": 414.527
+      },
+      "geant4_holdout": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9992777777777778,
+            "empty_fraction": 0.00025,
+            "mean_energy_of_occupied_cell_mev": 1004.7855330371441,
+            "energy_per_event_mev": 36146.15689764192,
+            "energy_per_occupied_cell_mev": 1004.7855923067193
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9930277777777777,
+            "empty_fraction": 0.0039027777777777776,
+            "mean_energy_of_occupied_cell_mev": 95.74096083718582,
+            "energy_per_event_mev": 6845.31793922844,
+            "energy_per_occupied_cell_mev": 95.74139051761503
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.9633148148148148,
+            "empty_fraction": 0.02475925925925926,
+            "mean_energy_of_occupied_cell_mev": 15.893765066123885,
+            "energy_per_event_mev": 1653.710748314385,
+            "energy_per_occupied_cell_mev": 15.895257005271008
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.7086666666666667,
+            "empty_fraction": 0.22289814814814815,
+            "mean_energy_of_occupied_cell_mev": 3.2855706147532597,
+            "energy_per_event_mev": 504.4484356082694,
+            "energy_per_occupied_cell_mev": 3.295497776263911
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.12022453703703703,
+            "empty_fraction": 0.8265902777777778,
+            "mean_energy_of_occupied_cell_mev": 1.3023786042119085,
+            "energy_per_event_mev": 69.22998720034781,
+            "energy_per_occupied_cell_mev": 1.3329608410256235
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.004678240740740741,
+            "empty_fraction": 0.9889791666666666,
+            "mean_energy_of_occupied_cell_mev": 1.1062785500733348,
+            "energy_per_event_mev": 2.3282668491058267,
+            "energy_per_occupied_cell_mev": 1.1520370356782912
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.162520202020202,
+            "empty_fraction": 0.8028838383838384,
+            "mean_energy_of_occupied_cell_mev": 1.9504295071169218,
+            "energy_per_event_mev": 63.34398835118911,
+            "energy_per_occupied_cell_mev": 1.9684884039649806
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.26645959595959595,
+            "empty_fraction": 0.6970774410774411,
+            "mean_energy_of_occupied_cell_mev": 6.597441103510607,
+            "energy_per_event_mev": 1045.9140960655004,
+            "energy_per_occupied_cell_mev": 6.6081243393891755
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.30457575757575756,
+            "empty_fraction": 0.6618964646464647,
+            "mean_energy_of_occupied_cell_mev": 9.280799298226514,
+            "energy_per_event_mev": 1120.4593535554184,
+            "energy_per_occupied_cell_mev": 9.289783384368208
+          }
+        },
+        "occupied_cells_per_event": 418.54
+      },
+      "slice2": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9593611111111111,
+            "empty_fraction": 0.04063888888888889,
+            "mean_energy_of_occupied_cell_mev": 1057.2899749404517,
+            "energy_per_event_mev": 36515.623864518384,
+            "energy_per_occupied_cell_mev": 1057.2899749404517
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9112638888888889,
+            "empty_fraction": 0.08873611111111111,
+            "mean_energy_of_occupied_cell_mev": 104.07518548622241,
+            "energy_per_event_mev": 6828.47699493654,
+            "energy_per_occupied_cell_mev": 104.07518548622242
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.657699074074074,
+            "empty_fraction": 0.3423009259259259,
+            "mean_energy_of_occupied_cell_mev": 20.563672915265798,
+            "energy_per_event_mev": 1460.6685326807024,
+            "energy_per_occupied_cell_mev": 20.563672915265798
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.2016388888888889,
+            "empty_fraction": 0.7983611111111111,
+            "mean_energy_of_occupied_cell_mev": 10.112536640840652,
+            "energy_per_event_mev": 440.44142085517376,
+            "energy_per_occupied_cell_mev": 10.112536640840652
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.03142939814814815,
+            "empty_fraction": 0.9685706018518518,
+            "mean_energy_of_occupied_cell_mev": 8.476999659956334,
+            "energy_per_event_mev": 115.09646288305713,
+            "energy_per_occupied_cell_mev": 8.476999659956334
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.006144675925925926,
+            "empty_fraction": 0.9938553240740741,
+            "mean_energy_of_occupied_cell_mev": 8.360356696458535,
+            "energy_per_event_mev": 22.192566850749184,
+            "energy_per_occupied_cell_mev": 8.360356696458535
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.02497979797979798,
+            "empty_fraction": 0.975020202020202,
+            "mean_energy_of_occupied_cell_mev": 10.46638016634394,
+            "energy_per_event_mev": 51.76671630273712,
+            "energy_per_occupied_cell_mev": 10.466380166343939
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.11429208754208754,
+            "empty_fraction": 0.8857079124579125,
+            "mean_energy_of_occupied_cell_mev": 13.48547398202634,
+            "energy_per_event_mev": 915.5220859027771,
+            "energy_per_occupied_cell_mev": 13.485473982026338
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.14641919191919192,
+            "empty_fraction": 0.853580808080808,
+            "mean_energy_of_occupied_cell_mev": 18.473149961439212,
+            "energy_per_event_mev": 1071.1101810641685,
+            "energy_per_occupied_cell_mev": 18.473149961439212
+          }
+        },
+        "occupied_cells_per_event": 230.9655
+      },
+      "faster_tail": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9564305555555556,
+            "empty_fraction": 0.043569444444444445,
+            "mean_energy_of_occupied_cell_mev": 1057.943954421026,
+            "energy_per_event_mev": 36426.59726664757,
+            "energy_per_occupied_cell_mev": 1057.9439544210263
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9173333333333333,
+            "empty_fraction": 0.08266666666666667,
+            "mean_energy_of_occupied_cell_mev": 102.34423426524972,
+            "energy_per_event_mev": 6759.631984751213,
+            "energy_per_occupied_cell_mev": 102.34423426524972
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.7300787037037038,
+            "empty_fraction": 0.2699212962962963,
+            "mean_energy_of_occupied_cell_mev": 21.839578673211584,
+            "energy_per_event_mev": 1722.0180190147237,
+            "energy_per_occupied_cell_mev": 21.839578673211584
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.1953101851851852,
+            "empty_fraction": 0.8046898148148148,
+            "mean_energy_of_occupied_cell_mev": 9.924698012517215,
+            "energy_per_event_mev": 418.69323505406373,
+            "energy_per_occupied_cell_mev": 9.924698012517215
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.017065972222222222,
+            "empty_fraction": 0.9829340277777778,
+            "mean_energy_of_occupied_cell_mev": 8.384164852050697,
+            "energy_per_event_mev": 61.81225537174376,
+            "energy_per_occupied_cell_mev": 8.384164852050697
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.001960648148148148,
+            "empty_fraction": 0.9980393518518519,
+            "mean_energy_of_occupied_cell_mev": 8.46606829320463,
+            "energy_per_event_mev": 7.170759844344322,
+            "energy_per_occupied_cell_mev": 8.46606829320463
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.036898989898989897,
+            "empty_fraction": 0.9631010101010101,
+            "mean_energy_of_occupied_cell_mev": 11.025663923263116,
+            "energy_per_event_mev": 80.5535006233603,
+            "energy_per_occupied_cell_mev": 11.025663923263114
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.11659343434343435,
+            "empty_fraction": 0.8834065656565656,
+            "mean_energy_of_occupied_cell_mev": 15.10872037589788,
+            "energy_per_event_mev": 1046.3770927133714,
+            "energy_per_occupied_cell_mev": 15.108720375897878
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.1330618686868687,
+            "empty_fraction": 0.8669381313131314,
+            "mean_energy_of_occupied_cell_mev": 20.548724694181217,
+            "energy_per_event_mev": 1082.7636759481436,
+            "energy_per_occupied_cell_mev": 20.548724694181217
+          }
+        },
+        "occupied_cells_per_event": 229.7345
+      }
+    },
+    "100": {
+      "geant4_baseline": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.99975,
+            "empty_fraction": 0.00016666666666666666,
+            "mean_energy_of_occupied_cell_mev": 1962.2388926185395,
+            "energy_per_event_mev": 70622.9404563334,
+            "energy_per_occupied_cell_mev": 1962.238905735695
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9972222222222222,
+            "empty_fraction": 0.0014027777777777777,
+            "mean_energy_of_occupied_cell_mev": 180.3555852159339,
+            "energy_per_event_mev": 12949.542743475171,
+            "energy_per_occupied_cell_mev": 180.35574851636727
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.9833518518518518,
+            "empty_fraction": 0.009972222222222223,
+            "mean_energy_of_occupied_cell_mev": 28.888268302492808,
+            "energy_per_event_mev": 3068.06839952288,
+            "energy_per_occupied_cell_mev": 28.8889889034376
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.8326527777777778,
+            "empty_fraction": 0.1168287037037037,
+            "mean_energy_of_occupied_cell_mev": 5.138592117414473,
+            "energy_per_event_mev": 925.2883687523242,
+            "energy_per_occupied_cell_mev": 5.14469243633592
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.19362037037037036,
+            "empty_fraction": 0.7372083333333334,
+            "mean_energy_of_occupied_cell_mev": 1.479264773001237,
+            "energy_per_event_mev": 125.98406554402723,
+            "energy_per_occupied_cell_mev": 1.5061936964280431
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.007879629629629629,
+            "empty_fraction": 0.9830856481481481,
+            "mean_energy_of_occupied_cell_mev": 1.1399875443021643,
+            "energy_per_event_mev": 4.032103591187328,
+            "energy_per_occupied_cell_mev": 1.1845192688564417
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.212510101010101,
+            "empty_fraction": 0.7455656565656565,
+            "mean_energy_of_occupied_cell_mev": 2.41538426541873,
+            "energy_per_event_mev": 102.27602391177587,
+            "energy_per_occupied_cell_mev": 2.430687166665301
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.31965656565656564,
+            "empty_fraction": 0.63843265993266,
+            "mean_energy_of_occupied_cell_mev": 9.644124443144163,
+            "energy_per_event_mev": 1833.022263654139,
+            "energy_per_occupied_cell_mev": 9.653785963756025
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.35643939393939394,
+            "empty_fraction": 0.6126969696969697,
+            "mean_energy_of_occupied_cell_mev": 15.49398031970203,
+            "energy_per_event_mev": 2188.074649844504,
+            "energy_per_occupied_cell_mev": 15.501768684693616
+          }
+        },
+        "occupied_cells_per_event": 480.894
+      },
+      "geant4_holdout": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9997222222222222,
+            "empty_fraction": 0.00019444444444444443,
+            "mean_energy_of_occupied_cell_mev": 1972.1507865821877,
+            "energy_per_event_mev": 70977.70726776468,
+            "energy_per_occupied_cell_mev": 1972.1507993266093
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9971527777777778,
+            "empty_fraction": 0.0014166666666666668,
+            "mean_energy_of_occupied_cell_mev": 182.67076525985593,
+            "energy_per_event_mev": 13114.85994100853,
+            "energy_per_occupied_cell_mev": 182.67093726594513
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.9837037037037037,
+            "empty_fraction": 0.00912962962962963,
+            "mean_energy_of_occupied_cell_mev": 29.43361842162032,
+            "energy_per_event_mev": 3127.113561992793,
+            "energy_per_occupied_cell_mev": 29.43442735309482
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.8386574074074075,
+            "empty_fraction": 0.10953240740740741,
+            "mean_energy_of_occupied_cell_mev": 5.273703173959976,
+            "energy_per_event_mev": 956.3997305205651,
+            "energy_per_occupied_cell_mev": 5.279601051728209
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.20500925925925925,
+            "empty_fraction": 0.7122337962962964,
+            "mean_energy_of_occupied_cell_mev": 1.4897432738346306,
+            "energy_per_event_mev": 134.3112902490553,
+            "energy_per_occupied_cell_mev": 1.5165449872301986
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.009023148148148148,
+            "empty_fraction": 0.9774583333333333,
+            "mean_energy_of_occupied_cell_mev": 1.1814623562310402,
+            "energy_per_event_mev": 4.7912383048684966,
+            "energy_per_occupied_cell_mev": 1.2291529771340424
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.2153030303030303,
+            "empty_fraction": 0.7408585858585859,
+            "mean_energy_of_occupied_cell_mev": 2.416830887614548,
+            "energy_per_event_mev": 103.69517131332395,
+            "energy_per_occupied_cell_mev": 2.432445960903682
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.3225016835016835,
+            "empty_fraction": 0.6307424242424242,
+            "mean_energy_of_occupied_cell_mev": 9.629137281432245,
+            "energy_per_event_mev": 1846.4852965628127,
+            "energy_per_occupied_cell_mev": 9.63889884720051
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.3678181818181818,
+            "empty_fraction": 0.5889924242424243,
+            "mean_energy_of_occupied_cell_mev": 15.593295857708666,
+            "energy_per_event_mev": 2272.4353531911456,
+            "energy_per_occupied_cell_mev": 15.601385134777459
+          }
+        },
+        "occupied_cells_per_event": 487.637
+      },
+      "slice2": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9574583333333333,
+            "empty_fraction": 0.042541666666666665,
+            "mean_energy_of_occupied_cell_mev": 2072.799378830738,
+            "energy_per_event_mev": 71446.2853892273,
+            "energy_per_occupied_cell_mev": 2072.799378830738
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9257222222222222,
+            "empty_fraction": 0.07427777777777778,
+            "mean_energy_of_occupied_cell_mev": 199.4638226219142,
+            "energy_per_event_mev": 13294.662705395825,
+            "energy_per_occupied_cell_mev": 199.4638226219142
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.7701990740740741,
+            "empty_fraction": 0.22980092592592594,
+            "mean_energy_of_occupied_cell_mev": 32.742098520111085,
+            "energy_per_event_mev": 2723.5368680506203,
+            "energy_per_occupied_cell_mev": 32.742098520111085
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.305412037037037,
+            "empty_fraction": 0.694587962962963,
+            "mean_energy_of_occupied_cell_mev": 12.173316317278871,
+            "energy_per_event_mev": 803.0615041345699,
+            "energy_per_occupied_cell_mev": 12.173316317278871
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.053168981481481484,
+            "empty_fraction": 0.9468310185185185,
+            "mean_energy_of_occupied_cell_mev": 9.117561569949984,
+            "energy_per_event_mev": 209.42127170018122,
+            "energy_per_occupied_cell_mev": 9.117561569949986
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.01016550925925926,
+            "empty_fraction": 0.9898344907407407,
+            "mean_energy_of_occupied_cell_mev": 8.792657955811347,
+            "energy_per_event_mev": 38.61295741294553,
+            "energy_per_occupied_cell_mev": 8.792657955811348
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.03589141414141414,
+            "empty_fraction": 0.9641085858585858,
+            "mean_energy_of_occupied_cell_mev": 11.37960443894452,
+            "energy_per_event_mev": 80.86915894535923,
+            "energy_per_occupied_cell_mev": 11.37960443894452
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.15044444444444444,
+            "empty_fraction": 0.8495555555555555,
+            "mean_energy_of_occupied_cell_mev": 17.455435865488756,
+            "energy_per_event_mev": 1559.8875706835374,
+            "energy_per_occupied_cell_mev": 17.45543586548876
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.20212247474747475,
+            "empty_fraction": 0.7978775252525252,
+            "mean_energy_of_occupied_cell_mev": 26.6599517952714,
+            "energy_per_event_mev": 2133.8758716694206,
+            "energy_per_occupied_cell_mev": 26.6599517952714
+          }
+        },
+        "occupied_cells_per_event": 277.6315
+      },
+      "faster_tail": {
+        "by_distance_mm": {
+          "0-9": {
+            "cells_per_event": 36.0,
+            "occupied_fraction": 0.9560138888888889,
+            "empty_fraction": 0.04398611111111111,
+            "mean_energy_of_occupied_cell_mev": 2061.8580815508208,
+            "energy_per_event_mev": 70961.93866369381,
+            "energy_per_occupied_cell_mev": 2061.8580815508208
+          },
+          "9-27": {
+            "cells_per_event": 72.0,
+            "occupied_fraction": 0.9269305555555556,
+            "empty_fraction": 0.07306944444444445,
+            "mean_energy_of_occupied_cell_mev": 199.88977198257885,
+            "energy_per_event_mev": 13340.44349234533,
+            "energy_per_occupied_cell_mev": 199.88977198257885
+          },
+          "27-54": {
+            "cells_per_event": 108.0,
+            "occupied_fraction": 0.8386527777777778,
+            "empty_fraction": 0.16134722222222223,
+            "mean_energy_of_occupied_cell_mev": 36.7732278184495,
+            "energy_per_event_mev": 3330.7167230421537,
+            "energy_per_occupied_cell_mev": 36.77322781844949
+          },
+          "54-108": {
+            "cells_per_event": 216.0,
+            "occupied_fraction": 0.3036875,
+            "empty_fraction": 0.6963125,
+            "mean_energy_of_occupied_cell_mev": 11.913592845304128,
+            "energy_per_event_mev": 781.4899930769923,
+            "energy_per_occupied_cell_mev": 11.913592845304128
+          },
+          "108-216": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.029643518518518517,
+            "empty_fraction": 0.9703564814814815,
+            "mean_energy_of_occupied_cell_mev": 8.824884619443642,
+            "energy_per_event_mev": 113.01147243659528,
+            "energy_per_occupied_cell_mev": 8.824884619443642
+          },
+          "216-700": {
+            "cells_per_event": 432.0,
+            "occupied_fraction": 0.003324074074074074,
+            "empty_fraction": 0.9966759259259259,
+            "mean_energy_of_occupied_cell_mev": 8.721332257089186,
+            "energy_per_event_mev": 12.523833121180072,
+            "energy_per_occupied_cell_mev": 8.721332257089188
+          }
+        },
+        "cells_at_least_27_mm_by_layer_group": {
+          "front_0_2": {
+            "cells_per_event": 198.0,
+            "occupied_fraction": 0.051454545454545454,
+            "empty_fraction": 0.9485454545454546,
+            "mean_energy_of_occupied_cell_mev": 12.3147726445751,
+            "energy_per_event_mev": 125.46290370293113,
+            "energy_per_occupied_cell_mev": 12.3147726445751
+          },
+          "middle_3_11": {
+            "cells_per_event": 594.0,
+            "occupied_fraction": 0.15091835016835017,
+            "empty_fraction": 0.8490816498316498,
+            "mean_energy_of_occupied_cell_mev": 21.018993770118843,
+            "energy_per_event_mev": 1884.2582060191887,
+            "energy_per_occupied_cell_mev": 21.018993770118843
+          },
+          "rear_12_17": {
+            "cells_per_event": 396.0,
+            "occupied_fraction": 0.17823106060606062,
+            "empty_fraction": 0.8217689393939394,
+            "mean_energy_of_occupied_cell_mev": 31.567536068614846,
+            "energy_per_event_mev": 2228.0209119548017,
+            "energy_per_occupied_cell_mev": 31.567536068614846
+          }
+        },
+        "occupied_cells_per_event": 271.5685
+      }
+    }
+  }
+}

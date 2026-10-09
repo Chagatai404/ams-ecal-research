@@ -1,0 +1,559 @@
+{
+  "status": "univariate diagnostic on exposed electrons; not an objective; the sealed sets are not read",
+  "sealed_data_read": false,
+  "events_per_class": 1000,
+  "per_energy": {
+    "10": {
+      "geant4_baseline_vs_holdout": [
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.6006864999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.5338575000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "energy_mev",
+          "folded_auc": 0.5316420000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "width_mm",
+          "folded_auc": 0.5308080000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "max_cell_fraction",
+          "folded_auc": 0.529097,
+          "direction": "model lower"
+        },
+        {
+          "feature": "log1p_layer_energy_17",
+          "folded_auc": 0.529026,
+          "direction": "model lower"
+        }
+      ],
+      "slice2": [
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.999211,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.9977229999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_14",
+          "folded_auc": 0.9974219999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_15",
+          "folded_auc": 0.997392,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_0",
+          "folded_auc": 0.9969950000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_12",
+          "folded_auc": 0.9947090000000002,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_13",
+          "folded_auc": 0.994277,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_5",
+          "folded_auc": 0.9938675,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_6",
+          "folded_auc": 0.9933810000000001,
+          "direction": "model lower"
+        }
+      ],
+      "faster_tail": [
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 0.9999999999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.999634,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.999326,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_14",
+          "folded_auc": 0.999094,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_15",
+          "folded_auc": 0.999031,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_11",
+          "folded_auc": 0.997993,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_13",
+          "folded_auc": 0.9979045,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_12",
+          "folded_auc": 0.9975915,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_0",
+          "folded_auc": 0.9970950000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_10",
+          "folded_auc": 0.9960319999999999,
+          "direction": "model lower"
+        }
+      ]
+    },
+    "20": {
+      "geant4_baseline_vs_holdout": [
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.6198455,
+          "direction": "model lower"
+        },
+        {
+          "feature": "containment_fraction",
+          "folded_auc": 0.557845,
+          "direction": "model higher"
+        },
+        {
+          "feature": "width_mm",
+          "folded_auc": 0.554535,
+          "direction": "model lower"
+        },
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 0.547238,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.5434325,
+          "direction": "model lower"
+        },
+        {
+          "feature": "log1p_layer_energy_17",
+          "folded_auc": 0.5418419999999999,
+          "direction": "model lower"
+        }
+      ],
+      "slice2": [
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 0.9999999999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.9997929999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.9997455,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_0",
+          "folded_auc": 0.9991479999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_15",
+          "folded_auc": 0.9988790000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_14",
+          "folded_auc": 0.998799,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_13",
+          "folded_auc": 0.9979055,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_6",
+          "folded_auc": 0.9977025,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_4",
+          "folded_auc": 0.9969075000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_8",
+          "folded_auc": 0.9966860000000001,
+          "direction": "model lower"
+        }
+      ],
+      "faster_tail": [
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.9999450000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.99991,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_15",
+          "folded_auc": 0.9997434999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_14",
+          "folded_auc": 0.9997145,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_13",
+          "folded_auc": 0.9994609999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_0",
+          "folded_auc": 0.9991945,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_11",
+          "folded_auc": 0.9991565,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_9",
+          "folded_auc": 0.9989119999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_7",
+          "folded_auc": 0.998289,
+          "direction": "model lower"
+        }
+      ]
+    },
+    "50": {
+      "geant4_baseline_vs_holdout": [
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.6656305,
+          "direction": "model lower"
+        },
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 0.5716829999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "width_mm",
+          "folded_auc": 0.566607,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.5641700000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "containment_fraction",
+          "folded_auc": 0.547215,
+          "direction": "model higher"
+        },
+        {
+          "feature": "log1p_layer_energy_17",
+          "folded_auc": 0.544899,
+          "direction": "model lower"
+        }
+      ],
+      "slice2": [
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_0",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.9998995,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_6",
+          "folded_auc": 0.9996285,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.999541,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_15",
+          "folded_auc": 0.999537,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_5",
+          "folded_auc": 0.9995255,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_7",
+          "folded_auc": 0.9994585,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_8",
+          "folded_auc": 0.9991975000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_14",
+          "folded_auc": 0.9991939999999999,
+          "direction": "model lower"
+        }
+      ],
+      "faster_tail": [
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_0",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.999969,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_15",
+          "folded_auc": 0.9999505000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.9998910000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_14",
+          "folded_auc": 0.9998685,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_11",
+          "folded_auc": 0.999822,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_8",
+          "folded_auc": 0.9997815,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_12",
+          "folded_auc": 0.9997259999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_10",
+          "folded_auc": 0.999682,
+          "direction": "model lower"
+        }
+      ]
+    },
+    "100": {
+      "geant4_baseline_vs_holdout": [
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.688028,
+          "direction": "model lower"
+        },
+        {
+          "feature": "width_mm",
+          "folded_auc": 0.609482,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.59617,
+          "direction": "model lower"
+        },
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 0.59354,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_15",
+          "folded_auc": 0.5796669999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "containment_fraction",
+          "folded_auc": 0.57621,
+          "direction": "model higher"
+        }
+      ],
+      "slice2": [
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_0",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_6",
+          "folded_auc": 0.999968,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_5",
+          "folded_auc": 0.9999405000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_1",
+          "folded_auc": 0.9999254999999999,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.9998530000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_7",
+          "folded_auc": 0.9998205,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_8",
+          "folded_auc": 0.9997995,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.9997860000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_2",
+          "folded_auc": 0.9997585000000001,
+          "direction": "model lower"
+        }
+      ],
+      "faster_tail": [
+        {
+          "feature": "n_hit_cells",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_0",
+          "folded_auc": 1.0,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_17",
+          "folded_auc": 0.9999920000000001,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_15",
+          "folded_auc": 0.9999875,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_13",
+          "folded_auc": 0.9999725,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_16",
+          "folded_auc": 0.9999725,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_7",
+          "folded_auc": 0.99996,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_6",
+          "folded_auc": 0.999951,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_10",
+          "folded_auc": 0.999951,
+          "direction": "model lower"
+        },
+        {
+          "feature": "occupied_cells_9",
+          "folded_auc": 0.999933,
+          "direction": "model lower"
+        }
+      ]
+    }
+  }
+}

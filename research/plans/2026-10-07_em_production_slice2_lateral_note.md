@@ -181,3 +181,55 @@ C1 holds (one added parameter); C2 fails on one item: **the hold-out profile err
 
 The researcher's decision on the faster-tail candidate (override the 0.3-point threshold, or refine within the rule, for example by letting the exponent depend on energy, a second added parameter that needs approval), a combined radial-and-spot study of the hit-cell count, layer-to-layer residual noise (stage 4),
 the pre-stated gamma-inadequacy thresholds (still pending), then the single opening of the sealed electron set. Each needs approval; E1 stays opt-in, off; the tail-sensitive and faster-tail artifacts are recorded results, not candidates.
+
+## 11. The 0.3-point threshold: how it was chosen, and what the metric resolves (2026-10-08)
+
+The researcher asked whether 0.41 against 0.3 is a meaningful difference and how 0.3 was chosen.
+- **How it was chosen (stated plainly): by me, by analogy, not derived.** The project's registered materiality conventions are KS 0.10 (proton validation) and 0.05 (dataset), classifier AUC 0.60 above a permutation null, lag 0.10, occupancy 0.02 and a 0.5-point floor for the mean LEAKAGE
+  (`em_longitudinal_structure_analysis.NOISE_FLOORS`). There is none for the cell-profile error. I set the profile tolerance a little below the leakage floor. The other tolerances of the rules (30% benefit, 70% transfer, 0.2-point gap, KS 0.03, coupling 0.05, spot number 0.1) were chosen the same way.
+- **What the metric resolves** (`src/ams_ecal/electron_studies/em_lateral_metric_resolution.py`, paired bootstrap over the Geant4 hold-out events, both models scored against the same resampled reference): the faster tail minus Slice 2, layers 3-17 mean profile error, at 10 / 20 / 50 / 100 GeV:
+  **+1.19 [+0.91, +1.25], +0.50 [+0.24, +0.63], -0.14 [-0.19, -0.02], +0.06 [-0.10, +0.20] points**; mean **+0.40 +- 0.04**. The Geant4 half-against-half floor of the metric is 0.8-1.2 points, the model seed spread 0.02-0.08.
+  So a difference of 0.1 point IS statistically resolved by the paired design (the reference noise, a positive bias, cancels), and the +0.41 is real: it is not noise.
+- **But "resolved" is not "meaningful".** The aggregate hides the structure: the regression is concentrated at 10 and 20 GeV (+1.2, +0.5), the faster tail is better at 50 GeV and neutral at 100 GeV. A single mean threshold judged the candidate by its worst energies. Both 0.3 and 0.41 are below the Geant4 sample-to-sample floor of this very metric (0.4-0.9), and the metric
+  does not map onto a physical consequence. A defensible threshold would be per energy and tied to a consequence (for example the classifier or the observables that matter), not to a mean. **The decision on the faster tail therefore rests on the researcher, not on the 0.3 line; the rule is kept as recorded (not adopted), and nothing is adopted by a rule changed after the result.**
+
+## 12. Is the model distinguishable from Geant4? Yes, completely (2026-10-08)
+
+`src/ams_ecal/electron_studies/em_lateral_distinguishability.py` runs the project's registered classifier two-sample test (fixed gradient boosting, cross-validated AUC, permutation null, `ams_ecal.validation.added_checks`) on EXPOSED data only, as a diagnostic and never as a tuning target (the researcher's standing rule: the generator is not trained against a classifier).
+- **Slice 2 and the faster tail: AUC 1.000 at 10, 20, 50 and 100 GeV** (null 99th percentile 0.53-0.54): perfectly separable. Removing the hit-cell and width features does not change it (1.00): other features separate completely.
+- **The floor is not 0.5.** Two exposed Geant4 samples (the baseline against the extended-depth prefix) give AUC 0.58 / 0.61 / 0.70 / 0.75; the separating feature is the rear layer's occupancy (layer 17, univariate 0.60-0.69): the extended geometry has material behind the 18 layers. The hold-out is therefore a slightly different Geant4 population, which also sets how far "indistinguishable" can be pursued with this reference.
+- **Single-feature separation** (`--single-features`, folded rank AUC): for both candidates the top separators at every energy are `n_hit_cells` and the per-layer occupied-cell counts `occupied_cells_i` (1.00 each, alone). The width alone separates at 0.88-0.89 for Slice 2 and 0.64-0.65 for the faster tail (the faster tail nearly removes the width signature).
+  The profile, coupling, core and containment are not what separates the samples.
+
+## 13. What carries the missing occupancy, and a proposed mechanism (analysis done; implementation awaits approval)
+
+`src/ams_ecal/electron_studies/em_lateral_occupancy_diagnostic.py` (exposed electrons; the models use 2000 events): cells above the cell threshold (0.28 MeV), by distance from the track.
+- **Occupied cells per event** (hold-out Geant4 against Slice 2 against faster tail): 278 / 149 / 147 at 10 GeV, 335 / 182 / 181 at 20, 419 / 231 / 230 at 50, 488 / 278 / 272 at 100: the models have about 55% of Geant4's occupied cells, and the faster tail does not change this.
+- **By distance** (20 GeV; occupied fraction, Geant4 against Slice 2): 0-9 mm 0.997 / 0.967, 9-27 mm 0.981 / 0.870, **27-54 mm 0.910 / 0.478, 54-108 mm 0.487 / 0.113**, 108-216 mm 0.055 / 0.017. At 100 GeV: 54-108 mm 0.839 / 0.305. The missing cells are at 27-216 mm, in every layer group (front, middle and rear all low).
+- **The energy carried by an occupied cell in the outskirts is a constant MeV-scale quantum in Geant4:** 1.2-1.5 MeV beyond 108 mm and 1.1-1.2 MeV beyond 216 mm, the same at 20 and 100 GeV. In the model it is 7.7-9.1 MeV there, which is the model's spot energy (the layer energy over its spot number): **the model's outer quantum is about 7 times too coarse**,
+  and an outer cell is occupied only if a spot lands in it. (Close to the track the occupied cell energy is hundreds of MeV and matches: 410 against 428 MeV at 20 GeV.)
+- The 108+ mm energy of the model is also about twice Geant4's (56 against 29 MeV per event at 20 GeV), the tail excess of section 7 that the faster tail removes.
+
+**Proposed extension E2 (NOT implemented; needs the researcher's explicit approval, as the v0.8 research-session skill and CLAUDE.md require before a new mechanism is built).**
+1. **Mechanism:** the radial TAIL component's spots carry a fixed absolute energy `eps_t` (a few tenths of an MeV to about 1 MeV), independent of the primary energy and of the layer, in place of the layer energy over the spot number; the core component is unchanged. The tail energy `(1 - p) E_layer` is then carried by `(1 - p) E_layer / eps_t` spots.
+   Physically: low-energy photon and electron quanta (Compton and photoelectric deposits, the MeV scale of the critical energy) rather than equal shares of a layer's energy. E1's `kappa` was the relative form of this (tail spots at 1/2.66 of the core spot energy, still about 3 MeV); the measurement says the quantum is absolute.
+   One added parameter.
+2. **Calibration without tuning to a discriminator:** `eps_t` is the MEASURED mean energy per occupied cell at distances of at least 108 mm in the exposed baseline electrons (a single model-free number, about 1.2-1.5 MeV), fixed there and evaluated on the hold-out; it is not fitted to the hit-cell count, the width or the classifier. A free fit of `eps_t` would be a second variant to report, with the weight discipline of section 8.
+3. **Bases:** E2 on Slice 2 (one added parameter) and on the faster tail (two added parameters in total), both reported.
+4. **Adoption rule to be fixed in code before the run, proposed:** (A) occupied cells per event within 10% of the Geant4 hold-out at every energy and the hit-cell KS reduced by at least 50% against Slice 2; (B) no overfitting: the improvement transfers from the calibration set to the hold-out (at least 70%) and `eps_t` is not at a bound; (C) at most the parameter budget stated for the base, and no regression of the profile, core, containment, width and coupling beyond the tolerances of section 8.
+   The classifier AUC and the single-feature separation are reported as outcomes, never as criteria. Given section 11, the researcher may prefer per-energy tolerances; that is for the researcher to set before the run.
+5. **Expected limits (not claimed):** the rear-layer occupancy that already separates the two Geant4 samples (AUC 0.60-0.69 at layer 17) cannot be matched better than the hold-out agrees with the baseline; the longitudinal part (Slice 1) was never at the floor, so a perfectly occupied lateral model may still be distinguishable. The classifier AUC of 1.000 is therefore not expected to reach 0.5 from this step alone.
+
+## 14. Research OS v0.8 and the choices I introduced that the researcher has not reviewed (ownership gaps)
+
+The Research OS was updated to v0.8 (2026-10-08; installed: the `SKILL.md` files match the repository, `defense.py`, `tasks.py`, `literature_check.py` and `paper_access.py` are present). Changes that bear on this work: the literature scout and source verifier now distinguish reading depth from verification (applied retroactively in
+`2026-10-07_em_lateral_structure_note.md`, the reading-depth table); the research-session skill asks for the defend-research workflow when consequential agent work is modified, with selective ownership records, and for human approval of a plan before building (E2 above waits for it). No defense target (the structured claim list with bound evidence and learning ledgers) was built: it needs the researcher's claims and ledgers,
+and no presentation is pending; the list below is the agent-introduced input such a workflow would take.
+Choices introduced by the agent that the researcher has not reviewed, and where they live:
+1. the adoption-rule tolerances (30%, 70%, 0.2 / 0.3 points, KS 0.03 / 0.05, coupling 0.05, spot number 0.1): `em_production_lateral_e1_decision.py`, `em_production_lateral_tail_decision.py` (`THRESHOLDS`); none is derived (section 11);
+2. the second-moment weights 0.02 and 0.4 (`MOMENT_WEIGHT`, `--moment-weight`, `em_production_lateral_calibration.py`);
+3. the equal-weight cumulative residual of the radial fit, the 0.5 mm core bound, the 256-point Sobol quadrature, the energy-weighted ensemble mean;
+4. the spot structure: the gamma depth density with two scale constants, the spot fit on layers 2-17 only, the central-three-cell statistic and the quadratic centre-of-gravity conditioning, the doubling constant 2 per layer of E1;
+5. the generalised tail exponent (a Student-t strip marginal) of the faster tail;
+6. the GP constants' assumptions: `E` in GeV, `Z = 82` for the composite (not verified in the paper).
+A viva on the lateral slice, or a defense target for its claims, is available on request.

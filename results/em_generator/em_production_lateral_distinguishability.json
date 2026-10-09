@@ -1,0 +1,203 @@
+{
+  "status": "diagnostic on exposed electrons; the classifier is never a tuning target; the sealed sets are not read",
+  "sealed_data_read": false,
+  "events_per_class": 1000,
+  "per_energy": {
+    "10": {
+      "geant4_floor": {
+        "n_per_class": 1000,
+        "auc": 0.582765,
+        "null_percentile": 99.0,
+        "null_threshold": 0.52513615,
+        "null_mean": 0.4975957000000001,
+        "n_permutations": 50,
+        "material": false
+      },
+      "slice2": {
+        "classifier": {
+          "n_per_class": 1000,
+          "auc": 1.0,
+          "null_percentile": 99.0,
+          "null_threshold": 0.5255975500000001,
+          "null_mean": 0.4944510999999999,
+          "n_permutations": 50,
+          "material": true
+        },
+        "feature_group_auc": {
+          "all_features": 1.0,
+          "without_hit_cells": 0.9984999999999999,
+          "without_width": 1.0,
+          "without_hit_cells_and_width": 0.9992000000000001,
+          "only_hit_cell_count": 1.0,
+          "only_width": 0.8769625
+        }
+      },
+      "faster_tail": {
+        "classifier": {
+          "n_per_class": 1000,
+          "auc": 1.0,
+          "null_percentile": 99.0,
+          "null_threshold": 0.52863655,
+          "null_mean": 0.49709699999999996,
+          "n_permutations": 50,
+          "material": true
+        },
+        "feature_group_auc": {
+          "all_features": 1.0,
+          "without_hit_cells": 0.9994099999999999,
+          "without_width": 1.0,
+          "without_hit_cells_and_width": 0.9993549999999999,
+          "only_hit_cell_count": 1.0,
+          "only_width": 0.6497774999999999
+        }
+      }
+    },
+    "20": {
+      "geant4_floor": {
+        "n_per_class": 1000,
+        "auc": 0.60478,
+        "null_percentile": 99.0,
+        "null_threshold": 0.53225215,
+        "null_mean": 0.5019435,
+        "n_permutations": 50,
+        "material": true
+      },
+      "slice2": {
+        "classifier": {
+          "n_per_class": 1000,
+          "auc": 1.0,
+          "null_percentile": 99.0,
+          "null_threshold": 0.5416663,
+          "null_mean": 0.5030882,
+          "n_permutations": 50,
+          "material": true
+        },
+        "feature_group_auc": {
+          "all_features": 1.0,
+          "without_hit_cells": 0.998085,
+          "without_width": 1.0,
+          "without_hit_cells_and_width": 0.998725,
+          "only_hit_cell_count": 1.0,
+          "only_width": 0.894855
+        }
+      },
+      "faster_tail": {
+        "classifier": {
+          "n_per_class": 1000,
+          "auc": 1.0,
+          "null_percentile": 99.0,
+          "null_threshold": 0.5334843,
+          "null_mean": 0.502007,
+          "n_permutations": 50,
+          "material": true
+        },
+        "feature_group_auc": {
+          "all_features": 1.0,
+          "without_hit_cells": 0.9985950000000001,
+          "without_width": 1.0,
+          "without_hit_cells_and_width": 0.998555,
+          "only_hit_cell_count": 1.0,
+          "only_width": 0.653465
+        }
+      }
+    },
+    "50": {
+      "geant4_floor": {
+        "n_per_class": 1000,
+        "auc": 0.700925,
+        "null_percentile": 99.0,
+        "null_threshold": 0.54318735,
+        "null_mean": 0.5018471,
+        "n_permutations": 50,
+        "material": true
+      },
+      "slice2": {
+        "classifier": {
+          "n_per_class": 1000,
+          "auc": 1.0,
+          "null_percentile": 99.0,
+          "null_threshold": 0.5400627,
+          "null_mean": 0.49618320000000005,
+          "n_permutations": 50,
+          "material": true
+        },
+        "feature_group_auc": {
+          "all_features": 1.0,
+          "without_hit_cells": 0.9990600000000001,
+          "without_width": 1.0,
+          "without_hit_cells_and_width": 0.997895,
+          "only_hit_cell_count": 1.0,
+          "only_width": 0.8945450000000001
+        }
+      },
+      "faster_tail": {
+        "classifier": {
+          "n_per_class": 1000,
+          "auc": 1.0,
+          "null_percentile": 99.0,
+          "null_threshold": 0.5348596999999999,
+          "null_mean": 0.499973,
+          "n_permutations": 50,
+          "material": true
+        },
+        "feature_group_auc": {
+          "all_features": 1.0,
+          "without_hit_cells": 0.9975900000000001,
+          "without_width": 1.0,
+          "without_hit_cells_and_width": 0.9975149999999999,
+          "only_hit_cell_count": 1.0,
+          "only_width": 0.6402675
+        }
+      }
+    },
+    "100": {
+      "geant4_floor": {
+        "n_per_class": 1000,
+        "auc": 0.751735,
+        "null_percentile": 99.0,
+        "null_threshold": 0.5272234,
+        "null_mean": 0.49997540000000007,
+        "n_permutations": 50,
+        "material": true
+      },
+      "slice2": {
+        "classifier": {
+          "n_per_class": 1000,
+          "auc": 1.0,
+          "null_percentile": 99.0,
+          "null_threshold": 0.53899855,
+          "null_mean": 0.5019067,
+          "n_permutations": 50,
+          "material": true
+        },
+        "feature_group_auc": {
+          "all_features": 1.0,
+          "without_hit_cells": 0.9997100000000001,
+          "without_width": 1.0,
+          "without_hit_cells_and_width": 0.998245,
+          "only_hit_cell_count": 1.0,
+          "only_width": 0.8897499999999999
+        }
+      },
+      "faster_tail": {
+        "classifier": {
+          "n_per_class": 1000,
+          "auc": 1.0,
+          "null_percentile": 99.0,
+          "null_threshold": 0.53960305,
+          "null_mean": 0.5004136,
+          "n_permutations": 50,
+          "material": true
+        },
+        "feature_group_auc": {
+          "all_features": 1.0,
+          "without_hit_cells": 0.9977049999999998,
+          "without_width": 1.0,
+          "without_hit_cells_and_width": 0.9975800000000001,
+          "only_hit_cell_count": 1.0,
+          "only_width": 0.6527075
+        }
+      }
+    }
+  }
+}
