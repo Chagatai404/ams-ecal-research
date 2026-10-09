@@ -384,6 +384,43 @@ _NO_INTERACTION: dict[str, Any] = {
 # ----------------------------------------------------------------------
 
 
+EM_VARIANT_LISTS = {
+    # name -> EM constructor registered in place of G4EmStandardPhysics, the rest being FTFP_BERT's constructors.
+    # FTFP_BERT_EMZ is EM option 4 (Geant4 prints "G4EmStandard replaced with G4EmStandard_opt4"); FTFP_BERT_EMV is
+    # option 1 (Physics List Guide). The factory's own objects cannot be handed to SetUserInitialization through this
+    # pybind build (smart_holder ownership error), so the list is assembled here. "FTFP_BERT_STDEM" is the equivalence
+    # check: the standard EM constructor must reproduce FTFP_BERT event for event.
+    "FTFP_BERT_EMZ": "G4EmStandardPhysics_option4",
+    "FTFP_BERT_EMV": "G4EmStandardPhysics_option1",
+    "FTFP_BERT_STDEM": "G4EmStandardPhysics",
+}
+
+
+def _ftfp_bert_with_em(em_constructor: str):
+    """FTFP_BERT's constructors (EM extra, decay, hadron elastic, FTFP_BERT inelastic, stopping, ions, neutron cut) with the
+    named EM constructor."""
+
+    import geant4_pybind as g4  # imported here as the transport does: the module is only needed inside a worker
+
+    class _List(g4.G4VModularPhysicsList):
+        def __init__(self) -> None:
+            super().__init__()
+            self.SetVerboseLevel(0)
+            self.RegisterPhysics(getattr(g4, em_constructor)())
+            for name in (
+                "G4EmExtraPhysics",
+                "G4DecayPhysics",
+                "G4HadronElasticPhysics",
+                "G4HadronPhysicsFTFP_BERT",
+                "G4StoppingPhysics",
+                "G4IonPhysics",
+                "G4NeutronTrackingCut",
+            ):
+                self.RegisterPhysics(getattr(g4, name)())
+
+    return _List()
+
+
 class ECALTransport:
     """A configured Geant4 run manager for one geometry and physics list.
 
@@ -440,11 +477,10 @@ class ECALTransport:
 
         if hasattr(g4, physics_list):
             physics = getattr(g4, physics_list)()
-        else:  # reference lists with non-default EM constructors (FTFP_BERT_EMZ, _EMV, ...) exist only in the factory
-            factory = g4.G4PhysListFactory()
-            if not factory.IsReferencePhysList(physics_list):
-                raise PilotConfigError(f"unknown Geant4 physics list {physics_list!r}")
-            physics = factory.GetReferencePhysList(physics_list)
+        elif physics_list in EM_VARIANT_LISTS:
+            physics = _ftfp_bert_with_em(EM_VARIANT_LISTS[physics_list])
+        else:
+            raise PilotConfigError(f"unknown Geant4 physics list {physics_list!r}")
         parallel = g4.G4ParallelWorldPhysics("scoring")
         physics.RegisterPhysics(parallel)
         self._keep += [detector, physics, parallel]
