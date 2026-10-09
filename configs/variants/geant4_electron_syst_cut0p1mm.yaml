@@ -1,0 +1,31 @@
+# G-syst electrons, production cut 0.1 mm (cut-sensitivity before any sub-cell claim). Exposed development data.
+schema_version: 2
+
+particle: e-
+
+energies_gev: [20.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.1
+
+samples:
+  cut0p1mm:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 2000
+    base_seed: 20272004
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_electron_syst_cut0p1mm
