@@ -1,0 +1,1413 @@
+{
+  "status": "DEVELOPMENT on exposed events; not the registered test; sealed sets not read",
+  "per_energy": {
+    "10": {
+      "deposit_grid_mev": {
+        "vs_interacting_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 1408
+          },
+          "eligible_fraction": {
+            "electron": 0.026,
+            "proton": 0.6875
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999978693181819,
+              "auc_95": [
+                0.9999899857954545,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1408.0,
+              "rejection_90_95": [
+                1408.0,
+                1408.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1408.0,
+              "rejection_99_95": [
+                1408.0,
+                1408.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.8325504261363638,
+              "auc_95": [
+                0.8171959694602273,
+                0.8487778320312499
+              ],
+              "fpr_90": 0.31605113636363635,
+              "rejection_90": 3.1640449438202247,
+              "rejection_90_95": [
+                2.9827348797796844,
+                3.4522496015692044
+              ],
+              "fpr_99": 0.31889204545454547,
+              "rejection_99": 3.1358574610244987,
+              "rejection_99_95": [
+                2.9240434037692746,
+                3.38502223824979
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999964488636364,
+              "auc_95": [
+                0.9999872159090909,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1408.0,
+              "rejection_90_95": [
+                1408.0,
+                1408.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1408.0,
+              "rejection_99_95": [
+                1408.0,
+                1408.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -1.4204545455420714e-06,
+            "gain_95": [
+              -4.26136363640417e-06,
+              1.1102230246251565e-16
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {
+              "100": 0.997692471590909,
+              "300": 0.9999936079545455
+            },
+            "multiscale": {
+              "100": 0.8330706676136364,
+              "300": 0.8371711647727272
+            },
+            "conventional+multiscale": {
+              "100": 0.9976910511363637,
+              "300": 0.9999936079545454
+            }
+          }
+        },
+        "vs_all_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 3000
+          },
+          "eligible_fraction": {
+            "electron": 0.026,
+            "proton": 0.32266666666666666
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999945,
+              "auc_95": [
+                0.9999834083333333,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.651936,
+              "auc_95": [
+                0.6373311875000001,
+                0.6675958416666666
+              ],
+              "fpr_90": 0.679,
+              "rejection_90": 1.4727540500736376,
+              "rejection_90_95": [
+                1.4384177404854661,
+                1.5071779349150327
+              ],
+              "fpr_99": 0.679,
+              "rejection_99": 1.4727540500736376,
+              "rejection_99_95": [
+                1.4380902161928961,
+                1.5071779349150327
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999950000000001,
+              "auc_95": [
+                0.999986825,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": 5.00000000069889e-07,
+            "gain_95": [
+              -1.1102230246251565e-16,
+              1.9208333333797774e-06
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {},
+            "multiscale": {},
+            "conventional+multiscale": {}
+          }
+        }
+      },
+      "readout_grid_mev": {
+        "vs_interacting_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 1408
+          },
+          "eligible_fraction": {
+            "electron": 0.0,
+            "proton": 0.41051136363636365
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9990262784090909,
+              "auc_95": [
+                0.9965709339488636,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1408.0,
+              "rejection_90_95": [
+                1408.0,
+                1408.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1408.0,
+              "rejection_99_95": [
+                1408.0,
+                1408.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.6946022727272728,
+              "auc_95": [
+                0.6754825994318182,
+                0.7152277787642045
+              ],
+              "fpr_90": 0.5894886363636364,
+              "rejection_90": 1.6963855421686747,
+              "rejection_90_95": [
+                1.6257721840540384,
+                1.766624843161857
+              ],
+              "fpr_99": 0.5894886363636364,
+              "rejection_99": 1.6963855421686747,
+              "rejection_99_95": [
+                1.6257721840540384,
+                1.766624843161857
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9990269886363635,
+              "auc_95": [
+                0.9970804332386364,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1408.0,
+              "rejection_90_95": [
+                1408.0,
+                1408.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1408.0,
+              "rejection_99_95": [
+                1408.0,
+                1408.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": 7.102272726600134e-07,
+            "gain_95": [
+              -1.0830965909119914e-06,
+              6.42755681829753e-06
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {
+              "100": 0.9993558238636364,
+              "300": 0.9996175426136363
+            },
+            "multiscale": {
+              "100": 0.6994318181818182,
+              "300": 0.7041193181818182
+            },
+            "conventional+multiscale": {
+              "100": 0.9993558238636363,
+              "300": 0.9996175426136363
+            }
+          }
+        },
+        "vs_all_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 3000
+          },
+          "eligible_fraction": {
+            "electron": 0.0,
+            "proton": 0.19266666666666668
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9989166666666667,
+              "auc_95": [
+                0.9973896416666667,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.5923333333333334,
+              "auc_95": [
+                0.5748095958333334,
+                0.6084081083333334
+              ],
+              "fpr_90": 0.8073333333333333,
+              "rejection_90": 1.2386457473162675,
+              "rejection_90_95": [
+                1.220976374107161,
+                1.2578880060378625
+              ],
+              "fpr_99": 0.8073333333333333,
+              "rejection_99": 1.2386457473162675,
+              "rejection_99_95": [
+                1.220976374107161,
+                1.2578880060378625
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9989185,
+              "auc_95": [
+                0.99703685,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": 1.8333333333675483e-06,
+            "gain_95": [
+              -6.333333333388702e-06,
+              1.9000000000049532e-05
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {},
+            "multiscale": {},
+            "conventional+multiscale": {}
+          }
+        }
+      }
+    },
+    "20": {
+      "deposit_grid_mev": {
+        "vs_interacting_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 1449
+          },
+          "eligible_fraction": {
+            "electron": 0.898,
+            "proton": 0.7653554175293306
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999882677708765,
+              "auc_95": [
+                0.9999575051759834,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1449.0,
+              "rejection_90_95": [
+                1449.0,
+                1449.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1449.0,
+              "rejection_99_95": [
+                1449.0,
+                1449.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.9849285714285714,
+              "auc_95": [
+                0.9810538819875777,
+                0.9885110852311939
+              ],
+              "fpr_90": 0.05728088336783989,
+              "rejection_90": 17.457831325301207,
+              "rejection_90_95": [
+                9.435129415594988,
+                1449.0
+              ],
+              "fpr_99": 0.24292615596963424,
+              "rejection_99": 4.1164772727272725,
+              "rejection_99_95": [
+                3.8131578947368423,
+                4.472912486494829
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999861973775017,
+              "auc_95": [
+                0.9999564872325742,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1449.0,
+              "rejection_90_95": [
+                1449.0,
+                1449.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1449.0,
+              "rejection_99_95": [
+                1449.0,
+                1449.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -2.070393374742352e-06,
+            "gain_95": [
+              -8.281573498858386e-06,
+              1.1102230246251565e-16
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {
+              "100": 0.9979648033126294,
+              "300": 0.9990027605244997
+            },
+            "multiscale": {
+              "100": 0.9778726708074533,
+              "300": 0.9816942719116631
+            },
+            "conventional+multiscale": {
+              "100": 0.9979648033126294,
+              "300": 0.9997239475500345
+            }
+          }
+        },
+        "vs_all_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 3000
+          },
+          "eligible_fraction": {
+            "electron": 0.898,
+            "proton": 0.36966666666666664
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9990423333333334,
+              "auc_95": [
+                0.996619575,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.9623993333333333,
+              "auc_95": [
+                0.956279325,
+                0.9697283
+              ],
+              "fpr_90": 0.137,
+              "rejection_90": 7.2992700729927,
+              "rejection_90_95": [
+                4.899158977708846,
+                1500.0
+              ],
+              "fpr_99": 0.6366666666666667,
+              "rejection_99": 1.5706806282722512,
+              "rejection_99_95": [
+                1.5270089711777057,
+                1.6118416634205965
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999733333333334,
+              "auc_95": [
+                0.999897525,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": 0.0009310000000000151,
+            "gain_95": [
+              -5.828670879282071e-17,
+              0.002788349999999964
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {},
+            "multiscale": {},
+            "conventional+multiscale": {}
+          }
+        }
+      },
+      "readout_grid_mev": {
+        "vs_interacting_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 1449
+          },
+          "eligible_fraction": {
+            "electron": 0.001,
+            "proton": 0.5507246376811594
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999993098688751,
+              "auc_95": [
+                0.9999958592132504,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1449.0,
+              "rejection_90_95": [
+                1449.0,
+                1449.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1449.0,
+              "rejection_99_95": [
+                1449.0,
+                1449.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.7665779848171153,
+              "auc_95": [
+                0.7479522774327122,
+                0.7819846704623878
+              ],
+              "fpr_90": 0.4492753623188406,
+              "rejection_90": 2.225806451612903,
+              "rejection_90_95": [
+                2.0921921813522,
+                2.3583024779265167
+              ],
+              "fpr_99": 0.4492753623188406,
+              "rejection_99": 2.225806451612903,
+              "rejection_99_95": [
+                2.0921921813522,
+                2.3583024779265167
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.999999309868875,
+              "auc_95": [
+                0.9999958592132505,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1449.0,
+              "rejection_90_95": [
+                1449.0,
+                1449.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1449.0,
+              "rejection_99_95": [
+                1449.0,
+                1449.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -1.1102230246251565e-16,
+            "gain_95": [
+              -2.220446049250313e-16,
+              1.1102230246251565e-16
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {
+              "100": 0.9961373360938578,
+              "300": 0.999968253968254
+            },
+            "multiscale": {
+              "100": 0.7829951690821256,
+              "300": 0.7788847481021394
+            },
+            "conventional+multiscale": {
+              "100": 0.9960634920634921,
+              "300": 0.999968253968254
+            }
+          }
+        },
+        "vs_all_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 3000
+          },
+          "eligible_fraction": {
+            "electron": 0.001,
+            "proton": 0.266
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9998318333333333,
+              "auc_95": [
+                0.9993975875000001,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.6294154999999999,
+              "auc_95": [
+                0.6073301416666667,
+                0.6452708541666666
+              ],
+              "fpr_90": 0.734,
+              "rejection_90": 1.3623978201634879,
+              "rejection_90_95": [
+                1.3329630658150515,
+                1.3924829130742542
+              ],
+              "fpr_99": 0.734,
+              "rejection_99": 1.3623978201634879,
+              "rejection_99_95": [
+                1.3329630658150515,
+                1.3924829130742542
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9997511666666665,
+              "auc_95": [
+                0.9990924833333333,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                1967.2131147541095,
+                3000.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -8.066666666672884e-05,
+            "gain_95": [
+              -0.0002324875000000143,
+              5.828670879281977e-17
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {},
+            "multiscale": {},
+            "conventional+multiscale": {}
+          }
+        }
+      }
+    },
+    "50": {
+      "deposit_grid_mev": {
+        "vs_interacting_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 1453
+          },
+          "eligible_fraction": {
+            "electron": 0.999,
+            "proton": 0.8189951823812801
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999903647625603,
+              "auc_95": [
+                0.9999640743289745,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1453.0,
+              "rejection_90_95": [
+                1453.0,
+                1453.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1453.0,
+              "rejection_99_95": [
+                1453.0,
+                1453.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.9970836200963524,
+              "auc_95": [
+                0.9949746988988301,
+                0.9991013936682726
+              ],
+              "fpr_90": 0.0034411562284927736,
+              "rejection_90": 290.59999999999997,
+              "rejection_90_95": [
+                145.29999999999998,
+                1453.0
+              ],
+              "fpr_99": 0.013764624913971095,
+              "rejection_99": 72.64999999999999,
+              "rejection_99_95": [
+                50.103448275862064,
+                171.44542772861357
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999779766001378,
+              "auc_95": [
+                0.9999189091534756,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1453.0,
+              "rejection_90_95": [
+                1453.0,
+                1453.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1453.0,
+              "rejection_99_95": [
+                1453.0,
+                1453.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -1.2388162422549698e-05,
+            "gain_95": [
+              -3.592567102541355e-05,
+              1.1102230246251565e-16
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {
+              "100": 0.9984989676531315,
+              "300": 0.9999690295939436
+            },
+            "multiscale": {
+              "100": 0.9900330350997936,
+              "300": 0.9969435650378526
+            },
+            "conventional+multiscale": {
+              "100": 0.9985326909841706,
+              "300": 0.9999841706813489
+            }
+          }
+        },
+        "vs_all_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 3000
+          },
+          "eligible_fraction": {
+            "electron": 0.999,
+            "proton": 0.39666666666666667
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.999998,
+              "auc_95": [
+                0.9999908083333333,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.9976569999999999,
+              "auc_95": [
+                0.9952209583333332,
+                0.9995539416666667
+              ],
+              "fpr_90": 0.002,
+              "rejection_90": 500.0,
+              "rejection_90_95": [
+                300.0,
+                3000.0
+              ],
+              "fpr_99": 0.005666666666666667,
+              "rejection_99": 176.47058823529412,
+              "rejection_99_95": [
+                120.0,
+                353.98230088495575
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9998896666666666,
+              "auc_95": [
+                0.9996576,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -0.00010833333333348794,
+            "gain_95": [
+              -0.00032739999999996107,
+              8.41666666673288e-07
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {},
+            "multiscale": {},
+            "conventional+multiscale": {}
+          }
+        }
+      },
+      "readout_grid_mev": {
+        "vs_interacting_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 1453
+          },
+          "eligible_fraction": {
+            "electron": 0.025,
+            "proton": 0.6531314521679285
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999965588437716,
+              "auc_95": [
+                0.9999868891947694,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1453.0,
+              "rejection_90_95": [
+                1453.0,
+                1453.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1453.0,
+              "rejection_99_95": [
+                1453.0,
+                1453.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.8178282863041982,
+              "auc_95": [
+                0.7997623967653131,
+                0.828442635925671
+              ],
+              "fpr_90": 0.35030970406056433,
+              "rejection_90": 2.8546168958742633,
+              "rejection_90_95": [
+                2.6632452000183298,
+                3.0334029227557413
+              ],
+              "fpr_99": 0.35030970406056433,
+              "rejection_99": 2.8546168958742633,
+              "rejection_99_95": [
+                2.6632452000183298,
+                3.0334029227557413
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999965588437715,
+              "auc_95": [
+                0.9999831211286992,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1453.0,
+              "rejection_90_95": [
+                1453.0,
+                1453.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1453.0,
+              "rejection_99_95": [
+                1453.0,
+                1453.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -1.1102230246251565e-16,
+            "gain_95": [
+              -1.6930901125533636e-16,
+              2.220446049250313e-16
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {
+              "100": 0.9943272539573297,
+              "300": 0.999991052993806
+            },
+            "multiscale": {
+              "100": 0.813568479008947,
+              "300": 0.8207456985547145
+            },
+            "conventional+multiscale": {
+              "100": 0.9942653131452168,
+              "300": 0.9999917412250516
+            }
+          }
+        },
+        "vs_all_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 3000
+          },
+          "eligible_fraction": {
+            "electron": 0.025,
+            "proton": 0.31633333333333336
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.999995,
+              "auc_95": [
+                0.9999853166666667,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.6564173333333334,
+              "auc_95": [
+                0.6441481125,
+                0.6719537083333333
+              ],
+              "fpr_90": 0.685,
+              "rejection_90": 1.4598540145985401,
+              "rejection_90_95": [
+                1.4240787990268795,
+                1.4926115727150606
+              ],
+              "fpr_99": 0.685,
+              "rejection_99": 1.4598540145985401,
+              "rejection_99_95": [
+                1.4240787990268795,
+                1.4926115727150606
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999926666666666,
+              "auc_95": [
+                0.9999831083333334,
+                0.9999998416666667
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -2.333333333326415e-06,
+            "gain_95": [
+              -6.666666666715893e-06,
+              5.828670879281977e-17
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {},
+            "multiscale": {},
+            "conventional+multiscale": {}
+          }
+        }
+      }
+    },
+    "100": {
+      "deposit_grid_mev": {
+        "vs_interacting_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 1432
+          },
+          "eligible_fraction": {
+            "electron": 1.0,
+            "proton": 0.8198324022346368
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999958100558659,
+              "auc_95": [
+                0.9999828736033519,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1432.0,
+              "rejection_90_95": [
+                1432.0,
+                1432.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1432.0,
+              "rejection_99_95": [
+                1432.0,
+                1432.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.9993261173184358,
+              "auc_95": [
+                0.9983489437849161,
+                0.9999348289106146
+              ],
+              "fpr_90": 0.0013966480446927375,
+              "rejection_90": 716.0,
+              "rejection_90_95": [
+                286.40000000000003,
+                1432.0
+              ],
+              "fpr_99": 0.00558659217877095,
+              "rejection_99": 179.0,
+              "rejection_99_95": [
+                91.94221508828265,
+                477.3333333333333
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999930167597765,
+              "auc_95": [
+                0.9999739874301676,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1432.0,
+              "rejection_90_95": [
+                1432.0,
+                1432.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1432.0,
+              "rejection_99_95": [
+                1432.0,
+                1432.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -2.793296089431685e-06,
+            "gain_95": [
+              -1.2569832402223313e-05,
+              3.526536312878347e-06
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {
+              "100": 0.9953903631284915,
+              "300": 1.0
+            },
+            "multiscale": {
+              "100": 0.9931997206703912,
+              "300": 0.9987985335195531
+            },
+            "conventional+multiscale": {
+              "100": 0.9952925977653632,
+              "300": 0.9999986033519552
+            }
+          }
+        },
+        "vs_all_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 3000
+          },
+          "eligible_fraction": {
+            "electron": 1.0,
+            "proton": 0.3913333333333333
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999826666666666,
+              "auc_95": [
+                0.9999352416666667,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.9994266666666667,
+              "auc_95": [
+                0.9988180916666668,
+                0.9999170583333333
+              ],
+              "fpr_90": 0.001,
+              "rejection_90": 1000.0,
+              "rejection_90_95": [
+                500.0,
+                3000.0
+              ],
+              "fpr_99": 0.003,
+              "rejection_99": 333.3333333333333,
+              "rejection_99_95": [
+                187.5,
+                750.0
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999903333333334,
+              "auc_95": [
+                0.9999669999999998,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": 7.66666666685012e-06,
+            "gain_95": [
+              0.0,
+              2.5366666666654092e-05
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {},
+            "multiscale": {},
+            "conventional+multiscale": {}
+          }
+        }
+      },
+      "readout_grid_mev": {
+        "vs_interacting_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 1432
+          },
+          "eligible_fraction": {
+            "electron": 0.721,
+            "proton": 0.6983240223463687
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999853351955307,
+              "auc_95": [
+                0.9999612255586592,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1432.0,
+              "rejection_90_95": [
+                1432.0,
+                1432.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1432.0,
+              "rejection_99_95": [
+                1432.0,
+                1432.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.9528966480446927,
+              "auc_95": [
+                0.9443164018854748,
+                0.960550811801676
+              ],
+              "fpr_90": 0.24860335195530725,
+              "rejection_90": 4.02247191011236,
+              "rejection_90_95": [
+                3.5979899497487433,
+                4.413282995608291
+              ],
+              "fpr_99": 0.30446927374301674,
+              "rejection_99": 3.284403669724771,
+              "rejection_99_95": [
+                3.043408958078742,
+                3.5454320376330775
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999888268156424,
+              "auc_95": [
+                0.999955499301676,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 1432.0,
+              "rejection_90_95": [
+                1432.0,
+                1432.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 1432.0,
+              "rejection_99_95": [
+                1432.0,
+                1432.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": 3.4916201117063395e-06,
+            "gain_95": [
+              -3.526536312825623e-06,
+              1.2569832402387071e-05
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {
+              "100": 0.9936620111731843,
+              "300": 0.9999923184357542
+            },
+            "multiscale": {
+              "100": 0.9476759776536312,
+              "300": 0.9495209497206704
+            },
+            "conventional+multiscale": {
+              "100": 0.9938275139664804,
+              "300": 0.9999916201117318
+            }
+          }
+        },
+        "vs_all_protons": {
+          "events": {
+            "electron": 1000,
+            "proton": 3000
+          },
+          "eligible_fraction": {
+            "electron": 0.721,
+            "proton": 0.3333333333333333
+          },
+          "rungs": {
+            "conventional": {
+              "auc": 0.9999899999999999,
+              "auc_95": [
+                0.9999645666666668,
+                1.0000000000000002
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            },
+            "multiscale": {
+              "auc": 0.9005703333333334,
+              "auc_95": [
+                0.88997715,
+                0.9127113208333333
+              ],
+              "fpr_90": 0.533,
+              "rejection_90": 1.8761726078799248,
+              "rejection_90_95": [
+                1.812004530011325,
+                1.9437290441712425
+              ],
+              "fpr_99": 0.6683333333333333,
+              "rejection_99": 1.4962593516209477,
+              "rejection_99_95": [
+                1.4580270464017107,
+                1.5342717962487056
+              ]
+            },
+            "conventional+multiscale": {
+              "auc": 0.9999836666666666,
+              "auc_95": [
+                0.9999498500000001,
+                1.0
+              ],
+              "fpr_90": 0.0,
+              "rejection_90": 3000.0,
+              "rejection_90_95": [
+                3000.0,
+                3000.0
+              ],
+              "fpr_99": 0.0,
+              "rejection_99": 3000.0,
+              "rejection_99_95": [
+                3000.0,
+                3000.0
+              ]
+            }
+          },
+          "gain_conventional_plus_multiscale_over_conventional": {
+            "gain": -6.333333333330415e-06,
+            "gain_95": [
+              -2.389166666678655e-05,
+              0.0
+            ],
+            "adds_information_by_the_registered_rule": false
+          },
+          "sample_efficiency_auc": {
+            "conventional": {},
+            "multiscale": {},
+            "conventional+multiscale": {}
+          }
+        }
+      }
+    }
+  }
+}

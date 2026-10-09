@@ -151,7 +151,7 @@ def ladder(
     return out
 
 
-def development(bootstraps: int = BOOTSTRAPS) -> dict:
+def development(bootstraps: int = BOOTSTRAPS, include_raw: bool = False) -> dict:
     """Development run on EXPOSED events: electrons against truth-interacting protons (all rungs) and against all calibration
     protons (rungs 1-3), per energy and representation. Not the registered test; sealed sets are not read."""
 
@@ -170,7 +170,13 @@ def development(bootstraps: int = BOOTSTRAPS) -> dict:
             protons_all = arrays[representation][calibration].astype(float)
             protons_int = arrays[representation][calibration & arrays["truth_occurred"]].astype(float)
             row[representation] = {
-                "vs_interacting_protons": ladder(electrons, protons_int, sizes=(100, 300), bootstraps=bootstraps),
+                "vs_interacting_protons": ladder(
+                    electrons,
+                    protons_int,
+                    sizes=(100, 300),
+                    bootstraps=bootstraps,
+                    rungs=RUNGS if include_raw else {k: v for k, v in RUNGS.items() if "raw" not in v},
+                ),
                 "vs_all_protons": ladder(
                     electrons,
                     protons_all,
@@ -197,8 +203,9 @@ def main(argv: list[str] | None = None) -> None:
         default=PROJECT_ROOT / "results" / "multiscale_controls" / "multiscale_ladder_development.json",
     )
     parser.add_argument("--bootstraps", type=int, default=BOOTSTRAPS)
+    parser.add_argument("--with-raw", action="store_true", help="also fit the two raw-grid rungs (slow)")
     args = parser.parse_args(argv)
-    args.out.write_text(json.dumps(development(args.bootstraps), indent=2), encoding="utf-8")
+    args.out.write_text(json.dumps(development(args.bootstraps, args.with_raw), indent=2), encoding="utf-8")
 
 
 if __name__ == "__main__":
