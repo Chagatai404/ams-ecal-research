@@ -1,7 +1,7 @@
 # Multiscale estimator validity: pre-registration of the synthetic controls (acceptance rules CONFIRMED, 2026-10-02)
 
 _Written 2026-10-02, **before any estimator code existed and before any estimator output was read**. It belongs to the
-estimator-controls experiment (record EXP-008) of `research/plans/2026-10-02_weekend_multiscale_check_and_proton_model_completion_plan.md`,
+estimator-controls experiment (record EXP-008) of `research/RESEARCH_PLAN.md (Appendix C)`,
 which the researcher approved on 2026-10-02. **The acceptance rules in section 4 were confirmed by the researcher on 2026-10-02 as written**
 (record DEC-013). Control output may be read only after the estimator code and its tests exist._
 

@@ -1,7 +1,7 @@
 """The ``em_production`` electron generator, Slice 1: a candidate DEVELOPMENT model (not validated).
 
 Decision record ``research/DECISIONS.md`` (DEC-014 and the 2026-10-06 rows), plan
-``research/plans/2026-10-05_em_production_generator_plan.md`` sections 8-13, note
+``research/RESEARCH_PLAN.md (Appendix D)`` sections 8-13, note
 ``research/plans/2026-10-06_em_production_slice1_note.md``. DEC-001 (``stochastic.py``) is NOT changed: it stays
 the historical baseline and the null control.
 

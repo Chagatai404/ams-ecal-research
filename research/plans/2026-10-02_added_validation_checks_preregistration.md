@@ -1,6 +1,6 @@
 # Added validation checks — PRE-REGISTRATION (numbers CONFIRMED 2026-10-02)
 
-_Drafted 2026-10-02. Status: **registered**; the researcher confirmed all numbers as drafted and approved scikit-learn ("Yes to all", 2026-10-02). DEC-007 accepted the concept (a layer-correlation row, a classifier two-sample test, CaloChallenge-style sparsity, an ungated multiscale panel) and required it to be registered **before any sealed Geant4 event exists**. The numbers below are my proposal; until the researcher confirms or amends them (Q2 of `2026-10-02_fastmc_validated_dataset_and_detector_response_plan.md`) no sealed set is generated._
+_Drafted 2026-10-02. Status: **registered**; the researcher confirmed all numbers as drafted and approved scikit-learn ("Yes to all", 2026-10-02). DEC-007 accepted the concept (a layer-correlation row, a classifier two-sample test, CaloChallenge-style sparsity, an ungated multiscale panel) and required it to be registered **before any sealed Geant4 event exists**. The numbers below are my proposal; until the researcher confirms or amends them (Q2 of `RESEARCH_PLAN.md (Appendix B)`) no sealed set is generated._
 
 These rows are **added to** the original contract (`2026-09-29_proton_dependency_analysis.md` §8), which is unchanged: interaction, crossing, energy, longitudinal, lateral, activity and correlation rows keep their stated thresholds (KS >= 0.10 with p < 0.01, or a 5/16/50/84/95% quantile off by > 10% and outside the bootstrap 95% interval, correlations differ by >= 0.15 and outside the bootstrap interval).
 

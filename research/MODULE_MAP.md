@@ -79,7 +79,7 @@ Results: `results/em_generator/`. Plan and notes: `research/plans/2026-10-05_em_
 | 14 | `em_lateral_distinguishability.py` | `test_em_lateral_distinguishability.py` | Can the registered classifier two-sample test tell a lateral candidate from Geant4? AUC with the permutation null, feature-group ablations, the single-feature separation, and the Geant4 baseline-against-hold-out floor. A diagnostic, never a tuning target. Result: AUC 1.000 for both candidates, separated by the cell occupancy. | analysis + control | `em_production_lateral_distinguishability.json`, `em_production_lateral_single_features.json` |
 | 15 | `em_lateral_occupancy_diagnostic.py` | `test_em_lateral_occupancy_diagnostic.py` | What carries the missing cell occupancy? Occupied fraction, empty fraction and energy per occupied cell by distance from the track and by layer group, for Geant4 and both candidates. Result: a constant 1.2-1.5 MeV outer quantum in Geant4 against 7.7-9.1 MeV in the model. | analysis | `em_production_lateral_occupancy_diagnostic.json` |
 
-Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `research/plans/2026-10-05_em_production_generator_plan.md` and `DECISIONS.md` (DEC-014 and the F-rows).
+Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `research/RESEARCH_PLAN.md (Appendix D)` and `DECISIONS.md` (DEC-014 and the F-rows).
 
 ## 4. `proton_model/` — the proton model
 

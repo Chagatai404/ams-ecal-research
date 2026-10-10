@@ -241,7 +241,7 @@ Branch `fastmc-validated-dataset`. Read in this order for a tutoring session on 
 
 | process | what was done | where it is recorded | commits |
 |---|---|---|---|
-| plan and approvals | the plan (tracks A-E), the researcher's "Yes to all" on Q1-Q7 | `plans/2026-10-02_fastmc_validated_dataset_and_detector_response_plan.md`, `DECISIONS.md` | |
+| plan and approvals | the plan (tracks A-E), the researcher's "Yes to all" on Q1-Q7 | `research/RESEARCH_PLAN.md (Appendix B)`, `DECISIONS.md` | |
 | pre-registration | the added validation checks (layer correlations, classifier two-sample test, sparsity, ungated multiscale panel), numbers confirmed before any sealed event existed; amended 2026-10-05 | `plans/2026-10-02_added_validation_checks_preregistration.md` | |
 | crossing repair | burst latent, lateral spill, bulk coupling; in-sample check | `STATE.md` (branch sections), `results/proton_model/crossing_structure_in_sample.json`; DEC-008, DEC-009 | e822e04, f4b79ea (superseded) |
 | sealed Geant4 sets | configs, hash manifests, guard, opening ledger (no opening yet), generation logs | `sealed/README.md`, `sealed/*_manifest.json`, `sealed/generation_log_part*.txt`, `src/ams_ecal/validation/sealed_set.py` | 7f75f73, 467117f, 35bd01f |
@@ -251,7 +251,7 @@ Branch `fastmc-validated-dataset`. Read in this order for a tutoring session on 
 | reviewer agents | physics, simulation, statistics, ML, adversarial, reproducibility, literature scout; my assessment of each finding | `reviews/2026-10-05_reviewer_agents_round1.md` | bfe964b |
 | EM out-of-sample check | the DEC-001 EM generator against exploration Geant4 electrons: strong disagreement | `results/em_generator/exploration_comparison.json`, `STATE.md` (2026-10-05) | bfe964b (tag `fastmc-pre-em-repair-2026-10-05`) |
 | decisions of 2026-10-05 | DEC-005 accepted; EM: smooth null kept, new production generator; thresholds; protocol wording; sealed proton set stays closed | `DECISIONS.md` (rows of 2026-10-05) | |
-| EM production plan | gated plan, no implementation | `plans/2026-10-05_em_production_generator_plan.md` | |
+| EM production plan | gated plan, no implementation | `research/RESEARCH_PLAN.md (Appendix D)` | |
 | physics-list systematic | the proton model against QGSP_BERT and QBBC pilot samples (a systematic, not validation) | `results/proton_model/physics_list_systematic.json` | |
 | longitudinal structure (analysis) | joint T/alpha structure of Geant4 electrons, event beta, origin degeneracy, confounders of the lateral coupling | `plans/2026-10-05_em_longitudinal_structure_analysis_note.md`, `results/em_generator/longitudinal_structure*`; decisions F1-F5, DEC-014 | b664936 |
 | repository grouping | `src/ams_ecal` and `tests` grouped into role folders; the F5/F6 labels replaced by descriptive names | `MODULE_MAP.md`, `NAMES.md` | 9bd6b92 |

@@ -1,6 +1,6 @@
 # EM generator literature: discovery and source verification — RECORD (2026-10-05)
 
-Part of `plans/2026-10-05_em_production_generator_plan.md` (section 5). Procedure of `CLAUDE.md` and Research OS v0.7: independent discovery, then source verification, then adversarial counterevidence, then reconciliation with the repository. **This file records steps 1, 2 and 3. Step 4 (reconciliation with the repository code and the formulation for approval) is not done.** Nothing here is yet promoted to a project fact; no PDF was saved (saving files needs the researcher's permission); PDFs read were the researcher's local library copies (inherited project citations, labelled as such) or arXiv pages fetched in place.
+Part of `research/RESEARCH_PLAN.md (Appendix D)` (section 5). Procedure of `CLAUDE.md` and Research OS v0.7: independent discovery, then source verification, then adversarial counterevidence, then reconciliation with the repository. **This file records steps 1, 2 and 3. Step 4 (reconciliation with the repository code and the formulation for approval) is not done.** Nothing here is yet promoted to a project fact; no PDF was saved (saving files needs the researcher's permission); PDFs read were the researcher's local library copies (inherited project citations, labelled as such) or arXiv pages fetched in place.
 
 ## 1. Discovery pass (neutral, no repository, no local library)
 
