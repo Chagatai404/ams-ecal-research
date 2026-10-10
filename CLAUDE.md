@@ -9,7 +9,7 @@ Before substantial work:
 1. Read `RESEARCH_PROTOCOL.md`.
 2. Read `research/STATE.md`.
 3. Read `research/DECISIONS.md` (the master list of accepted decisions).
-4. Read `research/MASTER_PLAN.md` (the single living plan: status of every planned item, open decisions) and the records in `research/graph/`; use `graphify query` for code and relationship questions. Do this every session, unprompted, before answering anything about status or plans.
+4. Read `research/RESEARCH_PLAN.md` (the single living plan: status of every planned item, open decisions) and the records in `research/graph/`; use `graphify query` for code and relationship questions. Do this every session, unprompted, before answering anything about status or plans.
 5. Inspect the relevant source, tests, notebook, and configuration files.
 6. Use installed Scientific Research OS skills when appropriate.
 

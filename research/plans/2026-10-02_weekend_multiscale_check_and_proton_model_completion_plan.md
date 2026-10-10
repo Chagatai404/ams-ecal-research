@@ -1,6 +1,6 @@
 # Weekend multiscale check, proton model completion and the road to the detector response — PROPOSED PLAN
 
-> **SUPERSEDED AS A PLAN (2026-10-10).** The only plan is `research/MASTER_PLAN.md`; this file is kept as an evidence record. Its items are tracked there with a status.
+> **SUPERSEDED AS A PLAN (2026-10-10).** The only plan is `research/RESEARCH_PLAN.md`; this file is kept as an evidence record. Its items are tracked there with a status.
 
 _Drafted 2026-10-02 at the researcher's request: finish the proton model, then move to the detector response after learning again, and plan the first multiscale check for the weekend. **Status when drafted: proposed. Nothing in this file was approved or executed.** Approval is per item, in the table at the end, which records each approval with its date._
 

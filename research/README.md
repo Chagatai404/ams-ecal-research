@@ -7,7 +7,7 @@ researcher's Obsidian knowledge vault.
 
 ## Core records
 
-`MASTER_PLAN.md`
+`RESEARCH_PLAN.md`
 
 : The ONE living plan: every workstream, item, status, decision waiting for the researcher and the critical path. Read it first, every session. Dated files in `plans/` are evidence records, not plans.
 

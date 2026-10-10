@@ -1,4 +1,4 @@
-# MASTER PLAN — the single living plan of the AMS ECAL project
+# RESEARCH PLAN — the single living plan of the AMS ECAL project
 
 _Created 2026-10-10 at the researcher's request ("We only have one plan including everything"). Consolidates every plan, pre-registration, decision, experiment and hypothesis record in the repository as of commit `b0d7b13`. **This is the only plan.** Update it in place; do not create a new plan file per session._
 

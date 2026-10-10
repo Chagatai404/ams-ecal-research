@@ -1,6 +1,6 @@
 # Proton model implementation plan — researcher's specification, 2026-09-29
 
-> **SUPERSEDED AS A PLAN (2026-10-10).** The only plan is `research/MASTER_PLAN.md`; this file is kept as an evidence record. Its items are tracked there with a status.
+> **SUPERSEDED AS A PLAN (2026-10-10).** The only plan is `research/RESEARCH_PLAN.md`; this file is kept as an evidence record. Its items are tracked there with a status.
 
 _Received in chat on 2026-09-29, after the Geant4 proton pilot. Recorded below in full so it
 survives across sessions: the researcher's wording is kept, but many of the original's

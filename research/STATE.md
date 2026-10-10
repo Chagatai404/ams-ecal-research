@@ -872,7 +872,7 @@ No quantum advantage is assumed.
 
 # Next session — start here
 
-> **STALE SINCE 2026-09-29; SUPERSEDED 2026-10-10.** Current status, open items, decisions and the plan are in `research/MASTER_PLAN.md`. The text below is historical.
+> **STALE SINCE 2026-09-29; SUPERSEDED 2026-10-10.** Current status, open items, decisions and the plan are in `research/RESEARCH_PLAN.md`. The text below is historical.
 
 
 _Updated 2026-09-29._ the EM event generator is committed (`fe0e699`) and pushed to `stochastic-events`; the
