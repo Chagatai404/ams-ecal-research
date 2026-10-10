@@ -1,5 +1,7 @@
 # Datasets for the multiscale test — PLAN (for the researcher's approval; nothing here is built)
 
+> **SUPERSEDED AS A PLAN (2026-10-10).** The only plan is `research/MASTER_PLAN.md`; this file is kept as an evidence record. Its items are tracked there with a status.
+
 _Drafted 2026-10-09 at the researcher's request: "make a complete plan, verified by the literature and Geant4 simulations we made to produce the final datasets to start testing our multiscale hypothesis on; we have been spending a week on this, we should speed up."_
 
 Status: **a plan.** Section 8 lists the decisions that block it. Reads with `research/PUBLICATION_ROADMAP.md` (Paper 1), `research/STATE.md` (RQ-001, H-001),

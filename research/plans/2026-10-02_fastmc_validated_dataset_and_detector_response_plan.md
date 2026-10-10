@@ -1,5 +1,7 @@
 # Validated FastMC dataset and the start of the detector response — PLAN
 
+> **SUPERSEDED AS A PLAN (2026-10-10).** The only plan is `research/MASTER_PLAN.md`; this file is kept as an evidence record. Its items are tracked there with a status.
+
 _Drafted 2026-10-02 on branch `fastmc-validated-dataset` (from `geant4-proton-pilot` at `ca448eb`), at the researcher's request: "plan and implement the remaining part of the stochastic event generation and start detector response. We need a validated FastMC dataset asap."_
 
 Status of this document: **a plan.** Section 7 separates what the researcher's message of 2026-10-02 authorises from what still needs a decision. Nothing in sections 3-6 is an accepted conclusion.

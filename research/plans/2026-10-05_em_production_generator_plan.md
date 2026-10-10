@@ -1,5 +1,7 @@
 # EM production generator — PLAN (no implementation before approval)
 
+> **SUPERSEDED AS A PLAN (2026-10-10).** The only plan is `research/MASTER_PLAN.md`; this file is kept as an evidence record. Its items are tracked there with a status.
+
 _Drafted 2026-10-05 on branch `fastmc-validated-dataset`, after the first out-of-sample comparison of the DEC-001 EM generator with Geant4 electrons. Direction accepted by the researcher on 2026-10-05 (`research/DECISIONS.md`); the model's formulation is NOT yet approved, and by `CLAUDE.md` nothing is implemented until it is._
 
 ## 1. Why
