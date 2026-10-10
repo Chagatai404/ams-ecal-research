@@ -125,29 +125,49 @@ def ladder(
     rungs: dict[str, tuple[str, ...]] = RUNGS,
 ) -> dict:
     blocks, labels = build_blocks(electron_grids, proton_grids)
+    return ladder_from_blocks(blocks, labels, rungs, sizes, seed, bootstraps)
+
+
+def ladder_from_blocks(
+    blocks: dict[str, np.ndarray],
+    labels: np.ndarray,
+    rungs: dict[str, tuple[str, ...]],
+    sizes: tuple[int, ...] = (),
+    seed: int = 0,
+    bootstraps: int = BOOTSTRAPS,
+    gain_pairs: tuple[tuple[str, str], ...] = (("conventional", "conventional+multiscale"),),
+    efficiency_rungs: tuple[str, ...] = SAMPLE_EFFICIENCY_RUNGS,
+) -> dict:
+    """The ladder on prepared feature blocks (named column blocks of the pooled events) and labels (1 = electron)."""
+
     rng = np.random.default_rng(seed)
     scores = {name: out_of_fold_scores(stack(blocks, parts), labels, None, seed) for name, parts in rungs.items()}
     out: dict = {
-        "events": {"electron": len(electron_grids), "proton": len(proton_grids)},
+        "events": {"electron": int((labels == 1).sum()), "proton": int((labels == 0).sum())},
         "eligible_fraction": {
             "electron": float(np.isfinite(blocks["ms"][labels == 1]).any(axis=1).mean()),
             "proton": float(np.isfinite(blocks["ms"][labels == 0]).any(axis=1).mean()),
         },
         "rungs": {name: summarise_scores(s, labels, rng, bootstraps) for name, s in scores.items()},
+        "gains": {},
     }
-    if "conventional" in scores and "conventional+multiscale" in scores:
-        out["gain_conventional_plus_multiscale_over_conventional"] = paired_gain(
-            scores["conventional"], scores["conventional+multiscale"], labels, rng, bootstraps
+    for base, extended in gain_pairs:
+        if base in scores and extended in scores:
+            out["gains"][f"{extended} minus {base}"] = paired_gain(
+                scores[base], scores[extended], labels, rng, bootstraps
+            )
+    if ("conventional", "conventional+multiscale") in gain_pairs and "conventional+multiscale" in scores:
+        out["gain_conventional_plus_multiscale_over_conventional"] = out["gains"].get(
+            "conventional+multiscale minus conventional"
         )
     out["sample_efficiency_auc"] = {}
-    for name in SAMPLE_EFFICIENCY_RUNGS:
+    for name in efficiency_rungs:
         if name not in rungs:
             continue
-        curve = {}
-        for size in sizes:
-            s = out_of_fold_scores(stack(blocks, rungs[name]), labels, size, seed)
-            curve[str(size)] = float(roc_auc_score(labels, s))
-        out["sample_efficiency_auc"][name] = curve
+        out["sample_efficiency_auc"][name] = {
+            str(size): float(roc_auc_score(labels, out_of_fold_scores(stack(blocks, rungs[name]), labels, size, seed)))
+            for size in sizes
+        }
     return out
 
 
