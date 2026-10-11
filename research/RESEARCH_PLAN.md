@@ -22,7 +22,7 @@ _Created 2026-10-10 at the researcher's request ("We only have one plan includin
 | workstream | state |
 |---|---|
 | A. Estimators and controls | synthetic controls DONE (usable only from ~1000-3000 hits); two planned controls never implemented (A3, A4) |
-| B. Geant4 data | exposed sets DONE; development-large sets DONE (electrons 10,000, protons 20,000 per energy); sealed sets generated, UNOPENED; electron systematics RUNNING |
+| B. Geant4 data | exposed sets DONE; development-large sets DONE (electrons 10,000, protons 20,000 per energy); sealed sets generated, UNOPENED; electron systematics DONE 2026-10-11 (0.1 mm cut, EMZ, EMV at 20 and 100 GeV; analysis TODO) |
 | C. Multiscale science | DEV readings only (existence strong in ideal Geant4; no headroom for added information in that regime); the registered test and the preservation gate are TODO |
 | D. FastMC electron | Slices 1 and 2 DEV; four lateral extensions CLOSED; occupancy mismatch OPEN (AUC 1.000 vs Geant4) |
 | E. FastMC proton | implemented, in-sample DEV; sealed validation TODO |
@@ -31,7 +31,7 @@ _Created 2026-10-10 at the researcher's request ("We only have one plan includin
 | H. Classical ML and architectures | HGB ladder DEV (rungs 1-3); raw/CNN/ViT baselines and fractal architectures TODO, need ~10^6 events |
 | I. QML | gated, nothing started |
 | J. Learning and ownership | tutor session open (Q1 unanswered); curriculum A-H planned |
-| K. Process | STATE.md and research/graph refreshed 2026-10-10; 18 local commits unpushed (after this commit); full suite not re-run since 2026-10-09 |
+| K. Process | STATE.md and research/graph refreshed 2026-10-10; all commits pushed 2026-10-10 (local = origin); full suite re-run started 2026-10-11 |
 
 ## 3. Workstream A — estimators and controls (EXP-008; `plans/2026-10-02_multiscale_estimator_*`)
 
@@ -55,7 +55,7 @@ _Created 2026-10-10 at the researcher's request ("We only have one plan includin
 | B3 | Extended-depth electrons 4 x 1000, 270 layers | DONE | development hold-out for the FastMC |
 | B4 | Sealed sets: protons 7 energies x 3000 (seed 20271001), electrons 7 x 1000 (20271002), hash manifests, opening guard | generated, **UNOPENED**, no opening ledger | one opening only; see DECIDE-2 |
 | B5 | Development-large sets: electrons 4 x 10,000, protons 4 x 20,000 (seeds 20272001/2), clean commit `48a4a78` | DONE 2026-10-10 | files are in the worktree `../ams-ecal-qml-gen/data`; TODO housekeeping: move or link into `data/`, write a manifest. The name "G-train" is misleading (nothing is trained on it as a model); rename: DECIDE-9 |
-| B6 | Electron systematics: 0.1 mm cut (20 GeV done, 100 GeV running), `FTFP_BERT_EMZ` (EM option 4) and `FTFP_BERT_EMV` (option 1) | RUNNING / queued | `FTFP_BERT_TRV` withdrawn (hadronic only) |
+| B6 | Electron systematics: 0.1 mm cut, `FTFP_BERT_EMZ` (EM option 4) and `FTFP_BERT_EMV` (option 1), 20 and 100 GeV | DONE 2026-10-11 00:40 (all rc=0; 2000 unique seeds per file, no NaN/inf) | cut set in `../ams-ecal-qml-gen/data` (commit `48a4a78`), EMZ/EMV in `../ams-ecal-qml-gen2/data` (commit `1984f4f`); analysis is B9; `FTFP_BERT_TRV` withdrawn (hadronic only) |
 | B7 | EXP-007 alternative physics-list calibration (QGSP_BERT) | PARTIAL | `results/proton_model/physics_list_systematic.json` exists (a systematic, not a calibration); graph record says planned: reconcile |
 | B8 | Incidence angle, backsplash, material systematic | DECIDE | "before or after the proton model" still open; normal incidence only today |
 | B9 | Production-cut sensitivity before any sub-cell claim | partial data (proton 0.1 mm; electron running) | analysis TODO |
@@ -152,7 +152,7 @@ Candidates (roadmap, CHAOS section 7): compact validated multiscale inputs for V
 | K1 | `STATE.md` "Next session - start here" (stale since 2026-09-29) rewritten | DONE 2026-10-10 |
 | K2 | `research/graph/` statuses: EXP-001, 005, 006, 007, 009, H-002..H-005, RQ-003 updated with dated notes and attested approvals; graph validates with 0 errors (warnings: EXP-004, 005, 008 completed without result validation, which is true) | DONE 2026-10-10 |
 | K3 | The five retired plan files carried over verbatim as Appendices A-E and deleted; every reference rewritten | DONE 2026-10-10 |
-| K4 | 18 local commits ahead of origin, none pushed (after the commit that retired the old plans) | DECIDE-8 |
+| K4 | Commits pushed 2026-10-10 at the researcher's request; local and origin equal at `9258ebe` (checked 2026-10-11) | DONE |
 | K5 | Research OS v0.8.5 is installed but its repository `main` is at v0.8 (merge `e50692b` is on a Codex branch) | DECIDE-8 (sync) |
 | K6 | Full test suite last run: 896 passed (2026-10-09); later modules tested individually | TODO (re-run when the CPU is free) |
 | K7 | `graphify update .` after code changes | TODO (hook-driven) |
@@ -166,12 +166,12 @@ Candidates (roadmap, CHAOS section 7): compact validated multiscale inputs for V
 5. **DECIDE-5: promote the architectures and the three-efficiency study** into the roadmap (research question, hypothesis, paper boundary).
 6. **DECIDE-6: start G1 (R-A) and the R-B evidence pass.**
 7. **DECIDE-7: confirm the gamma-inadequacy signs (D7); re-register the KS thresholds from a split-Geant4 floor (E5); answer Q9 (F1).**
-8. **DECIDE-8: push the 18 commits; sync the Research OS repository.**
+8. **DECIDE-8: sync the Research OS repository** (the push was done 2026-10-10).
 9. **DECIDE-9: backsplash / incidence angle / material ordering (B8); rename "G-train" (B5).**
 
 ## 15. Critical path and time (estimate, not measurement)
 
-generation finishes (~4-6 h) -> DECIDE-1, 2, 4 -> A3, A4 (fine controls, ~1 day) -> C2 (proton smooth-baseline look, ~1 day) -> development analysis in the amended design (2-3 days) -> frozen commit -> the sealed opening (1 day). In parallel: G1 (R-A) and the R-B evidence pass; the FastMC arm; curriculum teaching (6-8 h). Architectures, efficiency curves and QML wait for the hard regime and a large sample.
+generation finished (2026-10-11 00:40) -> DECIDE-1, 2, 4 -> A3, A4 (fine controls, ~1 day) -> C2 (proton smooth-baseline look, ~1 day) -> development analysis in the amended design (2-3 days) -> frozen commit -> the sealed opening (1 day). In parallel: G1 (R-A) and the R-B evidence pass; the FastMC arm; curriculum teaching (6-8 h). Architectures, efficiency curves and QML wait for the hard regime and a large sample.
 
 ## 16. Where the earlier plans went (nothing dropped)
 
