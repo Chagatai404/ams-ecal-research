@@ -103,6 +103,7 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 |---|---|---|---|
 | `multiscale.py` | `test_multiscale.py` | Multiscale estimators of non-negative deposit images (EXP-008, DEC-010). | analysis only |
 | `multiscale_controls.py` | `test_multiscale_controls.py` | Synthetic controls and pre-registered acceptance rules; run with `python -m ams_ecal.multiscale_estimators.multiscale_controls` → `results/multiscale_controls/`. | control |
+| `ladder_sanity_audit.py` | `test_ladder_sanity_audit.py` | Slice S0: is the near-perfect electron/proton separation an implementation error? Same-class nulls, label permutation, fold-seed spread, duplicates and seed overlap, a duplicate-injection positive control, energy-only and logistic baselines, the eligibility-indicator-only rung, feature-family and layer-block ablations, the energy-blind pooled test. Expectations are fixed in the module docstring before any run. → `results/sanity_audit/`; record `research/reviews/2026-10-11_s0_sanity_audit.md`. | analysis + control |
 
 ## 6. `validation/` — dataset, added checks and the sealed-set guard
 
@@ -111,6 +112,7 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 | `dataset.py` | `test_dataset.py` | Assembly of the electron/proton dataset and the dataset-level checks. | infrastructure + control |
 | `added_checks.py` | `test_added_checks.py` | The added validation checks as pre-registered; each must see a planted difference. → `results/added_checks/`. | control |
 | `sealed_set.py` | `test_sealed_set.py` | Hash manifest, final-only guarded reader and opening ledger for the sealed proton and electron sets. Neither sealed set has been opened. | infrastructure (protocol guard) |
+| `sample_definitions.py` | `test_sample_definitions.py` | The one definition of every exposed Geant4 sample: where it lives (ordered data roots, nothing copied), which events are held out, which population (`all`, `interacting`, `crossing`) an analysis reads, a refusal to load sealed sets, and the data manifest `research/data_manifest.json` (`write`, `verify`). Older multiscale modules still carry their own sample definitions until S1. | infrastructure |
 
 ## 7. `geant4_simulation/` — Geant4 truth, backend and pilot
 
@@ -119,6 +121,21 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 | `geant4_backend.py` | `test_geant4_backend.py` | Geant4 transport backend (pure helpers always tested; transport only where Geant4 is installed). | infrastructure |
 | `geant4_truth.py` | `test_geant4_truth.py` | Truth-level first inelastic interaction from Geant4 records. | infrastructure |
 | `pilot_analysis.py`, `pilot_report.py` | `test_pilot_analysis.py`, `test_pilot_report.py` | Observables, statistics and report of the Geant4 proton pilot → `results/geant4_proton_pilot/`. | analysis only |
+| `em_variant_initialisation_dump.py` | `test_em_variant_initialisation_dump.py` | Slice S0: what Geant4 sets up for an EM physics list at initialisation, with no events (EM parameters, process names), and the differences between two lists. Its scalar-getter `dump` is blind to enums and tuples (msc step limit, step function, fluctuation model); the complete comparison is `compare-logs` on the saved standard output (Geant4's printed table). Used on `FTFP_BERT_EMV`: at least seven differing settings. → `results/em_variants/`. | analysis only |
+
+## 8. `inference/` — statistical foundations (slice S1, gates SV-1..SV-8)
+
+Record: `research/reviews/2026-10-11_s1_statistical_foundations.md`. None of these decides physics; they replace known problems of the development ladder (review C1-C7, C12, C13). Each is validated by `coverage_simulations.py` (→ `results/inference/coverage.json`).
+
+| Module | Test | What it is | Status |
+|---|---|---|---|
+| `rejection_limits.py` | `test_rejection_limits.py` | Exact Clopper-Pearson limits; rejection as a censored lower limit (k = 0 never reports N); sample sizes; four disjoint data roles; order-statistic threshold with its Beta uncertainty; `evaluate_at_efficiency`. | analysis tool |
+| `cross_fitting.py` | `test_cross_fitting.py` | Repeated cross-fits with seed spread; role-separated fit/calibrate/evaluate; repeated role splits; energy-only and logistic baselines; the same-class null. | analysis tool |
+| `missingness_controls.py` | `test_missingness_controls.py` | Indicator-only separation, explicit missing indicators, eligible-in-both matching, "not testable" verdicts. | analysis tool |
+| `permutation_nulls.py` | `test_permutation_nulls.py` | Permutation tests within strata (+1 rule), stratified KS with counts, matched-size split floors, the cell-shuffle null (plan item A3). | analysis tool |
+| `multiplicity.py` | `test_multiplicity.py` | Benjamini-Hochberg, Holm, Westfall-Young step-down, one named primary per family. | analysis tool |
+| `claim_specification.py` | `test_claim_specification.py` | The estimand-to-failure claim template, with a digest. | process tool |
+| `coverage_simulations.py` | `test_coverage_simulations.py` | Coverage and type-I-error simulations of all of the above, including real development-electron halves. | control |
 
 ## Test conventions (what a passing test means here)
 

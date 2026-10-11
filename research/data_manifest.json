@@ -1,0 +1,493 @@
+{
+  "schema_version": 1,
+  "purpose": "identity of every Geant4 set by file hash and generation metadata; paths are not identity",
+  "samples": {
+    "electron_pilot": {
+      "particle": "electron",
+      "role": "calibration",
+      "directory": "geant4_electron_sample/baseline",
+      "held_out_policy": "NONE",
+      "note": "4 x 1000 electrons; the EM generator was calibrated on it; generated at a1d68d4 with a dirty tracked tree",
+      "energies": {
+        "E10GeV": {
+          "events_sha256": "4193839ab97f2f60b99f57dc02d4f2fa6ce020241da0e0c4eaf383022b01d82c",
+          "events_bytes": 29330770,
+          "metadata_sha256": "abadccb2e89f8462d81e2bb6ec255e2f6faa4167e81bf992d55f4402132823b3",
+          "n_events": 1000,
+          "base_seed": 20270000,
+          "unique_seeds": 1000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "a1d68d460d5c369881f94e7c9854044ac8a8cde5",
+          "git_tracked_changes": true,
+          "configuration_sha256": "29e1474ae1865ade531ec83a731adae2f195e7314ebe77f5bbdc56ad49e0dfc9",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-02T11:45:09Z"
+        },
+        "E20GeV": {
+          "events_sha256": "71c967bb2608b615187886be3661d44f1a04c5ab3a90cfb918cac4fbf5c8ba67",
+          "events_bytes": 45815082,
+          "metadata_sha256": "f6fc5fac49007656e24e74d3248cfe013a14d57877172e3c52abd9727a3b740c",
+          "n_events": 1000,
+          "base_seed": 20270000,
+          "unique_seeds": 1000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "a1d68d460d5c369881f94e7c9854044ac8a8cde5",
+          "git_tracked_changes": true,
+          "configuration_sha256": "29e1474ae1865ade531ec83a731adae2f195e7314ebe77f5bbdc56ad49e0dfc9",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-02T11:51:10Z"
+        },
+        "E50GeV": {
+          "events_sha256": "6df15096c9673fb9cc13627fca395dc402a865c18f1c5cde7308deb42192a6d6",
+          "events_bytes": 88093839,
+          "metadata_sha256": "a0e3bf8605fd077d4a9b3d811b99bfa3f3848e7339095cdffc3a5a1bc4edd2e3",
+          "n_events": 1000,
+          "base_seed": 20270000,
+          "unique_seeds": 1000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "a1d68d460d5c369881f94e7c9854044ac8a8cde5",
+          "git_tracked_changes": true,
+          "configuration_sha256": "29e1474ae1865ade531ec83a731adae2f195e7314ebe77f5bbdc56ad49e0dfc9",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-02T12:04:19Z"
+        },
+        "E100GeV": {
+          "events_sha256": "03fe1236973e09ad6c83e50c1bfa9e73641a3f594b6a3bbb33d121665d68c4f9",
+          "events_bytes": 126182602,
+          "metadata_sha256": "74688bd7bc1d15fd30ba2405684a2c316958542de2d36ea227353b4a92062096",
+          "n_events": 1000,
+          "base_seed": 20270000,
+          "unique_seeds": 1000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "a1d68d460d5c369881f94e7c9854044ac8a8cde5",
+          "git_tracked_changes": true,
+          "configuration_sha256": "29e1474ae1865ade531ec83a731adae2f195e7314ebe77f5bbdc56ad49e0dfc9",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-02T12:32:51Z"
+        }
+      }
+    },
+    "proton_pilot": {
+      "particle": "proton",
+      "role": "calibration",
+      "directory": "geant4_proton_pilot/baseline",
+      "held_out_policy": "PILOT_QUARTER",
+      "note": "4 x 4000 protons; the proton model was calibrated on event_index % 4 != 3",
+      "energies": {
+        "E10GeV": {
+          "events_sha256": "0f6d7ab832e382e7955e9b80e917818a9a88b6b5f0495ee8c260beccaaf22ff3",
+          "events_bytes": 42759510,
+          "metadata_sha256": "08218b1f506381e0e4a08a7f492d9486332a4f748b0163e1bfe599e32c57f64c",
+          "n_events": 4000,
+          "base_seed": 20260929,
+          "unique_seeds": 4000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "00d70fdc81364111eea6b065cd4d27a2fa7b560a",
+          "git_tracked_changes": false,
+          "configuration_sha256": "0929ba397848f6f47df8a5ff1f0359d29d348fa8b14e4d1292d47b0f2fa4a2e9",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-09-29T09:44:53Z"
+        },
+        "E20GeV": {
+          "events_sha256": "2b948a926e91e13de4dfaf8f5a6c42191ac6bd9977ff95e1d6fa3a595e796244",
+          "events_bytes": 64923838,
+          "metadata_sha256": "b035ba9f30cb3583ceaf402c4c561f34b2aa2bf2c0b18988f24ae71306a0ded1",
+          "n_events": 4000,
+          "base_seed": 20260929,
+          "unique_seeds": 4000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "00d70fdc81364111eea6b065cd4d27a2fa7b560a",
+          "git_tracked_changes": false,
+          "configuration_sha256": "0929ba397848f6f47df8a5ff1f0359d29d348fa8b14e4d1292d47b0f2fa4a2e9",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-09-29T09:49:53Z"
+        },
+        "E50GeV": {
+          "events_sha256": "8907cc0f88e22c92380cb9fd1ac94103a669d9044654c8fc49255bf50b8e103b",
+          "events_bytes": 98885385,
+          "metadata_sha256": "f81711e41b65fcc12463c2e0dcadb1d61862f542203efcb23d62ba010d861dcc",
+          "n_events": 4000,
+          "base_seed": 20260929,
+          "unique_seeds": 4000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "00d70fdc81364111eea6b065cd4d27a2fa7b560a",
+          "git_tracked_changes": false,
+          "configuration_sha256": "0929ba397848f6f47df8a5ff1f0359d29d348fa8b14e4d1292d47b0f2fa4a2e9",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-09-29T09:59:17Z"
+        },
+        "E100GeV": {
+          "events_sha256": "3384d4d427f0f6ff684e2fbaa2c862ea70418f47bb618e7619936688f33aa580",
+          "events_bytes": 130312526,
+          "metadata_sha256": "aad5a5d74ed145d0d8b7dba9c832512ce061131d7d3c3a21e8d8dc7bc91eadf8",
+          "n_events": 4000,
+          "base_seed": 20260929,
+          "unique_seeds": 4000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "00d70fdc81364111eea6b065cd4d27a2fa7b560a",
+          "git_tracked_changes": false,
+          "configuration_sha256": "0929ba397848f6f47df8a5ff1f0359d29d348fa8b14e4d1292d47b0f2fa4a2e9",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-09-29T10:11:18Z"
+        }
+      }
+    },
+    "electron_development_large": {
+      "particle": "electron",
+      "role": "development",
+      "directory": "geant4_electron_train/train",
+      "held_out_policy": "NONE",
+      "note": "4 x 10,000 electrons, base seed 20272001, commit 48a4a78 (the name 'train' is historical, DECIDE-9)",
+      "energies": {
+        "E10GeV": {
+          "events_sha256": "73260273398277d856d5ad598d17e4a97173df38b857f26c0dd6e5b211787b0e",
+          "events_bytes": 292906615,
+          "metadata_sha256": "39f958c463e5adbaac02681950f3851f3712258c1f8c61e5f6b1266299b4cf6f",
+          "n_events": 10000,
+          "base_seed": 20272001,
+          "unique_seeds": 10000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "f43ce3111666200419e12bc3d95cd3b6c5690f9e6c6251add61c1e7897a00581",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-09T13:16:46Z"
+        },
+        "E20GeV": {
+          "events_sha256": "cf0c75b8f1f4edfe9ef1bf88795581f314a3c00110c14f8247032ea2d167fb70",
+          "events_bytes": 459682516,
+          "metadata_sha256": "1c32a0ae5500a9305509702024e69be5c165fa63579439a1f0d33eaacefd6ee1",
+          "n_events": 10000,
+          "base_seed": 20272001,
+          "unique_seeds": 10000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "f43ce3111666200419e12bc3d95cd3b6c5690f9e6c6251add61c1e7897a00581",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-09T14:53:38Z"
+        },
+        "E50GeV": {
+          "events_sha256": "2a170f1bf4c54b9ca30c706cfab117ae01884c402c9b8082b08f9de524c93bd1",
+          "events_bytes": 880203699,
+          "metadata_sha256": "7eee931f7d1caa05e7655591bf6a59ebc30b82afae443f95327127229cb21ca1",
+          "n_events": 10000,
+          "base_seed": 20272001,
+          "unique_seeds": 10000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "f43ce3111666200419e12bc3d95cd3b6c5690f9e6c6251add61c1e7897a00581",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-09T16:53:10Z"
+        },
+        "E100GeV": {
+          "events_sha256": "7193c7f4897c3ebe094ff5a3c2a05d5c36126b5d9e2d3a23620c37256bd2d1d1",
+          "events_bytes": 1265341505,
+          "metadata_sha256": "8abf6dc453d1ef4aa8d019befb5384111c3faf7726c0bb350aa2dd5fd6f528fa",
+          "n_events": 10000,
+          "base_seed": 20272001,
+          "unique_seeds": 10000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "f43ce3111666200419e12bc3d95cd3b6c5690f9e6c6251add61c1e7897a00581",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T16:53:29Z"
+        }
+      }
+    },
+    "proton_development_large": {
+      "particle": "proton",
+      "role": "development",
+      "directory": "geant4_proton_train/train",
+      "held_out_policy": "NONE",
+      "note": "4 x 20,000 protons, base seed 20272002, commit 48a4a78",
+      "energies": {
+        "E10GeV": {
+          "events_sha256": "4ac3901621e56ed028f13b19ae6dd96afa4f5c3438019a887ce9b93074e9c69e",
+          "events_bytes": 220890056,
+          "metadata_sha256": "2cd9e147b6382302b4ae56339ecc4437e44e5fcc0c9d37e0745754ef6475a425",
+          "n_events": 20000,
+          "base_seed": 20272002,
+          "unique_seeds": 20000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "83edafefcb97b7be030c797e8ebb19ede231c851a645179c90d7f285b99da1dc",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T08:56:49Z"
+        },
+        "E20GeV": {
+          "events_sha256": "fe9007222d3a11257fb6b10c71cfcb9df43afaf9852e6211567c2f59f66a9e69",
+          "events_bytes": 317748267,
+          "metadata_sha256": "e3a170fd0fdd8b0ddb9549c38c944c1ff7a0f4d90cc0f54f406a54ce31e985a4",
+          "n_events": 20000,
+          "base_seed": 20272002,
+          "unique_seeds": 20000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "83edafefcb97b7be030c797e8ebb19ede231c851a645179c90d7f285b99da1dc",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T09:14:14Z"
+        },
+        "E50GeV": {
+          "events_sha256": "42323986480b306623e81df93f43c1297eda5283f91cac8cd76f5870ece957c7",
+          "events_bytes": 500224081,
+          "metadata_sha256": "f186ca1f0914d72140ffd1b8c5892ad38b3e2021444fa2dea68f87b42395043b",
+          "n_events": 20000,
+          "base_seed": 20272002,
+          "unique_seeds": 20000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "83edafefcb97b7be030c797e8ebb19ede231c851a645179c90d7f285b99da1dc",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T09:51:10Z"
+        },
+        "E100GeV": {
+          "events_sha256": "96572c792f20d98ed7a5c2d0afb998ee7b8e809fcc0bf54404a21840123b5e64",
+          "events_bytes": 681036864,
+          "metadata_sha256": "08d70858315365137514497f9f78a8d44cbf2ffac462a42c0e8b41acb16f7b5a",
+          "n_events": 20000,
+          "base_seed": 20272002,
+          "unique_seeds": 20000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.7,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "83edafefcb97b7be030c797e8ebb19ede231c851a645179c90d7f285b99da1dc",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T10:52:15Z"
+        }
+      }
+    },
+    "electron_cut_0p1mm": {
+      "particle": "electron",
+      "role": "systematic",
+      "directory": "geant4_electron_syst_cut0p1mm/cut0p1mm",
+      "held_out_policy": "NONE",
+      "note": "2 x 2000 electrons (20, 100 GeV), production cut 0.1 mm, base seed 20272004",
+      "energies": {
+        "E20GeV": {
+          "events_sha256": "1923957232294f36cf8071e5edc1a19faaf30cf0e21303fd7a82c466406cabb9",
+          "events_bytes": 92575636,
+          "metadata_sha256": "076785f8190fb6aa93a43537e5e7860ca487ccd67280b5e69797195bc896b9f9",
+          "n_events": 2000,
+          "base_seed": 20272004,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.1,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "fa345bea624eaf36f54e4d64b71f30e08be8bd199c79bf9a4e377119d58a4995",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T17:05:20Z"
+        },
+        "E100GeV": {
+          "events_sha256": "0b0bcb62d021c96c82186fde919a9a96190d1113accb27d4ae813d211c9b931c",
+          "events_bytes": 254417041,
+          "metadata_sha256": "141064b09e858a60300b4d6c603fd709d6eb93b157867215cb9609271e4ed42f",
+          "n_events": 2000,
+          "base_seed": 20272004,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT",
+          "production_cut_mm": 0.1,
+          "git_commit": "48a4a78a5177430d22282a340028e19c92695c95",
+          "git_tracked_changes": false,
+          "configuration_sha256": "fa345bea624eaf36f54e4d64b71f30e08be8bd199c79bf9a4e377119d58a4995",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T17:57:43Z"
+        }
+      }
+    },
+    "electron_emz": {
+      "particle": "electron",
+      "role": "systematic",
+      "directory": "geant4_electron_syst_emz/emz",
+      "held_out_policy": "NONE",
+      "note": "2 x 2000 electrons, FTFP_BERT_EMZ (EM option 4), commit 1984f4f",
+      "energies": {
+        "E20GeV": {
+          "events_sha256": "e9cdfacf8455fbbb41b94afad7a7c88df526bda750b7458dffc5a3556ecd08ae",
+          "events_bytes": 94479815,
+          "metadata_sha256": "56a758843d1cb339323b25e7a90e175a16fb703905b9dadca299e01165c260c5",
+          "n_events": 2000,
+          "base_seed": 20272003,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT_EMZ",
+          "production_cut_mm": 0.7,
+          "git_commit": "1984f4f246ac4491938ae795d806e5e1af4c07be",
+          "git_tracked_changes": false,
+          "configuration_sha256": "5d36f335090310eea8e96d99ad5f36a3e6da07322b80aedd82154b4b0943c8d1",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T18:28:48Z"
+        },
+        "E100GeV": {
+          "events_sha256": "86b68490496d4bcf863b10ae1c95b27abc30da65503cbf5ada474dedb3e32f94",
+          "events_bytes": 260355932,
+          "metadata_sha256": "fa814b7d083fc5b35025f20f1840806356fa70e088ddf3f79c7a1860267e361d",
+          "n_events": 2000,
+          "base_seed": 20272003,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT_EMZ",
+          "production_cut_mm": 0.7,
+          "git_commit": "1984f4f246ac4491938ae795d806e5e1af4c07be",
+          "git_tracked_changes": false,
+          "configuration_sha256": "5d36f335090310eea8e96d99ad5f36a3e6da07322b80aedd82154b4b0943c8d1",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T21:01:43Z"
+        }
+      }
+    },
+    "electron_emv": {
+      "particle": "electron",
+      "role": "systematic",
+      "directory": "geant4_electron_syst_emv/emv",
+      "held_out_policy": "NONE",
+      "note": "2 x 2000 electrons, FTFP_BERT_EMV (EM option 1), commit 1984f4f; scintillator share anomaly OPEN (review item 7)",
+      "energies": {
+        "E20GeV": {
+          "events_sha256": "da91aa412144bbdd5c4f034df3eb158e433aa5195f8fdce79eb68e2f3b399eb2",
+          "events_bytes": 83628167,
+          "metadata_sha256": "0bad8914e8546b8747d938da3ae71d406c99ee4338567bfcd20e02ae87cd6c40",
+          "n_events": 2000,
+          "base_seed": 20272005,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT_EMV",
+          "production_cut_mm": 0.7,
+          "git_commit": "1984f4f246ac4491938ae795d806e5e1af4c07be",
+          "git_tracked_changes": false,
+          "configuration_sha256": "52b61cdda8f1503b18d512324f9b5f4f9a530b9d90e73630f249948b44b45fa8",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T21:09:54Z"
+        },
+        "E100GeV": {
+          "events_sha256": "4d7c7922d0edef2eada02c3438a96e27d1db3823d0983de06ed0bde6ed5a1fc0",
+          "events_bytes": 234126203,
+          "metadata_sha256": "89abaf64f63ded1337e7cf776adf34fec628ea68e040de85f64d0d413ea176e0",
+          "n_events": 2000,
+          "base_seed": 20272005,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT_EMV",
+          "production_cut_mm": 0.7,
+          "git_commit": "1984f4f246ac4491938ae795d806e5e1af4c07be",
+          "git_tracked_changes": false,
+          "configuration_sha256": "52b61cdda8f1503b18d512324f9b5f4f9a530b9d90e73630f249948b44b45fa8",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-10T21:40:43Z"
+        }
+      }
+    },
+    "electron_sealed": {
+      "particle": "electron",
+      "role": "sealed",
+      "directory": "geant4_electron_sealed/sealed",
+      "held_out_policy": "SEALED",
+      "note": "",
+      "sealed": true,
+      "committed_hash_manifest": "research/sealed/electron_manifest.json",
+      "committed_hash_manifest_sha256": "90076e7933b86ad7f2fe078fed072ec6016dc1853fd6db7c66935cbf2d0e4fc4",
+      "files": "not listed: the committed sealed manifest is the record; the event files were not read"
+    },
+    "proton_sealed": {
+      "particle": "proton",
+      "role": "sealed",
+      "directory": "geant4_proton_sealed/sealed",
+      "held_out_policy": "SEALED",
+      "note": "",
+      "sealed": true,
+      "committed_hash_manifest": "research/sealed/proton_manifest.json",
+      "committed_hash_manifest_sha256": "dc31101c06c1249d5bb7f4b6b7248c3d112b39ac1c1d22300391808e4b1b4efc",
+      "files": "not listed: the committed sealed manifest is the record; the event files were not read"
+    },
+    "electron_emv_cuts_reverted": {
+      "particle": "electron",
+      "role": "systematic",
+      "directory": "geant4_electron_syst_emv_cuts_reverted/emv_cuts_reverted",
+      "held_out_policy": "NONE",
+      "note": "1 x 2000 electrons at 20 GeV, FTFP_BERT_EMV with ApplyCuts reverted; same base seed 20272005 as electron_emv (paired)",
+      "energies": {
+        "E20GeV": {
+          "events_sha256": "921904dee33705204274bd1883c8251e02ec1f0e511396706730cb3a5bed1d8e",
+          "events_bytes": 84692297,
+          "metadata_sha256": "b95cc1f1aa942891d17f2bb5c6179bfa14994964dc2af518b53decc58bef6129",
+          "n_events": 2000,
+          "base_seed": 20272005,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT_EMV_CUTS_REVERTED",
+          "production_cut_mm": 0.7,
+          "git_commit": "77e876cc315c81ba88e629713e8873591382f026",
+          "git_tracked_changes": true,
+          "configuration_sha256": "6a3516d14efe0ef0ea8f18a12338c3d3ac7dea8f82c0684e82778da77e31132c",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-11T15:07:31Z"
+        }
+      }
+    },
+    "electron_emv_msc_reverted": {
+      "particle": "electron",
+      "role": "systematic",
+      "directory": "geant4_electron_syst_emv_msc_reverted/emv_msc_reverted",
+      "held_out_policy": "NONE",
+      "note": "1 x 2000 electrons at 20 GeV, FTFP_BERT_EMV with MscRangeFactor reverted; same base seed 20272005 as electron_emv (paired)",
+      "energies": {
+        "E20GeV": {
+          "events_sha256": "6a6ecd90193489007d298785317d862fe187261aa3b51d1cf004f82bc236bc6c",
+          "events_bytes": 84897646,
+          "metadata_sha256": "c5f173bc98a7c498b6c05a79d84bf7fc52a94cfd4b951b9d932ad897877f3a65",
+          "n_events": 2000,
+          "base_seed": 20272005,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT_EMV_MSC_REVERTED",
+          "production_cut_mm": 0.7,
+          "git_commit": "77e876cc315c81ba88e629713e8873591382f026",
+          "git_tracked_changes": true,
+          "configuration_sha256": "2800692716ff8ac40a940d23a8b4bc4e3fa6f84ac352e7ca8f08699b7ed236b8",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-11T15:16:08Z"
+        }
+      }
+    },
+    "electron_emv_both_reverted": {
+      "particle": "electron",
+      "role": "systematic",
+      "directory": "geant4_electron_syst_emv_both_reverted/emv_both_reverted",
+      "held_out_policy": "NONE",
+      "note": "1 x 2000 electrons at 20 GeV, FTFP_BERT_EMV with both parameters reverted (closure test); same base seed 20272005",
+      "energies": {
+        "E20GeV": {
+          "events_sha256": "a99037449ae1de9ff6a360d9b1a1d68f18423fb885c389bec4a8281729966698",
+          "events_bytes": 86293738,
+          "metadata_sha256": "bdbf95aa411ec3c33be58c0e3b0820fe09a56e0e191c847722267df9f1535e32",
+          "n_events": 2000,
+          "base_seed": 20272005,
+          "unique_seeds": 2000,
+          "physics_list": "FTFP_BERT_EMV_BOTH_REVERTED",
+          "production_cut_mm": 0.7,
+          "git_commit": "77e876cc315c81ba88e629713e8873591382f026",
+          "git_tracked_changes": true,
+          "configuration_sha256": "b0a435c7caf7fe77eb190d06ad671728b9217f53b9eb58f438ef81daf590996c",
+          "geant4_version": "geant4-11-04-patch-01 [MT]",
+          "created_utc": "2026-10-11T14:58:49Z"
+        }
+      }
+    }
+  }
+}

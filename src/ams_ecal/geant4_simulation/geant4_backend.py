@@ -393,12 +393,25 @@ EM_VARIANT_LISTS = {
     "FTFP_BERT_EMZ": "G4EmStandardPhysics_option4",
     "FTFP_BERT_EMV": "G4EmStandardPhysics_option1",
     "FTFP_BERT_STDEM": "G4EmStandardPhysics",
+    # One-at-a-time swap test of the FTFP_BERT_EMV scintillator-share anomaly (S0 initialisation dump: EMV differs from
+    # FTFP_BERT in ApplyCuts false -> true and MscRangeFactor 0.04 -> 0.2 only). Each list is option 1 with the named
+    # parameter(s) put back to the FTFP_BERT value; see EM_PARAMETER_OVERRIDES.
+    "FTFP_BERT_EMV_CUTS_REVERTED": "G4EmStandardPhysics_option1",
+    "FTFP_BERT_EMV_MSC_REVERTED": "G4EmStandardPhysics_option1",
+    "FTFP_BERT_EMV_BOTH_REVERTED": "G4EmStandardPhysics_option1",
+}
+
+# name -> {G4EmParameters setter: value}, applied right after the EM constructor has set its own parameters.
+EM_PARAMETER_OVERRIDES: dict[str, dict[str, Any]] = {
+    "FTFP_BERT_EMV_CUTS_REVERTED": {"SetApplyCuts": False},
+    "FTFP_BERT_EMV_MSC_REVERTED": {"SetMscRangeFactor": 0.04},
+    "FTFP_BERT_EMV_BOTH_REVERTED": {"SetApplyCuts": False, "SetMscRangeFactor": 0.04},
 }
 
 
-def _ftfp_bert_with_em(em_constructor: str):
+def _ftfp_bert_with_em(em_constructor: str, overrides: dict[str, Any] | None = None):
     """FTFP_BERT's constructors (EM extra, decay, hadron elastic, FTFP_BERT inelastic, stopping, ions, neutron cut) with the
-    named EM constructor."""
+    named EM constructor, then the ``G4EmParameters`` setters in ``overrides`` (empty for every list except the swap tests)."""
 
     import geant4_pybind as g4  # imported here as the transport does: the module is only needed inside a worker
 
@@ -407,6 +420,8 @@ def _ftfp_bert_with_em(em_constructor: str):
             super().__init__()
             self.SetVerboseLevel(0)
             self.RegisterPhysics(getattr(g4, em_constructor)())
+            for setter, value in (overrides or {}).items():
+                getattr(g4.G4EmParameters.Instance(), setter)(value)
             for name in (
                 "G4EmExtraPhysics",
                 "G4DecayPhysics",
@@ -478,7 +493,7 @@ class ECALTransport:
         if hasattr(g4, physics_list):
             physics = getattr(g4, physics_list)()
         elif physics_list in EM_VARIANT_LISTS:
-            physics = _ftfp_bert_with_em(EM_VARIANT_LISTS[physics_list])
+            physics = _ftfp_bert_with_em(EM_VARIANT_LISTS[physics_list], EM_PARAMETER_OVERRIDES.get(physics_list))
         else:
             raise PilotConfigError(f"unknown Geant4 physics list {physics_list!r}")
         parallel = g4.G4ParallelWorldPhysics("scoring")

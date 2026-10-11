@@ -1,0 +1,807 @@
+{
+  "status": "EXPLORATORY sanity audit on exposed sets; sealed sets not read; ladder code used unchanged",
+  "sealed_data_read": false,
+  "per_energy": {
+    "20": {
+      "population_consistency": {
+        "pilot": {
+          "deposit_grid_mev": {
+            "all": {
+              "auc_a_above_b": 0.9999753333333333,
+              "ks": 0.9976666666666666,
+              "n_a": 1000,
+              "n_b": 3000,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 1000
+            },
+            "interacting": {
+              "auc_a_above_b": 0.9999489302967564,
+              "ks": 0.9973098688750863,
+              "n_a": 1000,
+              "n_b": 1449,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 1000
+            },
+            "crossing": {
+              "auc_a_above_b": 1.0,
+              "ks": 1.0,
+              "n_a": 1000,
+              "n_b": 1551,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 1000
+            }
+          },
+          "readout_grid_mev": {
+            "all": {
+              "auc_a_above_b": 0.999376,
+              "ks": 0.983,
+              "n_a": 1000,
+              "n_b": 3000,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 1000
+            },
+            "interacting": {
+              "auc_a_above_b": 0.9987080745341614,
+              "ks": 0.9751973775017253,
+              "n_a": 1000,
+              "n_b": 1449,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 1000
+            },
+            "crossing": {
+              "auc_a_above_b": 1.0,
+              "ks": 1.0,
+              "n_a": 1000,
+              "n_b": 1551,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 1000
+            }
+          }
+        },
+        "development_large": {
+          "deposit_grid_mev": {
+            "all": {
+              "auc_a_above_b": 0.99996586,
+              "ks": 0.9970500000000001,
+              "n_a": 10000,
+              "n_b": 20000,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 0
+            },
+            "interacting": {
+              "auc_a_above_b": 0.9999292215196434,
+              "ks": 0.9962817041567327,
+              "n_a": 10000,
+              "n_b": 9647,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 0
+            },
+            "crossing": {
+              "auc_a_above_b": 1.0,
+              "ks": 1.0,
+              "n_a": 10000,
+              "n_b": 10353,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 0
+            }
+          },
+          "readout_grid_mev": {
+            "all": {
+              "auc_a_above_b": 0.9995146899999999,
+              "ks": 0.9861,
+              "n_a": 10000,
+              "n_b": 20000,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 0
+            },
+            "interacting": {
+              "auc_a_above_b": 0.9989938633772157,
+              "ks": 0.9789133305690889,
+              "n_a": 10000,
+              "n_b": 9647,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 0
+            },
+            "crossing": {
+              "auc_a_above_b": 1.0,
+              "ks": 1.0,
+              "n_a": 10000,
+              "n_b": 10353,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 0
+            }
+          }
+        },
+        "development_large_quarter_excluded": {
+          "deposit_grid_mev": {
+            "all": {
+              "auc_a_above_b": 0.9999657200000001,
+              "ks": 0.9971000000000001,
+              "n_a": 10000,
+              "n_b": 15000,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 5000
+            },
+            "interacting": {
+              "auc_a_above_b": 0.9999292125550661,
+              "ks": 0.9963870044052865,
+              "n_a": 10000,
+              "n_b": 7264,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 5000
+            },
+            "crossing": {
+              "auc_a_above_b": 1.0,
+              "ks": 1.0,
+              "n_a": 10000,
+              "n_b": 7736,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 5000
+            }
+          },
+          "readout_grid_mev": {
+            "all": {
+              "auc_a_above_b": 0.99957208,
+              "ks": 0.9868666666666667,
+              "n_a": 10000,
+              "n_b": 15000,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 5000
+            },
+            "interacting": {
+              "auc_a_above_b": 0.9991163546255506,
+              "ks": 0.9805854625550662,
+              "n_a": 10000,
+              "n_b": 7264,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 5000
+            },
+            "crossing": {
+              "auc_a_above_b": 1.0,
+              "ks": 1.0,
+              "n_a": 10000,
+              "n_b": 7736,
+              "zero_energy_protons": 0,
+              "n_excluded_by_held_out": 5000
+            }
+          }
+        }
+      },
+      "same_class_nulls": {
+        "deposit_grid_mev": {
+          "electron_pilot_vs_development_large": {
+            "n": [
+              1000,
+              10000
+            ],
+            "auc_conventional": 0.4905034,
+            "total_energy": {
+              "auc_a_above_b": 0.48700489999999996,
+              "ks": 0.03909999999999997,
+              "n_a": 1000,
+              "n_b": 10000
+            }
+          },
+          "electron_development_large_random_halves": {
+            "n": [
+              5000,
+              5000
+            ],
+            "auc_conventional": 0.51279558
+          },
+          "proton_all_pilot_vs_development_large": {
+            "n": [
+              3000,
+              20000
+            ],
+            "auc_conventional": 0.5015988083333334,
+            "total_energy": {
+              "auc_a_above_b": 0.4987667333333333,
+              "ks": 0.012033333333333326,
+              "n_a": 3000,
+              "n_b": 20000
+            }
+          },
+          "proton_interacting_pilot_vs_development_large": {
+            "n": [
+              1449,
+              9647
+            ],
+            "auc_conventional": 0.49536119854894334,
+            "total_energy": {
+              "auc_a_above_b": 0.5024325566192603,
+              "ks": 0.017744389367015917,
+              "n_a": 1449,
+              "n_b": 9647
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "electron_pilot_vs_development_large": {
+            "n": [
+              1000,
+              10000
+            ],
+            "auc_conventional": 0.4987238,
+            "total_energy": {
+              "auc_a_above_b": 0.4916091,
+              "ks": 0.026899999999999924,
+              "n_a": 1000,
+              "n_b": 10000
+            }
+          },
+          "electron_development_large_random_halves": {
+            "n": [
+              5000,
+              5000
+            ],
+            "auc_conventional": 0.50387872
+          },
+          "proton_all_pilot_vs_development_large": {
+            "n": [
+              3000,
+              20000
+            ],
+            "auc_conventional": 0.4993495333333334,
+            "total_energy": {
+              "auc_a_above_b": 0.49912081666666663,
+              "ks": 0.013249999999999984,
+              "n_a": 3000,
+              "n_b": 20000
+            }
+          },
+          "proton_interacting_pilot_vs_development_large": {
+            "n": [
+              1449,
+              9647
+            ],
+            "auc_conventional": 0.4916669546088018,
+            "total_energy": {
+              "auc_a_above_b": 0.5049467028050143,
+              "ks": 0.02064763301191838,
+              "n_a": 1449,
+              "n_b": 9647
+            }
+          }
+        }
+      },
+      "duplicates_and_seeds": {
+        "within_set": {
+          "electron_pilot": {
+            "n": 1000,
+            "identical_to_an_earlier_event": 0,
+            "zero_energy_events": 0
+          },
+          "electron_development_large": {
+            "n": 10000,
+            "identical_to_an_earlier_event": 0,
+            "zero_energy_events": 0
+          },
+          "proton_pilot_calibration_events": {
+            "n": 3000,
+            "identical_to_an_earlier_event": 0,
+            "zero_energy_events": 0
+          },
+          "proton_development_large": {
+            "n": 20000,
+            "identical_to_an_earlier_event": 0,
+            "zero_energy_events": 0
+          }
+        },
+        "between_sets": {
+          "electron_pilot | electron_development_large": 0,
+          "electron_pilot | proton_pilot_calibration_events": 0,
+          "electron_pilot | proton_development_large": 0,
+          "electron_development_large | proton_pilot_calibration_events": 0,
+          "electron_development_large | proton_development_large": 0,
+          "proton_pilot_calibration_events | proton_development_large": 0
+        },
+        "seed_overlap": {
+          "electron_pilot | electron_development_large": 0,
+          "electron_pilot | proton_pilot_calibration_events": 0,
+          "electron_pilot | proton_development_large": 0,
+          "electron_development_large | proton_pilot_calibration_events": 0,
+          "electron_development_large | proton_development_large": 0,
+          "proton_pilot_calibration_events | proton_development_large": 0
+        }
+      },
+      "duplicate_injection_positive_control": {
+        "null_no_duplicates": 0.4989914999999999,
+        "null_each_event_present_2_times": 0.8117795,
+        "null_each_event_present_4_times": 0.9162515625000001
+      },
+      "ladder_controls": {
+        "deposit_grid_mev": {
+          "vs_interacting_protons": {
+            "events": {
+              "electron": 10000,
+              "proton": 9647
+            },
+            "conventional_hgb": {
+              "auc": 0.999996993884109,
+              "k_passing": 0,
+              "n_protons": 9647,
+              "efficiency": 0.99
+            },
+            "energy_only": {
+              "univariate_auc_electron_above_proton": 0.9999292215196434,
+              "hgb_auc": 0.9997085674302891,
+              "logistic_auc": 0.9999281952938739
+            },
+            "logistic_all_conventional_auc": 0.999998538405722,
+            "indicator_only": {
+              "cells_ge_336": {
+                "auc": 0.5824471182751114
+              },
+              "cells_ge_572": {
+                "auc": 0.30900432258733285
+              }
+            },
+            "multiscale_rung_auc_as_registered": 0.9857814657406447,
+            "multiscale_eligible_fraction": {
+              "electron": 0.9101,
+              "proton": 0.7452057634497772
+            },
+            "ablations": {
+              "energy": {
+                "only_auc": 0.9997085674302891,
+                "without_auc": 0.9999893645692962
+              },
+              "occupancy": {
+                "only_auc": 0.9599429615424485,
+                "without_auc": 0.999998921944646
+              },
+              "longitudinal": {
+                "only_auc": 0.9978786462112575,
+                "without_auc": 0.9999985487716389
+              },
+              "lateral": {
+                "only_auc": 0.9995219550119208,
+                "without_auc": 0.9999688711516534
+              },
+              "layers_0_5": {
+                "only_auc": 0.996971058360112,
+                "without_auc": 0.9999991085311496
+              },
+              "layers_6_11": {
+                "only_auc": 0.9831834974603504,
+                "without_auc": 0.9999985487716389
+              },
+              "layers_12_17": {
+                "only_auc": 0.9666751632631907,
+                "without_auc": 0.9999970249818596
+              }
+            },
+            "label_permutation": {
+              "draws": 10,
+              "mean": 0.5004748393282885,
+              "min": 0.4904454493624961,
+              "max": 0.5117395096921322
+            },
+            "fold_seed_spread": {
+              "conventional": {
+                "mean": 0.9999983103555508,
+                "sd": 7.912461263294493e-07,
+                "min": 0.999996993884109,
+                "max": 0.9999990567015652
+              },
+              "without_energy_and_occupancy": {
+                "mean": 0.9999841650253964,
+                "sd": 2.529969726870584e-06,
+                "min": 0.9999815072043122,
+                "max": 0.9999875090701773
+              }
+            }
+          },
+          "vs_all_protons": {
+            "events": {
+              "electron": 10000,
+              "proton": 20000
+            },
+            "conventional_hgb": {
+              "auc": 0.999986445,
+              "k_passing": 0,
+              "n_protons": 20000,
+              "efficiency": 0.99
+            },
+            "energy_only": {
+              "univariate_auc_electron_above_proton": 0.99996586,
+              "hgb_auc": 0.9998828875,
+              "logistic_auc": 0.999965545
+            },
+            "logistic_all_conventional_auc": 0.99999889,
+            "indicator_only": {
+              "cells_ge_336": {
+                "auc": 0.775325
+              },
+              "cells_ge_572": {
+                "auc": 0.407925
+              }
+            },
+            "multiscale_rung_auc_as_registered": 0.9685393275,
+            "multiscale_eligible_fraction": {
+              "electron": 0.9101,
+              "proton": 0.35945
+            },
+            "ablations": {
+              "energy": {
+                "only_auc": 0.9998828875,
+                "without_auc": 0.9999967700000001
+              },
+              "occupancy": {
+                "only_auc": 0.980557605,
+                "without_auc": 0.9999864300000001
+              },
+              "longitudinal": {
+                "only_auc": 0.9990008899999999,
+                "without_auc": 0.9999883500000001
+              },
+              "lateral": {
+                "only_auc": 0.9996590125,
+                "without_auc": 0.999983105
+              },
+              "layers_0_5": {
+                "only_auc": 0.9984876875,
+                "without_auc": 0.99998665
+              },
+              "layers_6_11": {
+                "only_auc": 0.990925835,
+                "without_auc": 0.99998662
+              },
+              "layers_12_17": {
+                "only_auc": 0.98201044,
+                "without_auc": 0.9999864375
+              }
+            },
+            "label_permutation": {
+              "draws": 10,
+              "mean": 0.4991898339999999,
+              "min": 0.49076017749999995,
+              "max": 0.5057508225
+            },
+            "fold_seed_spread": {
+              "conventional": {
+                "mean": 0.9999790055,
+                "sd": 1.0069009137001305e-05,
+                "min": 0.9999650524999999,
+                "max": 0.999986445
+              },
+              "without_energy_and_occupancy": {
+                "mean": 0.9999927829999999,
+                "sd": 1.1460235599522615e-06,
+                "min": 0.9999909300000001,
+                "max": 0.99999375
+              }
+            }
+          },
+          "vs_interacting_protons_quarter_excluded": {
+            "events": {
+              "electron": 10000,
+              "proton": 7264
+            },
+            "conventional_hgb": {
+              "auc": 0.9999993942731277,
+              "k_passing": 0,
+              "n_protons": 7264,
+              "efficiency": 0.99
+            },
+            "energy_only": {
+              "univariate_auc_electron_above_proton": 0.9999292125550661,
+              "hgb_auc": 0.9998391450991189,
+              "logistic_auc": 0.9999274504405286
+            },
+            "logistic_all_conventional_auc": 0.9999982516519823,
+            "indicator_only": {
+              "cells_ge_336": {
+                "auc": 0.5799123348017621
+              },
+              "cells_ge_572": {
+                "auc": 0.3086077092511013
+              }
+            },
+            "multiscale_rung_auc_as_registered": 0.9855245525881058,
+            "multiscale_eligible_fraction": {
+              "electron": 0.9101,
+              "proton": 0.7502753303964758
+            },
+            "ablations": {
+              "energy": {
+                "only_auc": 0.9998391450991189,
+                "without_auc": 0.9999915886563877
+              },
+              "occupancy": {
+                "only_auc": 0.9604233273678415,
+                "without_auc": 0.9999996558370043
+              },
+              "longitudinal": {
+                "only_auc": 0.9977899779735684,
+                "without_auc": 0.9999995594713657
+              },
+              "lateral": {
+                "only_auc": 0.9994885669052865,
+                "without_auc": 0.9999797425660792
+              },
+              "layers_0_5": {
+                "only_auc": 0.9969320415748899,
+                "without_auc": 0.9999993529735682
+              },
+              "layers_6_11": {
+                "only_auc": 0.981236646475771,
+                "without_auc": 0.9999994906387666
+              },
+              "layers_12_17": {
+                "only_auc": 0.9664709457599119,
+                "without_auc": 0.9999994906387665
+              }
+            },
+            "label_permutation": {
+              "draws": 10,
+              "mean": 0.501809847879956,
+              "min": 0.49620390969163,
+              "max": 0.5075514592511013
+            },
+            "fold_seed_spread": {
+              "conventional": {
+                "mean": 0.9999984388766521,
+                "sd": 1.0667764949388837e-06,
+                "min": 0.9999969988986785,
+                "max": 0.9999995870044053
+              },
+              "without_energy_and_occupancy": {
+                "mean": 0.9999635049559471,
+                "sd": 3.952411595781273e-05,
+                "min": 0.9998932406387665,
+                "max": 0.999986247246696
+              }
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "vs_interacting_protons": {
+            "events": {
+              "electron": 10000,
+              "proton": 9647
+            },
+            "conventional_hgb": {
+              "auc": 0.999982486783456,
+              "k_passing": 1,
+              "n_protons": 9647,
+              "efficiency": 0.99
+            },
+            "energy_only": {
+              "univariate_auc_electron_above_proton": 0.9989938633772157,
+              "hgb_auc": 0.9988501606717115,
+              "logistic_auc": 0.9989900383538923
+            },
+            "logistic_all_conventional_auc": 0.9999968487612729,
+            "indicator_only": {
+              "cells_ge_336": {
+                "auc": 0.23523252824712346
+              },
+              "cells_ge_572": {
+                "auc": 0.467502850627138
+              }
+            },
+            "multiscale_rung_auc_as_registered": 0.7633908468954078,
+            "multiscale_eligible_fraction": {
+              "electron": 0.0012,
+              "proton": 0.5307349435057531
+            },
+            "ablations": {
+              "energy": {
+                "only_auc": 0.9988501606717115,
+                "without_auc": 0.9999867419923292
+              },
+              "occupancy": {
+                "only_auc": 0.9577562817456203,
+                "without_auc": 0.9999804136000829
+              },
+              "longitudinal": {
+                "only_auc": 0.9981724784907224,
+                "without_auc": 0.9999850316160466
+              },
+              "lateral": {
+                "only_auc": 0.9996384264538198,
+                "without_auc": 0.9999196745102104
+              },
+              "layers_0_5": {
+                "only_auc": 0.9967067585777962,
+                "without_auc": 0.9999829169690059
+              },
+              "layers_6_11": {
+                "only_auc": 0.9858905566497357,
+                "without_auc": 0.9999836270343112
+              },
+              "layers_12_17": {
+                "only_auc": 0.9640497926816628,
+                "without_auc": 0.9999830880066343
+              }
+            },
+            "label_permutation": {
+              "draws": 10,
+              "mean": 0.5006490618845236,
+              "min": 0.49476025707473825,
+              "max": 0.507919166580284
+            },
+            "fold_seed_spread": {
+              "conventional": {
+                "mean": 0.9999321737327668,
+                "sd": 7.386062831120568e-05,
+                "min": 0.9998357157665597,
+                "max": 0.9999945786254794
+              },
+              "without_energy_and_occupancy": {
+                "mean": 0.9998770851041774,
+                "sd": 9.564085965144825e-06,
+                "min": 0.9998627552607027,
+                "max": 0.999889038042915
+              }
+            }
+          },
+          "vs_all_protons": {
+            "events": {
+              "electron": 10000,
+              "proton": 20000
+            },
+            "conventional_hgb": {
+              "auc": 0.99992113,
+              "k_passing": 1,
+              "n_protons": 20000,
+              "efficiency": 0.99
+            },
+            "energy_only": {
+              "univariate_auc_electron_above_proton": 0.9995146899999999,
+              "hgb_auc": 0.9993848499999999,
+              "logistic_auc": 0.9995141349999999
+            },
+            "logistic_all_conventional_auc": 0.999997625,
+            "indicator_only": {
+              "cells_ge_336": {
+                "auc": 0.3726
+              },
+              "cells_ge_572": {
+                "auc": 0.484325
+              }
+            },
+            "multiscale_rung_auc_as_registered": 0.6259637524999999,
+            "multiscale_eligible_fraction": {
+              "electron": 0.0012,
+              "proton": 0.256
+            },
+            "ablations": {
+              "energy": {
+                "only_auc": 0.9993848499999999,
+                "without_auc": 0.999987
+              },
+              "occupancy": {
+                "only_auc": 0.97950815,
+                "without_auc": 0.9999243550000001
+              },
+              "longitudinal": {
+                "only_auc": 0.99911438,
+                "without_auc": 0.9998876624999999
+              },
+              "lateral": {
+                "only_auc": 0.9998334575000001,
+                "without_auc": 0.9999122975
+              },
+              "layers_0_5": {
+                "only_auc": 0.9983285075,
+                "without_auc": 0.9999610675
+              },
+              "layers_6_11": {
+                "only_auc": 0.9921721300000002,
+                "without_auc": 0.9999364425
+              },
+              "layers_12_17": {
+                "only_auc": 0.9802418650000001,
+                "without_auc": 0.9999393425
+              }
+            },
+            "label_permutation": {
+              "draws": 10,
+              "mean": 0.4994017959999999,
+              "min": 0.4931397275,
+              "max": 0.50423993
+            },
+            "fold_seed_spread": {
+              "conventional": {
+                "mean": 0.9999206669999999,
+                "sd": 2.998539568485295e-05,
+                "min": 0.99987222,
+                "max": 0.9999527100000001
+              },
+              "without_energy_and_occupancy": {
+                "mean": 0.9999553205,
+                "sd": 1.60074234146396e-05,
+                "min": 0.9999384874999999,
+                "max": 0.99997637
+              }
+            }
+          },
+          "vs_interacting_protons_quarter_excluded": {
+            "events": {
+              "electron": 10000,
+              "proton": 7264
+            },
+            "conventional_hgb": {
+              "auc": 0.9999264730176212,
+              "k_passing": 1,
+              "n_protons": 7264,
+              "efficiency": 0.99
+            },
+            "energy_only": {
+              "univariate_auc_electron_above_proton": 0.9991163546255506,
+              "hgb_auc": 0.9988647232929516,
+              "logistic_auc": 0.9991107929515418
+            },
+            "logistic_all_conventional_auc": 0.9999965996696035,
+            "indicator_only": {
+              "cells_ge_336": {
+                "auc": 0.23318535242290753
+              },
+              "cells_ge_572": {
+                "auc": 0.4681993392070485
+              }
+            },
+            "multiscale_rung_auc_as_registered": 0.7637866671255507,
+            "multiscale_eligible_fraction": {
+              "electron": 0.0012,
+              "proton": 0.534829295154185
+            },
+            "ablations": {
+              "energy": {
+                "only_auc": 0.9988647232929516,
+                "without_auc": 0.9999824614537445
+              },
+              "occupancy": {
+                "only_auc": 0.958025075715859,
+                "without_auc": 0.9999642414647577
+              },
+              "longitudinal": {
+                "only_auc": 0.9979133948237885,
+                "without_auc": 0.9998858342511013
+              },
+              "lateral": {
+                "only_auc": 0.9995260531387664,
+                "without_auc": 0.9998831428964758
+              },
+              "layers_0_5": {
+                "only_auc": 0.9962966960352423,
+                "without_auc": 0.9998975908590308
+              },
+              "layers_6_11": {
+                "only_auc": 0.9839680341409692,
+                "without_auc": 0.999927188876652
+              },
+              "layers_12_17": {
+                "only_auc": 0.962063587555066,
+                "without_auc": 0.9999266657488988
+              }
+            },
+            "label_permutation": {
+              "draws": 10,
+              "mean": 0.5014170374449339,
+              "min": 0.49587464207048454,
+              "max": 0.5069425660792951
+            },
+            "fold_seed_spread": {
+              "conventional": {
+                "mean": 0.9999072315528634,
+                "sd": 3.914530415169113e-05,
+                "min": 0.9998602285242291,
+                "max": 0.9999599738436123
+              },
+              "without_energy_and_occupancy": {
+                "mean": 0.9999225206497797,
+                "sd": 3.5312411218667316e-05,
+                "min": 0.9998656869493393,
+                "max": 0.9999569107929516
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

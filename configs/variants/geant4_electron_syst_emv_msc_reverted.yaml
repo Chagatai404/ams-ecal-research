@@ -1,0 +1,31 @@
+# EMV swap test 2 of 3 (approved 2026-10-11): FTFP_BERT_EMV (EM option 1) with MscRangeFactor put back to FTFP_BERT's value (0.04). 20 GeV only, 2000 electrons, SAME base seed as the EMV set (20272005), so event i pairs with event i of that set. Exposed development data. Question: does the scintillator share return to the FTFP_BERT value (about 6.5%)?
+schema_version: 2
+
+particle: e-
+
+energies_gev: [20.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT_EMV_MSC_REVERTED]
+  production_cut: 0.7
+
+samples:
+  emv_msc_reverted:
+    geometry: ams
+    physics_list: FTFP_BERT_EMV_MSC_REVERTED
+    events_per_energy: 2000
+    base_seed: 20272005
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_electron_syst_emv_msc_reverted

@@ -1,0 +1,248 @@
+{
+  "status": "coverage and type-I-error simulations of the S1 tools; exposed development electrons only; sealed sets not read",
+  "clopper_pearson": [
+    {
+      "true_rate": 0.0,
+      "n": 1000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 1.0,
+      "passed": true
+    },
+    {
+      "true_rate": 1e-05,
+      "n": 1000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.99025,
+      "passed": true
+    },
+    {
+      "true_rate": 0.0001,
+      "n": 1000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.908,
+      "passed": true
+    },
+    {
+      "true_rate": 0.001,
+      "n": 1000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.367,
+      "passed": true
+    },
+    {
+      "true_rate": 0.01,
+      "n": 1000,
+      "trials": 4000,
+      "coverage": 0.97175,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.0,
+      "passed": true
+    },
+    {
+      "true_rate": 0.0,
+      "n": 9696,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 1.0,
+      "passed": true
+    },
+    {
+      "true_rate": 1e-05,
+      "n": 9696,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.9035,
+      "passed": true
+    },
+    {
+      "true_rate": 0.0001,
+      "n": 9696,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.38275,
+      "passed": true
+    },
+    {
+      "true_rate": 0.001,
+      "n": 9696,
+      "trials": 4000,
+      "coverage": 0.9615,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.0,
+      "passed": true
+    },
+    {
+      "true_rate": 0.01,
+      "n": 9696,
+      "trials": 4000,
+      "coverage": 0.9635,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.0,
+      "passed": true
+    },
+    {
+      "true_rate": 0.0,
+      "n": 20000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 1.0,
+      "passed": true
+    },
+    {
+      "true_rate": 1e-05,
+      "n": 20000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.81125,
+      "passed": true
+    },
+    {
+      "true_rate": 0.0001,
+      "n": 20000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.13125,
+      "passed": true
+    },
+    {
+      "true_rate": 0.001,
+      "n": 20000,
+      "trials": 4000,
+      "coverage": 0.95925,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.0,
+      "passed": true
+    },
+    {
+      "true_rate": 0.01,
+      "n": 20000,
+      "trials": 4000,
+      "coverage": 0.95525,
+      "required": 0.95,
+      "share_of_draws_with_k_equal_0": 0.0,
+      "passed": true
+    }
+  ],
+  "rejection_limit": [
+    {
+      "true_rejection": 1000.0,
+      "n": 9696,
+      "trials": 4000,
+      "coverage": 0.9605,
+      "required": 0.95,
+      "share_of_draws_censored": 0.0,
+      "passed": true
+    },
+    {
+      "true_rejection": 10000.0,
+      "n": 9696,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_censored": 0.389,
+      "passed": true
+    },
+    {
+      "true_rejection": 100000.0,
+      "n": 9696,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_censored": 0.90525,
+      "passed": true
+    },
+    {
+      "true_rejection": 1000.0,
+      "n": 20000,
+      "trials": 4000,
+      "coverage": 0.96,
+      "required": 0.95,
+      "share_of_draws_censored": 0.0,
+      "passed": true
+    },
+    {
+      "true_rejection": 10000.0,
+      "n": 20000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_censored": 0.1385,
+      "passed": true
+    },
+    {
+      "true_rejection": 100000.0,
+      "n": 20000,
+      "trials": 4000,
+      "coverage": 1.0,
+      "required": 0.95,
+      "share_of_draws_censored": 0.81775,
+      "passed": true
+    }
+  ],
+  "real_electron_halves": {
+    "20": {
+      "permutation_ks_occupied_cells": {
+        "alpha": 0.05,
+        "trials": 200,
+        "rejection_rate": 0.06,
+        "mean_p_value": 0.473375,
+        "passed": true
+      },
+      "permutation_ks_occupied_cells_stratified": {
+        "alpha": 0.05,
+        "trials": 200,
+        "rejection_rate": 0.045,
+        "mean_p_value": 0.528575,
+        "passed": true
+      },
+      "familywise_five_conventional_features": {
+        "alpha": 0.05,
+        "trials": 100,
+        "unadjusted_minimum_p_rate": 0.2,
+        "holm_rate": 0.08,
+        "westfall_young_rate": 0.08,
+        "passed": true
+      }
+    },
+    "100": {
+      "permutation_ks_occupied_cells": {
+        "alpha": 0.05,
+        "trials": 200,
+        "rejection_rate": 0.045,
+        "mean_p_value": 0.518625,
+        "passed": true
+      },
+      "permutation_ks_occupied_cells_stratified": {
+        "alpha": 0.05,
+        "trials": 200,
+        "rejection_rate": 0.03,
+        "mean_p_value": 0.52605,
+        "passed": true
+      },
+      "familywise_five_conventional_features": {
+        "alpha": 0.05,
+        "trials": 100,
+        "unadjusted_minimum_p_rate": 0.13,
+        "holm_rate": 0.06,
+        "westfall_young_rate": 0.06,
+        "passed": true
+      }
+    }
+  },
+  "all_checks_pass": true,
+  "n_checks": 27
+}

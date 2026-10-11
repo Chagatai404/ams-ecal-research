@@ -60,6 +60,10 @@ data/geant4_proton_pilot/
 data/geant4_electron_probe/
 data/geant4_electron_sample/
 data/geant4_electron_extended/
+# EMV one-at-a-time swap test (2026-10-11), exposed development data
+data/geant4_electron_syst_emv_cuts_reverted/
+data/geant4_electron_syst_emv_msc_reverted/
+data/geant4_electron_syst_emv_both_reverted/
 
 # Native/CMake build products for later Geant4 work
 cmake-build-*/
