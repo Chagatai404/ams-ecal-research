@@ -1,0 +1,67 @@
+{
+  "thresholds": {
+    "occupancy_relative_tolerance": 0.1,
+    "hit_cell_ks_remaining_fraction_maximum": 0.5,
+    "transfer_fraction_minimum": 0.7,
+    "profile_gap_maximum_points": 0.2,
+    "profile_regression_points": 0.3,
+    "profile_regression_per_energy_points": 0.5,
+    "coupling_regression": 0.05,
+    "spot_number_regression": 0.1,
+    "added_parameters_maximum": 1,
+    "ks_regression": {
+      "core_fraction": 0.03,
+      "containment_fraction": 0.03,
+      "max_cell_fraction": 0.03,
+      "width_mm": 0.03
+    }
+  },
+  "criteria": {
+    "A1_occupied_cell_ratio_to_holdout": {
+      "10": 0.896935136166185,
+      "20": 0.8837084544968217,
+      "50": 0.8663974769436613,
+      "100": 0.8622274355719521
+    },
+    "A1_ok": false,
+    "A2_hit_cell_ks": {
+      "base": 1.0,
+      "candidate": 0.8533958333333334
+    },
+    "A2_ok": false,
+    "B1_hit_cell_ks_improvement": {
+      "holdout": 0.14660416666666665,
+      "calibration": 0.1773541666666666
+    },
+    "B1_ok": true,
+    "B2_profile_error_gap_points": 0.03424210608686895,
+    "B2_ok": true,
+    "B3_quantum_mev": 1.359656212728559,
+    "B3_measured_range_mev": [
+      1.179572314760155,
+      1.4659973838999176
+    ],
+    "B3_ok": true,
+    "C1_added_parameters": 1,
+    "C1_ok": true,
+    "C2_changes_on_holdout": {
+      "profile_error_layers_3_17_mean_points": -0.008703573673880527,
+      "coupling_abs_difference": 0.09653139325708404,
+      "spot_number_rms_log_ratio": 0.6173477024046996,
+      "ks_core_fraction": -0.012937500000000018,
+      "ks_containment_fraction": -0.003916666666666679,
+      "ks_max_cell_fraction": 0.008395833333333297,
+      "ks_width_mm": -0.049500000000000016
+    },
+    "C2_ok": false,
+    "C3_profile_regression_per_energy_points": {
+      "10": -0.024575728595729984,
+      "20": -0.0033318138491247318,
+      "50": -0.008187428816055053,
+      "100": 0.0012806765653876617
+    },
+    "C3_ok": true
+  },
+  "adopted": false,
+  "verdict": "E2 NOT ADOPTED: its base stays the candidate; the result is recorded"
+}

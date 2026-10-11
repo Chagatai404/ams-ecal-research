@@ -7,11 +7,11 @@ or particle ID._
 ## What was run
 
 ```text
-uv run python -m ams_ecal.multiscale_controls          # seed 20261002, 1000 replicates per case, about 35 s
+uv run python -m ams_ecal.multiscale_estimators.multiscale_controls          # seed 20261002, 1000 replicates per case, about 35 s
 ```
 
-Code: `src/ams_ecal/multiscale.py` (estimators) and `src/ams_ecal/multiscale_controls.py` (controls and evaluation); tests in
-`tests/test_multiscale.py` and `tests/test_multiscale_controls.py`. Output: `results/multiscale_controls/` (`controls.json`,
+Code: `src/ams_ecal/multiscale_estimators/multiscale.py` (estimators) and `src/ams_ecal/multiscale_estimators/multiscale_controls.py` (controls and evaluation); tests in
+`tests/multiscale_estimators/test_multiscale.py` and `tests/multiscale_estimators/test_multiscale_controls.py`. Output: `results/multiscale_controls/` (`controls.json`,
 `recovery.json`, `windows.json`, `controls.png`). The smooth baseline is an illustrative map, not a calibrated FastMC; the
 cascade is a deterministic hierarchy on 18 x 72 with exact answers at the aligned box sizes. "Hits" are equal quanta drawn
 multinomially.

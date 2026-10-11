@@ -11,13 +11,13 @@ infrastructure for a sequence of related research papers.
 > **Current status:** the detector and event foundations and the deterministic FastMC
 > (geometry, tracker projection, cell mapping, event model, longitudinal and lateral
 > profiles) are complete, and **stochastic electromagnetic event
-> generation is implemented** (`src/ams_ecal/stochastic.py`,
+> generation is implemented** (`src/ams_ecal/electron_model/stochastic.py`,
 > `notebooks/07_stochastic_em_events.ipynb`). Detector response is
 > **blocked** pending an adversarial pass on the open question of whether a
 > response model would double-count detector behaviour already absorbed into
 > AMS shower parameters fitted to observed deposits. Proton model
 > phenomenology has no accepted model yet: a **Geant4 proton calibration pilot**
-> (a thin vertical slice of the planned Geant4 blocks; `src/ams_ecal/geant4_backend.py`,
+> (a thin vertical slice of the planned Geant4 blocks; `src/ams_ecal/geant4_simulation/geant4_backend.py`,
 > `results/geant4_proton_pilot/`, `notebooks/08_geant4_proton_pilot.ipynb`) has
 > measured protons in the thin AMS-like geometry, and the proton model model decision is
 > pending. The first intended publication is a
@@ -243,7 +243,7 @@ finite cells. Lateral leakage is retained explicitly.
 
 ## EM event generator — stochastic electromagnetic generation
 
-**Implemented.** `src/ams_ecal/stochastic.py`, `tests/test_stochastic.py`,
+**Implemented.** `src/ams_ecal/electron_model/stochastic.py`, `tests/electron_model/test_stochastic.py`,
 `notebooks/07_stochastic_em_events.ipynb`.
 
 The first stochastic model deliberately remains simple: one random variable per
@@ -531,8 +531,15 @@ Current and planned top-level structure:
 │   ├── CHAOS_FRACTALS_QML.md
 │   └── questions/
 ├── src/
-│   └── ams_ecal/
-├── tests/
+│   └── ams_ecal/            # grouped by role; see research/MODULE_MAP.md
+│       ├── detector/
+│       ├── electron_model/
+│       ├── electron_studies/
+│       ├── proton_model/
+│       ├── multiscale_estimators/
+│       ├── validation/
+│       └── geant4_simulation/
+├── tests/                   # mirrors src/ams_ecal/ folder by folder
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── RESEARCH_PROTOCOL.md

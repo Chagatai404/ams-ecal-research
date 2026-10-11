@@ -1,0 +1,31 @@
+# G-syst electrons, alternative EM physics list FTFP_BERT_EMV (EM option 1: less precise, faster (Physics List Guide)). Reached through G4PhysListFactory (not a module attribute of the installed geant4_pybind). The earlier FTFP_BERT_TRV choice was withdrawn: TRV and ATL vary the hadronic side only. Exposed development data.
+schema_version: 2
+
+particle: e-
+
+energies_gev: [20.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT_EMV]
+  production_cut: 0.7
+
+samples:
+  emv:
+    geometry: ams
+    physics_list: FTFP_BERT_EMV
+    events_per_energy: 2000
+    base_seed: 20272005
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_electron_syst_emv

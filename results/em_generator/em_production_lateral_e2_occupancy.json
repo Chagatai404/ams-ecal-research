@@ -1,0 +1,26 @@
+{
+  "artifact": "data\\calibration\\em_production\\gp_lateral_e2_v1\\parameters.json",
+  "sealed_data_read": false,
+  "per_energy": {
+    "10": {
+      "model_occupied_cells": 269.9425,
+      "geant4_holdout_occupied_cells": 277.859,
+      "geant4_baseline_occupied_cells": 276.452
+    },
+    "20": {
+      "model_occupied_cells": 325.9695,
+      "geant4_holdout_occupied_cells": 334.603,
+      "geant4_baseline_occupied_cells": 331.983
+    },
+    "50": {
+      "model_occupied_cells": 414.905,
+      "geant4_holdout_occupied_cells": 418.54,
+      "geant4_baseline_occupied_cells": 414.527
+    },
+    "100": {
+      "model_occupied_cells": 498.6545,
+      "geant4_holdout_occupied_cells": 487.637,
+      "geant4_baseline_occupied_cells": 480.894
+    }
+  }
+}

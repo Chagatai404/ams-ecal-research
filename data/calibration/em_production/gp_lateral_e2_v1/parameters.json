@@ -1,0 +1,56 @@
+{
+  "builder": {
+    "git_commit": "b7727a43171109a4441d65f5d0c9432b2e4baecd",
+    "module": "ams_ecal.electron_studies.em_lateral_tail_quantum",
+    "tracked_changes": true
+  },
+  "calibration": {
+    "base_artifact": "data\\calibration\\em_production\\gp_lateral_v1\\parameters.json",
+    "base_parameters_sha256": "de6ac0439d500ffe61e2358576bb90525b44a85b7d39a68640c6b97603a53163",
+    "method": "the tail component's spots carry the measured quantum; every other parameter is taken unchanged",
+    "quantum": {
+      "cell_threshold_mev": 0.2798003852367401,
+      "far_mm": 108.0,
+      "occupied_cells_used": 174762,
+      "per_energy_mev": {
+        "10": 1.179572314760155,
+        "100": 1.4659973838999176,
+        "20": 1.1993945338161378,
+        "50": 1.297419092061045
+      },
+      "status": "measured on the exposed baseline electrons (calibration set); not fitted; the sealed sets are not read",
+      "tail_quantum_mev": 1.359656212728559
+    },
+    "sealed_data_read": false,
+    "status": "extension E2 on a calibrated candidate; development; not validated"
+  },
+  "kind": "em_production_lateral_parameters",
+  "longitudinal_parameters_sha256": "438f28d83b1e714595a453e7492d2814764ce83f5f98aa8d049da4ce3c898a19",
+  "model": "em-production-gp-lateral",
+  "parameters": {
+    "core_depth_slope": 0.18491575614785205,
+    "core_intercept": -0.0025932816267087277,
+    "core_log_energy_slope": -0.004638791219160962,
+    "front_spot_limit": 0.0,
+    "moliere_radius_mm": 18.0,
+    "spot_amplitude": 180.61662586429122,
+    "spot_depth_scale": 0.9063613006423636,
+    "spot_energy_exponent": 0.9111744013661414,
+    "spot_shape_scale": 0.9001997102253834,
+    "spot_tail_refinement": 1.0,
+    "tail_centre": 0.1299969186368691,
+    "tail_decay_rate": -13.500184626115958,
+    "tail_exponent": 1.0,
+    "tail_growth_intercept": 0.47890817365381566,
+    "tail_growth_log_energy_slope": -0.06842729720537277,
+    "tail_quantum_mev": 1.359656212728559,
+    "tail_scale": 0.695655727860889,
+    "weight_amplitude": 2.3344044901331187,
+    "weight_centre": 0.7169198678739601,
+    "weight_width_intercept": 1.4754956082624302,
+    "weight_width_log_energy_slope": -0.17300222383193242
+  },
+  "parameters_sha256": "21a2b0873b9ec80b4e24d37167d9048493222a970a7d8d9a69b5421f6a8e7153",
+  "schema_version": 1,
+  "status": "CANDIDATE DEVELOPMENT parameters calibrated on exposed Geant4 electrons; not validated"
+}

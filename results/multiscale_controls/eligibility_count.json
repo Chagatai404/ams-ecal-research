@@ -1,0 +1,1333 @@
+{
+  "status": "eligibility count on EXPOSED development events; no multiscale value computed; sealed sets not read",
+  "sealed_data_read": false,
+  "cell_threshold_mev": 0.2798003852367401,
+  "control_images_occupied_cells_by_hits": {
+    "100": {
+      "q05": 74.95,
+      "q25": 78.0,
+      "q50": 81.0,
+      "q75": 83.0,
+      "q95": 87.0,
+      "mean": 80.67
+    },
+    "30": {
+      "q05": 25.0,
+      "q25": 27.0,
+      "q50": 28.0,
+      "q75": 29.0,
+      "q95": 30.0,
+      "mean": 27.935
+    },
+    "300": {
+      "q05": 164.95,
+      "q25": 171.0,
+      "q50": 176.0,
+      "q75": 181.0,
+      "q95": 186.09999999999997,
+      "mean": 176.08
+    },
+    "1000": {
+      "q05": 320.0,
+      "q25": 329.0,
+      "q50": 336.0,
+      "q75": 342.0,
+      "q95": 355.04999999999995,
+      "mean": 336.12
+    },
+    "3000": {
+      "q05": 548.95,
+      "q25": 564.0,
+      "q50": 572.0,
+      "q75": 583.0,
+      "q95": 593.0,
+      "mean": 572.595
+    }
+  },
+  "per_class": {
+    "electron": {
+      "10": {
+        "fine_scales": {
+          "fibres_per_event": {
+            "q05": 962.95,
+            "q25": 1000.0,
+            "q50": 1024.0,
+            "q75": 1052.0,
+            "q95": 1089.05,
+            "mean": 1025.253
+          },
+          "fine_voxels_per_event": {
+            "q05": 3628.0,
+            "q25": 3832.0,
+            "q50": 3932.0,
+            "q75": 4010.0,
+            "q95": 4118.05,
+            "mean": 3907.763
+          }
+        },
+        "deposit_grid_mev": {
+          "all": {
+            "events": 1000,
+            "occupied_cells_any": {
+              "q05": 271.0,
+              "q25": 289.0,
+              "q50": 299.0,
+              "q75": 310.0,
+              "q95": 327.0,
+              "mean": 299.796
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 254.0,
+              "q25": 269.0,
+              "q50": 277.0,
+              "q75": 285.0,
+              "q95": 296.04999999999995,
+              "mean": 276.452
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 13.0,
+              "q25": 13.0,
+              "q50": 13.0,
+              "q75": 13.0,
+              "q95": 13.0,
+              "mean": 13.002
+            },
+            "fraction_with_cells_at_least": {
+              "100": 1.0,
+              "300": 0.494,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "all": {
+            "events": 1000,
+            "occupied_cells_any": {
+              "q05": 146.95,
+              "q25": 157.0,
+              "q50": 165.0,
+              "q75": 173.0,
+              "q95": 186.0,
+              "mean": 165.658
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 109.0,
+              "q25": 117.0,
+              "q50": 122.0,
+              "q75": 128.0,
+              "q95": 134.0,
+              "mean": 122.278
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 11.0,
+              "q25": 11.0,
+              "q50": 11.0,
+              "q75": 11.0,
+              "q95": 11.0,
+              "mean": 11.017
+            },
+            "fraction_with_cells_at_least": {
+              "100": 1.0,
+              "300": 0.001,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        }
+      },
+      "20": {
+        "fine_scales": {
+          "fibres_per_event": {
+            "q05": 1406.95,
+            "q25": 1477.0,
+            "q50": 1515.0,
+            "q75": 1551.0,
+            "q95": 1601.0,
+            "mean": 1510.865
+          },
+          "fine_voxels_per_event": {
+            "q05": 5647.85,
+            "q25": 6129.5,
+            "q50": 6319.5,
+            "q75": 6476.0,
+            "q95": 6661.05,
+            "mean": 6265.154
+          }
+        },
+        "deposit_grid_mev": {
+          "all": {
+            "events": 1000,
+            "occupied_cells_any": {
+              "q05": 328.0,
+              "q25": 348.0,
+              "q50": 359.0,
+              "q75": 372.0,
+              "q95": 397.0,
+              "mean": 360.77
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 306.0,
+              "q25": 322.0,
+              "q50": 334.0,
+              "q75": 343.0,
+              "q95": 356.0,
+              "mean": 331.983
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 13.0,
+              "q25": 13.0,
+              "q50": 13.0,
+              "q75": 13.0,
+              "q95": 14.0,
+              "mean": 13.064
+            },
+            "fraction_with_cells_at_least": {
+              "100": 1.0,
+              "300": 0.996,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "all": {
+            "events": 1000,
+            "occupied_cells_any": {
+              "q05": 185.0,
+              "q25": 200.0,
+              "q50": 209.0,
+              "q75": 220.0,
+              "q95": 246.0,
+              "mean": 211.865
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 141.0,
+              "q25": 152.0,
+              "q50": 159.0,
+              "q75": 165.0,
+              "q95": 174.04999999999995,
+              "mean": 158.243
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 11.0,
+              "q25": 11.0,
+              "q50": 11.0,
+              "q75": 13.0,
+              "q95": 13.0,
+              "mean": 11.696
+            },
+            "fraction_with_cells_at_least": {
+              "100": 1.0,
+              "300": 0.006,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        }
+      },
+      "50": {
+        "fine_scales": {
+          "fibres_per_event": {
+            "q05": 2115.8,
+            "q25": 2283.0,
+            "q50": 2364.5,
+            "q75": 2426.25,
+            "q95": 2509.1,
+            "mean": 2346.28
+          },
+          "fine_voxels_per_event": {
+            "q05": 9799.55,
+            "q25": 10772.0,
+            "q50": 11206.5,
+            "q75": 11553.0,
+            "q95": 11946.2,
+            "mean": 11083.408
+          }
+        },
+        "deposit_grid_mev": {
+          "all": {
+            "events": 1000,
+            "occupied_cells_any": {
+              "q05": 414.95,
+              "q25": 437.0,
+              "q50": 450.0,
+              "q75": 465.0,
+              "q95": 492.04999999999995,
+              "mean": 451.326
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 382.0,
+              "q25": 405.0,
+              "q50": 416.0,
+              "q75": 426.0,
+              "q95": 440.0,
+              "mean": 414.527
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 14.0,
+              "q25": 14.0,
+              "q50": 14.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "mean": 13.992
+            },
+            "fraction_with_cells_at_least": {
+              "100": 1.0,
+              "300": 1.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "all": {
+            "events": 1000,
+            "occupied_cells_any": {
+              "q05": 253.95,
+              "q25": 271.0,
+              "q50": 284.0,
+              "q75": 297.0,
+              "q95": 324.0,
+              "mean": 285.656
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 191.0,
+              "q25": 207.0,
+              "q50": 215.0,
+              "q75": 224.0,
+              "q95": 234.04999999999995,
+              "mean": 214.594
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 13.0,
+              "q25": 13.0,
+              "q50": 13.0,
+              "q75": 13.0,
+              "q95": 13.0,
+              "mean": 12.999
+            },
+            "fraction_with_cells_at_least": {
+              "100": 1.0,
+              "300": 0.213,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        }
+      },
+      "100": {
+        "fine_scales": {
+          "fibres_per_event": {
+            "q05": 2744.8,
+            "q25": 3001.75,
+            "q50": 3130.0,
+            "q75": 3240.25,
+            "q95": 3382.05,
+            "mean": 3106.005
+          },
+          "fine_voxels_per_event": {
+            "q05": 14085.95,
+            "q25": 15653.75,
+            "q50": 16410.0,
+            "q75": 17088.25,
+            "q95": 17776.05,
+            "mean": 16247.831
+          }
+        },
+        "deposit_grid_mev": {
+          "all": {
+            "events": 1000,
+            "occupied_cells_any": {
+              "q05": 481.0,
+              "q25": 508.0,
+              "q50": 526.0,
+              "q75": 541.0,
+              "q95": 573.05,
+              "mean": 526.414
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 448.0,
+              "q25": 470.0,
+              "q50": 483.0,
+              "q75": 494.25,
+              "q95": 508.0,
+              "mean": 480.894
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 14.0,
+              "q25": 14.0,
+              "q50": 14.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "mean": 14.003
+            },
+            "fraction_with_cells_at_least": {
+              "100": 1.0,
+              "300": 1.0,
+              "600": 0.017,
+              "1000": 0.0
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "all": {
+            "events": 1000,
+            "occupied_cells_any": {
+              "q05": 309.0,
+              "q25": 333.0,
+              "q50": 350.0,
+              "q75": 367.0,
+              "q95": 398.0,
+              "mean": 351.48
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 234.95,
+              "q25": 254.0,
+              "q50": 264.0,
+              "q75": 274.0,
+              "q95": 288.0,
+              "mean": 263.123
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 13.0,
+              "q25": 13.0,
+              "q50": 13.0,
+              "q75": 13.0,
+              "q95": 14.0,
+              "mean": 13.062
+            },
+            "fraction_with_cells_at_least": {
+              "100": 1.0,
+              "300": 0.975,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        }
+      }
+    },
+    "proton": {
+      "10": {
+        "fine_scales": {
+          "fibres_per_event": {
+            "q05": 58.0,
+            "q25": 70.0,
+            "q50": 85.0,
+            "q75": 832.25,
+            "q95": 1409.0,
+            "mean": 434.3743333333333
+          },
+          "fine_voxels_per_event": {
+            "q05": 38.0,
+            "q25": 46.0,
+            "q50": 72.0,
+            "q75": 1895.25,
+            "q95": 3498.0499999999997,
+            "mean": 959.1376666666666
+          }
+        },
+        "deposit_grid_mev": {
+          "all": {
+            "events": 3000,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 21.0,
+              "q50": 30.0,
+              "q75": 434.0,
+              "q95": 629.0499999999997,
+              "mean": 208.60133333333334
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 18.0,
+              "q25": 20.0,
+              "q50": 28.0,
+              "q75": 215.0,
+              "q95": 329.0,
+              "mean": 110.58066666666667
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 4.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "mean": 7.476666666666667
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.44,
+              "300": 0.3406666666666667,
+              "600": 0.07666666666666666,
+              "1000": 0.0
+            }
+          },
+          "interacting": {
+            "events": 1408,
+            "occupied_cells_any": {
+              "q05": 82.0,
+              "q25": 281.0,
+              "q50": 452.0,
+              "q75": 562.25,
+              "q95": 675.0,
+              "mean": 419.13139204545456
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 41.35000000000001,
+              "q25": 130.0,
+              "q50": 222.0,
+              "q75": 291.0,
+              "q95": 352.0,
+              "mean": 211.23082386363637
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 9.0,
+              "q25": 13.0,
+              "q50": 14.0,
+              "q75": 14.0,
+              "q95": 15.0,
+              "mean": 12.991477272727273
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.9375,
+              "300": 0.7258522727272727,
+              "600": 0.16335227272727273,
+              "1000": 0.0
+            }
+          },
+          "crossing": {
+            "events": 1592,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 19.0,
+              "q50": 21.0,
+              "q75": 24.0,
+              "q95": 32.0,
+              "mean": 22.40389447236181
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 18.0,
+              "q25": 19.0,
+              "q50": 20.0,
+              "q75": 23.0,
+              "q95": 30.0,
+              "mean": 21.563442211055275
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 4.0,
+              "q95": 4.0,
+              "mean": 2.599246231155779
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.0,
+              "300": 0.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "all": {
+            "events": 3000,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 18.0,
+              "q50": 22.0,
+              "q75": 289.0,
+              "q95": 457.0,
+              "mean": 144.782
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 17.0,
+              "q25": 18.0,
+              "q50": 20.0,
+              "q75": 109.25,
+              "q95": 176.0,
+              "mean": 61.55133333333333
+            },
+            "events_with_at_least_one_reliable_window": 0.9996666666666667,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 13.0,
+              "q95": 14.0,
+              "mean": 6.717
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.411,
+              "300": 0.23766666666666666,
+              "600": 0.0003333333333333333,
+              "1000": 0.0
+            }
+          },
+          "interacting": {
+            "events": 1408,
+            "occupied_cells_any": {
+              "q05": 48.0,
+              "q25": 170.5,
+              "q50": 302.0,
+              "q75": 398.0,
+              "q95": 495.64999999999986,
+              "mean": 286.8082386363636
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 26.0,
+              "q25": 67.0,
+              "q50": 115.0,
+              "q75": 155.0,
+              "q95": 190.64999999999986,
+              "mean": 110.75213068181819
+            },
+            "events_with_at_least_one_reliable_window": 0.9992897727272727,
+            "reliable_windows_per_event": {
+              "q05": 6.0,
+              "q25": 11.0,
+              "q50": 13.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "mean": 11.956676136363637
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.8757102272727273,
+              "300": 0.5063920454545454,
+              "600": 0.0007102272727272727,
+              "1000": 0.0
+            }
+          },
+          "crossing": {
+            "events": 1592,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 18.0,
+              "q50": 18.0,
+              "q75": 20.0,
+              "q95": 23.0,
+              "mean": 19.170854271356784
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 16.0,
+              "q25": 17.0,
+              "q50": 18.0,
+              "q75": 18.0,
+              "q95": 20.0,
+              "mean": 18.037060301507537
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 2.0,
+              "q95": 2.0,
+              "mean": 2.0829145728643215
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.0,
+              "300": 0.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        }
+      },
+      "20": {
+        "fine_scales": {
+          "fibres_per_event": {
+            "q05": 56.0,
+            "q25": 71.0,
+            "q50": 93.0,
+            "q75": 1220.25,
+            "q95": 2208.0499999999997,
+            "mean": 644.223
+          },
+          "fine_voxels_per_event": {
+            "q05": 39.0,
+            "q25": 47.0,
+            "q50": 98.0,
+            "q75": 2997.75,
+            "q95": 5939.15,
+            "mean": 1562.9323333333334
+          }
+        },
+        "deposit_grid_mev": {
+          "all": {
+            "events": 3000,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 21.0,
+              "q50": 38.0,
+              "q75": 507.0,
+              "q95": 721.0499999999997,
+              "mean": 245.22666666666666
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 18.0,
+              "q25": 20.0,
+              "q50": 33.0,
+              "q75": 263.0,
+              "q95": 413.0,
+              "mean": 137.417
+            },
+            "events_with_at_least_one_reliable_window": 0.9996666666666667,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 4.0,
+              "q75": 14.0,
+              "q95": 15.0,
+              "mean": 7.86
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.45566666666666666,
+              "300": 0.38666666666666666,
+              "600": 0.17066666666666666,
+              "1000": 0.0
+            }
+          },
+          "interacting": {
+            "events": 1449,
+            "occupied_cells_any": {
+              "q05": 85.4,
+              "q25": 348.0,
+              "q50": 517.0,
+              "q75": 642.0,
+              "q95": 761.0,
+              "mean": 482.3050379572119
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 46.0,
+              "q25": 165.0,
+              "q50": 271.0,
+              "q75": 362.0,
+              "q95": 438.5999999999999,
+              "mean": 260.16839199447895
+            },
+            "events_with_at_least_one_reliable_window": 0.9993098688750862,
+            "reliable_windows_per_event": {
+              "q05": 9.0,
+              "q25": 13.0,
+              "q50": 14.0,
+              "q75": 14.0,
+              "q95": 15.0,
+              "mean": 13.33057280883368
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.9434092477570738,
+              "300": 0.800552104899931,
+              "600": 0.3533471359558316,
+              "1000": 0.0
+            }
+          },
+          "crossing": {
+            "events": 1551,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 19.0,
+              "q50": 22.0,
+              "q75": 25.0,
+              "q95": 38.0,
+              "mean": 23.73952288845906
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 18.0,
+              "q25": 19.0,
+              "q50": 21.0,
+              "q75": 24.0,
+              "q95": 35.0,
+              "mean": 22.738233397807864
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 4.0,
+              "q95": 4.0,
+              "mean": 2.7491940683430047
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.0,
+              "300": 0.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "all": {
+            "events": 3000,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 18.0,
+              "q50": 25.0,
+              "q75": 347.0,
+              "q95": 547.0499999999997,
+              "mean": 175.97733333333332
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 17.0,
+              "q25": 18.0,
+              "q50": 21.0,
+              "q75": 140.0,
+              "q95": 240.0,
+              "mean": 78.67566666666667
+            },
+            "events_with_at_least_one_reliable_window": 0.9996666666666667,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 4.0,
+              "q75": 13.0,
+              "q95": 14.0,
+              "mean": 7.069333333333334
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.431,
+              "300": 0.2986666666666667,
+              "600": 0.019333333333333334,
+              "1000": 0.0
+            }
+          },
+          "interacting": {
+            "events": 1449,
+            "occupied_cells_any": {
+              "q05": 53.400000000000006,
+              "q25": 222.0,
+              "q50": 355.0,
+              "q75": 477.0,
+              "q95": 591.0,
+              "mean": 343.58937198067633
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 26.0,
+              "q25": 82.0,
+              "q50": 144.0,
+              "q75": 201.0,
+              "q95": 261.0,
+              "mean": 143.33333333333334
+            },
+            "events_with_at_least_one_reliable_window": 0.9993098688750862,
+            "reliable_windows_per_event": {
+              "q05": 6.0,
+              "q25": 13.0,
+              "q50": 13.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "mean": 12.36576949620428
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.8923395445134575,
+              "300": 0.6183574879227053,
+              "600": 0.04002760524499655,
+              "1000": 0.0
+            }
+          },
+          "crossing": {
+            "events": 1551,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 18.0,
+              "q50": 18.0,
+              "q75": 20.0,
+              "q95": 24.0,
+              "mean": 19.388136686009027
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 17.0,
+              "q25": 18.0,
+              "q50": 18.0,
+              "q75": 19.0,
+              "q95": 21.0,
+              "mean": 18.27014829142489
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 2.0,
+              "q95": 4.0,
+              "mean": 2.121212121212121
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.0,
+              "300": 0.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        }
+      },
+      "50": {
+        "fine_scales": {
+          "fibres_per_event": {
+            "q05": 50.0,
+            "q25": 72.0,
+            "q50": 100.0,
+            "q75": 1703.0,
+            "q95": 3393.2499999999986,
+            "mean": 929.1666666666666
+          },
+          "fine_voxels_per_event": {
+            "q05": 39.0,
+            "q25": 48.0,
+            "q50": 119.5,
+            "q75": 4717.25,
+            "q95": 10401.499999999996,
+            "mean": 2587.7516666666666
+          }
+        },
+        "deposit_grid_mev": {
+          "all": {
+            "events": 3000,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 22.0,
+              "q50": 43.0,
+              "q75": 582.25,
+              "q95": 812.0,
+              "mean": 280.5726666666667
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 18.0,
+              "q25": 21.0,
+              "q50": 37.0,
+              "q75": 323.0,
+              "q95": 494.0,
+              "mean": 165.60733333333334
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 5.0,
+              "q75": 14.0,
+              "q95": 15.0,
+              "mean": 8.119333333333334
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.4666666666666667,
+              "300": 0.41133333333333333,
+              "600": 0.234,
+              "1000": 0.0003333333333333333
+            }
+          },
+          "interacting": {
+            "events": 1453,
+            "occupied_cells_any": {
+              "q05": 123.60000000000001,
+              "q25": 407.0,
+              "q50": 591.0,
+              "q75": 723.0,
+              "q95": 851.3999999999999,
+              "mean": 553.0619408121129
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 54.60000000000001,
+              "q25": 205.0,
+              "q50": 331.0,
+              "q75": 433.0,
+              "q95": 533.0,
+              "mean": 316.9525120440468
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 10.0,
+              "q25": 14.0,
+              "q50": 14.0,
+              "q75": 15.0,
+              "q95": 15.0,
+              "mean": 13.726772195457674
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.9600825877494839,
+              "300": 0.8492773571920165,
+              "600": 0.4831383344803854,
+              "1000": 0.0006882312456985547
+            }
+          },
+          "crossing": {
+            "events": 1547,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 19.0,
+              "q50": 22.0,
+              "q75": 26.0,
+              "q95": 42.0,
+              "mean": 24.64059469941823
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 18.0,
+              "q25": 19.0,
+              "q50": 21.0,
+              "q75": 25.0,
+              "q95": 38.0,
+              "mean": 23.45830639948287
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 4.0,
+              "q95": 5.0,
+              "mean": 2.852617970265029
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.003232062055591467,
+              "300": 0.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "all": {
+            "events": 3000,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 18.0,
+              "q50": 27.0,
+              "q75": 418.0,
+              "q95": 645.0,
+              "mean": 207.158
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 17.0,
+              "q25": 18.0,
+              "q50": 22.0,
+              "q75": 173.0,
+              "q95": 307.0,
+              "mean": 96.57933333333334
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 4.0,
+              "q75": 14.0,
+              "q95": 14.0,
+              "mean": 7.350333333333333
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.44633333333333336,
+              "300": 0.3406666666666667,
+              "600": 0.084,
+              "1000": 0.0
+            }
+          },
+          "interacting": {
+            "events": 1453,
+            "occupied_cells_any": {
+              "q05": 69.60000000000001,
+              "q25": 264.0,
+              "q50": 426.0,
+              "q75": 552.0,
+              "q95": 686.3999999999999,
+              "mean": 406.78045423262216
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 31.0,
+              "q25": 104.0,
+              "q50": 179.0,
+              "q75": 253.0,
+              "q95": 336.0,
+              "mean": 179.70956641431522
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 6.0,
+              "q25": 13.0,
+              "q50": 14.0,
+              "q75": 14.0,
+              "q95": 15.0,
+              "mean": 12.869236063317274
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.9215416379903648,
+              "300": 0.7033723331039229,
+              "600": 0.17343427391603577,
+              "1000": 0.0
+            }
+          },
+          "crossing": {
+            "events": 1547,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 18.0,
+              "q50": 19.0,
+              "q75": 20.0,
+              "q95": 25.0,
+              "mean": 19.665158371040725
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 17.0,
+              "q25": 18.0,
+              "q50": 18.0,
+              "q75": 19.0,
+              "q95": 22.0,
+              "mean": 18.50032320620556
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 2.0,
+              "q95": 4.0,
+              "mean": 2.1667744020685196
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.0,
+              "300": 0.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        }
+      },
+      "100": {
+        "fine_scales": {
+          "fibres_per_event": {
+            "q05": 50.0,
+            "q25": 71.0,
+            "q50": 101.0,
+            "q75": 2129.0,
+            "q95": 4423.049999999999,
+            "mean": 1154.9323333333334
+          },
+          "fine_voxels_per_event": {
+            "q05": 39.0,
+            "q25": 49.0,
+            "q50": 118.5,
+            "q75": 6412.0,
+            "q95": 15046.249999999998,
+            "mean": 3579.9803333333334
+          }
+        },
+        "deposit_grid_mev": {
+          "all": {
+            "events": 3000,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 22.0,
+              "q50": 45.0,
+              "q75": 646.0,
+              "q95": 887.0499999999997,
+              "mean": 301.7126666666667
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 18.0,
+              "q25": 21.0,
+              "q50": 38.0,
+              "q75": 371.0,
+              "q95": 568.0,
+              "mean": 184.33566666666667
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 6.0,
+              "q75": 14.0,
+              "q95": 15.0,
+              "mean": 8.171333333333333
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.46,
+              "300": 0.4026666666666667,
+              "600": 0.2826666666666667,
+              "1000": 0.005666666666666667
+            }
+          },
+          "interacting": {
+            "events": 1432,
+            "occupied_cells_any": {
+              "q05": 116.55,
+              "q25": 429.75,
+              "q50": 659.0,
+              "q75": 800.25,
+              "q95": 928.0,
+              "mean": 603.8212290502794
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 51.0,
+              "q25": 221.0,
+              "q50": 388.5,
+              "q75": 504.25,
+              "q95": 606.0,
+              "mean": 359.2737430167598
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 9.0,
+              "q25": 14.0,
+              "q50": 15.0,
+              "q75": 15.0,
+              "q95": 15.0,
+              "mean": 13.844972067039107
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.9587988826815642,
+              "300": 0.8435754189944135,
+              "600": 0.5921787709497207,
+              "1000": 0.011871508379888268
+            }
+          },
+          "crossing": {
+            "events": 1568,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 20.0,
+              "q50": 22.0,
+              "q75": 27.0,
+              "q95": 47.0,
+              "mean": 25.807397959183675
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 18.0,
+              "q25": 19.0,
+              "q50": 21.0,
+              "q75": 25.25,
+              "q95": 43.0,
+              "mean": 24.570790816326532
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 4.0,
+              "q95": 6.0,
+              "mean": 2.989795918367347
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.004464285714285714,
+              "300": 0.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        },
+        "readout_grid_mev": {
+          "all": {
+            "events": 3000,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 19.0,
+              "q50": 25.5,
+              "q75": 473.25,
+              "q95": 727.0,
+              "mean": 228.518
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 17.0,
+              "q25": 18.0,
+              "q50": 22.0,
+              "q75": 202.0,
+              "q95": 358.0,
+              "mean": 109.696
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 4.0,
+              "q75": 14.0,
+              "q95": 15.0,
+              "mean": 7.367333333333334
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.43733333333333335,
+              "300": 0.35033333333333333,
+              "600": 0.145,
+              "1000": 0.0
+            }
+          },
+          "interacting": {
+            "events": 1432,
+            "occupied_cells_any": {
+              "q05": 67.1,
+              "q25": 285.0,
+              "q50": 491.5,
+              "q75": 631.0,
+              "q95": 769.3500000000001,
+              "mean": 456.9008379888268
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 29.0,
+              "q25": 108.0,
+              "q50": 214.0,
+              "q75": 306.25,
+              "q95": 393.9000000000001,
+              "mean": 209.3296089385475
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 6.0,
+              "q25": 13.0,
+              "q50": 14.0,
+              "q75": 14.0,
+              "q95": 15.0,
+              "mean": 13.043296089385475
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.9162011173184358,
+              "300": 0.7339385474860335,
+              "600": 0.30377094972067037,
+              "1000": 0.0
+            }
+          },
+          "crossing": {
+            "events": 1568,
+            "occupied_cells_any": {
+              "q05": 18.0,
+              "q25": 18.0,
+              "q50": 19.0,
+              "q75": 20.0,
+              "q95": 26.0,
+              "mean": 19.943877551020407
+            },
+            "occupied_cells_above_threshold": {
+              "q05": 17.0,
+              "q25": 18.0,
+              "q50": 18.0,
+              "q75": 19.0,
+              "q95": 22.0,
+              "mean": 18.70408163265306
+            },
+            "events_with_at_least_one_reliable_window": 1.0,
+            "reliable_windows_per_event": {
+              "q05": 2.0,
+              "q25": 2.0,
+              "q50": 2.0,
+              "q75": 2.0,
+              "q95": 4.0,
+              "mean": 2.183673469387755
+            },
+            "fraction_with_cells_at_least": {
+              "100": 0.0,
+              "300": 0.0,
+              "600": 0.0,
+              "1000": 0.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

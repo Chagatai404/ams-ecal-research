@@ -1,0 +1,9 @@
+start electron E=70 13:39:20
+=======================================================================
+data\geant4_electron_sealed\sealed\E70GeV
+end electron E=70 13:58:00
+start electron E=100 13:58:00
+=======================================================================
+data\geant4_electron_sealed\sealed\E100GeV
+end electron E=100 14:22:36
+ALL_DONE

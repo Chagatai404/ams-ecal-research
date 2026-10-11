@@ -1,0 +1,305 @@
+{
+  "builder": {
+    "git_commit": "b45918ad2bd16dc15a65bcde5a7c5da5cd3851c8",
+    "module": "ams_ecal.electron_model.em_production_lateral_calibration --tail-sensitive",
+    "tracked_changes": true
+  },
+  "calibration": {
+    "data": {
+      "configuration_sha256": "67b2e09a9223195c85081187a0b6c04ec3af0da54ca5f24f2ee373bd5e236dc1",
+      "directory": "data\\geant4_electron_sample\\baseline",
+      "events": {
+        "10": 1000,
+        "100": 1000,
+        "20": 1000,
+        "50": 1000
+      },
+      "sample": "baseline"
+    },
+    "longitudinal_parameters_sha256": "438f28d83b1e714595a453e7492d2814764ce83f5f98aa8d049da4ce3c898a19",
+    "method": {
+      "moliere_radius_mm": 18.0,
+      "radial_structure": "Grindhammer and Peters Eqs. 24-26 with tau_i from Eq. 34",
+      "radial_target": "cumulative mean cell profile per (energy, layer), equal weights, PLUS the relative error of the layer second moment with the fixed weight 0.4 (tail-sensitive; no parameter added)",
+      "spot_target": "conditioned relative variance of the central three cells, same estimator on generated events",
+      "start": "converged first run from the published constants (Z = 82, E in GeV); see START"
+    },
+    "profile_errors_points": {
+      "10": {
+        "layers_0_2_max": 4.2504553632176325,
+        "layers_3_17_max": 4.707191912446997,
+        "layers_3_17_mean": 2.3789474289342913
+      },
+      "100": {
+        "layers_0_2_max": 9.571113489593257,
+        "layers_3_17_max": 6.39880507125685,
+        "layers_3_17_mean": 2.30032909336455
+      },
+      "20": {
+        "layers_0_2_max": 6.101089880817208,
+        "layers_3_17_max": 3.2170429627204276,
+        "layers_3_17_mean": 1.6696698974186746
+      },
+      "50": {
+        "layers_0_2_max": 8.731899598022181,
+        "layers_3_17_max": 4.326522181931476,
+        "layers_3_17_mean": 1.615724522171476
+      }
+    },
+    "radial_fit": {
+      "cost": 0.045271499310367024,
+      "evaluations": 22,
+      "free_parameters": [
+        "core_intercept",
+        "core_log_energy_slope",
+        "core_depth_slope",
+        "tail_scale",
+        "tail_centre",
+        "tail_decay_rate",
+        "tail_growth_intercept",
+        "tail_growth_log_energy_slope",
+        "weight_amplitude",
+        "weight_centre",
+        "weight_width_intercept",
+        "weight_width_log_energy_slope",
+        "tail_exponent"
+      ],
+      "parameters_at_bound": [],
+      "quadrature_points": 256,
+      "root_mean_square_cumulative_residual": 0.004150493694863126,
+      "second_moment_weight": 0.4
+    },
+    "sealed_data_read": false,
+    "second_moment_relative_errors": {
+      "10": {
+        "layers_0_2_max_abs": 0.17844820454257748,
+        "layers_3_17_max_abs": 0.08457807246103033,
+        "layers_3_17_mean": 0.024040549095052748
+      },
+      "100": {
+        "layers_0_2_max_abs": 0.09878826181482936,
+        "layers_3_17_max_abs": 0.08560176031149547,
+        "layers_3_17_mean": -0.003105931767551103
+      },
+      "20": {
+        "layers_0_2_max_abs": 0.043348825739018215,
+        "layers_3_17_max_abs": 0.061460360088435584,
+        "layers_3_17_mean": 0.004221915892284896
+      },
+      "50": {
+        "layers_0_2_max_abs": 0.06451316241412597,
+        "layers_3_17_max_abs": 0.05868137796861994,
+        "layers_3_17_mean": -0.013017283904808016
+      }
+    },
+    "spot_fit": {
+      "converged": true,
+      "evaluations": 134,
+      "events_per_energy": 1500,
+      "fit_layers": "2-17",
+      "free_parameters": [
+        "spot_amplitude",
+        "spot_energy_exponent",
+        "spot_depth_scale",
+        "spot_shape_scale"
+      ],
+      "front_layers_note": "layers 0-1 are not fitted: the measured conditioned spot number there (about 13 and 24) is the same at all four energies, which a gamma depth density scaled by E^b cannot reach; reported as a limitation",
+      "generated": {
+        "10": [
+          1.920589482654466,
+          20.35127601368811,
+          58.65241017665053,
+          102.34174522688133,
+          137.93806573985825,
+          157.61330879695078,
+          148.63317994559384,
+          139.75359352166473,
+          139.85824650698999,
+          108.73934695938428,
+          99.26748822800754,
+          73.79889407151599,
+          62.6408647042943,
+          46.562886422205096,
+          36.10892111436803,
+          30.289938477954134,
+          22.371182923454775,
+          15.610529507774872
+        ],
+        "100": [
+          0.9982173385523687,
+          28.15856083914595,
+          120.25777250088147,
+          299.2649149094423,
+          496.46952647710964,
+          713.3071528878792,
+          877.196639477804,
+          950.0368280046924,
+          913.5729213146608,
+          882.6223255443208,
+          726.6927611534486,
+          579.7680663012266,
+          486.5668586217742,
+          441.0776378426787,
+          377.88308247757755,
+          313.8979500638523,
+          270.82996003647327,
+          225.556417546372
+        ],
+        "20": [
+          2.002405240952461,
+          20.93319989536023,
+          76.83268747825517,
+          133.2171183377147,
+          197.43197305371436,
+          275.9318458351936,
+          270.8312484154845,
+          260.02699061747455,
+          244.57216173074,
+          230.218268747213,
+          178.89251285497244,
+          159.37083949021803,
+          133.95707198058867,
+          99.12258230024456,
+          80.4286607862668,
+          67.67633555599993,
+          53.28823841047413,
+          40.38519749091257
+        ],
+        "50": [
+          0.9992412472670339,
+          23.978383093633465,
+          103.60253913218018,
+          233.84534255190192,
+          374.5148477740969,
+          485.0202826981599,
+          551.2605050979483,
+          596.293689878933,
+          540.2662815972453,
+          493.57751342992015,
+          401.69358295440395,
+          366.47218104601325,
+          295.0933224345867,
+          235.20757249681196,
+          202.38671989800136,
+          166.95152154149008,
+          142.03829005232953,
+          113.54135303739655
+        ]
+      },
+      "measured": {
+        "10": [
+          12.979460410732534,
+          24.691560104123088,
+          59.85852678265231,
+          109.65115802655494,
+          154.02575096845038,
+          161.55393695105863,
+          171.69100849931723,
+          147.78633724631632,
+          134.937617909807,
+          122.51216889993313,
+          110.98087925216709,
+          86.41087366033996,
+          64.0813084487214,
+          50.34668648938904,
+          36.96492967077504,
+          29.797369527194764,
+          22.212641892237368,
+          17.301851875448005
+        ],
+        "100": [
+          17.369009982831365,
+          23.102372219076596,
+          68.43339444302818,
+          215.28133993809485,
+          545.8466166100352,
+          729.375688692856,
+          887.6173335141114,
+          777.8726887684627,
+          812.3444663892523,
+          845.4867110194073,
+          829.1078297943346,
+          850.557268244864,
+          794.7986204090472,
+          606.5307619313484,
+          485.6630601675701,
+          338.0691917008362,
+          235.36233366082936,
+          154.16100807087537
+        ],
+        "20": [
+          12.361873557096846,
+          23.16468721791793,
+          59.31059511857157,
+          153.04396465762522,
+          242.20644428746164,
+          256.1197812519522,
+          262.484944039305,
+          232.03142067956276,
+          264.06153234597974,
+          222.92597064436697,
+          211.31016434284686,
+          177.0734492730121,
+          141.87985062991226,
+          112.61479835189174,
+          79.15531716617065,
+          62.8962571935581,
+          50.29825640815444,
+          36.783795734539886
+        ],
+        "50": [
+          14.415461619215096,
+          24.623843817586913,
+          61.53295020196486,
+          172.1534221460329,
+          364.77556994039594,
+          293.73000067684234,
+          539.224430027658,
+          504.0340523874361,
+          566.6042809479634,
+          501.3465977570917,
+          497.87965414570976,
+          475.6423012179169,
+          406.6180053228431,
+          315.36485144223303,
+          241.72770987528637,
+          181.28579063671995,
+          133.52288688966345,
+          93.07880057974195
+        ]
+      },
+      "objective_mean_squared_log_ratio": 0.034708350561386124,
+      "root_mean_square_log_ratio": 0.18630177283479116,
+      "root_mean_square_log_ratio_all_layers": 0.588580812641048
+    },
+    "status": "calibrated candidate for development on exposed Geant4 electrons; not validated"
+  },
+  "kind": "em_production_lateral_parameters",
+  "longitudinal_parameters_sha256": "438f28d83b1e714595a453e7492d2814764ce83f5f98aa8d049da4ce3c898a19",
+  "model": "em-production-gp-lateral",
+  "parameters": {
+    "core_depth_slope": 0.23687096320655876,
+    "core_intercept": -0.06869631722761547,
+    "core_log_energy_slope": 0.005340730004640978,
+    "front_spot_limit": 0.0,
+    "moliere_radius_mm": 18.0,
+    "spot_amplitude": 178.69259952726915,
+    "spot_depth_scale": 0.9041782444984382,
+    "spot_energy_exponent": 0.9139854628509215,
+    "spot_shape_scale": 0.909729082658612,
+    "spot_tail_refinement": 1.0,
+    "tail_centre": 0.11178357903296973,
+    "tail_decay_rate": -8.527437448384282,
+    "tail_exponent": 1.812048701577876,
+    "tail_growth_intercept": 0.2819605974651721,
+    "tail_growth_log_energy_slope": -0.03160575593036136,
+    "tail_scale": 1.578324607604943,
+    "weight_amplitude": 2.4143711557078746,
+    "weight_centre": 0.8884653604543522,
+    "weight_width_intercept": 1.9663250358346311,
+    "weight_width_log_energy_slope": -0.22829896714916625
+  },
+  "parameters_sha256": "c6b2e3495a55f78d5ca89051a7988fbeff6d4f682584d804d8eaf2336642971c",
+  "schema_version": 1,
+  "status": "CANDIDATE DEVELOPMENT parameters calibrated on exposed Geant4 electrons; not validated"
+}

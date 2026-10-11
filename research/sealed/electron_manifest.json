@@ -1,0 +1,63 @@
+{
+  "created_utc": "2026-10-04T11:23:14Z",
+  "files": {
+    "sealed/E100GeV/events.npz": {
+      "bytes": 126742824,
+      "sha256": "722fdc12a485e0dd266f1285942ca6a7d8e26611c52430f4cb4183e8dcdc221b"
+    },
+    "sealed/E100GeV/metadata.json": {
+      "bytes": 5053,
+      "sha256": "064a6b5bf5d630f0f0eaa72604ba177179666e9c64ec5a99facad7df35702edd"
+    },
+    "sealed/E10GeV/events.npz": {
+      "bytes": 29322126,
+      "sha256": "4193cdb30ca9f0c3e65f6706c065e3cdd978ecc233b89fdc25117f5be6554918"
+    },
+    "sealed/E10GeV/metadata.json": {
+      "bytes": 5058,
+      "sha256": "14fb3fbc1069857c2939b361676999499fae1655a5f305f148f6ba153c69a0f0"
+    },
+    "sealed/E14GeV/events.npz": {
+      "bytes": 37084986,
+      "sha256": "a55e05a00c4ad129bf8746fcee8ce23d8f8e76cebe2cfc168fb43bf651ab3a99"
+    },
+    "sealed/E14GeV/metadata.json": {
+      "bytes": 5058,
+      "sha256": "60f32524b6122cef7505151f110732f33bbc653e2d97df658b6d1248ddc24e27"
+    },
+    "sealed/E20GeV/events.npz": {
+      "bytes": 45892302,
+      "sha256": "92519c6858e7fb41af7d6936fc1f57d4e3ad0ec4e5554ea499b3c3c5b1ba9160"
+    },
+    "sealed/E20GeV/metadata.json": {
+      "bytes": 5056,
+      "sha256": "28940ca3bb2ff2f089259070d225353b91781c43b2df2c99f96416c38ef06563"
+    },
+    "sealed/E30GeV/events.npz": {
+      "bytes": 62474305,
+      "sha256": "e0cdecfe76ecd85fe4e7e67e322c01d055bfa239c2a09b85155ce5bbc6d24d5c"
+    },
+    "sealed/E30GeV/metadata.json": {
+      "bytes": 5058,
+      "sha256": "7e8a58f3d4d76f28cd7cee75c76bd0d3fd360203312b34de40aec5e5d173dc9a"
+    },
+    "sealed/E50GeV/events.npz": {
+      "bytes": 88060167,
+      "sha256": "c7f052aa85978533aaacb53a0fec1354c6742f84be29e19c19e80abadc998283"
+    },
+    "sealed/E50GeV/metadata.json": {
+      "bytes": 5057,
+      "sha256": "6cd9902a3a6ec50154e3af2b17580c32a2ed30d4abe2d1eefe3b518623612c4f"
+    },
+    "sealed/E70GeV/events.npz": {
+      "bytes": 105634734,
+      "sha256": "eefe2bc4625455825a0975d8da3a7e5f3c1172322656f59cd75c0bec960f465f"
+    },
+    "sealed/E70GeV/metadata.json": {
+      "bytes": 5052,
+      "sha256": "820315317653fd28b3540fed1659fae2af18ae9e6b93abf394d7409c9cb77f5d"
+    }
+  },
+  "git_commit": "467117f134405f52553bb2852c7f398852a1a44f",
+  "set": "electron"
+}

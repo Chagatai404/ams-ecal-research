@@ -1,0 +1,51 @@
+start geant4_proton_sealed E=10 20:25:08
+ Geant4 ver
+************************************data\geant4_proton_sealed\sealed\E10GeV
+end geant4_proton_sealed E=10 20:27:05
+start geant4_proton_sealed E=14 20:27:05
+=======================================================================
+data\geant4_proton_sealed\sealed\E14GeV
+end geant4_proton_sealed E=14 20:29:10
+start geant4_proton_sealed E=20 20:29:10
+=======================================================================
+data\geant4_proton_sealed\sealed\E20GeV
+end geant4_proton_sealed E=20 20:31:34
+start geant4_proton_sealed E=30 20:31:34
+=======================================================================
+data\geant4_proton_sealed\sealed\E30GeV
+end geant4_proton_sealed E=30 20:34:48
+start geant4_proton_sealed E=50 20:34:48
+=======================================================================
+data\geant4_proton_sealed\sealed\E50GeV
+end geant4_proton_sealed E=50 20:40:46
+start geant4_proton_sealed E=70 20:40:46
+=======================================================================
+data\geant4_proton_sealed\sealed\E70GeV
+end geant4_proton_sealed E=70 20:48:08
+start geant4_proton_sealed E=100 20:48:08
+=======================================================================
+data\geant4_proton_sealed\sealed\E100GeV
+end geant4_proton_sealed E=100 20:57:37
+start geant4_electron_sealed E=10 20:57:37
+ Geant4 version Name: geant4-11-04-patch-01 [MT]   (13-March-2026)
+                     data\geant4_electron_sealed\sealed\E10GeV
+end geant4_electron_sealed E=10 21:00:51
+start geant4_electron_sealed E=14 21:00:51
+=======================================================================
+data\geant4_electron_sealed\sealed\E14GeV
+end geant4_electron_sealed E=14 21:05:06
+start geant4_electron_sealed E=20 21:05:06
+ Geant4 ver
+************************************data\geant4_electron_sealed\sealed\E20GeV
+end geant4_electron_sealed E=20 21:10:55
+start geant4_electron_sealed E=30 21:10:55
+ Geant4 version Name: geant4-11-04-patch-01 [MT]   (13-March-2026)
+                     data\geant4_electron_sealed\sealed\E30GeV
+end geant4_electron_sealed E=30 21:18:54
+start geant4_electron_sealed E=50 21:18:54
+**************************************************************
+ Geant4 verdata\geant4_electron_sealed\sealed\E50GeV
+end geant4_electron_sealed E=50 21:31:53
+start geant4_electron_sealed E=70 21:31:53
+      0 [main] bash 6960 dofork: child -1 - forked process 29300 died unexpectedly, retry 0, exit code 0xC000026B, errno 11
+./run_sealed.sh: fork: retry: Resource temporarily unavailable

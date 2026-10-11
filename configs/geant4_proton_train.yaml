@@ -1,0 +1,31 @@
+# G-train protons: 20000 per energy because only about 48% interact (the crossing half has ~20 occupied cells), so ~9600 interacting per energy match the 10000 electrons. Matched to G-train electrons (plan 2026-10-09). EXPOSED development data, never a validation set. Base seed used nowhere else.
+schema_version: 2
+
+particle: proton
+
+energies_gev: [10.0, 20.0, 50.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  train:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 20000
+    base_seed: 20272002
+
+store_fine_prefix_deposits: true
+
+output_dir: data/geant4_proton_train

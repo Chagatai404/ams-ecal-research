@@ -20,6 +20,9 @@ dev = [
 geant4 = [
     "geant4-pybind==0.1.3",
 ]
+validation = [
+    "scikit-learn>=1.9.1",
+]
 
 [build-system]
 requires = ["hatchling"]
