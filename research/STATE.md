@@ -872,7 +872,14 @@ No quantum advantage is assumed.
 
 # Next session — start here
 
-_Rewritten 2026-10-10 (the previous text, last updated 2026-09-29, was stale and is in git history)._
+_Rewritten 2026-10-10; updated 2026-10-11 (the program redesign was accepted)._
+
+**2026-10-11 — read this first.** The researcher accepted the program redesign (`RESEARCH_PLAN.md` section 18; memo and evidence in `research/reviews/2026-10-11_program_redesign_review.md`; decisions in `DECISIONS.md`, 2026-10-11 rows). Work now runs slice by slice in the order of section 18.4. **Next: S0 (audit and housekeeping)**, on a new branch from `main`:
+- data manifest and a safe move/link of the exposed Geant4 sets still in the worktrees `../ams-ecal-qml-gen/data` (development-large electrons and protons, 0.1 mm cut electrons; commit `48a4a78`) and `../ams-ecal-qml-gen2/data` (EMZ, EMV electrons; commit `1984f4f`) — plan item B5;
+- one sample-definition module (review C8, C9: the held-out quarter, crossing protons kept separate);
+- the sanity audit on exposed data: same-class null, energy-only and logistic baselines, feature-family and layer-block ablations, label permutation, duplicate injection, eligibility-indicator-only rung, repeated seeds, energy-blind pooled test; restate the population behind the 0.991 single-feature AUC;
+- the EMV anomaly: dump `G4EmParameters` and the process lists at initialisation for FTFP_BERT, EMZ, EMV (no events); fix the variant YAML comments (C15).
+Open sub-items for the researcher: the DECIDE-1 amendment text (from S2), the DECIDE-2 exit date, regenerate-or-ledger for the 2 sealed-proton seed collisions. Sealed sets stay closed. Full suite 2026-10-11: 916 passed. Tutoring: the learn-back session (vault `01 Projects/AMS ECAL QML/Tutor Sessions/2026-10-09 Week Learn-Back Method and Decisions`) has Q9 open (Block B, shower maximum).
 
 1. **Read `research/RESEARCH_PLAN.md` first.** It is the single plan: every workstream, item, status, the decisions waiting for the researcher (section 14) and the critical path. The five retired plan files are its Appendices A-E.
 2. **Where the work stands (2026-10-10):** the proton and electron FastMC generators are implemented and checked in-sample (development, not validated); the sealed Geant4 sets are generated and UNOPENED; the multiscale test is pre-registered (numbers confirmed "for now"); development readings exist (strong class differences in the multiscale statistics, no headroom for added information in ideal Geant4); the development-large Geant4 sets are generated; the detector response (R-A, R-B) and the architecture and efficiency studies have not started.

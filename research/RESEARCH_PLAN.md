@@ -154,10 +154,12 @@ Candidates (roadmap, CHAOS section 7): compact validated multiscale inputs for V
 | K3 | The five retired plan files carried over verbatim as Appendices A-E and deleted; every reference rewritten | DONE 2026-10-10 |
 | K4 | Commits pushed 2026-10-10 at the researcher's request; local and origin equal at `9258ebe` (checked 2026-10-11) | DONE |
 | K5 | Research OS v0.8.5 is installed but its repository `main` is at v0.8 (merge `e50692b` is on a Codex branch) | DECIDE-8 (sync) |
-| K6 | Full test suite last run: 896 passed (2026-10-09); later modules tested individually | TODO (re-run when the CPU is free) |
+| K6 | Full test suite: 916 passed, 3 warnings, 1893 s (2026-10-11, `.venv/Scripts/python.exe -m pytest -q`) | DONE 2026-10-11 |
 | K7 | `graphify update .` after code changes | TODO (hook-driven) |
 
 ## 14. Decision queue (the researcher's, in the order they block work)
+
+_2026-10-11: revisions of DECIDE-1 to DECIDE-9 after the program review are in section 18.5 (memo: `research/reviews/2026-10-11_program_redesign_review.md`, section 5), **ACCEPTED 2026-10-11** (DECIDE-1 to 4 resolved as proposed; open sub-items listed in section 18). The entries below are kept as the history of the queue._
 
 1. **DECIDE-1: amend the pre-registered information test.** Candidates: (i) rejection at fixed efficiency as primary with a ~10^6-event sample; (ii) matched design on events the conventional features cannot separate; (iii) detector-level, realistic-energy setting; (iv) report "unanswerable in the ideal regime"; recommended: (i) + (iii).
 2. **DECIDE-2: the sealed sets.** They are registered as the one-opening validation of the FastMC generators (DEC-014 Q11; the added-checks registration); on 2026-10-09 the researcher agreed that the multiscale test could open them first. Both cannot hold. Options: new sealed sets for one purpose (about a day of Geant4), or one registered joint opening.
@@ -191,6 +193,82 @@ The five retired plan files are carried over VERBATIM as Appendices A-E at the e
 - Detector effects: an accepted track, not something needing promotion.
 - FastMC fidelity: not off the critical path once architectures and efficiency are in scope (needs ~10^6 events).
 - Generation timings were underestimated (100 GeV electrons took ~6 h, not 4).
+- (2026-10-11) "FastMC fidelity is on the critical path because ~10^6 events are needed": measured Geant4 rates make 10^6 normal-incidence protons about one day of wall time, so large samples do not require FastMC (section 18, DECIDE-3).
+- (2026-10-11) Every proton-rejection number in the development readings is the zero-failure floor (rejection = number of protons), not a measurement; the valid 95% lower limit is about N/3 (section 18.3).
+
+## 18. PROPOSED program redesign (2026-10-11) — every item PROPOSED or DECIDE, nothing accepted
+
+> **Accepted 2026-10-11** (researcher: "Yes decisions are valid, and we can go for the slices in the plan 1 by one now"): DECIDE-1 to DECIDE-4 as proposed in 18.5, the consequences for DECIDE-5/6/7/9, the framework of 18.1 as the working framework, the gates of 18.3 and the slice order of 18.4, run one by one from S0. Still OPEN: the DECIDE-1 amendment text (from S2), the DECIDE-2 exit date, regenerate-or-ledger for the 2 sealed-proton seed collisions. The wording below is kept as proposed on 2026-10-11 (history); this note records its acceptance (`DECISIONS.md`, 2026-10-11 rows).
+
+_Requested by the researcher on 2026-10-11 (scientific redesign, statistical audit, AMS realism). Evidence, reviewer reports, the adversarial pass and the decision memo are in `research/reviews/2026-10-11_program_redesign_review.md` ("the review"). This section changes no accepted decision, no registered number and no status above; it becomes part of the plan item by item as the researcher accepts it. Sealed sets were not read._
+
+### 18.1 Broadened question (PROPOSED; a hypothesis framework, not a fact)
+
+EM showers may show reproducible finite-scale geometric organisation governed by cascade development; hadronic showers may show additional spatial heterogeneity (hadronic interactions, secondary tracks, embedded EM sub-showers); these may be described by depth-dependent multiscale statistics, transformed by detector coarse-graining and sampling, and useful for physics interpretation, simulation validation and downstream inference. Competing explanations kept explicitly: EM nearly monofractal (Anchordoqui et al., D_q about equal); no robust scaling window (about 0.5-1 decade available on the readout); every difference reducible to occupancy, start depth, width and containment (smooth profile + Poisson granularity null). Language: "finite-scale heterogeneity statistics"; "fractal / multifractal" only after the estimator controls pass against a surrogate null. RQ-001 and H-001..H-005 stay as recorded; the new hypotheses H-A..H-G (the review, section 2) enter `research/graph/` only on acceptance.
+
+### 18.2 Findings that drive the redesign (development evidence; the review, section 1)
+
+1. Conventional AUC 0.9999-1.0000 is a physically easy, unrealistic problem (fixed known energy, normal incidence, zero-threshold readout); no reviewer found an implementation error.
+2. Rejection numbers are zero-failure floors (C1); the threshold is set on the evaluated events (C2).
+3. The multiscale rung is missingness at 10 GeV and on the readout; elsewhere it is redundant with the conventional features (C3).
+4. The development KS verdicts are not interpretable (C4-C6, C13); the cell-shuffle null was never built (A3).
+5. The registered 0.01 AUC-gain rule is unmeetable by construction (C10).
+6. The readout grid is a stack of alternating one-dimensional views; the registered box sides mix x and y.
+7. `FTFP_BERT_EMV` electrons have a 37% lower scintillator share at the same total deposit (open; not used as a systematic until explained).
+8. Two sealed proton seeds equal seeds of exposed events (derived from the seed policy, no sealed read; C14).
+
+### 18.3 Statistical validity gates (PROPOSED; no confirmatory work before they hold)
+
+| gate | content |
+|---|---|
+| SV-1 | rejection reported as k of N with an exact one-sided Clopper-Pearson bound; a censored lower limit when k = 0; coverage simulated |
+| SV-2 | four data roles: train / model selection / operating-point calibration (electrons) / final evaluation; threshold uncertainty propagated |
+| SV-3 | repeated cross-fitting (>= 5 seeds); seed spread reported |
+| SV-4 | missingness controls: indicator-only rung, eligible-in-both analysis, "not testable" cells declared |
+| SV-5 | permutation nulls within energy x occupancy strata; the cell-shuffle null; floor from matched-size splits |
+| SV-6 | multiplicity: one NAMED primary per endpoint family; Westfall-Young or Benjamini-Hochberg for secondaries; family-wise control across families |
+| SV-7 | energy-only and logistic baselines beside every ladder; a same-class null (AUC about 0.5) |
+| SV-8 | each claim written as estimand -> null -> statistic -> uncertainty -> assumptions -> acceptance -> failure interpretation (the review, section 3) |
+| SV-9 | an independent statistical review of the frozen analysis code before any registered test |
+| SV-10 | one sample-definition module and a data manifest; 63-bit seeds for new sets; seed intersection checked before any opening |
+
+### 18.4 Revised slices (PROPOSED; each needs the researcher's go)
+
+| slice | objective | prerequisite evidence | depends on | deliverables | validation tests | resources | stop / failure | approvals | learning (Research OS) |
+|---|---|---|---|---|---|---|---|---|---|
+| **S0 audit and housekeeping** | reconcile data and sample definitions; explain the easy AUC; diagnose EMV | the review, sections 1, 3 | nothing | data manifest and safe move/link of the exposed sets (B5); one sample-definition module (C8, C9); sanity audit on exposed data: same-class null, energy-only and logistic baselines, feature-family and layer-block ablations, label permutation, duplicate injection, indicator-only rung, repeated seeds, energy-blind pooled test; EMV initialisation dumps (no events); YAML comment fix (C15) | permutation and same-class AUC about 0.5; manifest hashes match | 2-20 CPU-min per check; no Geant4 events | stop if an implementation error appears: fix before anything else | go for S0 | Block D (validation hygiene), Block E (AUC, permutation) |
+| **S1 statistical foundations** | SV-1..SV-8 as tested code | the review, section 3 | S0 sample module | modules: censored CP rejection, threshold calibration, cross-fitting, permutation nulls with FDR, cell-shuffle null (A3), coverage simulations; unit tests | coverage of the CP bound and of the permutation test on electron-vs-electron splits | CPU-hours | stop if coverage fails: no interval reported until fixed | go to change development code (registered numbers untouched) | Block E (binomial bounds, permutation, FDR) |
+| **S2 hypotheses and literature** | formal H-A..H-G with named endpoints; full-text gap map | reviewer B's lead list (snippet depth); 2026-10-09 literature record | none (parallel) | full-text verification of the leads (Ruan 2014 and citing work, CaloChallenge metrics, air-shower multifractal work, resolution artefacts in intermittency); finite-scale interpretation rules; the DECIDE-1 amendment text with the NAMED primary, the P2 decision rule, the planted positive control | every implementation-affecting claim with a page locator read by the author; unreadable papers go to the researcher as links | hours | no novelty claim; only "not found" with the search scope | the researcher reviews hypotheses and amendment | Block F (D_q, scale windows), source discipline |
+| **S5a detector-response evidence** | per-effect R-B table; R-A plan | reviewer C's table (part read in the PDFs) | none (parallel) | effect, documented value, source locator, "already corrected by AMS?", sensitivity range when undocumented | each value with a locator or "not found" | hours | no parameter without evidence or a declared sensitivity scan | DECIDE-6 to start R-A | Block A (detector), new detector-response block |
+| **S3 existing Geant4 evidence** | source of conventional separability; stability; the variants | S0, S1 | S0, S1 | ablations; view-aware statistics on the readout; cut and EMZ variant comparison (EMV after its diagnosis); occupancy- and morphology-matched hard subsets; the proton smooth-baseline look (C2) | permutation nulls; sign stability across variants | CPU-hours, exposed data | a result that changes sign under a variant is "systematics-dominated" | go per analysis | Block G (ladder, headroom) |
+| **S4 fine scale and readout preservation** | H-A, H-C, H-D on 3D voxels and the view-aware readout | S1, DECIDE-4 | S1, DECIDE-4, A4 | 3D estimator controls (A4) and 3D eligibility; depth-resolved statistics; paired degradation curves fine -> 9 mm 3D -> fibre energy (R-A) -> one view per layer | surrogate bands; planted-structure recovery | CPU-hours to a day (about 3,900 voxels per event) | no scaling window -> report "no window", no fractal language | DECIDE-4 | Block F |
+| **S6 generator fidelity** | H-E; stop/go for FastMC | S1, S4 statistics | S1, S4, DECIDE-3 | multiscale fidelity tests of `em_production` and the proton model against the Geant4 split floor | permutation, floor | hours | DECIDE-3 stop rule: one time-boxed attempt at most | DECIDE-3 | Block C (generators) |
+| **S5b / S7 realistic regime and difficult-background performance** | H-G1..H-G3 in an AMS-like regime | S1, S5a, R-A | DECIDE-6, DECIDE-9, S1, S5a | spectrum-weighted, angular, full-face Geant4 production with R-A/R-B (sensitivity-scanned); all-proton background; observable-defined hard subsets; censored CP rejection with independent calibration; conventional, cut-based, gradient-boosting and raw-image baselines with and without multiscale features | the SV gates | >= 3e4 evaluation protons per claimed 1e4 rejection (k = 0); about 1e6 for a measured 1e4 at 1-sigma 10%; about a day per 1e6 normal-incidence protons, more with TeV electrons and angles | never a statement of actual AMS performance; "AMS-like simulation with stated assumptions" only | go per production | Block A, detector-response block |
+| **S8 confirmatory study** | the registered tests | everything above | DECIDE-1, DECIDE-2 | frozen hypotheses, estimands, controls and code in a tagged commit; NEW sealed sets per purpose (63-bit seeds); independent implementation and statistical review; opening ledger | SV-9 | about 30 CPU-h at the old sealed design, more for the realistic regime | the exit rule of DECIDE-2 | the researcher at freeze and at opening | defend-research viva before writing |
+
+**Parallel now:** S0, S2, S5a (S1 once S0's sample module exists). **Then:** S3 (after S1), S4 (after S1 + DECIDE-4), S6 (after S4). **Last:** S5b/S7 (DECIDE-6, DECIDE-9, production), S8.
+
+### 18.5 Decisions (PENDING; memo in the review, section 5)
+
+| decision | proposal | what the researcher approves |
+|---|---|---|
+| DECIDE-1 | replace the single 0.01 AUC-gain rule by four endpoint families (P1 physics difference, P2 readout survival, P3 simulator fidelity, P4 realistic performance), each with a NAMED primary, through a dated amendment before any opening; the old rule stays in the record as "unmeetable in the ideal regime" | the amendment text (after S2) |
+| DECIDE-2 | existing sealed sets stay closed; opened for FastMC validation only when a frozen FastMC candidate exists, otherwise an untouched reserve; NEW sealed sets for the multiscale confirmatory test once its design is frozen; the 2 seed collisions regenerated or ledgered; an exit date | withdrawing the 2026-10-09 "multiscale opens first" agreement; the exit date; regenerate or ledger |
+| DECIDE-3 | no override of the 0.3-point rule; Slice 2 stays the candidate; electron-generator refinement PAUSED until H-E is defined, then one time-boxed attempt under a rule fixed in code; no FastMC sample in any performance or confirmatory claim | the pause and the stop rule |
+| DECIDE-4 | two objects: view-aware readout analysis (detector level) and 3D sparse voxels as the truth-level fine reference (physical box sizes in mm, energy weighting, axis-free principal axis, 3D eligibility from 3D controls, the sampling step R-A separate from granularity) | the representation |
+| DECIDE-5..9 | DECIDE-5 lower urgency (waits for H-G evidence); **DECIDE-6 higher urgency** (critical path of any realistic claim); DECIDE-7 re-registered with permutation-based rules instead of a new fixed KS; DECIDE-8 unchanged; DECIDE-9 incidence angle now required | as before |
+
+### 18.6 Publication strategy (PROPOSED; the review, section 7)
+
+Paper 1, simulation-based: finite-scale structure, hadronic heterogeneity, coarse-graining survival and simulator fidelity, with the PID question in the ideal and AMS-like regimes and censored rejections; negative outcomes (no window; differences that vanish under readout or matching; redundancy with conventional morphology; FastMC failing hierarchical fluctuations; no realistic PID gain) are results. Paper 2 conditional on R-A/R-B and the realistic regime; never a claim of actual AMS performance without collaboration data. QML stays downstream. `PUBLICATION_ROADMAP.md` is updated only on acceptance.
+
+### 18.7 First actions, safe before the remaining decisions (each needs a go)
+
+1. **S0** first: cheap, exposed data only, and it can expose an implementation error that would change everything else.
+2. **S1** next: every later number depends on valid intervals and nulls; code only.
+3. **S2** in parallel: the DECIDE-1 amendment needs named endpoints and verified literature before anything confirmatory.
+4. **S5a** in parallel: literature only; it unblocks DECIDE-6, now on the critical path.
+5. **S3** after S1: re-reads the existing Geant4 evidence with valid tools before any new production.
 
 ---
 
