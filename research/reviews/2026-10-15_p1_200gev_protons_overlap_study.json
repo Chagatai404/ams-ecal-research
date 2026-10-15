@@ -1,0 +1,47 @@
+{
+ "electron_development_large_20_vs_proton_200": {
+  "electron_events": 9101,
+  "proton_events": 2119,
+  "median_deposit_gev_electron": 18.787139352950202,
+  "usable_5x5_cells": 3,
+  "events_in_usable_cells": 1594,
+  "caliper_0.25_pairs": 51,
+  "caliper_0.5_pairs": 72
+ },
+ "electron_development_large_50_vs_proton_200": {
+  "electron_events": 9998,
+  "proton_events": 2119,
+  "median_deposit_gev_electron": 45.69320543351718,
+  "usable_5x5_cells": 9,
+  "events_in_usable_cells": 3821,
+  "caliper_0.25_pairs": 48,
+  "caliper_0.5_pairs": 71
+ },
+ "electron_development_large_100_vs_proton_200": {
+  "electron_events": 9998,
+  "proton_events": 2119,
+  "median_deposit_gev_electron": 89.16788369749652,
+  "usable_5x5_cells": 6,
+  "events_in_usable_cells": 1607,
+  "caliper_0.25_pairs": 43,
+  "caliper_0.5_pairs": 62
+ },
+ "component_electron_100_vs_proton_200": {
+  "electron_events": 2000,
+  "proton_events": 2119,
+  "median_deposit_gev_electron": 89.24162286709742,
+  "usable_5x5_cells": 0,
+  "events_in_usable_cells": 0,
+  "caliper_0.25_pairs": 30,
+  "caliper_0.5_pairs": 49
+ },
+ "component_electron_200_vs_proton_200": {
+  "electron_events": 2000,
+  "proton_events": 2119,
+  "median_deposit_gev_electron": 173.0427955612002,
+  "usable_5x5_cells": 0,
+  "events_in_usable_cells": 0,
+  "caliper_0.25_pairs": 6,
+  "caliper_0.5_pairs": 26
+ }
+}

@@ -77,3 +77,37 @@ Each is tested at finite scale. "Prior" is the agent's reading of the verified l
 ## 6. Limits of this draft
 
 The priors in section 3 are the agent's reading of a thin literature (one simulation-only calorimeter FD paper, one air-Cherenkov precedent, one EM monofractal study); absence of external confirmation is not evidence against the hypotheses. The primaries are written before S4: their numerical parameters are rules, not values. Nothing here was tested on confirmatory data.
+
+## 7. Revisions proposed on 2026-10-15 (after S3 stage 1; DRAFT; nothing accepted; the digests of section 4 are NOT valid for the proposals below and are recomputed when the researcher approves)
+
+### 7.1 What the existing data show about the P1 comparison (development data; scripts and outputs `research/reviews/2026-10-15_p1_common_support_study.*`, `..._p1_cross_energy_overlap_study.*`, and the stage-1 record)
+
+1. **At a fixed primary energy, electrons and interacting protons do not overlap in deposited energy.** Among events with at least 336 occupied cells, the intersection of the classes' central 5-95% ranges in (occupied cells, deposited energy) is empty at every energy; 1:1 caliper matching (0.25 standard deviations on log occupancy and log deposited energy) finds 5 to 30 pairs among 7,000 to 10,000 events per class; pooled 5 x 5 equal-count strata leave 1 or 2 cells with at least 20 events of each class. (Median deposited energy at 100 GeV primary: electrons 89 GeV, interacting protons 21 GeV.) The stage-1 joint-strata result (54-55 of 64 significant) therefore rests on 1 or 2 populated cells.
+2. **Pairing protons of a higher primary energy with electrons restores part of the overlap.** Electrons at 20 GeV against protons at 100 GeV: 5 usable cells with 2,960 events, 136 pairs (0.25 sd) and 167 (0.5 sd). Electrons at 50 GeV against protons at 100 GeV: 4 cells, 822 events, 110 and 175 pairs. Electrons at 100 GeV have no counterpart (no protons above 100 GeV exist in the development sets). Other pairings give 1 to 2 cells.
+3. **Consequence:** P1 as drafted (50 GeV, "equal occupancy and equal deposited energy", five equal-count strata of each, jointly) cannot be tested with fixed-primary-energy samples and protons up to 100 GeV. This is a limit of the sample design, not of the physics question.
+
+### 7.2 Proposed replacement of the P1 matching (for the researcher to approve, change or reject)
+
+- **Matching variable and population:** electrons and truth-interacting protons are compared at equal deposited energy and equal number of occupied cells, **not at equal primary energy**; the electron energy and the proton energy of a comparison are different and are named in the primary (for example electrons 20 GeV against protons 100 GeV, from 7.1; the pairing is a design choice made on development data and frozen in the addendum with the rule used to choose it, never re-chosen on confirmatory data).
+- **Matching rule:** 1:1 nearest-neighbour matching without replacement on the standardized logarithms of occupied cells and deposited energy within a caliper of 0.25 standard deviations (pooled standard deviation of the two classes), electrons matched to protons in the order of increasing distance; the number of pairs is reported before any statistic is computed.
+- **Statistic and null:** KS distance of the D2 values of the matched electrons against the matched protons; null by exchanging the class labels inside matched pairs (a sign-flip permutation, 10,000 draws, p = (1 + count) / (1 + 10,000)), exact under exchangeability inside pairs.
+- **Not testable:** fewer than 100 matched pairs (declared before the analysis); the stratified fallback (five equal-count cells on the region where both classes have at least 20 events) is reported beside the matched result as a sensitivity, never as a replacement chosen after seeing the result.
+- **Sample requirement:** the new confirmatory sets (DECIDE-2) must contain protons at primary energies high enough that their deposited energy overlaps the electron energies named in the primaries (the development sets stop at 100 GeV; protons at 200 GeV or more are needed for electrons at 50 GeV). Cost at 0.023 s per GeV and event: 20,000 protons at 200 GeV is about 26 CPU-hours.
+- **What this changes in the interpretation:** a null at matched deposited energy and occupancy is the HEGRA-type outcome (no difference beyond occupancy and energy). A difference is a statement about a matched subsample of the class distributions, not about whole showers; the primary must say so.
+
+### 7.3 Proposed replacement of item 7 (Multiplicity), to match the researcher's decisions of 2026-10-15
+
+Secondaries are adjusted by the Westfall-Young step-down maxT procedure inside a family when the joint permutation draws of all its statistics exist and the family-wise error of those statistics has passed a same-class check (at least 1,000 trials, 999 permutations, tolerance 0.05 plus three Monte Carlo standard errors; passed on 2026-10-15 for the stage-1 statistics, estimates 0.051 to 0.058); otherwise by Holm; Holm is always reported beside it as the sensitivity; Benjamini-Hochberg q-values are an exploratory view. The primaries are corrected against each other by Holm across the five families. Permutation tests use 10,000 draws.
+
+### 7.4 Decided 2026-10-15
+
+Researcher: "yes, keep the matching and add the 200 GeV protons". Items 1 and 2 below are therefore decided: **P1 keeps the matching of 7.2** and **protons at 200 GeV are part of the new sealed sets**. Items 3 and 4 remain open; the amendment as a whole stays a DRAFT until the researcher approves the primaries P1-P5 and the freezing rule.
+
+**Check on the existing 200 GeV protons** (`research/reviews/2026-10-15_p1_200gev_protons_overlap_study.*`; 2,119 interacting protons with at least 336 occupied cells; median deposit 34.6 GeV): against electrons at 50 GeV, 9 usable 5 x 5 cells with 3,821 events and 48 (0.25 sd) to 71 (0.5 sd) matched pairs; against electrons at 20 GeV, 3 cells and 51 / 72 pairs; against electrons at 100 GeV, 6 cells and 43 / 62 pairs (electrons at 100 GeV from the tagged set: 30 / 49 pairs, 0 cells). The number of pairs is limited by the proton sample, so it scales with production size: if it scales linearly (an assumption, not measured), 8,500 eligible protons give about 190 pairs and 45,000 protons about 1,000, enough for the "100 pairs" rule; at the extrapolated 4.6 s per 200 GeV proton event, 100,000 protons cost about 4.6e5 CPU-seconds, about 9 hours on 14 workers (estimate, not a measurement).
+
+### 7.5 What is still open (the numbering of the original 7.4 items 3 and 4)
+
+1. Whether P1 keeps "equal occupancy and equal deposited energy" with the matching of 7.2 (and which electron and proton energies), or is reformulated (for example occupancy only, with deposited energy as a reported covariate).
+2. Whether a proton production at 200 GeV or higher is part of the new sealed sets (cost above).
+3. Approval of the multiplicity wording of 7.3.
+4. These rules were derived on exposed development data; they are design choices that must be frozen before any confirmatory event is looked at.

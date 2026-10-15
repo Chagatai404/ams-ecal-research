@@ -1,0 +1,106 @@
+{
+ "10_dep": {
+  "eligible_electrons": 297,
+  "eligible_protons": 6592,
+  "pooled_5x5_usable_cells": 1,
+  "pooled_5x5_events_in_usable_cells": 325,
+  "support_box_events": [
+   0,
+   0
+  ],
+  "support_box_fraction": [
+   0.0,
+   0.0
+  ],
+  "caliper_0.25sd_pairs": 5,
+  "caliper_0.5sd_pairs": 14
+ },
+ "10_rea": {
+  "eligible_electrons": 2,
+  "eligible_protons": 3988
+ },
+ "20_dep": {
+  "eligible_electrons": 9101,
+  "eligible_protons": 7189,
+  "pooled_5x5_usable_cells": 1,
+  "pooled_5x5_events_in_usable_cells": 262,
+  "support_box_events": [
+   0,
+   0
+  ],
+  "support_box_fraction": [
+   0.0,
+   0.0
+  ],
+  "caliper_0.25sd_pairs": 8,
+  "caliper_0.5sd_pairs": 23
+ },
+ "20_rea": {
+  "eligible_electrons": 12,
+  "eligible_protons": 5120
+ },
+ "50_dep": {
+  "eligible_electrons": 9998,
+  "eligible_protons": 7811,
+  "pooled_5x5_usable_cells": 1,
+  "pooled_5x5_events_in_usable_cells": 257,
+  "support_box_events": [
+   0,
+   0
+  ],
+  "support_box_fraction": [
+   0.0,
+   0.0
+  ],
+  "caliper_0.25sd_pairs": 18,
+  "caliper_0.5sd_pairs": 60
+ },
+ "50_rea": {
+  "eligible_electrons": 301,
+  "eligible_protons": 6302,
+  "pooled_5x5_usable_cells": 0,
+  "pooled_5x5_events_in_usable_cells": 0,
+  "support_box_events": [
+   0,
+   0
+  ],
+  "support_box_fraction": [
+   0.0,
+   0.0
+  ],
+  "caliper_0.25sd_pairs": 8,
+  "caliper_0.5sd_pairs": 14
+ },
+ "100_dep": {
+  "eligible_electrons": 9998,
+  "eligible_protons": 8131,
+  "pooled_5x5_usable_cells": 1,
+  "pooled_5x5_events_in_usable_cells": 300,
+  "support_box_events": [
+   0,
+   0
+  ],
+  "support_box_fraction": [
+   0.0,
+   0.0
+  ],
+  "caliper_0.25sd_pairs": 30,
+  "caliper_0.5sd_pairs": 66
+ },
+ "100_rea": {
+  "eligible_electrons": 7471,
+  "eligible_protons": 6910,
+  "pooled_5x5_usable_cells": 1,
+  "pooled_5x5_events_in_usable_cells": 219,
+  "support_box_events": [
+   0,
+   0
+  ],
+  "support_box_fraction": [
+   0.0,
+   0.0
+  ],
+  "caliper_0.25sd_pairs": 10,
+  "caliper_0.5sd_pairs": 32
+ }
+}
