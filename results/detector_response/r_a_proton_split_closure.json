@@ -1,0 +1,200 @@
+{
+ "registration": "research/plans/2026-10-12_particle_agnostic_RA_design_DRAFT.md, section 14",
+ "tolerance": 0.03,
+ "seed": 20261012,
+ "fit_rule": "even event_index fit, odd validate; development sets only; prediction uses the truth class of the event",
+ "split_proton_validation": {
+  "10": {
+   "combined_layer_closure": [
+    0.11714474058259272,
+    0.04110721670416195,
+    0.0020351484870471115,
+    0.031434796759944206,
+    -0.015039504815894778,
+    -0.0032586088996915397,
+    -0.002336801075962791,
+    -0.006537122311938592,
+    -0.011413001247681742,
+    -0.00035937395209573175,
+    -0.002379874242895208,
+    -0.02608428986439071,
+    -0.00883792890039703,
+    -0.017446681604651015,
+    -0.01865615856517666,
+    -0.02775981726680299,
+    -0.016484135029939062,
+    -0.034329891391892575
+   ],
+   "combined_max_abs_layer_closure": 0.11714474058259272,
+   "worst_layer": 0,
+   "passes_3_percent": false,
+   "interacting_fraction": 0.4848,
+   "classes": {
+    "crossing": {
+     "n_validation_events": 5152,
+     "max_abs_layer_closure": 0.05895326198911588,
+     "half_split_max_abs": [
+      0.05591050427681388,
+      0.062127191964180484
+     ],
+     "event_total_relative_width_model": 0.16846229184756542,
+     "event_total_relative_width_geant4": 0.16420480608940125
+    },
+    "interacting": {
+     "n_validation_events": 4848,
+     "max_abs_layer_closure": 0.1282851182233391,
+     "half_split_max_abs": [
+      0.11817746897620429,
+      0.13758513501890457
+     ],
+     "event_total_relative_width_model": 0.5678429976804579,
+     "event_total_relative_width_geant4": 0.5532515048980713
+    }
+   }
+  },
+  "20": {
+   "combined_layer_closure": [
+    0.04304635491978437,
+    0.05106120857979568,
+    0.02811751705206822,
+    0.01799461102841704,
+    0.02027752563644558,
+    0.0076535476681294234,
+    -0.0008516301593173292,
+    -0.006140559126799117,
+    0.015101081286862827,
+    -0.0030477974579913303,
+    0.011507989990961365,
+    0.007595166192612357,
+    0.016279291641297933,
+    0.0018529774762068296,
+    0.009801143794169853,
+    0.011861501221039461,
+    0.01698051294321079,
+    -0.010564149562475533
+   ],
+   "combined_max_abs_layer_closure": 0.05106120857979568,
+   "worst_layer": 1,
+   "passes_3_percent": false,
+   "interacting_fraction": 0.4831,
+   "classes": {
+    "crossing": {
+     "n_validation_events": 5169,
+     "max_abs_layer_closure": 0.02634439769866026,
+     "half_split_max_abs": [
+      0.05506092315852984,
+      0.0299666473524266
+     ],
+     "event_total_relative_width_model": 0.22723803626996175,
+     "event_total_relative_width_geant4": 0.2217971384525299
+    },
+    "interacting": {
+     "n_validation_events": 4831,
+     "max_abs_layer_closure": 0.05479976791667385,
+     "half_split_max_abs": [
+      0.05937598107565756,
+      0.06398983376027023
+     ],
+     "event_total_relative_width_model": 0.624676228925025,
+     "event_total_relative_width_geant4": 0.6179914474487305
+    }
+   }
+  },
+  "50": {
+   "combined_layer_closure": [
+    0.062149201846598334,
+    0.054999405268675305,
+    0.054346240806021795,
+    0.03730014118912628,
+    0.01296712864732652,
+    0.020132814290792833,
+    0.019306950925948696,
+    0.006597715428722228,
+    0.01728643357392512,
+    0.008392925550742891,
+    0.009674087662170816,
+    0.0011843325031171137,
+    0.005529404740941102,
+    0.0032071993225502027,
+    0.004957415283541655,
+    0.004943543592365041,
+    0.004700679057801027,
+    0.006554908520427727
+   ],
+   "combined_max_abs_layer_closure": 0.062149201846598334,
+   "worst_layer": 0,
+   "passes_3_percent": false,
+   "interacting_fraction": 0.4915,
+   "classes": {
+    "crossing": {
+     "n_validation_events": 5085,
+     "max_abs_layer_closure": 0.022682009577858597,
+     "half_split_max_abs": [
+      0.03326634781804949,
+      0.04125591096039982
+     ],
+     "event_total_relative_width_model": 0.4271104260558568,
+     "event_total_relative_width_geant4": 0.4170868396759033
+    },
+    "interacting": {
+     "n_validation_events": 4915,
+     "max_abs_layer_closure": 0.06665808371129556,
+     "half_split_max_abs": [
+      0.062131418506417235,
+      0.07899239219713805
+     ],
+     "event_total_relative_width_model": 0.6974105210223713,
+     "event_total_relative_width_geant4": 0.6904631853103638
+    }
+   }
+  },
+  "100": {
+   "combined_layer_closure": [
+    0.04718401021321683,
+    0.04769692555098559,
+    0.05341573742465333,
+    0.049803543656499194,
+    0.02220966720944917,
+    0.025120765572480108,
+    0.008929919933952979,
+    -0.0013453363830725484,
+    -0.004956482270484841,
+    -0.009117013568603838,
+    -0.011238225473930386,
+    -0.012976736500100783,
+    -0.012132161126463425,
+    -0.012196396652284447,
+    -0.01466557214878872,
+    -0.005817277994587977,
+    -0.010496651390138445,
+    0.0048258073385119005
+   ],
+   "combined_max_abs_layer_closure": 0.05341573742465333,
+   "worst_layer": 2,
+   "passes_3_percent": false,
+   "interacting_fraction": 0.4911,
+   "classes": {
+    "crossing": {
+     "n_validation_events": 5089,
+     "max_abs_layer_closure": 0.04146409832421938,
+     "half_split_max_abs": [
+      0.042829386355967,
+      0.04831437153080653
+     ],
+     "event_total_relative_width_model": 0.6352288349353138,
+     "event_total_relative_width_geant4": 0.6322670578956604
+    },
+    "interacting": {
+     "n_validation_events": 4911,
+     "max_abs_layer_closure": 0.05462269980377288,
+     "half_split_max_abs": [
+      0.06803822767210721,
+      0.055300491792078965
+     ],
+     "event_total_relative_width_model": 0.7420528055818549,
+     "event_total_relative_width_geant4": 0.7382199764251709
+    }
+   }
+  }
+ }
+}

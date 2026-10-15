@@ -194,12 +194,132 @@ def run_proton(
     return result
 
 
+def _split_population(
+    sample: str, energy: float, population: str
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    deposit = load_events(
+        sample, energy, "deposit_grid_mev", population, dtype=np.float32
+    )
+    fibre = load_events(
+        sample, energy, "readout_grid_mev", population, dtype=np.float32
+    )
+    even = deposit.event_index % 2 == 0
+    return (
+        deposit.grids[even],
+        fibre.grids[even],
+        deposit.grids[~even],
+        fibre.grids[~even],
+        deposit.event_index[~even],
+    )
+
+
+def run_proton_split(proton_sample: str = "proton_development_large") -> dict[str, Any]:
+    """Split proton table (design section 14, registered 2026-10-15): one class table for crossing, one for interacting protons.
+
+    Each validation event is predicted with the table of its own truth class; the combined closure is the primary criterion.
+    """
+
+    energies = energies_available(proton_sample)
+    rng = np.random.default_rng(SEED)
+    classes = ("crossing", "interacting")
+    parts: dict[str, dict[float, tuple]] = {c: {} for c in classes}
+    for population in classes:
+        for energy in energies:
+            parts[population][energy] = _split_population(
+                proton_sample, energy, population
+            )
+    models = {}
+    for population in classes:
+        models[population] = SamplingResponse.fit(
+            np.concatenate([parts[population][e][0] for e in energies]),
+            np.concatenate([parts[population][e][1] for e in energies]),
+            particle=f"proton_{population}",
+            fitted_from=f"{proton_sample}, {population}, even event_index, energies {energies} GeV",
+        )
+    rows = {}
+    for energy in energies:
+        predicted, actual, per_class = {}, {}, {}
+        for population in classes:
+            _, _, deposit_val, fibre_val, index_val = parts[population][energy]
+            predicted[population] = models[population].apply(deposit_val, rng)
+            actual[population] = fibre_val
+            halves = []
+            for remainder in (1, 3):
+                pick = index_val % 4 == remainder
+                halves.append(
+                    float(
+                        np.abs(
+                            layer_closure(
+                                predicted[population][pick], fibre_val[pick]
+                            )
+                        ).max()
+                    )
+                )
+            closure_class = layer_closure(predicted[population], fibre_val)
+            total_model = predicted[population].sum(axis=(1, 2))
+            total_geant4 = fibre_val.sum(axis=(1, 2))
+            per_class[population] = {
+                "n_validation_events": len(fibre_val),
+                "max_abs_layer_closure": float(np.abs(closure_class).max()),
+                "half_split_max_abs": halves,
+                "event_total_relative_width_model": float(
+                    total_model.std() / total_model.mean()
+                ),
+                "event_total_relative_width_geant4": float(
+                    total_geant4.std() / total_geant4.mean()
+                ),
+            }
+        combined = layer_closure(
+            np.concatenate([predicted[c] for c in classes]),
+            np.concatenate([actual[c] for c in classes]),
+        )
+        n_total = sum(per_class[c]["n_validation_events"] for c in classes)
+        rows[f"{energy:g}"] = {
+            "combined_layer_closure": combined.tolist(),
+            "combined_max_abs_layer_closure": float(np.abs(combined).max()),
+            "worst_layer": int(np.abs(combined).argmax()),
+            "passes_3_percent": bool(np.abs(combined).max() <= CLOSURE_TOLERANCE),
+            "interacting_fraction": per_class["interacting"]["n_validation_events"]
+            / n_total,
+            "classes": per_class,
+        }
+    result = {
+        "registration": "research/plans/2026-10-12_particle_agnostic_RA_design_DRAFT.md, section 14",
+        "tolerance": CLOSURE_TOLERANCE,
+        "seed": SEED,
+        "fit_rule": "even event_index fit, odd validate; development sets only; prediction uses the truth class of the event",
+        "split_proton_validation": rows,
+    }
+    for population in classes:
+        models[population].save(
+            RESULT_PATH.parent / f"r_a_proton_{population}_model.json"
+        )
+    (RESULT_PATH.parent / "r_a_proton_split_closure.json").write_text(
+        json.dumps(result, indent=1), encoding="utf-8"
+    )
+    return result
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--particle", choices=("electron", "proton"), default="electron"
+        "--particle", choices=("electron", "proton", "proton-split"), default="electron"
     )
-    if parser.parse_args(argv).particle == "proton":
+    selected = parser.parse_args(argv).particle
+    if selected == "proton-split":
+        split = run_proton_split()
+        for energy, row in split["split_proton_validation"].items():
+            print(
+                f"split protons {energy} GeV: combined max |layer closure| {row['combined_max_abs_layer_closure']:.4f} "
+                f"(layer {row['worst_layer']}) pass={row['passes_3_percent']} interacting fraction {row['interacting_fraction']:.2f}"
+            )
+            for population, detail in row["classes"].items():
+                halves = [f"{h:.3f}" for h in detail["half_split_max_abs"]]
+                print(
+                    f"    {population:12s} n={detail['n_validation_events']:5d} max {detail['max_abs_layer_closure']:.4f} halves {halves}"
+                )
+        return
+    if selected == "proton":
         proton = run_proton()
         for energy, row in proton["proton_validation"].items():
             print(

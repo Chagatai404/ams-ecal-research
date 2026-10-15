@@ -1,0 +1,6 @@
+{
+ "confidence": 0.95,
+ "trials": 200,
+ "coverage_of_zero": 0.935,
+ "passed": true
+}

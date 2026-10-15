@@ -26,6 +26,7 @@ import numpy as np
 from scipy import stats
 
 MIN_PER_STRATUM = 20
+DEFAULT_PERMUTATIONS = 10_000
 
 
 # --- strata ----------------------------------------------------------------------------------------------------------------
@@ -80,9 +81,14 @@ def permutation_pvalue(
     labels: np.ndarray,
     strata: np.ndarray | None,
     rng: np.random.Generator,
-    n_permutations: int = 1000,
+    n_permutations: int = DEFAULT_PERMUTATIONS,
 ) -> PermutationResult:
-    """Permutation test of ``statistic`` with labels permuted within strata. Add 1 to numerator and denominator: p > 0."""
+    """Permutation test of ``statistic`` with labels permuted within strata. Add 1 to numerator and denominator: p > 0.
+
+    The default is the registered 10,000 (researcher, 2026-10-15): Holm needs B + 1 >= 20 m for the smallest adjusted p-value to
+    reach 0.05 over m tests, and the Monte Carlo error at p = 0.05 is about 0.002. Classifier-refit statistics may need a smaller
+    registered B once their cost is measured.
+    """
 
     values, labels = np.asarray(values, dtype=float), np.asarray(labels)
     observed = statistic(values, labels, strata)

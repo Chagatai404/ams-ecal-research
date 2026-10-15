@@ -68,3 +68,37 @@ def test_secondaries_stay_exploratory_unless_their_familys_primary_is_confirmed(
     assert decisions["P1"].secondary_status == {"D0": "supported", "D1": "exploratory"}
     assert decisions["P2"].secondary_status == {"D0": "exploratory"}  # a tiny q does not rescue an unconfirmed primary
     assert decisions["P3"].primary_adjusted_p == pytest.approx(0.08)  # Holm: 0.001*3, 0.04*2, 0.4*1 -> 0.003, 0.08, 0.4
+
+
+def test_secondaries_are_decided_by_holm_and_bh_is_only_reported():
+    p = {f"s{i}": 0.004 * (i + 1) for i in range(10)}  # BH q = 0.04 for all ten; Holm supports only the first
+    decision = mp.decide({"P1": ("named primary", 0.0005)}, {"P1": p})["P1"]
+    assert decision.confirmed
+    assert all(q <= 0.05 for q in decision.secondary_q.values())
+    assert decision.secondary_method == "holm"
+    assert decision.secondary_status["s0"] == "supported"
+    assert [k for k, v in decision.secondary_status.items() if v == "supported"] == ["s0"]
+    assert decision.secondary_holm_p["s0"] == pytest.approx(0.04)
+
+
+def test_the_registered_default_number_of_permutations_is_10000():
+    import inspect
+
+    from ams_ecal.inference import permutation_nulls as pn
+
+    assert pn.DEFAULT_PERMUTATIONS == 10_000
+    assert inspect.signature(pn.permutation_pvalue).parameters["n_permutations"].default == 10_000
+
+
+def test_a_family_with_joint_draws_uses_westfall_young_and_keeps_holm_as_the_sensitivity():
+    rng = np.random.default_rng(11)
+    common = rng.normal(size=(2000, 1))
+    null = np.abs(common + 0.3 * rng.normal(size=(2000, 6)))  # strongly dependent null statistics
+    observed = {f"s{i}": float(v) for i, v in enumerate([3.0, 2.0, 1.0, 0.5, 0.2, 0.1])}
+    p = {k: float((1 + (null[:, i] >= v).sum()) / 2001) for i, (k, v) in enumerate(observed.items())}
+    decision = mp.decide({"P1": ("named primary", 0.0005)}, {"P1": p}, joint_draws={"P1": (observed, null)})["P1"]
+    assert decision.secondary_method == "westfall_young"
+    assert set(decision.secondary_holm_p) == set(p)
+    assert decision.secondary_adjusted_p["s0"] <= decision.secondary_holm_p["s0"] + 1e-12
+    with pytest.raises(ValueError):
+        mp.decide({"P1": ("x", 0.01)}, {"P1": p}, joint_draws={"P1": (dict(reversed(list(observed.items()))), null)})

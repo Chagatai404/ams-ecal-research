@@ -185,3 +185,62 @@ One fit, as registered in section 11 (`src/ams_ecal/detector/component_sampling_
 | 100 GeV | 5.3% (layer 2) | fail |
 
 The relative width of the event-total fibre energy is reproduced (model 1.21 / 1.30 / 1.39 / 1.44 against Geant4 1.22 / 1.31 / 1.39 / 1.45). The proton table applied to electrons is 105-148% off, as expected (scope limit). **Reading (hypothesis, untested):** the proton sample mixes crossing protons (minimum-ionising, essentially one cell per layer) with interacting showers; the event-total class does not separate them. A proton table fitted separately for crossing and for interacting events (the truth flag exists in the files) is the natural next version; it would be registered before its fit, and needs the researcher's go. Until then the proton table is **development only, not meeting the registered closure**.
+
+## 14. Split proton table: rules registered BEFORE the fit (2026-10-15, researcher's go)
+
+Hypothesis under test (from section 13, untested): the proton class table fails because it pools minimum-ionising crossing protons with interacting showers. Version 2 of the proton table: two tables with the same model as the electron R-A (`SamplingResponse`), fitted separately on the crossing events and on the interacting events (`truth_occurred` False / True, populations `crossing` and `interacting` of `sample_definitions.load_events`).
+
+- Data and split: `proton_development_large`, energies 10, 20, 50, 100 GeV; events with even `event_index` fit, odd validate; same seed as sections 12-13; no sealed data.
+- Prediction rule: each validation event is predicted with the table of its own class. The class flag is truth information; it is legitimate for the use case because a fast simulation draws the branch (crossing or interacting) before it draws the deposit, but it is **not a feature learned from the deposit**, and the result must be stated as "given the branch".
+- Primary criterion: the combined (both classes together) mean fibre energy per layer within 3% for all 18 layers at every one of the four energies; same closure function as before.
+- Reported without threshold: the same closure for the crossing and interacting subsets separately with the two-half noise indicator (odd events split by `event_index % 4`), the share of events in each class, and the relative width of the event-total fibre energy per class.
+- Outcome rule: one fit as registered; a failure is reported as a negative finding; no further version (more classes, other splits) without the researcher's go. The unsplit proton table result of section 13 remains in the record unchanged.
+
+## 15. Result of the registered split proton table (2026-10-15): the hypothesis of section 13 is NOT supported
+
+One fit as registered in section 14 (`--particle proton-split`; `results/detector_response/r_a_proton_split_closure.json`). Maximum per-layer closure, 3% tolerance, prediction with the event's own truth class:
+
+| energy | combined (primary) | unsplit table (section 13) | crossing only (halves) | interacting only (halves) | interacting share |
+|---|---|---|---|---|---|
+| 10 GeV | 11.7% (layer 0) fail | 8.3% | 5.9% (5.6, 6.2) | 12.8% (11.8, 13.8) | 0.48 |
+| 20 GeV | 5.1% (layer 1) fail | 3.0% | 2.6% (5.5, 3.0) | 5.5% (5.9, 6.4) | 0.48 |
+| 50 GeV | 6.2% (layer 0) fail | 5.2% | 2.3% (3.3, 4.1) | 6.7% (6.2, 7.9) | 0.49 |
+| 100 GeV | 5.3% (layer 2) fail | 5.3% | 4.2% (4.3, 4.8) | 5.5% (6.8, 5.5) | 0.49 |
+
+**Reading.** Established (data): splitting by crossing and interacting does not improve the combined closure (it is equal or worse at all four energies, clearly worse at 10 and 20 GeV) and fails the registered criterion everywhere. The error sits in the **interacting** events and in the first layers (layers 0 to 2); the crossing events alone are closer (2-6%) but their two half-samples differ by up to 2.5 points, so even their 3% pass at 20 and 50 GeV is within noise. The pooling hypothesis of section 13 is therefore not the main cause. Not established: what the cause is. Candidates, all untested: (a) the sampling response of interacting showers depends on the composition of the deposit (electromagnetic against hadronic parts), which the component tagging of this project provides but a table on total deposit and event total cannot see; (b) depth relative to the first interaction (early layers behave differently when the shower starts inside them); (c) cell-level scatter in the early layers is wider than the class tables resolve. The component model of section 12 also showed larger errors in layers 0-2 for protons, which is consistent with (a) or (b), not a test of them. No further version is registered; any next version needs the researcher's go.
+
+## 16. Diagnostic of the class-table closure error (2026-10-15, no new fit; researcher's go)
+
+Script `research/reviews/2026-10-15_ra_proton_diagnostic.py`, output `research/reviews/2026-10-15_ra_proton_diagnostic.json`. The proton tables fitted on `proton_development_large` (unsplit, crossing, interacting) were applied to the **independent** tagged proton events (`data/geant4_component_proton`, 5,000 per energy, never used in a fit); closure per layer on groups of events.
+
+- **Replication.** Maximum per-layer closure of the unsplit table on the independent events: 5 GeV 10.8%, 10 GeV 7.0%, 20 GeV 2.9%, 50 GeV 7.0%, 100 GeV 5.0%, 200 GeV 7.4% (5 and 200 GeV are outside the fitted 10-100 GeV). The dev-large values were 8.3, 3.0, 5.2, 5.3% at 10-100 GeV: same size, and 20 GeV again at the limit. The split table is not better here either (7.1, 6.9, 8.3, 7.8% at 10-100 GeV).
+- **Electromagnetic share of the deposit (truth, from the component tags), interacting events in quartiles.** The closure error **changes sign with the share**: mean closure of layers 3-17 is -15.1%, -8.2%, +0.2%, +12.9% (10 GeV), -9.6%, -4.8%, +1.2%, +7.2% (50 GeV), -9.0%, -4.6%, -0.2%, +5.0% (100 GeV) from the lowest to the highest quartile; layers 0-2 are +4% to +11% in the highest quartile. The pooled closure is small because these opposite errors partly cancel.
+- **First-interaction depth, interacting events in six equal-count bins of lambda_I.** The first bin (interaction within the first 0.07-0.08 lambda_I, i.e. in or before the first layers) shows layers 0-2 over-predicted by +10.5%, +9.8%, +10.4% (10, 50, 100 GeV), the same at all three energies; the other bins show no consistent sign in layers 0-2. Deeper interactions at 10 GeV show layers 3-17 under-predicted by 6-7%, which is weaker or absent at 50 and 100 GeV.
+- **Reading.** Established (data): the dominant structure is the electromagnetic share (monotone, sign-changing, 5-15% in either direction), plus a consistent early-layer over-prediction for the earliest interactions. Not established: causation. The share is a truth quantity from the component tags and is not visible in the deposit grid; a fast simulation would have to supply it. It correlates with the deposit total and the shower energy scale, so the component finding of section 12 (EM ratio depends on the energy scale) and this one may be two views of the same dependence; they have not been separated. Candidate for a next registered version (needs the researcher's go): class tables with the electromagnetic share as an extra context variable, or the component model with a smooth energy-scale covariate.
+
+## 17. Electromagnetic-share-conditioned proton table: rules registered BEFORE the fit (2026-10-15, researcher: "proceed")
+
+Hypothesis (from sections 12 and 16, untested as a model): conditioning the class tables on the electromagnetic share of the event's deposit removes the sign-changing closure error. This is a **conditional** model: the share is a truth quantity from the component tags (sum of the `em` component deposit over the sum of all seven components, per event). A fast simulation would have to supply it, so every result is stated "given the share" and is not a standalone R-A.
+
+- **Data:** the tagged protons `data/geant4_component_proton` (FTFP_BERT, 5,000 events at each of 5, 10, 20, 50, 100, 200 GeV); events with even `event_index` fit, odd validate; same seed as before; no sealed data.
+- **Model:** the same `SamplingResponse` class tables, one table per share bin, bin edges fixed here from the range seen in the section 16 diagnostic and not tuned: share in [0, 0.3), [0.3, 0.5), [0.5, 0.65), [0.65, 0.8), [0.8, 0.9), [0.9, 1.0]; a validation event is predicted with the table of its own bin. All energies are fitted together (the energy enters only through the deposit and event-total classes already in `SamplingResponse`).
+- **Baseline built from the same events (isolates the effect of the share):** one table with no share bins, same data, same split.
+- **Primary criterion:** for the share-conditioned version, the mean fibre energy per layer within 3% for all 18 layers, at every one of the six energies, on the odd events.
+- **Interpolation criterion:** leave-one-energy-out at 20 and 50 GeV (fit on the even events of the other five energies, test on the odd events of the held-out one), within 3% for all layers; 200 GeV leave-out (an extrapolation) and 5 GeV are reported without a threshold.
+- **Reported without threshold:** the baseline's same numbers; closure per share bin with the two-half noise indicator (odd events split by `event_index % 4`); share of events per bin; event-total relative width.
+- **Outcome rule:** one fit as registered; failure is a negative finding; no further version without the researcher's go.
+
+## 18. Result of the registered share-conditioned proton table (2026-10-15): criteria NOT met, and the test is data-starved
+
+One fit as registered in section 17 (`python -m ams_ecal.detector.sampling_response_em_share`; `results/detector_response/r_a_proton_em_share_closure.json`; unit tests for the routing in `tests/detector/test_sampling_response_em_share.py`). Maximum per-layer closure, 3% tolerance.
+
+| energy | share-conditioned (primary) | baseline, same events, no share | leave-one-energy-out, share-conditioned | leave-one-out, baseline |
+|---|---|---|---|---|
+| 5 GeV | 7.2% | 11.6% | 7.6% | 16.7% |
+| 10 GeV | 4.2% | 14.1% | - | - |
+| 20 GeV | 8.6% (halves 5.6, 12.1) | 6.4% | 7.1% | 10.0% |
+| 50 GeV | 13.3% | 11.3% | 15.4% | 14.9% |
+| 100 GeV | 20.4% | 10.0% | - | - |
+| 200 GeV | 22.0% | 9.0% | 18.8% | 5.6% |
+
+**Reading.** Established (data): the primary criterion fails at all six energies and the interpolation criterion fails at 20 and 50 GeV. The share-conditioned model is better than its baseline at 5 and 10 GeV and clearly worse at 100 and 200 GeV. **The baseline itself fails at 6-14% on these events, although the same unsplit table closed to 3-8% on the 40,000-event development set**: this experiment trains on about 2,500 fitted events per energy (15,000 in total) and splits them again into six share bins, so many (layer, deposit size, event-total, share) classes are empty or sparse and fall back to pooled tables. Not established: whether the share helps. The result is a failure of the registered test and a statement about sample size, not a refutation of the share hypothesis; it cannot support it either. What would test it cleanly: a tagged proton run of about the size of the development set (20,000 events at each of 10, 20, 50, 100 GeV), whose cost the researcher would have to approve (the earlier tagging run of the five particle classes took about 5 hours on 14 workers; protons at these energies are among the cheaper particles at 0.3-2.3 s per event, so a rough estimate is 2-3 hours of wall time, not measured). No further version is registered.

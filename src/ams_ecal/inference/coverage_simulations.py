@@ -11,6 +11,8 @@ Every check returns a ``passed`` flag against a tolerance written here, before t
   at about alpha, never above alpha plus three Monte Carlo standard errors.
 * ``familywise_type_one_error``: m statistics on null data; Westfall-Young step-down and Holm keep the family-wise error at most
   alpha (plus Monte Carlo error); the unadjusted minimum p-value does not (shown, as the reason for the adjustment).
+* ``shuffle_excess_interval_coverage``: the event-bootstrap interval of the median cell-shuffle excess covers the true excess (0 in an
+  exchangeable world) at least at its confidence.
 * ``main``: runs all of it, including real development-large electron halves, and writes ``results/inference/coverage.json``.
 
     python -m ams_ecal.inference.coverage_simulations --energies 20 100
@@ -136,6 +138,35 @@ def familywise_type_one_error(
     }
 
 
+def shuffle_excess_interval_coverage(
+    draw_grids: Callable[[np.random.Generator], np.ndarray],
+    statistic: Callable[[np.ndarray], float],
+    trials: int,
+    n_shuffles: int,
+    n_bootstrap: int,
+    rng: np.random.Generator,
+    confidence: float = 0.95,
+) -> dict[str, float | bool]:
+    """Coverage of the true value 0 by the event-bootstrap interval of the median cell-shuffle excess (``paired_shuffle_excess``).
+
+    ``draw_grids`` must draw a world whose cells are exchangeable within a layer, so the true excess is exactly 0; the interval
+    must then contain 0 at least ``confidence`` of the time (minus Monte Carlo error). The same check on a world with spatial
+    structure must NOT cover 0 (shown in the tests: a check that cannot fail checks nothing).
+    """
+
+    covered = 0
+    for _ in range(trials):
+        low, high = pn.paired_shuffle_excess(draw_grids(rng), statistic, n_shuffles, rng, n_bootstrap).median_excess_95
+        covered += bool(low <= 0.0 <= high)
+    rate = covered / trials
+    return {
+        "confidence": confidence,
+        "trials": trials,
+        "coverage_of_zero": float(rate),
+        "passed": bool(rate >= confidence - _mc_tolerance(confidence, trials)),
+    }
+
+
 def _real_electron_features(energy: float) -> tuple[list[str], np.ndarray]:
     from ams_ecal.multiscale_estimators import multiscale_test as mt
     from ams_ecal.validation import sample_definitions as sd
@@ -183,7 +214,17 @@ def main(argv: list[str] | None = None) -> None:
                 draw_many, max(args.trials // 2, 50), 0.05, args.permutations, rng
             ),
         }
+    def exchangeable_grids(g: np.random.Generator) -> np.ndarray:
+        return g.exponential(1.0, size=(60, 18, 72)) * (g.random((60, 18, 72)) < 0.3)
+
+    def neighbour_product(grid: np.ndarray) -> float:
+        return float(np.mean(grid[:, :-1] * grid[:, 1:]) / (np.mean(grid) ** 2 + 1e-12))
+
+    result["cell_shuffle_excess_interval"] = [
+        shuffle_excess_interval_coverage(exchangeable_grids, neighbour_product, args.trials, 20, 200, rng)
+    ]
     checks = [*result["clopper_pearson"], *result["rejection_limit"]]
+    checks += result["cell_shuffle_excess_interval"]
     for per_energy in result["real_electron_halves"].values():
         checks += list(per_energy.values())
     result["all_checks_pass"] = bool(all(c["passed"] for c in checks))

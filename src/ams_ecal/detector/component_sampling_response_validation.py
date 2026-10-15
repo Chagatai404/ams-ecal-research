@@ -168,7 +168,7 @@ def main() -> None:
     for name in ("criterion_1", "criterion_2", "criterion_3", "criterion_4"):
         print(name)
         for key, row in result[name].items():
-            halves = ["%.3f" % h for h in row["half_split_max_abs"]]
+            halves = [f"{h:.3f}" for h in row["half_split_max_abs"]]
             print(
                 f"  {key:14s} max|closure| {row['max_abs_layer_closure']:.4f} "
                 f"(layer {row['worst_layer']:2d}) pass={row['passes']} halves={halves}"

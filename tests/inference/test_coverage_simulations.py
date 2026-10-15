@@ -48,3 +48,23 @@ def test_adjustment_is_needed_the_unadjusted_minimum_p_exceeds_alpha_and_holm_an
 
 def test_the_tolerance_is_three_monte_carlo_standard_errors():
     assert cov._mc_tolerance(0.05, 200) == pytest.approx(3 * np.sqrt(0.05 * 0.95 / 200))
+
+
+def _neighbour_product(grid):
+    return float(np.mean(grid[:, :-1] * grid[:, 1:]) / (np.mean(grid) ** 2 + 1e-12))
+
+
+def test_the_shuffle_excess_interval_covers_zero_in_an_exchangeable_world_and_the_check_fails_on_structure():
+    rng = np.random.default_rng(5)
+
+    def exchangeable(g):
+        return g.exponential(1.0, size=(40, 18, 72)) * (g.random((40, 18, 72)) < 0.3)
+
+    def structured(g):  # neighbouring cells share energy: the shuffle must destroy something real
+        base = exchangeable(g)
+        return base + 0.8 * np.roll(base, 1, axis=-1)
+
+    ok = cov.shuffle_excess_interval_coverage(exchangeable, _neighbour_product, trials=80, n_shuffles=15, n_bootstrap=150, rng=rng)
+    bad = cov.shuffle_excess_interval_coverage(structured, _neighbour_product, trials=40, n_shuffles=15, n_bootstrap=150, rng=rng)
+    assert ok["passed"] and ok["coverage_of_zero"] >= 0.88, ok
+    assert not bad["passed"] and bad["coverage_of_zero"] < 0.5, bad
