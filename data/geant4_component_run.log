@@ -1,0 +1,53 @@
+2026-10-12T20:48:00Z start muon 5 GeV
+2026-10-12T20:49:03Z end muon 5 GeV exit 0
+2026-10-12T20:49:03Z start muon 10 GeV
+2026-10-12T20:49:33Z end muon 10 GeV exit 0
+2026-10-12T20:49:33Z start muon 20 GeV
+2026-10-12T20:49:58Z end muon 20 GeV exit 0
+2026-10-12T20:49:59Z start muon 50 GeV
+2026-10-12T20:50:33Z end muon 50 GeV exit 0
+2026-10-12T20:50:33Z start muon 100 GeV
+2026-10-12T20:51:06Z end muon 100 GeV exit 0
+2026-10-12T20:51:06Z start muon 200 GeV
+2026-10-12T20:51:48Z end muon 200 GeV exit 0
+2026-10-12T20:51:48Z start proton 5 GeV
+2026-10-12T20:53:48Z end proton 5 GeV exit 0
+2026-10-12T20:53:48Z start proton 10 GeV
+2026-10-12T20:56:30Z end proton 10 GeV exit 0
+2026-10-12T20:56:30Z start proton 20 GeV
+2026-10-12T21:01:10Z end proton 20 GeV exit 0
+2026-10-12T21:01:10Z start proton 50 GeV
+2026-10-12T21:09:53Z end proton 50 GeV exit 0
+2026-10-12T21:09:53Z start proton 100 GeV
+2026-10-12T21:25:44Z end proton 100 GeV exit 0
+2026-10-12T21:25:44Z start proton 200 GeV
+2026-10-12T21:55:52Z end proton 200 GeV exit 0
+2026-10-12T21:55:52Z start pion 5 GeV
+2026-10-12T21:57:19Z end pion 5 GeV exit 0
+2026-10-12T21:57:19Z start pion 10 GeV
+2026-10-12T21:58:47Z end pion 10 GeV exit 0
+2026-10-12T21:58:47Z start pion 20 GeV
+2026-10-12T22:00:50Z end pion 20 GeV exit 0
+2026-10-12T22:00:50Z start pion 50 GeV
+2026-10-12T22:04:33Z end pion 50 GeV exit 0
+2026-10-12T22:04:33Z start pion 100 GeV
+2026-10-12T22:10:40Z end pion 100 GeV exit 0
+2026-10-12T22:10:41Z start pion 200 GeV
+2026-10-12T22:22:38Z end pion 200 GeV exit 0
+2026-10-12T22:22:38Z start proton_qbbc 10 GeV
+2026-10-12T22:25:37Z end proton_qbbc 10 GeV exit 0
+2026-10-12T22:25:37Z start proton_qbbc 100 GeV
+2026-10-12T22:42:11Z end proton_qbbc 100 GeV exit 0
+2026-10-12T22:42:11Z start electron 5 GeV
+2026-10-12T22:45:32Z end electron 5 GeV exit 0
+2026-10-12T22:45:32Z start electron 10 GeV
+2026-10-12T22:51:46Z end electron 10 GeV exit 0
+2026-10-12T22:51:46Z start electron 20 GeV
+2026-10-12T23:04:10Z end electron 20 GeV exit 0
+2026-10-12T23:04:10Z start electron 50 GeV
+2026-10-12T23:33:03Z end electron 50 GeV exit 0
+2026-10-12T23:33:03Z start electron 100 GeV
+2026-10-13T00:22:41Z end electron 100 GeV exit 0
+2026-10-13T00:22:41Z start electron 200 GeV
+2026-10-13T01:55:08Z end electron 200 GeV exit 0
+2026-10-13T01:55:08Z ALLDONE

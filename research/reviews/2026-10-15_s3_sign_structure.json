@@ -1,0 +1,50 @@
+{
+ "seed": 20261015,
+ "n_events_per_class": 1500,
+ "n_permutations": 500,
+ "data": "exposed development-large electrons and protons; no sealed sets",
+ "results": {
+  "20": {
+   "n_features_used": 32,
+   "n_features_null": 32,
+   "feature_spearman": {
+    "pairs": 496,
+    "fraction_negative": 0.5080645161290323,
+    "fraction_below_-0.2": 0.3185483870967742,
+    "min": -0.9256038757294314,
+    "median": -0.006770710515505729
+   },
+   "null_ks_correlation": {
+    "pairs": 496,
+    "fraction_negative": 0.11491935483870967,
+    "fraction_below_-2se": 0.008064516129032258,
+    "fraction_above_+2se": 0.5625,
+    "min": -0.11939960823785019,
+    "median": 0.11356106067733018,
+    "se_per_pair": 0.044721359549995794
+   },
+   "seconds": 35
+  },
+  "100": {
+   "n_features_used": 32,
+   "n_features_null": 32,
+   "feature_spearman": {
+    "pairs": 496,
+    "fraction_negative": 0.49193548387096775,
+    "fraction_below_-0.2": 0.32056451612903225,
+    "min": -0.9389267119492175,
+    "median": 0.013336324465662092
+   },
+   "null_ks_correlation": {
+    "pairs": 496,
+    "fraction_negative": 0.08870967741935484,
+    "fraction_below_-2se": 0.0,
+    "fraction_above_+2se": 0.6411290322580645,
+    "min": -0.08064805724295938,
+    "median": 0.1339618490409789,
+    "se_per_pair": 0.044721359549995794
+   },
+   "seconds": 36
+  }
+ }
+}
