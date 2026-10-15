@@ -12,7 +12,7 @@ import hashlib
 import json
 from dataclasses import asdict, dataclass
 
-FAMILIES = ("P1", "P2", "P3", "P4")
+FAMILIES = ("P1", "P2", "P3", "P4", "P5")  # P5 (efficiency) added 2026-10-12: efficiency is accepted scope, not a side result
 FIELDS = ("estimand", "null", "statistic", "uncertainty", "assumptions", "acceptance", "failure_interpretation")
 
 
@@ -23,7 +23,7 @@ class IncompleteClaimError(ValueError):
 @dataclass(frozen=True)
 class ClaimSpecification:
     claim: str
-    family: str  # P1 physics difference, P2 readout survival, P3 simulator fidelity, P4 realistic performance
+    family: str  # P1 physics difference, P2 readout survival, P3 simulator fidelity, P4 realistic performance, P5 efficiency
     primary_statistic: str  # the NAMED primary: statistic, window, representation, energies
     estimand: str
     null: str

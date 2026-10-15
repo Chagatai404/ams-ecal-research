@@ -42,7 +42,7 @@ def test_every_field_of_the_template_is_required(field):
 
 def test_the_family_must_be_one_of_the_four_endpoint_families():
     with pytest.raises(cs.IncompleteClaimError, match="family"):
-        complete(family="P5")
+        complete(family="P6")
 
 
 def test_the_primary_must_be_named_not_described():

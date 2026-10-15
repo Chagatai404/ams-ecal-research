@@ -89,6 +89,22 @@ from ams_ecal.geant4_simulation.geant4_truth import (
 )
 
 OUTPUT_SCHEMA_VERSION = 2
+
+# Deposit components for the particle-agnostic sampling response
+# (research/plans/2026-10-12_particle_agnostic_RA_design_DRAFT.md). Scored in C++ by particle and kinetic-energy filters
+# on extra primitive scorers (no Python in the stepping hot path), so a step is attributed to the particle that makes it.
+# A neutron-induced recoil proton is therefore counted as a proton. Energy deposited by anything else is the channel
+# ``other``: the unfiltered grid minus the sum of the six scored components.
+COMPONENT_NAMES = ("em", "had_low", "had_mid", "had_high", "ion", "neutron")
+COMPONENT_EM_SPECIES = ("e-", "e+", "gamma")
+COMPONENT_HADRON_SPECIES = ("mu+", "mu-", "pi+", "pi-", "kaon+", "kaon-", "proton", "anti_proton")
+COMPONENT_ION_SPECIES = ("GenericIon", "alpha", "deuteron", "triton", "He3")
+COMPONENT_NEUTRON_SPECIES = ("neutron", "anti_neutron")
+COMPONENT_OUTPUT_NAMES = (*COMPONENT_NAMES, "other")
+"""Stored channels: the six scored components plus ``other`` = unfiltered grid minus their sum (named heavy ions and rarer species)."""
+"""Steps of a neutron: local deposits of recoils below the production threshold are booked to the neutron step."""
+COMPONENT_HADRON_KE_EDGES_MEV = (20.0, 200.0)
+"""Charged-hadron kinetic-energy bins [0, 20), [20, 200), [200, inf) MeV; the fitting cut is chosen later by merging bins."""
 EXPECTED_PILOT_SCHEMA_VERSION = 2
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -237,6 +253,7 @@ class PilotConfig:
     samples: dict[str, SampleSpec]
     store_fine_prefix_deposits: bool
     output_dir: Path
+    component_tagging: bool = False
 
 
 def load_pilot_config(config_path: str | Path = PILOT_CONFIG) -> PilotConfig:
@@ -255,8 +272,8 @@ def load_pilot_config(config_path: str | Path = PILOT_CONFIG) -> PilotConfig:
         "store_fine_prefix_deposits",
         "output_dir",
     }
-    if not isinstance(raw, dict) or set(raw) != expected:
-        raise PilotConfigError(f"pilot configuration keys must be {sorted(expected)}")
+    if not isinstance(raw, dict) or set(raw) - {"component_tagging"} != expected:
+        raise PilotConfigError(f"pilot configuration keys must be {sorted(expected)} (plus optional component_tagging)")
     if raw["schema_version"] != EXPECTED_PILOT_SCHEMA_VERSION:
         raise PilotConfigError("unsupported pilot schema_version")
 
@@ -295,6 +312,7 @@ def load_pilot_config(config_path: str | Path = PILOT_CONFIG) -> PilotConfig:
         samples=samples,
         store_fine_prefix_deposits=bool(raw["store_fine_prefix_deposits"]),
         output_dir=PROJECT_ROOT / str(raw["output_dir"]),
+        component_tagging=bool(raw.get("component_tagging", False)),
     )
 
 
@@ -357,6 +375,8 @@ class EventResult:
     extension_deposit_grid_mev: np.ndarray | None
     extension_total_mev: float
     cpu_seconds: float
+    # name -> (fibre ids, fibre MeV, prefix voxel ids, prefix voxel MeV); None unless component tagging is on
+    components: dict[str, tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]] | None = None
 
 
 _NO_INTERACTION: dict[str, Any] = {
@@ -456,7 +476,9 @@ class ECALTransport:
         phi_rad: float,
         gun_z_mm: float,
         spot: EntrySpot,
+        component_tagging: bool = False,
     ) -> None:
+        self.component_tagging = component_tagging
         self.datasets = configure_geant4_data()
         import geant4_pybind as g4
 
@@ -754,6 +776,20 @@ class ECALTransport:
                 self.SetSensitiveDetector("Superlayer_x", matrix_sd)
                 self.SetSensitiveDetector("Superlayer_y", matrix_sd)
                 app._keep += [fibre_sd, fibre_scorer, matrix_sd, matrix_scorer]
+                if app.component_tagging:
+                    for name, scorer_filter in app._component_filters():
+                        tagged = g4.G4PSEnergyDeposit3D(
+                            f"edep_{name}",
+                            app.total_superlayers,
+                            1,
+                            layout.rows_per_superlayer * layout.max_fibres_per_row,
+                            1,
+                            2,
+                            0,
+                        )
+                        tagged.SetFilter(scorer_filter)
+                        fibre_sd.RegisterPrimitive(tagged)
+                        app._keep += [tagged, scorer_filter]
 
         return Detector()
 
@@ -805,8 +841,14 @@ class ECALTransport:
                     g4.G4SDManager.GetSDMpointer().AddNewDetector(detector)
                     scorer = g4.G4PSEnergyDeposit3D("edep", nz, ny, nx, 2, 1, 0)
                     detector.RegisterPrimitive(scorer)
-                    self.SetSensitiveDetector(logical, detector)
                     app._keep += [detector, scorer]
+                    if app.component_tagging and name == "prefixMesh":
+                        for component, scorer_filter in app._component_filters():
+                            tagged = g4.G4PSEnergyDeposit3D(f"edep_{component}", nz, ny, nx, 2, 1, 0)
+                            tagged.SetFilter(scorer_filter)
+                            detector.RegisterPrimitive(tagged)
+                            app._keep += [tagged, scorer_filter]
+                    self.SetSensitiveDetector(logical, detector)
 
         world = ScoringWorld("scoring")
         self._keep.append(world)
@@ -963,6 +1005,31 @@ class ECALTransport:
         )
         self._secondaries = (pdg, kinetic)
 
+    def _component_filters(self) -> list[tuple[str, object]]:
+        """One fresh Geant4 filter per component (a filter object belongs to one scorer)."""
+
+        g4 = self.g4
+        out: list[tuple[str, object]] = []
+        em = g4.G4SDParticleFilter("filter_em")
+        for species in COMPONENT_EM_SPECIES:
+            em.add(species)
+        out.append(("em", em))
+        edges = (0.0, *COMPONENT_HADRON_KE_EDGES_MEV, 1.0e12)
+        for name, low, high in zip(COMPONENT_NAMES[1:4], edges[:-1], edges[1:], strict=True):
+            hadrons = g4.G4SDParticleWithEnergyFilter(f"filter_{name}", low * g4.MeV, high * g4.MeV)
+            for species in COMPONENT_HADRON_SPECIES:
+                hadrons.add(species)
+            out.append((name, hadrons))
+        ions = g4.G4SDParticleFilter("filter_ion")
+        for species in COMPONENT_ION_SPECIES:
+            ions.add(species)
+        out.append(("ion", ions))
+        neutrons = g4.G4SDParticleFilter("filter_neutron")
+        for species in COMPONENT_NEUTRON_SPECIES:
+            neutrons.add(species)
+        out.append(("neutron", neutrons))
+        return out
+
     def _hits(self, hce, name: str) -> tuple[np.ndarray, np.ndarray]:
         sdm = self.g4.G4SDManager.GetSDMpointer()
         collection_id = sdm.GetCollectionID(name)
@@ -993,6 +1060,15 @@ class ECALTransport:
                 extended_layer_count(self.geometry, self.transport),
             ).grid_mev.astype(np.float32)
             extension_total = float(ext_edep.sum())
+        components = None
+        if self.component_tagging:
+            components = {
+                name: (
+                    *self._hits(hce, f"fibreSD/edep_{name}"),
+                    *self._hits(hce, f"prefixMesh/edep_{name}"),
+                )
+                for name in COMPONENT_NAMES
+            }
         xcheck = asdict(first_inelastic_interaction(self._records))
         local = event.GetEventID()
         self._results.append(
@@ -1021,6 +1097,7 @@ class ECALTransport:
                 extension_deposit_grid_mev=extension_grid,
                 extension_total_mev=extension_total,
                 cpu_seconds=time.perf_counter() - self._t0,
+                components=components,
             )
         )
 
@@ -1135,6 +1212,21 @@ def _assemble(
         "edep_total_mev": np.array([r.prefix_voxel_edep_mev.sum() for r in results]),
         "unmapped_scintillator_mev": unmapped_scint,
     }
+    if results and results[0].components is not None:
+        component_readout = np.zeros((n, len(COMPONENT_OUTPUT_NAMES), layers, cells), np.float32)
+        component_deposit = np.zeros((n, len(COMPONENT_OUTPUT_NAMES), layers, cells), np.float32)
+        for i, r in enumerate(results):
+            for k, name in enumerate(COMPONENT_NAMES):
+                ids, edep, voxels, voxel_edep = r.components[name]
+                lay, cel = fibre_layer[ids], fibre_cell[ids]
+                mapped = (lay >= 0) & (cel >= 0) & (lay < layers)
+                np.add.at(component_readout[i, k], (lay[mapped], cel[mapped]), edep[mapped])
+                x, y, z = prefix_grid.centres_mm(voxels)
+                component_deposit[i, k] = project_deposits(x, y, z, voxel_edep, geometry).grid_mev
+        component_readout[:, -1] = np.maximum(readout[:, :layers] - component_readout[:, :-1].sum(axis=1), 0.0)
+        component_deposit[:, -1] = np.maximum(deposit - component_deposit[:, :-1].sum(axis=1), 0.0)
+        out["component_readout_grid_mev"] = component_readout
+        out["component_deposit_grid_mev"] = component_deposit
     if extended_deposit is not None:
         out["extended_readout_grid_mev"] = readout
         out["extended_deposit_grid_mev"] = extended_deposit
@@ -1177,6 +1269,7 @@ def _setup(pilot: PilotConfig, spec: SampleSpec, geometry, transport) -> dict[st
         "phi_rad": pilot.phi_rad,
         "gun_z_mm": pilot.gun_z_mm,
         "spot": spec.entry_spot,
+        "component_tagging": pilot.component_tagging,
     }
 
 
@@ -1305,6 +1398,20 @@ def run_batch(
             "first step of the primary (track 1) whose post-step defining process is "
             "hadronic and named *Inelastic; hadElastic steps counted separately; "
             "cross-checked by the earliest *Inelastic secondary of the primary (xcheck_*)"
+        ),
+        "component_tagging": (
+            {
+                "names": list(COMPONENT_OUTPUT_NAMES),
+                "scored_names": list(COMPONENT_NAMES),
+                "em_species": list(COMPONENT_EM_SPECIES),
+                "hadron_species": list(COMPONENT_HADRON_SPECIES),
+                "ion_species": list(COMPONENT_ION_SPECIES),
+                "neutron_species": list(COMPONENT_NEUTRON_SPECIES),
+                "hadron_ke_edges_mev": list(COMPONENT_HADRON_KE_EDGES_MEV),
+                "other": "unfiltered grid minus the six scored components, floored at zero (heavy nuclear fragments with their own particle names, rarer species)",
+            }
+            if pilot.component_tagging
+            else None
         ),
         "workers": workers,
         "wall_seconds": wall,
