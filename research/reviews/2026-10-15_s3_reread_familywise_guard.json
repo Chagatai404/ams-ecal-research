@@ -1,0 +1,37 @@
+{
+ "20_deposit_grid_mev": {
+  "trials": 1000,
+  "permutations": 999,
+  "usable_statistics_median": 8.0,
+  "westfall_young_fwer": 0.051,
+  "holm_fwer": 0.038,
+  "unadjusted_minimum_p_rate": 0.252,
+  "tolerance": 0.07067607312813534,
+  "passes": true
+ },
+ "20_readout_grid_mev": {
+  "trials": 1000,
+  "not_testable": true,
+  "usable_statistics_median": 0
+ },
+ "100_deposit_grid_mev": {
+  "trials": 1000,
+  "permutations": 999,
+  "usable_statistics_median": 24.0,
+  "westfall_young_fwer": 0.058,
+  "holm_fwer": 0.041,
+  "unadjusted_minimum_p_rate": 0.505,
+  "tolerance": 0.07067607312813534,
+  "passes": true
+ },
+ "100_readout_grid_mev": {
+  "trials": 1000,
+  "permutations": 999,
+  "usable_statistics_median": 8.0,
+  "westfall_young_fwer": 0.057,
+  "holm_fwer": 0.041,
+  "unadjusted_minimum_p_rate": 0.251,
+  "tolerance": 0.07067607312813534,
+  "passes": true
+ }
+}
