@@ -280,6 +280,52 @@ Paper 1, simulation-based: finite-scale structure, hadronic heterogeneity, coars
 4. **S5a** in parallel: literature only; it unblocks DECIDE-6, now on the critical path.
 5. **S3** after S1: re-reads the existing Geant4 evidence with valid tools before any new production.
 
+## 19. PROPOSED road to the machine-learning benchmarks (2026-10-15) — nothing here is accepted; every duration and cost is an estimate, not a measurement
+
+_Requested by the researcher on 2026-10-15 ("plan ahead in detail, what have we left to do until we can start ML benchmarks"). New work is named by what it does (rule of 2026-10-02), not numbered._
+
+### 19.1 What "ready to start" means (proposed definition)
+
+- **Exploratory dry run (no claims):** the benchmark harness on the existing ideal-regime development-large data (electrons 10,000 and protons 20,000 per energy at 10-100 GeV). Purpose: debug the harness, measure learning-curve and compute scale, find leakage. Can start as soon as the harness exists (work package "benchmark protocol and harness"); it does not need S4 or new production.
+- **Registered benchmarks (the Paper 1 numbers):** conventional-feature gradient boosting, raw-image models (MLP, CNN, ResNet, CvT-like, Hashmani et al. style) and the same with finite-scale features, at detector level in the AMS-like regime, evaluated for P4 (rejection at fixed electron efficiency) and P5 (efficiency: learning curves, model size and time). Entry conditions, all required: (1) the amendment signed and frozen; (2) the benchmark protocol registered before any evaluation event is looked at; (3) detector-level dataset v1 produced with passing checks; (4) R-A and R-B in place with sensitivity scans; (5) harness reviewed; (6) independent reviews done (on the researcher's command); (7) role-disjoint sets and electron-calibration thresholds fixed.
+
+### 19.2 Work packages (dependencies in the second column)
+
+| work package | depends on | what is done | researcher input | estimate |
+|---|---|---|---|---|
+| Housekeeping | nothing | push the local commits (the permission check blocked the agent's push; the researcher pushes or allows it); commit the run records; register the component and large-proton samples in `sample_definitions.py` and `data_manifest.json`; record the proton reproducibility caveat (6 of 300 events); unit test for `run_proton_split`; rerun the full suite (916 passed on 2026-10-11); refresh STATE and the research graph | push or allow | 0.5-1 day |
+| Re-read of the existing evidence with valid tools (S3) | housekeeping, S1 tools | ablations, view-aware readout statistics, cut and EMZ variants (EMV after its diagnosis), occupancy- and morphology-matched hard subsets, proton smooth-baseline look, cell-shuffle null; registration of which statistics use B = 10,000 and which a smaller B; Westfall-Young only after the 1,000-trial family-wise check per family, otherwise Holm | list of secondary statistics | 3-5 days, CPU-hours |
+| Fine-scale and degradation analysis (S4) | S3 tools, R-A decision | 3D estimator controls (A4) on the fine voxels (stored in `electron_train`, `proton_train`, the sample and pilot sets, so no new generation is needed), 3D eligibility, planted-structure recovery, depth-resolved statistics, paired degradation curves fine -> 9 mm 3D -> fibre energy (R-A) -> one view per layer | none | 4-6 days |
+| Detector-response completion | R-A decision | R-A: either accept the unsplit class tables (closure 3-8% on the development set, 4-5.5% on the large tagged set) or register one more version; electrons beyond 200 GeV are an unvalidated extrapolation of the tables (fitted 10-100 GeV; a tagged 200 GeV sample exists); R-B: scan design (gain, photoelectrons, cross-talk, threshold, order B2) with provenance labels, no value without evidence | R-A choice; scan ranges | 2-3 days |
+| Amendment, freeze and review | S2 draft, S4 | update the draft's multiplicity item (it still says BH for secondaries; now Westfall-Young with the guard, Holm otherwise, B = 10,000); planted-control criteria; the dated addendum after S4 (window, boxes, strata); statistics review of the frozen code (SV-9); tag and hash | approve P1-P5, freezing rule, headline null acceptable, P5 model/compute as a sixth family or a secondary, DECIDE-2 exit date and the two seed collisions, INSPIRE trace | 2-3 days + review latency |
+| Realistic-regime design and generator | DECIDE-9, detector-response completion | spectra (electron and proton), angular distribution, full-face entry, ECAL-only, backsplash and material; today the generator has normal incidence and a 9 x 9 mm spot only, so angles and full-face entry are backend changes with a control run (reproduce the normal-incidence case) | DECIDE-9; spectra and angular range | 3-5 days |
+| Production | generator + control | protons >= 1e6 (P4 needs >= 3e4 evaluation protons per claimed 1e4 rejection; about 1e6 for a measured 1e4 at 10%) and electrons >= 1e5-3e5; roles train / validation / calibration / evaluation with 63-bit seeds; new sealed sets for the confirmatory test (DECIDE-2). Cost under assumed spectra (proton E^-2.7 and electron E^-3 between 10 and 1000 GeV, from the measured 0.39-2.31 s per proton event and 0.25-0.30 s per GeV per electron): mean proton about 0.6 s, so 1e6 about 12 h; mean electron about 5.5 s, so 3e5 about 33 h, on the 14 workers of this machine | spectra, sample sizes | 2-4 days wall |
+| Detector-level dataset v1 | production, R-A, R-B | apply the response (with the scans), roles and manifest, checks D1-D9, label-leakage check (F4), KS thresholds re-registered (DECIDE-7), question 9 | thresholds | 2-3 days |
+| Benchmark protocol and harness | amendment text (for P4/P5); runs in parallel with production | registered protocol: classifier list and budgets, tuning discipline, energy-only, logistic and same-class baselines (SV-7), metrics (censored Clopper-Pearson rejection, log-loss learning curves, parameters, time), uncertainty procedure (nested or whole-pipeline bootstrap, with a coverage test on same-class data; seeds are not the uncertainty), leakage controls; dry run on the existing data. The machine has an RTX 4050 (6 GB) and 15 GB RAM; PyTorch is not installed in the project environment (a dependency decision); 1e6 events x 18 x 72 is 5.2 GB in float32, 2.6 GB in float16 (memory-mapped) | install PyTorch; classifier list | 4-6 days |
+| Independent reviews | frozen code and protocol | statistics (SV-9), ML (leakage, fair comparison), simulation (production), physics (R-A/R-B), reproducibility audit | the command to release them | latency unknown |
+| Learning and defence track | runs throughout | sampling calorimetry, the meaning of the ratios, fractals from zero (F0.5 onward), permutation and multiplicity ideas, one claim card per result, spaced retrieval | start T1 | in parallel |
+
+### 19.3 Critical path
+
+housekeeping -> S3 and detector-response completion (parallel) -> S4 -> amendment, freeze and review -> realistic-regime design -> production -> dataset v1 -> registered benchmarks. The protocol and harness run in parallel from the moment the amendment text is settled, and the dry run needs only existing data. If decisions arrive promptly the whole chain is about 4-6 weeks of working time, 3-6 days of which is compute. The estimate is dominated by the researcher's decisions and the review latency, not by compute.
+
+### 19.4 What would change the plan
+
+- A null result in S3 or S4 (the literature-plausible outcome): the benchmarks still run, because P5 and the efficiency curves are reportable whatever the finite-scale features do; the claims shrink, not the programme.
+- R-A not meeting the 3% closure in the realistic regime: report the disclosed systematic in the degradation curves and the benchmarks; a new R-A version only by the researcher's go.
+- Electron energies above 200 GeV: R-A is an extrapolation there; cap the electron spectrum at 200 GeV (the cheapest honest choice) or tag a higher-energy electron sample.
+- Cost: cloud or fewer events change the schedule, not the design; the GPU is small, so ResNet and CvT-like models need small batches and float16.
+- The reviews may invalidate a result; their findings are fixed before the registration, not after.
+
+### 19.5 Decisions needed, in the order they block work
+
+1. Push the local commits (or allow the push).
+2. R-A: accept the unsplit class tables as the working version, or one more registered version.
+3. Approve, change or reject P1-P5, the freezing rule and the planted-control criteria; is the headline null acceptable?; a sixth family for model/compute efficiency?; DECIDE-2 exit date and the two seed collisions.
+4. DECIDE-9 (incidence angle is required for the realistic regime, backsplash, material) and the spectra and sizes.
+5. Install PyTorch; the classifier list for the benchmarks.
+6. Release the reviewers.
+
 ---
 
 # APPENDICES — retired plans, verbatim

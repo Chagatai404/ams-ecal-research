@@ -33,10 +33,11 @@ SHARE_EDGES = (
 )  # bins [0, .3), [.3, .5), [.5, .65), [.65, .8), [.8, .9), [.9, 1]
 N_BINS = len(SHARE_EDGES) + 1
 ROOT = PROJECT_ROOT / "data" / "geant4_component_proton" / "train"
+LARGE_ROOT = PROJECT_ROOT / "data" / "geant4_component_proton_large" / "train"  # 20,000 per energy at 10, 20, 50, 100 GeV
 
 
-def load_energy(energy: float) -> dict[str, np.ndarray]:
-    with np.load(ROOT / f"E{energy:g}GeV" / "events.npz") as data:
+def load_energy(energy: float, root=ROOT) -> dict[str, np.ndarray]:
+    with np.load(root / f"E{energy:g}GeV" / "events.npz") as data:
         components = data["component_deposit_grid_mev"]
         em = components[:, 0].sum(axis=(1, 2), dtype=np.float64)
         total = np.maximum(components.sum(axis=(1, 2, 3), dtype=np.float64), 1e-12)
@@ -128,11 +129,16 @@ def _row(
     }
 
 
-def run() -> dict[str, Any]:
+def run(dataset: str = "small") -> dict[str, Any]:
+    """``small``: the 5,000-per-energy set of design section 17; ``large``: the 20,000-per-energy repeat of section 19 (same
+    rules, bin edges and criteria; leave-one-energy-out at 20 and 50 GeV, the 5 and 200 GeV energies are not in that set)."""
+
+    root = LARGE_ROOT if dataset == "large" else ROOT
+    held_energies = (20.0, 50.0) if dataset == "large" else (5.0, 20.0, 50.0, 200.0)
     energies = sorted(
-        float(re.findall(r"[\d.]+", p.name)[0]) for p in ROOT.glob("E*GeV")
+        float(re.findall(r"[\d.]+", p.name)[0]) for p in root.glob("E*GeV")
     )
-    parts = [load_energy(e) for e in energies]
+    parts = [load_energy(e, root) for e in energies]
     rng = np.random.default_rng(SEED)
     even = [p["index"] % 2 == 0 for p in parts]
     odd = [~m for m in even]
@@ -151,7 +157,7 @@ def run() -> dict[str, Any]:
         models = _fit(parts, even, by_bin, label)
         for e, p, m in zip(energies, parts, odd, strict=True):
             result["in_sample_energies"][label][f"{e:g}"] = _row(models, p, m, rng)
-        for held in (5.0, 20.0, 50.0, 200.0):
+        for held in held_energies:
             keep = [i for i, e in enumerate(energies) if e != held]
             models = _fit(
                 [parts[i] for i in keep],
@@ -163,14 +169,20 @@ def run() -> dict[str, Any]:
             result["leave_one_energy_out"][label][f"{held:g}"] = _row(
                 models, parts[i], odd[i], rng
             )
-    (RESULT_PATH.parent / "r_a_proton_em_share_closure.json").write_text(
+    name = "r_a_proton_em_share_large_closure.json" if dataset == "large" else "r_a_proton_em_share_closure.json"
+    result["dataset"] = dataset
+    (RESULT_PATH.parent / name).write_text(
         json.dumps(result, indent=1), encoding="utf-8"
     )
     return result
 
 
-def main() -> None:
-    result = run()
+def main(argv: list[str] | None = None) -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--dataset", choices=("small", "large"), default="small")
+    result = run(parser.parse_args(argv).dataset)
     for section in ("in_sample_energies", "leave_one_energy_out"):
         print(section)
         for label in ("share_conditioned", "baseline"):

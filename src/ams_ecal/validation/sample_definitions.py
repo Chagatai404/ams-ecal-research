@@ -65,7 +65,7 @@ class Role(Enum):
 @dataclass(frozen=True)
 class SampleSpec:
     name: str
-    particle: str  # "electron" | "proton"
+    particle: str  # "electron" | "proton"; the component sets add "pion" and "muon" (validation particles; populations are proton-only)
     role: Role
     directory: str  # relative to a data root; holds ``E<energy>GeV/events.npz`` and ``metadata.json``
     held_out: HeldOutPolicy
@@ -154,6 +154,59 @@ SAMPLES: dict[str, SampleSpec] = {
             "geant4_electron_syst_emv_both_reverted/emv_both_reverted",
             HeldOutPolicy.NONE,
             "1 x 2000 electrons at 20 GeV, FTFP_BERT_EMV with both parameters reverted (closure test); same base seed 20272005",
+        ),
+        SampleSpec(
+            "component_electron",
+            "electron",
+            Role.DEVELOPMENT,
+            "geant4_component_electron/train",
+            HeldOutPolicy.NONE,
+            "6 x 2000 electrons (5-200 GeV) with component tags (component_*_grid_mev, 7 channels); base seed 20273001; generated "
+            "with the component-tagging patch uncommitted at the time (metadata tracked_changes true, committed in 11cba53)",
+        ),
+        SampleSpec(
+            "component_proton",
+            "proton",
+            Role.DEVELOPMENT,
+            "geant4_component_proton/train",
+            HeldOutPolicy.NONE,
+            "6 x 5000 protons (5-200 GeV) with component tags, base seed 20273002; 6 of 300 events differ from the stored untagged "
+            "development file at 10 GeV with the same seeds and another worker count (cause unknown, not caused by tagging); "
+            "seed 50181583 is also in the 10 GeV event list of component_proton_large (ledgered)",
+        ),
+        SampleSpec(
+            "component_pion",
+            "pion",
+            Role.DEVELOPMENT,
+            "geant4_component_pion/train",
+            HeldOutPolicy.NONE,
+            "6 x 2000 pi+ (5-200 GeV) with component tags, base seed 20273003; validation particle only (PA.5)",
+        ),
+        SampleSpec(
+            "component_muon",
+            "muon",
+            Role.DEVELOPMENT,
+            "geant4_component_muon/train",
+            HeldOutPolicy.NONE,
+            "6 x 2000 mu- (5-200 GeV) with component tags, base seed 20273004; validation particle only (PA.5)",
+        ),
+        SampleSpec(
+            "component_proton_qbbc",
+            "proton",
+            Role.SYSTEMATIC,
+            "geant4_component_proton_qbbc/train",
+            HeldOutPolicy.NONE,
+            "2 x 5000 protons (10, 100 GeV), physics list QBBC, with component tags, base seed 20273005; the physics-list systematic",
+        ),
+        SampleSpec(
+            "component_proton_large",
+            "proton",
+            Role.DEVELOPMENT,
+            "geant4_component_proton_large/train",
+            HeldOutPolicy.NONE,
+            "4 x 20,000 protons (10, 20, 50, 100 GeV) with component tags, base seed 20274001, run 2026-10-15; 3 events share a seed "
+            "with an existing proton set of the same energy and geometry (50181583 component_proton 10 GeV, 2025251122 "
+            "proton_development_large 20 GeV, 879865327 proton_pilot 10 GeV): do not pool without removing them",
         ),
         SampleSpec("electron_sealed", "electron", Role.SEALED, "geant4_electron_sealed/sealed", HeldOutPolicy.SEALED),
         SampleSpec("proton_sealed", "proton", Role.SEALED, "geant4_proton_sealed/sealed", HeldOutPolicy.SEALED),

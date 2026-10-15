@@ -1,0 +1,40 @@
+# Larger component-tagged proton calibration for R-A (researcher's approval 2026-10-15; design sections 17-18 of the particle-agnostic R-A design).
+# Purpose: the share-conditioned proton table failed its registered test with only ~2,500 fitted events per energy; this set has the size
+# of the development-large set (20,000 per energy) and carries component tags (electromagnetic share). EXPOSED development data, never a
+# validation set. Base seed 20274001 used nowhere else.
+# Seed check (2026-10-15, production event_seeds against all 14 configured sets, sealed included, no sealed event read): 80,000 planned
+# seeds, 7 collisions with 259,219 existing ones (chance level for a 31-bit space; none sealed). Same particle, energy and geometry as an
+# existing proton set (identical events in two files, ledgered): seed 50181583 (component_proton 10 GeV), 2025251122 (proton_train 20 GeV),
+# 879865327 (proton pilot baseline 10 GeV). Others differ in particle, physics list or geometry. Do not pool this set with those three
+# without removing the duplicates.
+schema_version: 2
+
+particle: proton
+
+energies_gev: [10.0, 20.0, 50.0, 100.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  train:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 20000
+    base_seed: 20274001
+
+store_fine_prefix_deposits: false
+component_tagging: true
+
+output_dir: data/geant4_component_proton_large
