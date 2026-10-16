@@ -16,6 +16,7 @@ src/ams_ecal/                      tests/
 ├── proton_model/                  ├── proton_model/
 ├── multiscale_estimators/         ├── multiscale_estimators/
 ├── validation/                    ├── validation/
+├── benchmarks/                    ├── benchmarks/
 └── geant4_simulation/             └── geant4_simulation/
 ```
 
@@ -42,6 +43,11 @@ event, configuration and geometry classes (`from ams_ecal import ECALEvent, load
 | `readout.py` | `test_readout.py` | Fibre orientation, coordinate to cell index, track projection to cell indices. | infrastructure |
 | `event.py` | `test_event.py` | The canonical event record (`ECALEvent`) and its provenance (`EventProvenance`) that every generator fills. | infrastructure |
 | `transport_geometry.py` | `test_transport_geometry.py` | Detailed-transport geometry derived from the canonical ECAL. | infrastructure |
+| `sampling_response.py` | `test_sampling_response.py` | R-A: the sampling response from true deposit to fibre energy as class tables of the ratio R/D, fitted per particle class (electron tables pass the registered 3% closure at 10-100 GeV; proton tables do not). | calibration |
+| `sampling_response_validation.py` | `test_sampling_response_proton_split.py` | The registered closure rule and fits of R-A (electron, proton, split proton) → `results/detector_response/`. | control |
+| `component_sampling_response.py`, `component_sampling_response_validation.py` | `test_component_sampling_response.py` | The component-wise (particle-agnostic) mean model on the tagged Geant4 sets and its registered criteria (not met). | analysis only |
+| `sampling_response_em_share.py` | `test_sampling_response_em_share.py` | Proton tables conditioned on the electromagnetic share of the deposit (registered, not met; data-starved on the small set). | analysis only |
+| `readout_response.py` | `test_readout_response.py` | R-B: Poisson photoelectrons, gain map, cross-talk, threshold with provenance labels; sensitivity scans only. | infrastructure |
 
 ## 2. `electron_model/` — the electron / EM generators (DEC-001 baseline; em_production Slice 1 candidate)
 
@@ -104,6 +110,10 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 | `multiscale.py` | `test_multiscale.py` | Multiscale estimators of non-negative deposit images (EXP-008, DEC-010). | analysis only |
 | `multiscale_controls.py` | `test_multiscale_controls.py` | Synthetic controls and pre-registered acceptance rules; run with `python -m ams_ecal.multiscale_estimators.multiscale_controls` → `results/multiscale_controls/`. | control |
 | `ladder_sanity_audit.py` | `test_ladder_sanity_audit.py` | Slice S0: is the near-perfect electron/proton separation an implementation error? Same-class nulls, label permutation, fold-seed spread, duplicates and seed overlap, a duplicate-injection positive control, energy-only and logistic baselines, the eligibility-indicator-only rung, feature-family and layer-block ablations, the energy-blind pooled test. Expectations are fixed in the module docstring before any run. → `results/sanity_audit/`; record `research/reviews/2026-10-11_s0_sanity_audit.md`. | analysis + control |
+| `multiscale_verdict_reread.py` | `test_multiscale_verdict_reread.py` | S3 stage 1: vectorized stratified-KS permutation engine and the valid re-read of the 192 development KS verdicts → `results/multiscale_controls/s3_reread_*`. | analysis only |
+| `multiscale_shuffle_excess.py` | `test_multiscale_shuffle_excess.py` | S3 stage 2: cell-shuffle excess of the 24 statistics (full-layer and 9-cell-block surrogates). | analysis only |
+| `multiscale_matched_pairs.py` | `test_multiscale_matched_pairs.py` | S3 stage 3: caliper matching on occupied cells and deposited energy, pair-swap permutation test, same-class guard. | analysis only |
+| `multiscale_3d.py` | `test_multiscale_3d.py` | S4 part 1: the 3D multiscale estimator on the fine voxels with synthetic controls and a control-derived eligibility (negative under the registered rules). | control |
 
 ## 6. `validation/` — dataset, added checks and the sealed-set guard
 
@@ -136,6 +146,12 @@ Record: `research/reviews/2026-10-11_s1_statistical_foundations.md`. None of the
 | `multiplicity.py` | `test_multiplicity.py` | Benjamini-Hochberg, Holm, Westfall-Young step-down, one named primary per family. | analysis tool |
 | `claim_specification.py` | `test_claim_specification.py` | The estimand-to-failure claim template, with a digest. | process tool |
 | `coverage_simulations.py` | `test_coverage_simulations.py` | Coverage and type-I-error simulations of all of the above, including real development-electron halves. | control |
+
+## 9. `benchmarks/` — classifier benchmark harness
+
+| Module | Test | What it is | Status |
+|---|---|---|---|
+| `learning_curves.py` | `test_learning_curves.py` | Role-separated learning curves of electron/proton classifiers: class-balanced log-loss, proton rejection with exact limits, boosted trees, logistic regression and a small GPU network; registered DRY RUN on existing development data, no claims. | infrastructure + analysis only |
 
 ## Test conventions (what a passing test means here)
 
