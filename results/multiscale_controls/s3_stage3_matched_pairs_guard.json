@@ -1,0 +1,11 @@
+{
+ "trials": 1000,
+ "permutations": 999,
+ "pair_cap": 150,
+ "usable_statistics_median": 8.0,
+ "westfall_young_fwer": 0.039,
+ "holm_fwer": 0.024,
+ "unadjusted_minimum_p_rate": 0.201,
+ "tolerance": 0.07067607312813534,
+ "passes": true
+}

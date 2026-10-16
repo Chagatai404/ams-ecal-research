@@ -1,0 +1,4281 @@
+{
+ "registration": "research/plans/2026-10-16_s3_stage3_matched_pairs_registration.md",
+ "status": "EXPLORATORY; exposed development data; no sealed set read",
+ "permutations": 10000,
+ "results": [
+  {
+   "electron_gev": 20.0,
+   "proton_gev": 50.0,
+   "representation": "deposit_grid_mev",
+   "caliper_sd": 0.25,
+   "eligible_electrons": 9101,
+   "eligible_protons": 7811,
+   "pairs": 100,
+   "matched_fraction_electrons": 0.01098780353807274,
+   "matched_fraction_protons": 0.012802458071949815,
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.03480552114498303,
+    0.030450263559100157
+   ],
+   "balanced": true,
+   "testable": true,
+   "families": {
+    "raw": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.12999996185302734,
+      "floor_95th": 0.13999998092651367,
+      "p_value": 0.09109089091090891,
+      "westfall_young_in_family": 0.5904409559044096,
+      "holm_in_family": 0.36436356364363565,
+      "bh_q": 0.14574542545745425,
+      "median_difference_electron_minus_proton": [
+       -0.002707464173445584,
+       -0.00828356487266202,
+       0.003055878438775528
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.31,
+      "floor_95th": 0.18000000190734863,
+      "p_value": 0.00019998000199980003,
+      "westfall_young_in_family": 0.00039996000399960006,
+      "holm_in_family": 0.000999900009999,
+      "bh_q": 0.00039996000399960006,
+      "median_difference_electron_minus_proton": [
+       0.013544842827460934,
+       -0.008638660820372568,
+       0.03557061600858846
+      ],
+      "westfall_young_all_families": 0.0035996400359964006,
+      "holm_all_families": 0.008999100089991
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.13000000953674318,
+      "floor_95th": 0.19,
+      "p_value": 0.32786721327867213,
+      "westfall_young_in_family": 0.5904409559044096,
+      "holm_in_family": 0.982101789821018,
+      "bh_q": 0.3747053866041967,
+      "median_difference_electron_minus_proton": [
+       0.0009110065371104037,
+       -0.017077523298114603,
+       0.02605475646777683
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.11000001907348633,
+      "floor_95th": 0.18,
+      "p_value": 0.5224477552244775,
+      "westfall_young_in_family": 0.5904409559044096,
+      "holm_in_family": 0.982101789821018,
+      "bh_q": 0.5224477552244775,
+      "median_difference_electron_minus_proton": [
+       -0.004017114636124253,
+       -0.034740258246614024,
+       0.023011321063478817
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.12000001907348633,
+      "floor_95th": 0.17999998092651368,
+      "p_value": 0.32736726327367266,
+      "westfall_young_in_family": 0.5904409559044096,
+      "holm_in_family": 0.982101789821018,
+      "bh_q": 0.3747053866041967,
+      "median_difference_electron_minus_proton": [
+       -0.004870380946703001,
+       -0.021050829519991154,
+       0.01875782532876502
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.5,
+      "floor_95th": 0.19000001907348632,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00026664000266640004,
+      "median_difference_electron_minus_proton": [
+       -0.0515318277266027,
+       -0.068288602112199,
+       -0.030753355609514976
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.5499999618530274,
+      "floor_95th": 0.20000003814697265,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00026664000266640004,
+      "median_difference_electron_minus_proton": [
+       -0.0952095578149284,
+       -0.10959696083466852,
+       -0.07621663864082806
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.44,
+      "floor_95th": 0.19000005722045898,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00026664000266640004,
+      "median_difference_electron_minus_proton": [
+       0.09446797832155718,
+       0.06148066509554628,
+       0.11580758997606222
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ],
+    "excess_full": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.16000001907348632,
+      "floor_95th": 0.18,
+      "p_value": 0.09929007099290071,
+      "westfall_young_in_family": 0.21027897210278973,
+      "holm_in_family": 0.29427057294270575,
+      "bh_q": 0.11347436684902938,
+      "median_difference_electron_minus_proton": [
+       -0.0015015519227121743,
+       -0.007083188706629828,
+       0.004171521626286534
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.2700000190734863,
+      "floor_95th": 0.19,
+      "p_value": 0.0014998500149985001,
+      "westfall_young_in_family": 0.0037996200379962005,
+      "holm_in_family": 0.010498950104989501,
+      "bh_q": 0.0047995200479952005,
+      "median_difference_electron_minus_proton": [
+       0.01756516781283024,
+       0.007635969907743408,
+       0.028919000381772385
+      ],
+      "westfall_young_all_families": 0.03419658034196581,
+      "holm_all_families": 0.09449055094490551
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.26000001907348635,
+      "floor_95th": 0.19,
+      "p_value": 0.0023997600239976003,
+      "westfall_young_in_family": 0.005499450054994501,
+      "holm_in_family": 0.012598740125987402,
+      "bh_q": 0.0047995200479952005,
+      "median_difference_electron_minus_proton": [
+       0.023122645029620692,
+       0.011062207081237388,
+       0.03645130675009062
+      ],
+      "westfall_young_all_families": 0.0494950504949505,
+      "holm_all_families": 0.11338866113388661
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.14000001907348633,
+      "floor_95th": 0.18000003814697266,
+      "p_value": 0.23717628237176283,
+      "westfall_young_in_family": 0.23717628237176283,
+      "holm_in_family": 0.29427057294270575,
+      "bh_q": 0.23717628237176283,
+      "median_difference_electron_minus_proton": [
+       -0.01969755518663696,
+       -0.037173404629532836,
+       -0.006816740420196247
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.16000001907348632,
+      "floor_95th": 0.18,
+      "p_value": 0.09809019098090191,
+      "westfall_young_in_family": 0.21027897210278973,
+      "holm_in_family": 0.29427057294270575,
+      "bh_q": 0.11347436684902938,
+      "median_difference_electron_minus_proton": [
+       -0.006075267651616145,
+       -0.027652951036219786,
+       0.01519745427805419
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.25000003814697264,
+      "floor_95th": 0.18,
+      "p_value": 0.0020997900209979003,
+      "westfall_young_in_family": 0.0057994200579942,
+      "holm_in_family": 0.012598740125987402,
+      "bh_q": 0.0047995200479952005,
+      "median_difference_electron_minus_proton": [
+       0.020584433830560467,
+       0.011504508414428516,
+       0.03674823815960637
+      ],
+      "westfall_young_all_families": 0.0521947805219478,
+      "holm_all_families": 0.11338866113388661
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.30000001907348633,
+      "floor_95th": 0.19,
+      "p_value": 0.00029997000299970003,
+      "westfall_young_in_family": 0.0007999200079992001,
+      "holm_in_family": 0.0023997600239976003,
+      "bh_q": 0.0023997600239976003,
+      "median_difference_electron_minus_proton": [
+       0.029048680219588008,
+       0.013698770131616467,
+       0.04910139292180669
+      ],
+      "westfall_young_all_families": 0.007199280071992801,
+      "holm_all_families": 0.021597840215978402
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.18,
+      "floor_95th": 0.18,
+      "p_value": 0.06629337066293371,
+      "westfall_young_in_family": 0.15698430156984303,
+      "holm_in_family": 0.26517348265173485,
+      "bh_q": 0.10606939306069393,
+      "median_difference_electron_minus_proton": [
+       -0.026725331407400188,
+       -0.055267514056566935,
+       0.0014240200499505695
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ],
+    "excess_block9": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.15000000953674317,
+      "floor_95th": 0.18,
+      "p_value": 0.1648835116488351,
+      "westfall_young_in_family": 0.39476052394760525,
+      "holm_in_family": 0.9893010698930107,
+      "bh_q": 0.3297670232976702,
+      "median_difference_electron_minus_proton": [
+       -0.0009338386910117125,
+       -0.002941888767293066,
+       0.00026696812298909744
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.17000001907348633,
+      "floor_95th": 0.18,
+      "p_value": 0.0756924307569243,
+      "westfall_young_in_family": 0.25447455254474555,
+      "holm_in_family": 0.6055394460553944,
+      "bh_q": 0.3027697230276972,
+      "median_difference_electron_minus_proton": [
+       -0.0022796803771110152,
+       -0.004178371919026036,
+       -0.0005848715628118395
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.11000001907348633,
+      "floor_95th": 0.19000001907348632,
+      "p_value": 0.5589441055894411,
+      "westfall_young_in_family": 0.5589441055894411,
+      "holm_in_family": 1.0,
+      "bh_q": 0.5589441055894411,
+      "median_difference_electron_minus_proton": [
+       0.0025690681070767996,
+       -0.0030413967553026833,
+       0.0064046063478525594
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.13999998092651367,
+      "floor_95th": 0.19,
+      "p_value": 0.2706729327067293,
+      "westfall_young_in_family": 0.3962603739626037,
+      "holm_in_family": 1.0,
+      "bh_q": 0.3608972436089724,
+      "median_difference_electron_minus_proton": [
+       -0.0019306752522040838,
+       -0.00619667186569714,
+       0.0009746295914838355
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.15000000953674317,
+      "floor_95th": 0.18,
+      "p_value": 0.1648835116488351,
+      "westfall_young_in_family": 0.39476052394760525,
+      "holm_in_family": 0.9893010698930107,
+      "bh_q": 0.3297670232976702,
+      "median_difference_electron_minus_proton": [
+       -0.0037783042367817155,
+       -0.011967158953151813,
+       0.0009319101997484758
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.17000001907348633,
+      "floor_95th": 0.18,
+      "p_value": 0.0756924307569243,
+      "westfall_young_in_family": 0.25447455254474555,
+      "holm_in_family": 0.6055394460553944,
+      "bh_q": 0.3027697230276972,
+      "median_difference_electron_minus_proton": [
+       -0.009223569456107583,
+       -0.016905660984557924,
+       -0.0023543033030905764
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.11000001907348633,
+      "floor_95th": 0.19000001907348632,
+      "p_value": 0.5589441055894411,
+      "westfall_young_in_family": 0.5589441055894411,
+      "holm_in_family": 1.0,
+      "bh_q": 0.5589441055894411,
+      "median_difference_electron_minus_proton": [
+       0.01039443000914303,
+       -0.008513083015258105,
+       0.025912988540662707
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 100,
+      "testable": true,
+      "observed_ks": 0.13999998092651367,
+      "floor_95th": 0.19,
+      "p_value": 0.2706729327067293,
+      "westfall_young_in_family": 0.3962603739626037,
+      "holm_in_family": 1.0,
+      "bh_q": 0.3608972436089724,
+      "median_difference_electron_minus_proton": [
+       -0.007811497376862042,
+       -0.02409785171681811,
+       0.0036353669962580493
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ]
+   },
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 20.0,
+   "proton_gev": 50.0,
+   "representation": "deposit_grid_mev",
+   "caliper_sd": 0.5,
+   "eligible_electrons": 9101,
+   "eligible_protons": 7811,
+   "pairs": 149,
+   "matched_fraction_electrons": 0.01637182727172838,
+   "matched_fraction_protons": 0.019075662527205224,
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.09575255580146297,
+    0.09719072548211843
+   ],
+   "balanced": true,
+   "testable": true,
+   "families": {
+    "raw": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.14765101951240694,
+      "floor_95th": 0.12080538192851431,
+      "p_value": 0.006999300069993001,
+      "westfall_young_in_family": 0.10318968103189681,
+      "holm_in_family": 0.027997200279972004,
+      "bh_q": 0.011198880111988802,
+      "median_difference_electron_minus_proton": [
+       -0.01096187184817965,
+       -0.013896803717218242,
+       -0.00536598439290481
+      ],
+      "westfall_young_all_families": 0.9287071292870713,
+      "holm_all_families": 0.251974802519748
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.32214762540471636,
+      "floor_95th": 0.15436244170937763,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.017751472135712376,
+       0.00834480313380248,
+       0.03486901088502936
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.1677852477003264,
+      "floor_95th": 0.15436244170937763,
+      "p_value": 0.026497350264973504,
+      "westfall_young_in_family": 0.05089491050894911,
+      "holm_in_family": 0.07949205079492051,
+      "bh_q": 0.035329800353298,
+      "median_difference_electron_minus_proton": [
+       0.007470556831673303,
+       -0.01247043066790443,
+       0.02750074475653097
+      ],
+      "westfall_young_all_families": 0.458054194580542,
+      "holm_all_families": 0.7154284571542846
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.11409395973154363,
+      "floor_95th": 0.14765101951240694,
+      "p_value": 0.25177482251774824,
+      "westfall_young_in_family": 0.3381661833816618,
+      "holm_in_family": 0.36276372362763726,
+      "bh_q": 0.25177482251774824,
+      "median_difference_electron_minus_proton": [
+       -0.0182677204225119,
+       -0.040428445193521734,
+       0.00040601701035325455
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.12080535632651924,
+      "floor_95th": 0.14765098110941433,
+      "p_value": 0.18138186181381863,
+      "westfall_young_in_family": 0.3381661833816618,
+      "holm_in_family": 0.36276372362763726,
+      "bh_q": 0.20729355635864985,
+      "median_difference_electron_minus_proton": [
+       -0.010292193693093532,
+       -0.021158716076877138,
+       -0.0005499045831971472
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.5234898816819159,
+      "floor_95th": 0.16107383830435323,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       -0.054801507958298856,
+       -0.07734537641469652,
+       -0.037754953186534435
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.530201291077889,
+      "floor_95th": 0.16778522209833133,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       -0.09384850843779591,
+       -0.11318785775286011,
+       -0.07200391856396704
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.3825503355704698,
+      "floor_95th": 0.16107379990136064,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.08508611550412915,
+       0.06131206848417048,
+       0.1080408282056805
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ],
+    "excess_full": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.15436244170937763,
+      "floor_95th": 0.14765101951240694,
+      "p_value": 0.037896210378962104,
+      "westfall_young_in_family": 0.038896110388961104,
+      "holm_in_family": 0.07579242075792421,
+      "bh_q": 0.04330995471881383,
+      "median_difference_electron_minus_proton": [
+       -0.0020229351512903726,
+       -0.005573367578310506,
+       0.0021477467771178205
+      ],
+      "westfall_young_all_families": 0.35006499350064996,
+      "holm_all_families": 0.6821317868213179
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.28187922023286754,
+      "floor_95th": 0.16107383830435323,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.02133252768876348,
+       0.013446847276694571,
+       0.030608690087223667
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.28859060402684567,
+      "floor_95th": 0.16107383830435323,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.027348177314445943,
+       0.020576515777183002,
+       0.03905261907215318
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.22147653566910916,
+      "floor_95th": 0.15436241674743242,
+      "p_value": 0.0010998900109989002,
+      "westfall_young_in_family": 0.0031996800319968005,
+      "holm_in_family": 0.004399560043995601,
+      "bh_q": 0.0017598240175982402,
+      "median_difference_electron_minus_proton": [
+       -0.021393402305202258,
+       -0.038830989700213925,
+       -0.013083017466098856
+      ],
+      "westfall_young_all_families": 0.028797120287971205,
+      "holm_all_families": 0.03959604039596041
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.14765101951240694,
+      "floor_95th": 0.14765101951240694,
+      "p_value": 0.060493950604939506,
+      "westfall_young_in_family": 0.060493950604939506,
+      "holm_in_family": 0.07579242075792421,
+      "bh_q": 0.060493950604939506,
+      "median_difference_electron_minus_proton": [
+       -0.008855012221717251,
+       -0.022997051442928074,
+       0.008531526722415306
+      ],
+      "westfall_young_all_families": 0.5444455554444556,
+      "holm_all_families": 0.6821317868213179
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.32214767660870647,
+      "floor_95th": 0.16107379990136064,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.03082107909032794,
+       0.01675741497669292,
+       0.03914875787327521
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.28859060402684567,
+      "floor_95th": 0.15436244170937763,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.03691626727266706,
+       0.02594047007671696,
+       0.049098607360943625
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.18791943748525325,
+      "floor_95th": 0.15436241610738255,
+      "p_value": 0.009799020097990201,
+      "westfall_young_in_family": 0.0156984301569843,
+      "holm_in_family": 0.029397060293970604,
+      "bh_q": 0.013065360130653602,
+      "median_difference_electron_minus_proton": [
+       -0.026611438453228664,
+       -0.05609131437096526,
+       -0.005488642757007778
+      ],
+      "westfall_young_all_families": 0.1412858714128587,
+      "holm_all_families": 0.26457354264573546
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ],
+    "excess_block9": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.20805370407616533,
+      "floor_95th": 0.14765101951240694,
+      "p_value": 0.0020997900209979003,
+      "westfall_young_in_family": 0.006999300069993001,
+      "holm_in_family": 0.012598740125987402,
+      "bh_q": 0.004199580041995801,
+      "median_difference_electron_minus_proton": [
+       -0.0013955432255758904,
+       -0.002925996648879492,
+       -0.0005851698789471893
+      ],
+      "westfall_young_all_families": 0.062993700629937,
+      "holm_all_families": 0.11338866113388661
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.21476510067114093,
+      "floor_95th": 0.14765101951240694,
+      "p_value": 0.000999900009999,
+      "westfall_young_in_family": 0.0057994200579942,
+      "holm_in_family": 0.007999200079992,
+      "bh_q": 0.003999600039996,
+      "median_difference_electron_minus_proton": [
+       -0.002375598490571784,
+       -0.0048956416467800246,
+       -0.0009843302585319513
+      ],
+      "westfall_young_all_families": 0.0521947805219478,
+      "holm_all_families": 0.071992800719928
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.10067116014109362,
+      "floor_95th": 0.15436244170937763,
+      "p_value": 0.3935606439356064,
+      "westfall_young_in_family": 0.3935606439356064,
+      "holm_in_family": 0.7871212878712128,
+      "bh_q": 0.3935606439356064,
+      "median_difference_electron_minus_proton": [
+       0.002760100556080447,
+       -0.0016057261120563382,
+       0.005959667431757909
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.14765101951240694,
+      "floor_95th": 0.15436244170937763,
+      "p_value": 0.0801919808019198,
+      "westfall_young_in_family": 0.11778822117788221,
+      "holm_in_family": 0.3207679232076792,
+      "bh_q": 0.1069226410692264,
+      "median_difference_electron_minus_proton": [
+       -0.003000614434092941,
+       -0.008546419706206954,
+       0.0011693601645013096
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.20805370407616533,
+      "floor_95th": 0.14765101951240694,
+      "p_value": 0.0020997900209979003,
+      "westfall_young_in_family": 0.006999300069993001,
+      "holm_in_family": 0.012598740125987402,
+      "bh_q": 0.004199580041995801,
+      "median_difference_electron_minus_proton": [
+       -0.005646357269787572,
+       -0.011967158953151813,
+       -0.002367592876738822
+      ],
+      "westfall_young_all_families": 0.062993700629937,
+      "holm_all_families": 0.11338866113388661
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.21476510067114093,
+      "floor_95th": 0.14765101951240694,
+      "p_value": 0.000999900009999,
+      "westfall_young_in_family": 0.0057994200579942,
+      "holm_in_family": 0.007999200079992,
+      "bh_q": 0.003999600039996,
+      "median_difference_electron_minus_proton": [
+       -0.009611653413177379,
+       -0.019807728844214445,
+       -0.003974872997963039
+      ],
+      "westfall_young_all_families": 0.0521947805219478,
+      "holm_all_families": 0.071992800719928
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.10067116014109362,
+      "floor_95th": 0.15436244170937763,
+      "p_value": 0.3935606439356064,
+      "westfall_young_in_family": 0.3935606439356064,
+      "holm_in_family": 0.7871212878712128,
+      "bh_q": 0.3935606439356064,
+      "median_difference_electron_minus_proton": [
+       0.011167345843944854,
+       -0.006496755628877082,
+       0.024112769072383355
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 149,
+      "testable": true,
+      "observed_ks": 0.14765101951240694,
+      "floor_95th": 0.15436244170937763,
+      "p_value": 0.0801919808019198,
+      "westfall_young_in_family": 0.11778822117788221,
+      "holm_in_family": 0.3207679232076792,
+      "bh_q": 0.1069226410692264,
+      "median_difference_electron_minus_proton": [
+       -0.012140463163930637,
+       -0.03457874908812969,
+       0.0048376927631753235
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ]
+   },
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 20.0,
+   "proton_gev": 50.0,
+   "representation": "readout_grid_mev",
+   "caliper_sd": 0.25,
+   "eligible_electrons": 12,
+   "eligible_protons": 6302,
+   "pairs": 0,
+   "testable": false,
+   "reason": "fewer than 100 eligible events in a class",
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 20.0,
+   "proton_gev": 50.0,
+   "representation": "readout_grid_mev",
+   "caliper_sd": 0.5,
+   "eligible_electrons": 12,
+   "eligible_protons": 6302,
+   "pairs": 0,
+   "testable": false,
+   "reason": "fewer than 100 eligible events in a class",
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 20.0,
+   "proton_gev": 100.0,
+   "representation": "deposit_grid_mev",
+   "caliper_sd": 0.25,
+   "eligible_electrons": 9101,
+   "eligible_protons": 8131,
+   "pairs": 136,
+   "matched_fraction_electrons": 0.014943412811778925,
+   "matched_fraction_protons": 0.0167261099495757,
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.06023803365381473,
+    0.014016657552912811
+   ],
+   "balanced": true,
+   "testable": true,
+   "families": {
+    "raw": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.125,
+      "floor_95th": 0.125,
+      "p_value": 0.0627937206279372,
+      "westfall_young_in_family": 0.24327567243275672,
+      "holm_in_family": 0.1255874412558744,
+      "bh_q": 0.07176425214621394,
+      "median_difference_electron_minus_proton": [
+       -0.005192450359250533,
+       -0.010473394612347198,
+       0.0034656976067891643
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.6691176470588235,
+      "floor_95th": 0.18382352941176472,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.12551331424837242,
+       0.0926989851938049,
+       0.151663433443749
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.4999999439015108,
+      "floor_95th": 0.17647058823529413,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.0963828311726932,
+       0.06877240415301039,
+       0.1458279092644888
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.47058823529411764,
+      "floor_95th": 0.1764705742106718,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       -0.1123391425984907,
+       -0.14055719914619996,
+       -0.07539690608048141
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.08088236696579877,
+      "floor_95th": 0.16176470588235295,
+      "p_value": 0.7214278572142786,
+      "westfall_young_in_family": 0.7214278572142786,
+      "holm_in_family": 0.7214278572142786,
+      "bh_q": 0.7214278572142786,
+      "median_difference_electron_minus_proton": [
+       -0.0006124936299615191,
+       -0.0152288408496285,
+       0.02165122532617969
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.25,
+      "floor_95th": 0.16911763303420124,
+      "p_value": 0.0008999100089991,
+      "westfall_young_in_family": 0.0013998600139986002,
+      "holm_in_family": 0.0026997300269973002,
+      "bh_q": 0.0011998800119988001,
+      "median_difference_electron_minus_proton": [
+       -0.0188686964443866,
+       -0.03945516710729291,
+       0.016248421567136906
+      ],
+      "westfall_young_all_families": 0.012598740125987402,
+      "holm_all_families": 0.024297570242975703
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.3161764986374799,
+      "floor_95th": 0.1764705742106718,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       -0.0536640235530651,
+       -0.07983436353323581,
+       -0.021840531042002898
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.27941173665663777,
+      "floor_95th": 0.16911766108344584,
+      "p_value": 0.00019998000199980003,
+      "westfall_young_in_family": 0.00019998000199980003,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00031996800319968006,
+      "median_difference_electron_minus_proton": [
+       0.03027685633128402,
+       -0.003214908183367504,
+       0.06788014024155481
+      ],
+      "westfall_young_all_families": 0.0017998200179982003,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ],
+    "excess_full": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.17647058823529413,
+      "floor_95th": 0.16176469185773065,
+      "p_value": 0.022897710228977103,
+      "westfall_young_in_family": 0.0245975402459754,
+      "holm_in_family": 0.045795420457954206,
+      "bh_q": 0.022897710228977103,
+      "median_difference_electron_minus_proton": [
+       -0.001284929898045739,
+       -0.0047628143086594354,
+       0.0033626739203791445
+      ],
+      "westfall_young_all_families": 0.22137786221377861,
+      "holm_all_families": 0.41215878412158785
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.2867647339315975,
+      "floor_95th": 0.16176470588235295,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 0.00019998000199980003,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00026664000266640004,
+      "median_difference_electron_minus_proton": [
+       0.02684511924581151,
+       0.017030815772850726,
+       0.032634754502642915
+      ],
+      "westfall_young_all_families": 0.0017998200179982003,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.35294120451983285,
+      "floor_95th": 0.16911763303420124,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00026664000266640004,
+      "median_difference_electron_minus_proton": [
+       0.04375639668895051,
+       0.032212105812065406,
+       0.04898300504936137
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.3014706162845387,
+      "floor_95th": 0.16911763303420124,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00026664000266640004,
+      "median_difference_electron_minus_proton": [
+       -0.03524393704682938,
+       -0.051755688440058914,
+       -0.01944061299289712
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.17647058823529413,
+      "floor_95th": 0.16176467853433946,
+      "p_value": 0.022897710228977103,
+      "westfall_young_in_family": 0.0245975402459754,
+      "holm_in_family": 0.045795420457954206,
+      "bh_q": 0.022897710228977103,
+      "median_difference_electron_minus_proton": [
+       -0.006589452591265754,
+       -0.020249476136378286,
+       0.011780134705401846
+      ],
+      "westfall_young_all_families": 0.22137786221377861,
+      "holm_all_families": 0.41215878412158785
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.2426470588235294,
+      "floor_95th": 0.16176470588235295,
+      "p_value": 0.0005999400059994001,
+      "westfall_young_in_family": 0.0013998600139986002,
+      "holm_in_family": 0.0023997600239976003,
+      "bh_q": 0.0009599040095990401,
+      "median_difference_electron_minus_proton": [
+       0.0211121911865213,
+       0.006179845218879432,
+       0.029751577703552634
+      ],
+      "westfall_young_all_families": 0.012598740125987402,
+      "holm_all_families": 0.021597840215978402
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.28676467783310833,
+      "floor_95th": 0.16911763303420124,
+      "p_value": 0.00019998000199980003,
+      "westfall_young_in_family": 0.00019998000199980003,
+      "holm_in_family": 0.000999900009999,
+      "bh_q": 0.00039996000399960006,
+      "median_difference_electron_minus_proton": [
+       0.03594697604941857,
+       0.017529862098396354,
+       0.051363210963473356
+      ],
+      "westfall_young_all_families": 0.0017998200179982003,
+      "holm_all_families": 0.008999100089991
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.19117647058823528,
+      "floor_95th": 0.16176470588235295,
+      "p_value": 0.014298570142985701,
+      "westfall_young_in_family": 0.0245975402459754,
+      "holm_in_family": 0.0428957104289571,
+      "bh_q": 0.019064760190647602,
+      "median_difference_electron_minus_proton": [
+       -0.04119396332322334,
+       -0.06183866511079783,
+       -0.014302522605241277
+      ],
+      "westfall_young_all_families": 0.22137786221377861,
+      "holm_all_families": 0.38606139386061394
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ],
+    "excess_block9": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.14705882352941177,
+      "floor_95th": 0.15441176470588236,
+      "p_value": 0.07279272072792721,
+      "westfall_young_in_family": 0.23987601239876014,
+      "holm_in_family": 0.5823417658234177,
+      "bh_q": 0.2635736426357364,
+      "median_difference_electron_minus_proton": [
+       -0.001124478205652979,
+       -0.0023629081928344675,
+       -7.493445272411182e-05
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.07352936267852783,
+      "floor_95th": 0.16176467783310833,
+      "p_value": 0.8603139686031397,
+      "westfall_young_in_family": 0.8603139686031397,
+      "holm_in_family": 1.0,
+      "bh_q": 0.8603139686031397,
+      "median_difference_electron_minus_proton": [
+       0.00040466193635219083,
+       -0.0021590568389067144,
+       0.0024883392587001785
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.11764705181121826,
+      "floor_95th": 0.16176470588235295,
+      "p_value": 0.3067693230676932,
+      "westfall_young_in_family": 0.42155784421557846,
+      "holm_in_family": 1.0,
+      "bh_q": 0.40902576409025765,
+      "median_difference_electron_minus_proton": [
+       0.0015576740100551323,
+       -0.001573498655427552,
+       0.005960884932183608
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.13970589637756348,
+      "floor_95th": 0.16176470588235295,
+      "p_value": 0.1317868213178682,
+      "westfall_young_in_family": 0.23987601239876014,
+      "holm_in_family": 0.7907209279072092,
+      "bh_q": 0.2635736426357364,
+      "median_difference_electron_minus_proton": [
+       -0.0025785247258561794,
+       -0.006485671306997287,
+       0.0009376025017083789
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.14705882352941177,
+      "floor_95th": 0.15441176470588236,
+      "p_value": 0.07279272072792721,
+      "westfall_young_in_family": 0.23987601239876014,
+      "holm_in_family": 0.5823417658234177,
+      "bh_q": 0.2635736426357364,
+      "median_difference_electron_minus_proton": [
+       -0.004549630262144055,
+       -0.009471891162031842,
+       -0.0001295060219871358
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.07352936267852783,
+      "floor_95th": 0.16176467783310833,
+      "p_value": 0.8603139686031397,
+      "westfall_young_in_family": 0.8603139686031397,
+      "holm_in_family": 1.0,
+      "bh_q": 0.8603139686031397,
+      "median_difference_electron_minus_proton": [
+       0.0016372591147686966,
+       -0.008749328049325582,
+       0.009971586765652907
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.11764705181121826,
+      "floor_95th": 0.16176470588235295,
+      "p_value": 0.3067693230676932,
+      "westfall_young_in_family": 0.42155784421557846,
+      "holm_in_family": 1.0,
+      "bh_q": 0.40902576409025765,
+      "median_difference_electron_minus_proton": [
+       0.006302337189885765,
+       -0.006386561577224563,
+       0.023934580565752483
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 136,
+      "testable": true,
+      "observed_ks": 0.13970589637756348,
+      "floor_95th": 0.16176470588235295,
+      "p_value": 0.1317868213178682,
+      "westfall_young_in_family": 0.23987601239876014,
+      "holm_in_family": 0.7907209279072092,
+      "bh_q": 0.2635736426357364,
+      "median_difference_electron_minus_proton": [
+       -0.01043269141675171,
+       -0.026245950571161344,
+       0.0037935325862129
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ]
+   },
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 20.0,
+   "proton_gev": 100.0,
+   "representation": "deposit_grid_mev",
+   "caliper_sd": 0.5,
+   "eligible_electrons": 9101,
+   "eligible_protons": 8131,
+   "pairs": 167,
+   "matched_fraction_electrons": 0.018349631908581476,
+   "matched_fraction_protons": 0.020538679129258393,
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.11148990656720939,
+    0.045475083049948156
+   ],
+   "balanced": false,
+   "testable": true,
+   "families": {
+    "raw": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.08982035357081247,
+      "floor_95th": 0.11976047904191617,
+      "p_value": 0.30056994300569945,
+      "westfall_young_in_family": 0.48025197480251974,
+      "holm_in_family": 0.6011398860113989,
+      "bh_q": 0.34350850629222796,
+      "median_difference_electron_minus_proton": [
+       -0.00604204182988588,
+       -0.010473394612347198,
+       0.0010016593397832452
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.6826347305389222,
+      "floor_95th": 0.16167664670658682,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00013332000133320002,
+      "median_difference_electron_minus_proton": [
+       0.12776165134313233,
+       0.100121329893327,
+       0.15807267736480402
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.5209581295173326,
+      "floor_95th": 0.16167664670658682,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00013332000133320002,
+      "median_difference_electron_minus_proton": [
+       0.10864094900717736,
+       0.07903319274376042,
+       0.15320246743892862
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.46706591394847025,
+      "floor_95th": 0.1556886455969896,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00013332000133320002,
+      "median_difference_electron_minus_proton": [
+       -0.10651081002951235,
+       -0.14418514383729875,
+       -0.06551596314785091
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.09580838323353294,
+      "floor_95th": 0.13772457374070218,
+      "p_value": 0.39106089391060894,
+      "westfall_young_in_family": 0.48025197480251974,
+      "holm_in_family": 0.6011398860113989,
+      "bh_q": 0.39106089391060894,
+      "median_difference_electron_minus_proton": [
+       0.012413044801322659,
+       -0.0033877436149907236,
+       0.02765540634778474
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.2754491017964072,
+      "floor_95th": 0.1497006102236445,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00013332000133320002,
+      "median_difference_electron_minus_proton": [
+       -0.0142984352662745,
+       -0.024750473191449407,
+       0.012565547964561219
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.3113772683514806,
+      "floor_95th": 0.15568861133324172,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00013332000133320002,
+      "median_difference_electron_minus_proton": [
+       -0.04050726309776087,
+       -0.07173696967459431,
+       -0.008977208291213956
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.2694610550018128,
+      "floor_95th": 0.15568861133324172,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00013332000133320002,
+      "median_difference_electron_minus_proton": [
+       0.04114333085417965,
+       0.005511516471022326,
+       0.08169652498645363
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ],
+    "excess_full": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.18562877677871795,
+      "floor_95th": 0.1437125748502994,
+      "p_value": 0.003999600039996,
+      "westfall_young_in_family": 0.007399260073992601,
+      "holm_in_family": 0.011998800119988001,
+      "bh_q": 0.005332800053328,
+      "median_difference_electron_minus_proton": [
+       0.003171565592496872,
+       -0.0005126442791931751,
+       0.006988267317726615
+      ],
+      "westfall_young_all_families": 0.0665933406659334,
+      "holm_all_families": 0.107989201079892
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.2874251497005988,
+      "floor_95th": 0.1437125748502994,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.023408318370427228,
+       0.01866642867753565,
+       0.030383991515747333
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.3473053892215569,
+      "floor_95th": 0.1497006102236445,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.03838263428467342,
+       0.028598895080245934,
+       0.04397641251505002
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.2634730538922156,
+      "floor_95th": 0.1437125748502994,
+      "p_value": 0.00019998000199980003,
+      "westfall_young_in_family": 0.00019998000199980003,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00031996800319968006,
+      "median_difference_electron_minus_proton": [
+       -0.023763068077949145,
+       -0.034403034647490394,
+       -0.013767620765622879
+      ],
+      "westfall_young_all_families": 0.0017998200179982003,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.16167664670658682,
+      "floor_95th": 0.14371255257886328,
+      "p_value": 0.0207979202079792,
+      "westfall_young_in_family": 0.03949605039496051,
+      "holm_in_family": 0.0415958404159584,
+      "bh_q": 0.023769051666261944,
+      "median_difference_electron_minus_proton": [
+       0.012294132433392946,
+       -0.0020741548520974984,
+       0.021062296405798264
+      ],
+      "westfall_young_all_families": 0.35546445355464457,
+      "holm_all_families": 0.37436256374362564
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.2634730538922156,
+      "floor_95th": 0.14970058738114592,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 0.00019998000199980003,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.022547399936061363,
+       0.011288347780377794,
+       0.033174086387740664
+      ],
+      "westfall_young_all_families": 0.0017998200179982003,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.2934131736526946,
+      "floor_95th": 0.1497006444873924,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.04014399267199065,
+       0.025046429447515617,
+       0.05275157631456795
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.1437125748502994,
+      "floor_95th": 0.1437125748502994,
+      "p_value": 0.0547945205479452,
+      "westfall_young_in_family": 0.0547945205479452,
+      "holm_in_family": 0.0547945205479452,
+      "bh_q": 0.0547945205479452,
+      "median_difference_electron_minus_proton": [
+       -0.027915010150229236,
+       -0.04205702316627114,
+       -0.005295817058072583
+      ],
+      "westfall_young_all_families": 0.4931506849315068,
+      "holm_all_families": 0.4931506849315068
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ],
+    "excess_block9": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.18562874251497005,
+      "floor_95th": 0.13772457374070218,
+      "p_value": 0.0029997000299970002,
+      "westfall_young_in_family": 0.013798620137986202,
+      "holm_in_family": 0.023997600239976002,
+      "bh_q": 0.011998800119988001,
+      "median_difference_electron_minus_proton": [
+       -0.0016605069953186113,
+       -0.0026019519869089347,
+       -0.00014732602718581234
+      ],
+      "westfall_young_all_families": 0.12418758124187582,
+      "holm_all_families": 0.215978402159784
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.0778443227984948,
+      "floor_95th": 0.1377245623194529,
+      "p_value": 0.6551344865513449,
+      "westfall_young_in_family": 0.6551344865513449,
+      "holm_in_family": 1.0,
+      "bh_q": 0.6551344865513449,
+      "median_difference_electron_minus_proton": [
+       0.00029244114817661426,
+       -0.0013848450240095344,
+       0.0017417603276739246
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.11976047904191617,
+      "floor_95th": 0.1437125748502994,
+      "p_value": 0.17098290170982902,
+      "westfall_young_in_family": 0.23937606239376064,
+      "holm_in_family": 0.6839316068393161,
+      "bh_q": 0.22797720227977203,
+      "median_difference_electron_minus_proton": [
+       0.0028442929471781397,
+       -0.0019096379119585283,
+       0.005960884932183608
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.1377245508982036,
+      "floor_95th": 0.14371256342905012,
+      "p_value": 0.06829317068293171,
+      "westfall_young_in_family": 0.14038596140385962,
+      "holm_in_family": 0.40975902409759024,
+      "bh_q": 0.13658634136586342,
+      "median_difference_electron_minus_proton": [
+       -0.002141164011957075,
+       -0.00599157523123417,
+       0.0005292203936207995
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.18562874251497005,
+      "floor_95th": 0.13772457374070218,
+      "p_value": 0.0029997000299970002,
+      "westfall_young_in_family": 0.013798620137986202,
+      "holm_in_family": 0.023997600239976002,
+      "bh_q": 0.011998800119988001,
+      "median_difference_electron_minus_proton": [
+       -0.006718398665640279,
+       -0.010527477936677299,
+       -0.0005960799847559706
+      ],
+      "westfall_young_all_families": 0.12418758124187582,
+      "holm_all_families": 0.215978402159784
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.0778443227984948,
+      "floor_95th": 0.1377245623194529,
+      "p_value": 0.6551344865513449,
+      "westfall_young_in_family": 0.6551344865513449,
+      "holm_in_family": 1.0,
+      "bh_q": 0.6551344865513449,
+      "median_difference_electron_minus_proton": [
+       0.001183214659877585,
+       -0.005597909724326833,
+       0.00707661933092369
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.11976047904191617,
+      "floor_95th": 0.1437125748502994,
+      "p_value": 0.17098290170982902,
+      "westfall_young_in_family": 0.23937606239376064,
+      "holm_in_family": 0.6839316068393161,
+      "bh_q": 0.22797720227977203,
+      "median_difference_electron_minus_proton": [
+       0.011507987617572768,
+       -0.007607839498682378,
+       0.02401879023799791
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 167,
+      "testable": true,
+      "observed_ks": 0.1377245508982036,
+      "floor_95th": 0.14371256342905012,
+      "p_value": 0.06829317068293171,
+      "westfall_young_in_family": 0.14038596140385962,
+      "holm_in_family": 0.40975902409759024,
+      "bh_q": 0.13658634136586342,
+      "median_difference_electron_minus_proton": [
+       -0.008663133296885728,
+       -0.024254879950638804,
+       0.0021412216849183707
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 2,
+      "testable": false
+     }
+    ]
+   },
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 20.0,
+   "proton_gev": 100.0,
+   "representation": "readout_grid_mev",
+   "caliper_sd": 0.25,
+   "eligible_electrons": 12,
+   "eligible_protons": 6910,
+   "pairs": 0,
+   "testable": false,
+   "reason": "fewer than 100 eligible events in a class",
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 20.0,
+   "proton_gev": 100.0,
+   "representation": "readout_grid_mev",
+   "caliper_sd": 0.5,
+   "eligible_electrons": 12,
+   "eligible_protons": 6910,
+   "pairs": 0,
+   "testable": false,
+   "reason": "fewer than 100 eligible events in a class",
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 50.0,
+   "proton_gev": 100.0,
+   "representation": "deposit_grid_mev",
+   "caliper_sd": 0.25,
+   "eligible_electrons": 9998,
+   "eligible_protons": 8131,
+   "pairs": 110,
+   "matched_fraction_electrons": 0.011002200440088018,
+   "matched_fraction_protons": 0.01352847128274505,
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.043936745772966225,
+    0.07135342898416225
+   ],
+   "balanced": true,
+   "testable": true,
+   "families": {
+    "raw": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.1181818268515847,
+      "floor_95th": 0.09090912558815696,
+      "p_value": 0.0028997100289971,
+      "westfall_young_in_family": 0.24197580241975802,
+      "holm_in_family": 0.0086991300869913,
+      "bh_q": 0.0038662800386628,
+      "median_difference_electron_minus_proton": [
+       -0.002659781473549394,
+       -0.006159885346561067,
+       0.00014165662717513516
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 0.07829217078292171
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.39090909090909093,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.03281233738827438,
+       0.010243645348187558,
+       0.04980190568994858
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.2727272727272727,
+      "floor_95th": 0.18181818181818182,
+      "p_value": 0.0012998700129987,
+      "westfall_young_in_family": 0.0012998700129987,
+      "holm_in_family": 0.0051994800519948,
+      "bh_q": 0.0020797920207979203,
+      "median_difference_electron_minus_proton": [
+       0.02971349246018451,
+       0.002053364109263711,
+       0.05155305685329553
+      ],
+      "westfall_young_all_families": 0.011698830116988301,
+      "holm_all_families": 0.046795320467953205
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.18181818181818182,
+      "floor_95th": 0.16363638097589667,
+      "p_value": 0.030296970302969704,
+      "westfall_young_in_family": 0.037196280371962806,
+      "holm_in_family": 0.06059394060593941,
+      "bh_q": 0.03462510891767966,
+      "median_difference_electron_minus_proton": [
+       -0.019849986728367575,
+       -0.0569014602233498,
+       -0.006707666317820049
+      ],
+      "westfall_young_all_families": 0.33476652334766527,
+      "holm_all_families": 0.5453454654534546
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.10000002600929954,
+      "floor_95th": 0.14545456279407848,
+      "p_value": 0.42155784421557846,
+      "westfall_young_in_family": 0.42155784421557846,
+      "holm_in_family": 0.42155784421557846,
+      "bh_q": 0.42155784421557846,
+      "median_difference_electron_minus_proton": [
+       -0.0016077564851953996,
+       -0.014090909434092747,
+       0.011678458374868934
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.4636363983154297,
+      "floor_95th": 0.19090909090909092,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       -0.03406210564524936,
+       -0.05718757499563698,
+       -0.02077490570937622
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.5272726925936613,
+      "floor_95th": 0.19090912558815695,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       -0.06932041053662741,
+       -0.07864364894837556,
+       -0.050581543934499984
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.38181821649724784,
+      "floor_95th": 0.1727272553877397,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00019998000199980003,
+      "median_difference_electron_minus_proton": [
+       0.05920299100994175,
+       0.045546174106133375,
+       0.08649682613068077
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     }
+    ],
+    "excess_full": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.10000002600929954,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.5497450254974503,
+      "westfall_young_in_family": 0.6981301869813019,
+      "holm_in_family": 1.0,
+      "bh_q": 0.5517448255174483,
+      "median_difference_electron_minus_proton": [
+       -0.0006410589434530101,
+       -0.004398886199340146,
+       0.0033032243698746244
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.19090909090909092,
+      "floor_95th": 0.1818181644786488,
+      "p_value": 0.0364963503649635,
+      "westfall_young_in_family": 0.13018698130186981,
+      "holm_in_family": 0.291970802919708,
+      "bh_q": 0.147985201479852,
+      "median_difference_electron_minus_proton": [
+       0.011305423136718507,
+       0.002971334334057762,
+       0.02127097439089331
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.19090909090909092,
+      "floor_95th": 0.18181818181818182,
+      "p_value": 0.036996300369963,
+      "westfall_young_in_family": 0.13018698130186981,
+      "holm_in_family": 0.291970802919708,
+      "bh_q": 0.147985201479852,
+      "median_difference_electron_minus_proton": [
+       0.01386055117664925,
+       -0.0012282331315848355,
+       0.02287007058277881
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.13636365370316939,
+      "floor_95th": 0.1818181644786488,
+      "p_value": 0.22157784221577842,
+      "westfall_young_in_family": 0.5183481651834817,
+      "holm_in_family": 1.0,
+      "bh_q": 0.3545245475452455,
+      "median_difference_electron_minus_proton": [
+       -0.014301772740069829,
+       -0.024693773003464647,
+       0.0036089001737893422
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.10000002600929954,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.5517448255174483,
+      "westfall_young_in_family": 0.6981301869813019,
+      "holm_in_family": 1.0,
+      "bh_q": 0.5517448255174483,
+      "median_difference_electron_minus_proton": [
+       -0.006762654822319414,
+       -0.019272363748813248,
+       0.010309269884720806
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.14545452811501242,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.17298270172982702,
+      "westfall_young_in_family": 0.5183481651834817,
+      "holm_in_family": 1.0,
+      "bh_q": 0.3545245475452455,
+      "median_difference_electron_minus_proton": [
+       0.006873218132796843,
+       -0.003176573406110772,
+       0.017646737467480744
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.13636368838223545,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.1842815718428157,
+      "westfall_young_in_family": 0.5183481651834817,
+      "holm_in_family": 1.0,
+      "bh_q": 0.3545245475452455,
+      "median_difference_electron_minus_proton": [
+       0.0015680437620778642,
+       -0.012378090914161826,
+       0.018140601341254503
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.10909092643044212,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.4774522547745225,
+      "westfall_young_in_family": 0.6981301869813019,
+      "holm_in_family": 1.0,
+      "bh_q": 0.5517448255174483,
+      "median_difference_electron_minus_proton": [
+       -0.019704099384982465,
+       -0.03142673368538207,
+       0.0019587154424161035
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     }
+    ],
+    "excess_block9": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.07272729006680576,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.8797120287971203,
+      "westfall_young_in_family": 0.8943105689431057,
+      "holm_in_family": 1.0,
+      "bh_q": 0.8797120287971203,
+      "median_difference_electron_minus_proton": [
+       0.0001410033709193792,
+       -0.0015907322728634377,
+       0.0011029910304543034
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.09090912558815696,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.67003299670033,
+      "westfall_young_in_family": 0.8943105689431057,
+      "holm_in_family": 1.0,
+      "bh_q": 0.8797120287971203,
+      "median_difference_electron_minus_proton": [
+       -0.0010049527023691107,
+       -0.004058940292439987,
+       0.002034579369109002
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.12727272727272726,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.3110688931106889,
+      "westfall_young_in_family": 0.6082391760823918,
+      "holm_in_family": 1.0,
+      "bh_q": 0.6221377862213778,
+      "median_difference_electron_minus_proton": [
+       0.0010407388514678817,
+       -0.0016998183067181705,
+       0.005924929684367086
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.1545454198663885,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.13558644135586442,
+      "westfall_young_in_family": 0.3307669233076692,
+      "holm_in_family": 1.0,
+      "bh_q": 0.5423457654234577,
+      "median_difference_electron_minus_proton": [
+       -0.0024950238760889087,
+       -0.005138886483886736,
+       0.0028099453136027908
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.07272729006680576,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.8797120287971203,
+      "westfall_young_in_family": 0.8943105689431057,
+      "holm_in_family": 1.0,
+      "bh_q": 0.8797120287971203,
+      "median_difference_electron_minus_proton": [
+       0.0005704985656226347,
+       -0.006675431330538534,
+       0.004481986410130867
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.09090912558815696,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.67003299670033,
+      "westfall_young_in_family": 0.8943105689431057,
+      "holm_in_family": 1.0,
+      "bh_q": 0.8797120287971203,
+      "median_difference_electron_minus_proton": [
+       -0.004066030985515612,
+       -0.016685399295023884,
+       0.007506046715005987
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.12727272727272726,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.3110688931106889,
+      "westfall_young_in_family": 0.6082391760823918,
+      "holm_in_family": 1.0,
+      "bh_q": 0.6221377862213778,
+      "median_difference_electron_minus_proton": [
+       0.004210821472415194,
+       -0.006877451932384426,
+       0.0234024944922559
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 110,
+      "testable": true,
+      "observed_ks": 0.1545454198663885,
+      "floor_95th": 0.17272729006680576,
+      "p_value": 0.13558644135586442,
+      "westfall_young_in_family": 0.3307669233076692,
+      "holm_in_family": 1.0,
+      "bh_q": 0.5423457654234577,
+      "median_difference_electron_minus_proton": [
+       -0.010094847614084523,
+       -0.019539712378763924,
+       0.011369017353529687
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 24,
+      "testable": false
+     }
+    ]
+   },
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 50.0,
+   "proton_gev": 100.0,
+   "representation": "deposit_grid_mev",
+   "caliper_sd": 0.5,
+   "eligible_electrons": 9998,
+   "eligible_protons": 8131,
+   "pairs": 175,
+   "matched_fraction_electrons": 0.017503500700140028,
+   "matched_fraction_protons": 0.02152256794982167,
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.11230270810592086,
+    0.20479413705304753
+   ],
+   "balanced": false,
+   "testable": true,
+   "families": {
+    "raw": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.14857142857142858,
+      "floor_95th": 0.0857142802647182,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 0.013898610138986101,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00011427428685702859,
+      "median_difference_electron_minus_proton": [
+       -0.008656106161526234,
+       -0.011129898219454315,
+       -0.005180791221693015
+      ],
+      "westfall_young_all_families": 0.1250874912508749,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.4114285714285714,
+      "floor_95th": 0.14857142857142858,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00011427428685702859,
+      "median_difference_electron_minus_proton": [
+       0.04408325375670885,
+       0.022593612536080172,
+       0.06743421176026665
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.3085714503696987,
+      "floor_95th": 0.14857142857142858,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00011427428685702859,
+      "median_difference_electron_minus_proton": [
+       0.03614271087199672,
+       0.01655536952827652,
+       0.056772001312805465
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.25714287894112725,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00011427428685702859,
+      "median_difference_electron_minus_proton": [
+       -0.04689380733083148,
+       -0.05942098370155291,
+       -0.026499385269112774
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.0857142802647182,
+      "floor_95th": 0.1257143075125558,
+      "p_value": 0.44445555444455553,
+      "westfall_young_in_family": 0.44445555444455553,
+      "holm_in_family": 0.44445555444455553,
+      "bh_q": 0.44445555444455553,
+      "median_difference_electron_minus_proton": [
+       -0.004550749714507418,
+       -0.01377587740872821,
+       0.007868677445069583
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.4514285714285714,
+      "floor_95th": 0.1485714612688337,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00011427428685702859,
+      "median_difference_electron_minus_proton": [
+       -0.04458854510734822,
+       -0.05784640098884619,
+       -0.030498882201828614
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.4742857142857143,
+      "floor_95th": 0.15428572518484934,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00011427428685702859,
+      "median_difference_electron_minus_proton": [
+       -0.06848789839475133,
+       -0.08498213604722649,
+       -0.05081966152722777
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.34285714285714286,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 9.999000099990002e-05,
+      "westfall_young_in_family": 9.999000099990002e-05,
+      "holm_in_family": 0.0007999200079992001,
+      "bh_q": 0.00011427428685702859,
+      "median_difference_electron_minus_proton": [
+       0.05978342350697552,
+       0.03846667010075455,
+       0.08449859855693131
+      ],
+      "westfall_young_all_families": 0.0008999100089991002,
+      "holm_all_families": 0.007199280071992801
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     }
+    ],
+    "excess_full": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.06857139042445591,
+      "floor_95th": 0.14285716465541295,
+      "p_value": 0.7931206879312068,
+      "westfall_young_in_family": 0.7971202879712029,
+      "holm_in_family": 1.0,
+      "bh_q": 0.7955204479552045,
+      "median_difference_electron_minus_proton": [
+       -0.0006417514245409262,
+       -0.0024121829512071535,
+       0.0020745171838276733
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.1999999782017299,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 0.0018998100189981002,
+      "westfall_young_in_family": 0.0072992700729927005,
+      "holm_in_family": 0.013298670132986702,
+      "bh_q": 0.005332800053328,
+      "median_difference_electron_minus_proton": [
+       0.012480233644565741,
+       0.008252987380269805,
+       0.018946367021510424
+      ],
+      "westfall_young_all_families": 0.06569343065693431,
+      "holm_all_families": 0.11968803119688032
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.2000000217982701,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 0.001999800019998,
+      "westfall_young_in_family": 0.0064993500649935,
+      "holm_in_family": 0.013298670132986702,
+      "bh_q": 0.005332800053328,
+      "median_difference_electron_minus_proton": [
+       0.017142927952501053,
+       0.005582226190804396,
+       0.02295159758424814
+      ],
+      "westfall_young_all_families": 0.0584941505849415,
+      "holm_all_families": 0.11968803119688032
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.18285712105887278,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 0.005599440055994401,
+      "westfall_young_in_family": 0.0173982601739826,
+      "holm_in_family": 0.027997200279972004,
+      "bh_q": 0.011198880111988802,
+      "median_difference_electron_minus_proton": [
+       -0.013095094724316025,
+       -0.024459001968408778,
+       -0.0037944294825953406
+      ],
+      "westfall_young_all_families": 0.15658434156584342,
+      "holm_all_families": 0.251974802519748
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.06857139042445591,
+      "floor_95th": 0.14285716465541295,
+      "p_value": 0.7955204479552045,
+      "westfall_young_in_family": 0.7971202879712029,
+      "holm_in_family": 1.0,
+      "bh_q": 0.7955204479552045,
+      "median_difference_electron_minus_proton": [
+       -0.0036589652786713778,
+       -0.011819961368394694,
+       0.0062652060278589605
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.19428571428571428,
+      "floor_95th": 0.1371428680419922,
+      "p_value": 0.0012998700129987,
+      "westfall_young_in_family": 0.008399160083991601,
+      "holm_in_family": 0.0103989601039896,
+      "bh_q": 0.005332800053328,
+      "median_difference_electron_minus_proton": [
+       0.011903573086659902,
+       1.971511580278751e-05,
+       0.017492694316382118
+      ],
+      "westfall_young_all_families": 0.07559244075592442,
+      "holm_all_families": 0.09359064093590641
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.16,
+      "floor_95th": 0.13714283534458704,
+      "p_value": 0.012698730126987301,
+      "westfall_young_in_family": 0.05119488051194881,
+      "holm_in_family": 0.050794920507949204,
+      "bh_q": 0.02031796820317968,
+      "median_difference_electron_minus_proton": [
+       0.005382520005676739,
+       -0.000619687578111261,
+       0.02127378450718682
+      ],
+      "westfall_young_all_families": 0.4607539246075393,
+      "holm_all_families": 0.45715428457154283
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.12,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 0.1474852514748525,
+      "westfall_young_in_family": 0.261973802619738,
+      "holm_in_family": 0.44245575442455753,
+      "bh_q": 0.19664700196647,
+      "median_difference_electron_minus_proton": [
+       -0.007215519825127914,
+       -0.022764265725281896,
+       0.00766260302979882
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     }
+    ],
+    "excess_block9": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.09714287894112723,
+      "floor_95th": 0.13142860412597657,
+      "p_value": 0.28177182281771823,
+      "westfall_young_in_family": 0.42205779422057793,
+      "holm_in_family": 1.0,
+      "bh_q": 0.28177182281771823,
+      "median_difference_electron_minus_proton": [
+       -0.0001419717412922683,
+       -0.0010442043173706228,
+       0.0004570607610400963
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.12,
+      "floor_95th": 0.14285709926060267,
+      "p_value": 0.14908509149085092,
+      "westfall_young_in_family": 0.30316968303169683,
+      "holm_in_family": 0.8945105489451055,
+      "bh_q": 0.28177182281771823,
+      "median_difference_electron_minus_proton": [
+       -0.0010651923535693886,
+       -0.0032873685864491797,
+       0.001226224260708882
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.10285717555454799,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 0.2706729327067293,
+      "westfall_young_in_family": 0.42205779422057793,
+      "holm_in_family": 1.0,
+      "bh_q": 0.28177182281771823,
+      "median_difference_electron_minus_proton": [
+       0.0016089944456352256,
+       -0.0010640064713561825,
+       0.004217648570425947
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9-18",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.15428570338657924,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 0.027097290270972903,
+      "westfall_young_in_family": 0.06979302069793021,
+      "holm_in_family": 0.21677832216778323,
+      "bh_q": 0.10838916108389161,
+      "median_difference_electron_minus_proton": [
+       -0.0020199204400248583,
+       -0.004838759649127389,
+       0.00031545225468537774
+      ],
+      "westfall_young_all_families": 0.6281371862813719,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.09714287894112723,
+      "floor_95th": 0.13142860412597657,
+      "p_value": 0.28177182281771823,
+      "westfall_young_in_family": 0.42205779422057793,
+      "holm_in_family": 1.0,
+      "bh_q": 0.28177182281771823,
+      "median_difference_electron_minus_proton": [
+       -0.0005744165847809679,
+       -0.004373097040549778,
+       0.0018415279039938337
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.12,
+      "floor_95th": 0.14285709926060267,
+      "p_value": 0.14908509149085092,
+      "westfall_young_in_family": 0.30316968303169683,
+      "holm_in_family": 0.8945105489451055,
+      "bh_q": 0.28177182281771823,
+      "median_difference_electron_minus_proton": [
+       -0.004309760155812636,
+       -0.013264216392967487,
+       0.0049460401994825265
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.10285717555454799,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 0.2706729327067293,
+      "westfall_young_in_family": 0.42205779422057793,
+      "holm_in_family": 1.0,
+      "bh_q": 0.28177182281771823,
+      "median_difference_electron_minus_proton": [
+       0.006509979281662748,
+       -0.004304962085405317,
+       0.017064574017204293
+      ],
+      "westfall_young_all_families": 1.0,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0-D2@2-3-6-9",
+      "valid_pairs": 175,
+      "testable": true,
+      "observed_ks": 0.15428570338657924,
+      "floor_95th": 0.1428571319580078,
+      "p_value": 0.027097290270972903,
+      "westfall_young_in_family": 0.06979302069793021,
+      "holm_in_family": 0.21677832216778323,
+      "bh_q": 0.10838916108389161,
+      "median_difference_electron_minus_proton": [
+       -0.008172582727579258,
+       -0.017799244392296965,
+       0.0013982189067611728
+      ],
+      "westfall_young_all_families": 0.6281371862813719,
+      "holm_all_families": 1.0
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@1-2-3-6-9",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     },
+     {
+      "statistic": "D0-D2@2-3-6",
+      "valid_pairs": 29,
+      "testable": false
+     }
+    ]
+   },
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 50.0,
+   "proton_gev": 100.0,
+   "representation": "readout_grid_mev",
+   "caliper_sd": 0.25,
+   "eligible_electrons": 301,
+   "eligible_protons": 6910,
+   "pairs": 58,
+   "matched_fraction_electrons": 0.19269102990033224,
+   "matched_fraction_protons": 0.008393632416787264,
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.021916832330732744,
+    0.048290455207640866
+   ],
+   "balanced": true,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs",
+   "bonferroni_factor_families": 9
+  },
+  {
+   "electron_gev": 50.0,
+   "proton_gev": 100.0,
+   "representation": "readout_grid_mev",
+   "caliper_sd": 0.5,
+   "eligible_electrons": 301,
+   "eligible_protons": 6910,
+   "pairs": 91,
+   "matched_fraction_electrons": 0.3023255813953488,
+   "matched_fraction_protons": 0.01316931982633864,
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.10896422459109131,
+    0.14019070499737618
+   ],
+   "balanced": false,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs",
+   "bonferroni_factor_families": 9
+  }
+ ]
+}
