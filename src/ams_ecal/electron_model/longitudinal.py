@@ -105,11 +105,15 @@ class AMSLongitudinalGammaModel:
 
     AMS describes the longitudinal profile with a gamma distribution and finds
     a detector-specific constant rate beta = 0.65. For a primary energy E, the
-    mean shower maximum is predicted using the PDG electron relation
+    mean shower maximum is predicted as
 
-        T = ln(E / E_c) - 0.5,
+        T = ln(E / E_c) + offset(regime) + sampling_correction(regime).
 
-    with the configurable offset written generally. The gamma shape is then
+    Under the ``deposition`` regime the offset is the PDG electron
+    energy-deposition value, -0.5, and the sampling correction is zero. Under
+    the ``sampling`` regime, which is the default, the offset is the
+    Grindhammer and Peters homogeneous-medium base, -0.812, and a negative,
+    geometry-derived sampling correction is added. The gamma shape is then
     alpha = 1 + beta*T, ensuring that its mode (alpha - 1)/beta equals T.
 
     The continuous unit-normalized profile is integrated over the geometry's
