@@ -1,4 +1,4 @@
-"""Component-wise mean sampling response (design: research/plans/2026-10-12_particle_agnostic_RA_design_DRAFT.md).
+"""Component-wise mean sampling response (design: research/COMPLETED_WORK.md (was 2026-10-12_particle_agnostic_RA_design_DRAFT.md)).
 
 The fibre energy of a cell is predicted from the deposit split by component (em, had_low, had_mid, had_high, ion,
 neutron, other) with a class-mean ratio ``sum R / sum D`` per (component, layer, deposit-size class). No particle label

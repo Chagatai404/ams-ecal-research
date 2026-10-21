@@ -46,7 +46,7 @@ layer's fibres (``ams_ecal.detector.crossing``). Quantile functions are interpol
 linearly in ``ln E`` between the anchor energies, value by value, so the
 interpolation is deterministic and monotone; nothing is extrapolated. Layers
 are drawn independently: the dependency analysis (step 0) analysis shows this under-disperses the
-event total (see ``research/plans/2026-09-29_proton_dependency_analysis.md``).
+event total (see ``research/COMPLETED_WORK.md (was 2026-09-29_proton_dependency_analysis.md)``).
 """
 
 import argparse

@@ -1,4 +1,4 @@
-"""S3 stage 1: a valid re-reading of the 192 development KS verdicts (registration: research/plans/2026-10-15_s3_reread_registration.md).
+"""S3 stage 1: a valid re-reading of the 192 development KS verdicts (registration: research/COMPLETED_WORK.md (was 2026-10-15_s3_reread_registration.md)).
 
 Electrons against truth-interacting protons, 24 multiscale statistics x 2 representations x 4 energies, tested by label permutation
 within occupancy strata (10,000 draws), on the events eligible for each statistic, with Westfall-Young and Holm adjustment
@@ -268,7 +268,7 @@ def assemble(blocks: dict[tuple[float, str], dict[str, Any]], permutations: int)
         "significant_unadjusted": count(lambda t: t["p_value"] <= ALPHA),
     }
     return {
-        "registration": "research/plans/2026-10-15_s3_reread_registration.md",
+        "registration": "research/COMPLETED_WORK.md (was 2026-10-15_s3_reread_registration.md)",
         "status": "EXPLORATORY; exposed development data; no sealed set read",
         "permutations": permutations,
         "alpha": ALPHA,

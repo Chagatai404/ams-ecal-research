@@ -143,7 +143,7 @@ def run(dataset: str = "small") -> dict[str, Any]:
     even = [p["index"] % 2 == 0 for p in parts]
     odd = [~m for m in even]
     result: dict[str, Any] = {
-        "registration": "research/plans/2026-10-12_particle_agnostic_RA_design_DRAFT.md, section 17",
+        "registration": "research/COMPLETED_WORK.md (was 2026-10-12_particle_agnostic_RA_design_DRAFT.md), section 17",
         "tolerance": CLOSURE_TOLERANCE,
         "share_edges": list(SHARE_EDGES),
         "share_bin_fractions_all_events": {

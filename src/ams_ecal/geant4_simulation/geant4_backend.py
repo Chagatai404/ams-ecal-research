@@ -91,7 +91,7 @@ from ams_ecal.geant4_simulation.geant4_truth import (
 OUTPUT_SCHEMA_VERSION = 2
 
 # Deposit components for the particle-agnostic sampling response
-# (research/plans/2026-10-12_particle_agnostic_RA_design_DRAFT.md). Scored in C++ by particle and kinetic-energy filters
+# (research/COMPLETED_WORK.md (was 2026-10-12_particle_agnostic_RA_design_DRAFT.md)). Scored in C++ by particle and kinetic-energy filters
 # on extra primitive scorers (no Python in the stepping hot path), so a step is attributed to the particle that makes it.
 # A neutron-induced recoil proton is therefore counted as a proton. Energy deposited by anything else is the channel
 # ``other``: the unfiltered grid minus the sum of the six scored components.

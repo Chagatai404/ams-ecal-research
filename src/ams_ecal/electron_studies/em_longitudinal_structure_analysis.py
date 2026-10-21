@@ -1,8 +1,8 @@
 """Analysis-only study of the longitudinal structure of Geant4 electrons (no generator change).
 
-Decision record: ``research/DECISIONS.md`` (DEC-014, F1-F5), plan
-``research/RESEARCH_PLAN.md (Appendix D)`` sections 8-9, note
-``research/plans/2026-10-05_em_longitudinal_structure_analysis_note.md``. Uses only the EXPOSED Geant4 electrons
+Decision record: ``research/COMPLETED_WORK.md`` (DEC-014, F1-F5), plan
+``research/COMPLETED_WORK.md (Appendix D)`` sections 8-9, note
+``research/COMPLETED_WORK.md (was 2026-10-05_em_longitudinal_structure_analysis_note.md)``. Uses only the EXPOSED Geant4 electrons
 (``data/geant4_electron_sample``, development / calibration data); no sealed data, no change to
 any generator. DEC-001 is evaluated through its public sampling API and never modified.
 

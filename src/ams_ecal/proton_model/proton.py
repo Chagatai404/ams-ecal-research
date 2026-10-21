@@ -20,7 +20,7 @@ WHAT IS IMPLEMENTED (interaction draw and crossing branch (steps 1-2) of the pla
 
 WHAT IS NOT YET IMPLEMENTED: interacting events (interacting-event model (steps 3-5)). They wait for the
 researcher's decision on the interacting-event factorization
-(``research/plans/2026-09-29_proton_dependency_analysis.md``, the interacting-proton factorization).
+(``research/COMPLETED_WORK.md (was 2026-09-29_proton_dependency_analysis.md)``, the interacting-proton factorization).
 ``generate_event`` therefore raises ``NotImplementedError`` for an interacting
 draw rather than returning something wrong; ``generate_crossing_event`` forces
 the crossing branch and is what the crossing validation uses.
@@ -519,7 +519,7 @@ class ProtonShowerModel:
             raise NotImplementedError(
                 f"seed {random_seed} draws an interaction at {draw.depth_mm:.1f} mm; interacting "
                 "events (proton model steps 3-5) wait for the researcher's decision on the interacting-proton factorization in "
-                "research/plans/2026-09-29_proton_dependency_analysis.md"
+                "research/COMPLETED_WORK.md (was 2026-09-29_proton_dependency_analysis.md)"
             )
         return self.generate_crossing_event(
             event_id=event_id,

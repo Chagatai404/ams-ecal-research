@@ -5,7 +5,7 @@ counts and partition sums over square boxes of side ``s`` cells. A slope compute
 a property of the pattern AND the scale window AND the number of hits; it is not, by
 itself, evidence of fractal or cascade structure. Whether any estimator is usable on the
 18 x 72 AMS-like grid is decided by the pre-registered controls
-(``research/plans/2026-10-02_multiscale_estimator_validity_preregistration.md``), not by this module.
+(``research/COMPLETED_WORK.md (was 2026-10-02_multiscale_estimator_validity_preregistration.md)``), not by this module.
 
 Definitions (Hentschel and Procaccia, Physica D 8, 435, 1983; secondary confirmation only):
 ``p_i`` is the fraction of the total energy in box ``i``, ``Z_q(s) = sum_i p_i**q`` over

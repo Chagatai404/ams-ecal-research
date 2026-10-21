@@ -1,7 +1,7 @@
 """Joint mean-profile calibration of a common depth origin and mean beta (analysis only).
 
-Decision record ``research/DECISIONS.md`` (DEC-014; the 2026-10-06 rows), note
-``research/plans/2026-10-06_em_depth_origin_calibration_note.md``. Uses only the EXPOSED Geant4 electrons
+Decision record ``research/COMPLETED_WORK.md`` (DEC-014; the 2026-10-06 rows), note
+``research/COMPLETED_WORK.md (was 2026-10-06_em_depth_origin_calibration_note.md)``. Uses only the EXPOSED Geant4 electrons
 (development / calibration data); no sealed data, no generator is changed or written.
 
 COORDINATES. ``x`` is the depth in X0 from the ECAL front face. The profile is a gamma density in

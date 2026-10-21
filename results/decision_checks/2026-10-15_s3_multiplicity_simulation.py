@@ -117,7 +117,7 @@ def main() -> None:
                     summary[key + "_se"] = float(np.nanstd(vals) / np.sqrt(np.isfinite(vals).sum()))
             result["scenarios"][f"k={k},shift={shift}"] = summary  # type: ignore[index]
             print(json.dumps(summary), f"{time.time() - t0:.0f}s", flush=True)
-    pathlib.Path("research/reviews/2026-10-15_s3_multiplicity_simulation.json").write_text(
+    pathlib.Path("results/decision_checks/2026-10-15_s3_multiplicity_simulation.json").write_text(
         json.dumps(result, indent=1), encoding="utf-8"
     )
 

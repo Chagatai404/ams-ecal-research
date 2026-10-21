@@ -43,4 +43,4 @@ for sample, energy in (("electron_development_large", 20.0), ("electron_developm
          "caliper_0.25_pairs": pairs(ke, kp, 0.25), "caliper_0.5_pairs": pairs(ke, kp, 0.5)}
     out[f"{sample}_{energy:g}_vs_proton_200"] = r
     print(f"{sample:28s} {energy:>5g} GeV vs protons 200 GeV:", r, flush=True)
-json.dump(out, open("research/reviews/2026-10-15_p1_200gev_protons_overlap_study.json", "w"), indent=1)
+json.dump(out, open("results/decision_checks/2026-10-15_p1_200gev_protons_overlap_study.json", "w"), indent=1)

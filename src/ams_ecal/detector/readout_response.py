@@ -1,7 +1,7 @@
 """R-B, the reduced instrumental-effect ladder B1-B4, applied to fibre energy per cell.
 
-Registered in ``research/plans/2026-10-12_detector_response_model_proposal_DRAFT.md`` (D6.2-D6.7); evidence in
-``research/plans/2026-10-12_s5a_detector_response_evidence_record.md``.
+Registered in ``research/COMPLETED_WORK.md (was 2026-10-12_detector_response_model_proposal_DRAFT.md)`` (D6.2-D6.7); evidence in
+``research/COMPLETED_WORK.md (was 2026-10-12_s5a_detector_response_evidence_record.md)``.
 
 Only effects that AMS cannot invert are modelled. Attenuation, the raw cell-to-cell gain spread, the HG/LG ratio,
 temperature and the PMT position effect are corrected by AMS before shower variables exist, so they are NOT added.

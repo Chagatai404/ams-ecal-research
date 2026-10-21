@@ -5,7 +5,7 @@ id: RQ-001
 project: ams-ecal-qml
 status: active
 created: 2026-09-20
-artifacts: ["research/PUBLICATION_ROADMAP.md", "research/CHAOS_FRACTALS_QML.md", "research/STATE.md"]
+artifacts: ["research/PUBLICATION_ROADMAP.md", "research/CHAOS_FRACTALS_QML.md", "research/COMPLETED_WORK.md"]
 learning_dependencies: ["multiscale-analysis.scaling-and-box-counting", "multiscale-analysis.estimator-controls-and-finite-scale-bias", "multiscale-analysis.fastmc-versus-geant4-control-logic", "statistics.marginal-versus-joint-distributions"]
 ---
 # RQ-001 — Multiscale information in AMS-02 ECAL-like particle showers

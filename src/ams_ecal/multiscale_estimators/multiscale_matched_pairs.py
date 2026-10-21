@@ -1,6 +1,6 @@
 """S3 stage 3: electrons against interacting protons matched on occupied cells and deposited energy.
 
-Registration: research/plans/2026-10-16_s3_stage3_matched_pairs_registration.md. Electrons and protons of different primary energies are
+Registration: research/COMPLETED_WORK.md (was 2026-10-16_s3_stage3_matched_pairs_registration.md). Electrons and protons of different primary energies are
 paired 1:1 by nearest-neighbour matching in the standardized logarithms of occupied cells and deposited energy within a caliper; the 24
 multiscale statistics (raw and the stage-2 excess) are compared on the matched pairs with a pair-swap permutation test. Exploratory;
 exposed development data; no sealed set.
@@ -365,7 +365,7 @@ def main(argv: list[str] | None = None) -> None:
             if r["caliper_sd"] == caliper:
                 r["bonferroni_factor_families"] = factor
     report = {
-        "registration": "research/plans/2026-10-16_s3_stage3_matched_pairs_registration.md",
+        "registration": "research/COMPLETED_WORK.md (was 2026-10-16_s3_stage3_matched_pairs_registration.md)",
         "status": "EXPLORATORY; exposed development data; no sealed set read",
         "permutations": args.permutations,
         "results": results,

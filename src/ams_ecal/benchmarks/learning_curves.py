@@ -1,6 +1,6 @@
 """Benchmark harness: learning curves of electron/proton classifiers with role separation, log-loss, rejection and a GPU network.
 
-Registration: research/plans/2026-10-16_benchmark_harness_dry_run_registration.md. EXPLORATORY dry run on existing ideal-regime
+Registration: research/COMPLETED_WORK.md (was 2026-10-16_benchmark_harness_dry_run_registration.md). EXPLORATORY dry run on existing ideal-regime
 development data; it exercises the machinery and measures its cost, it draws no inference about multiscale features or efficiency.
 
 Roles per block (energy, representation), disjoint: calibration electrons (threshold only), evaluation electrons and protons, and
@@ -330,7 +330,7 @@ def main(argv: list[str] | None = None) -> None:
     args = parser.parse_args(argv)
     RESULT_PATH.parent.mkdir(parents=True, exist_ok=True)
     report: dict[str, Any] = {
-        "registration": "research/plans/2026-10-16_benchmark_harness_dry_run_registration.md",
+        "registration": "research/COMPLETED_WORK.md (was 2026-10-16_benchmark_harness_dry_run_registration.md)",
         "status": "DRY RUN; exploratory",
         "blocks": [],
         "same_class_null": {},

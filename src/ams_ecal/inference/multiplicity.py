@@ -10,7 +10,7 @@ The development run reported 192 KS verdicts (79 "material") with no adjustment.
   validity needs a joint-exchangeability argument, Westfall and Troendle 2008 Assumption C, and a family-wise-error check
   on same-class data for the family's statistics before a claim), otherwise ``holm`` (strong family-wise control for any
   dependence). Holm is always reported beside it as the sensitivity; ``benjamini_hochberg`` q-values are an exploratory view
-  and never decide (see research/plans/2026-10-15_s3_decisions_literature_record.md);
+  and never decide (see research/COMPLETED_WORK.md (was 2026-10-15_s3_decisions_literature_record.md));
 * a secondary is **exploratory** whatever its q-value unless its family's primary was confirmed (``decide``).
 
 Inputs are p-values or permutation draws; the tests, the strata and the statistic belong to ``permutation_nulls``.

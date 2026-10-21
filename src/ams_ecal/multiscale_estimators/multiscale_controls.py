@@ -1,6 +1,6 @@
 """Synthetic controls and the pre-registered acceptance rules for the estimator-validity gate (EXP-008).
 
-Everything here follows ``research/plans/2026-10-02_multiscale_estimator_validity_preregistration.md``
+Everything here follows ``research/COMPLETED_WORK.md (was 2026-10-02_multiscale_estimator_validity_preregistration.md)``
 (acceptance rules confirmed by the researcher on 2026-10-02, record DEC-013). The numbers 95 percent, 10 percent,
 90 percent and 15 percent are PROJECT ASSUMPTIONS, not literature values.
 
@@ -227,7 +227,7 @@ def run_controls(out_dir, seed: int = 20261002, replicates: int = REPLICATES) ->
     """Run every control, write ``controls.json``, ``recovery.json``, ``windows.json`` and ``controls.png``.
 
     Reproduces the 2026-10-02 result record
-    ``research/plans/2026-10-02_multiscale_estimator_controls_results.md`` (same seed and replicate count).
+    ``research/COMPLETED_WORK.md (was 2026-10-02_multiscale_estimator_controls_results.md)`` (same seed and replicate count).
     """
     import json
     from pathlib import Path

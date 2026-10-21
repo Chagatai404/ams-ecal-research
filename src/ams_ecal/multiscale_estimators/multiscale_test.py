@@ -1,4 +1,4 @@
-"""The registered statistics of the first multiscale test (``research/plans/2026-10-09_multiscale_test_preregistration.md``).
+"""The registered statistics of the first multiscale test (``research/COMPLETED_WORK.md (was 2026-10-09_multiscale_test_preregistration.md)``).
 
 Per event: the generalised dimensions D0, D1, D2 and D0 - D2 over the six registered scale windows, computed only where the
 event has at least the occupied cells of the control image at which that window was found usable (336 for the 1000-hit

@@ -1,8 +1,8 @@
 """The ``em_production`` electron generator, Slice 1: a candidate DEVELOPMENT model (not validated).
 
-Decision record ``research/DECISIONS.md`` (DEC-014 and the 2026-10-06 rows), plan
-``research/RESEARCH_PLAN.md (Appendix D)`` sections 8-13, note
-``research/plans/2026-10-06_em_production_slice1_note.md``. DEC-001 (``stochastic.py``) is NOT changed: it stays
+Decision record ``research/COMPLETED_WORK.md`` (DEC-014 and the 2026-10-06 rows), plan
+``research/COMPLETED_WORK.md (Appendix D)`` sections 8-13, note
+``research/COMPLETED_WORK.md (was 2026-10-06_em_production_slice1_note.md)``. DEC-001 (``stochastic.py``) is NOT changed: it stays
 the historical baseline and the null control.
 
 LOCKED BASELINE PHYSICS FAMILY (researcher's decision, 2026-10-06). The longitudinal profile of one event is a

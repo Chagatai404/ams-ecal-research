@@ -1,6 +1,6 @@
 """Development check of the ``em_production`` lateral slice (Slice 2) against Geant4 (NOT a validation).
 
-Decision record ``research/DECISIONS.md`` (2026-10-07 rows), note ``research/plans/2026-10-07_em_lateral_structure_note.md``.
+Decision record ``research/COMPLETED_WORK.md`` (2026-10-07 rows), note ``research/COMPLETED_WORK.md (was 2026-10-07_em_lateral_structure_note.md)``.
 Compares ensembles of Slice 2 (Slice 1's longitudinal draws with the Grindhammer-Peters radial law and spot
 fluctuations) with
 

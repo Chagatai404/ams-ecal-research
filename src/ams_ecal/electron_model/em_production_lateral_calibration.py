@@ -1,6 +1,6 @@
 """Calibration of the ``em_production`` lateral slice (Slice 2) on the exposed baseline Geant4 electrons.
 
-Decision record ``research/DECISIONS.md`` (2026-10-07 rows), note ``research/plans/2026-10-07_em_lateral_structure_note.md``.
+Decision record ``research/COMPLETED_WORK.md`` (2026-10-07 rows), note ``research/COMPLETED_WORK.md (was 2026-10-07_em_lateral_structure_note.md)``.
 The sealed electron sets are never read. Slice 1's longitudinal artifact is fixed; only the lateral constants move.
 
 Two steps, each with a different target (the mean profile does not depend on the spot numbers, so they separate):

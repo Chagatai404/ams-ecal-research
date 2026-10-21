@@ -45,4 +45,4 @@ for e_e in (10.0, 20.0, 50.0, 100.0):
              "caliper_0.25_pairs": pairs(ke, kp, 0.25), "caliper_0.5_pairs": pairs(ke, kp, 0.5)}
         out[f"e{e_e:g}_p{e_p:g}"] = r
         print(f"electrons {e_e:>5g} GeV vs protons {e_p:>5g} GeV:", r, flush=True)
-json.dump(out, open("research/reviews/2026-10-15_p1_cross_energy_overlap_study.json", "w"), indent=1)
+json.dump(out, open("results/decision_checks/2026-10-15_p1_cross_energy_overlap_study.json", "w"), indent=1)

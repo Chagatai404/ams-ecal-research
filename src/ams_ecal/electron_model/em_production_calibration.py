@@ -1,7 +1,7 @@
 """Calibration of the ``em_production`` Slice 1 parameters on the exposed Geant4 electrons.
 
-Decision record ``research/DECISIONS.md`` (DEC-014, 2026-10-06 rows), note
-``research/plans/2026-10-06_em_production_slice1_note.md``. The calibration data is the EXPOSED baseline electron
+Decision record ``research/COMPLETED_WORK.md`` (DEC-014, 2026-10-06 rows), note
+``research/COMPLETED_WORK.md (was 2026-10-06_em_production_slice1_note.md)``. The calibration data is the EXPOSED baseline electron
 sample (``data/geant4_electron_sample/baseline``: 1000 events at each of 10, 20, 50, 100 GeV, ``deposition``
 representation). The sealed electron set is not read. The extended-depth sample
 (``data/geant4_electron_extended``) is NOT used here: it is the DEVELOPMENT HOLD-OUT of the development check

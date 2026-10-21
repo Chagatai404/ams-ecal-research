@@ -1,6 +1,6 @@
 """3D multiscale estimators on the fine voxels, with synthetic controls and the control-derived eligibility rule (plan item A4, DECIDE-4).
 
-Registration: research/plans/2026-10-16_s4a_3d_estimator_controls_registration.md. Sparse energy deposits on the 216 x 216 x 36 mesh of
+Registration: research/COMPLETED_WORK.md (was 2026-10-16_s4a_3d_estimator_controls_registration.md). Sparse energy deposits on the 216 x 216 x 36 mesh of
 3 x 3 x 4.625 mm voxels (flat index (iz * 216 + iy) * 216 + ix); mesh-aligned boxes of (kx, kz) voxels; the same definitions as the 2D
 estimator (``multiscale.py``): box probabilities are energy fractions, ``D_q`` is the least-squares slope of ln Z_q (the entropy at
 q = 1) against the logarithm of the effective box side (3kx * 3kx * 4.625kz)^(1/3). The DEC-013 acceptance numbers are the project
@@ -425,7 +425,7 @@ def main(argv: list[str] | None = None) -> None:
     thresholds = usable_windows(evaluations)
     usable = {w: t for w, t in thresholds.items() if t["usable_at_hits"]}
     report = {
-        "registration": "research/plans/2026-10-16_s4a_3d_estimator_controls_registration.md",
+        "registration": "research/COMPLETED_WORK.md (was 2026-10-16_s4a_3d_estimator_controls_registration.md)",
         "status": "methods development; synthetic controls and exposed development events; no sealed set",
         "scales": [
             {"voxels": s, "effective_side_mm": float(EFFECTIVE_SIDE_MM[i])}

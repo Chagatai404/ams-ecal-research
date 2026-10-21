@@ -1,6 +1,6 @@
 """Event-by-event longitudinal fluctuations of Geant4 electrons against the Grindhammer-Peters forms.
 
-A reproducible check (research/plans/2026-10-05_em_literature_verification_record.md, adversarial
+A reproducible check (research/COMPLETED_WORK.md (was 2026-10-05_em_literature_verification_record.md), adversarial
 pass). For each exploration electron (data/geant4_electron_sample, unsealed; the sealed set is not
 touched) a gamma-shaped longitudinal profile is fitted to the 18 layer energies of the
 ``deposition`` grid, divided by the primary energy so that the energy beyond the last layer is the

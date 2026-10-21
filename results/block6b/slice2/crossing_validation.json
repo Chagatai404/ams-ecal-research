@@ -1,6 +1,6 @@
 {
   "status": "Block 6B Slice 2 validation: interaction draw and crossing branch only, against HELD-OUT Geant4 events (event_index % 4 == 3). Interacting events are not yet generated.",
-  "contract": "research/plans/2026-09-29_block6b_slice0_dependency_analysis.md section 8",
+  "contract": "research/COMPLETED_WORK.md (was 2026-09-29_block6b_slice0_dependency_analysis.md) section 8",
   "model": {
     "calibration_content_sha256": "539eaab0ba31a111c92a2718b08ea084d991575e655f45989bbf2ab0e8abb80b",
     "physics_list": "ftfp_bert",

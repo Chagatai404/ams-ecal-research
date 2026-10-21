@@ -57,4 +57,4 @@ for energy in (20.0, 100.0):
     print(energy, json.dumps(out[f"{energy:g}"]))
 import pathlib
 pathlib.Path("results/detector_response").mkdir(exist_ok=True)
-pathlib.Path("research/reviews/2026-10-15_s3_sign_structure.json").write_text(json.dumps({"seed": SEED, "n_events_per_class": N_EVENTS, "n_permutations": N_PERM, "data": "exposed development-large electrons and protons; no sealed sets", "results": out}, indent=1))
+pathlib.Path("results/decision_checks/2026-10-15_s3_sign_structure.json").write_text(json.dumps({"seed": SEED, "n_events_per_class": N_EVENTS, "n_permutations": N_PERM, "data": "exposed development-large electrons and protons; no sealed sets", "results": out}, indent=1))

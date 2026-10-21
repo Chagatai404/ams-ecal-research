@@ -58,4 +58,4 @@ if __name__ == "__main__":
                     "passes": bool(wy.mean() <= ALPHA + tol and holm.mean() <= ALPHA + tol),
                 }
                 print(energy, rep, out[f"{energy:g}_{rep}"], flush=True)
-    json.dump(out, open("research/reviews/2026-10-15_s3_reread_familywise_guard.json", "w"), indent=1)
+    json.dump(out, open("results/decision_checks/2026-10-15_s3_reread_familywise_guard.json", "w"), indent=1)

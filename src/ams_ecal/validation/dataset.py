@@ -1,7 +1,7 @@
 """Assembly of the FastMC electron/proton dataset and its dataset-level checks.
 
 The design and the checks are registered in
-``research/plans/2026-10-04_dataset_level_checks_preregistration.md``. Version v0 is the
+``research/COMPLETED_WORK.md (was 2026-10-04_dataset_level_checks_preregistration.md)``. Version v0 is the
 perfect-event dataset: both classes in the ``deposition`` representation (DEC-006), normal
 incidence, one energy and one entry-point distribution for both classes.
 

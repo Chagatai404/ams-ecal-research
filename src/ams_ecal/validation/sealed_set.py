@@ -1,7 +1,7 @@
 """Sealed Geant4 validation sets: hash manifest, guarded reader, opening ledger.
 
 A sealed set is generated once, hashed, and never looked at until the final validation. The
-rules (``research/plans/2026-10-02_added_validation_checks_preregistration.md``, rule 2) are
+rules (``research/COMPLETED_WORK.md (was 2026-10-02_added_validation_checks_preregistration.md)``, rule 2) are
 enforced here rather than by convention:
 
 * ``seal`` records the SHA-256 and size of every file of a set in a manifest that is

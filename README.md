@@ -73,7 +73,8 @@ Negative results are scientifically useful.
 
 See:
 
-- `research/STATE.md`
+- `research/COMPLETED_WORK.md`
+- `research/OPEN_DECISIONS.md`
 - `research/PUBLICATION_ROADMAP.md`
 - `research/questions/RQ-001_multiscale_shower_information.md`
 - `research/CHAOS_FRACTALS_QML.md`
@@ -526,7 +527,8 @@ Current and planned top-level structure:
 ├── configs/
 ├── notebooks/
 ├── research/
-│   ├── STATE.md
+│   ├── COMPLETED_WORK.md
+│   ├── OPEN_DECISIONS.md
 │   ├── PUBLICATION_ROADMAP.md
 │   ├── CHAOS_FRACTALS_QML.md
 │   └── questions/

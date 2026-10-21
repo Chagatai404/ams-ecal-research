@@ -5,7 +5,7 @@ ECAL without a hadronic interaction: a calibration of Geant4 11.4.1, FTFP_BERT, 
 project's material model, over 10-100 GeV at normal incidence. The "burst" is an empirical
 description of multi-layer coherent excess; it is NOT identified here with a mechanism.
 
-WHY. The first crossing validation (``research/plans/2026-09-29_proton_dependency_analysis.md``
+WHY. The first crossing validation (``research/COMPLETED_WORK.md (was 2026-09-29_proton_dependency_analysis.md)``
 section 11) failed on event total, hit multiplicity, maximum cell and containment, because the
 crossing branch drew its 18 layers independently and put every layer's energy in the crossed
 cells. Two repairs were accepted: a structural burst latent (probability, onset, energy,

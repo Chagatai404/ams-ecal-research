@@ -54,4 +54,4 @@ for energy in (5, 10, 20, 50, 100, 200):
         summarise(f"interacting_em_share_q{b}[{qs[b]:.2f}-{qs[b+1]:.2f}]", p_split[sel], fib[sel], out)
     result[str(energy)] = out
     print(energy, "GeV", {k: round(v["max_abs"], 3) for k, v in out.items() if k.startswith(("all", "cross", "interacting_split"))}, flush=True)
-pathlib.Path("research/reviews/2026-10-15_ra_proton_diagnostic.json").write_text(json.dumps(result, indent=1), encoding="utf-8")
+pathlib.Path("results/decision_checks/2026-10-15_ra_proton_diagnostic.json").write_text(json.dumps(result, indent=1), encoding="utf-8")

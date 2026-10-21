@@ -1,7 +1,7 @@
 """Profile shape study of Geant4 electrons (analysis only): why a single gamma cannot reach the 100 GeV profile.
 
-Decision record ``research/DECISIONS.md`` (DEC-014, 2026-10-06 rows), note
-``research/plans/2026-10-06_em_profile_shape_study_note.md``. Uses only the EXPOSED Geant4 electrons
+Decision record ``research/COMPLETED_WORK.md`` (DEC-014, 2026-10-06 rows), note
+``research/COMPLETED_WORK.md (was 2026-10-06_em_profile_shape_study_note.md)``. Uses only the EXPOSED Geant4 electrons
 (development / calibration data); no sealed data, no generator is changed or written.
 
 Four questions, in the order the researcher approved them:

@@ -65,4 +65,4 @@ for energy in vr.ENERGIES:
             row["caliper_0.5sd_pairs"] = caliper_pairs(ke, kp, 0.5)
         out[f"{energy:g}_{rep[:3]}"] = row
         print(f"{energy:>5g} {rep[:3]}", row, flush=True)
-json.dump(out, open("research/reviews/2026-10-15_p1_common_support_study.json", "w"), indent=1)
+json.dump(out, open("results/decision_checks/2026-10-15_p1_common_support_study.json", "w"), indent=1)

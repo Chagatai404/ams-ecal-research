@@ -1,5 +1,5 @@
 {
- "registration": "research/plans/2026-10-12_detector_response_model_proposal_DRAFT.md, D6.8; proton table approved 2026-10-15",
+ "registration": "research/COMPLETED_WORK.md (was 2026-10-12_detector_response_model_proposal_DRAFT.md), D6.8; proton table approved 2026-10-15",
  "tolerance": 0.03,
  "seed": 20261012,
  "fit_rule": "even event_index fit, odd event_index validate; development sets only",

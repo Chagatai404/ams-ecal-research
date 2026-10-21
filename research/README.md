@@ -7,14 +7,13 @@ researcher's Obsidian knowledge vault.
 
 ## Core records
 
-`RESEARCH_PLAN.md`
+`COMPLETED_WORK.md`
 
-: The ONE living plan: every workstream, item, status, decision waiting for the researcher and the critical path. Read it first, every session. Dated files in `plans/` are evidence records, not plans.
+: What has been done, tested and decided: results by area with evidence labels, the registered tests, the accepted decisions, corrections of earlier statements, and where things live. Read it first, every session.
 
-`STATE.md`
+`OPEN_DECISIONS.md`
 
-: The current human-approved project state. Read this before substantial
-scientific work.
+: What is waiting for the researcher (each decision with its options and evidence), and the plan to the machine-learning benchmarks. These two files replace the earlier state, decisions and plan files and all dated plans and reviews; the originals are in the git tag `docs-before-consolidation-2026-10-21` and the Obsidian folder `Research Records`.
 
 `MODULE_MAP.md`
 
@@ -49,7 +48,8 @@ Obsidian
 └── personal synthesis
 
 Git repository
-├── research/STATE.md
+├── research/COMPLETED_WORK.md
+├── research/OPEN_DECISIONS.md
 ├── research/PUBLICATION_ROADMAP.md
 ├── research/CHAOS_FRACTALS_QML.md
 ├── research/questions/
@@ -74,13 +74,13 @@ scientific purpose.
 Before substantial work:
 
 1. read `RESEARCH_PROTOCOL.md`;
-2. read `research/STATE.md`;
+2. read `research/COMPLETED_WORK.md` and `research/OPEN_DECISIONS.md`;
 3. read `research/PUBLICATION_ROADMAP.md` for publication-level work;
 4. read `research/CHAOS_FRACTALS_QML.md` for fractal, multiscale, chaos, QCNN,
    Hamiltonian-embedding, or quantum-reservoir work;
 5. inspect recent Git changes;
-6. correct `STATE.md` if code or accepted research decisions have moved ahead
-   of it.
+6. correct the two files if code or accepted research decisions have moved ahead
+   of them.
 
 ## 1. Choose the working mode
 
@@ -202,7 +202,7 @@ Next action:
 ...
 ```
 
-Only human-accepted conclusions update `research/STATE.md`.
+Only human-accepted conclusions update `research/COMPLETED_WORK.md`.
 
 ---
 
@@ -234,37 +234,3 @@ be forced into the shower-physics interpretation.
 The human researcher decides what becomes accepted knowledge or conclusion.**
 
 ---
-
-## Record index: the validated-FastMC-dataset branch (2026-10-02 to 2026-10-06)
-
-Branch `fastmc-validated-dataset`. Read in this order for a tutoring session on the processes. "Decision" IDs are in `DECISIONS.md`; commits are in `git log`. The Obsidian vault has no note for this branch yet (its newest research session is 2026-09-29, its newest tutor session 2026-10-02); the repository is the only record of it.
-
-| process | what was done | where it is recorded | commits |
-|---|---|---|---|
-| plan and approvals | the plan (tracks A-E), the researcher's "Yes to all" on Q1-Q7 | `research/RESEARCH_PLAN.md (Appendix B)`, `DECISIONS.md` | |
-| pre-registration | the added validation checks (layer correlations, classifier two-sample test, sparsity, ungated multiscale panel), numbers confirmed before any sealed event existed; amended 2026-10-05 | `plans/2026-10-02_added_validation_checks_preregistration.md` | |
-| crossing repair | burst latent, lateral spill, bulk coupling; in-sample check | `STATE.md` (branch sections), `results/proton_model/crossing_structure_in_sample.json`; DEC-008, DEC-009 | e822e04, f4b79ea (superseded) |
-| sealed Geant4 sets | configs, hash manifests, guard, opening ledger (no opening yet), generation logs | `sealed/README.md`, `sealed/*_manifest.json`, `sealed/generation_log_part*.txt`, `src/ams_ecal/validation/sealed_set.py` | 7f75f73, 467117f, 35bd01f |
-| interacting model | per-offset tables, copula, back-edge, upstream albedo, amplitude mapping; lateral quanta; batch path | `STATE.md`, `results/proton_model/interacting_in_sample.json`; DEC-005 (formulation accepted 2026-10-05) | 501b875, 958f6dd |
-| harness and dataset | added-checks harness, dataset assembler, checks D1-D9, mutation-tested decision rules; dataset-level registration (amended 2026-10-05) | `plans/2026-10-04_dataset_level_checks_preregistration.md`, `src/ams_ecal/validation/added_checks.py`, `src/ams_ecal/validation/dataset.py` | 1688c2b |
-| dry run and repairs | the dry run exposed a deposition lateral shape far from Geant4 (my in-sample check had compared lateral shape for readout only); repairs; artifact frozen `cee305f1` | `results/added_checks/dry_run.json`, `STATE.md` (2026-10-04 later), amendment in the 2026-10-02 registration | 8c8a5b9, 4701165 |
-| reviewer agents | physics, simulation, statistics, ML, adversarial, reproducibility, literature scout; my assessment of each finding | `reviews/2026-10-05_reviewer_agents_round1.md` | bfe964b |
-| EM out-of-sample check | the DEC-001 EM generator against exploration Geant4 electrons: strong disagreement | `results/em_generator/exploration_comparison.json`, `STATE.md` (2026-10-05) | bfe964b (tag `fastmc-pre-em-repair-2026-10-05`) |
-| decisions of 2026-10-05 | DEC-005 accepted; EM: smooth null kept, new production generator; thresholds; protocol wording; sealed proton set stays closed | `DECISIONS.md` (rows of 2026-10-05) | |
-| EM production plan | gated plan, no implementation | `research/RESEARCH_PLAN.md (Appendix D)` | |
-| physics-list systematic | the proton model against QGSP_BERT and QBBC pilot samples (a systematic, not validation) | `results/proton_model/physics_list_systematic.json` | |
-| longitudinal structure (analysis) | joint T/alpha structure of Geant4 electrons, event beta, origin degeneracy, confounders of the lateral coupling | `plans/2026-10-05_em_longitudinal_structure_analysis_note.md`, `results/em_generator/longitudinal_structure*`; decisions F1-F5, DEC-014 | b664936 |
-| repository grouping | `src/ams_ecal` and `tests` grouped into role folders; the F5/F6 labels replaced by descriptive names | `MODULE_MAP.md`, `NAMES.md` | 9bd6b92 |
-| depth-origin calibration (analysis) | common origin and mean beta on the Geant4 deposition profile; identifiability; the AMS 0.65 as a convention; the first-layer floor gate (closed) | `plans/2026-10-06_em_depth_origin_calibration_note.md`, `results/em_generator/depth_origin_calibration*` | a431041 |
-| profile shape study (analysis) | why a single gamma cannot reach the 100 GeV profile; tail component; skewed ln T and the leakage; AMS beta on readout; literature read directly in the library PDFs | `plans/2026-10-06_em_profile_shape_study_note.md`, `results/em_generator/profile_shape_study*` | a2a0de4 |
-| extended-depth electrons (data and analysis) | 270-layer development sample; the tail measured (rate 0.27-0.28 per X0); prefix-fitted tail components are an empirical correction, not a physical tail | `configs/geant4_electron_extended.yaml`, `plans/2026-10-06_em_extended_tail_note.md`, `results/em_generator/extended_tail_study*` | 528a246 |
-| em_production Slice 1 (implementation) | the gamma-family longitudinal electron generator (candidate, development), its calibrated artifact and development check; DEC-001 unchanged; sealed set unopened | `plans/2026-10-06_em_production_slice1_note.md`, `data/calibration/em_production/gamma_baseline_v1/parameters.json`, `results/em_generator/em_production_*` | e7ebd4d, 646237a |
-| lateral structure (analysis) | literature check of the radial law and spot model in the library PDFs; the two-component law against Geant4 cell profiles, DEC-001 and the published constants; spot-number structure after conditioning on the event's centre of gravity; a lateral formulation proposed, not implemented | `plans/2026-10-07_em_lateral_structure_note.md`, `results/em_generator/lateral_structure_study*` | |
-| em_production Slice 2 (implementation) | the Grindhammer-Peters lateral spot model on Slice 1 (candidate, development): calibrated radial law and spot structure, its development check against Geant4 and the DEC-001-lateral control; width and hit cells not achieved, extension E1 proposed; sealed set unopened | `plans/2026-10-07_em_production_slice2_lateral_note.md`, `data/calibration/em_production/gp_lateral_v1/parameters.json`, `results/em_generator/em_production_lateral_*` | |
-| lateral extension E1 (tried, not adopted) | two added spot parameters tried under the researcher's no-overfitting, no-complication condition; the rule was fixed in code first; the hit-cell count improves, the width and the coupling get worse; Slice 2 stays the candidate | `plans/2026-10-07_em_production_slice2_lateral_note.md` section 6, `data/calibration/em_production/gp_lateral_e1_v1/parameters.json`, `results/em_generator/em_production_lateral_e1_*` | |
-| lateral width diagnostic (analysis) | where the width excess of Slice 2 comes from: decomposition of width^2 by distance and layer for Geant4, Slice 2 with spots and its expectation; the far tail of the mean radial law, not the spots; a tail-sensitive radial calibration proposed | `plans/2026-10-07_em_production_slice2_lateral_note.md` section 7, `results/em_generator/em_production_lateral_width_diagnostic.*` | |
-| tail-sensitive radial calibration (tried, not adopted) | the same twelve radial constants with the layer second moment as a second target, rule fixed in code first, two weights; the width is cured (KS 0.7 to 0.2) without a new parameter or overfitting, but the core fraction, containment and profile get much worse; Slice 2 stays the candidate | `plans/2026-10-07_em_production_slice2_lateral_note.md` section 8, `data/calibration/em_production/gp_lateral_tail*_v1/parameters.json`, `results/em_generator/em_production_lateral_tail_*` | |
-| faster-falling radial tail (tried, one criterion short) | one added parameter (the tail exponent), rule fixed first with one added parameter allowed; the width, containment and coupling improve without overfitting, but the profile error rises by 0.41 points against 0.3 allowed; Slice 2 stays the candidate pending the researcher's decision | `plans/2026-10-07_em_production_slice2_lateral_note.md` section 9, `data/calibration/em_production/gp_lateral_faster_tail_v1/parameters.json`, `results/em_generator/em_production_lateral_faster_tail_*` | |
-| lateral distinguishability and occupancy (analysis) | the 0.3-point tolerance was not derived, the profile metric resolves 0.1 point; the registered classifier separates both candidates from Geant4 completely (AUC 1.0) through the cell occupancy; the outer energy quantum is 1.2-1.5 MeV in Geant4 against 7.7-9.1 MeV in the model; extension E2 proposed, not built; Research OS v0.8 duties applied | `plans/2026-10-07_em_production_slice2_lateral_note.md` sections 11-14, `results/em_generator/em_production_lateral_{metric_resolution,distinguishability,single_features,occupancy_diagnostic}*` | 3e36f3c (the step before) |
-
-Other places that hold records: `RESEARCH_PROTOCOL.md` and `CLAUDE.md` (the rules), `NAMES.md` (translation of old labels), `results/` (every numeric result, each with a status line), the git history (about 80 commits, one per step), the assistant's file memory and claude-mem (what happened, never a substitute for these), and the Obsidian vault `01 Projects/AMS ECAL QML` (evidence maps, research sessions, tutor sessions: the learning record, to be extended for this branch when the tutoring starts).

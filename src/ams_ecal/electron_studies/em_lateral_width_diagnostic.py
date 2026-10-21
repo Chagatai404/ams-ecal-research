@@ -1,6 +1,6 @@
 """Where does the lateral width excess of the Slice 2 generator come from? (diagnostic, analysis only)
 
-Decision record ``research/DECISIONS.md`` (2026-10-08 rows), note ``research/plans/2026-10-07_em_production_slice2_lateral_note.md``.
+Decision record ``research/COMPLETED_WORK.md`` (2026-10-08 rows), note ``research/COMPLETED_WORK.md (was 2026-10-07_em_production_slice2_lateral_note.md)``.
 The development check found the width distribution far from Geant4 (KS about 0.7, median 16.1 against 13.9 mm at 20 GeV)
 and extension E1, which refines the spots, did not cure it. The width of an event is the energy-weighted rms of the
 measured coordinate about the track over all 72 cells,

@@ -1,7 +1,7 @@
 """Development check of the ``em_production`` Slice 1 generator against Geant4 (NOT a validation).
 
-Decision record ``research/DECISIONS.md`` (DEC-014, 2026-10-06 rows), note
-``research/plans/2026-10-06_em_production_slice1_note.md``. Compares ensembles of the Slice 1 generator with
+Decision record ``research/COMPLETED_WORK.md`` (DEC-014, 2026-10-06 rows), note
+``research/COMPLETED_WORK.md (was 2026-10-06_em_production_slice1_note.md)``. Compares ensembles of the Slice 1 generator with
 
 * the CALIBRATION set: the exposed baseline electrons (``data/geant4_electron_sample/baseline``), on which the
   parameters were fitted;

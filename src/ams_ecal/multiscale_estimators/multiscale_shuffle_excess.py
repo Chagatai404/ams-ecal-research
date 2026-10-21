@@ -1,6 +1,6 @@
 """S3 stage 2: the cell-shuffle excess of the 24 multiscale statistics, electrons against interacting protons.
 
-Registration: research/plans/2026-10-15_s3_stage2_registration.md. Per event and statistic: excess = real statistic minus the mean of
+Registration: research/COMPLETED_WORK.md (was 2026-10-15_s3_stage2_registration.md). Per event and statistic: excess = real statistic minus the mean of
 the same statistic over 10 energy-preserving shuffled copies of the image, with two surrogates (``full``: every layer's cells
 permuted over the 72 positions, the registered A3 null; ``block9``: cells permuted inside the 8 blocks of 9 adjacent cells of each
 layer, which keeps the lateral envelope above 9 cells). The class difference of the excess is tested with the stage-1 engine.
@@ -159,7 +159,7 @@ def main(argv: list[str] | None = None) -> None:
                 if test["testable"]:  # Bonferroni across the four (surrogate, representation) families
                     test["westfall_young_4_families"] = float(min(1.0, 2 * test["westfall_young_192"]))
                     test["holm_4_families"] = float(min(1.0, 2 * test["holm_192"]))
-        report["registration"] = "research/plans/2026-10-15_s3_stage2_registration.md"
+        report["registration"] = "research/COMPLETED_WORK.md (was 2026-10-15_s3_stage2_registration.md)"
         report["surrogate"] = surrogate
         report["shuffles_per_event"] = args.shuffles
         del report["agreement"]

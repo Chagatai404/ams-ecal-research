@@ -1,7 +1,7 @@
 # MODULE MAP — what each file is for in the model
 
 One page that says, for every module in `src/ams_ecal/`, what part of the FastMC (or of the evidence about it) it is, which test
-file checks it, and where its results and decisions live. It is a lookup table, not a plan: reasons stay in `DECISIONS.md` and the
+file checks it, and where its results and decisions live. It is a lookup table, not a plan: reasons stay in `COMPLETED_WORK.md` and the
 dated plans in `plans/`. Old labels in file names are translated in `NAMES.md`.
 
 ## Folder layout
@@ -65,7 +65,7 @@ event, configuration and geometry classes (`from ams_ecal import ECALEvent, load
 ## 3. `electron_studies/` — evidence about the generator, not the generator
 
 These are the files that grew fastest. They run on the **exposed** Geant4 electrons only; the sealed electron set has not been opened.
-Results: `results/em_generator/`. Plan and notes: `research/plans/2026-10-05_em_*`, `2026-10-06_em_*`. Nothing here writes into `electron_model/`.
+Results: `results/em_generator/`. Plan and notes: `research/COMPLETED_WORK.md (was 2026-10-05_em_)*`, `2026-10-06_em_*`. Nothing here writes into `electron_model/`.
 
 | Order | Module | Test | Question it answers | Status | Output in `results/em_generator/` |
 |---|---|---|---|---|---|
@@ -85,7 +85,7 @@ Results: `results/em_generator/`. Plan and notes: `research/plans/2026-10-05_em_
 | 14 | `em_lateral_distinguishability.py` | `test_em_lateral_distinguishability.py` | Can the registered classifier two-sample test tell a lateral candidate from Geant4? AUC with the permutation null, feature-group ablations, the single-feature separation, and the Geant4 baseline-against-hold-out floor. A diagnostic, never a tuning target. Result: AUC 1.000 for both candidates, separated by the cell occupancy. | analysis + control | `em_production_lateral_distinguishability.json`, `em_production_lateral_single_features.json` |
 | 15 | `em_lateral_occupancy_diagnostic.py` | `test_em_lateral_occupancy_diagnostic.py` | What carries the missing cell occupancy? Occupied fraction, empty fraction and energy per occupied cell by distance from the track and by layer group, for Geant4 and both candidates. Result: a constant 1.2-1.5 MeV outer quantum in Geant4 against 7.7-9.1 MeV in the model. | analysis | `em_production_lateral_occupancy_diagnostic.json` |
 
-Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `research/RESEARCH_PLAN.md (Appendix D)` and `DECISIONS.md` (DEC-014 and the F-rows).
+Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `research/COMPLETED_WORK.md (Appendix D)` and `COMPLETED_WORK.md` (DEC-014 and the F-rows).
 
 ## 4. `proton_model/` — the proton model
 
@@ -109,7 +109,7 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 |---|---|---|---|
 | `multiscale.py` | `test_multiscale.py` | Multiscale estimators of non-negative deposit images (EXP-008, DEC-010). | analysis only |
 | `multiscale_controls.py` | `test_multiscale_controls.py` | Synthetic controls and pre-registered acceptance rules; run with `python -m ams_ecal.multiscale_estimators.multiscale_controls` → `results/multiscale_controls/`. | control |
-| `ladder_sanity_audit.py` | `test_ladder_sanity_audit.py` | Slice S0: is the near-perfect electron/proton separation an implementation error? Same-class nulls, label permutation, fold-seed spread, duplicates and seed overlap, a duplicate-injection positive control, energy-only and logistic baselines, the eligibility-indicator-only rung, feature-family and layer-block ablations, the energy-blind pooled test. Expectations are fixed in the module docstring before any run. → `results/sanity_audit/`; record `research/reviews/2026-10-11_s0_sanity_audit.md`. | analysis + control |
+| `ladder_sanity_audit.py` | `test_ladder_sanity_audit.py` | Slice S0: is the near-perfect electron/proton separation an implementation error? Same-class nulls, label permutation, fold-seed spread, duplicates and seed overlap, a duplicate-injection positive control, energy-only and logistic baselines, the eligibility-indicator-only rung, feature-family and layer-block ablations, the energy-blind pooled test. Expectations are fixed in the module docstring before any run. → `results/sanity_audit/`; record `research/COMPLETED_WORK.md (was 2026-10-11_s0_sanity_audit.md)`. | analysis + control |
 | `multiscale_verdict_reread.py` | `test_multiscale_verdict_reread.py` | S3 stage 1: vectorized stratified-KS permutation engine and the valid re-read of the 192 development KS verdicts → `results/multiscale_controls/s3_reread_*`. | analysis only |
 | `multiscale_shuffle_excess.py` | `test_multiscale_shuffle_excess.py` | S3 stage 2: cell-shuffle excess of the 24 statistics (full-layer and 9-cell-block surrogates). | analysis only |
 | `multiscale_matched_pairs.py` | `test_multiscale_matched_pairs.py` | S3 stage 3: caliper matching on occupied cells and deposited energy, pair-swap permutation test, same-class guard. | analysis only |
@@ -135,7 +135,7 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 
 ## 8. `inference/` — statistical foundations (slice S1, gates SV-1..SV-8)
 
-Record: `research/reviews/2026-10-11_s1_statistical_foundations.md`. None of these decides physics; they replace known problems of the development ladder (review C1-C7, C12, C13). Each is validated by `coverage_simulations.py` (→ `results/inference/coverage.json`).
+Record: `research/COMPLETED_WORK.md (was 2026-10-11_s1_statistical_foundations.md)`. None of these decides physics; they replace known problems of the development ladder (review C1-C7, C12, C13). Each is validated by `coverage_simulations.py` (→ `results/inference/coverage.json`).
 
 | Module | Test | What it is | Status |
 |---|---|---|---|

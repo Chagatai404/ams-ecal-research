@@ -1,7 +1,7 @@
 """The ``em_production`` electron generator, Slice 2: the Grindhammer-Peters lateral spot model (candidate, development).
 
-Decision record ``research/DECISIONS.md`` (DEC-014, F2 and the 2026-10-07 rows), note
-``research/plans/2026-10-07_em_lateral_structure_note.md`` (literature, measurement and the approved formulation).
+Decision record ``research/COMPLETED_WORK.md`` (DEC-014, F2 and the 2026-10-07 rows), note
+``research/COMPLETED_WORK.md (was 2026-10-07_em_lateral_structure_note.md)`` (literature, measurement and the approved formulation).
 Slice 1 (``em_production.py``, the locked gamma longitudinal family) and DEC-001 are NOT changed; this module adds the
 lateral structure on top of Slice 1's longitudinal draws. Words: calibrated, candidate, development; never validated.
 

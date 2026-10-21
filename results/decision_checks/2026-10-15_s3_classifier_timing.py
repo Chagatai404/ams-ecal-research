@@ -22,4 +22,4 @@ for energy in (20.0, 100.0):
     out[f"{energy:g}"] = {"events": int(len(y)), "features": int(x.shape[1]), "seconds_per_cross_fit": times,
                            "median_seconds": float(np.median(times))}
     print(energy, out[f"{energy:g}"], flush=True)
-json.dump(out, open("research/reviews/2026-10-15_s3_classifier_timing.json", "w"), indent=1)
+json.dump(out, open("results/decision_checks/2026-10-15_s3_classifier_timing.json", "w"), indent=1)

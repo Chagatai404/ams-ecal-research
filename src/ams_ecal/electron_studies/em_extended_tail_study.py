@@ -1,7 +1,7 @@
 """Extended-depth electrons: the longitudinal tail measured, not inferred (analysis only).
 
-Decision record ``research/DECISIONS.md`` (DEC-014, 2026-10-06 rows), note
-``research/plans/2026-10-06_em_extended_tail_note.md``. Reads the DEVELOPMENT sample
+Decision record ``research/COMPLETED_WORK.md`` (DEC-014, 2026-10-06 rows), note
+``research/COMPLETED_WORK.md (was 2026-10-06_em_extended_tail_note.md)``. Reads the DEVELOPMENT sample
 ``data/geant4_electron_extended`` (``configs/geant4_electron_extended.yaml``: electrons at 10, 20, 50, 100 GeV
 followed through 270 layers, the 18-layer prefix plus 126 superlayers of compatible material). It is exposed
 development data, not a sealed set; no sealed data is read and no generator is changed or written.

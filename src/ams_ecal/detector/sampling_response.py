@@ -1,6 +1,6 @@
 """R-A, the sampling response: all-material deposit per cell -> scintillating-fibre energy per cell.
 
-Registered in ``research/plans/2026-10-12_detector_response_model_proposal_DRAFT.md`` (D6.1, D6.7, D6.8).
+Registered in ``research/COMPLETED_WORK.md (was 2026-10-12_detector_response_model_proposal_DRAFT.md)`` (D6.1, D6.7, D6.8).
 
 The Geant4 files hold two grids: ``deposit_grid_mev`` (energy in all material, truth accounting) and
 ``readout_grid_mev`` (energy in the scintillating fibres only, the detector image before any electronics).

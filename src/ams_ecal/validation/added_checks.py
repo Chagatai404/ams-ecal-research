@@ -1,5 +1,5 @@
 """The added validation checks, as registered in
-``research/plans/2026-10-02_added_validation_checks_preregistration.md`` (DEC-007).
+``research/COMPLETED_WORK.md (was 2026-10-02_added_validation_checks_preregistration.md)`` (DEC-007).
 
 Four rows, each computed for one CELL of the validation (class x energy x representation) from
 two arrays of events, the model's and Geant4's:

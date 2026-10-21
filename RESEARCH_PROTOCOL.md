@@ -235,7 +235,7 @@ A notebook should not be the only implementation of a reusable numerical method.
 
 Claude and Codex should:
 
-- read `research/STATE.md` before substantial work;
+- read `research/COMPLETED_WORK.md` and `research/OPEN_DECISIONS.md` before substantial work;
 - read this protocol before proposing scientific conclusions;
 - read `research/CHAOS_FRACTALS_QML.md` when working on multiscale, fractal, chaos, neural-architecture, or QML questions;
 - use installed Scientific Research OS skills when appropriate;
@@ -255,7 +255,7 @@ For independent review:
 
 ## 12. Research state updates
 
-`research/STATE.md` is the shared current-state summary.
+`research/COMPLETED_WORK.md` is the shared record of what has been done, tested and decided, and `research/OPEN_DECISIONS.md` the shared record of what is waiting for the researcher.
 
 Agents may propose updates, but only human-accepted conclusions should enter:
 

@@ -115,7 +115,7 @@ def run(
             "max_abs_layer_closure": float(np.abs(closure).max())
         }
     result = {
-        "registration": "research/plans/2026-10-12_detector_response_model_proposal_DRAFT.md, D6.8",
+        "registration": "research/COMPLETED_WORK.md (was 2026-10-12_detector_response_model_proposal_DRAFT.md), D6.8",
         "tolerance": CLOSURE_TOLERANCE,
         "seed": SEED,
         "fit_rule": "even event_index fit, odd event_index validate; development sets only",
@@ -179,7 +179,7 @@ def run_proton(
             "max_abs_layer_closure": float(np.abs(closure).max())
         }
     result = {
-        "registration": "research/plans/2026-10-12_detector_response_model_proposal_DRAFT.md, D6.8; proton table approved 2026-10-15",
+        "registration": "research/COMPLETED_WORK.md (was 2026-10-12_detector_response_model_proposal_DRAFT.md), D6.8; proton table approved 2026-10-15",
         "tolerance": CLOSURE_TOLERANCE,
         "seed": SEED,
         "fit_rule": "even event_index fit, odd event_index validate; development sets only",
@@ -284,7 +284,7 @@ def run_proton_split(proton_sample: str = "proton_development_large") -> dict[st
             "classes": per_class,
         }
     result = {
-        "registration": "research/plans/2026-10-12_particle_agnostic_RA_design_DRAFT.md, section 14",
+        "registration": "research/COMPLETED_WORK.md (was 2026-10-12_particle_agnostic_RA_design_DRAFT.md), section 14",
         "tolerance": CLOSURE_TOLERANCE,
         "seed": SEED,
         "fit_rule": "even event_index fit, odd validate; development sets only; prediction uses the truth class of the event",

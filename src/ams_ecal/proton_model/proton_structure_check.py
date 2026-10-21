@@ -5,7 +5,7 @@ THIS IS NOT A VALIDATION. The structure is calibrated on the CALIBRATION events
 so it can only say whether the calibration fits what it was built from. It never reads the
 held-out events (the 2026-09-29 crossing validation looked at those once) nor any sealed set:
 the repaired crossing branch is validated once, on the sealed Geant4 set, under the contract
-of ``research/plans/2026-09-29_proton_dependency_analysis.md`` section 8 and its added checks.
+of ``research/COMPLETED_WORK.md (was 2026-09-29_proton_dependency_analysis.md)`` section 8 and its added checks.
 
 Compared per energy and representation, generated crossing events against the calibration
 crossing events: the event total, hit cells, maximum-cell fraction and containment (as in the
