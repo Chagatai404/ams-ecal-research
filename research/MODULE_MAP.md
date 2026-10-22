@@ -47,6 +47,8 @@ event, configuration and geometry classes (`from ams_ecal import ECALEvent, load
 | `sampling_response_validation.py` | `test_sampling_response_proton_split.py` | The registered closure rule and fits of R-A (electron, proton, split proton) → `results/detector_response/`. | control |
 | `component_sampling_response.py`, `component_sampling_response_validation.py` | `test_component_sampling_response.py` | The component-wise (particle-agnostic) mean model on the tagged Geant4 sets and its registered criteria (not met). | analysis only |
 | `sampling_response_em_share.py` | `test_sampling_response_em_share.py` | Proton tables conditioned on the electromagnetic share of the deposit (registered, not met; data-starved on the small set). | analysis only |
+| `sampling_response_noise_floor.py` | `test_sampling_response_noise_floor.py` | R-A: the model-free half-against-half noise floor of the maximum per-layer closure (EXP-012 step 1, 2026-10-22) → `results/detector_response/r_a_noise_floor.json`. | control |
+| `sampling_response_capped_round.py` | `test_sampling_response_capped_round.py` | R-A: the three registered candidates (crossing flag with finer share bins; share jointly with energy; slow-hadron share) and the selection rule on the old odd events; none eligible, search closed → `results/detector_response/r_a_capped_round_selection.json`. | analysis only |
 | `readout_response.py` | `test_readout_response.py` | R-B: Poisson photoelectrons, gain map, cross-talk, threshold with provenance labels; sensitivity scans only. | infrastructure |
 
 ## 2. `electron_model/` — the electron / EM generators (DEC-001 baseline; em_production Slice 1 candidate)
@@ -114,6 +116,7 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 | `multiscale_shuffle_excess.py` | `test_multiscale_shuffle_excess.py` | S3 stage 2: cell-shuffle excess of the 24 statistics (full-layer and 9-cell-block surrogates). | analysis only |
 | `multiscale_matched_pairs.py` | `test_multiscale_matched_pairs.py` | S3 stage 3: caliper matching on occupied cells and deposited energy, pair-swap permutation test, same-class guard. | analysis only |
 | `multiscale_3d.py` | `test_multiscale_3d.py` | S4 part 1: the 3D multiscale estimator on the fine voxels with synthetic controls and a control-derived eligibility (negative under the registered rules). | control |
+| `multiscale_3d_sensitivity.py` | `test_multiscale_3d_sensitivity.py` | EXP-010: sensitivity check of the 3D controls (saturation rule, three baselines, occupancy-matched cascade, finer hit grid, noise reference); no window usable under all baselines, the original verdict stands → `results/multiscale_controls/exp010_*.json`. | control |
 
 ## 6. `validation/` — dataset, added checks and the sealed-set guard
 
@@ -129,6 +132,7 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 | Module | Test | What it is | Status |
 |---|---|---|---|
 | `geant4_backend.py` | `test_geant4_backend.py` | Geant4 transport backend (pure helpers always tested; transport only where Geant4 is installed). | infrastructure |
+| `seed_collision_check.py` | `test_seed_collision_check.py` | Seed-collision check of planned productions against every configured set (configs only, no event read; EXP-011) → `results/decision_checks/2026-10-22_exp011_seed_check.json`. | infrastructure |
 | `geant4_truth.py` | `test_geant4_truth.py` | Truth-level first inelastic interaction from Geant4 records. | infrastructure |
 | `pilot_analysis.py`, `pilot_report.py` | `test_pilot_analysis.py`, `test_pilot_report.py` | Observables, statistics and report of the Geant4 proton pilot → `results/geant4_proton_pilot/`. | analysis only |
 | `em_variant_initialisation_dump.py` | `test_em_variant_initialisation_dump.py` | Slice S0: what Geant4 sets up for an EM physics list at initialisation, with no events (EM parameters, process names), and the differences between two lists. Its scalar-getter `dump` is blind to enums and tuples (msc step limit, step function, fluctuation model); the complete comparison is `compare-logs` on the saved standard output (Geant4's printed table). Used on `FTFP_BERT_EMV`: at least seven differing settings. → `results/em_variants/`. | analysis only |
