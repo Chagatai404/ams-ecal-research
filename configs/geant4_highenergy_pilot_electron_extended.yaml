@@ -1,0 +1,40 @@
+# EXP-011 high-energy pilot, 1 TeV ELECTRONS in the EXTENDED-depth geometry (researcher approval of EXP-011 in the portal, 2026-10-22).
+# NOT YET LAUNCHED. Purpose: measure the energy behind the 18-layer prefix directly at 1 TeV instead of extrapolating it
+# (5.1% to 11.3% of E at 10 to 100 GeV; a naive extrapolation gives about 17 to 30% at 1 to 2 TeV, unmeasured). The extension is a
+# research instrument, not a detector. Fine voxels on. Component tagging is OFF here: it is only needed for the share-conditioned
+# R-A work and its combination with the extended geometry has not been exercised. EXPOSED development data.
+# Planned cost: 100 events x about 0.26 to 0.30 CPU-s per GeV x 1000 GeV, roughly 3e4 CPU-s (the extended 100 GeV batch measured
+# 26.0 CPU-s per event).
+# Gates as in configs/geant4_highenergy_pilot_electron.yaml.
+# Base seed 20275003 used nowhere else (checked by seed_collision_check.py).
+schema_version: 2
+
+particle: e-
+
+energies_gev: [1000.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  pilot:
+    geometry: extended
+    physics_list: FTFP_BERT
+    events_per_energy: 100
+    base_seed: 20275003
+
+store_fine_prefix_deposits: true
+component_tagging: false
+
+output_dir: data/geant4_highenergy_pilot_electron_extended

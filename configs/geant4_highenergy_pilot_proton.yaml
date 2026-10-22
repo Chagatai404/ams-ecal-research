@@ -1,0 +1,39 @@
+# EXP-011 high-energy pilot, PROTONS in the AMS geometry (researcher approval of EXP-011 in the portal, 2026-10-22).
+# NOT YET LAUNCHED. Purpose: measure, not claim. Occupied fine voxels, deposited energy and EM share of interacting protons at
+# 0.5, 1 and 2 TeV (cross-energy matching for P1 and the 3D route may need protons at these energies), CPU per event, peak memory
+# per worker, file size. Fine voxels and component tags on. EXPOSED development data; never used for P1 and never a validation set.
+# Planned cost (extrapolated from stored cpu_seconds: 0.39, 0.64, 1.42, 2.31 s at 10, 20, 50, 100 GeV, sub-linear in energy):
+# roughly 1000 events x (7 to 12 + 12 to 23 + 19 to 46) CPU-s, about 4e4 to 8e4 CPU-s.
+# Gates as in configs/geant4_highenergy_pilot_electron.yaml.
+# Base seed 20275002 used nowhere else (checked by seed_collision_check.py).
+schema_version: 2
+
+particle: proton
+
+energies_gev: [500.0, 1000.0, 2000.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  pilot:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 1000
+    base_seed: 20275002
+
+store_fine_prefix_deposits: true
+component_tagging: true
+
+output_dir: data/geant4_highenergy_pilot_proton

@@ -1,0 +1,18 @@
+{
+ "date": "2026-10-22",
+ "n_planned_seeds": 4000,
+ "n_existing_seeds": 365240,
+ "n_existing_sets": 95,
+ "configs_not_parsed_as_pilot_configs": [
+  "geant4_transport.yaml",
+  "geant4_transport_relative_volume.yaml"
+ ],
+ "planned_base_seeds": [
+  20275001,
+  20275002,
+  20275003
+ ],
+ "planned_base_seeds_already_in_use": [],
+ "collisions": [],
+ "collisions_same_particle_energy_geometry": []
+}

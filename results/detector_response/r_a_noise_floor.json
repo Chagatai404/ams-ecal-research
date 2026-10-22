@@ -1,0 +1,151 @@
+{
+ "registration": "EXP-012 step 1, 2026-10-22 (hash in research/COMPLETED_WORK.md section 5)",
+ "seed": 20261022,
+ "n_splits": 1000,
+ "rule": {
+  "unmeetable_at_or_above": 0.03,
+  "partly_noise_at_or_above": 0.015
+ },
+ "rows": {
+  "electron_development_large|all|10": {
+   "n_events": 10000,
+   "half_size": 5000,
+   "median": 0.006791096952159292,
+   "p95": 0.013798431176606956,
+   "reading": "real_model_error"
+  },
+  "electron_development_large|all|20": {
+   "n_events": 10000,
+   "half_size": 5000,
+   "median": 0.006036470017964368,
+   "p95": 0.014244597383946431,
+   "reading": "real_model_error"
+  },
+  "electron_development_large|all|50": {
+   "n_events": 10000,
+   "half_size": 5000,
+   "median": 0.005339239312182942,
+   "p95": 0.011841741737760633,
+   "reading": "real_model_error"
+  },
+  "electron_development_large|all|100": {
+   "n_events": 10000,
+   "half_size": 5000,
+   "median": 0.005057444079041129,
+   "p95": 0.011712041065900455,
+   "reading": "real_model_error"
+  },
+  "proton_development_large|crossing|10": {
+   "n_events": 10304,
+   "half_size": 5152,
+   "median": 0.01891236289174425,
+   "p95": 0.02772399382559892,
+   "reading": "partly_noise"
+  },
+  "proton_development_large|crossing|20": {
+   "n_events": 10353,
+   "half_size": 5176,
+   "median": 0.018371736006024264,
+   "p95": 0.027025440129646205,
+   "reading": "partly_noise"
+  },
+  "proton_development_large|crossing|50": {
+   "n_events": 10291,
+   "half_size": 5145,
+   "median": 0.019080195809057954,
+   "p95": 0.02791540633460348,
+   "reading": "partly_noise"
+  },
+  "proton_development_large|crossing|100": {
+   "n_events": 10234,
+   "half_size": 5117,
+   "median": 0.021408421108306486,
+   "p95": 0.030884947749205797,
+   "reading": "structurally_unmeetable"
+  },
+  "proton_development_large|interacting|10": {
+   "n_events": 9696,
+   "half_size": 4848,
+   "median": 0.024497335168905288,
+   "p95": 0.04158070671612086,
+   "reading": "structurally_unmeetable"
+  },
+  "proton_development_large|interacting|20": {
+   "n_events": 9647,
+   "half_size": 4823,
+   "median": 0.021459831022885734,
+   "p95": 0.03888034972532572,
+   "reading": "structurally_unmeetable"
+  },
+  "proton_development_large|interacting|50": {
+   "n_events": 9709,
+   "half_size": 4854,
+   "median": 0.017803096604393664,
+   "p95": 0.03385860068027897,
+   "reading": "structurally_unmeetable"
+  },
+  "proton_development_large|interacting|100": {
+   "n_events": 9766,
+   "half_size": 4883,
+   "median": 0.017009620315956542,
+   "p95": 0.033476935282546375,
+   "reading": "structurally_unmeetable"
+  },
+  "component_proton_large|crossing|10": {
+   "n_events": 10309,
+   "half_size": 5154,
+   "median": 0.01859291593285539,
+   "p95": 0.027074001160767,
+   "reading": "partly_noise"
+  },
+  "component_proton_large|crossing|20": {
+   "n_events": 10355,
+   "half_size": 5177,
+   "median": 0.01856045222656333,
+   "p95": 0.02688365649208548,
+   "reading": "partly_noise"
+  },
+  "component_proton_large|crossing|50": {
+   "n_events": 10344,
+   "half_size": 5172,
+   "median": 0.02095011226946708,
+   "p95": 0.03210944394866519,
+   "reading": "structurally_unmeetable"
+  },
+  "component_proton_large|crossing|100": {
+   "n_events": 10306,
+   "half_size": 5153,
+   "median": 0.020917078486331064,
+   "p95": 0.03149737348471225,
+   "reading": "structurally_unmeetable"
+  },
+  "component_proton_large|interacting|10": {
+   "n_events": 9691,
+   "half_size": 4845,
+   "median": 0.02523395123138661,
+   "p95": 0.04379735573550669,
+   "reading": "structurally_unmeetable"
+  },
+  "component_proton_large|interacting|20": {
+   "n_events": 9645,
+   "half_size": 4822,
+   "median": 0.019699241316659732,
+   "p95": 0.036672018306525236,
+   "reading": "structurally_unmeetable"
+  },
+  "component_proton_large|interacting|50": {
+   "n_events": 9656,
+   "half_size": 4828,
+   "median": 0.017689731394430197,
+   "p95": 0.03549299706512941,
+   "reading": "structurally_unmeetable"
+  },
+  "component_proton_large|interacting|100": {
+   "n_events": 9694,
+   "half_size": 4847,
+   "median": 0.016851739375413066,
+   "p95": 0.03234320786081487,
+   "reading": "structurally_unmeetable"
+  }
+ }
+}

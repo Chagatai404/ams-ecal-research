@@ -1,0 +1,42 @@
+# EXP-011 high-energy pilot, ELECTRONS in the AMS geometry (researcher approval of EXP-011 in the portal, 2026-10-22).
+# NOT YET LAUNCHED. Purpose: measure, not claim. The smallest run that can fail for options (b) and (c) and the AMS energies:
+# occupied fine voxels, deposited energy, CPU per event, peak memory per worker, file size, energy behind the prefix and the
+# maximum per-cell deposit at 200, 400 and 800 GeV. Fine voxels and component tags on. EXPOSED development data; never used for
+# P1 and never a validation set. Planned cost (extrapolated from stored cpu_seconds at 10 to 100 GeV, noisy): about 0.25 to 0.30 CPU-s
+# per GeV per electron, so 300 events x (200 + 400 + 800) GeV is roughly 1.3e5 CPU-s.
+# Gates written before the run (EXP-011): G1 measured cost within 2x of the projection; G2 peak memory x workers fits 15 GB;
+# G3 the lowest energy at which at least 50% of electrons reach the eligibility threshold (23,721 occupied voxels, or the EXP-010
+# threshold if accepted beforehand); G4 projected matched pairs support planted-control power 0.90, else stop if the projected
+# production exceeds about 3 days wall.
+# Base seed 20275001 used nowhere else (checked by seed_collision_check.py).
+schema_version: 2
+
+particle: e-
+
+energies_gev: [200.0, 400.0, 800.0]
+
+incidence:
+  theta: 0.0
+  phi: 0.0
+entry_spot:
+  x_min: 0.0
+  x_max: 9.0
+  y_min: 0.0
+  y_max: 9.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  pilot:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 300
+    base_seed: 20275001
+
+store_fine_prefix_deposits: true
+component_tagging: true
+
+output_dir: data/geant4_highenergy_pilot_electron
