@@ -2,7 +2,7 @@
 
 One page that says, for every module in `src/ams_ecal/`, what part of the FastMC (or of the evidence about it) it is, which test
 file checks it, and where its results and decisions live. It is a lookup table, not a plan: reasons stay in `COMPLETED_WORK.md` and the
-dated plans in `plans/`. Old labels in file names are translated in `NAMES.md`.
+the registrations and decisions summarised in `COMPLETED_WORK.md` sections 5 and 6 (the dated plans were consolidated into `COMPLETED_WORK.md` and `OPEN_DECISIONS.md` on 2026-10-21). Old labels in file names are translated in `NAMES.md`. For a newcomer, start with the repository `README.md`.
 
 ## Folder layout
 
@@ -16,6 +16,7 @@ src/ams_ecal/                      tests/
 ├── proton_model/                  ├── proton_model/
 ├── multiscale_estimators/         ├── multiscale_estimators/
 ├── validation/                    ├── validation/
+├── inference/                     ├── inference/
 ├── benchmarks/                    ├── benchmarks/
 └── geant4_simulation/             └── geant4_simulation/
 ```
@@ -85,6 +86,7 @@ Results: `results/em_generator/`. Plan and notes: `research/COMPLETED_WORK.md (w
 | 12 | `em_production_lateral_tail_decision.py` | `test_em_production_lateral_tail_decision.py` | The pre-stated adoption rule for the tail-sensitive radial calibration (the width improves, no overfitting, no added parameter, no regression), written before the first run; applied to the Slice 2 check, the candidate check and the candidate calibration record. Verdict for both weights: not adopted. With `--max-added-parameters 1` it also judged the faster-tail candidate (not adopted, one sub-criterion short). | control (decision rule) | `em_production_lateral_tail_decision.json`, `em_production_lateral_tail_balanced_decision.json`, `em_production_lateral_faster_tail_decision.json` |
 | 13 | `em_lateral_metric_resolution.py` | `test_em_lateral_metric_resolution.py` | What can the layers 3-17 profile-error metric resolve? Paired bootstrap of the difference of two models' profile errors over the Geant4 hold-out events, the reference-only floor and the model seed spread; it showed the 0.3-point tolerance was not derived and that +0.41 is real but concentrated at low energy. | analysis | `em_production_lateral_metric_resolution.json` |
 | 14 | `em_lateral_distinguishability.py` | `test_em_lateral_distinguishability.py` | Can the registered classifier two-sample test tell a lateral candidate from Geant4? AUC with the permutation null, feature-group ablations, the single-feature separation, and the Geant4 baseline-against-hold-out floor. A diagnostic, never a tuning target. Result: AUC 1.000 for both candidates, separated by the cell occupancy. | analysis + control | `em_production_lateral_distinguishability.json`, `em_production_lateral_single_features.json` |
+| 16 | `em_lateral_tail_quantum.py`, `em_production_lateral_e2_decision.py` | `test_em_lateral_tail_quantum.py`, `test_em_production_lateral_e2_decision.py` | Extension E2 (a fixed absolute energy quantum for the radial tail's spots): measure the quantum and build the candidates, then the adoption rule stated before the run. Verdict: not adopted (occupancy fixed within 3%, but width, coupling and spot number regressed). | analysis + control (decision rule) | `em_production_lateral_e2_*.json`, `em_production_lateral_faster_tail_e2_*.json` |
 | 15 | `em_lateral_occupancy_diagnostic.py` | `test_em_lateral_occupancy_diagnostic.py` | What carries the missing cell occupancy? Occupied fraction, empty fraction and energy per occupied cell by distance from the track and by layer group, for Geant4 and both candidates. Result: a constant 1.2-1.5 MeV outer quantum in Geant4 against 7.7-9.1 MeV in the model. | analysis | `em_production_lateral_occupancy_diagnostic.json` |
 
 Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `research/COMPLETED_WORK.md (Appendix D)` and `COMPLETED_WORK.md` (DEC-014 and the F-rows).
@@ -117,6 +119,11 @@ Reading order for a newcomer: 1 → 2 → 3 → 4 → 5 → 6 → 7, then `resea
 | `multiscale_matched_pairs.py` | `test_multiscale_matched_pairs.py` | S3 stage 3: caliper matching on occupied cells and deposited energy, pair-swap permutation test, same-class guard. | analysis only |
 | `multiscale_3d.py` | `test_multiscale_3d.py` | S4 part 1: the 3D multiscale estimator on the fine voxels with synthetic controls and a control-derived eligibility (negative under the registered rules). | control |
 | `multiscale_3d_sensitivity.py` | `test_multiscale_3d_sensitivity.py` | EXP-010: sensitivity check of the 3D controls (saturation rule, three baselines, occupancy-matched cascade, finer hit grid, noise reference); no window usable under all baselines, the original verdict stands → `results/multiscale_controls/exp010_*.json`. | control |
+| `eligibility_count.py` | `test_eligibility_count.py` | How many cells real Geant4 events occupy, against what the estimator controls needed (the 2D eligibility count). | analysis only |
+| `multiscale_test.py` | `test_multiscale_test.py` | The registered statistics of the first multiscale test (D0, D1, D2, D0 - D2 over six scale windows, computed only on eligible events). | analysis only |
+| `multiscale_development.py` | *(exercised through the ladder tests)* | Development run of the registered statistics on exposed events (electrons against truth-interacting protons); not the registered test. | analysis only |
+| `multiscale_ladder.py` | `test_multiscale_ladder.py` | The five-rung information ladder of the registered test (conventional, multiscale, both, raw 18 x 72, raw plus multiscale; out-of-fold scores). | analysis only |
+| `multiscale_gtrain_development.py` | `test_multiscale_gtrain_development.py` | Development reading of the statistics and the ladder on the large Geant4 development sample (the "G-train" label is misleading; see `OPEN_DECISIONS.md` DECIDE-9). | analysis only |
 
 ## 6. `validation/` — dataset, added checks and the sealed-set guard
 
@@ -156,6 +163,8 @@ Record: `research/COMPLETED_WORK.md (was 2026-10-11_s1_statistical_foundations.m
 | Module | Test | What it is | Status |
 |---|---|---|---|
 | `learning_curves.py` | `test_learning_curves.py` | Role-separated learning curves of electron/proton classifiers: class-balanced log-loss, proton rejection with exact limits, boosted trees, logistic regression and a small GPU network; registered DRY RUN on existing development data, no claims. | infrastructure + analysis only |
+
+Also in `geant4_simulation/`: `em_variant_swap_analysis.py` (no test file of its own) analyses the one-at-a-time swap test of `FTFP_BERT_EMV` settings against the scintillator share (the swap of `ApplyCuts` and `MscRangeFactor` restored only 41% of the share; further swaps not approved) → `results/em_variants/`; status: analysis only.
 
 ## Test conventions (what a passing test means here)
 

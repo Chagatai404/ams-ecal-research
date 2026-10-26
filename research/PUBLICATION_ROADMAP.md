@@ -1,6 +1,17 @@
 # Publication roadmap
 
-_Last human review: 2026-09-21_
+_Last human review: 2026-09-21. Status note added 2026-10-26 (not a human review of the plan itself)._
+
+**Where Paper 1 stands (2026-10-22).** Done: the simulation and estimator
+infrastructure, the statistical tools, a critical program redesign (slices S0 to
+S8, validity gates SV-1 to SV-10), several negative or exploratory readings in
+the ideal Geant4 regime (electron/proton separation is already near perfect, so
+the registered 0.01 AUC-gain rule cannot be met), and a high-energy pilot.
+Waiting: the researcher's choice of 3D control design, then the DECIDE-1
+amendment (five named endpoints P1 to P5), production, detector-level dataset v1,
+independent reviews and the registered benchmarks. Nothing for Paper 2 has
+started. See `OPEN_DECISIONS.md` for the plan and `COMPLETED_WORK.md` for the
+evidence.
 
 This repository is the shared research codebase for a multi-paper AMS-02 ECAL
 research program.

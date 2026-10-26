@@ -73,7 +73,9 @@ The agent advises a statistics review of the S1 and S3 tools soon (SV-9); the ot
 - Whether to ask for a citation trace of Ruan 2014 (INSPIRE `refersto:arxiv:1312.7662`) and add the paywalled references to the library.
 - Eligibility count: the 3D rule replaces the 336/572-cell thresholds only if the controls pass; otherwise the 2D thresholds stay (64 of 192 tests testable). After EXP-010 the controls do not pass under all baselines, so the 2D thresholds stay for now.
 - GAP: the Obsidian folder `01 Projects/AMS ECAL QML/Research Records/` cited in the headers of both record files and in `COMPLETED_WORK.md` section 9 was not found in the vault (only `AMS ECAL QML.md` was); the R-A design record survives only in the backup `~/.research-os-backups/ams-ecal-docs-before-consolidation-2026-10-21`. Either copy the records into the vault or correct the pointers.
-- Stale count: `COMPLETED_WORK.md` section 9 gives 916 tests passed on 2026-10-11; the full suite has not been rerun since the inference, benchmark, R-A-round, EXP-010 and seed-check tests were added.
+- Stale count: `COMPLETED_WORK.md` section 9 gives 916 tests passed on 2026-10-11; the full suite has not been rerun since the inference, benchmark, R-A-round, EXP-010 and seed-check tests were added (1,088 tests are now collected, 2026-10-26).
+- Sync `research/graph/` with the prose records: it stops at DEC-013 and EXP-009, while the records cite DEC-014 and EXP-010 to EXP-014 (the machine-readable graph lags; the prose files are current).
+- Repository `README.md`, `research/README.md`, `MODULE_MAP.md` and `PUBLICATION_ROADMAP.md` were brought up to date on 2026-10-26 (status, results, plan, glossary, missing modules). Keep the README's sections 5 and 6 in step with these two files when they change.
 - Hashmani et al. 2024 (the source of the 200 GeV to 2 TeV and 50 to 70 GeV energies) has not been re-read; the energies are as relayed by the previous agent.
 - Ollama and its `llama-server` runner were stopped on 2026-10-22 at the researcher's instruction to free memory (they respawned while the Geant4 pilot ran); start Ollama again if a tool needs a local model.
 

@@ -5,6 +5,9 @@ This directory contains the durable scientific state of the project.
 It is not a replacement for source code, notebooks, results, or the
 researcher's Obsidian knowledge vault.
 
+New to the project? Read the repository `README.md` first (plain-language
+overview, status, results, next steps, glossary), then the two core records below.
+
 ## Core records
 
 `COMPLETED_WORK.md`
@@ -36,6 +39,29 @@ confounders, and evidence requirements.
 fractal/multifractal ideas, chaos theory and its limits, multiscale ML, and
 future QML hypotheses.
 
+`NAMES.md`
+
+: Translates old labels (Block N, Slice N, S0 to S8) that remain in dated records.
+
+`NOTEBOOK_COVERAGE.md`
+
+: Generated list of modules that no teaching notebook covers yet. Regenerate it; do not edit it by hand.
+
+`graph/`
+
+: Machine-readable research records (RQ-, H-, EXP-, DEC-) written by the Research OS.
+It lags the prose records: it stops at DEC-013 and EXP-009, while `COMPLETED_WORK.md`
+cites DEC-014 and EXP-010 to EXP-014. Treat the two prose files as current and the
+graph as needing a sync (listed in `OPEN_DECISIONS.md`).
+
+`sealed/`
+
+: Manifests, generation logs and the opening rules for the two sealed Geant4 validation sets (unopened).
+
+`data_manifest.json`
+
+: Where every exposed Geant4 sample lives (nothing is copied; see `validation/sample_definitions.py`).
+
 ## Where information belongs
 
 ```text
@@ -53,9 +79,8 @@ Git repository
 ├── research/PUBLICATION_ROADMAP.md
 ├── research/CHAOS_FRACTALS_QML.md
 ├── research/questions/
-├── research/hypotheses/
-├── research/experiments/
-├── research/decisions/
+├── research/graph/            (hypotheses, experiments and decisions as records)
+├── research/sealed/
 ├── notebooks/
 ├── src/
 ├── tests/
@@ -208,21 +233,17 @@ Only human-accepted conclusions update `research/COMPLETED_WORK.md`.
 
 # Current project cadence
 
+As of 2026-10-22 the work runs in this order (details in `OPEN_DECISIONS.md`):
+
 ```text
-FastMC engineering             Multiscale research preparation
-------------------             -------------------------------
-Stochastic generation stochastic EM          scaling laws
-Proton model model          fractal dimensions
-Detector response      generalized dimensions
-Dataset generation datasets               finite-resolution bias
-Geant4 reference               estimator validation
-             \                 /
-              \               /
-        RQ-001 preservation study
-                    ↓
-      Paper 1: information + classical ML
-                    ↓
-        Paper 2+: justified QML
+done:    detector foundation, FastMC (paused), proton model (development),
+         Geant4 reference and pilots, estimators and controls (2D, 3D),
+         statistical tools, R-A closed, high-energy pilot
+waiting: the 3D control-design decision (blocks the P1 production)
+next:    amendment and freeze  ->  production  ->  detector-level dataset v1
+         ->  independent reviews  ->  registered classical benchmarks
+         ->  sealed validation (once)  ->  Paper 1
+later:   Paper 2+, QML on validated structure (nothing started)
 ```
 
 The broader chaos-theory roadmap remains a parallel learning track and must not

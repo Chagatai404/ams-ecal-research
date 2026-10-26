@@ -182,7 +182,7 @@ Decisions are the researcher's, in their own words where recorded. Record IDs (D
 | what | where |
 |---|---|
 | Source code, grouped by role | `src/ams_ecal/` (module guide: `research/MODULE_MAP.md`, name translations: `research/NAMES.md`) |
-| Tests | `tests/` (mirrors the source tree); last full run 916 passed (2026-10-11) |
+| Tests | `tests/` (mirrors the source tree); last recorded full pass 916 (2026-10-11); 1,088 tests collected on 2026-10-26, full rerun pending |
 | Results (JSON, CSV, figures) | `results/` |
 | Decision-check scripts and their outputs | `results/decision_checks/` |
 | Data manifest | `research/data_manifest.json`; sealed sets: `research/sealed/` |
