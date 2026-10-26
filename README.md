@@ -1,6 +1,6 @@
 # AMS-02 ECAL Research
 
-A human-led research program on particle showers in the electromagnetic
+A research program on particle showers in the electromagnetic
 calorimeter (ECAL) of the AMS-02 experiment. It asks whether the *multiscale
 spatial structure* of a shower carries information that helps tell electrons
 from protons, and whether that information survives the detector's coarse
