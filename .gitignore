@@ -34,8 +34,9 @@ dist/
 .env.*
 !.env.example
 
-# Editors
+# Editors and agents
 .vscode/
+.claude/
 .idea/
 *.swp
 *.swo
@@ -64,6 +65,11 @@ data/geant4_electron_extended/
 data/geant4_electron_syst_emv_cuts_reverted/
 data/geant4_electron_syst_emv_msc_reverted/
 data/geant4_electron_syst_emv_both_reverted/
+# Geant4 pilot high-energy batches (large; regenerate from committed configs)
+data/geant4_highenergy_pilot_electron/
+data/geant4_highenergy_pilot_electron_extended/
+data/geant4_highenergy_pilot_logs/
+data/geant4_highenergy_pilot_proton/
 
 # Native/CMake build products for later Geant4 work
 cmake-build-*/
