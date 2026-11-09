@@ -37,7 +37,16 @@ PROVENANCE = {
     "gain_sigma": "documented as an equalization precision (2.4%, 7.2%, 1.5%); Gaussian spread is an assumption",
     "crosstalk_fraction": "no source",
     "threshold_mips": "no source",
+    "fibre_saturation_scale_mev": (
+        "project phenomenological calibration derived from a published figure (EXP-017: AMS maximum-cell-energy curve, "
+        "Kounine et al. 2017 Fig. 10); not the AMS parametrisation; default off; central e_s = 260 (+107/-68 stat) "
+        "fibre-MeV, systematics about 7% (digitisation, D1 ratio, sampling-fraction convention) plus +18% for the "
+        "theta <= 12 deg sample; tuned near 800 GeV, over-suppresses about 4-6% at 200-400 GeV"
+    ),
 }
+
+FIBRE_SATURATION_SCALE_EXP017_MEV = 260.0
+"""Central EXP-017 value of ``e_s`` in fibre-MeV. Not applied anywhere by default; pass it explicitly."""
 
 
 @dataclass(frozen=True)
@@ -83,6 +92,26 @@ def draw_gain_map(sigma: float, n_cells: int, rng: np.random.Generator) -> np.nd
     if not 0.0 <= sigma < 0.3:
         raise ValueError("sigma must be in [0, 0.3)")
     return 1.0 + sigma * rng.standard_normal((N_LAYERS, n_cells))
+
+
+def apply_fibre_saturation(
+    fibre_edep_mev: np.ndarray, scale_mev: float | None = None
+) -> np.ndarray:
+    """Optional fibre-saturation step (EXP-017, model M1): ``e' = e / (1 + e / e_s)`` on each fibre's deposit.
+
+    Apply it to PER-FIBRE scintillator deposits (``Batch.fibre_deposits``) BEFORE the fibres are summed into cells and
+    before B1; it cannot act on the ``(events, 18, cells)`` grid taken by ``apply_readout_response``. ``scale_mev`` is
+    ``e_s`` in fibre-MeV applied to each fibre's full-length integrated deposit (an effective collective law, not a local
+    energy density). ``None`` is the default and returns the input unchanged. Project phenomenological calibration derived
+    from a published figure; not the AMS parametrisation.
+    """
+
+    if scale_mev is None:
+        return fibre_edep_mev
+    if not scale_mev > 0:
+        raise ValueError("scale_mev must be positive")
+    values = np.asarray(fibre_edep_mev, dtype=np.float64)
+    return values / (1.0 + values / scale_mev)
 
 
 def photoelectron_smearing(

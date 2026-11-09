@@ -1,0 +1,1339 @@
+{
+  "experiment": "EXP-017",
+  "label": "project phenomenological calibration derived from a published figure; not the AMS parametrisation",
+  "source_figure": "Crispoltoni PhD thesis (Perugia), Fig. 2.29, PDF page 67 (same figure as Kounine et al., NIM A 869 (2017), Fig. 10)",
+  "provenance": {
+    "fit_target": "digitised AMS DATA curve (maximum cell energy vs energy); not an AMS constant",
+    "ams_statement": "AMS reports fibre saturation consistent with Birks' law, parametrised vs energy density; no constants published",
+    "reason_for_effective_law": "classic per-step Birks cannot give an energy-density dependence for near-MIP shower particles; e_s (M1) applies to each fibre's full-length integrated deposit, not to a local density",
+    "error_bars": "digitised bars are symmetric; they may be distribution widths rather than errors of the mean, so chi-square is conservative",
+    "x_axis": "ours: primary energy (AMS: reconstructed energy, close to primary for contained showers)",
+    "sampling_fraction_central": "A: f = sum(readout_grid_mev) / sum(edep_total_mev), ratio of sums per energy group; calibrated cell energy = scintillator MeV / f"
+  },
+  "d0": {
+    "calibration": {
+      "x_scale": 1.1534852463530338,
+      "x_offset": -41.39819481309618,
+      "y_scale": -0.12160903892691916,
+      "y_offset": 64.66779541885202,
+      "x_major_pixels": [
+        209.2449799196787,
+        382.72146118721463,
+        556.0440729483282,
+        729.4155251141552,
+        902.8357666968027
+      ],
+      "y_major_pixels": [
+        531.7242344341845,
+        367.43617021276594,
+        202.71689497716895,
+        38.4259450939183
+      ],
+      "x_residual_major_px": 0.056666636385500624,
+      "y_residual_major_px": 0.12962940789128652,
+      "x_residual_minor_px": 0.3367488357256434,
+      "y_residual_minor_px": 0.35891630025093946,
+      "n_minor_x": 14,
+      "n_minor_y": 9
+    },
+    "gate": {
+      "tick_positions_reproduced_within_1px": true,
+      "worst_tick_residual_px": 0.35891630025093946,
+      "x_major_residual_px": 0.056666636385500624,
+      "y_major_residual_px": 0.12962940789128652,
+      "x_minor_residual_px": 0.3367488357256434,
+      "y_minor_residual_px": 0.35891630025093946,
+      "n_minor_ticks_checked": [
+        14,
+        9
+      ],
+      "passes_agree_within_marker_size": true,
+      "marker_size_px": 8.0,
+      "max_pass_difference_px": 3.582360336506511,
+      "median_pass_difference_px": 0.12999102779681948,
+      "max_pass_difference_gev_y": 0.2850768329569746,
+      "markers_per_series": {
+        "data": 20,
+        "mc_saturation": 20,
+        "mc_no_saturation": 19
+      },
+      "markers_flagged_occluded": {
+        "data": [],
+        "mc_saturation": [
+          107.7,
+          266.6
+        ],
+        "mc_no_saturation": [
+          118.5,
+          133.4,
+          149.8,
+          168.0,
+          189.0,
+          211.9
+        ]
+      }
+    },
+    "files": [
+      "digitised.csv",
+      "digitisation_overlay.png"
+    ]
+  },
+  "shape_check_saturated_over_unsaturated": {
+    "energies_gev": [
+      200.0,
+      400.0,
+      800.0
+    ],
+    "ours_M1": [
+      0.882398855618873,
+      0.8054168575107884,
+      0.6913119915031408
+    ],
+    "ours_M2": [
+      0.8888272870071269,
+      0.808449131769739,
+      0.6866185862491195
+    ],
+    "ams_data_over_mc_no_saturation": [
+      0.9377004322069541,
+      0.8370995206848132,
+      0.6775739165410739
+    ],
+    "ams_mc_saturation_over_mc_no_saturation": [
+      0.9518976370262123,
+      0.8676731572374105,
+      0.7316225114434641
+    ],
+    "note": "a one-parameter law tuned near 800 GeV over-suppresses by about 4-6% at 200-400 GeV; the implied E_s of the AMS curves falls monotonically with energy"
+  },
+  "caveats": [
+    "D2 gate (chi2/dof < 2) passes but has little power: 3 energy points, digitised bars about 10-15% of the value, possibly distribution widths",
+    "the two digitisation passes share bin finding, bar removal, template and half-length rule; the pass systematic understates digitisation uncertainty",
+    "the data half-length uses the smaller of the two bar ends; variation (a) does not test this choice",
+    "the blue (MC without saturation) series has 19 of 20 markers and the six lowest-energy ones, including 189 and 212 GeV, are flagged occluded; the D1 agreement at 200 GeV rests on them",
+    "primary fit uses no AMS point above 800 GeV (our simulated energies stop at 800 GeV)",
+    "normal incidence versus AMS acceptance: the theta <= 12 deg sample shifts the parameters (see systematics not_in_quadrature)",
+    "x is primary energy; AMS x is reconstructed energy",
+    "e_s applies to a fibre's full-length integrated deposit, not to a local energy density",
+    "the overlay PNGs embed the thesis raster figure: check redistribution rights before committing or sharing the results directory"
+  ],
+  "implied_saturation_scale_from_ams_curves": [
+    {
+      "E_gev": 118.5302833686706,
+      "mc_no_saturation_gev": 7.497513435720087,
+      "E_s_implied_mc_saturation_gev": 317.35896993557895,
+      "E_s_implied_data_gev": 158.14759416584988,
+      "marker_occluded": true
+    },
+    {
+      "E_gev": 133.38354477542123,
+      "mc_no_saturation_gev": 8.29348755218668,
+      "E_s_implied_mc_saturation_gev": 364.9335706578674,
+      "E_s_implied_data_gev": 187.79185595758446,
+      "marker_occluded": true
+    },
+    {
+      "E_gev": 149.75187771935944,
+      "mc_no_saturation_gev": 9.352095445136982,
+      "E_s_implied_mc_saturation_gev": 228.93341982466532,
+      "E_s_implied_data_gev": 168.43194735916478,
+      "marker_occluded": true
+    },
+    {
+      "E_gev": 168.03695218492385,
+      "mc_no_saturation_gev": 10.246532497618137,
+      "E_s_implied_mc_saturation_gev": 308.32716343204874,
+      "E_s_implied_data_gev": 198.56908321289868,
+      "marker_occluded": true
+    },
+    {
+      "E_gev": 189.01790574665438,
+      "mc_no_saturation_gev": 11.453322535210095,
+      "E_s_implied_mc_saturation_gev": 240.38160228117596,
+      "E_s_implied_data_gev": 177.62581830470242,
+      "marker_occluded": true
+    },
+    {
+      "E_gev": 211.9423157702692,
+      "mc_no_saturation_gev": 12.735137666585636,
+      "E_s_implied_mc_saturation_gev": 239.81888927375817,
+      "E_s_implied_data_gev": 185.6536040951094,
+      "marker_occluded": true
+    },
+    {
+      "E_gev": 237.38915591849212,
+      "mc_no_saturation_gev": 14.11665188200212,
+      "E_s_implied_mc_saturation_gev": 218.0016912935455,
+      "E_s_implied_data_gev": 171.31282868205878,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 266.50444429800666,
+      "mc_no_saturation_gev": 15.670495258596713,
+      "E_s_implied_mc_saturation_gev": 199.89238122217685,
+      "E_s_implied_data_gev": 149.67357763959433,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 298.8126624280662,
+      "mc_no_saturation_gev": 17.497125041593666,
+      "E_s_implied_mc_saturation_gev": 175.7844000907779,
+      "E_s_implied_data_gev": 158.46092688029918,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 335.58605198588674,
+      "mc_no_saturation_gev": 19.160883692595917,
+      "E_s_implied_mc_saturation_gev": 167.50052715182056,
+      "E_s_implied_data_gev": 135.31416152679682,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 376.74607635960183,
+      "mc_no_saturation_gev": 21.86060928728916,
+      "E_s_implied_mc_saturation_gev": 154.10691613574204,
+      "E_s_implied_data_gev": 121.34051457138546,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 422.3644590599691,
+      "mc_no_saturation_gev": 24.247593283008715,
+      "E_s_implied_mc_saturation_gev": 148.57559061620944,
+      "E_s_implied_data_gev": 116.80898487910439,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 474.01109322933996,
+      "mc_no_saturation_gev": 26.834505069991245,
+      "E_s_implied_mc_saturation_gev": 136.4340777637286,
+      "E_s_implied_data_gev": 110.75814349029993,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 531.6202855260044,
+      "mc_no_saturation_gev": 30.081285255636963,
+      "E_s_implied_mc_saturation_gev": 131.49823695983173,
+      "E_s_implied_data_gev": 117.52818719956099,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 596.5262021256942,
+      "mc_no_saturation_gev": 33.00682852390413,
+      "E_s_implied_mc_saturation_gev": 125.55016890085567,
+      "E_s_implied_data_gev": 97.92491825049733,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 669.390642443949,
+      "mc_no_saturation_gev": 37.09484585569541,
+      "E_s_implied_mc_saturation_gev": 123.29018416878016,
+      "E_s_implied_data_gev": 111.38962755565272,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 750.8729566212103,
+      "mc_no_saturation_gev": 40.69805563839869,
+      "E_s_implied_mc_saturation_gev": 119.42254938521324,
+      "E_s_implied_data_gev": 88.03017591445673,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 842.5900754559506,
+      "mc_no_saturation_gev": 45.20226775257656,
+      "E_s_implied_mc_saturation_gev": 116.60436907824896,
+      "E_s_implied_data_gev": 99.84949104885807,
+      "marker_occluded": false
+    },
+    {
+      "E_gev": 945.3293853629502,
+      "mc_no_saturation_gev": 48.711590770170304,
+      "E_s_implied_mc_saturation_gev": 114.47021227685866,
+      "E_s_implied_data_gev": 112.79094094905729,
+      "marker_occluded": false
+    }
+  ],
+  "d1": {
+    "table": [
+      {
+        "group": "E50GeV",
+        "sample": "component_electron",
+        "selection": "normal incidence, all events",
+        "n_events": 2000,
+        "E_gev": 50.0,
+        "ams_range": false,
+        "ams_comparison": "none_outside_ams_range",
+        "ams_mc_no_saturation_gev": null,
+        "ams_mc_no_saturation_half_length_gev": null,
+        "ams_data_gev": null,
+        "conv_A": {
+          "f": 0.06536103615351418,
+          "mean_gev": 3.379922872808481,
+          "median_gev": 3.4062132742437266,
+          "std_gev": 0.45633133979095203,
+          "std_over_mean": 0.13501235293330005,
+          "mean_error_gev": 0.010203878960361233,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 3.375884524684106,
+          "median_gev": 3.402143514221116,
+          "std_gev": 0.45578611290871635,
+          "std_over_mean": 0.13501235293330002,
+          "mean_error_gev": 0.010191687316642842,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "conv_B": {
+          "f": 0.059092196359863285,
+          "mean_gev": 3.738484515626756,
+          "median_gev": 3.76756395393761,
+          "std_gev": 0.5047415908594768,
+          "std_over_mean": 0.13501235293330002,
+          "mean_error_gev": 0.011286365082331766,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "ams_bar_over_value": null
+      },
+      {
+        "group": "E100GeV",
+        "sample": "component_electron",
+        "selection": "normal incidence, all events",
+        "n_events": 2000,
+        "E_gev": 100.0,
+        "ams_range": false,
+        "ams_comparison": "extrapolated_below_lowest_marker",
+        "ams_mc_no_saturation_gev": 6.7417498634792965,
+        "ams_mc_no_saturation_half_length_gev": 0.4183338823266332,
+        "ams_data_gev": 6.277867089575254,
+        "conv_A": {
+          "f": 0.06539605779184994,
+          "mean_gev": 6.405898514930403,
+          "median_gev": 6.4411849520074655,
+          "std_gev": 0.8092316004167184,
+          "std_over_mean": 0.1263260100875186,
+          "mean_error_gev": 0.018094968680727293,
+          "ratio_mean_to_ams": 0.9501833566433201,
+          "ratio_median_to_ams": 0.9554173741894489
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 6.401673013052063,
+          "median_gev": 6.436936174252088,
+          "std_gev": 0.8086978096238103,
+          "std_over_mean": 0.12632601008751856,
+          "mean_error_gev": 0.018083032755740233,
+          "ratio_mean_to_ams": 0.9495565903046237,
+          "ratio_median_to_ams": 0.9547871553528834
+        },
+        "conv_B": {
+          "f": 0.05755586901855469,
+          "mean_gev": 7.278502030019978,
+          "median_gev": 7.318595141595033,
+          "std_gev": 0.9194641208663286,
+          "std_over_mean": 0.12632601008751862,
+          "mean_error_gev": 0.020559842771291935,
+          "ratio_mean_to_ams": 1.07961614972521,
+          "ratio_median_to_ams": 1.0855631386208144
+        },
+        "ams_bar_over_value": 0.06205123162352668
+      },
+      {
+        "group": "E200GeV",
+        "sample": "highenergy_pilot_electron",
+        "selection": "normal incidence, all events",
+        "n_events": 300,
+        "E_gev": 200.0,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 12.071996212214216,
+        "ams_mc_no_saturation_half_length_gev": 1.1316042178850791,
+        "ams_data_gev": 11.319916065793983,
+        "conv_A": {
+          "f": 0.06541322568983707,
+          "mean_gev": 12.08226976197622,
+          "median_gev": 12.26950888927381,
+          "std_gev": 1.630729592873689,
+          "std_over_mean": 0.1349688117381482,
+          "mean_error_gev": 0.0941502169421113,
+          "ratio_mean_to_ams": 1.0008510232758032,
+          "ratio_median_to_ams": 1.016361227554044
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 12.077469742193413,
+          "median_gev": 12.26463448350784,
+          "std_gev": 1.6300817399072842,
+          "std_over_mean": 0.1349688117381482,
+          "mean_error_gev": 0.0941128131336564,
+          "ratio_mean_to_ams": 1.0004534071981948,
+          "ratio_median_to_ams": 1.0159574496137362
+        },
+        "conv_B": {
+          "f": 0.05554045965169271,
+          "mean_gev": 14.22999096050076,
+          "median_gev": 14.45051335748298,
+          "std_gev": 1.9206049709833777,
+          "std_over_mean": 0.13496881173814818,
+          "mean_error_gev": 0.11088617970041864,
+          "ratio_mean_to_ams": 1.1787603897773864,
+          "ratio_median_to_ams": 1.197027658347194
+        },
+        "ams_bar_over_value": 0.09373795335854591
+      },
+      {
+        "group": "E400GeV",
+        "sample": "highenergy_pilot_electron",
+        "selection": "normal incidence, all events",
+        "n_events": 300,
+        "E_gev": 400.0,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 23.117406548420846,
+        "ams_mc_no_saturation_half_length_gev": 2.110897487232357,
+        "ams_data_gev": 19.351569941159052,
+        "conv_A": {
+          "f": 0.06549383612014614,
+          "mean_gev": 22.978015759568745,
+          "median_gev": 23.148471813149857,
+          "std_gev": 2.8131906289037985,
+          "std_over_mean": 0.12242965878079791,
+          "mean_error_gev": 0.16241963668793405,
+          "ratio_mean_to_ams": 0.9939703102698766,
+          "ratio_median_to_ams": 1.0013438040579485
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 22.997192260592055,
+          "median_gev": 23.16779056974128,
+          "std_gev": 2.815538401380692,
+          "std_over_mean": 0.12242965878079791,
+          "mean_error_gev": 0.1625551853950871,
+          "ratio_mean_to_ams": 0.9947998367560394,
+          "ratio_median_to_ams": 1.0021794841568799
+        },
+        "conv_B": {
+          "f": 0.05308944541015625,
+          "mean_gev": 28.346847229175104,
+          "median_gev": 28.557130473851693,
+          "std_gev": 3.4704948337793153,
+          "std_over_mean": 0.12242965878079794,
+          "mean_error_gev": 0.2003691126503693,
+          "ratio_mean_to_ams": 1.226212255678459,
+          "ratio_median_to_ams": 1.2353085720942358
+        },
+        "ams_bar_over_value": 0.09131203722229615
+      },
+      {
+        "group": "E800GeV",
+        "sample": "highenergy_pilot_electron",
+        "selection": "normal incidence, all events",
+        "n_events": 300,
+        "E_gev": 800.0,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 43.188997667536185,
+        "ams_mc_no_saturation_half_length_gev": 4.079109560372244,
+        "ams_data_gev": 29.263738301075797,
+        "conv_A": {
+          "f": 0.0655028034191018,
+          "mean_gev": 44.34143670827361,
+          "median_gev": 45.20863903243169,
+          "std_gev": 5.392014279870054,
+          "std_over_mean": 0.12160215545889078,
+          "mean_error_gev": 0.31130808959572814,
+          "ratio_mean_to_ams": 1.0266836255290934,
+          "ratio_median_to_ams": 1.0467628672571303
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 44.3845184532839,
+          "median_gev": 45.252563343497,
+          "std_gev": 5.3972531129242345,
+          "std_over_mean": 0.12160215545889075,
+          "mean_error_gev": 0.31161055376313523,
+          "ratio_mean_to_ams": 1.02768114219623,
+          "ratio_median_to_ams": 1.0477798927367081
+        },
+        "conv_B": {
+          "f": 0.05082448190104167,
+          "mean_gev": 57.14742784152341,
+          "median_gev": 58.265081799600445,
+          "std_gev": 6.94925040446067,
+          "std_over_mean": 0.12160215545889073,
+          "mean_error_gev": 0.4012151591681483,
+          "ratio_mean_to_ams": 1.3231941218325458,
+          "ratio_median_to_ams": 1.3490723319887667
+        },
+        "ams_bar_over_value": 0.09444788674589645
+      },
+      {
+        "group": "E50-100GeV_bin0",
+        "sample": "realistic_regime_pilot_electron",
+        "selection": "theta <= 12 deg, fiducial |x|,|y| <= 297 mm at z = 0 and 166.5 mm; E in [50.0, 70.7) GeV",
+        "n_events": 29,
+        "E_gev": 61.069290742700694,
+        "ams_range": false,
+        "ams_comparison": "none_outside_ams_range",
+        "ams_mc_no_saturation_gev": null,
+        "ams_mc_no_saturation_half_length_gev": null,
+        "ams_data_gev": null,
+        "conv_A": {
+          "f": 0.06546354042940215,
+          "mean_gev": 3.9713201745239544,
+          "median_gev": 3.958130072951549,
+          "std_gev": 0.757541035162187,
+          "std_over_mean": 0.19075294911294682,
+          "mean_error_gev": 0.14067183870743624,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 3.9727959147621674,
+          "median_gev": 3.959600911755785,
+          "std_gev": 0.7578225369647505,
+          "std_over_mean": 0.19075294911294677,
+          "mean_error_gev": 0.14072411227986076,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "conv_B": {
+          "f": 0.05849973394913824,
+          "mean_gev": 4.444066002575026,
+          "median_gev": 4.429305751728349,
+          "std_gev": 0.847718696043771,
+          "std_over_mean": 0.19075294911294685,
+          "mean_error_gev": 0.1574174099408575,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "ams_bar_over_value": null
+      },
+      {
+        "group": "E50-100GeV_bin1",
+        "sample": "realistic_regime_pilot_electron",
+        "selection": "theta <= 12 deg, fiducial |x|,|y| <= 297 mm at z = 0 and 166.5 mm; E in [70.7, 100.0) GeV",
+        "n_events": 26,
+        "E_gev": 84.8377378136411,
+        "ams_range": false,
+        "ams_comparison": "none_outside_ams_range",
+        "ams_mc_no_saturation_gev": null,
+        "ams_mc_no_saturation_half_length_gev": null,
+        "ams_data_gev": null,
+        "conv_A": {
+          "f": 0.0651931117519705,
+          "mean_gev": 5.775110959556745,
+          "median_gev": 5.805484025747286,
+          "std_gev": 0.6842112951960528,
+          "std_over_mean": 0.11847586998546049,
+          "mean_error_gev": 0.13418487483174105,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 5.753391245388646,
+          "median_gev": 5.783650080991984,
+          "std_gev": 0.681638033164152,
+          "std_over_mean": 0.11847586998546052,
+          "mean_error_gev": 0.1336802166273468,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "conv_B": {
+          "f": 0.05854351159385896,
+          "mean_gev": 6.431070564716616,
+          "median_gev": 6.464893522111911,
+          "std_gev": 0.761926680092688,
+          "std_over_mean": 0.11847586998546054,
+          "mean_error_gev": 0.14942611575844553,
+          "ratio_mean_to_ams": null,
+          "ratio_median_to_ams": null
+        },
+        "ams_bar_over_value": null
+      },
+      {
+        "group": "E100-200GeV_bin0",
+        "sample": "realistic_regime_pilot_electron",
+        "selection": "theta <= 12 deg, fiducial |x|,|y| <= 297 mm at z = 0 and 166.5 mm; E in [100.0, 141.4) GeV",
+        "n_events": 40,
+        "E_gev": 119.30098461350292,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 7.534974124241489,
+        "ams_mc_no_saturation_half_length_gev": 0.6612814219558512,
+        "ams_data_gev": 7.19714941735255,
+        "conv_A": {
+          "f": 0.06535453965027073,
+          "mean_gev": 7.537635539410343,
+          "median_gev": 7.225013512106484,
+          "std_gev": 1.1580826984731996,
+          "std_over_mean": 0.15364004964397557,
+          "mean_error_gev": 0.1831089523004656,
+          "ratio_mean_to_ams": 1.0003532082691953,
+          "ratio_median_to_ams": 0.9588637456447526
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 7.527881234597021,
+          "median_gev": 7.215663765264919,
+          "std_gev": 1.156584046597438,
+          "std_over_mean": 0.1536400496439755,
+          "mean_error_gev": 0.18287199463311107,
+          "ratio_mean_to_ams": 0.999058671001716,
+          "ratio_median_to_ams": 0.957622899068852
+        },
+        "conv_B": {
+          "f": 0.05759544326545822,
+          "mean_gev": 8.55308463308801,
+          "median_gev": 8.198347044129626,
+          "std_gev": 1.3140963476367664,
+          "std_over_mean": 0.15364004964397557,
+          "mean_error_gev": 0.20777687617203033,
+          "ratio_mean_to_ams": 1.1351179834275822,
+          "ratio_median_to_ams": 1.0880391769035989
+        },
+        "ams_bar_over_value": 0.08776160489103461
+      },
+      {
+        "group": "E100-200GeV_bin1",
+        "sample": "realistic_regime_pilot_electron",
+        "selection": "theta <= 12 deg, fiducial |x|,|y| <= 297 mm at z = 0 and 166.5 mm; E in [141.4, 200.0) GeV",
+        "n_events": 28,
+        "E_gev": 168.48854235631643,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 10.270462742870773,
+        "ams_mc_no_saturation_half_length_gev": 0.9782626948418667,
+        "ams_data_gev": 9.765577284014784,
+        "conv_A": {
+          "f": 0.06551098718968497,
+          "mean_gev": 10.683941914771454,
+          "median_gev": 10.871694264673446,
+          "std_gev": 1.320579918412738,
+          "std_over_mean": 0.12360418363814993,
+          "mean_error_gev": 0.2495661464647194,
+          "ratio_mean_to_ams": 1.0402590596210182,
+          "ratio_median_to_ams": 1.058539866883799
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 10.695658461782907,
+          "median_gev": 10.883616710336508,
+          "std_gev": 1.3220281326411463,
+          "std_over_mean": 0.1236041836381499,
+          "mean_error_gev": 0.24983983322854178,
+          "ratio_mean_to_ams": 1.0413998599242553,
+          "ratio_median_to_ams": 1.0597007148379323
+        },
+        "conv_B": {
+          "f": 0.0565681537143201,
+          "mean_gev": 12.372961391821933,
+          "median_gev": 12.59039542460616,
+          "std_gev": 1.5293497920224968,
+          "std_over_mean": 0.12360418363814989,
+          "mean_error_gev": 0.2890199440942771,
+          "ratio_mean_to_ams": 1.2047131372352824,
+          "ratio_median_to_ams": 1.2258839489336315
+        },
+        "ams_bar_over_value": 0.09525010891266085
+      },
+      {
+        "group": "E200-400GeV_bin0",
+        "sample": "realistic_regime_pilot_electron",
+        "selection": "theta <= 12 deg, fiducial |x|,|y| <= 297 mm at z = 0 and 166.5 mm; E in [200.0, 282.8) GeV",
+        "n_events": 24,
+        "E_gev": 238.92702218548598,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 14.19925397820525,
+        "ams_mc_no_saturation_half_length_gev": 1.3577398580270847,
+        "ams_data_gev": 13.105227411239577,
+        "conv_A": {
+          "f": 0.06548659473155655,
+          "mean_gev": 14.048697197175358,
+          "median_gev": 13.94351318512264,
+          "std_gev": 2.640787072787179,
+          "std_over_mean": 0.18797380538019837,
+          "mean_error_gev": 0.5390484039722174,
+          "ratio_mean_to_ams": 0.9893968527317712,
+          "ratio_median_to_ams": 0.9819891387621383
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 14.058867054500686,
+          "median_gev": 13.953606899701033,
+          "std_gev": 2.6426987395687953,
+          "std_over_mean": 0.18797380538019842,
+          "mean_error_gev": 0.5394386213199832,
+          "ratio_mean_to_ams": 0.9901130774954763,
+          "ratio_median_to_ams": 0.9827000010788407
+        },
+        "conv_B": {
+          "f": 0.0551246639640073,
+          "mean_gev": 16.689468446619028,
+          "median_gev": 16.564512714026577,
+          "std_gev": 3.1371828936837276,
+          "std_over_mean": 0.18797380538019842,
+          "mean_error_gev": 0.6403747766094284,
+          "ratio_mean_to_ams": 1.1753764297924427,
+          "ratio_median_to_ams": 1.1665762679822345
+        },
+        "ams_bar_over_value": 0.09562050654992929
+      },
+      {
+        "group": "E200-400GeV_bin1",
+        "sample": "realistic_regime_pilot_electron",
+        "selection": "theta <= 12 deg, fiducial |x|,|y| <= 297 mm at z = 0 and 166.5 mm; E in [282.8, 400.0) GeV",
+        "n_events": 33,
+        "E_gev": 338.2421940785864,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 19.30785155225713,
+        "ams_mc_no_saturation_half_length_gev": 1.920460854895194,
+        "ams_data_gev": 16.876741668696976,
+        "conv_A": {
+          "f": 0.06535136797726729,
+          "mean_gev": 19.539789684309223,
+          "median_gev": 19.616021317964343,
+          "std_gev": 2.63013027317867,
+          "std_over_mean": 0.1346038169126615,
+          "mean_error_gev": 0.4578469128130621,
+          "ratio_mean_to_ams": 1.0120126328620431,
+          "ratio_median_to_ams": 1.0159608522405066
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 19.513556585612548,
+          "median_gev": 19.589685874667154,
+          "std_gev": 2.626599197964651,
+          "std_over_mean": 0.1346038169126615,
+          "mean_error_gev": 0.4572322315168024,
+          "ratio_mean_to_ams": 1.010653957681344,
+          "ratio_median_to_ams": 1.0145968763871647
+        },
+        "conv_B": {
+          "f": 0.054433908133694024,
+          "mean_gev": 23.458759983233385,
+          "median_gev": 23.550280906740625,
+          "std_gev": 3.1576386337812155,
+          "std_over_mean": 0.13460381691266143,
+          "mean_error_gev": 0.5496743317237862,
+          "ratio_mean_to_ams": 1.2149855161120195,
+          "ratio_median_to_ams": 1.2197256045293938
+        },
+        "ams_bar_over_value": 0.0994652796919131
+      },
+      {
+        "group": "E400-800GeV_bin0",
+        "sample": "realistic_regime_pilot_electron",
+        "selection": "theta <= 12 deg, fiducial |x|,|y| <= 297 mm at z = 0 and 166.5 mm; E in [400.0, 565.7) GeV",
+        "n_events": 23,
+        "E_gev": 461.6583598582511,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 26.19759324929289,
+        "ams_mc_no_saturation_half_length_gev": 4.455519820165987,
+        "ams_data_gev": 21.208802174761868,
+        "conv_A": {
+          "f": 0.06541029956773937,
+          "mean_gev": 26.443039241972414,
+          "median_gev": 26.240233859303803,
+          "std_gev": 3.4214420997901875,
+          "std_over_mean": 0.12938913974606267,
+          "mean_error_gev": 0.7134199946679586,
+          "ratio_mean_to_ams": 1.0093690283051535,
+          "ratio_median_to_ams": 1.0016276537163225
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 26.431351601209258,
+          "median_gev": 26.22863585711946,
+          "std_gev": 3.419929846006181,
+          "std_over_mean": 0.12938913974606264,
+          "mean_error_gev": 0.7131046679562808,
+          "ratio_mean_to_ams": 1.0089228941640538,
+          "ratio_median_to_ams": 1.0011849412093383
+        },
+        "conv_B": {
+          "f": 0.0542525106501022,
+          "mean_gev": 31.88142074113663,
+          "median_gev": 31.636905590126204,
+          "std_gev": 4.125109603577946,
+          "std_over_mean": 0.1293891397460626,
+          "mean_error_gev": 0.8601448119112675,
+          "ratio_mean_to_ams": 1.2169599106970315,
+          "ratio_median_to_ams": 1.2076264139638144
+        },
+        "ams_bar_over_value": 0.17007363148850507
+      },
+      {
+        "group": "E400-800GeV_bin1",
+        "sample": "realistic_regime_pilot_electron",
+        "selection": "theta <= 12 deg, fiducial |x|,|y| <= 297 mm at z = 0 and 166.5 mm; E in [565.7, 800.1) GeV",
+        "n_events": 21,
+        "E_gev": 683.8427330994222,
+        "ams_range": true,
+        "ams_comparison": "interpolated",
+        "ams_mc_no_saturation_gev": 37.78144203198136,
+        "ams_mc_no_saturation_half_length_gev": 3.538032737637793,
+        "ams_data_gev": 27.828654390592025,
+        "conv_A": {
+          "f": 0.06545691896949073,
+          "mean_gev": 38.42879413293328,
+          "median_gev": 39.151414443258126,
+          "std_gev": 5.551928276265419,
+          "std_over_mean": 0.1444731327519706,
+          "mean_error_gev": 1.2115300751881897,
+          "ratio_mean_to_ams": 1.0171341289833231,
+          "ratio_median_to_ams": 1.0362604585107447
+        },
+        "conv_A_global": {
+          "f": 0.06543922325257749,
+          "mean_gev": 38.439185837304045,
+          "median_gev": 39.16200155466173,
+          "std_gev": 5.553429598350496,
+          "std_over_mean": 0.1444731327519706,
+          "mean_error_gev": 1.2118576905261598,
+          "ratio_mean_to_ams": 1.0174091768325284,
+          "ratio_median_to_ams": 1.0365406783973927
+        },
+        "conv_B": {
+          "f": 0.05019078189795427,
+          "mean_gev": 50.11737949747265,
+          "median_gev": 51.05979356854272,
+          "std_gev": 7.240614821319254,
+          "std_over_mean": 0.14447313275197057,
+          "mean_error_gev": 1.5800316903197447,
+          "ratio_mean_to_ams": 1.3265078515279833,
+          "ratio_median_to_ams": 1.351451686924005
+        },
+        "ams_bar_over_value": 0.09364472469427998
+      }
+    ],
+    "gate": {
+      "tolerance": 0.1,
+      "per_convention": {
+        "A": {
+          "points": [
+            {
+              "E_gev": 200.0,
+              "ratio": 1.0008510232758032
+            },
+            {
+              "E_gev": 400.0,
+              "ratio": 0.9939703102698766
+            },
+            {
+              "E_gev": 800.0,
+              "ratio": 1.0266836255290934
+            }
+          ],
+          "max_abs_deviation": 0.026683625529093424,
+          "passed": true
+        },
+        "A_global": {
+          "points": [
+            {
+              "E_gev": 200.0,
+              "ratio": 1.0004534071981948
+            },
+            {
+              "E_gev": 400.0,
+              "ratio": 0.9947998367560394
+            },
+            {
+              "E_gev": 800.0,
+              "ratio": 1.02768114219623
+            }
+          ],
+          "max_abs_deviation": 0.02768114219622997,
+          "passed": true
+        },
+        "B": {
+          "points": [
+            {
+              "E_gev": 200.0,
+              "ratio": 1.1787603897773864
+            },
+            {
+              "E_gev": 400.0,
+              "ratio": 1.226212255678459
+            },
+            {
+              "E_gev": 800.0,
+              "ratio": 1.3231941218325458
+            }
+          ],
+          "max_abs_deviation": 0.3231941218325458,
+          "passed": false
+        }
+      },
+      "gated_energies_gev": [
+        200.0,
+        400.0,
+        800.0
+      ],
+      "note": "100 GeV lies about 5% below the lowest AMS marker (extrapolated) and 50 GeV outside the AMS range: not gated"
+    }
+  },
+  "d2": {
+    "fit_groups": [
+      "E200GeV",
+      "E400GeV",
+      "E800GeV"
+    ],
+    "fit_group_energies_gev": [
+      200.0,
+      400.0,
+      800.0
+    ],
+    "f_central": [
+      0.06541322568983707,
+      0.06549383612014614,
+      0.0655028034191018
+    ],
+    "ams_data_at_fit_energies_gev": [
+      11.319916065793983,
+      19.351569941159052,
+      29.263738301075797
+    ],
+    "ams_data_sigma_gev": [
+      1.4652875891866062,
+      2.132734030058655,
+      3.481756753931505
+    ],
+    "central": {
+      "M1": {
+        "model": "M1",
+        "parameter": 259.99548580693903,
+        "interval_68": [
+          192.30935498358306,
+          366.7474841814281
+        ],
+        "chi2": 0.5182306834238762,
+        "n_points": 3,
+        "dof": 2,
+        "chi2_per_dof": 0.2591153417119381,
+        "at_edge_of_range": false,
+        "predicted_gev": [
+          10.661381011246329,
+          18.50688124490523,
+          30.653766916907106
+        ]
+      },
+      "M2": {
+        "model": "M2",
+        "parameter": 98.1710057238732,
+        "interval_68": [
+          74.07818686531184,
+          135.70469562180284
+        ],
+        "chi2": 0.40443131015565886,
+        "n_points": 3,
+        "dof": 2,
+        "chi2_per_dof": 0.20221565507782943,
+        "at_edge_of_range": false,
+        "predicted_gev": [
+          10.739051053425568,
+          18.576556890614732,
+          30.445654584889642
+        ]
+      }
+    },
+    "gate_chi2_per_dof_below_2": {
+      "M1": true,
+      "M2": true
+    },
+    "preferred_model": "M1",
+    "variations": {
+      "pass_A_only": {
+        "M1": {
+          "model": "M1",
+          "parameter": 259.42621315150313,
+          "interval_68": [
+            192.25410741715166,
+            364.953622012471
+          ],
+          "chi2": 0.5209074863563338,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.2604537431781669,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.658735704790535,
+            18.499412761816448,
+            30.63460135567695
+          ]
+        },
+        "M2": {
+          "model": "M2",
+          "parameter": 97.99713446726965,
+          "interval_68": [
+            74.08219762417731,
+            135.11006997777338
+          ],
+          "chi2": 0.4063547119175069,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.20317735595875344,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.736936703937209,
+            18.570259180924634,
+            30.42878608509445
+          ]
+        }
+      },
+      "pass_B_only": {
+        "M1": {
+          "model": "M1",
+          "parameter": 260.3133464694373,
+          "interval_68": [
+            192.36812582070118,
+            367.6842027476106
+          ],
+          "chi2": 0.5171269610242778,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.2585634805121389,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.662853769243291,
+            18.51104039161349,
+            30.664444218391996
+          ]
+        },
+        "M2": {
+          "model": "M2",
+          "parameter": 98.267741451862,
+          "interval_68": [
+            74.08567615405659,
+            136.01356841932284
+          ],
+          "chi2": 0.4036462678473404,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.2018231339236702,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.740224526208795,
+            18.580052921329823,
+            30.455021892840318
+          ]
+        }
+      },
+      "ratio_constant_V1": {
+        "M1": {
+          "model": "M1",
+          "parameter": 268.12088239699466,
+          "interval_68": [
+            197.32008197936045,
+            381.18644735598474
+          ],
+          "chi2": 0.5650234642886423,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.2825117321443211,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.621951426873375,
+            18.478333246217222,
+            30.701351753107982
+          ]
+        },
+        "M2": {
+          "model": "M2",
+          "parameter": 101.01879862227165,
+          "interval_68": [
+            75.85561949155026,
+            140.7061808784962
+          ],
+          "chi2": 0.4501231090025657,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.22506155450128285,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.696086193901829,
+            18.544270416058666,
+            30.4976077115481
+          ]
+        }
+      },
+      "ratio_per_point_V2": {
+        "M1": {
+          "model": "M1",
+          "parameter": 274.5508740580232,
+          "interval_68": [
+            200.8479178611691,
+            394.00428293974574
+          ],
+          "chi2": 0.3271059890080116,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.1635529945040058,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.716707512746472,
+            18.80298415314697,
+            30.316785894884624
+          ]
+        },
+        "M2": {
+          "model": "M2",
+          "parameter": 103.37416860124304,
+          "interval_68": [
+            77.15751149439308,
+            145.34664161735859
+          ],
+          "chi2": 0.24315027318975835,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.12157513659487917,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.790203425934065,
+            18.870814056857007,
+            30.128233987678627
+          ]
+        }
+      },
+      "convention_A_global": {
+        "M1": {
+          "model": "M1",
+          "parameter": 259.97119525399694,
+          "interval_68": [
+            192.3049726679034,
+            366.6759137937822
+          ],
+          "chi2": 0.5266064654385931,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.26330323271929656,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.649331084258462,
+            18.50862216344258,
+            30.66055818760488
+          ]
+        },
+        "M2": {
+          "model": "M2",
+          "parameter": 98.16835771935965,
+          "interval_68": [
+            74.08078740320896,
+            135.68766454237524
+          ],
+          "chi2": 0.4107162705478619,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.20535813527393096,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.728327873197504,
+            18.578132866418358,
+            30.450592963906413
+          ]
+        }
+      },
+      "convention_B_V0": {
+        "M1": {
+          "model": "M1",
+          "parameter": 119.65732652425898,
+          "interval_68": [
+            97.67401435847519,
+            147.56073135583117
+          ],
+          "chi2": 0.09726375965486836,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.04863187982743418,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            11.130129260778258,
+            18.923800675458295,
+            29.96546502340224
+          ]
+        },
+        "M2": {
+          "model": "M2",
+          "parameter": 60.42864865178568,
+          "interval_68": [
+            50.01304595786499,
+            73.48517827594998
+          ],
+          "chi2": 0.0158667150888397,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.00793335754441985,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            11.485144040758652,
+            19.231335066893983,
+            29.257492322038317
+          ]
+        }
+      },
+      "convention_B_with_constant_ratio_V1": {
+        "M1": {
+          "model": "M1",
+          "parameter": 247.62018509043423,
+          "interval_68": [
+            185.25904931093814,
+            343.37390955451286
+          ],
+          "chi2": 1.3967469435311701,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.6983734717655851,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.047352642795344,
+            18.204754955177354,
+            31.34497756401321
+          ]
+        },
+        "M2": {
+          "model": "M2",
+          "parameter": 118.25670156730155,
+          "interval_68": [
+            90.18241517404489,
+            160.75746547355914
+          ],
+          "chi2": 1.0169606690344066,
+          "n_points": 3,
+          "dof": 2,
+          "chi2_per_dof": 0.5084803345172033,
+          "at_edge_of_range": false,
+          "predicted_gev": [
+            10.202893171882588,
+            18.356338799449826,
+            30.899833462391484
+          ]
+        }
+      }
+    },
+    "realistic_theta12_sample": {
+      "M1": {
+        "model": "M1",
+        "parameter": 305.8131854951852,
+        "interval_68": [
+          228.5673680916974,
+          430.80522208818445
+        ],
+        "chi2": 0.33226682362832727,
+        "n_points": 6,
+        "dof": 5,
+        "chi2_per_dof": 0.06645336472566546,
+        "at_edge_of_range": false,
+        "predicted_gev": [
+          7.026311794715672,
+          9.698703496600086,
+          12.39254321707003,
+          16.54074021443961,
+          21.348435904996723,
+          28.737694470210357
+        ]
+      },
+      "M2": {
+        "model": "M2",
+        "parameter": 112.27464401012843,
+        "interval_68": [
+          85.29780694827224,
+          155.83488912343344
+        ],
+        "chi2": 0.2490694128314073,
+        "n_points": 6,
+        "dof": 5,
+        "chi2_per_dof": 0.049813882566281456,
+        "at_edge_of_range": false,
+        "predicted_gev": [
+          7.053907699276289,
+          9.744163542091798,
+          12.445127568091179,
+          16.60598533468857,
+          21.348656253711283,
+          28.51967061102569
+        ]
+      }
+    },
+    "systematics": {
+      "M1": {
+        "not_in_quadrature": {
+          "inclined_theta12_sample_shift": 0.17622498154551947,
+          "convention_B_uncorrected_shift": -0.5397715227520867,
+          "convention_B_uncorrected_note": "convention B fails the D1 gate (up to +32% above AMS MC without saturation), so this shift mostly reflects the calibration offset; reported, not added to the quadrature total"
+        },
+        "relative_shift_of_parameter": {
+          "pass_A_only": -0.0021895482287666024,
+          "pass_B_only": 0.001222562236077751,
+          "ratio_constant_V1": 0.03125206795355351,
+          "ratio_per_point_V2": 0.05598323450081888,
+          "convention_A_global": -9.342682572621719e-05,
+          "convention_B_V0": -0.5397715227520867,
+          "convention_B_with_constant_ratio_V1": -0.04759813686032277
+        },
+        "relative_systematic_by_source": {
+          "digitisation_pass": 0.0021895482287666024,
+          "d1_ratio_or_offset": 0.05598323450081888,
+          "sampling_fraction_convention": 0.04759813686032277
+        },
+        "relative_systematic_total_quadrature": 0.07351529976266022
+      },
+      "M2": {
+        "not_in_quadrature": {
+          "inclined_theta12_sample_shift": 0.14366398899818456,
+          "convention_B_uncorrected_shift": -0.38445523496261114,
+          "convention_B_uncorrected_note": "convention B fails the D1 gate (up to +32% above AMS MC without saturation), so this shift mostly reflects the calibration offset; reported, not added to the quadrature total"
+        },
+        "relative_shift_of_parameter": {
+          "pass_A_only": -0.0017711059932766782,
+          "pass_B_only": 0.0009853798204011444,
+          "ratio_constant_V1": 0.029008492654220897,
+          "ratio_per_point_V2": 0.053001014291376825,
+          "convention_A_global": -2.697338683677053e-05,
+          "convention_B_V0": -0.38445523496261114,
+          "convention_B_with_constant_ratio_V1": 0.20459906359647206
+        },
+        "relative_systematic_by_source": {
+          "digitisation_pass": 0.0017711059932766782,
+          "d1_ratio_or_offset": 0.053001014291376825,
+          "sampling_fraction_convention": 0.20459906359647206
+        },
+        "relative_systematic_total_quadrature": 0.21135993271409642
+      }
+    },
+    "check_against_ams_mc_with_saturation": {
+      "M1": {
+        "chi2": 0.9993873520028717,
+        "n_points": 3,
+        "chi2_per_point": 0.33312911733429057,
+        "note": "no parameter is fitted to this curve; sigma = digitised MC-with-saturation bar half-length plus our statistical error"
+      },
+      "M2": {
+        "chi2": 0.9878974746545972,
+        "n_points": 3,
+        "chi2_per_point": 0.32929915821819905,
+        "note": "no parameter is fitted to this curve; sigma = digitised MC-with-saturation bar half-length plus our statistical error"
+      }
+    },
+    "parameter_bounds": {
+      "M1": [
+        3.0,
+        50000.0
+      ],
+      "M2": [
+        2.0,
+        5000.0
+      ]
+    }
+  },
+  "units": {
+    "M1_parameter": "fibre-MeV (e_s applied to each fibre's scintillator deposit)",
+    "M2_parameter": "calibrated cell GeV (E_s applied to the cell energy after division by f)"
+  }
+}
