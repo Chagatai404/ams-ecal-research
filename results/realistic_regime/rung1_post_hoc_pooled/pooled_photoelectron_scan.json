@@ -1,0 +1,3290 @@
+{
+ "status": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+ "points": [
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": null,
+   "draw": 0,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 234,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08116480582464435,
+      0.06762648663689959
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 234,
+      "median": 4.388854746400943,
+      "p16": 2.0249648319238163,
+      "p84": 12.574309341096845
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 12
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 17
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 19
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 14
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 9
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 1
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 6
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 8
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 9
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 8
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 1
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 9
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 21
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 19
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 400.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 17
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 24
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 32
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 183,
+       "testable": true,
+       "ks": 0.08743166793239572,
+       "p_raw": 0.1830816918308169,
+       "p_holm_within_pairing": 0.3661633836616338,
+       "median_electron": 1.463867265519975,
+       "median_proton": 1.4498336012064403,
+       "p_holm_family": 0.3661633836616338
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 183,
+       "testable": true,
+       "ks": 0.45901639344262296,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0246347248137444,
+       "median_proton": 0.9299850975804054,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 183,
+       "testable": true,
+       "ks": 0.4972677595628415,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8717312620781577,
+       "median_proton": 0.7756524567411001,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 183,
+       "testable": true,
+       "ks": 0.08196723396009435,
+       "p_raw": 0.33806619338066196,
+       "p_holm_within_pairing": 0.3661633836616338,
+       "median_electron": 1.530381874388903,
+       "median_proton": 1.5245343450359936,
+       "p_holm_family": 0.3661633836616338
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 183,
+       "testable": true,
+       "ks": 0.4098360655737705,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0684680294326945,
+       "median_proton": 0.9739286014968515,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 183,
+       "testable": true,
+       "ks": 0.4262294665060408,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.9008345964173686,
+       "median_proton": 0.7912134304521118,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5380186489649796,
+       "median_proton": 1.5693483625857436,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0760707335753894,
+       "median_proton": 1.0511914958151716,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9178810413139975,
+       "median_proton": 0.8955763371232337,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.550367119006852,
+       "median_proton": 1.5638256437860871,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.069058541501899,
+       "median_proton": 1.023351018249612,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9156408576842919,
+       "median_proton": 0.8666431342687119,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5308284520216326,
+       "median_proton": 1.5521442205592808,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.8330905728966316,
+       "median_proton": 0.8453357516672761,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.5874436192439215,
+       "median_proton": 0.6352659278326096,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.593715145490003,
+       "median_proton": 1.6133486120040348,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0564514390592024,
+       "median_proton": 1.0091737624460215,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 51,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.8592981556254247,
+       "median_proton": 0.819313605639813,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 10.0,
+   "draw": 0,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 449,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.048937123177030806,
+      0.04479619252331601
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 449,
+      "median": 4.557938421824662,
+      "p16": 2.1180001302971574,
+      "p84": 12.240999512957869
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 32
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 37
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 17
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 21
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 21
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 28
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 15
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 20
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 36
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 36
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 400.0,
+       "pairs": 1
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 29
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 47
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 7
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 48
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 289,
+       "testable": true,
+       "ks": 0.15224916134738592,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.4351145609058005,
+       "median_proton": 1.4071894588763372,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 289,
+       "testable": true,
+       "ks": 0.4013840830449827,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0182686769718738,
+       "median_proton": 0.9483889027182233,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 289,
+       "testable": true,
+       "ks": 0.4532871972318339,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8706333226492153,
+       "median_proton": 0.7917623171217272,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 289,
+       "testable": true,
+       "ks": 0.16608997859756838,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.5136786408455891,
+       "median_proton": 1.483592271775273,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 289,
+       "testable": true,
+       "ks": 0.4013841094442717,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0734649064569708,
+       "median_proton": 0.9793831240572328,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 289,
+       "testable": true,
+       "ks": 0.42560553633217996,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.9076748442841835,
+       "median_proton": 0.7962473826705683,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5192449966575383,
+       "median_proton": 1.509928059434177,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.079843753267727,
+       "median_proton": 1.058858454752291,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.931914092137295,
+       "median_proton": 0.8968983276582903,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5366948366882403,
+       "median_proton": 1.5263363515703854,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.082384035381408,
+       "median_proton": 1.053416528306025,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9381574363385891,
+       "median_proton": 0.8869039693046221,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5283912845734098,
+       "median_proton": 1.5409037804062304,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9400474032778449,
+       "median_proton": 0.8763285539886697,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.6579962202648093,
+       "median_proton": 0.6687381908037506,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.574257735232033,
+       "median_proton": 1.5954634791851723,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.1066358780490309,
+       "median_proton": 1.0447772627200298,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 36,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9299652801033735,
+       "median_proton": 0.8453321644364236,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 10.0,
+   "draw": 1,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 433,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04950344890376326,
+      0.04005181739276636
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 433,
+      "median": 4.519782202206047,
+      "p16": 2.190679195064619,
+      "p84": 11.808960719076433
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 34
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 29
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 21
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 15
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 26
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 24
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 15
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 41
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 38
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 400.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 30
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 44
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 47
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 283,
+       "testable": true,
+       "ks": 0.1554770183226245,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.435709933605385,
+       "median_proton": 1.4059102782009936,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 283,
+       "testable": true,
+       "ks": 0.4028268551236749,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.016606109223291,
+       "median_proton": 0.943701774520154,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 283,
+       "testable": true,
+       "ks": 0.44876325088339225,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.86681892017991,
+       "median_proton": 0.7832100870489392,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 283,
+       "testable": true,
+       "ks": 0.15901058722721814,
+       "p_raw": 0.0004999500049995,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.510501939517866,
+       "median_proton": 1.4851825012050366,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 283,
+       "testable": true,
+       "ks": 0.3816254686551043,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0714385236407113,
+       "median_proton": 0.9786019618985475,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 283,
+       "testable": true,
+       "ks": 0.4275618104968391,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8996776704595343,
+       "median_proton": 0.7909142889838359,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5159718819246275,
+       "median_proton": 1.5109074035538925,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0791703854117989,
+       "median_proton": 1.0593158744981124,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9289881524595118,
+       "median_proton": 0.8967292825893383,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5331202060148472,
+       "median_proton": 1.5261515212934236,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0814315159974488,
+       "median_proton": 1.0577843609724107,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9361096459150132,
+       "median_proton": 0.8850415259966469,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.515635301045021,
+       "median_proton": 1.5348080661856123,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.8520350075623524,
+       "median_proton": 0.8892658663929833,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.6381266848644976,
+       "median_proton": 0.6859258658303427,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5651138980399129,
+       "median_proton": 1.5794311297790724,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.1062976743963964,
+       "median_proton": 1.0469142418886628,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9317740816915762,
+       "median_proton": 0.8499263246155111,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 10.0,
+   "draw": 2,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 443,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05027302057299963,
+      0.04050643389597238
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 443,
+      "median": 4.400267804892374,
+      "p16": 2.249164238024508,
+      "p84": 12.456476237140153
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 22
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 37
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 35
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 28
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 17
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 15
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 21
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 14
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 20
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 37
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 35
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 30
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 46
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 7
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 48
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.16901407107500963,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.4333804486390318,
+       "median_proton": 1.4070044697139374,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.39436619718309857,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0178123510047576,
+       "median_proton": 0.9452098676381023,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.43661971830985913,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8687959443943407,
+       "median_proton": 0.7834942815667245,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.16197180412185025,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.5078376872783434,
+       "median_proton": 1.4808724472066288,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.3591549295774648,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0665402285372116,
+       "median_proton": 0.980178827308478,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.39788735080772725,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8969152192924703,
+       "median_proton": 0.7926838444090698,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5216183208843435,
+       "median_proton": 1.50682931257069,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0788427867186783,
+       "median_proton": 1.0579712840989124,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9265164250635153,
+       "median_proton": 0.9003108774395441,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5358443470142351,
+       "median_proton": 1.53154003277663,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0813281618347843,
+       "median_proton": 1.0569753900509506,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.935434981250162,
+       "median_proton": 0.8919865410997541,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5105079501598417,
+       "median_proton": 1.5552976611331149,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.8415136657606787,
+       "median_proton": 0.9226991931139696,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.6384194712598266,
+       "median_proton": 0.729874597832741,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5766044516058886,
+       "median_proton": 1.5930701419570572,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0713106062503197,
+       "median_proton": 1.0539488821237337,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 33,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.8855611233637318,
+       "median_proton": 0.8557549325328191,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 8.0,
+   "draw": 0,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 449,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04750175626118741,
+      0.0407160121640978
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 449,
+      "median": 4.326857316400229,
+      "p16": 2.127147846821178,
+      "p84": 11.746121718255633
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 35
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 32
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 22
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 21
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 27
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 20
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 34
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 40
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 400.0,
+       "pairs": 1
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 31
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 43
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 6
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 50
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 290,
+       "testable": true,
+       "ks": 0.1724137931034483,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.4304857897455987,
+       "median_proton": 1.404189384362566,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 290,
+       "testable": true,
+       "ks": 0.4206896814806708,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.019565728145689,
+       "median_proton": 0.9448028698526311,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 290,
+       "testable": true,
+       "ks": 0.4586207422716864,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8687899967901643,
+       "median_proton": 0.7867452004243185,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 290,
+       "testable": true,
+       "ks": 0.17241381941170528,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.5094585141350656,
+       "median_proton": 1.484556567154769,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 290,
+       "testable": true,
+       "ks": 0.38620689655172413,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0729219700442059,
+       "median_proton": 0.979369603277686,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 290,
+       "testable": true,
+       "ks": 0.4206896551724138,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.9014182292386654,
+       "median_proton": 0.795531683842136,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5127410092273308,
+       "median_proton": 1.5087427141035237,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0787113257993803,
+       "median_proton": 1.0593493881348732,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.932285662288035,
+       "median_proton": 0.8964653484558145,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.526798231922369,
+       "median_proton": 1.5241582825656437,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.080055303303266,
+       "median_proton": 1.0590126985175914,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9272332471256552,
+       "median_proton": 0.8878514099281056,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5004992800470085,
+       "median_proton": 1.55023139233987,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.8535838416764079,
+       "median_proton": 0.906517236790017,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.64086808713598,
+       "median_proton": 0.7017740241379891,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5665009084328443,
+       "median_proton": 1.5905631898234325,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0692763502077,
+       "median_proton": 1.0494587848798405,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.8794961381502814,
+       "median_proton": 0.8505370930763807,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 8.0,
+   "draw": 1,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 446,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04850196710926637,
+      0.038551048371152474
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 446,
+      "median": 4.338985291484786,
+      "p16": 2.1855106053892275,
+      "p84": 12.220881811458272
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 22
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 32
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 33
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 22
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 21
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 24
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 28
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 15
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 4
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 19
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 34
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 42
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 29
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 43
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 6
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 51
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 293,
+       "testable": true,
+       "ks": 0.16382252559726962,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.4317849130137954,
+       "median_proton": 1.4067245567285456,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 293,
+       "testable": true,
+       "ks": 0.40273040146551037,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0211256239403297,
+       "median_proton": 0.94633794611015,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 293,
+       "testable": true,
+       "ks": 0.43686006825938567,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.87007999461697,
+       "median_proton": 0.7895364240214193,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 293,
+       "testable": true,
+       "ks": 0.16040956933343778,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.5056039917245032,
+       "median_proton": 1.4824673876182541,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 293,
+       "testable": true,
+       "ks": 0.3788396164825752,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0740440865533365,
+       "median_proton": 0.9830101108159559,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 293,
+       "testable": true,
+       "ks": 0.4129692832764505,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.9066255211478429,
+       "median_proton": 0.7969822690347463,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5219009916304416,
+       "median_proton": 1.5174154684813925,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0799153964113974,
+       "median_proton": 1.058410243038519,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9298582345183058,
+       "median_proton": 0.9002106503763188,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.530591836753725,
+       "median_proton": 1.523519305223652,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0816651315325767,
+       "median_proton": 1.0566974204109232,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.938243953939332,
+       "median_proton": 0.8927321555251946,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5299183062029464,
+       "median_proton": 1.5534889565279622,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.8823504495640213,
+       "median_proton": 0.9056552119899235,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.6408391705684919,
+       "median_proton": 0.7023766651239445,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5729356317953176,
+       "median_proton": 1.5936091372497525,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.1052514914863498,
+       "median_proton": 1.0506009719541591,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 35,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9299018475424418,
+       "median_proton": 0.8549746656696487,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 8.0,
+   "draw": 2,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 452,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04926261928941993,
+      0.039602299418578436
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 452,
+      "median": 4.288811964949133,
+      "p16": 2.1613585083766904,
+      "p84": 12.080993116016383
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 24
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 38
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 33
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 17
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 18
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 25
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 24
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 18
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 39
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 38
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 400.0,
+       "pairs": 1
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 28
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 43
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 7
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 53
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 287,
+       "testable": true,
+       "ks": 0.1672473867595819,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.433792210189835,
+       "median_proton": 1.4066594567237072,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 287,
+       "testable": true,
+       "ks": 0.37282232623482414,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0158987726257536,
+       "median_proton": 0.9474488081767498,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 287,
+       "testable": true,
+       "ks": 0.42160278745644597,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8671062051060197,
+       "median_proton": 0.7911251772031991,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 287,
+       "testable": true,
+       "ks": 0.14982581055538163,
+       "p_raw": 0.0006999300069993001,
+       "p_holm_within_pairing": 0.0006999300069993001,
+       "median_electron": 1.5103673427076005,
+       "median_proton": 1.4821973535400002,
+       "p_holm_family": 0.0006999300069993001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 287,
+       "testable": true,
+       "ks": 0.36585365853658536,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0780918181252743,
+       "median_proton": 0.9816815436729234,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 287,
+       "testable": true,
+       "ks": 0.4146341729247196,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.9078217918699294,
+       "median_proton": 0.7946178202387372,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5304945037651212,
+       "median_proton": 1.51937607503277,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0821819885220592,
+       "median_proton": 1.0608255945789764,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9392118792355599,
+       "median_proton": 0.9097753668616654,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.534892053630943,
+       "median_proton": 1.5286283965051142,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0819308818277813,
+       "median_proton": 1.0662215587077362,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9388995487014543,
+       "median_proton": 0.9042648844799408,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5256736911325128,
+       "median_proton": 1.557975333746807,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9869460749375069,
+       "median_proton": 0.922481023797683,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.7252344409135533,
+       "median_proton": 0.7505066917495921,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5795949114016212,
+       "median_proton": 1.597044023511588,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.1121982102304782,
+       "median_proton": 1.0543648449070835,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 31,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.938681690768558,
+       "median_proton": 0.8579647516113872,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 5.0,
+   "draw": 0,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 470,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04379081963014143,
+      0.033363453541635196
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 470,
+      "median": 4.540786964598315,
+      "p16": 2.1538998126934827,
+      "p84": 12.256976247517917
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 39
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 36
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 26
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 18
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 19
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 26
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 30
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 17
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 35
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 41
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 400.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 34
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 45
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 4
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 52
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.19366198526301853,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.4326553368536687,
+       "median_proton": 1.4051048329321305,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.39436619718309857,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.02193303745234,
+       "median_proton": 0.9462159663194634,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.4436619986950512,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.871311291094859,
+       "median_proton": 0.7921163926258659,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.19718312545561453,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.507395756188167,
+       "median_proton": 1.474018035200433,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.35563380281690143,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0743205936815514,
+       "median_proton": 0.9864178684369468,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 284,
+       "testable": true,
+       "ks": 0.40492957746478875,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.9033179761229639,
+       "median_proton": 0.7966167911519069,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5285918212857328,
+       "median_proton": 1.5142435865760893,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0906329254768121,
+       "median_proton": 1.0798376393272284,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9341502555630646,
+       "median_proton": 0.9184689483753775,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.530434264493581,
+       "median_proton": 1.521420707838981,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.1047514372470142,
+       "median_proton": 1.0704048582759236,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9465132657808233,
+       "median_proton": 0.9143292112285125,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5249272302837946,
+       "median_proton": 1.561376596789887,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.93808291315883,
+       "median_proton": 0.9797901230122661,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.6600830029196515,
+       "median_proton": 0.7854296612095537,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5632922947814751,
+       "median_proton": 1.598591424673129,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.1121702271048388,
+       "median_proton": 1.0670102693874282,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 30,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9377019990707215,
+       "median_proton": 0.8795168365703658,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 5.0,
+   "draw": 1,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 466,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.043620222175382785,
+      0.03398903851985787
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 466,
+      "median": 4.4831549247232925,
+      "p16": 2.1600423096422223,
+      "p84": 12.300000273183526
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 1
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 37
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 35
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 27
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 19
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 24
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 24
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 18
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 4
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 18
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 41
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 40
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 30
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 47
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 7
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 52
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 275,
+       "testable": true,
+       "ks": 0.16,
+       "p_raw": 0.00019998000199980003,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.4333853080253036,
+       "median_proton": 1.4086684214659653,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 275,
+       "testable": true,
+       "ks": 0.3781818181818182,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.018066413947992,
+       "median_proton": 0.9509983617325073,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 275,
+       "testable": true,
+       "ks": 0.4254545454545455,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8698557521863579,
+       "median_proton": 0.7960069659773213,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 275,
+       "testable": true,
+       "ks": 0.1709090770374645,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.5025942583544787,
+       "median_proton": 1.477157247376854,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 275,
+       "testable": true,
+       "ks": 0.3527273004705256,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0645762687013094,
+       "median_proton": 0.9874204877682784,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 275,
+       "testable": true,
+       "ks": 0.39636363636363636,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8928465995319215,
+       "median_proton": 0.8003942115569187,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5216571042076317,
+       "median_proton": 1.5085797628988549,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0896478630908442,
+       "median_proton": 1.0771419837279925,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9396575928862381,
+       "median_proton": 0.9156837645642785,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5320839774596933,
+       "median_proton": 1.5169004833688984,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.082108428396083,
+       "median_proton": 1.0685712919891912,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9459576067914447,
+       "median_proton": 0.913072049675518,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.533481538581582,
+       "median_proton": 1.5654651622105225,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9400225577352982,
+       "median_proton": 0.9608279043762596,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.6584032667766341,
+       "median_proton": 0.7762492194259287,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5684177127951102,
+       "median_proton": 1.5883204861403792,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.112833220634036,
+       "median_proton": 1.064021506793389,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 32,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9374626499681422,
+       "median_proton": 0.8705126530650849,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pe_per_mip": 5.0,
+   "draw": 2,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+     "pairing": "P-all",
+     "electron_band_gev": null,
+     "proton_bands": "all six proton bands pooled",
+     "caliper_sd": 0.25,
+     "pairs": 471,
+     "testable": true,
+     "reason": "",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04662581219318486,
+      0.03785835340086327
+     ],
+     "energy_ratio_proton_over_electron": {
+      "pairs": 471,
+      "median": 4.521941796133045,
+      "p16": 2.207333110401176,
+      "p84": 12.2186525638965
+     },
+     "combinations": [
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 50.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 100.0,
+       "pairs": 23
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 200.0,
+       "pairs": 38
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 400.0,
+       "pairs": 34
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 800.0,
+       "pairs": 26
+      },
+      {
+       "electron_band_gev": 50.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 19
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 100.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 200.0,
+       "pairs": 19
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 400.0,
+       "pairs": 24
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 800.0,
+       "pairs": 26
+      },
+      {
+       "electron_band_gev": 100.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 16
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 200.0,
+       "pairs": 3
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 400.0,
+       "pairs": 21
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 800.0,
+       "pairs": 43
+      },
+      {
+       "electron_band_gev": 200.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 42
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 400.0,
+       "pairs": 2
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 800.0,
+       "pairs": 27
+      },
+      {
+       "electron_band_gev": 400.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 43
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 800.0,
+       "pairs": 9
+      },
+      {
+       "electron_band_gev": 800.0,
+       "proton_band_gev": 2000.0,
+       "pairs": 52
+      }
+     ],
+     "rows": [
+      {
+       "statistic": "D0@1-2-3-6-9-18",
+       "valid_pairs": 277,
+       "testable": true,
+       "ks": 0.18772564554042334,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.431932973249722,
+       "median_proton": 1.4062682937482516,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@1-2-3-6-9-18",
+       "valid_pairs": 277,
+       "testable": true,
+       "ks": 0.37545126353790614,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0213388228263829,
+       "median_proton": 0.9495696801924934,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@1-2-3-6-9-18",
+       "valid_pairs": 277,
+       "testable": true,
+       "ks": 0.4259927797833935,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.8711364846687711,
+       "median_proton": 0.7938367439952174,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@2-3-6-9",
+       "valid_pairs": 277,
+       "testable": true,
+       "ks": 0.17689532063067606,
+       "p_raw": 0.00019998000199980003,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.506856576326966,
+       "median_proton": 1.477462890628954,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D1@2-3-6-9",
+       "valid_pairs": 277,
+       "testable": true,
+       "ks": 0.3574007220216607,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 1.0763789863376705,
+       "median_proton": 0.9849464720990233,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D2@2-3-6-9",
+       "valid_pairs": 277,
+       "testable": true,
+       "ks": 0.4007220216606498,
+       "p_raw": 9.999000099990002e-05,
+       "p_holm_within_pairing": 0.0005999400059994001,
+       "median_electron": 0.9070407404864596,
+       "median_proton": 0.7974911065664926,
+       "p_holm_family": 0.0005999400059994001
+      },
+      {
+       "statistic": "D0@1-2-3-6",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.5271207892301406,
+       "median_proton": 1.5077524540482177,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0853306943012218,
+       "median_proton": 1.0765866252763878,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9319810613913213,
+       "median_proton": 0.917777341873075,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@1-2-3-6-9",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.528917105374287,
+       "median_proton": 1.5160260447027039,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@1-2-3-6-9",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.0856151959313904,
+       "median_proton": 1.0688664544769981,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@1-2-3-6-9",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9425071074376861,
+       "median_proton": 0.9129142679700787,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.51412174895029,
+       "median_proton": 1.5548654260121995,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9103075753120871,
+       "median_proton": 0.9803065650032146,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.6508944391198876,
+       "median_proton": 0.7851996075190084,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D0@2-3-6",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.564214726521564,
+       "median_proton": 1.5954099495201017,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D1@2-3-6",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 1.11339414943604,
+       "median_proton": 1.0634424632643,
+       "p_holm_family": null
+      },
+      {
+       "statistic": "D2@2-3-6",
+       "valid_pairs": 27,
+       "testable": false,
+       "ks": null,
+       "p_raw": null,
+       "p_holm_within_pairing": null,
+       "median_electron": 0.9348251853431608,
+       "median_proton": 0.8763231529891955,
+       "p_holm_family": null
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

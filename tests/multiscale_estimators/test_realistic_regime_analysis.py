@@ -453,7 +453,9 @@ def test_theta12_stratum_selects_exactly_the_fiducial_events_with_theta_up_to_12
     assert rr.SENSITIVITY_THETA_MAX_RAD == pytest.approx(limit)
     events.primary_theta_rad[:4] = [0.0, limit, limit + 1e-6, rr.THETA_MAX_RAD]
     everything = np.ones(len(events), bool)
-    expected = np.flatnonzero(rr.fiducial_of(events) & (events.primary_theta_rad <= limit))
+    expected = np.flatnonzero(
+        rr.fiducial_of(events) & (events.primary_theta_rad <= limit)
+    )
     full = rr.build_class_images(events, everything, "electron", 1)
     stratum = rr.build_class_images(
         events, everything, "electron", 1, theta_max_rad=limit
@@ -462,11 +464,15 @@ def test_theta12_stratum_selects_exactly_the_fiducial_events_with_theta_up_to_12
     assert 0 < len(stratum.event_keys) < len(full.event_keys)
     rows = rr.acceptance_table({"electron": (events, everything)}, limit)
     assert sum(r["accepted"] for r in rows) == len(expected)
-    assert sum(r["events"] for r in rows) == int((events.primary_theta_rad <= limit).sum())
+    assert sum(r["events"] for r in rows) == int(
+        (events.primary_theta_rad <= limit).sum()
+    )
     assert all(r["view"] == rr.SENSITIVITY_LABEL for r in rows)
 
 
-def test_theta12_sensitivity_is_labelled_written_and_leaves_the_primary_untouched(tmp_path):
+def test_theta12_sensitivity_is_labelled_written_and_leaves_the_primary_untouched(
+    tmp_path,
+):
     electrons = synthetic_class("electron", 11)
     protons = synthetic_class("proton", 12)
     summary = rr.run_analysis(
@@ -495,3 +501,110 @@ def test_theta12_sensitivity_is_labelled_written_and_leaves_the_primary_untouche
         summary["matched_pairs"][0]["pairs"]
         >= summary["matched_pairs_" + label][0]["pairs"]
     )
+
+
+# --- POST HOC pooled-proton matching ------------------------------------------------------------------------------------------------
+
+
+def test_pooled_matching_uses_all_proton_bands_and_is_one_to_one_within_each_pairing():
+    e_img = rr.build_class_images(
+        synthetic_class("electron", 11), np.ones(360, bool), "electron", 1
+    )
+    p_img = rr.build_class_images(
+        synthetic_class("proton", 12), np.ones(360, bool), "proton_interacting", 2
+    )
+    pooled = rr.analyse_pooled(
+        e_img, p_img, 30, np.random.default_rng(0), with_excess=False
+    )
+    assert [p.label for p in pooled] == ["P-band e50", "P-band e100", "P-all"]
+    for p in pooled:
+        assert len(set(p.proton_index.tolist())) == len(
+            p.proton_index
+        )  # each proton at most once
+        assert len(set(p.electron_index.tolist())) == len(p.electron_index)
+        assert p.result.pairs == len(p.electron_index)
+        assert p.energy_ratio["pairs"] == len(p.electron_index)
+    # the pool reaches protons of BOTH bands (the pre-stated pairings would have used one band only)
+    for p in pooled:
+        assert set(p_img.band_lower_gev[p.proton_index]) == {50.0, 100.0}
+    all_pairing = pooled[-1]
+    assert sum(c["pairs"] for c in all_pairing.combinations) == all_pairing.result.pairs
+    assert {
+        (c["electron_band_gev"], c["proton_band_gev"]) for c in all_pairing.combinations
+    } == {(50.0, 50.0), (50.0, 100.0), (100.0, 50.0), (100.0, 100.0)}
+    assert set(e_img.band_lower_gev[pooled[0].electron_index]) == {50.0}
+
+
+def test_post_hoc_pooled_outputs_carry_the_label_and_write_nothing_of_the_pre_stated_analysis(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(rr, "PHOTOELECTRON_SCAN", (None, 10.0))
+    monkeypatch.setattr(rr, "SCAN_DRAWS", 1)
+    electrons = synthetic_class("electron", 11, per_band=45)
+    protons = synthetic_class("proton", 12, per_band=45)
+    pooled_dir = tmp_path / "pooled"
+    summary = rr.run_post_hoc_pooled(
+        electrons, protons, pooled_dir, permutations=40, scan_permutations=20
+    )
+    label = "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim"
+    assert rr.POST_HOC_LABEL == label and summary["status"] == label
+    for name in (
+        "pooled_F5_matched_dimensions",
+        "pooled_F5_matched_dimensions_secondary",
+        "pooled_F5_matched_dimensions_theta12",
+        "pooled_balance_energy_ratio",
+        "pooled_F5b_photoelectron_scan",
+    ):
+        assert (pooled_dir / f"{name}.png").stat().st_size > 0
+        assert label in (pooled_dir / f"{name}.json").read_text(encoding="utf-8")
+    for name in (
+        "pooled_matched_pair_statistics.json",
+        "pooled_summary.json",
+        "pooled_photoelectron_scan.json",
+    ):
+        assert label in (pooled_dir / name).read_text(encoding="utf-8")
+    assert label in (pooled_dir / "pooled_matched_pair_statistics.csv").read_text(
+        encoding="utf-8"
+    )
+    payload = json.loads(
+        (pooled_dir / "pooled_matched_pair_statistics.json").read_text(encoding="utf-8")
+    )
+    assert [p["pairing"] for p in payload[rr.SENSITIVITY_LABEL]["pairings"]] == [
+        "P-all"
+    ]
+    for p in payload[rr.SECONDARY_LABEL]["pairings"]:
+        assert all(row["p_holm_family"] is None for row in p["rows"])
+    assert not (pooled_dir / "matched_pair_statistics.json").exists()
+    assert not (pooled_dir / "F5_matched_dimensions.png").exists()
+    assert not (pooled_dir / "photoelectron_scan.json").exists()
+
+
+def test_cli_flag_runs_only_the_pooled_analysis_and_is_off_by_default(
+    tmp_path, monkeypatch
+):
+    events = {
+        "electron": synthetic_class("electron", 11, per_band=45),
+        "proton": synthetic_class("proton", 12, per_band=45),
+    }
+    monkeypatch.setattr(
+        rr, "find_class_directory", lambda root, name, rung: tmp_path / name
+    )
+    monkeypatch.setattr(rr, "load_class_events", lambda directory, name: events[name])
+    flagged, plain = tmp_path / "flag", tmp_path / "plain"
+    base = [
+        "--data-root",
+        str(tmp_path),
+        "--rung",
+        "rung1",
+        "--permutations",
+        "30",
+        "--skip-scan",
+    ]
+    rr.main([*base, "--out", str(flagged), "--post-hoc-pooled"])
+    assert (flagged / "pooled_summary.json").exists() and not (
+        flagged / "F1_generation.png"
+    ).exists()
+    rr.main([*base, "--out", str(plain)])
+    assert (plain / "F1_generation.png").exists() and not (
+        plain / "pooled_summary.json"
+    ).exists()

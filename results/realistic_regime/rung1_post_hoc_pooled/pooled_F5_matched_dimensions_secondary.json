@@ -1,0 +1,331 @@
+{
+ "status": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+ "figure": "pooled_F5_matched_dimensions_secondary",
+ "title": "Pooled matched pairs: D0 D1 D2 (secondary, descriptive, outside DEC-013 controls)",
+ "numbers": {
+  "view": "secondary, descriptive, outside DEC-013 controls",
+  "pairings": [
+   "e50*",
+   "e100*",
+   "e200*",
+   "e400*",
+   "e800*",
+   "P-all"
+  ],
+  "untestable_pairings": [
+   "e50*",
+   "e100*",
+   "e200*",
+   "e400*",
+   "e800*"
+  ],
+  "statistics": {
+   "D0@1-2-3-6-9-18": {
+    "median_electron": [
+     1.4351111762562287
+    ],
+    "median_proton": [
+     1.440447857974862
+    ],
+    "ks": [
+     0.08547008547008547
+    ],
+    "p_raw": [
+     0.0397960203979602
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D1@1-2-3-6-9-18": {
+    "median_electron": [
+     1.0185599760292958
+    ],
+    "median_proton": [
+     0.9026875225492399
+    ],
+    "ks": [
+     0.5085470085470085
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D2@1-2-3-6-9-18": {
+    "median_electron": [
+     0.8643042520411557
+    ],
+    "median_proton": [
+     0.7556455068309959
+    ],
+    "ks": [
+     0.5427350427350427
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D0@2-3-6-9": {
+    "median_electron": [
+     1.507882934341572
+    ],
+    "median_proton": [
+     1.512567973881872
+    ],
+    "ks": [
+     0.06410256817809537
+    ],
+    "p_raw": [
+     0.42985701429857015
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D1@2-3-6-9": {
+    "median_electron": [
+     1.0662220908725066
+    ],
+    "median_proton": [
+     0.9382828805584649
+    ],
+    "ks": [
+     0.4572649898692074
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D2@2-3-6-9": {
+    "median_electron": [
+     0.8907529071284599
+    ],
+    "median_proton": [
+     0.7472305019232524
+    ],
+    "ks": [
+     0.47435900696322447
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D0@1-2-3-6": {
+    "median_electron": [
+     1.4306723694017216
+    ],
+    "median_proton": [
+     1.4284670784743554
+    ],
+    "ks": [
+     0.1196581278091822
+    ],
+    "p_raw": [
+     0.006999300069993001
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D1@1-2-3-6": {
+    "median_electron": [
+     1.0751759427345378
+    ],
+    "median_proton": [
+     1.0097025111289741
+    ],
+    "ks": [
+     0.48290601551023304
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D2@1-2-3-6": {
+    "median_electron": [
+     0.9187919995959815
+    ],
+    "median_proton": [
+     0.8556152819707101
+    ],
+    "ks": [
+     0.47435897435897434
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D0@1-2-3-6-9": {
+    "median_electron": [
+     1.4530052943144216
+    ],
+    "median_proton": [
+     1.4559318899178457
+    ],
+    "ks": [
+     0.09829059829059829
+    ],
+    "p_raw": [
+     0.027897210278972105
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D1@1-2-3-6-9": {
+    "median_electron": [
+     1.0669481295090684
+    ],
+    "median_proton": [
+     0.9837626055652271
+    ],
+    "ks": [
+     0.5170940170940171
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D2@1-2-3-6-9": {
+    "median_electron": [
+     0.9088320694104892
+    ],
+    "median_proton": [
+     0.8301418601680374
+    ],
+    "ks": [
+     0.5384615710657886
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D0@2-3": {
+    "median_electron": [
+     1.4092752535922841
+    ],
+    "median_proton": [
+     1.4059908023768568
+    ],
+    "ks": [
+     0.09401708586603148
+    ],
+    "p_raw": [
+     0.18988101189881013
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D1@2-3": {
+    "median_electron": [
+     0.8412411452447299
+    ],
+    "median_proton": [
+     0.8325388977015875
+    ],
+    "ks": [
+     0.08974358159252721
+    ],
+    "p_raw": [
+     0.2782721727827217
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D2@2-3": {
+    "median_electron": [
+     0.6170941089770821
+    ],
+    "median_proton": [
+     0.6244291253550796
+    ],
+    "ks": [
+     0.06837606837606838
+    ],
+    "p_raw": [
+     0.5600439956004399
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D0@2-3-6": {
+    "median_electron": [
+     1.5146476599188592
+    ],
+    "median_proton": [
+     1.5088444816215585
+    ],
+    "ks": [
+     0.0641025885557517
+    ],
+    "p_raw": [
+     0.4487551244875512
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D1@2-3-6": {
+    "median_electron": [
+     1.0672522107687772
+    ],
+    "median_proton": [
+     0.9477953267924665
+    ],
+    "ks": [
+     0.41452991452991456
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   },
+   "D2@2-3-6": {
+    "median_electron": [
+     0.8726957324203011
+    ],
+    "median_proton": [
+     0.7479918058588105
+    ],
+    "ks": [
+     0.452991452991453
+    ],
+    "p_raw": [
+     9.999000099990002e-05
+    ],
+    "p_holm_family": [
+     null
+    ]
+   }
+  }
+ }
+}

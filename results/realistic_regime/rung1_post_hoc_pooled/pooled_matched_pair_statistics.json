@@ -1,0 +1,1409 @@
+{
+ "status": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+ "pairings": [
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pairing": "P-band e50",
+   "electron_band_gev": 50.0,
+   "proton_bands": "all six proton bands pooled",
+   "caliper_sd": 0.25,
+   "pairs": 84,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.060039697292008254,
+    0.06107478403170117
+   ],
+   "energy_ratio_proton_over_electron": {
+    "pairs": 84,
+    "median": 7.037241884006306,
+    "p16": 2.9753422550794246,
+    "p84": 30.14276279662538
+   },
+   "combinations": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "pairs": 3
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "pairs": 14
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "pairs": 19
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 400.0,
+     "pairs": 19
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 800.0,
+     "pairs": 17
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 12
+    }
+   ],
+   "rows": []
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pairing": "P-band e100",
+   "electron_band_gev": 100.0,
+   "proton_bands": "all six proton bands pooled",
+   "caliper_sd": 0.25,
+   "pairs": 66,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.07662277873701898,
+    0.04334166466340232
+   ],
+   "energy_ratio_proton_over_electron": {
+    "pairs": 66,
+    "median": 6.68884332016715,
+    "p16": 2.9649958900027817,
+    "p84": 15.955526744757426
+   },
+   "combinations": [
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "pairs": 1
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "pairs": 12
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "pairs": 19
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 800.0,
+     "pairs": 20
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 14
+    }
+   ],
+   "rows": []
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pairing": "P-band e200",
+   "electron_band_gev": 200.0,
+   "proton_bands": "all six proton bands pooled",
+   "caliper_sd": 0.25,
+   "pairs": 83,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.0813893491222916,
+    0.052201992996539756
+   ],
+   "energy_ratio_proton_over_electron": {
+    "pairs": 83,
+    "median": 5.468473395295203,
+    "p16": 2.3987208074678716,
+    "p84": 9.539509632889013
+   },
+   "combinations": [
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "pairs": 3
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "pairs": 17
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "pairs": 29
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 34
+    }
+   ],
+   "rows": []
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pairing": "P-band e400",
+   "electron_band_gev": 400.0,
+   "proton_bands": "all six proton bands pooled",
+   "caliper_sd": 0.25,
+   "pairs": 74,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.07553835418220389,
+    0.06312684794516828
+   ],
+   "energy_ratio_proton_over_electron": {
+    "pairs": 74,
+    "median": 3.332662702075695,
+    "p16": 1.8567181079703603,
+    "p84": 6.266675168684546
+   },
+   "combinations": [
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "pairs": 7
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "pairs": 30
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 37
+    }
+   ],
+   "rows": []
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pairing": "P-band e800",
+   "electron_band_gev": 800.0,
+   "proton_bands": "all six proton bands pooled",
+   "caliper_sd": 0.25,
+   "pairs": 59,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.0983003416285495,
+    0.08056017928042392
+   ],
+   "energy_ratio_proton_over_electron": {
+    "pairs": 59,
+    "median": 2.285242372536076,
+    "p16": 1.4859764682343501,
+    "p84": 3.01275961401183
+   },
+   "combinations": [
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "pairs": 11
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 48
+    }
+   ],
+   "rows": []
+  },
+  {
+   "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+   "pairing": "P-all",
+   "electron_band_gev": null,
+   "proton_bands": "all six proton bands pooled",
+   "caliper_sd": 0.25,
+   "pairs": 234,
+   "testable": true,
+   "reason": "",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.08116480582464435,
+    0.06762648663689959
+   ],
+   "energy_ratio_proton_over_electron": {
+    "pairs": 234,
+    "median": 4.388854746400943,
+    "p16": 2.0249648319238163,
+    "p84": 12.574309341096845
+   },
+   "combinations": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "pairs": 3
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "pairs": 12
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "pairs": 17
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 400.0,
+     "pairs": 19
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 800.0,
+     "pairs": 14
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 9
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "pairs": 1
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "pairs": 6
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "pairs": 8
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 800.0,
+     "pairs": 9
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 8
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "pairs": 1
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "pairs": 9
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "pairs": 21
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 19
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "pairs": 2
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "pairs": 17
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 24
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "pairs": 3
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "pairs": 32
+    }
+   ],
+   "rows": [
+    {
+     "statistic": "D0@1-2-3-6-9-18",
+     "valid_pairs": 183,
+     "testable": true,
+     "ks": 0.08743166793239572,
+     "p_raw": 0.1852814718528147,
+     "p_holm_within_pairing": 0.3705629437056294,
+     "median_electron": 1.463867265519975,
+     "median_proton": 1.4498336012064403,
+     "reference_cell_shuffle_ks_of_excess": 0.30054642724209146,
+     "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+     "median_excess_electron": 0.0229675558593051,
+     "median_excess_proton": 0.0006964110127980483,
+     "median_surrogate_electron": 1.4297091297917675,
+     "median_surrogate_proton": 1.4470790394755726,
+     "p_holm_family": 0.3705629437056294
+    },
+    {
+     "statistic": "D1@1-2-3-6-9-18",
+     "valid_pairs": 183,
+     "testable": true,
+     "ks": 0.45901639344262296,
+     "p_raw": 9.999000099990002e-05,
+     "p_holm_within_pairing": 0.0005999400059994001,
+     "median_electron": 1.0246347248137444,
+     "median_proton": 0.9299850975804054,
+     "reference_cell_shuffle_ks_of_excess": 0.1912568306010929,
+     "reference_cell_shuffle_p_raw": 0.0044995500449955,
+     "median_excess_electron": 0.25608490789971783,
+     "median_excess_proton": 0.22119288110507834,
+     "median_surrogate_electron": 0.7667861142819083,
+     "median_surrogate_proton": 0.6853452424595641,
+     "p_holm_family": 0.0005999400059994001
+    },
+    {
+     "statistic": "D2@1-2-3-6-9-18",
+     "valid_pairs": 183,
+     "testable": true,
+     "ks": 0.4972677595628415,
+     "p_raw": 9.999000099990002e-05,
+     "p_holm_within_pairing": 0.0005999400059994001,
+     "median_electron": 0.8717312620781577,
+     "median_proton": 0.7756524567411001,
+     "reference_cell_shuffle_ks_of_excess": 0.19672129063006957,
+     "reference_cell_shuffle_p_raw": 0.0030996900309969004,
+     "median_excess_electron": 0.24519658716453457,
+     "median_excess_proton": 0.21088106462602382,
+     "median_surrogate_electron": 0.6236362227298115,
+     "median_surrogate_proton": 0.5414943219984373,
+     "p_holm_family": 0.0005999400059994001
+    },
+    {
+     "statistic": "D0@2-3-6-9",
+     "valid_pairs": 183,
+     "testable": true,
+     "ks": 0.08196723396009435,
+     "p_raw": 0.34266573342665735,
+     "p_holm_within_pairing": 0.3705629437056294,
+     "median_electron": 1.530381874388903,
+     "median_proton": 1.5245343450359936,
+     "reference_cell_shuffle_ks_of_excess": 0.10928964875434917,
+     "reference_cell_shuffle_p_raw": 0.1840815918408159,
+     "median_excess_electron": -0.08313834510168772,
+     "median_excess_proton": -0.0886483595604568,
+     "median_surrogate_electron": 1.6145404835653074,
+     "median_surrogate_proton": 1.6276855865817508,
+     "p_holm_family": 0.3705629437056294
+    },
+    {
+     "statistic": "D1@2-3-6-9",
+     "valid_pairs": 183,
+     "testable": true,
+     "ks": 0.4098360655737705,
+     "p_raw": 9.999000099990002e-05,
+     "p_holm_within_pairing": 0.0005999400059994001,
+     "median_electron": 1.0684680294326945,
+     "median_proton": 0.9739286014968515,
+     "reference_cell_shuffle_ks_of_excess": 0.18579234972677597,
+     "reference_cell_shuffle_p_raw": 0.0038996100389961006,
+     "median_excess_electron": 0.249706335388585,
+     "median_excess_proton": 0.21030885913740188,
+     "median_surrogate_electron": 0.8198436637918531,
+     "median_surrogate_proton": 0.7325413816855902,
+     "p_holm_family": 0.0005999400059994001
+    },
+    {
+     "statistic": "D2@2-3-6-9",
+     "valid_pairs": 183,
+     "testable": true,
+     "ks": 0.4262294665060408,
+     "p_raw": 9.999000099990002e-05,
+     "p_holm_within_pairing": 0.0005999400059994001,
+     "median_electron": 0.9008345964173686,
+     "median_proton": 0.7912134304521118,
+     "reference_cell_shuffle_ks_of_excess": 0.19125685144643315,
+     "reference_cell_shuffle_p_raw": 0.0028997100289971,
+     "median_excess_electron": 0.24224393840242237,
+     "median_excess_proton": 0.20275728404654536,
+     "median_surrogate_electron": 0.6485069356152666,
+     "median_surrogate_proton": 0.5696153741986285,
+     "p_holm_family": 0.0005999400059994001
+    },
+    {
+     "statistic": "D0@1-2-3-6",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 1.5380186489649796,
+     "median_proton": 1.5693483625857436,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.09075634396195431,
+     "median_excess_proton": 0.047075674169336335,
+     "median_surrogate_electron": 1.4547259310597456,
+     "median_surrogate_proton": 1.4871674935158796,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D1@1-2-3-6",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 1.0760707335753894,
+     "median_proton": 1.0511914958151716,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.5964732948174126,
+     "median_excess_proton": 0.5711847685447058,
+     "median_surrogate_electron": 0.48386682368028067,
+     "median_surrogate_proton": 0.47577726360277717,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D2@1-2-3-6",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 0.9178810413139975,
+     "median_proton": 0.8955763371232337,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.5658922437331849,
+     "median_excess_proton": 0.5564763235014422,
+     "median_surrogate_electron": 0.3509673855925215,
+     "median_surrogate_proton": 0.330607921286533,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D0@1-2-3-6-9",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 1.550367119006852,
+     "median_proton": 1.5638256437860871,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.04475460458752911,
+     "median_excess_proton": 0.012619571197422852,
+     "median_surrogate_electron": 1.505333252243537,
+     "median_surrogate_proton": 1.536036652368562,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D1@1-2-3-6-9",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 1.069058541501899,
+     "median_proton": 1.023351018249612,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.45696920186351453,
+     "median_excess_proton": 0.42358382418325724,
+     "median_surrogate_electron": 0.6133313588829712,
+     "median_surrogate_proton": 0.5928638583874406,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D2@1-2-3-6-9",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 0.9156408576842919,
+     "median_proton": 0.8666431342687119,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.4432629470919871,
+     "median_excess_proton": 0.414890716768642,
+     "median_surrogate_electron": 0.47269071397671103,
+     "median_surrogate_proton": 0.44331836744792197,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D0@2-3",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 1.5308284520216326,
+     "median_proton": 1.5521442205592808,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": -0.1028572627595219,
+     "median_excess_proton": -0.1521477290922859,
+     "median_surrogate_electron": 1.6407805864592024,
+     "median_surrogate_proton": 1.6873573725259112,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D1@2-3",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 0.8330905728966316,
+     "median_proton": 0.8453357516672761,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.384494081166193,
+     "median_excess_proton": 0.43603850259119187,
+     "median_surrogate_electron": 0.42696563507391483,
+     "median_surrogate_proton": 0.4209952483524811,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D2@2-3",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 0.5874436192439215,
+     "median_proton": 0.6352659278326096,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.2987295899425805,
+     "median_excess_proton": 0.36249945545006906,
+     "median_surrogate_electron": 0.2775180194193628,
+     "median_surrogate_proton": 0.26652481317111504,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D0@2-3-6",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 1.593715145490003,
+     "median_proton": 1.6133486120040348,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": -0.0976281099494194,
+     "median_excess_proton": -0.09866821352671684,
+     "median_surrogate_electron": 1.6931356201904393,
+     "median_surrogate_proton": 1.7039635815312497,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D1@2-3-6",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 1.0564514390592024,
+     "median_proton": 1.0091737624460215,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.3694350660031107,
+     "median_excess_proton": 0.3418441817750642,
+     "median_surrogate_electron": 0.6867414229787461,
+     "median_surrogate_proton": 0.6697979789363362,
+     "p_holm_family": null
+    },
+    {
+     "statistic": "D2@2-3-6",
+     "valid_pairs": 51,
+     "testable": false,
+     "ks": null,
+     "p_raw": null,
+     "p_holm_within_pairing": null,
+     "median_electron": 0.8592981556254247,
+     "median_proton": 0.819313605639813,
+     "reference_cell_shuffle_ks_of_excess": null,
+     "reference_cell_shuffle_p_raw": null,
+     "median_excess_electron": 0.34432528151033326,
+     "median_excess_proton": 0.3188825192040312,
+     "median_surrogate_electron": 0.5249911723142031,
+     "median_surrogate_proton": 0.49449587960225017,
+     "p_holm_family": null
+    }
+   ]
+  }
+ ],
+ "secondary, descriptive, outside DEC-013 controls": {
+  "note": "same matched pairs, no per-window eligibility cut; raw p-values only (no Holm)",
+  "pairings": [
+   {
+    "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+    "pairing": "P-band e50",
+    "electron_band_gev": 50.0,
+    "proton_bands": "all six proton bands pooled",
+    "caliper_sd": 0.25,
+    "pairs": 84,
+    "testable": false,
+    "reason": "fewer than 100 matched pairs (not testable)",
+    "standardized_mean_difference_log_cells_log_energy": [
+     -0.060039697292008254,
+     0.06107478403170117
+    ],
+    "energy_ratio_proton_over_electron": {
+     "pairs": 84,
+     "median": 7.037241884006306,
+     "p16": 2.9753422550794246,
+     "p84": 30.14276279662538
+    },
+    "combinations": [
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 50.0,
+      "pairs": 3
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 100.0,
+      "pairs": 14
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 200.0,
+      "pairs": 19
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 400.0,
+      "pairs": 19
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 800.0,
+      "pairs": 17
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 12
+     }
+    ],
+    "rows": []
+   },
+   {
+    "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+    "pairing": "P-band e100",
+    "electron_band_gev": 100.0,
+    "proton_bands": "all six proton bands pooled",
+    "caliper_sd": 0.25,
+    "pairs": 66,
+    "testable": false,
+    "reason": "fewer than 100 matched pairs (not testable)",
+    "standardized_mean_difference_log_cells_log_energy": [
+     -0.07662277873701898,
+     0.04334166466340232
+    ],
+    "energy_ratio_proton_over_electron": {
+     "pairs": 66,
+     "median": 6.68884332016715,
+     "p16": 2.9649958900027817,
+     "p84": 15.955526744757426
+    },
+    "combinations": [
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 100.0,
+      "pairs": 1
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 200.0,
+      "pairs": 12
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 400.0,
+      "pairs": 19
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 800.0,
+      "pairs": 20
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 14
+     }
+    ],
+    "rows": []
+   },
+   {
+    "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+    "pairing": "P-band e200",
+    "electron_band_gev": 200.0,
+    "proton_bands": "all six proton bands pooled",
+    "caliper_sd": 0.25,
+    "pairs": 83,
+    "testable": false,
+    "reason": "fewer than 100 matched pairs (not testable)",
+    "standardized_mean_difference_log_cells_log_energy": [
+     -0.0813893491222916,
+     0.052201992996539756
+    ],
+    "energy_ratio_proton_over_electron": {
+     "pairs": 83,
+     "median": 5.468473395295203,
+     "p16": 2.3987208074678716,
+     "p84": 9.539509632889013
+    },
+    "combinations": [
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 200.0,
+      "pairs": 3
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 400.0,
+      "pairs": 17
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 800.0,
+      "pairs": 29
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 34
+     }
+    ],
+    "rows": []
+   },
+   {
+    "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+    "pairing": "P-band e400",
+    "electron_band_gev": 400.0,
+    "proton_bands": "all six proton bands pooled",
+    "caliper_sd": 0.25,
+    "pairs": 74,
+    "testable": false,
+    "reason": "fewer than 100 matched pairs (not testable)",
+    "standardized_mean_difference_log_cells_log_energy": [
+     -0.07553835418220389,
+     0.06312684794516828
+    ],
+    "energy_ratio_proton_over_electron": {
+     "pairs": 74,
+     "median": 3.332662702075695,
+     "p16": 1.8567181079703603,
+     "p84": 6.266675168684546
+    },
+    "combinations": [
+     {
+      "electron_band_gev": 400.0,
+      "proton_band_gev": 400.0,
+      "pairs": 7
+     },
+     {
+      "electron_band_gev": 400.0,
+      "proton_band_gev": 800.0,
+      "pairs": 30
+     },
+     {
+      "electron_band_gev": 400.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 37
+     }
+    ],
+    "rows": []
+   },
+   {
+    "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+    "pairing": "P-band e800",
+    "electron_band_gev": 800.0,
+    "proton_bands": "all six proton bands pooled",
+    "caliper_sd": 0.25,
+    "pairs": 59,
+    "testable": false,
+    "reason": "fewer than 100 matched pairs (not testable)",
+    "standardized_mean_difference_log_cells_log_energy": [
+     -0.0983003416285495,
+     0.08056017928042392
+    ],
+    "energy_ratio_proton_over_electron": {
+     "pairs": 59,
+     "median": 2.285242372536076,
+     "p16": 1.4859764682343501,
+     "p84": 3.01275961401183
+    },
+    "combinations": [
+     {
+      "electron_band_gev": 800.0,
+      "proton_band_gev": 800.0,
+      "pairs": 11
+     },
+     {
+      "electron_band_gev": 800.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 48
+     }
+    ],
+    "rows": []
+   },
+   {
+    "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+    "pairing": "P-all",
+    "electron_band_gev": null,
+    "proton_bands": "all six proton bands pooled",
+    "caliper_sd": 0.25,
+    "pairs": 234,
+    "testable": true,
+    "reason": "",
+    "standardized_mean_difference_log_cells_log_energy": [
+     -0.08116480582464435,
+     0.06762648663689959
+    ],
+    "energy_ratio_proton_over_electron": {
+     "pairs": 234,
+     "median": 4.388854746400943,
+     "p16": 2.0249648319238163,
+     "p84": 12.574309341096845
+    },
+    "combinations": [
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 50.0,
+      "pairs": 3
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 100.0,
+      "pairs": 12
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 200.0,
+      "pairs": 17
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 400.0,
+      "pairs": 19
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 800.0,
+      "pairs": 14
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 9
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 100.0,
+      "pairs": 1
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 200.0,
+      "pairs": 6
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 400.0,
+      "pairs": 8
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 800.0,
+      "pairs": 9
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 8
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 200.0,
+      "pairs": 1
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 400.0,
+      "pairs": 9
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 800.0,
+      "pairs": 21
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 19
+     },
+     {
+      "electron_band_gev": 400.0,
+      "proton_band_gev": 400.0,
+      "pairs": 2
+     },
+     {
+      "electron_band_gev": 400.0,
+      "proton_band_gev": 800.0,
+      "pairs": 17
+     },
+     {
+      "electron_band_gev": 400.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 24
+     },
+     {
+      "electron_band_gev": 800.0,
+      "proton_band_gev": 800.0,
+      "pairs": 3
+     },
+     {
+      "electron_band_gev": 800.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 32
+     }
+    ],
+    "rows": [
+     {
+      "statistic": "D0@1-2-3-6-9-18",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.08547008547008547,
+      "p_raw": 0.0397960203979602,
+      "p_holm_within_pairing": 0.2387761223877612,
+      "median_electron": 1.4351111762562287,
+      "median_proton": 1.440447857974862,
+      "reference_cell_shuffle_ks_of_excess": 0.2948717948717949,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.03141320264274461,
+      "median_excess_proton": 0.0016724412527933108,
+      "median_surrogate_electron": 1.4000778130239766,
+      "median_surrogate_proton": 1.4284767853268068,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D1@1-2-3-6-9-18",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.5085470085470085,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 1.0185599760292958,
+      "median_proton": 0.9026875225492399,
+      "reference_cell_shuffle_ks_of_excess": 0.2264957264957265,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.24934856285258095,
+      "median_excess_proton": 0.2162340527236582,
+      "median_surrogate_electron": 0.7659993354861478,
+      "median_surrogate_proton": 0.6509166828669568,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D2@1-2-3-6-9-18",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.5427350427350427,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 0.8643042520411557,
+      "median_proton": 0.7556455068309959,
+      "reference_cell_shuffle_ks_of_excess": 0.23076924707135585,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.23740101888099907,
+      "median_excess_proton": 0.20644727544252411,
+      "median_surrogate_electron": 0.6231242912066917,
+      "median_surrogate_proton": 0.5129246567947903,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D0@2-3-6-9",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.06410256817809537,
+      "p_raw": 0.42985701429857015,
+      "p_holm_within_pairing": 1.0,
+      "median_electron": 1.507882934341572,
+      "median_proton": 1.512567973881872,
+      "reference_cell_shuffle_ks_of_excess": 0.11538463983780299,
+      "reference_cell_shuffle_p_raw": 0.0628937106289371,
+      "median_excess_electron": -0.0784354157151218,
+      "median_excess_proton": -0.08743409502408372,
+      "median_surrogate_electron": 1.5931693948176093,
+      "median_surrogate_proton": 1.6117931051564602,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D1@2-3-6-9",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.4572649898692074,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 1.0662220908725066,
+      "median_proton": 0.9382828805584649,
+      "reference_cell_shuffle_ks_of_excess": 0.22222223852434728,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.24438528382391778,
+      "median_excess_proton": 0.20712992928359036,
+      "median_surrogate_electron": 0.8171346066424142,
+      "median_surrogate_proton": 0.70484316800422,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D2@2-3-6-9",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.47435900696322447,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 0.8907529071284599,
+      "median_proton": 0.7472305019232524,
+      "reference_cell_shuffle_ks_of_excess": 0.2564102727123815,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.24044795255979468,
+      "median_excess_proton": 0.19306733543266394,
+      "median_surrogate_electron": 0.6452514676770188,
+      "median_surrogate_proton": 0.5360760807984908,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D0@1-2-3-6",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.1196581278091822,
+      "p_raw": 0.006999300069993001,
+      "p_holm_within_pairing": 0.05599440055994401,
+      "median_electron": 1.4306723694017216,
+      "median_proton": 1.4284670784743554,
+      "reference_cell_shuffle_ks_of_excess": 0.27350425720214844,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.1454280413811776,
+      "median_excess_proton": 0.09029204019181991,
+      "median_surrogate_electron": 1.2682865968581074,
+      "median_surrogate_proton": 1.3140374233468188,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D1@1-2-3-6",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.48290601551023304,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 1.0751759427345378,
+      "median_proton": 1.0097025111289741,
+      "reference_cell_shuffle_ks_of_excess": 0.31196581196581197,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.587384606386487,
+      "median_excess_proton": 0.5610954935713486,
+      "median_surrogate_electron": 0.4902973925533358,
+      "median_surrogate_proton": 0.4311306501892891,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D2@1-2-3-6",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.47435897435897434,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 0.9187919995959815,
+      "median_proton": 0.8556152819707101,
+      "reference_cell_shuffle_ks_of_excess": 0.23076924707135585,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.5692444813468324,
+      "median_excess_proton": 0.5455348223770835,
+      "median_surrogate_electron": 0.3525318388961109,
+      "median_surrogate_proton": 0.29690558206515083,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D0@1-2-3-6-9",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.09829059829059829,
+      "p_raw": 0.027897210278972105,
+      "p_holm_within_pairing": 0.19528047195280474,
+      "median_electron": 1.4530052943144216,
+      "median_proton": 1.4559318899178457,
+      "reference_cell_shuffle_ks_of_excess": 0.27350425720214844,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.08079052945946574,
+      "median_excess_proton": 0.039075717473214366,
+      "median_surrogate_electron": 1.3631422008520448,
+      "median_surrogate_proton": 1.398589683002279,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D1@1-2-3-6-9",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.5170940170940171,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 1.0669481295090684,
+      "median_proton": 0.9837626055652271,
+      "reference_cell_shuffle_ks_of_excess": 0.2777777777777778,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.4445783899058251,
+      "median_excess_proton": 0.41540203090741623,
+      "median_surrogate_electron": 0.6222898752985306,
+      "median_surrogate_proton": 0.5444322763883176,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D2@1-2-3-6-9",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.5384615710657886,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 0.9088320694104892,
+      "median_proton": 0.8301418601680374,
+      "reference_cell_shuffle_ks_of_excess": 0.27350425720214844,
+      "reference_cell_shuffle_p_raw": 9.999000099990002e-05,
+      "median_excess_electron": 0.4330841429235177,
+      "median_excess_proton": 0.4064092774586612,
+      "median_surrogate_electron": 0.4775080357042152,
+      "median_surrogate_proton": 0.3958581797555155,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D0@2-3",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.09401708586603148,
+      "p_raw": 0.18988101189881013,
+      "p_holm_within_pairing": 0.9494050594940506,
+      "median_electron": 1.4092752535922841,
+      "median_proton": 1.4059908023768568,
+      "reference_cell_shuffle_ks_of_excess": 0.11965811150705713,
+      "reference_cell_shuffle_p_raw": 0.06819318068193181,
+      "median_excess_electron": -0.06365940763267641,
+      "median_excess_proton": -0.09263533945397351,
+      "median_surrogate_electron": 1.4236885546092282,
+      "median_surrogate_proton": 1.4808316742349699,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D1@2-3",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.08974358159252721,
+      "p_raw": 0.2782721727827217,
+      "p_holm_within_pairing": 1.0,
+      "median_electron": 0.8412411452447299,
+      "median_proton": 0.8325388977015875,
+      "reference_cell_shuffle_ks_of_excess": 0.07692310137626453,
+      "reference_cell_shuffle_p_raw": 0.40205979402059794,
+      "median_excess_electron": 0.39787400395782324,
+      "median_excess_proton": 0.4389136922860455,
+      "median_surrogate_electron": 0.4356259715457207,
+      "median_surrogate_proton": 0.39154001158787394,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D2@2-3",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.06837606837606838,
+      "p_raw": 0.5600439956004399,
+      "p_holm_within_pairing": 1.0,
+      "median_electron": 0.6170941089770821,
+      "median_proton": 0.6244291253550796,
+      "reference_cell_shuffle_ks_of_excess": 0.08974358159252721,
+      "reference_cell_shuffle_p_raw": 0.27777222277772223,
+      "median_excess_electron": 0.33239490191024207,
+      "median_excess_proton": 0.3852326059560075,
+      "median_surrogate_electron": 0.2857730583777418,
+      "median_surrogate_proton": 0.24323773865677997,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D0@2-3-6",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.0641025885557517,
+      "p_raw": 0.4487551244875512,
+      "p_holm_within_pairing": 1.0,
+      "median_electron": 1.5146476599188592,
+      "median_proton": 1.5088444816215585,
+      "reference_cell_shuffle_ks_of_excess": 0.1410256573277661,
+      "reference_cell_shuffle_p_raw": 0.010998900109989001,
+      "median_excess_electron": -0.07506749850651884,
+      "median_excess_proton": -0.09063942101059752,
+      "median_surrogate_electron": 1.5821058100835312,
+      "median_surrogate_proton": 1.6086083938259614,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D1@2-3-6",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.41452991452991456,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 1.0672522107687772,
+      "median_proton": 0.9477953267924665,
+      "reference_cell_shuffle_ks_of_excess": 0.1794871794871795,
+      "reference_cell_shuffle_p_raw": 0.0008999100089991,
+      "median_excess_electron": 0.3679661637829446,
+      "median_excess_proton": 0.3289798112228206,
+      "median_surrogate_electron": 0.7013907483394182,
+      "median_surrogate_proton": 0.605045252372034,
+      "p_holm_family": null
+     },
+     {
+      "statistic": "D2@2-3-6",
+      "valid_pairs": 234,
+      "testable": true,
+      "ks": 0.452991452991453,
+      "p_raw": 9.999000099990002e-05,
+      "p_holm_within_pairing": 0.0017998200179982003,
+      "median_electron": 0.8726957324203011,
+      "median_proton": 0.7479918058588105,
+      "reference_cell_shuffle_ks_of_excess": 0.22649571019360143,
+      "reference_cell_shuffle_p_raw": 0.00019998000199980003,
+      "median_excess_electron": 0.3471568408054225,
+      "median_excess_proton": 0.30056382422308225,
+      "median_surrogate_electron": 0.5287940476278685,
+      "median_surrogate_proton": 0.42962535525197676,
+      "p_holm_family": null
+     }
+    ]
+   }
+  ]
+ },
+ "sensitivity, theta <= 12 deg": {
+  "note": "P-all only, fiducial events with primary_theta <= 12 deg; Holm within this stratum's own family",
+  "theta_max_deg": 12.0,
+  "pairings": [
+   {
+    "post_hoc": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+    "pairing": "P-all",
+    "electron_band_gev": null,
+    "proton_bands": "all six proton bands pooled",
+    "caliper_sd": 0.25,
+    "pairs": 57,
+    "testable": false,
+    "reason": "fewer than 100 matched pairs (not testable)",
+    "standardized_mean_difference_log_cells_log_energy": [
+     -0.0809559285105377,
+     0.058001916917716966
+    ],
+    "energy_ratio_proton_over_electron": {
+     "pairs": 57,
+     "median": 5.89674339836034,
+     "p16": 2.5161723918727414,
+     "p84": 12.677110506480602
+    },
+    "combinations": [
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 50.0,
+      "pairs": 1
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 100.0,
+      "pairs": 2
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 400.0,
+      "pairs": 7
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 800.0,
+      "pairs": 5
+     },
+     {
+      "electron_band_gev": 50.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 2
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 200.0,
+      "pairs": 3
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 400.0,
+      "pairs": 2
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 800.0,
+      "pairs": 2
+     },
+     {
+      "electron_band_gev": 100.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 2
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 400.0,
+      "pairs": 1
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 800.0,
+      "pairs": 8
+     },
+     {
+      "electron_band_gev": 200.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 6
+     },
+     {
+      "electron_band_gev": 400.0,
+      "proton_band_gev": 800.0,
+      "pairs": 2
+     },
+     {
+      "electron_band_gev": 400.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 6
+     },
+     {
+      "electron_band_gev": 800.0,
+      "proton_band_gev": 800.0,
+      "pairs": 1
+     },
+     {
+      "electron_band_gev": 800.0,
+      "proton_band_gev": 2000.0,
+      "pairs": 7
+     }
+    ],
+    "rows": []
+   }
+  ]
+ }
+}

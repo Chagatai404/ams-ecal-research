@@ -1,0 +1,142 @@
+{
+ "status": "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim",
+ "figure": "pooled_F5_matched_dimensions_theta12",
+ "title": "Pooled matched pairs: D0 D1 D2 (sensitivity, theta <= 12 deg)",
+ "numbers": {
+  "view": "sensitivity, theta <= 12 deg",
+  "pairings": [
+   "P-all*"
+  ],
+  "untestable_pairings": [
+   "P-all*"
+  ],
+  "statistics": {
+   "D0@1-2-3-6-9-18": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@1-2-3-6-9-18": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@1-2-3-6-9-18": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@1-2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@1-2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@1-2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@1-2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@1-2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@1-2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@2-3": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@2-3": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@2-3": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   }
+  }
+ }
+}

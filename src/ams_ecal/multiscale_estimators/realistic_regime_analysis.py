@@ -799,6 +799,9 @@ class ClassImages:
     energy_mev: np.ndarray
     band_lower_gev: np.ndarray
     event_keys: np.ndarray
+    primary_energy_gev: np.ndarray | None = (
+        None  # carried for the post-hoc pooled analysis only
+    )
     _dims: dict[int, np.ndarray] = field(default_factory=dict)
     _surrogate: dict[int, np.ndarray] = field(default_factory=dict)
     _dims_uncut: dict[int, np.ndarray] = field(default_factory=dict)
@@ -863,6 +866,7 @@ def build_class_images(
         energy_mev=energy,
         band_lower_gev=events.band_lower_gev[keep],
         event_keys=keep + class_code * 10_000_000,
+        primary_energy_gev=events.primary_energy_gev[keep].astype(float),
     )
 
 
@@ -1639,6 +1643,549 @@ def figure_f5b_scan(scan: Sequence[dict[str, Any]], out: Path) -> None:
     )
 
 
+# --- POST HOC pooled-proton matching (chosen after the pre-stated pairings were not testable) ---------------------------------------
+
+POST_HOC_LABEL = "POST HOC, EXPLORATORY: pooled-proton matching chosen after the pre-stated pairings were not testable; no claim"
+POOLED_ALL = "P-all"
+
+
+@dataclass
+class PooledPairing:
+    """One post-hoc pooled pairing: a PairingResult plus the matched indices and the pooled-matching diagnostics."""
+
+    label: str  # "P-band e<lower edge>" or "P-all"
+    electron_band_gev: float | None  # None for P-all (all electron bands pooled)
+    result: PairingResult
+    electron_index: np.ndarray  # matched indices into the electron ClassImages
+    proton_index: np.ndarray  # matched indices into the proton ClassImages
+    energy_ratio: dict[str, Any]
+    combinations: list[dict[str, Any]]
+
+
+def energy_ratio_summary(
+    electron_energy_gev: np.ndarray, proton_energy_gev: np.ndarray
+) -> dict[str, Any]:
+    """Median and 16-84% of the primary-energy ratio proton E / electron E over matched pairs."""
+
+    if len(electron_energy_gev) == 0:
+        return {"pairs": 0, "median": None, "p16": None, "p84": None}
+    ratio = np.asarray(proton_energy_gev, float) / np.asarray(
+        electron_energy_gev, float
+    )
+    p16, p50, p84 = np.percentile(ratio, [16, 50, 84])
+    return {
+        "pairs": len(ratio),
+        "median": float(p50),
+        "p16": float(p16),
+        "p84": float(p84),
+    }
+
+
+def analyse_pooled(
+    electrons: ClassImages,
+    protons: ClassImages,
+    permutations: int,
+    rng: np.random.Generator,
+    with_excess: bool,
+    eligibility: bool = True,
+    per_band: bool = True,
+) -> list[PooledPairing]:
+    """POST HOC pooled matching. For every electron band (``per_band``) its fiducial electrons are matched 1:1 (same caliper and keys as
+    ``analyse_point``) against the POOL of fiducial interacting protons of ALL proton bands; ``P-all`` matches all electrons (all bands
+    pooled) against all protons in one 1:1 matching. Each proton is used at most once within a pairing. Statistics as in
+    ``analyse_point``; the Holm family is every testable raw p of the pairings returned here (primary only)."""
+
+    if electrons.primary_energy_gev is None or protons.primary_energy_gev is None:
+        raise ValueError(
+            "ClassImages without primary_energy_gev (build them with build_class_images)"
+        )
+    specs: list[tuple[str, float | None]] = []
+    if per_band:
+        specs += [
+            (f"P-band e{b:g}", float(b)) for b in sorted(set(electrons.band_lower_gev))
+        ]
+    specs.append((POOLED_ALL, None))
+    ip_all = np.arange(len(protons.cells))
+    key_p = np.maximum(np.column_stack([protons.cells, protons.energy_mev]), 1e-300)
+    pairings: list[PooledPairing] = []
+    for label, band in specs:
+        ie_all = (
+            np.arange(len(electrons.cells))
+            if band is None
+            else np.flatnonzero(electrons.band_lower_gev == band)
+        )
+        me, mpp = match_on_occupancy_and_energy(
+            electrons.cells[ie_all],
+            electrons.energy_mev[ie_all],
+            protons.cells,
+            protons.energy_mev,
+        )
+        key_e = np.maximum(
+            np.column_stack([electrons.cells, electrons.energy_mev])[ie_all], 1e-300
+        )
+        result = run_pairing(
+            float("nan") if band is None else band,
+            float("nan"),
+            -1,
+            me,
+            mpp,
+            key_e,
+            key_p,
+            lambda idx, ie=ie_all: electrons.dims(ie[idx], eligibility),
+            lambda idx, ip=ip_all: protons.dims(ip[idx], eligibility),
+            (lambda idx, ie=ie_all: electrons.excess(ie[idx], eligibility))
+            if with_excess
+            else None,
+            (lambda idx, ip=ip_all: protons.excess(ip[idx], eligibility))
+            if with_excess
+            else None,
+            permutations,
+            rng,
+        )
+        g_e, g_p = ie_all[me], ip_all[mpp]
+        counts: dict[tuple[float, float], int] = {}
+        for eb, pb in zip(
+            electrons.band_lower_gev[g_e], protons.band_lower_gev[g_p], strict=True
+        ):
+            counts[(float(eb), float(pb))] = counts.get((float(eb), float(pb)), 0) + 1
+        pairings.append(
+            PooledPairing(
+                label=label,
+                electron_band_gev=band,
+                result=result,
+                electron_index=g_e,
+                proton_index=g_p,
+                energy_ratio=energy_ratio_summary(
+                    electrons.primary_energy_gev[g_e], protons.primary_energy_gev[g_p]
+                ),
+                combinations=[
+                    {"electron_band_gev": eb, "proton_band_gev": pb, "pairs": n}
+                    for (eb, pb), n in sorted(counts.items())
+                ],
+            )
+        )
+    if eligibility:
+        holm_over_family([p.result for p in pairings])
+    else:
+        for p in pairings:
+            for row in p.result.rows:
+                row["p_holm_family"] = float("nan")
+    return pairings
+
+
+def pooled_to_dict(p: PooledPairing) -> dict[str, Any]:
+    r = p.result
+    return {
+        "post_hoc": POST_HOC_LABEL,
+        "pairing": p.label,
+        "electron_band_gev": p.electron_band_gev,
+        "proton_bands": "all six proton bands pooled",
+        "caliper_sd": r.caliper_sd,
+        "pairs": r.pairs,
+        "testable": r.testable,
+        "reason": r.reason,
+        "standardized_mean_difference_log_cells_log_energy": r.standardized_mean_difference,
+        "energy_ratio_proton_over_electron": p.energy_ratio,
+        "combinations": p.combinations,
+        "rows": r.rows,
+    }
+
+
+def _flatten_pooled(
+    pairings: Sequence[PooledPairing], view: str
+) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    for p in pairings:
+        head = {
+            "post_hoc": POST_HOC_LABEL,
+            "view": view,
+            "pairing": p.label,
+            "pairs": p.result.pairs,
+            "smd_log_cells": p.result.standardized_mean_difference[0],
+            "smd_log_energy": p.result.standardized_mean_difference[1],
+            "energy_ratio_median": p.energy_ratio["median"],
+            "energy_ratio_p16": p.energy_ratio["p16"],
+            "energy_ratio_p84": p.energy_ratio["p84"],
+        }
+        if p.result.rows:
+            out.extend({**head, **row} for row in p.result.rows)
+        else:
+            out.append({**head, "testable": False})
+    return out
+
+
+def pooled_photoelectron_scan(
+    electron_events: ClassEvents,
+    proton_events: ClassEvents,
+    proton_selected: np.ndarray,
+    permutations: int,
+) -> list[dict[str, Any]]:
+    """The photoelectron scan (None, 10, 8, 5 p.e. per MIP; 3 draws; rematching after every smearing) for P-all only."""
+
+    out = []
+    for pe in PHOTOELECTRON_SCAN:
+        for draw in range(1 if pe is None else SCAN_DRAWS):
+            e_img = build_class_images(
+                electron_events,
+                np.ones(len(electron_events), bool),
+                "electron",
+                1,
+                pe,
+                draw,
+            )
+            p_img = build_class_images(
+                proton_events, proton_selected, "proton_interacting", 2, pe, draw
+            )
+            rng = np.random.default_rng([ANALYSIS_SEED, 8, int((pe or 0) * 10), draw])
+            pooled = analyse_pooled(
+                e_img, p_img, permutations, rng, with_excess=False, per_band=False
+            )
+            out.append(
+                {
+                    "post_hoc": POST_HOC_LABEL,
+                    "pe_per_mip": pe,
+                    "draw": draw,
+                    "permutations": permutations,
+                    "pairings": [pooled_to_dict(p) for p in pooled],
+                }
+            )
+    return out
+
+
+def _finish_post_hoc(
+    fig, title: str, name: str, numbers: dict[str, Any], out: Path
+) -> None:
+    fig.suptitle(f"{title}\n{POST_HOC_LABEL}", fontsize=8)
+    fig.tight_layout(rect=(0, 0, 1, 0.93))
+    fig.savefig(out / f"{name}.png", dpi=130)
+    _pyplot().close(fig)
+    write_json(
+        out / f"{name}.json",
+        {"status": POST_HOC_LABEL, "figure": name, "title": title, "numbers": numbers},
+    )
+
+
+def _pooled_label(p: PooledPairing) -> str:
+    return p.label.replace("P-band ", "") + ("" if p.result.testable else "*")
+
+
+def figure_pooled_dimensions(
+    pairings: Sequence[PooledPairing], out: Path, view: str, stem: str
+) -> None:
+    """Matched-pair medians of D0, D1, D2 per window for each pooled pairing (* = not testable, < 100 pairs)."""
+
+    plt = _pyplot()
+    fig, ax = plt.subplots(
+        len(STATISTIC_Q), len(WINDOWS), figsize=(3.2 * len(WINDOWS), 8), squeeze=False
+    )
+    names = dimension_names()
+    shown = [p for p in pairings if p.result.rows]
+    x = np.arange(len(shown))
+    numbers: dict[str, Any] = {
+        "view": view,
+        "pairings": [_pooled_label(p) for p in pairings],
+        "untestable_pairings": [
+            _pooled_label(p) for p in pairings if not p.result.rows
+        ],
+        "statistics": {},
+    }
+    for j, name in enumerate(names):
+        a = ax[j % len(STATISTIC_Q), j // len(STATISTIC_Q)]
+        rows = [p.result.rows[j] for p in shown]
+        me = np.array([r["median_electron"] for r in rows])
+        mpr = np.array([r["median_proton"] for r in rows])
+        a.plot(x, me, "o", color=CLASS_COLOURS["electron"], label="electron")
+        a.plot(
+            x,
+            mpr,
+            "s",
+            color=CLASS_COLOURS["proton_interacting"],
+            label="interacting proton",
+        )
+        numbers["statistics"][name] = {
+            "median_electron": me.tolist(),
+            "median_proton": mpr.tolist(),
+            "ks": [r["ks"] for r in rows],
+            "p_raw": [r["p_raw"] for r in rows],
+            "p_holm_family": [r["p_holm_family"] for r in rows],
+        }
+        a.set_title(name, fontsize=8)
+        a.set_xticks(x)
+        a.set_xticklabels([_pooled_label(p) for p in shown], rotation=90, fontsize=6)
+    if not shown:
+        for a in ax.ravel():
+            a.text(
+                0.5,
+                0.5,
+                "no pooled pairing testable\n(< 100 matched pairs)",
+                ha="center",
+                va="center",
+                transform=a.transAxes,
+            )
+    ax[0, 0].legend(fontsize=6)
+    _finish_post_hoc(
+        fig, f"Pooled matched pairs: D0 D1 D2 ({view})", stem, numbers, out
+    )
+
+
+def figure_pooled_balance(pairings: Sequence[PooledPairing], out: Path) -> None:
+    """Balance (standardised mean differences of the two matching variables) and proton/electron energy ratio per pooled pairing."""
+
+    plt = _pyplot()
+    fig, ax = plt.subplots(1, 3, figsize=(14, 4.5))
+    x = np.arange(len(pairings))
+    labels = [_pooled_label(p) for p in pairings]
+    smd = np.array([p.result.standardized_mean_difference for p in pairings], float)
+    ax[0].bar(x - 0.2, smd[:, 0], 0.4, label="log occupied cells")
+    ax[0].bar(x + 0.2, smd[:, 1], 0.4, label="log scintillator energy")
+    ax[0].axhline(0, color="k", lw=0.5)
+    ax[0].set_ylabel("standardised mean difference (e - p)")
+    ax[0].legend(fontsize=7)
+    med = np.array(
+        [
+            np.nan if p.energy_ratio["median"] is None else p.energy_ratio["median"]
+            for p in pairings
+        ],
+        float,
+    )
+    lo = np.array(
+        [
+            np.nan if p.energy_ratio["p16"] is None else p.energy_ratio["p16"]
+            for p in pairings
+        ],
+        float,
+    )
+    hi = np.array(
+        [
+            np.nan if p.energy_ratio["p84"] is None else p.energy_ratio["p84"]
+            for p in pairings
+        ],
+        float,
+    )
+    ax[1].errorbar(x, med, yerr=[med - lo, hi - med], fmt="o", capsize=3)
+    ax[1].set_yscale("log")
+    ax[1].set_ylabel("primary energy ratio proton / electron (median, 16-84%)")
+    combos = next((p for p in pairings if p.label == POOLED_ALL), None)
+    numbers: dict[str, Any] = {
+        "pairings": labels,
+        "smd_log_cells_log_energy": smd.tolist(),
+        "energy_ratio": [p.energy_ratio for p in pairings],
+        "pairs": [p.result.pairs for p in pairings],
+    }
+    if combos is not None and combos.combinations:
+        e_bands = sorted({c["electron_band_gev"] for c in combos.combinations})
+        p_bands = sorted({c["proton_band_gev"] for c in combos.combinations})
+        grid = np.zeros((len(e_bands), len(p_bands)))
+        for c in combos.combinations:
+            grid[
+                e_bands.index(c["electron_band_gev"]),
+                p_bands.index(c["proton_band_gev"]),
+            ] = c["pairs"]
+        im = ax[2].imshow(grid, origin="lower", aspect="auto")
+        ax[2].set_xticks(range(len(p_bands)), [f"{b:g}" for b in p_bands], fontsize=7)
+        ax[2].set_yticks(range(len(e_bands)), [f"{b:g}" for b in e_bands], fontsize=7)
+        ax[2].set_xlabel("proton band lower edge [GeV]")
+        ax[2].set_ylabel("electron band lower edge [GeV]")
+        for (i, k), v in np.ndenumerate(grid):
+            ax[2].text(
+                k, i, f"{int(v)}", ha="center", va="center", color="w", fontsize=8
+            )
+        fig.colorbar(im, ax=ax[2])
+        ax[2].set_title("P-all pairs per (electron band, proton band)", fontsize=9)
+        numbers["p_all_combinations"] = combos.combinations
+    for a in ax[:2]:
+        a.set_xticks(x)
+        a.set_xticklabels(labels, rotation=90, fontsize=7)
+    _finish_post_hoc(
+        fig,
+        "Pooled matching: balance, energy ratio and band combinations",
+        "pooled_balance_energy_ratio",
+        numbers,
+        out,
+    )
+
+
+def figure_pooled_scan(scan: Sequence[dict[str, Any]], out: Path) -> None:
+    """P-all matched-pair KS against photoelectrons per MIP, per window and q (testable points only)."""
+
+    plt = _pyplot()
+    fig, ax = plt.subplots(
+        len(STATISTIC_Q), len(WINDOWS), figsize=(3.2 * len(WINDOWS), 8), squeeze=False
+    )
+    positions = {5.0: 0, 8.0: 1, 10.0: 2, None: 3}
+    names = dimension_names()
+    numbers: dict[str, Any] = {"series": {}, "pairs_per_point": []}
+    for j, name in enumerate(names):
+        a = ax[j % len(STATISTIC_Q), j // len(STATISTIC_Q)]
+        xs, ys = [], []
+        for pe, pos in positions.items():
+            vals = []
+            for point in scan:
+                if point["pe_per_mip"] != pe:
+                    continue
+                row = next(
+                    (
+                        r
+                        for r in point["pairings"][0]["rows"]
+                        if r["statistic"] == name and r["testable"]
+                    ),
+                    None,
+                )
+                if row:
+                    vals.append(row["ks"])
+            if vals:
+                xs.append(pos)
+                ys.append(vals)
+        if xs:
+            a.plot(xs, [np.mean(v) for v in ys], "o-")
+            for xv, v in zip(xs, ys, strict=True):
+                a.plot([xv] * len(v), v, "_", color="k", alpha=0.4)
+        numbers["series"][name] = {"pe_positions": xs, "ks_per_draw": ys}
+        a.set_title(name, fontsize=8)
+        a.set_xticks(list(positions.values()))
+        a.set_xticklabels(["5", "8", "10", "none"], fontsize=7)
+    for point in scan:
+        numbers["pairs_per_point"].append(
+            {
+                "pe_per_mip": point["pe_per_mip"],
+                "draw": point["draw"],
+                "pairs": point["pairings"][0]["pairs"],
+            }
+        )
+    _finish_post_hoc(
+        fig,
+        "Pooled P-all: matched-pair KS against photoelectrons per MIP",
+        "pooled_F5b_photoelectron_scan",
+        numbers,
+        out,
+    )
+
+
+def run_post_hoc_pooled(
+    electrons: ClassEvents,
+    protons: ClassEvents,
+    out: Path,
+    permutations: int = PERMUTATIONS,
+    scan_permutations: int | None = None,
+    run_scan: bool = True,
+) -> dict[str, Any]:
+    """POST HOC pooled-proton analysis (see ``POST_HOC_LABEL``); writes only into ``out``, leaves the pre-stated analysis untouched."""
+
+    t0 = time.time()
+    out.mkdir(parents=True, exist_ok=True)
+    interacting = protons.truth_occurred.astype(bool)
+    ones = np.ones(len(electrons), bool)
+    e_img = build_class_images(electrons, ones, "electron", 1)
+    p_img = build_class_images(protons, interacting, "proton_interacting", 2)
+    primary = analyse_pooled(
+        e_img,
+        p_img,
+        permutations,
+        np.random.default_rng([ANALYSIS_SEED, 7]),
+        with_excess=True,
+    )
+    secondary = analyse_pooled(
+        e_img,
+        p_img,
+        permutations,
+        np.random.default_rng([ANALYSIS_SEED, 9]),
+        with_excess=True,
+        eligibility=False,
+    )
+    e12 = build_class_images(
+        electrons, ones, "electron", 1, theta_max_rad=SENSITIVITY_THETA_MAX_RAD
+    )
+    p12 = build_class_images(
+        protons,
+        interacting,
+        "proton_interacting",
+        2,
+        theta_max_rad=SENSITIVITY_THETA_MAX_RAD,
+    )
+    theta12 = analyse_pooled(
+        e12,
+        p12,
+        permutations,
+        np.random.default_rng([ANALYSIS_SEED, 10]),
+        with_excess=True,
+        per_band=False,
+    )
+    write_csv(
+        out / "pooled_matched_pair_statistics.csv",
+        _flatten_pooled(primary, "primary (DEC-013 eligibility)")
+        + _flatten_pooled(secondary, SECONDARY_LABEL)
+        + _flatten_pooled(theta12, SENSITIVITY_LABEL),
+    )
+    write_csv(
+        out / "pooled_pairs_by_band_combination.csv",
+        [
+            {"post_hoc": POST_HOC_LABEL, "pairing": p.label, **c}
+            for p in primary
+            for c in p.combinations
+        ],
+    )
+    write_json(
+        out / "pooled_matched_pair_statistics.json",
+        {
+            "status": POST_HOC_LABEL,
+            "pairings": [pooled_to_dict(p) for p in primary],
+            SECONDARY_LABEL: {
+                "note": "same matched pairs, no per-window eligibility cut; raw p-values only (no Holm)",
+                "pairings": [pooled_to_dict(p) for p in secondary],
+            },
+            SENSITIVITY_LABEL: {
+                "note": "P-all only, fiducial events with primary_theta <= 12 deg; Holm within this stratum's own family",
+                "theta_max_deg": SENSITIVITY_THETA_MAX_DEG,
+                "pairings": [pooled_to_dict(p) for p in theta12],
+            },
+        },
+    )
+    figure_pooled_dimensions(primary, out, "primary", "pooled_F5_matched_dimensions")
+    figure_pooled_dimensions(
+        secondary, out, SECONDARY_LABEL, "pooled_F5_matched_dimensions_secondary"
+    )
+    figure_pooled_dimensions(
+        theta12, out, SENSITIVITY_LABEL, "pooled_F5_matched_dimensions_theta12"
+    )
+    figure_pooled_balance(primary, out)
+    summary: dict[str, Any] = {
+        "status": POST_HOC_LABEL,
+        "permutations": permutations,
+        "fiducial_electrons": len(e_img.cells),
+        "fiducial_interacting_protons": len(p_img.cells),
+        "pooled_pairings": [
+            {k: v for k, v in pooled_to_dict(p).items() if k != "rows"} for p in primary
+        ],
+        "pooled_pairings_" + SECONDARY_LABEL: [
+            {k: v for k, v in pooled_to_dict(p).items() if k != "rows"}
+            for p in secondary
+        ],
+        "pooled_pairings_" + SENSITIVITY_LABEL: [
+            {k: v for k, v in pooled_to_dict(p).items() if k != "rows"} for p in theta12
+        ],
+        "stages_run": [
+            "pooled matching",
+            "pair-swap",
+            "holm (primary only)",
+            "secondary",
+            "theta12 (P-all only)",
+        ],
+    }
+    if run_scan:
+        scan = pooled_photoelectron_scan(
+            electrons, protons, interacting, scan_permutations or permutations
+        )
+        write_json(
+            out / "pooled_photoelectron_scan.json",
+            {"status": POST_HOC_LABEL, "points": scan},
+        )
+        figure_pooled_scan(scan, out)
+        summary["stages_run"].append("photoelectron scan (P-all only)")
+    summary["runtime_seconds"] = round(time.time() - t0, 1)
+    write_json(out / "pooled_summary.json", summary)
+    return summary
+
+
 # --- orchestration ------------------------------------------------------------------------------------------------------------------
 
 
@@ -1831,6 +2378,11 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--permutations", type=int, default=PERMUTATIONS)
     parser.add_argument("--scan-permutations", type=int, default=None)
     parser.add_argument("--skip-scan", action="store_true")
+    parser.add_argument(
+        "--post-hoc-pooled",
+        action="store_true",
+        help="run ONLY the POST HOC pooled-proton matching analysis (needs both classes) into --out",
+    )
     args = parser.parse_args(argv)
     loaded: dict[str, ClassEvents | None] = {}
     for name in ("electron", "proton"):
@@ -1841,6 +2393,19 @@ def main(argv: list[str] | None = None) -> None:
         )
         loaded[name] = load_class_events(directory, name) if directory else None
         print(f"{name}: {directory}")
+    if args.post_hoc_pooled:
+        if loaded["electron"] is None or loaded["proton"] is None:
+            raise SystemExit("--post-hoc-pooled needs both electron and proton events")
+        summary = run_post_hoc_pooled(
+            loaded["electron"],
+            loaded["proton"],
+            args.out,
+            args.permutations,
+            args.scan_permutations,
+            not args.skip_scan,
+        )
+        print(json.dumps({k: summary[k] for k in ("stages_run", "runtime_seconds")}))
+        return
     summary = run_analysis(
         loaded["electron"],
         loaded["proton"],
