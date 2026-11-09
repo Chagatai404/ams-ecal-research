@@ -1,0 +1,52 @@
+# EXP-015 realistic-regime pilot, approved by the researcher 2026-11-09 (Research OS record realistic-regime-multiscale). EXPLORATORY development data; never P1, never a validation set. Generation E^-1 within bands (researcher decision 'Switch to A'); physical spectra are analysis weights.
+# Realistic-regime example for the Geant4 backend: ELECTRONS with a cos(theta) angular distribution (isotropic flux through the
+# front plane) and a power-law energy spectrum sampled inside consecutive energy bands, over the full front face.
+# Each band is one batch keyed by its lower edge: [50,100), [100,200), [200,400), [400,800), [800,2000) GeV. The per-event energy,
+# polar angle and azimuth are stored in events.npz (primary_energy_gev, primary_theta_rad, primary_phi_rad); the metadata keys
+# energy_gev / theta_rad / phi_rad are the band lower edge and 0 and are NOT the per-event values.
+schema_version: 2
+
+particle: e-
+
+# Lower band edges in GeV (sorted); the last band closes at energy_spectrum.e_max_gev.
+energies_gev: [50.0, 100.0, 200.0, 400.0, 800.0]
+
+# dN/dE proportional to E^-index inside each band.
+# Researcher decision 2026-11-09 ("Switch to A"): GENERATION spectrum E^-1 (log-uniform), as AMS Monte Carlo is reported to be
+# generated (Vagelli KIT thesis, reported by an external review, not yet read). The physical spectrum enters as analysis weights:
+# electrons E^-3.180 (AMS Phys. Rep. 894 (2021) Sec. 3, PDF p.35, verified); protons Eq. 12 of Sec. 4 (PDF p.44, verified).
+energy_spectrum:
+  kind: power_law
+  index: 1.0
+  e_max_gev: 2000.0
+
+incidence:
+  distribution: cos_flux
+  # Kounine et al. NIM A 869 (2017) p.111 Sec. 3 "ECAL angular acceptance of 25" degrees; p.115 Sec. 4 (verified 2026-11-09).
+  theta_max_deg: 25.0
+  # theta and phi are unused with cos_flux (must be 0 if given).
+
+# Full front face (-324..324 mm in x and y). Fiducial cuts are applied in analysis, not at generation.
+entry_spot:
+  x_min: -324.0
+  x_max: 324.0
+  y_min: -324.0
+  y_max: 324.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+samples:
+  pilot:
+    geometry: ams
+    physics_list: FTFP_BERT
+    events_per_energy: 300
+    # Checked with seed_collision_check.configured_sets/find_collisions against every existing set (2026-11-09).
+    base_seed: 20276001
+
+store_fine_prefix_deposits: true
+component_tagging: false
+
+output_dir: data/geant4_realistic_regime_pilot_electron
