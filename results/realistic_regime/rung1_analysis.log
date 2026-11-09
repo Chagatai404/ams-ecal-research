@@ -1,0 +1,5 @@
+electron: data\geant4_realistic_regime_pilot_electron
+proton: data\geant4_realistic_regime_pilot_proton
+C:\Users\ASUS\ams-ecal-qml\src\ams_ecal\multiscale_estimators\realistic_regime_analysis.py:1632: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax[0, 0].legend(fontsize=7)
+{"stages_run": ["fiducial", "weights", "F1", "F2", "F3", "F4", "matching", "pair-swap", "holm (primary only)", "F5", "F5 secondary", "F5 theta12 (sensitivity, theta <= 12 deg)", "photoelectron scan", "F5b"], "runtime_seconds": 23.4}

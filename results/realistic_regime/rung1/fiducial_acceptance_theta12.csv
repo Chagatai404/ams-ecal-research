@@ -1,0 +1,18 @@
+view,class,band_lower_gev,band_upper_gev,events,accepted,accepted_fraction
+"sensitivity, theta <= 12 deg",electron,50.0,100.0,71,55,0.7746478873239436
+"sensitivity, theta <= 12 deg",electron,100.0,200.0,79,68,0.8607594936708861
+"sensitivity, theta <= 12 deg",electron,200.0,400.0,69,57,0.8260869565217391
+"sensitivity, theta <= 12 deg",electron,400.0,800.0,66,44,0.6666666666666666
+"sensitivity, theta <= 12 deg",electron,800.0,2000.0,69,58,0.8405797101449275
+"sensitivity, theta <= 12 deg",proton_crossing,50.0,100.0,123,94,0.7642276422764228
+"sensitivity, theta <= 12 deg",proton_crossing,100.0,200.0,117,91,0.7777777777777778
+"sensitivity, theta <= 12 deg",proton_crossing,200.0,400.0,126,103,0.8174603174603174
+"sensitivity, theta <= 12 deg",proton_crossing,400.0,800.0,126,102,0.8095238095238095
+"sensitivity, theta <= 12 deg",proton_crossing,800.0,2000.0,129,105,0.813953488372093
+"sensitivity, theta <= 12 deg",proton_crossing,2000.0,4000.0,136,107,0.7867647058823529
+"sensitivity, theta <= 12 deg",proton_interacting,50.0,100.0,127,107,0.84251968503937
+"sensitivity, theta <= 12 deg",proton_interacting,100.0,200.0,112,95,0.8482142857142857
+"sensitivity, theta <= 12 deg",proton_interacting,200.0,400.0,129,103,0.7984496124031008
+"sensitivity, theta <= 12 deg",proton_interacting,400.0,800.0,107,85,0.794392523364486
+"sensitivity, theta <= 12 deg",proton_interacting,800.0,2000.0,128,109,0.8515625
+"sensitivity, theta <= 12 deg",proton_interacting,2000.0,4000.0,134,111,0.8283582089552238

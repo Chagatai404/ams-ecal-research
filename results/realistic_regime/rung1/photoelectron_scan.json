@@ -1,0 +1,2035 @@
+{
+ "status": "EXPLORATORY - EXP-015 realistic-regime pilot, Geant4 FTFP_BERT, ECAL-only, scintillator level",
+ "points": [
+  {
+   "pe_per_mip": null,
+   "draw": 0,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 2,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      0.05786603803095321,
+      0.11822910948322117
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 13,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0664750764662997,
+      0.07997669611447501
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 24,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.051581717869396915,
+      0.04471949136681753
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 3,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.10858689737370186,
+      0.1578511801361694
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 14,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.03519484884754172,
+      0.08720579752041342
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 17,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.02679394353969698,
+      0.039813790300779424
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 4,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08515483532611455,
+      0.1849670725340097
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 16,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06272732655733748,
+      0.05315816778620683
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 32,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0700229338055901,
+      0.05068975743604548
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 8,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.044957898431904744,
+      0.15206343439844125
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 28,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0580704067103846,
+      0.067418012768516
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 39,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06495176248129246,
+      0.05667203981326628
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 15,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07230280105995068,
+      0.13511044858188961
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 40,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.09557290561879432,
+      0.06168655554144918
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 10.0,
+   "draw": 0,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 7,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06551401077391927,
+      0.14147983659040372
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 32,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06099101157851037,
+      0.07144808642100836
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 64,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07397481331890166,
+      0.03987254088202812
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 9,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.12973772655924537,
+      0.11247660317251977
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 42,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07838499577840972,
+      0.07201684009238775
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 49,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04783815200750689,
+      0.03653864396063774
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 12,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08708768161410214,
+      0.12573772744752174
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 42,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07461622443985107,
+      0.09588971734124062
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 76,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05938706168621026,
+      0.041286226630393934
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 14,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05860588574392079,
+      0.1461379582749604
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 61,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06767277258992546,
+      0.11087960295542805
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 78,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05805949912207068,
+      0.05602365582810411
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 19,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07756992021243411,
+      0.12497344916087312
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 72,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07173559279842945,
+      0.08733713523261925
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 10.0,
+   "draw": 1,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 5,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.10343891546604893,
+      0.10462200485024975
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 31,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.062207408163836006,
+      0.07733319253236978
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 61,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08835702837538813,
+      0.038120782570902886
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 9,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.10224327042899464,
+      0.12119360538156569
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 41,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06662541465317404,
+      0.08056212680436677
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 50,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04636652586193662,
+      0.03265106435387738
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 11,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07737681280779263,
+      0.1290215350337728
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 41,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.073196501744359,
+      0.09095264658281688
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 73,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04670393295094328,
+      0.03993166940455807
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 14,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.057967328747583605,
+      0.1494091063202671
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 59,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07217432391593583,
+      0.10399489504744791
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 80,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06192944244579226,
+      0.06211946243624107
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 20,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07632551588634022,
+      0.1377671467747954
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 71,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06617969508336244,
+      0.09697999637210654
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 10.0,
+   "draw": 2,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 6,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.1455828418834397,
+      0.09553488019949427
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 31,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07707514962411435,
+      0.06528052487123943
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 66,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07911099069474661,
+      0.04850059203879732
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 8,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.12954711094991067,
+      0.09857360933064292
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 39,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07100427186047303,
+      0.066341427886549
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 48,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05601672691765908,
+      0.02938542121287053
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 13,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0980410132687341,
+      0.13098260336261092
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 41,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06756149475659844,
+      0.08284609604524998
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 72,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.058870129015382154,
+      0.02709619936254827
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 14,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.03955356632302744,
+      0.14590501022733923
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 60,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07298084674223088,
+      0.10180120991645358
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 80,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.061376903827166845,
+      0.0616856830688896
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 20,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07888623395076427,
+      0.14375819177313465
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 71,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06972832877985875,
+      0.08987931599822442
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 8.0,
+   "draw": 0,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 8,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.10604617866325393,
+      0.12098506887872516
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 31,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05537842182183942,
+      0.06866292307816053
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 64,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06995757537868925,
+      0.04267025698530368
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 8,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.10728569893583266,
+      0.11531778178393481
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 46,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08636880532318449,
+      0.07217696583385215
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 53,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05019022720479553,
+      0.030684004327496645
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 12,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0982620953018498,
+      0.12088428724342186
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 43,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06802586144471451,
+      0.09602170581254488
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 76,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.060407952095862576,
+      0.030451168766618786
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 15,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07426469327937855,
+      0.14859830470080373
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 63,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05685398224384371,
+      0.11188503608022395
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 81,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.056299910443970175,
+      0.0517780915422706
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 18,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.047674183932047524,
+      0.1289886216509364
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 73,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06734685836748139,
+      0.09429168049422004
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 8.0,
+   "draw": 1,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 7,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07693613083664173,
+      0.1353826812229725
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 32,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.061938079853344305,
+      0.07603585641749354
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 67,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08205624836978163,
+      0.039184162584044835
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 10,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.1193329406525921,
+      0.12643503955504715
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 44,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07652166891913859,
+      0.07316276293860224
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 52,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06167270836139008,
+      0.03585225232877102
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 12,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.09473858735647732,
+      0.13614376940869644
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 45,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08691769153218967,
+      0.08715052062354957
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 76,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06521268044300617,
+      0.031274414275445604
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 15,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07213431108039325,
+      0.148262156671851
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 64,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06858633258345648,
+      0.10889775056555809
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 79,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05412798670754112,
+      0.04972240174635926
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 19,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06640777400759602,
+      0.13089948703115878
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 75,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07083784506467893,
+      0.09686653218876101
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 8.0,
+   "draw": 2,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 7,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07525691981997205,
+      0.15018470910345183
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 34,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07482479225922678,
+      0.08606355824332731
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 67,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0666527590975715,
+      0.04808690161225294
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 10,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.10112854534703204,
+      0.1381501511221265
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 42,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07241277784867398,
+      0.06424434820224306
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 51,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06902665853667533,
+      0.03559090937550162
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 12,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08106373780498674,
+      0.12619077478625054
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 45,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06627937633461205,
+      0.0966070492425922
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 76,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05658117060123582,
+      0.03882757311780074
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 14,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08300301485372258,
+      0.1374880294938409
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 62,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07321377185799387,
+      0.11068293105518744
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 81,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.048966583687508856,
+      0.061315447074063674
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 19,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06576041664544002,
+      0.13007878120507363
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 76,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08213343826149253,
+      0.09344599548949006
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 5.0,
+   "draw": 0,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 8,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0851369369346208,
+      0.13375464976141077
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 37,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06205614788338385,
+      0.09086068392468119
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 70,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06778880345926831,
+      0.045901475513396205
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 9,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06998848256288409,
+      0.12401131846846238
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 52,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08860390594756358,
+      0.08960652488941465
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 53,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.04338269023027099,
+      0.04622987501725134
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 12,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07203636044541419,
+      0.13288554453843857
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 48,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06461325913622032,
+      0.10675375318042761
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 81,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.042288566243696674,
+      0.04657405519151215
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 17,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0712139695336568,
+      0.14025441819986678
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 65,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07540449224320789,
+      0.10159381556475523
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 87,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.057875064629572905,
+      0.0394721002157003
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 20,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.058423844403209246,
+      0.12575494644384907
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 78,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07292822189520494,
+      0.08601200362997888
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 5.0,
+   "draw": 1,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 8,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.09397252698593112,
+      0.11855075862890564
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 36,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.062342071054852406,
+      0.08439753864597546
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 72,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08811959906283776,
+      0.045911368472211396
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 10,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.12520235137260474,
+      0.12536139058952356
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 51,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08992210254038539,
+      0.08212195198005723
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 54,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.047699379375306473,
+      0.03290124935636999
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 11,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.08816032153205182,
+      0.11759859847474693
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 48,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0859549030080352,
+      0.09332642828689575
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 80,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.046703139817984046,
+      0.04044203058695099
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 16,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06864988081274341,
+      0.14853280344965183
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 67,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07112642278205475,
+      0.11142960928941084
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 87,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.05639529786978251,
+      0.06217759367016528
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 21,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06293944935658251,
+      0.1344863256656663
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 78,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06340576688707505,
+      0.09514262832760217
+     ],
+     "rows": []
+    }
+   ]
+  },
+  {
+   "pe_per_mip": 5.0,
+   "draw": 2,
+   "permutations": 10000,
+   "pairings": [
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 50.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 7,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06017382220641135,
+      0.14135069766337266
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 37,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.06422254985569535,
+      0.0821137312903596
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 50.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 69,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07202806785251545,
+      0.040556116549466004
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 100.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 11,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.10166960866879693,
+      0.13631155456398694
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 51,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0844625546176456,
+      0.07877440250191631
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 100.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 55,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.047629505976359066,
+      0.043546963739233537
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 200.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 13,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.10003892061588611,
+      0.12958291900525057
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 46,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07158917818131716,
+      0.09446192489682895
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 200.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 82,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.055954027214408016,
+      0.03422965908749611
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 400.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 15,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0669226629451722,
+      0.14439337508766445
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 64,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0660976909115733,
+      0.10244219550712341
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 400.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 2,
+     "caliper_sd": 0.25,
+     "pairs": 86,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0590855450200379,
+      0.05420987207945724
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 800.0,
+     "steps_above": 0,
+     "caliper_sd": 0.25,
+     "pairs": 22,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.0755642403876124,
+      0.13433640617295334
+     ],
+     "rows": []
+    },
+    {
+     "electron_band_gev": 800.0,
+     "proton_band_gev": 2000.0,
+     "steps_above": 1,
+     "caliper_sd": 0.25,
+     "pairs": 78,
+     "testable": false,
+     "reason": "fewer than 100 matched pairs (not testable)",
+     "standardized_mean_difference_log_cells_log_energy": [
+      -0.07349564460156588,
+      0.09735034323040145
+     ],
+     "rows": []
+    }
+   ]
+  }
+ ]
+}

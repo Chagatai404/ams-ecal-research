@@ -1,0 +1,1055 @@
+{
+ "status": "EXPLORATORY - EXP-015 realistic-regime pilot, Geant4 FTFP_BERT, ECAL-only, scintillator level",
+ "ambiguities": [
+  "Weights: the proton density in kinetic energy includes the Jacobian dR/dE_k = (E_k+m)/R of Eq. 12 (a flux per unit rigidity); the factor is 1.0002 at 50 GeV, so the choice is immaterial. Weights are normalised so that the sum over all generated events of a class is 1 (band totals follow the integral of the physical spectrum).",
+  "Weights are defined from the GENERATED count of each band (before the fiducial cut); ESS is reported both on generated and on fiducial-accepted events.",
+  "primary_energy_gev of protons is taken as the kinetic energy; electron energy as total = kinetic.",
+  "Holm family: all testable raw-D_q pair-swap p-values of one analysis point (all pairings x 6 windows x D0,D1,D2); the within-pairing Holm (18 tests) is reported next to it. The cell-shuffle excess is a reference and is not in the family.",
+  "Eligibility: the per-window minimum occupied cells of mt.REGISTERED_WINDOWS (336 / 572) is kept, so an event is NaN for a window below it (reported, not dropped silently).",
+  "Photoelectron scan: at p.e. = None the matching keys are the file values (edep_scintillator_mev, occupied readout cells); after smearing the energy key is the sum of the smeared readout grid (the file value does not describe the smeared image). The excess reference is not recomputed in the scan.",
+  "Scan permutations default to the same B as the main analysis (10,000); the CLI allows a lower value, which is then recorded.",
+  "Cross-energy matching pairs the electron band i with the proton band i + k, k = 0, 1, 2 (band order by lower edge).",
+  "Offsets: the same 8 (layer, cell) offsets are used for an event, its shuffled copies and its smeared copies; the generator of an event is default_rng([20261109, event_key]).",
+  "Edge distance in F3 is measured at the entry point on the front face (min over x and y of 324 - |coordinate|)."
+ ],
+ "permutations": 10000,
+ "classes_available": {
+  "electron": 1500,
+  "proton_crossing": 3053,
+  "proton_interacting": 2947
+ },
+ "stages_run": [
+  "fiducial",
+  "weights",
+  "F1",
+  "F2",
+  "F3",
+  "F4",
+  "matching",
+  "pair-swap",
+  "holm (primary only)",
+  "F5",
+  "F5 secondary",
+  "F5 theta12 (sensitivity, theta <= 12 deg)",
+  "photoelectron scan",
+  "F5b"
+ ],
+ "fiducial_acceptance": [
+  {
+   "class": "electron",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "events": 300,
+   "accepted": 228,
+   "accepted_fraction": 0.76
+  },
+  {
+   "class": "electron",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "events": 300,
+   "accepted": 230,
+   "accepted_fraction": 0.7666666666666667
+  },
+  {
+   "class": "electron",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "events": 300,
+   "accepted": 218,
+   "accepted_fraction": 0.7266666666666667
+  },
+  {
+   "class": "electron",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "events": 300,
+   "accepted": 207,
+   "accepted_fraction": 0.69
+  },
+  {
+   "class": "electron",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "events": 300,
+   "accepted": 233,
+   "accepted_fraction": 0.7766666666666666
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "events": 522,
+   "accepted": 361,
+   "accepted_fraction": 0.6915708812260536
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "events": 507,
+   "accepted": 377,
+   "accepted_fraction": 0.7435897435897436
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "events": 493,
+   "accepted": 356,
+   "accepted_fraction": 0.7221095334685599
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "events": 539,
+   "accepted": 384,
+   "accepted_fraction": 0.712430426716141
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "events": 499,
+   "accepted": 355,
+   "accepted_fraction": 0.7114228456913828
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 2000.0,
+   "band_upper_gev": 4000.0,
+   "events": 493,
+   "accepted": 363,
+   "accepted_fraction": 0.7363083164300203
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "events": 478,
+   "accepted": 371,
+   "accepted_fraction": 0.7761506276150628
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "events": 493,
+   "accepted": 373,
+   "accepted_fraction": 0.7565922920892495
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "events": 507,
+   "accepted": 397,
+   "accepted_fraction": 0.7830374753451677
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "events": 461,
+   "accepted": 361,
+   "accepted_fraction": 0.7830802603036876
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "events": 501,
+   "accepted": 385,
+   "accepted_fraction": 0.7684630738522954
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 2000.0,
+   "band_upper_gev": 4000.0,
+   "events": 507,
+   "accepted": 392,
+   "accepted_fraction": 0.7731755424063116
+  }
+ ],
+ "effective_sample_size": [
+  {
+   "class": "electron",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "generated_in_class": 300,
+   "ess_kish_generated": 252.18785365817135,
+   "accepted": 228,
+   "ess_kish_accepted": 193.49785533120158,
+   "weight_sum_band": 0.7470613819121287
+  },
+  {
+   "class": "electron",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "generated_in_class": 300,
+   "ess_kish_generated": 254.28769311076863,
+   "accepted": 230,
+   "ess_kish_accepted": 195.38896012128993,
+   "weight_sum_band": 0.1727248108960428
+  },
+  {
+   "class": "electron",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "generated_in_class": 300,
+   "ess_kish_generated": 251.39843288381115,
+   "accepted": 218,
+   "ess_kish_accepted": 181.64470256234205,
+   "weight_sum_band": 0.037641123077859016
+  },
+  {
+   "class": "electron",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "generated_in_class": 300,
+   "ess_kish_generated": 255.7932175096505,
+   "accepted": 207,
+   "ess_kish_accepted": 175.3828287301857,
+   "weight_sum_band": 0.008459230364120371
+  },
+  {
+   "class": "electron",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "generated_in_class": 300,
+   "ess_kish_generated": 233.2045512928842,
+   "accepted": 233,
+   "ess_kish_accepted": 182.85466518097536,
+   "weight_sum_band": 0.0020708555465171544
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "generated_in_class": 522,
+   "ess_kish_generated": 462.0527359183611,
+   "accepted": 361,
+   "ess_kish_accepted": 319.2298454346705,
+   "weight_sum_band": 0.3723010030794931
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "generated_in_class": 507,
+   "ess_kish_generated": 453.8136196494912,
+   "accepted": 377,
+   "ess_kish_accepted": 335.7430120866612,
+   "weight_sum_band": 0.10611222556694556
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "generated_in_class": 493,
+   "ess_kish_generated": 437.26443729502125,
+   "accepted": 356,
+   "ess_kish_accepted": 315.3615807291004,
+   "weight_sum_band": 0.028141508180937885
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "generated_in_class": 539,
+   "ess_kish_generated": 482.89400696155775,
+   "accepted": 384,
+   "ess_kish_accepted": 345.4935444367325,
+   "weight_sum_band": 0.00955765477991958
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "generated_in_class": 499,
+   "ess_kish_generated": 419.9559816510489,
+   "accepted": 355,
+   "ess_kish_accepted": 299.75713889452794,
+   "weight_sum_band": 0.00315712523053007
+  },
+  {
+   "class": "proton_crossing",
+   "band_lower_gev": 2000.0,
+   "band_upper_gev": 4000.0,
+   "generated_in_class": 493,
+   "ess_kish_generated": 448.91836528353855,
+   "accepted": 363,
+   "ess_kish_accepted": 330.726770511425,
+   "weight_sum_band": 0.0006356133923498152
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "generated_in_class": 478,
+   "ess_kish_generated": 426.7190963828186,
+   "accepted": 371,
+   "ess_kish_accepted": 332.9348827190214,
+   "weight_sum_band": 0.3445205203628927
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "generated_in_class": 493,
+   "ess_kish_generated": 436.72117380050025,
+   "accepted": 373,
+   "ess_kish_accepted": 330.04876534218937,
+   "weight_sum_band": 0.10135522115169855
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "generated_in_class": 507,
+   "ess_kish_generated": 455.80536623960484,
+   "accepted": 397,
+   "ess_kish_accepted": 356.50429855701753,
+   "weight_sum_band": 0.029683698102028557
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "generated_in_class": 461,
+   "ess_kish_generated": 414.2904310222881,
+   "accepted": 361,
+   "ess_kish_accepted": 323.94881224162333,
+   "weight_sum_band": 0.008106843593953677
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "generated_in_class": 501,
+   "ess_kish_generated": 420.741972623494,
+   "accepted": 385,
+   "ess_kish_accepted": 324.0803755548041,
+   "weight_sum_band": 0.0032269639408724904
+  },
+  {
+   "class": "proton_interacting",
+   "band_lower_gev": 2000.0,
+   "band_upper_gev": 4000.0,
+   "generated_in_class": 507,
+   "ess_kish_generated": 458.8903760833176,
+   "accepted": 392,
+   "ess_kish_accepted": 355.19308790034887,
+   "weight_sum_band": 0.000638765077279322
+  }
+ ],
+ "fiducial_acceptance_sensitivity, theta <= 12 deg": [
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "electron",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "events": 71,
+   "accepted": 55,
+   "accepted_fraction": 0.7746478873239436
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "electron",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "events": 79,
+   "accepted": 68,
+   "accepted_fraction": 0.8607594936708861
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "electron",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "events": 69,
+   "accepted": 57,
+   "accepted_fraction": 0.8260869565217391
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "electron",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "events": 66,
+   "accepted": 44,
+   "accepted_fraction": 0.6666666666666666
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "electron",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "events": 69,
+   "accepted": 58,
+   "accepted_fraction": 0.8405797101449275
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_crossing",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "events": 123,
+   "accepted": 94,
+   "accepted_fraction": 0.7642276422764228
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_crossing",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "events": 117,
+   "accepted": 91,
+   "accepted_fraction": 0.7777777777777778
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_crossing",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "events": 126,
+   "accepted": 103,
+   "accepted_fraction": 0.8174603174603174
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_crossing",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "events": 126,
+   "accepted": 102,
+   "accepted_fraction": 0.8095238095238095
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_crossing",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "events": 129,
+   "accepted": 105,
+   "accepted_fraction": 0.813953488372093
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_crossing",
+   "band_lower_gev": 2000.0,
+   "band_upper_gev": 4000.0,
+   "events": 136,
+   "accepted": 107,
+   "accepted_fraction": 0.7867647058823529
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_interacting",
+   "band_lower_gev": 50.0,
+   "band_upper_gev": 100.0,
+   "events": 127,
+   "accepted": 107,
+   "accepted_fraction": 0.84251968503937
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_interacting",
+   "band_lower_gev": 100.0,
+   "band_upper_gev": 200.0,
+   "events": 112,
+   "accepted": 95,
+   "accepted_fraction": 0.8482142857142857
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_interacting",
+   "band_lower_gev": 200.0,
+   "band_upper_gev": 400.0,
+   "events": 129,
+   "accepted": 103,
+   "accepted_fraction": 0.7984496124031008
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_interacting",
+   "band_lower_gev": 400.0,
+   "band_upper_gev": 800.0,
+   "events": 107,
+   "accepted": 85,
+   "accepted_fraction": 0.794392523364486
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_interacting",
+   "band_lower_gev": 800.0,
+   "band_upper_gev": 2000.0,
+   "events": 128,
+   "accepted": 109,
+   "accepted_fraction": 0.8515625
+  },
+  {
+   "view": "sensitivity, theta <= 12 deg",
+   "class": "proton_interacting",
+   "band_lower_gev": 2000.0,
+   "band_upper_gev": 4000.0,
+   "events": 134,
+   "accepted": 111,
+   "accepted_fraction": 0.8283582089552238
+  }
+ ],
+ "matched_pairs": [
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 50.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 2,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    0.05786603803095321,
+    0.11822910948322117
+   ]
+  },
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 100.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 13,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.0664750764662997,
+    0.07997669611447501
+   ]
+  },
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 24,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.051581717869396915,
+    0.04471949136681753
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 100.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 3,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.10858689737370186,
+    0.1578511801361694
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 14,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.03519484884754172,
+    0.08720579752041342
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 17,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.02679394353969698,
+    0.039813790300779424
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 4,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.08515483532611455,
+    0.1849670725340097
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 16,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.06272732655733748,
+    0.05315816778620683
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 32,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.0700229338055901,
+    0.05068975743604548
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 8,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.044957898431904744,
+    0.15206343439844125
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 28,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.0580704067103846,
+    0.067418012768516
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 2000.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 39,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.06495176248129246,
+    0.05667203981326628
+   ]
+  },
+  {
+   "electron_band_gev": 800.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 15,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.07230280105995068,
+    0.13511044858188961
+   ]
+  },
+  {
+   "electron_band_gev": 800.0,
+   "proton_band_gev": 2000.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 40,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.09557290561879432,
+    0.06168655554144918
+   ]
+  }
+ ],
+ "matched_pairs_secondary, descriptive, outside DEC-013 controls": [
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 50.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 2,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    0.05786603803095321,
+    0.11822910948322117
+   ]
+  },
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 100.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 13,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.0664750764662997,
+    0.07997669611447501
+   ]
+  },
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 24,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.051581717869396915,
+    0.04471949136681753
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 100.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 3,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.10858689737370186,
+    0.1578511801361694
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 14,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.03519484884754172,
+    0.08720579752041342
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 17,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.02679394353969698,
+    0.039813790300779424
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 4,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.08515483532611455,
+    0.1849670725340097
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 16,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.06272732655733748,
+    0.05315816778620683
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 32,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.0700229338055901,
+    0.05068975743604548
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 8,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.044957898431904744,
+    0.15206343439844125
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 28,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.0580704067103846,
+    0.067418012768516
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 2000.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 39,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.06495176248129246,
+    0.05667203981326628
+   ]
+  },
+  {
+   "electron_band_gev": 800.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 15,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.07230280105995068,
+    0.13511044858188961
+   ]
+  },
+  {
+   "electron_band_gev": 800.0,
+   "proton_band_gev": 2000.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 40,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.09557290561879432,
+    0.06168655554144918
+   ]
+  }
+ ],
+ "matched_pairs_sensitivity, theta <= 12 deg": [
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 50.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 1,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    null,
+    null
+   ]
+  },
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 100.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 4,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.1833940930053161,
+    0.09659588743124588
+   ]
+  },
+  {
+   "electron_band_gev": 50.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 4,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.10856213989123356,
+    -0.00029269202395601073
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 100.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 0,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    null,
+    null
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 4,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.06881209118371569,
+    0.0646728710494969
+   ]
+  },
+  {
+   "electron_band_gev": 100.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 4,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.06943786384208193,
+    0.04282507081637248
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 200.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 1,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    null,
+    null
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 2,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.06444495111959135,
+    0.09106523787639549
+   ]
+  },
+  {
+   "electron_band_gev": 200.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 9,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.046338480740744634,
+    0.021946278591820783
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 400.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 0,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    null,
+    null
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 5,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.028230978569646403,
+    0.08509872358709016
+   ]
+  },
+  {
+   "electron_band_gev": 400.0,
+   "proton_band_gev": 2000.0,
+   "steps_above": 2,
+   "caliper_sd": 0.25,
+   "pairs": 11,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.038239396680626675,
+    0.024443182260885175
+   ]
+  },
+  {
+   "electron_band_gev": 800.0,
+   "proton_band_gev": 800.0,
+   "steps_above": 0,
+   "caliper_sd": 0.25,
+   "pairs": 2,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    0.0015884703415797545,
+    0.1962802181587059
+   ]
+  },
+  {
+   "electron_band_gev": 800.0,
+   "proton_band_gev": 2000.0,
+   "steps_above": 1,
+   "caliper_sd": 0.25,
+   "pairs": 9,
+   "testable": false,
+   "reason": "fewer than 100 matched pairs (not testable)",
+   "standardized_mean_difference_log_cells_log_energy": [
+    -0.07094470557722278,
+    0.05477417325419916
+   ]
+  }
+ ],
+ "runtime_seconds": 23.4
+}

@@ -1,0 +1,169 @@
+{
+ "status": "EXPLORATORY - EXP-015 realistic-regime pilot, Geant4 FTFP_BERT, ECAL-only, scintillator level",
+ "figure": "F5_matched_dimensions_secondary",
+ "title": "F5 secondary: D0 D1 D2 of matched pairs, no eligibility cut (secondary, descriptive, outside DEC-013 controls; raw p only)",
+ "numbers": {
+  "pairings": [
+   "e50|p50*",
+   "e50|p100*",
+   "e50|p200*",
+   "e100|p100*",
+   "e100|p200*",
+   "e100|p400*",
+   "e200|p200*",
+   "e200|p400*",
+   "e200|p800*",
+   "e400|p400*",
+   "e400|p800*",
+   "e400|p2000*",
+   "e800|p800*",
+   "e800|p2000*"
+  ],
+  "statistics": {
+   "D0@1-2-3-6-9-18": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@1-2-3-6-9-18": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@1-2-3-6-9-18": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@1-2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@1-2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@1-2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@1-2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@1-2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@1-2-3-6-9": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@2-3": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@2-3": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@2-3": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D0@2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D1@2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   },
+   "D2@2-3-6": {
+    "median_electron": [],
+    "median_proton": [],
+    "ks": [],
+    "p_raw": [],
+    "p_holm_family": []
+   }
+  },
+  "untestable_pairings": [
+   "e50|p50*",
+   "e50|p100*",
+   "e50|p200*",
+   "e100|p100*",
+   "e100|p200*",
+   "e100|p400*",
+   "e200|p200*",
+   "e200|p400*",
+   "e200|p800*",
+   "e400|p400*",
+   "e400|p800*",
+   "e400|p2000*",
+   "e800|p800*",
+   "e800|p2000*"
+  ],
+  "view": "secondary, descriptive, outside DEC-013 controls",
+  "multiplicity": "raw p-values only (no Holm)"
+ }
+}

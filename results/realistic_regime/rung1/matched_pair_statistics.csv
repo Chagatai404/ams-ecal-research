@@ -1,0 +1,43 @@
+view,electron_band_gev,proton_band_gev,steps_above,pairs,testable
+primary,50.0,50.0,0,2,False
+primary,50.0,100.0,1,13,False
+primary,50.0,200.0,2,24,False
+primary,100.0,100.0,0,3,False
+primary,100.0,200.0,1,14,False
+primary,100.0,400.0,2,17,False
+primary,200.0,200.0,0,4,False
+primary,200.0,400.0,1,16,False
+primary,200.0,800.0,2,32,False
+primary,400.0,400.0,0,8,False
+primary,400.0,800.0,1,28,False
+primary,400.0,2000.0,2,39,False
+primary,800.0,800.0,0,15,False
+primary,800.0,2000.0,1,40,False
+"secondary, descriptive, outside DEC-013 controls",50.0,50.0,0,2,False
+"secondary, descriptive, outside DEC-013 controls",50.0,100.0,1,13,False
+"secondary, descriptive, outside DEC-013 controls",50.0,200.0,2,24,False
+"secondary, descriptive, outside DEC-013 controls",100.0,100.0,0,3,False
+"secondary, descriptive, outside DEC-013 controls",100.0,200.0,1,14,False
+"secondary, descriptive, outside DEC-013 controls",100.0,400.0,2,17,False
+"secondary, descriptive, outside DEC-013 controls",200.0,200.0,0,4,False
+"secondary, descriptive, outside DEC-013 controls",200.0,400.0,1,16,False
+"secondary, descriptive, outside DEC-013 controls",200.0,800.0,2,32,False
+"secondary, descriptive, outside DEC-013 controls",400.0,400.0,0,8,False
+"secondary, descriptive, outside DEC-013 controls",400.0,800.0,1,28,False
+"secondary, descriptive, outside DEC-013 controls",400.0,2000.0,2,39,False
+"secondary, descriptive, outside DEC-013 controls",800.0,800.0,0,15,False
+"secondary, descriptive, outside DEC-013 controls",800.0,2000.0,1,40,False
+"sensitivity, theta <= 12 deg",50.0,50.0,0,1,False
+"sensitivity, theta <= 12 deg",50.0,100.0,1,4,False
+"sensitivity, theta <= 12 deg",50.0,200.0,2,4,False
+"sensitivity, theta <= 12 deg",100.0,100.0,0,0,False
+"sensitivity, theta <= 12 deg",100.0,200.0,1,4,False
+"sensitivity, theta <= 12 deg",100.0,400.0,2,4,False
+"sensitivity, theta <= 12 deg",200.0,200.0,0,1,False
+"sensitivity, theta <= 12 deg",200.0,400.0,1,2,False
+"sensitivity, theta <= 12 deg",200.0,800.0,2,9,False
+"sensitivity, theta <= 12 deg",400.0,400.0,0,0,False
+"sensitivity, theta <= 12 deg",400.0,800.0,1,5,False
+"sensitivity, theta <= 12 deg",400.0,2000.0,2,11,False
+"sensitivity, theta <= 12 deg",800.0,800.0,0,2,False
+"sensitivity, theta <= 12 deg",800.0,2000.0,1,9,False
