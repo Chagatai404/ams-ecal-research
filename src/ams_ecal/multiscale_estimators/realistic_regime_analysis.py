@@ -68,6 +68,12 @@ PHOTOELECTRON_SCAN = (None, 10.0, 8.0, 5.0)
 SCAN_DRAWS = 3
 STEPS_ABOVE = (0, 1, 2)
 THETA_MAX_RAD = math.radians(25.0)
+# Pre-stated SENSITIVITY stratum (applied after the fiducial cut, never to the full-sample primary or the photoelectron scan):
+# equivalent uniform-face maximum angle for the AMS geometric acceptance of about 550 cm2 sr (Aguilar et al., PRL 113, 221102
+# (2014)); project approximation of the AMS acceptance, not an AMS cut; researcher decision 2026-11-09.
+SENSITIVITY_THETA_MAX_DEG = 12.0
+SENSITIVITY_THETA_MAX_RAD = math.radians(SENSITIVITY_THETA_MAX_DEG)
+SENSITIVITY_LABEL = "sensitivity, theta <= 12 deg"
 STATISTIC_Q = (0.0, 1.0, 2.0)
 WINDOWS = tuple(mt.REGISTERED_WINDOWS)
 EXP011_DIRECTORIES = {
@@ -300,19 +306,30 @@ def fiducial_of(events: ClassEvents) -> np.ndarray:
     )
 
 
+def theta_stratum(events: ClassEvents, theta_max_rad: float | None) -> np.ndarray:
+    """True for events with primary_theta <= theta_max_rad (all True when ``theta_max_rad`` is None)."""
+
+    if theta_max_rad is None:
+        return np.ones(len(events), dtype=bool)
+    return events.primary_theta_rad <= theta_max_rad
+
+
 def acceptance_table(
     classes: dict[str, tuple[ClassEvents, np.ndarray]],
+    theta_max_rad: float | None = None,
 ) -> list[dict[str, Any]]:
-    """Accepted fraction per class and band."""
+    """Accepted fraction per class and band; with ``theta_max_rad`` only events inside that sensitivity stratum are counted."""
 
     rows = []
     for name, (events, selected) in classes.items():
         fid = fiducial_of(events)
+        selected = selected & theta_stratum(events, theta_max_rad)
         for lower, upper in events.band_edges:
             in_band = selected & (events.band_lower_gev == lower)
             n = int(in_band.sum())
             rows.append(
                 {
+                    **({} if theta_max_rad is None else {"view": SENSITIVITY_LABEL}),
                     "class": name,
                     "band_lower_gev": lower,
                     "band_upper_gev": upper,
@@ -818,10 +835,14 @@ def build_class_images(
     class_code: int,
     pe_per_mip: float | None = None,
     draw: int = 0,
+    theta_max_rad: float | None = None,
 ) -> ClassImages:
-    """Fiducial events of a class; with ``pe_per_mip`` the readout grid is smeared with fixed-seed Poisson statistics (B1 only)."""
+    """Fiducial events of a class; with ``pe_per_mip`` the readout grid is smeared with fixed-seed Poisson statistics (B1 only).
+    ``theta_max_rad`` (sensitivity stratum only) additionally keeps events with primary_theta <= theta_max_rad after the fiducial cut."""
 
-    keep = np.flatnonzero(selected & fiducial_of(events))
+    keep = np.flatnonzero(
+        selected & fiducial_of(events) & theta_stratum(events, theta_max_rad)
+    )
     grids = events.readout_grid_mev[keep].astype(float)
     if pe_per_mip is None:
         cells, energy = (
@@ -1059,18 +1080,21 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 def _flatten_rows(
     results: Sequence[PairingResult], view: str = "primary"
 ) -> list[dict[str, Any]]:
-    return [
-        {
+    out: list[dict[str, Any]] = []
+    for r in results:
+        head = {
             "view": view,
             "electron_band_gev": r.electron_band_gev,
             "proton_band_gev": r.proton_band_gev,
             "steps_above": r.steps_above,
             "pairs": r.pairs,
-            **row,
         }
-        for r in results
-        for row in r.rows
-    ]
+        if r.rows:
+            out.extend({**head, **row} for row in r.rows)
+        else:
+            # A pairing without statistic rows is still reported, as "not testable", never silently dropped.
+            out.append({**head, "testable": False})
+    return out
 
 
 # --- figures ------------------------------------------------------------------------------------------------------------------------
@@ -1453,7 +1477,10 @@ def _pairing_label(r: PairingResult) -> str:
 
 
 def figure_f5_dimensions(
-    results: Sequence[PairingResult], out: Path, secondary: bool = False
+    results: Sequence[PairingResult],
+    out: Path,
+    secondary: bool = False,
+    sensitivity: bool = False,
 ) -> None:
     """Matched-pair D0, D1, D2 per window and pairing; medians of electrons, protons and of their cell-shuffle surrogates."""
 
@@ -1529,15 +1556,19 @@ def figure_f5_dimensions(
     if secondary:
         numbers["view"] = SECONDARY_LABEL
         numbers["multiplicity"] = "raw p-values only (no Holm)"
-    _finish(
-        fig,
-        "F5 2D readout D0 D1 D2 of matched pairs (* = pairing not testable, < 100 pairs)"
-        if not secondary
-        else f"F5 secondary: D0 D1 D2 of matched pairs, no eligibility cut ({SECONDARY_LABEL}; raw p only)",
-        "F5_matched_dimensions" if not secondary else "F5_matched_dimensions_secondary",
-        numbers,
-        out,
-    )
+    if sensitivity:
+        numbers["view"] = SENSITIVITY_LABEL
+        numbers["theta_max_deg"] = SENSITIVITY_THETA_MAX_DEG
+        numbers["multiplicity"] = "Holm within this stratum's own family"
+        title = f"F5 ({SENSITIVITY_LABEL}): D0 D1 D2 of matched pairs (* = pairing not testable, < 100 pairs)"
+        stem = "F5_matched_dimensions_theta12"
+    elif secondary:
+        title = f"F5 secondary: D0 D1 D2 of matched pairs, no eligibility cut ({SECONDARY_LABEL}; raw p only)"
+        stem = "F5_matched_dimensions_secondary"
+    else:
+        title = "F5 2D readout D0 D1 D2 of matched pairs (* = pairing not testable, < 100 pairs)"
+        stem = "F5_matched_dimensions"
+    _finish(fig, title, stem, numbers, out)
 
 
 def figure_f5b_scan(scan: Sequence[dict[str, Any]], out: Path) -> None:
@@ -1637,7 +1668,13 @@ def run_analysis(
     acceptance, ess = acceptance_table(classes), ess_table(classes)
     write_csv(out / "fiducial_acceptance.csv", acceptance)
     write_csv(out / "effective_sample_size.csv", ess)
-    summary.update(fiducial_acceptance=acceptance, effective_sample_size=ess)
+    acceptance12 = acceptance_table(classes, SENSITIVITY_THETA_MAX_RAD)
+    write_csv(out / "fiducial_acceptance_theta12.csv", acceptance12)
+    summary.update(
+        fiducial_acceptance=acceptance,
+        effective_sample_size=ess,
+        **{"fiducial_acceptance_" + SENSITIVITY_LABEL: acceptance12},
+    )
     for name, (events, selected) in classes.items():
         kind = "electron" if name == "electron" else "proton"
         w = class_weights(events, kind)
@@ -1680,10 +1717,29 @@ def run_analysis(
             with_excess=True,
             eligibility=False,
         )
+        e_img12 = build_class_images(
+            electrons,
+            np.ones(len(electrons), bool),
+            "electron",
+            1,
+            theta_max_rad=SENSITIVITY_THETA_MAX_RAD,
+        )
+        p_img12 = build_class_images(
+            protons,
+            interacting,
+            "proton_interacting",
+            2,
+            theta_max_rad=SENSITIVITY_THETA_MAX_RAD,
+        )
+        rng_sensitivity = np.random.default_rng([ANALYSIS_SEED, 6])
+        sensitivity = analyse_point(
+            e_img12, p_img12, permutations, rng_sensitivity, with_excess=True
+        )
         write_csv(
             out / "matched_pair_statistics.csv",
             _flatten_rows(results, "primary")
-            + _flatten_rows(secondary, SECONDARY_LABEL),
+            + _flatten_rows(secondary, SECONDARY_LABEL)
+            + _flatten_rows(sensitivity, SENSITIVITY_LABEL),
         )
         write_json(
             out / "matched_pair_statistics.json",
@@ -1693,6 +1749,16 @@ def run_analysis(
                 SECONDARY_LABEL: {
                     "note": "same matched pairs, no per-window eligibility cut; raw p-values only (no Holm)",
                     "pairings": [pairing_to_dict(r) for r in secondary],
+                },
+                SENSITIVITY_LABEL: {
+                    "note": (
+                        "PRIMARY analysis (DEC-013 eligibility, matching, pair-swap KS, cell-shuffle reference) on the fiducial events "
+                        "with primary_theta <= 12 deg; Holm within this stratum's own family; project approximation of the AMS "
+                        "acceptance (about 550 cm2 sr, Aguilar et al., PRL 113, 221102 (2014)), not an AMS cut; researcher decision "
+                        "2026-11-09"
+                    ),
+                    "theta_max_deg": SENSITIVITY_THETA_MAX_DEG,
+                    "pairings": [pairing_to_dict(r) for r in sensitivity],
                 },
             },
         )
@@ -1704,14 +1770,20 @@ def run_analysis(
             {k: v for k, v in pairing_to_dict(r).items() if k != "rows"}
             for r in secondary
         ]
+        summary["matched_pairs_" + SENSITIVITY_LABEL] = [
+            {k: v for k, v in pairing_to_dict(r).items() if k != "rows"}
+            for r in sensitivity
+        ]
         figure_f5_dimensions(results, out)
         figure_f5_dimensions(secondary, out, secondary=True)
+        figure_f5_dimensions(sensitivity, out, sensitivity=True)
         summary["stages_run"] += [
             "matching",
             "pair-swap",
             "holm (primary only)",
             "F5",
             "F5 secondary",
+            "F5 theta12 (" + SENSITIVITY_LABEL + ")",
         ]
         if run_scan:
             scan = photoelectron_scan(

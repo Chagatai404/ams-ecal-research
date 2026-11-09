@@ -445,3 +445,53 @@ def test_secondary_view_is_labelled_has_no_holm_and_is_written(tmp_path):
     assert label in (tmp_path / "matched_pair_statistics.csv").read_text(
         encoding="utf-8"
     )
+
+
+def test_theta12_stratum_selects_exactly_the_fiducial_events_with_theta_up_to_12_degrees():
+    events = synthetic_class("electron", 11)
+    limit = math.radians(12.0)
+    assert rr.SENSITIVITY_THETA_MAX_RAD == pytest.approx(limit)
+    events.primary_theta_rad[:4] = [0.0, limit, limit + 1e-6, rr.THETA_MAX_RAD]
+    everything = np.ones(len(events), bool)
+    expected = np.flatnonzero(rr.fiducial_of(events) & (events.primary_theta_rad <= limit))
+    full = rr.build_class_images(events, everything, "electron", 1)
+    stratum = rr.build_class_images(
+        events, everything, "electron", 1, theta_max_rad=limit
+    )
+    assert np.array_equal(stratum.event_keys, expected + 10_000_000)
+    assert 0 < len(stratum.event_keys) < len(full.event_keys)
+    rows = rr.acceptance_table({"electron": (events, everything)}, limit)
+    assert sum(r["accepted"] for r in rows) == len(expected)
+    assert sum(r["events"] for r in rows) == int((events.primary_theta_rad <= limit).sum())
+    assert all(r["view"] == rr.SENSITIVITY_LABEL for r in rows)
+
+
+def test_theta12_sensitivity_is_labelled_written_and_leaves_the_primary_untouched(tmp_path):
+    electrons = synthetic_class("electron", 11)
+    protons = synthetic_class("proton", 12)
+    summary = rr.run_analysis(
+        electrons, protons, tmp_path, permutations=60, run_scan=False
+    )
+    label = "sensitivity, theta <= 12 deg"
+    assert rr.SENSITIVITY_LABEL == label
+    assert (tmp_path / "F5_matched_dimensions_theta12.png").stat().st_size > 0
+    assert label in (tmp_path / "F5_matched_dimensions_theta12.json").read_text(
+        encoding="utf-8"
+    )
+    assert ("matched_pairs_" + label) in summary
+    assert ("fiducial_acceptance_" + label) in summary
+    payload = json.loads(
+        (tmp_path / "matched_pair_statistics.json").read_text(encoding="utf-8")
+    )
+    assert len(payload[label]["pairings"]) > 0
+    assert label in (tmp_path / "matched_pair_statistics.csv").read_text(
+        encoding="utf-8"
+    )
+    assert label in (tmp_path / "fiducial_acceptance_theta12.csv").read_text(
+        encoding="utf-8"
+    )
+    # the full-sample primary uses every fiducial event, more than the stratum
+    assert (
+        summary["matched_pairs"][0]["pairs"]
+        >= summary["matched_pairs_" + label][0]["pairs"]
+    )

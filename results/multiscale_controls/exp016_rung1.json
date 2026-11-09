@@ -1,0 +1,2442 @@
+{
+ "registration": "EXP-016 version 2, 2026-11-09, rung 1",
+ "registration_file": "C:\\Users\\ASUS\\.research-os-backups\\registrations\\2026-11-09_exp016_3d_controls_from_real_showers.txt",
+ "registration_sha256": "55a9e9489a51580ecbd7fc68429fe81a76f4080a099ac897b376ba98699375ee",
+ "registration_hash_prefix": "55a9e9489a51580e",
+ "amendment_1_file": "C:\\Users\\ASUS\\.research-os-backups\\registrations\\2026-11-09_exp016_amendment_1_lateral_partial_boxes.txt",
+ "amendment_1_hash_prefix": "795c2d71add4c1b0",
+ "registration_hash_prefixes": [
+  "55a9e9489a51580e",
+  "795c2d71add4c1b0"
+ ],
+ "git": {
+  "commit": "02b6ceaa89411e1f53d029da949b3b683ea68cec",
+  "dirty": true,
+  "modified_or_untracked_entries": 7,
+  "modified_tracked_files": []
+ },
+ "seeds": {
+  "grid_offsets (registered)": 20261109,
+  "disruption": 20261110,
+  "c0_half_splits": 20261111,
+  "c2_pair_swap": 20261112,
+  "c3_power_splits": 20261113,
+  "section_8_synthetic": 20261114
+ },
+ "grid_offsets_ox_oy_oz": [
+  [
+   39,
+   16,
+   17
+  ],
+  [
+   41,
+   38,
+   35
+  ],
+  [
+   22,
+   20,
+   19
+  ],
+  [
+   42,
+   17,
+   28
+  ],
+  [
+   50,
+   47,
+   27
+  ],
+  [
+   36,
+   50,
+   11
+  ],
+  [
+   40,
+   25,
+   1
+  ],
+  [
+   3,
+   46,
+   17
+  ]
+ ],
+ "ambiguities": [
+  "4.2 partial boxes: amendment 1 (SHA-256 prefix 795c2d71add4c1b0, amending registration 55a9e9489a51580e, section 4.2 only) makes the default rule lateral-only: a box is partial only if it extends beyond the mesh in x or y. The original literal reading (depth included) made every event excluded because the coarsest kz = 36 equals the mesh depth; it remains available as --partial-box-rule with_depth for the record, and both fractions are always reported.",
+  "4.2 offsets 'drawn once': read as ONE set of 8 offsets shared by every event, drawn by rng.integers(low=(0,0,0), high=(54,54,36), size=(8,3)) from default_rng(20261109); the triples are recorded.",
+  "4.3 units: the effective side is in mm (m3.EFFECTIVE_SIDE_MM); the amplitude A of b = A eps^-D_f depends on that unit, eps* does not. The fit is parameterised by (ln b at the finest scale, D_f), an exact reparameterisation of (A, D_f).",
+  "4.3 'non-convergence': scipy least_squares (method lm) status <= 0, a non-finite parameter, or an exception; one deterministic start, no retry. Capacity b < 1 is clamped to 1 in the model.",
+  "4.4/4.5 denominators: events excluded by 4.2 are out of every denominator; fit failures stay in and count as not admissible.",
+  "6 C1-C3 use every non-excluded event on W* (the registration says ONE window for all events), including events that are not admissible on W*.",
+  "5 number of disrupted blocks: exactly max(1, floor(phi * n + 0.5)) of the n occupied (layer, lateral block) units of the event (pooled over the whole event, drawn without replacement). The minimum of one is an addition so phi = 0.05 on a small event is not empty.",
+  "5 variant S: 'empty' means empty in the original event; the targets are drawn without replacement. When a block has fewer empty voxels than occupied ones only as many randomly chosen occupied voxels as there are empty voxels move (the rest stay), so occupancy is still exactly preserved; the number of such blocks is reported.",
+  "6 C0 applies to both statistics (D2 and D0-D2), each with its own rate; it is 'sane' only if both rates lie in 0.05 +- 3 SE (binomial SE with 200 splits), in every set.",
+  "6 C2 with no testable pairing is not a pass (reported as 'not testable'); the verdict is then 'no registered verdict applies: C2 not testable' (amendment 1 reporting note), with C1 and C3 as measured.",
+  "6 C2/C3 KS: the same definition as S3 stage 3 (stratified_ks_matrix, one stratum) but computed with exact integer numerators so ties in the permutation distribution are not broken by float32 rounding.",
+  "6 C3: the two arms are drawn as disjoint random event subsets of the SAME set (the registration's 'independent events').",
+  "4.5 when no W* exists, C1-C3 are 'reported descriptively only' on a fallback window (the >= 3-scale window with the highest minimum admissibility fraction over the sets, ties: finest then widest); that fallback is not in the registration.",
+  "9 stop rule 'one event takes more than 2 s': evaluated as the maximum in-worker per-event time (mean and median also reported).",
+  "8 B1 and B3 are the smooth baselines of EXP-010, not cascades: the recovery of known dimensions is computed on the S4 cascade (aligned levels of multiscale_3d) with offset averaging, which breaks the alignment of the cascade cells with the boxes; B1 and B3 are reported descriptively (ordering, fit acceptance, saturation scale).",
+  "3 prefix deposit used for the C2 matching key: arrays['edep_total_mev'] (checked against the sum of the fine prefix deposits)."
+ ],
+ "rung": 1,
+ "workers": 2,
+ "partial_box_rule_applied": "lateral_only",
+ "status": "complete",
+ "timings_seconds": {
+  "section_4_all_sets": 253.67477040000085,
+  "c0": 114.83454899999197,
+  "disrupted_copies": 735.6595197999995,
+  "c3_power": 555.5354084999999,
+  "c2": 3.7872286999918288,
+  "section_8": 48.49532000000181
+ },
+ "per_event_seconds_section_4": {
+  "mean": 0.1602805873214434,
+  "max": 0.7434848999982933
+ },
+ "events": {
+  "electron_200GeV": {
+   "total": 300,
+   "retained": 300,
+   "excluded_partial_boxes": 0,
+   "excluded_with_depth_literal": 300,
+   "excluded_lateral_only": 0,
+   "fit_failures_among_retained": 0,
+   "max_relative_difference_edep_total_vs_fine_sum": 3.909115142697317e-09
+  },
+  "electron_400GeV": {
+   "total": 300,
+   "retained": 300,
+   "excluded_partial_boxes": 0,
+   "excluded_with_depth_literal": 300,
+   "excluded_lateral_only": 0,
+   "fit_failures_among_retained": 0,
+   "max_relative_difference_edep_total_vs_fine_sum": 4.642540796240269e-09
+  },
+  "electron_800GeV": {
+   "total": 300,
+   "retained": 300,
+   "excluded_partial_boxes": 0,
+   "excluded_with_depth_literal": 300,
+   "excluded_lateral_only": 0,
+   "fit_failures_among_retained": 0,
+   "max_relative_difference_edep_total_vs_fine_sum": 4.364338002105228e-09
+  },
+  "proton_500GeV": {
+   "total": 485,
+   "retained": 449,
+   "excluded_partial_boxes": 36,
+   "excluded_with_depth_literal": 485,
+   "excluded_lateral_only": 36,
+   "fit_failures_among_retained": 0,
+   "max_relative_difference_edep_total_vs_fine_sum": 1.565150453686215e-08
+  },
+  "proton_1000GeV": {
+   "total": 491,
+   "retained": 471,
+   "excluded_partial_boxes": 20,
+   "excluded_with_depth_literal": 491,
+   "excluded_lateral_only": 20,
+   "fit_failures_among_retained": 0,
+   "max_relative_difference_edep_total_vs_fine_sum": 1.2138661964478104e-08
+  },
+  "proton_2000GeV": {
+   "total": 506,
+   "retained": 467,
+   "excluded_partial_boxes": 39,
+   "excluded_with_depth_literal": 506,
+   "excluded_lateral_only": 39,
+   "fit_failures_among_retained": 0,
+   "max_relative_difference_edep_total_vs_fine_sum": 1.6380449441300016e-08
+  }
+ },
+ "admissibility": {
+  "delta_1": {
+   "windows": [
+    "(1, 1)->(2, 1)",
+    "(1, 1)->(3, 2)",
+    "(1, 1)->(4, 3)",
+    "(1, 1)->(6, 4)",
+    "(1, 1)->(9, 6)",
+    "(1, 1)->(18, 12)",
+    "(1, 1)->(27, 18)",
+    "(1, 1)->(54, 36)",
+    "(2, 1)->(3, 2)",
+    "(2, 1)->(4, 3)",
+    "(2, 1)->(6, 4)",
+    "(2, 1)->(9, 6)",
+    "(2, 1)->(18, 12)",
+    "(2, 1)->(27, 18)",
+    "(2, 1)->(54, 36)",
+    "(3, 2)->(4, 3)",
+    "(3, 2)->(6, 4)",
+    "(3, 2)->(9, 6)",
+    "(3, 2)->(18, 12)",
+    "(3, 2)->(27, 18)",
+    "(3, 2)->(54, 36)",
+    "(4, 3)->(6, 4)",
+    "(4, 3)->(9, 6)",
+    "(4, 3)->(18, 12)",
+    "(4, 3)->(27, 18)",
+    "(4, 3)->(54, 36)",
+    "(6, 4)->(9, 6)",
+    "(6, 4)->(18, 12)",
+    "(6, 4)->(27, 18)",
+    "(6, 4)->(54, 36)",
+    "(9, 6)->(18, 12)",
+    "(9, 6)->(27, 18)",
+    "(9, 6)->(54, 36)",
+    "(18, 12)->(27, 18)",
+    "(18, 12)->(54, 36)",
+    "(27, 18)->(54, 36)"
+   ],
+   "window_scale_indices": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     0,
+     1,
+     2,
+     3
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     2,
+     3,
+     4
+    ],
+    [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     3,
+     4
+    ],
+    [
+     2,
+     3,
+     4,
+     5
+    ],
+    [
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     4,
+     5
+    ],
+    [
+     3,
+     4,
+     5,
+     6
+    ],
+    [
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     5,
+     6
+    ],
+    [
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     6,
+     7
+    ],
+    [
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     7,
+     8
+    ],
+    [
+     7,
+     8
+    ]
+   ],
+   "fraction_by_set": {
+    "electron_200GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.9433333333333334,
+     0.9433333333333334,
+     0.9433333333333334,
+     0.9433333333333334,
+     0.9433333333333334,
+     0.9433333333333334,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "electron_400GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.9833333333333333,
+     0.9833333333333333,
+     0.9833333333333333,
+     0.9833333333333333,
+     0.9833333333333333,
+     0.9833333333333333,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "electron_800GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.9966666666666667,
+     0.9966666666666667,
+     0.9966666666666667,
+     0.9966666666666667,
+     0.9966666666666667,
+     0.9966666666666667,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "proton_500GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.6124721603563474,
+     0.6124721603563474,
+     0.6124721603563474,
+     0.6124721603563474,
+     0.6124721603563474,
+     0.8930957683741648,
+     0.8930957683741648,
+     0.8930957683741648,
+     0.8930957683741648,
+     0.9888641425389755,
+     0.9888641425389755,
+     0.9888641425389755,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "proton_1000GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.5944798301486199,
+     0.5944798301486199,
+     0.5944798301486199,
+     0.5944798301486199,
+     0.5944798301486199,
+     0.921443736730361,
+     0.921443736730361,
+     0.921443736730361,
+     0.921443736730361,
+     0.9957537154989384,
+     0.9957537154989384,
+     0.9957537154989384,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "proton_2000GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.004282655246252677,
+     0.004282655246252677,
+     0.004282655246252677,
+     0.004282655246252677,
+     0.004282655246252677,
+     0.004282655246252677,
+     0.6509635974304069,
+     0.6509635974304069,
+     0.6509635974304069,
+     0.6509635974304069,
+     0.6509635974304069,
+     0.9079229122055674,
+     0.9079229122055674,
+     0.9079229122055674,
+     0.9079229122055674,
+     0.9935760171306209,
+     0.9935760171306209,
+     0.9935760171306209,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "w_star_index": 32,
+   "w_star": "(9, 6)->(54, 36)"
+  },
+  "delta_2": {
+   "windows": [
+    "(1, 1)->(2, 1)",
+    "(1, 1)->(3, 2)",
+    "(1, 1)->(4, 3)",
+    "(1, 1)->(6, 4)",
+    "(1, 1)->(9, 6)",
+    "(1, 1)->(18, 12)",
+    "(1, 1)->(27, 18)",
+    "(1, 1)->(54, 36)",
+    "(2, 1)->(3, 2)",
+    "(2, 1)->(4, 3)",
+    "(2, 1)->(6, 4)",
+    "(2, 1)->(9, 6)",
+    "(2, 1)->(18, 12)",
+    "(2, 1)->(27, 18)",
+    "(2, 1)->(54, 36)",
+    "(3, 2)->(4, 3)",
+    "(3, 2)->(6, 4)",
+    "(3, 2)->(9, 6)",
+    "(3, 2)->(18, 12)",
+    "(3, 2)->(27, 18)",
+    "(3, 2)->(54, 36)",
+    "(4, 3)->(6, 4)",
+    "(4, 3)->(9, 6)",
+    "(4, 3)->(18, 12)",
+    "(4, 3)->(27, 18)",
+    "(4, 3)->(54, 36)",
+    "(6, 4)->(9, 6)",
+    "(6, 4)->(18, 12)",
+    "(6, 4)->(27, 18)",
+    "(6, 4)->(54, 36)",
+    "(9, 6)->(18, 12)",
+    "(9, 6)->(27, 18)",
+    "(9, 6)->(54, 36)",
+    "(18, 12)->(27, 18)",
+    "(18, 12)->(54, 36)",
+    "(27, 18)->(54, 36)"
+   ],
+   "window_scale_indices": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     0,
+     1,
+     2,
+     3
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     1,
+     2,
+     3,
+     4
+    ],
+    [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     3,
+     4
+    ],
+    [
+     2,
+     3,
+     4,
+     5
+    ],
+    [
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     4,
+     5
+    ],
+    [
+     3,
+     4,
+     5,
+     6
+    ],
+    [
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     5,
+     6
+    ],
+    [
+     4,
+     5,
+     6,
+     7
+    ],
+    [
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     6,
+     7
+    ],
+    [
+     5,
+     6,
+     7,
+     8
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     7,
+     8
+    ],
+    [
+     7,
+     8
+    ]
+   ],
+   "fraction_by_set": {
+    "electron_200GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.9433333333333334,
+     0.9433333333333334,
+     0.9433333333333334,
+     0.9433333333333334,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "electron_400GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.9833333333333333,
+     0.9833333333333333,
+     0.9833333333333333,
+     0.9833333333333333,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "electron_800GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.9966666666666667,
+     0.9966666666666667,
+     0.9966666666666667,
+     0.9966666666666667,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "proton_500GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.7126948775055679,
+     0.7126948775055679,
+     0.7126948775055679,
+     0.9888641425389755,
+     0.9888641425389755,
+     1.0
+    ],
+    "proton_1000GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.7154989384288747,
+     0.7154989384288747,
+     0.7154989384288747,
+     0.9957537154989384,
+     0.9957537154989384,
+     1.0
+    ],
+    "proton_2000GeV": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.004282655246252677,
+     0.004282655246252677,
+     0.004282655246252677,
+     0.004282655246252677,
+     0.7451820128479657,
+     0.7451820128479657,
+     0.7451820128479657,
+     0.9935760171306209,
+     0.9935760171306209,
+     1.0
+    ]
+   },
+   "w_star_index": 34,
+   "w_star": "(18, 12)->(54, 36)"
+  }
+ },
+ "window": {
+  "w_star_exists": true,
+  "window_index": 32,
+  "scale_indices": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "label": "(9, 6)->(54, 36)",
+  "descriptive_only": false,
+  "coarsest_box_side_voxels": 54
+ },
+ "c0_machinery": {
+  "splits": 200,
+  "permutations": 2000,
+  "accepted_range": [
+   0.0037668949777326793,
+   0.09623310502226733
+  ],
+  "per_set": {
+   "electron_200GeV": {
+    "events": 300,
+    "half_size": 150,
+    "rejection_rate": {
+     "D2": 0.045,
+     "D0-D2": 0.03
+    },
+    "sane": true
+   },
+   "electron_400GeV": {
+    "events": 300,
+    "half_size": 150,
+    "rejection_rate": {
+     "D2": 0.045,
+     "D0-D2": 0.035
+    },
+    "sane": true
+   },
+   "electron_800GeV": {
+    "events": 300,
+    "half_size": 150,
+    "rejection_rate": {
+     "D2": 0.025,
+     "D0-D2": 0.07
+    },
+    "sane": true
+   },
+   "proton_500GeV": {
+    "events": 449,
+    "half_size": 224,
+    "rejection_rate": {
+     "D2": 0.02,
+     "D0-D2": 0.035
+    },
+    "sane": true
+   },
+   "proton_1000GeV": {
+    "events": 471,
+    "half_size": 235,
+    "rejection_rate": {
+     "D2": 0.04,
+     "D0-D2": 0.04
+    },
+    "sane": true
+   },
+   "proton_2000GeV": {
+    "events": 467,
+    "half_size": 233,
+    "rejection_rate": {
+     "D2": 0.03,
+     "D0-D2": 0.06
+    },
+    "sane": true
+   }
+  },
+  "sane": true
+ },
+ "c1_ordering": {
+  "fraction_by_set": {
+   "electron_200GeV": 1.0,
+   "electron_400GeV": 1.0,
+   "electron_800GeV": 1.0,
+   "proton_500GeV": 0.9977728285077951,
+   "proton_1000GeV": 0.9957537154989384,
+   "proton_2000GeV": 0.9978586723768736
+  },
+  "threshold": 0.9,
+  "pass": true
+ },
+ "c3_power": {
+  "splits": 200,
+  "permutations": 2000,
+  "phi_star": 0.2,
+  "block_side_voxels": 54,
+  "power_by_set": {
+   "electron_400GeV": {
+    "arm_150": {
+     "W": {
+      "D2": {
+       "phi_0.05": 1.0,
+       "phi_0.1": 1.0,
+       "phi_0.2": 1.0,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      },
+      "D0-D2": {
+       "phi_0.05": 1.0,
+       "phi_0.1": 1.0,
+       "phi_0.2": 1.0,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      }
+     },
+     "S": {
+      "D2": {
+       "phi_0.05": 0.495,
+       "phi_0.1": 1.0,
+       "phi_0.2": 1.0,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      },
+      "D0-D2": {
+       "phi_0.05": 0.135,
+       "phi_0.1": 0.08,
+       "phi_0.2": 0.98,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      }
+     }
+    }
+   },
+   "proton_1000GeV": {
+    "arm_150": {
+     "W": {
+      "D2": {
+       "phi_0.05": 0.09,
+       "phi_0.1": 0.415,
+       "phi_0.2": 0.975,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      },
+      "D0-D2": {
+       "phi_0.05": 0.245,
+       "phi_0.1": 0.805,
+       "phi_0.2": 1.0,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      }
+     },
+     "S": {
+      "D2": {
+       "phi_0.05": 0.035,
+       "phi_0.1": 0.085,
+       "phi_0.2": 0.295,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      },
+      "D0-D2": {
+       "phi_0.05": 0.055,
+       "phi_0.1": 0.07,
+       "phi_0.2": 0.09,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      }
+     }
+    },
+    "arm_235": {
+     "W": {
+      "D2": {
+       "phi_0.05": 0.155,
+       "phi_0.1": 0.63,
+       "phi_0.2": 1.0,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      },
+      "D0-D2": {
+       "phi_0.05": 0.3,
+       "phi_0.1": 0.96,
+       "phi_0.2": 1.0,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      }
+     },
+     "S": {
+      "D2": {
+       "phi_0.05": 0.06,
+       "phi_0.1": 0.1,
+       "phi_0.2": 0.43,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      },
+      "D0-D2": {
+       "phi_0.05": 0.045,
+       "phi_0.1": 0.06,
+       "phi_0.2": 0.085,
+       "phi_0.5": 1.0,
+       "phi_1": 1.0
+      }
+     }
+    }
+   }
+  },
+  "criterion_power_D2_variant_W_at_phi_star_arm_150": {
+   "electron_400GeV": 1.0,
+   "proton_1000GeV": 0.975
+  },
+  "pass": true
+ },
+ "c2_matched_null": {
+  "pairings": [
+   {
+    "lower_energy_set": "electron_200GeV",
+    "higher_energy_set": "electron_400GeV",
+    "pairs": 0,
+    "testable": false
+   },
+   {
+    "lower_energy_set": "electron_400GeV",
+    "higher_energy_set": "electron_800GeV",
+    "pairs": 1,
+    "testable": false,
+    "standardized_mean_difference_log_occupied_log_deposit": [
+     -0.03335503979386284,
+     0.013501633492399568
+    ]
+   },
+   {
+    "lower_energy_set": "proton_500GeV",
+    "higher_energy_set": "proton_1000GeV",
+    "pairs": 342,
+    "testable": true,
+    "standardized_mean_difference_log_occupied_log_deposit": [
+     0.015423922478860855,
+     -0.01388986871297792
+    ],
+    "ks": {
+     "D2": 0.14327485380116958,
+     "D0-D2": 0.2046783625730994
+    },
+    "p_value": {
+     "D2": 9.999000099990002e-05,
+     "D0-D2": 9.999000099990002e-05
+    },
+    "holm_adjusted_p": {
+     "D2": 0.00039996000399960006,
+     "D0-D2": 0.00039996000399960006
+    }
+   },
+   {
+    "lower_energy_set": "proton_1000GeV",
+    "higher_energy_set": "proton_2000GeV",
+    "pairs": 360,
+    "testable": true,
+    "standardized_mean_difference_log_occupied_log_deposit": [
+     0.01816446499876778,
+     -0.009992306614616826
+    ],
+    "ks": {
+     "D2": 0.15,
+     "D0-D2": 0.2388888888888889
+    },
+    "p_value": {
+     "D2": 9.999000099990002e-05,
+     "D0-D2": 9.999000099990002e-05
+    },
+    "holm_adjusted_p": {
+     "D2": 0.00039996000399960006,
+     "D0-D2": 0.00039996000399960006
+    }
+   }
+  ],
+  "testable_pairings": 2,
+  "permutations": 10000,
+  "caliper_sd": 0.25,
+  "pass": false,
+  "status": "fail"
+ },
+ "verdict": "estimator usable, matching insufficient for P1",
+ "section_8_synthetic": [
+  {
+   "kind": "cascade",
+   "n_hits": 1000,
+   "replicates": 50,
+   "median_occupied_voxels": 998.0,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 33.95004158692957,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "recovery": [
+    {
+     "q": 0.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 1.9871515412939413,
+     "relative_error": -0.3376161529020196,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 2.6438726976920774,
+     "mean_estimate": 2.1069922412972333,
+     "relative_error": -0.20306592555061542,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 2.3576255839414584,
+     "mean_estimate": 2.0823875877150195,
+     "relative_error": -0.11674372644289782,
+     "within_reference": true
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 1.341865923752288,
+     "relative_error": -0.5527113587492373,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 2.811691689648389,
+     "mean_estimate": 1.593577261142317,
+     "relative_error": -0.4332318628641681,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 2.642198807282809,
+     "mean_estimate": 1.7175462073759227,
+     "relative_error": -0.3499557252687518,
+     "within_reference": false
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 0.23550205264426566,
+     "relative_error": -0.9214993157852448,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 2.811691689648389,
+     "mean_estimate": 0.3241902016502347,
+     "relative_error": -0.8846992353949106,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 2.642198807282809,
+     "mean_estimate": 0.4425825060116973,
+     "relative_error": -0.8324946234962383,
+     "within_reference": false
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 3.0,
+     "mean_estimate": 0.01900872188239158,
+     "relative_error": -0.9936637593725361,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 2.771446603250369,
+     "mean_estimate": 0.026435738202074753,
+     "relative_error": -0.9904613936378673,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 2.5739546006740763,
+     "mean_estimate": 0.03817775052543691,
+     "relative_error": -0.9851676674812218,
+     "within_reference": false
+    }
+   ]
+  },
+  {
+   "kind": "cascade",
+   "n_hits": 10000,
+   "replicates": 50,
+   "median_occupied_voxels": 9790.0,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 15.389867795418485,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.84,
+    0.0
+   ],
+   "recovery": [
+    {
+     "q": 0.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 2.201843641771778,
+     "relative_error": -0.26605211940940726,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 2.6438726976920774,
+     "mean_estimate": 2.2280207983445637,
+     "relative_error": -0.15728892684981557,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 2.3576255839414584,
+     "mean_estimate": 2.1801081235691244,
+     "relative_error": -0.07529501782702994,
+     "within_reference": true
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 2.2829146269284903,
+     "relative_error": -0.2390284576905032,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 2.811691689648389,
+     "mean_estimate": 2.39714691298686,
+     "relative_error": -0.14743607138283674,
+     "within_reference": true
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 2.642198807282809,
+     "mean_estimate": 2.3339388711291047,
+     "relative_error": -0.11666795674270761,
+     "within_reference": true
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 1.0335131830774928,
+     "relative_error": -0.6554956056408358,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 2.811691689648389,
+     "mean_estimate": 1.330112512832527,
+     "relative_error": -0.5269351480713513,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 2.642198807282809,
+     "mean_estimate": 1.5700713497887664,
+     "relative_error": -0.40577092629778294,
+     "within_reference": false
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 3.0,
+     "mean_estimate": 0.15059237141996837,
+     "relative_error": -0.9498025428600106,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 2.771446603250369,
+     "mean_estimate": 0.21194910489186303,
+     "relative_error": -0.9235240164312429,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 2.5739546006740763,
+     "mean_estimate": 0.3040124175518116,
+     "relative_error": -0.8818889744705692,
+     "within_reference": false
+    }
+   ]
+  },
+  {
+   "kind": "cascade",
+   "n_hits": 30000,
+   "replicates": 50,
+   "median_occupied_voxels": 28295.5,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 10.873748099924988,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    0.54
+   ],
+   "recovery": [
+    {
+     "q": 0.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 2.23724913141952,
+     "relative_error": -0.25425028952682666,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 2.6438726976920774,
+     "mean_estimate": 2.237264149512866,
+     "relative_error": -0.1537927860649847,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      27,
+      18
+     ],
+     "coarse_scale": [
+      54,
+      36
+     ],
+     "isotropic_level": true,
+     "exact": 2.3576255839414584,
+     "mean_estimate": 2.18826237438451,
+     "relative_error": -0.07183634700545131,
+     "within_reference": true
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 2.476450832252421,
+     "relative_error": -0.174516389249193,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 2.811691689648389,
+     "mean_estimate": 2.5130082650540193,
+     "relative_error": -0.10622908112365649,
+     "within_reference": true
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      9,
+      6
+     ],
+     "coarse_scale": [
+      27,
+      18
+     ],
+     "isotropic_level": true,
+     "exact": 2.642198807282809,
+     "mean_estimate": 2.407319242284297,
+     "relative_error": -0.08889549278090027,
+     "within_reference": true
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 3.0,
+     "mean_estimate": 1.5876543068063453,
+     "relative_error": -0.4707818977312182,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 2.811691689648389,
+     "mean_estimate": 1.9102521543798505,
+     "relative_error": -0.3206039760999778,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      3,
+      2
+     ],
+     "coarse_scale": [
+      9,
+      6
+     ],
+     "isotropic_level": true,
+     "exact": 2.642198807282809,
+     "mean_estimate": 2.0797834573801897,
+     "relative_error": -0.21285883119484014,
+     "within_reference": false
+    },
+    {
+     "q": 0.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 3.0,
+     "mean_estimate": 0.35110760481964154,
+     "relative_error": -0.8829641317267862,
+     "within_reference": false
+    },
+    {
+     "q": 1.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 2.771446603250369,
+     "mean_estimate": 0.49577225018446286,
+     "relative_error": -0.8211142694926835,
+     "within_reference": false
+    },
+    {
+     "q": 2.0,
+     "fine_scale": [
+      1,
+      1
+     ],
+     "coarse_scale": [
+      3,
+      2
+     ],
+     "isotropic_level": false,
+     "exact": 2.5739546006740763,
+     "mean_estimate": 0.6898711391793496,
+     "relative_error": -0.7319800671703053,
+     "within_reference": false
+    }
+   ]
+  },
+  {
+   "kind": "B1",
+   "n_hits": 1000,
+   "replicates": 50,
+   "median_occupied_voxels": 990.0,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 14.945592741631632,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.44
+   ]
+  },
+  {
+   "kind": "B1",
+   "n_hits": 10000,
+   "replicates": 50,
+   "median_occupied_voxels": 9150.0,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 8.152160457083278,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "kind": "B1",
+   "n_hits": 30000,
+   "replicates": 50,
+   "median_occupied_voxels": 23728.5,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 6.765481782215681,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "kind": "B3",
+   "n_hits": 1000,
+   "replicates": 50,
+   "median_occupied_voxels": 997.0,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 20.07920310626514,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "kind": "B3",
+   "n_hits": 10000,
+   "replicates": 50,
+   "median_occupied_voxels": 9699.0,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 9.686294642545295,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "kind": "B3",
+   "n_hits": 30000,
+   "replicates": 50,
+   "median_occupied_voxels": 27503.5,
+   "fit_accepted_fraction": 1.0,
+   "median_saturation_side_mm": 7.287610073490077,
+   "ordering_fraction_by_window": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.68
+   ]
+  }
+ ],
+ "wall_seconds": 1712.579945599995
+}
