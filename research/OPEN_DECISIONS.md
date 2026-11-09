@@ -13,14 +13,19 @@ _Design and evidence records behind each item are in the Obsidian vault, `01 Pro
 - **The decisive next test (former step 2).** Option (a) was chosen and run as EXP-018: "no addition detected".
 
 **Next steps, in the order the agent recommends (every one is the researcher's to approve):**
-1. **RUNNING (started 2026-11-09 19:14 UTC): powered realistic production.** Researcher: "do this overnight today"; "Generate as much as you need. Time is not a problem here. ... focus on protons. If you need electrons as well, you can do electrons."
+1. **RUNNING overnight (started 2026-11-09 19:14 UTC): powered realistic production.** Researcher: "do this overnight today"; "Generate as much as you need. Time is not a problem here. ... focus on protons. If you need electrons as well, you can do electrons."
    - **Electrons are needed too.** The EXP-018 hard subset is limited by electrons: every pilot electron with at least 572 occupied cells was already in it (2 / 36 / 153 in the 200 / 400 / 800 GeV bands). Protons alone cannot enlarge it.
    - **Protons first.** Three bands in chunks: [0.8, 2) TeV 2 x 2,500; [2, 4) TeV 5 x 1,200; [4, 8) TeV 4 x 600. The [4, 8) TeV band is new: it is where the equal-deposit partners of 0.8-2 TeV electrons sit. The physical-spectrum weights there are an extrapolation, because the AMS proton fit stops at 1.8 TV.
    - **Then electrons.** [0.8, 2) TeV 12 x 150 and [0.4, 0.8) TeV 2 x 500.
    - **Regime.** Identical to the EXP-015 pilot, so the batches can be pooled. Every chunk has its own base seed (protons 20276101-111, electrons 20276201-214); a check against all 32 configs found no collision among the chunks that run.
    - **Target.** About 1,000 per class in an EXP-018-style hard subset, which would cut the interval half-width from 0.013 to about 0.005-0.007.
    - **Estimated time.** About 30 h on 14 workers: protons about 13 h, electrons about 17 h. The smoke test measured about 60 CPU-s per 4-8 TeV proton and about 300 CPU-s per 0.8-2 TeV electron.
-   - **Files.** Configs `configs/geant4_realistic_regime_powered_{proton,electron}.yaml`. Resumable driver `configs/run_realistic_regime_powered.sh`, which skips finished chunks. Logs in `data/geant4_realistic_regime_powered_logs/` (`driver.log` lists chunk starts and ends).
+   - **Cut to one night.** Researcher, 2026-11-09: "30 hours are a bit too much for 1 run, plan it for overnight for now." The run was switched after proton chunk c01 to `configs/run_realistic_regime_powered_overnight.sh`, about 12 h, with protons and electrons interleaved.
+     - Protons: 2,500 at [0.8, 2) TeV, 2,400 at [2, 4) TeV, 1,200 at [4, 8) TeV.
+     - Electrons: 750 at [0.8, 2) TeV, 500 at [0.4, 0.8) TeV.
+     - Expected new hard-subset events, from the pilot yields: about 400-450 electrons and about 650-700 protons. Pooled with the pilot, about 2.5-3x the EXP-018 hard subset, with an interval half-width of about 0.008.
+     - The remaining chunks (proton c02, c05-c07, c10-c11; electron c02, c08-c14) keep their seeds. A later run of the full driver produces exactly them, because it skips finished chunks.
+   - **Files.** Configs `configs/geant4_realistic_regime_powered_{proton,electron}.yaml`. Resumable drivers `configs/run_realistic_regime_powered.sh` (all chunks) and `configs/run_realistic_regime_powered_overnight.sh`; both skip finished chunks. Logs in `data/geant4_realistic_regime_powered_logs/` (`driver.log` lists chunk starts and ends).
    - **Still to decide (in the step-2 registration):** whether the powered test may pool the pilot events EXP-018 already looked at, or must use fresh events only. Fresh-only gives about 1.5-3x the current size instead of about 2.5-4x.
    - Also feeds EXP-013 sizing.
 2. **DECIDE: a powered repeat of the incremental-classifier test.** A new registration on the step-1 data, fixing the sample size so that a stated minimum log-loss gain is detectable. Add the θ ≤ 12° stratum as a testable secondary, and the photoelectron and saturation response as sensitivities. Considering a matched-energy design to separate particle type from primary energy.
