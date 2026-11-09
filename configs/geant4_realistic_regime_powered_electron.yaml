@@ -1,0 +1,55 @@
+# Powered realistic-regime production, ELECTRONS. Researcher's go 2026-11-09: "Just generate the data we need for this pass.
+# Especially the proton. ... If you need electrons as well, you can do electrons." They are needed: the EXP-018 hard subset is
+# limited by electrons (every pilot electron with >= 572 occupied cells was already in it: 2/36/153 in the 200/400/800 GeV bands).
+# EXPLORATORY development data for the powered repeat of the incremental-classifier test and the P1 redesign; never P1 confirmatory,
+# never a validation set. Regime identical to the EXP-015 pilot (configs/geant4_realistic_regime_pilot_electron.yaml), same bands.
+# Only the bands 400 and 800 are produced (below 400 GeV almost no electron reaches 572 occupied cells). Each sample is one chunk
+# with its own base seed: band [800,2000): 12 x 150 (about 1.2 h each on 14 workers), band [400,800): 2 x 500.
+schema_version: 2
+
+particle: e-
+
+energies_gev: [50.0, 100.0, 200.0, 400.0, 800.0]
+
+energy_spectrum:
+  kind: power_law
+  index: 1.0
+  e_max_gev: 2000.0
+
+incidence:
+  distribution: cos_flux
+  # Kounine et al. NIM A 869 (2017) p.111 Sec. 3, p.115 Sec. 4: ECAL angular acceptance 25 degrees.
+  theta_max_deg: 25.0
+
+entry_spot:
+  x_min: -324.0
+  x_max: 324.0
+  y_min: -324.0
+  y_max: 324.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+# events_per_energy is the chunk size of the band the chunk is run for (the driver passes --events explicitly).
+samples:
+  c01: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 500, base_seed: 20276201}
+  c02: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 500, base_seed: 20276202}
+  c03: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276203}
+  c04: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276204}
+  c05: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276205}
+  c06: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276206}
+  c07: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276207}
+  c08: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276208}
+  c09: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276209}
+  c10: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276210}
+  c11: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276211}
+  c12: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276212}
+  c13: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276213}
+  c14: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 150, base_seed: 20276214}
+
+store_fine_prefix_deposits: true
+component_tagging: false
+
+output_dir: data/geant4_realistic_regime_powered_electron

@@ -1,0 +1,56 @@
+# Powered realistic-regime production, PROTONS. Researcher's go 2026-11-09: "do this overnight today" and "Just generate the data
+# we need for this pass. Especially the proton." EXPLORATORY development data for the powered repeat of the incremental-classifier
+# test (EXP-018) and the P1 redesign; never P1 confirmatory, never a validation set. The analysis registration comes separately.
+# Regime identical to the EXP-015 pilot (configs/geant4_realistic_regime_pilot_proton.yaml) so the batches can be pooled:
+# cos_flux up to 25 deg, full face, E^-1 generation in bands, FTFP_BERT, cut 0.7 mm, fine prefix deposits stored.
+# One difference: a band [4000, 8000) GeV is added (e_max 8000), where protons depositing as much as 0.8-2 TeV electrons sit
+# (EXP-015: matched protons carry a median 4.4x the electron energy). The AMS proton flux (Phys. Rep. 894 Eq. 12) is measured only
+# up to 1.8 TV, so physical-spectrum weights above that are an extrapolation; the generation spectrum is E^-1 and unweighted
+# analyses (the classifier test) do not use the weights.
+# Only the bands 800, 2000 and 4000 are produced. Each sample is one chunk (1-2 h of wall time on 14 workers) with its own base
+# seed, so a failure loses at most one chunk; band [800,2000): 2 x 2500, band [2000,4000): 5 x 1200, band [4000,8000): 4 x 600.
+schema_version: 2
+
+particle: proton
+
+energies_gev: [50.0, 100.0, 200.0, 400.0, 800.0, 2000.0, 4000.0]
+
+energy_spectrum:
+  kind: power_law
+  index: 1.0
+  e_max_gev: 8000.0
+
+incidence:
+  distribution: cos_flux
+  # Kounine et al. NIM A 869 (2017) p.111 Sec. 3, p.115 Sec. 4: ECAL angular acceptance 25 degrees.
+  theta_max_deg: 25.0
+
+entry_spot:
+  x_min: -324.0
+  x_max: 324.0
+  y_min: -324.0
+  y_max: 324.0
+gun_z: -1.0
+
+physics:
+  lists: [FTFP_BERT]
+  production_cut: 0.7
+
+# events_per_energy is the chunk size of the band the chunk is run for (the driver passes --events explicitly).
+samples:
+  c01: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 2500, base_seed: 20276101}
+  c02: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 2500, base_seed: 20276102}
+  c03: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 1200, base_seed: 20276103}
+  c04: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 1200, base_seed: 20276104}
+  c05: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 1200, base_seed: 20276105}
+  c06: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 1200, base_seed: 20276106}
+  c07: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 1200, base_seed: 20276107}
+  c08: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 600, base_seed: 20276108}
+  c09: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 600, base_seed: 20276109}
+  c10: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 600, base_seed: 20276110}
+  c11: {geometry: ams, physics_list: FTFP_BERT, events_per_energy: 600, base_seed: 20276111}
+
+store_fine_prefix_deposits: true
+component_tagging: false
+
+output_dir: data/geant4_realistic_regime_powered_proton
