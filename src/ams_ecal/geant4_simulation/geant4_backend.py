@@ -56,7 +56,7 @@ from concurrent.futures import ProcessPoolExecutor
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from importlib.metadata import version as package_version
-from math import cos, isfinite, pi, sin, sqrt
+from math import acos, cos, isclose, isfinite, pi, radians, sin, sqrt
 from multiprocessing import get_context
 from pathlib import Path
 from typing import Any, Literal
@@ -113,13 +113,22 @@ TRANSPORT_CONFIG = PROJECT_ROOT / "configs" / "geant4_transport.yaml"
 PILOT_CONFIG = PROJECT_ROOT / "configs" / "geant4_proton_pilot.yaml"
 
 GeometryVariant = Literal["ams", "extended"]
+IncidenceDistribution = Literal["fixed", "cos_flux"]
+INCIDENCE_DISTRIBUTIONS = ("fixed", "cos_flux")
+ENERGY_SPECTRUM_KINDS = ("power_law",)
+# Distinct constants that keep the energy and direction draws on random streams independent of each other and of
+# the entry-point stream np.random.default_rng(seed); ASCII "ENER" and "ANGL".
+_ENERGY_STREAM = 0x454E4552
+_DIRECTION_STREAM = 0x414E474C
 
 SEED_POLICY = (
     "per-event seeds = numpy SeedSequence([base_seed, round(energy_gev * 1000)])"
     ".spawn(n_events), first uint32 state word of each child shifted right by one"
     " bit (31-bit seeds fit Geant4's C long on Windows); the Geant4 engine"
     " (G4Random.setTheSeed) and the entry-point draw (numpy default_rng) are"
-    " both seeded from the event seed at the start of the event"
+    " both seeded from the event seed at the start of the event; the optional"
+    " energy and direction draws of a realistic regime use separate numpy"
+    " streams SeedSequence([event seed, constant]) that never touch the entry-point stream"
 )
 
 GEOMETRY_APPROXIMATIONS = (
@@ -254,6 +263,30 @@ class PilotConfig:
     store_fine_prefix_deposits: bool
     output_dir: Path
     component_tagging: bool = False
+    # Realistic regime (all optional; the defaults reproduce the original fixed-direction, fixed-energy batches).
+    incidence_distribution: IncidenceDistribution = "fixed"
+    theta_max_rad: float = 0.0
+    energy_spectrum_index: float | None = None
+    energy_spectrum_max_gev: float | None = None
+
+    def energy_band_gev(self, energy_gev: float) -> tuple[float, float] | None:
+        """Return the energy band ``[lo, hi)`` that the batch keyed by ``energy_gev`` samples.
+
+        ``None`` without an energy spectrum: the batch then has the single
+        fixed energy ``energy_gev``. With a spectrum the sorted ``energies_gev``
+        are the lower band edges, consecutive bands are ``[E_k, E_{k+1})`` and
+        the last band is ``[E_last, energy_spectrum_max_gev)``. ``energy_gev``
+        must be one of the edges.
+        """
+
+        if self.energy_spectrum_index is None or self.energy_spectrum_max_gev is None:
+            return None
+        edges = sorted(self.energies_gev)
+        for k, edge in enumerate(edges):
+            if isclose(edge, energy_gev, rel_tol=1e-12, abs_tol=0.0):
+                upper = edges[k + 1] if k + 1 < len(edges) else self.energy_spectrum_max_gev
+                return (edge, upper)
+        raise ValueError(f"{energy_gev:g} GeV is not a lower band edge of energies_gev {edges}")
 
 
 def load_pilot_config(config_path: str | Path = PILOT_CONFIG) -> PilotConfig:
@@ -272,8 +305,11 @@ def load_pilot_config(config_path: str | Path = PILOT_CONFIG) -> PilotConfig:
         "store_fine_prefix_deposits",
         "output_dir",
     }
-    if not isinstance(raw, dict) or set(raw) - {"component_tagging"} != expected:
-        raise PilotConfigError(f"pilot configuration keys must be {sorted(expected)} (plus optional component_tagging)")
+    optional = {"component_tagging", "energy_spectrum"}
+    if not isinstance(raw, dict) or set(raw) - optional != expected:
+        raise PilotConfigError(
+            f"pilot configuration keys must be {sorted(expected)} (plus optional {sorted(optional)})"
+        )
     if raw["schema_version"] != EXPECTED_PILOT_SCHEMA_VERSION:
         raise PilotConfigError("unsupported pilot schema_version")
 
@@ -300,11 +336,13 @@ def load_pilot_config(config_path: str | Path = PILOT_CONFIG) -> PilotConfig:
     energies = tuple(float(e) for e in raw["energies_gev"])
     if not energies or any(not isfinite(e) or e <= 0 for e in energies):
         raise PilotConfigError("energies_gev must be positive")
+    distribution, theta_rad, phi_rad, theta_max_rad = _incidence(raw["incidence"])
+    spectrum_index, spectrum_max = _energy_spectrum(raw.get("energy_spectrum"), energies)
     return PilotConfig(
         particle=str(raw["particle"]),
         energies_gev=energies,
-        theta_rad=float(raw["incidence"]["theta"]),
-        phi_rad=float(raw["incidence"]["phi"]),
+        theta_rad=theta_rad,
+        phi_rad=phi_rad,
         entry_spot=default_spot,
         gun_z_mm=float(raw["gun_z"]),
         physics_lists=lists,
@@ -313,7 +351,63 @@ def load_pilot_config(config_path: str | Path = PILOT_CONFIG) -> PilotConfig:
         store_fine_prefix_deposits=bool(raw["store_fine_prefix_deposits"]),
         output_dir=PROJECT_ROOT / str(raw["output_dir"]),
         component_tagging=bool(raw.get("component_tagging", False)),
+        incidence_distribution=distribution,
+        theta_max_rad=theta_max_rad,
+        energy_spectrum_index=spectrum_index,
+        energy_spectrum_max_gev=spectrum_max,
     )
+
+
+def _incidence(raw: Any) -> tuple[IncidenceDistribution, float, float, float]:
+    """Validate the ``incidence`` block; return (distribution, theta, phi, theta_max) in radians.
+
+    ``distribution: fixed`` (default) is the original single direction ``theta``/``phi``.
+    ``distribution: cos_flux`` is an isotropic flux through the front plane,
+    dN/dOmega proportional to cos(theta) up to ``theta_max_deg``; ``theta`` and
+    ``phi`` are not used then and, if present, must be 0.
+    """
+
+    if not isinstance(raw, dict):
+        raise PilotConfigError("incidence must be a mapping")
+    allowed = {"theta", "phi", "distribution", "theta_max_deg"}
+    if set(raw) - allowed:
+        raise PilotConfigError(f"incidence: unexpected keys {sorted(set(raw) - allowed)}")
+    distribution = raw.get("distribution", "fixed")
+    if distribution not in INCIDENCE_DISTRIBUTIONS:
+        raise PilotConfigError(f"incidence.distribution must be one of {INCIDENCE_DISTRIBUTIONS}, got {distribution!r}")
+    if distribution == "fixed":
+        if "theta_max_deg" in raw:
+            raise PilotConfigError("incidence.theta_max_deg is only valid with distribution: cos_flux")
+        return "fixed", float(raw["theta"]), float(raw["phi"]), 0.0
+    if "theta_max_deg" not in raw:
+        raise PilotConfigError("incidence.theta_max_deg is required for distribution: cos_flux")
+    theta_max_deg = float(raw["theta_max_deg"])
+    if not isfinite(theta_max_deg) or not 0.0 < theta_max_deg < 90.0:
+        raise PilotConfigError("incidence.theta_max_deg must satisfy 0 < theta_max_deg < 90")
+    if float(raw.get("theta", 0.0)) != 0.0 or float(raw.get("phi", 0.0)) != 0.0:
+        raise PilotConfigError("incidence.theta and incidence.phi are unused with cos_flux and must be 0 if present")
+    return "cos_flux", 0.0, 0.0, radians(theta_max_deg)
+
+
+def _energy_spectrum(raw: Any, energies: tuple[float, ...]) -> tuple[float | None, float | None]:
+    """Validate the optional ``energy_spectrum`` block; return (index, e_max_gev) or (None, None)."""
+
+    if raw is None:
+        return None, None
+    if not isinstance(raw, dict):
+        raise PilotConfigError("energy_spectrum must be a mapping")
+    if set(raw) != {"kind", "index", "e_max_gev"}:
+        raise PilotConfigError("energy_spectrum keys must be ['e_max_gev', 'index', 'kind']")
+    if raw["kind"] not in ENERGY_SPECTRUM_KINDS:
+        raise PilotConfigError(f"energy_spectrum.kind must be one of {ENERGY_SPECTRUM_KINDS}, got {raw['kind']!r}")
+    index, e_max = float(raw["index"]), float(raw["e_max_gev"])
+    if not isfinite(index) or index <= 0.0:
+        raise PilotConfigError("energy_spectrum.index must be positive")
+    if not isfinite(e_max) or e_max <= max(energies):
+        raise PilotConfigError("energy_spectrum.e_max_gev must exceed the largest energies_gev edge")
+    if len(set(energies)) != len(energies):
+        raise PilotConfigError("energies_gev must be distinct when energy_spectrum is given (they are band edges)")
+    return index, e_max
 
 
 # ----------------------------------------------------------------------
@@ -350,6 +444,58 @@ def entry_point_mm(seed: int, spot: EntrySpot) -> tuple[float, float]:
     )
 
 
+def primary_kinematics(
+    seed: int,
+    *,
+    energy_gev: float,
+    band_gev: tuple[float, float] | None,
+    spectral_index: float | None,
+    distribution: str,
+    theta_rad: float,
+    phi_rad: float,
+    theta_max_rad: float,
+) -> tuple[float, float, float]:
+    """Return the primary's (energy in GeV, polar angle, azimuth) for one event, drawn from its seed.
+
+    Fixed mode (``band_gev is None`` and ``distribution == "fixed"``) returns the
+    inputs unchanged and draws nothing, so the original batches are identical.
+    The draws use their own streams ``SeedSequence([seed, constant])``,
+    independent of ``entry_point_mm``'s ``default_rng(seed)``: entry points do not
+    change and energy and direction do not perturb each other.
+
+    * Energy (``band_gev = (a, b)``, ``spectral_index = gamma``): dN/dE
+      proportional to E^-gamma on [a, b), by inverse CDF,
+      E = (a^(1-g) + u (b^(1-g) - a^(1-g)))^(1/(1-g)); gamma = 1 is log-uniform.
+    * Direction (``cos_flux``): isotropic flux through a plane, dN/dOmega
+      proportional to cos(theta), theta <= ``theta_max_rad``. In cos^2(theta)
+      the density is uniform: cos^2(theta) = 1 - u (1 - cos^2(theta_max)); the
+      azimuth is uniform, phi = 2 pi v, in [0, 2 pi).
+    """
+
+    energy = energy_gev
+    if band_gev is not None:
+        if spectral_index is None:
+            raise ValueError("band_gev requires spectral_index")
+        low, high = band_gev
+        u = float(np.random.default_rng(np.random.SeedSequence([seed, _ENERGY_STREAM])).random())
+        if spectral_index == 1.0:
+            energy = low * (high / low) ** u
+        else:
+            exponent = 1.0 - spectral_index
+            energy = (low**exponent + u * (high**exponent - low**exponent)) ** (1.0 / exponent)
+        energy = min(max(energy, low), float(np.nextafter(high, 0.0)))
+    theta, phi = theta_rad, phi_rad
+    if distribution == "cos_flux":
+        rng = np.random.default_rng(np.random.SeedSequence([seed, _DIRECTION_STREAM]))
+        u, v = float(rng.random()), float(rng.random())
+        cos2_max = cos(theta_max_rad) ** 2
+        theta = min(acos(sqrt(1.0 - u * (1.0 - cos2_max))), theta_max_rad)
+        phi = 2.0 * pi * v
+    elif distribution != "fixed":
+        raise ValueError(f"unknown incidence distribution {distribution!r}")
+    return energy, theta, phi
+
+
 # ----------------------------------------------------------------------
 # One event's result
 # ----------------------------------------------------------------------
@@ -375,6 +521,10 @@ class EventResult:
     extension_deposit_grid_mev: np.ndarray | None
     extension_total_mev: float
     cpu_seconds: float
+    # Per-event primary kinematics; NaN when not recorded.
+    primary_energy_gev: float = float("nan")
+    primary_theta_rad: float = float("nan")
+    primary_phi_rad: float = float("nan")
     # name -> (fibre ids, fibre MeV, prefix voxel ids, prefix voxel MeV); None unless component tagging is on
     components: dict[str, tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]] | None = None
 
@@ -477,6 +627,9 @@ class ECALTransport:
         gun_z_mm: float,
         spot: EntrySpot,
         component_tagging: bool = False,
+        incidence_distribution: str = "fixed",
+        theta_max_rad: float = 0.0,
+        energy_spectrum_index: float | None = None,
     ) -> None:
         self.component_tagging = component_tagging
         self.datasets = configure_geant4_data()
@@ -503,6 +656,9 @@ class ECALTransport:
         self._results: list[EventResult] = []
         self._seeds: list[int] = []
         self._indices: list[int] = []
+        self._energy_gev = float("nan")
+        self._energy_band_gev: tuple[float, float] | None = None
+        self._kinematics = (float("nan"), float("nan"), float("nan"))
         self.material_summary: dict[str, Any] = {}
 
         self.run_manager = g4.G4RunManagerFactory.CreateRunManager(
@@ -523,7 +679,16 @@ class ECALTransport:
         self._keep += [detector, physics, parallel]
         self.run_manager.SetUserInitialization(physics)
         self.run_manager.SetUserInitialization(
-            self._actions(particle, theta_rad, phi_rad, gun_z_mm, spot)
+            self._actions(
+                particle,
+                theta_rad,
+                phi_rad,
+                gun_z_mm,
+                spot,
+                incidence_distribution,
+                theta_max_rad,
+                energy_spectrum_index,
+            )
         )
 
         ui = g4.G4UImanager.GetUIpointer()
@@ -856,10 +1021,11 @@ class ECALTransport:
 
     # --- actions --------------------------------------------------------
 
-    def _actions(self, particle, theta, phi, gun_z, spot):
+    def _actions(
+        self, particle, theta, phi, gun_z, spot, distribution="fixed", theta_max=0.0, spectral_index=None
+    ):
         g4 = self.g4
         app = self
-        direction = (sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta))
         hadronic = g4.G4ProcessType.fHadronic
 
         class Generator(g4.G4VUserPrimaryGeneratorAction):
@@ -869,7 +1035,6 @@ class ECALTransport:
                 self.gun.SetParticleDefinition(
                     g4.G4ParticleTable.GetParticleTable().FindParticle(particle)
                 )
-                self.gun.SetParticleMomentumDirection(g4.G4ThreeVector(*direction))
 
             @_loud
             def GeneratePrimaries(self, event):
@@ -877,6 +1042,25 @@ class ECALTransport:
                 seed = app._seeds[local]
                 g4.G4Random.setTheSeed(seed)
                 x, y = entry_point_mm(seed, spot)
+                # Fixed regime: the configured energy and direction, unchanged. Realistic regime: drawn from the
+                # event seed on streams independent of the entry-point stream (see primary_kinematics).
+                energy_gev, event_theta, event_phi = primary_kinematics(
+                    seed,
+                    energy_gev=app._energy_gev,
+                    band_gev=app._energy_band_gev,
+                    spectral_index=spectral_index,
+                    distribution=distribution,
+                    theta_rad=theta,
+                    phi_rad=phi,
+                    theta_max_rad=theta_max,
+                )
+                app._kinematics = (energy_gev, event_theta, event_phi)
+                direction = (
+                    sin(event_theta) * cos(event_phi),
+                    sin(event_theta) * sin(event_phi),
+                    cos(event_theta),
+                )
+                self.gun.SetParticleMomentumDirection(g4.G4ThreeVector(*direction))
                 # Place the gun upstream so the track crosses z = 0 at (x, y).
                 step = gun_z / direction[2]
                 self.gun.SetParticlePosition(
@@ -886,7 +1070,7 @@ class ECALTransport:
                         gun_z * g4.mm,
                     )
                 )
-                self.gun.SetParticleEnergy(app._energy_gev * g4.GeV)
+                self.gun.SetParticleEnergy(energy_gev * g4.GeV)
                 app._entry = (x, y)
                 app._primary_open = True
                 app._truth = dict(_NO_INTERACTION)
@@ -1097,6 +1281,9 @@ class ECALTransport:
                 extension_deposit_grid_mev=extension_grid,
                 extension_total_mev=extension_total,
                 cpu_seconds=time.perf_counter() - self._t0,
+                primary_energy_gev=self._kinematics[0],
+                primary_theta_rad=self._kinematics[1],
+                primary_phi_rad=self._kinematics[2],
                 components=components,
             )
         )
@@ -1104,13 +1291,22 @@ class ECALTransport:
     # --- running --------------------------------------------------------
 
     def run(
-        self, energy_gev: float, indices: list[int], seeds: list[int]
+        self,
+        energy_gev: float,
+        indices: list[int],
+        seeds: list[int],
+        band_gev: tuple[float, float] | None = None,
     ) -> list[EventResult]:
-        """Simulate one event per seed; ``indices`` label them in the batch."""
+        """Simulate one event per seed; ``indices`` label them in the batch.
+
+        ``energy_gev`` is the fixed primary energy, or the band's lower edge
+        (the batch key) when ``band_gev`` gives the power-law sampling band.
+        """
 
         if len(indices) != len(seeds):
             raise ValueError("indices and seeds must have the same length")
         self._energy_gev = float(energy_gev)
+        self._energy_band_gev = band_gev
         self._indices, self._seeds, self._results = list(indices), list(seeds), []
         if seeds:
             self.run_manager.BeamOn(len(seeds))
@@ -1130,7 +1326,7 @@ def _worker(
     global _WORKER
     if _WORKER is None:
         _WORKER = ECALTransport(**task["setup"])
-    results = _WORKER.run(task["energy_gev"], task["indices"], task["seeds"])
+    results = _WORKER.run(task["energy_gev"], task["indices"], task["seeds"], task.get("band_gev"))
     return results, _WORKER.material_summary, _versions(_WORKER)
 
 
@@ -1204,6 +1400,9 @@ def _assemble(
         "seed": np.array([r.seed for r in results], np.int64),
         "entry_x_mm": np.array([r.entry_x_mm for r in results]),
         "entry_y_mm": np.array([r.entry_y_mm for r in results]),
+        "primary_energy_gev": np.array([r.primary_energy_gev for r in results]),
+        "primary_theta_rad": np.array([r.primary_theta_rad for r in results]),
+        "primary_phi_rad": np.array([r.primary_phi_rad for r in results]),
         "cpu_seconds": np.array([r.cpu_seconds for r in results]),
         "readout_grid_mev": readout[:, :layers],
         "deposit_grid_mev": deposit,
@@ -1270,6 +1469,9 @@ def _setup(pilot: PilotConfig, spec: SampleSpec, geometry, transport) -> dict[st
         "gun_z_mm": pilot.gun_z_mm,
         "spot": spec.entry_spot,
         "component_tagging": pilot.component_tagging,
+        "incidence_distribution": pilot.incidence_distribution,
+        "theta_max_rad": pilot.theta_max_rad,
+        "energy_spectrum_index": pilot.energy_spectrum_index,
     }
 
 
@@ -1296,6 +1498,10 @@ def run_batch(
     geometry = load_geometry(geometry_config)
     transport = load_transport_config(transport_config)
     count = spec.events_per_energy if n_events is None else n_events
+    try:
+        band_gev = pilot.energy_band_gev(energy_gev)
+    except ValueError as error:
+        raise PilotConfigError(str(error)) from error
     batch_seeds = list(seeds) if seeds is not None else list(
         event_seeds(spec.base_seed, energy_gev, count)
     )
@@ -1307,6 +1513,7 @@ def run_batch(
         {
             "setup": setup,
             "energy_gev": energy_gev,
+            "band_gev": band_gev,
             "indices": chunk,
             "seeds": [batch_seeds[i] for i in chunk],
         }
@@ -1360,9 +1567,18 @@ def run_batch(
         "physics_list": spec.physics_list,
         "production_cut_mm": pilot.production_cut_mm,
         "particle": pilot.particle,
+        # Fixed regime: the primary energy and direction of every event. Distributed regime: ``energy_gev`` is the band's
+        # lower edge (the batch key) and theta/phi are 0; the per-event arrays primary_energy_gev, primary_theta_rad and
+        # primary_phi_rad in events.npz are authoritative.
         "energy_gev": energy_gev,
         "theta_rad": pilot.theta_rad,
         "phi_rad": pilot.phi_rad,
+        "incidence_distribution": pilot.incidence_distribution,
+        "theta_max_rad": pilot.theta_max_rad,
+        "energy_spectrum": None
+        if pilot.energy_spectrum_index is None
+        else {"kind": "power_law", "index": pilot.energy_spectrum_index, "e_max_gev": pilot.energy_spectrum_max_gev},
+        "energy_band_gev": None if band_gev is None else list(band_gev),
         "entry_spot_mm": asdict(spec.entry_spot),
         "gun_z_mm": pilot.gun_z_mm,
         "n_events": len(batch_seeds),
@@ -1599,21 +1815,25 @@ def to_ecal_events(
 
     key = {"readout": "readout_grid_mev", "deposit": "deposit_grid_mev"}[representation]
     meta = batch.metadata
+    arrays = batch.arrays
     version = f"{meta['geant4_version']}/{meta['physics_list']}/{representation}"
     events = []
     for i in range(len(batch)):
         grid = batch.arrays[key][i].astype(float)
+        energy_gev = float(arrays["primary_energy_gev"][i]) if "primary_energy_gev" in arrays else meta["energy_gev"]
+        theta_rad = float(arrays["primary_theta_rad"][i]) if "primary_theta_rad" in arrays else meta["theta_rad"]
+        phi_rad = float(arrays["primary_phi_rad"][i]) if "primary_phi_rad" in arrays else meta["phi_rad"]
         events.append(
             ECALEvent(
                 event_id=f"g4-{meta['sample']}-{meta['energy_gev']:g}GeV-{int(batch.arrays['event_index'][i]):06d}",
                 particle_type=meta["particle"],
-                primary_energy_mev=meta["energy_gev"] * 1000.0,
+                primary_energy_mev=energy_gev * 1000.0,
                 track=TrackState(
                     x0_mm=float(batch.arrays["entry_x_mm"][i]),
                     y0_mm=float(batch.arrays["entry_y_mm"][i]),
                     z0_mm=0.0,
-                    theta_rad=meta["theta_rad"],
-                    phi_rad=meta["phi_rad"],
+                    theta_rad=theta_rad,
+                    phi_rad=phi_rad,
                 ),
                 geometry=geometry,
                 cell_energies_mev=tuple(tuple(float(v) for v in row) for row in grid),

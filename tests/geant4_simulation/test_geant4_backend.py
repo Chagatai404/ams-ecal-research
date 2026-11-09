@@ -17,21 +17,24 @@ researcher set before the baseline production run (2026-09-29):
 import json
 import subprocess
 import sys
-from math import isnan
+from math import isnan, log, pi, radians
 from pathlib import Path
 
 import numpy as np
 import pytest
+from scipy import stats
 
 from ams_ecal.detector.geometry import load_geometry
 from ams_ecal.geant4_simulation.geant4_backend import (
     EntrySpot,
+    PilotConfigError,
     configure_geant4_data,
     entry_point_mm,
     event_seeds,
     geant4_available,
     load_batch,
     load_pilot_config,
+    primary_kinematics,
     to_ecal_events,
 )
 
@@ -82,6 +85,178 @@ def test_fixed_entry_control_shares_baseline_seeds_at_the_cell_centre() -> None:
         : fixed.events_per_energy
     ]
     assert {entry_point_mm(s, fixed.entry_spot) for s in seeds[:20]} == {(4.5, 4.5)}
+
+
+# --- realistic regime: configuration and per-event kinematics -----------
+
+REALISTIC_TEMPLATE = ROOT / "configs" / "geant4_realistic_regime_pilot_template.yaml"
+THETA_MAX_RAD = radians(25.0)
+
+
+def _kinematics(seed: int, **overrides):
+    arguments = {
+        "energy_gev": 50.0,
+        "band_gev": None,
+        "spectral_index": None,
+        "distribution": "fixed",
+        "theta_rad": 0.0,
+        "phi_rad": 0.0,
+        "theta_max_rad": 0.0,
+    }
+    arguments.update(overrides)
+    return primary_kinematics(seed, **arguments)
+
+
+def _write_config(tmp_path: Path, *, incidence: str, spectrum: str = "", energies: str = "[50.0, 100.0]") -> Path:
+    text = f"""schema_version: 2
+particle: e-
+energies_gev: {energies}
+{spectrum}
+incidence:
+{incidence}
+entry_spot: {{x_min: 0.0, x_max: 9.0, y_min: 0.0, y_max: 9.0}}
+gun_z: -1.0
+physics: {{lists: [FTFP_BERT], production_cut: 0.7}}
+samples:
+  pilot: {{geometry: ams, physics_list: FTFP_BERT, events_per_energy: 2, base_seed: 1}}
+store_fine_prefix_deposits: false
+output_dir: data/never_written
+"""
+    path = tmp_path / "config.yaml"
+    path.write_text(text, encoding="utf-8")
+    return path
+
+
+@pytest.mark.parametrize("path", sorted((ROOT / "configs").glob("geant4_*.yaml")), ids=lambda p: p.name)
+def test_every_existing_configuration_loads_as_the_fixed_regime(path) -> None:
+    if path.name == "geant4_transport.yaml":
+        pytest.skip("transport settings, not a pilot configuration")
+    if path == REALISTIC_TEMPLATE:
+        pytest.skip("the realistic-regime template is tested separately")
+    pilot = load_pilot_config(path)
+    assert pilot.incidence_distribution == "fixed"
+    assert pilot.energy_spectrum_index is None
+    assert pilot.energy_spectrum_max_gev is None
+    assert pilot.theta_max_rad == 0.0
+    assert all(pilot.energy_band_gev(e) is None for e in pilot.energies_gev)
+
+
+def test_fixed_mode_returns_the_inputs_without_drawing() -> None:
+    for seed in (0, 7, 123456, 2**31 - 1):
+        assert _kinematics(seed, energy_gev=37.5, theta_rad=0.2, phi_rad=1.1) == (37.5, 0.2, 1.1)
+
+
+def test_realistic_draws_leave_the_entry_points_unchanged() -> None:
+    spot = EntrySpot(-324.0, 324.0, -324.0, 324.0)
+    for seed in (1, 99, 20276001, 2**31 - 1):
+        rng = np.random.default_rng(seed)
+        expected = (float(rng.uniform(-324.0, 324.0)), float(rng.uniform(-324.0, 324.0)))
+        before = entry_point_mm(seed, spot)
+        _kinematics(
+            seed,
+            band_gev=(50.0, 100.0),
+            spectral_index=3.18,
+            distribution="cos_flux",
+            theta_max_rad=THETA_MAX_RAD,
+        )
+        assert entry_point_mm(seed, spot) == before == expected
+
+
+def test_cos_flux_stays_inside_the_cone_and_is_uniform_in_cos_squared() -> None:
+    seeds = event_seeds(20276001, 50.0, 4000)
+    draws = [_kinematics(s, distribution="cos_flux", theta_max_rad=THETA_MAX_RAD) for s in seeds]
+    theta = np.array([d[1] for d in draws])
+    phi = np.array([d[2] for d in draws])
+    assert np.all((theta >= 0.0) & (theta <= THETA_MAX_RAD))
+    assert np.all((phi >= 0.0) & (phi < 2.0 * pi))
+    cos2_max = np.cos(THETA_MAX_RAD) ** 2
+    cdf = lambda c2: (c2 - cos2_max) / (1.0 - cos2_max)
+    assert stats.kstest(np.cos(theta) ** 2, cdf).pvalue > 0.001
+    assert stats.kstest(phi, lambda a: a / (2.0 * pi)).pvalue > 0.001
+    assert draws == [_kinematics(s, distribution="cos_flux", theta_max_rad=THETA_MAX_RAD) for s in seeds]
+    # Energy is untouched by the direction draw.
+    assert all(d[0] == 50.0 for d in draws)
+
+
+def test_power_law_energies_follow_the_analytic_distribution() -> None:
+    low, high = 100.0, 200.0
+    seeds = event_seeds(20276001, low, 4000)
+    for gamma in (3.18, 1.0, 0.5):
+        draws = [_kinematics(s, energy_gev=low, band_gev=(low, high), spectral_index=gamma) for s in seeds]
+        energy = np.array([d[0] for d in draws])
+        assert np.all((energy >= low) & (energy < high))
+        assert [d[0] for d in draws] == [
+            _kinematics(s, energy_gev=low, band_gev=(low, high), spectral_index=gamma)[0] for s in seeds
+        ]
+        if gamma == 1.0:
+            cdf = lambda e: np.log(e / low) / log(high / low)
+        else:
+            p = 1.0 - gamma
+            cdf = lambda e, p=p: (e**p - low**p) / (high**p - low**p)
+        assert stats.kstest(energy, cdf).pvalue > 0.001, gamma
+    # gamma = 1 is log-uniform: E[ln E] is the midpoint of ln a and ln b.
+    log_uniform = np.array([_kinematics(s, energy_gev=low, band_gev=(low, high), spectral_index=1.0)[0] for s in seeds])
+    assert np.log(log_uniform).mean() == pytest.approx(0.5 * (log(low) + log(high)), abs=0.01)
+
+
+def test_energy_band_gev_bands_are_consecutive_and_close_at_the_maximum() -> None:
+    pilot = load_pilot_config(REALISTIC_TEMPLATE)
+    bands = [pilot.energy_band_gev(e) for e in pilot.energies_gev]
+    assert bands == [(50.0, 100.0), (100.0, 200.0), (200.0, 400.0), (400.0, 800.0), (800.0, 2000.0)]
+    with pytest.raises(ValueError):
+        pilot.energy_band_gev(75.0)
+
+
+def test_the_realistic_template_loads() -> None:
+    pilot = load_pilot_config(REALISTIC_TEMPLATE)
+    assert pilot.particle == "e-"
+    assert pilot.incidence_distribution == "cos_flux"
+    assert pilot.theta_max_rad == pytest.approx(radians(25.0))
+    # E^-1 generation (researcher decision 2026-11-09, option A); physical spectra are analysis weights.
+    assert (pilot.energy_spectrum_index, pilot.energy_spectrum_max_gev) == (1.0, 2000.0)
+    assert pilot.samples["pilot"].entry_spot == EntrySpot(-324.0, 324.0, -324.0, 324.0)
+    assert pilot.samples["pilot"].events_per_energy == 10
+
+
+@pytest.mark.parametrize(
+    ("incidence", "spectrum", "message"),
+    [
+        ("  distribution: sideways\n  theta: 0.0\n  phi: 0.0", "", "distribution"),
+        ("  distribution: cos_flux", "", "theta_max_deg"),
+        ("  distribution: cos_flux\n  theta_max_deg: 0.0", "", "theta_max_deg"),
+        ("  distribution: cos_flux\n  theta_max_deg: 90.0", "", "theta_max_deg"),
+        ("  distribution: cos_flux\n  theta_max_deg: 25.0\n  theta: 0.3", "", "unused"),
+        ("  theta: 0.0\n  phi: 0.0\n  theta_max_deg: 25.0", "", "cos_flux"),
+        (
+            "  theta: 0.0\n  phi: 0.0",
+            "energy_spectrum: {kind: power_law, index: 3.0, e_max_gev: 100.0}",
+            "e_max_gev",
+        ),
+        (
+            "  theta: 0.0\n  phi: 0.0",
+            "energy_spectrum: {kind: broken_power_law, index: 3.0, e_max_gev: 500.0}",
+            "kind",
+        ),
+        (
+            "  theta: 0.0\n  phi: 0.0",
+            "energy_spectrum: {kind: power_law, index: -1.0, e_max_gev: 500.0}",
+            "index",
+        ),
+    ],
+)
+def test_invalid_realistic_regime_configurations_are_rejected(tmp_path, incidence, spectrum, message) -> None:
+    with pytest.raises(PilotConfigError, match=message):
+        load_pilot_config(_write_config(tmp_path, incidence=incidence, spectrum=spectrum))
+
+
+def test_a_valid_realistic_configuration_in_tmp_loads(tmp_path) -> None:
+    path = _write_config(
+        tmp_path,
+        incidence="  distribution: cos_flux\n  theta_max_deg: 25.0",
+        spectrum="energy_spectrum: {kind: power_law, index: 3.0, e_max_gev: 500.0}",
+    )
+    pilot = load_pilot_config(path)
+    assert pilot.energy_band_gev(100.0) == (100.0, 500.0)
 
 
 # --- real transport -----------------------------------------------------
