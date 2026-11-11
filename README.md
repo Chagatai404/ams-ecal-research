@@ -353,7 +353,7 @@ Next, from `OPEN_DECISIONS.md` section 0:
    (longitudinal profile, shower-start proxy), and register a new P1 design.
 3. **Saturation follow-up.** A two-parameter law with an onset, validated on the
    realistic electrons at θ ≤ 12°.
-4. **Housekeeping.** Sync `research/graph/` (it stops at EXP-009) and rerun the
+4. **Housekeeping.** Rerun the
    full test suite.
 5. **Amendment and freeze (DECIDE-1).** Replace the single AUC-gain rule with five
    endpoint families, each with one named primary: P1 physics difference, P2

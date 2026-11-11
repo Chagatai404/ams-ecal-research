@@ -50,9 +50,9 @@ future QML hypotheses.
 `graph/`
 
 : Machine-readable research records (RQ-, H-, EXP-, DEC-) written by the Research OS.
-It lags the prose records: it stops at DEC-013 and EXP-009, while `COMPLETED_WORK.md`
-cites DEC-014 and EXP-010 to EXP-014. Treat the two prose files as current and the
-graph as needing a sync (listed in `OPEN_DECISIONS.md`).
+Synced on 2026-11-11 to DEC-014 and EXP-019. EXP-010 to EXP-019 and DEC-014 were
+written from the prose records; EXP-013 and EXP-014 are planned and not authorised.
+The two prose files remain the full account; the graph records point to them.
 
 `sealed/`
 
