@@ -133,7 +133,30 @@ Research OS record `realistic-regime-multiscale` holds the full plans, decisions
     - The full fiducial sample is trivially separable (AUC 0.9996; 67% of M missing).
     - The θ ≤ 12° stratum is not testable (38 and 42 events).
   - **Reading.** The EXP-015 D1/D2 difference at equal cells and energy is, in this subset, probably already carried by width, core fraction and the longitudinal profile. This is not a demonstration of "no information": the sample is small and dominated by TeV events, the baseline is near ceiling (AUC 0.994), and the interval excludes only gains larger than about 0.0065 in log-loss (a gain is minus the change, so the lower limit -0.0065 bounds it). A smaller gain is still possible.
-  - **Where.** Code `src/ams_ecal/benchmarks/incremental_multiscale_classifier.py`; results `results/realistic_regime/exp018_incremental_classifier/`. The registration ambiguities were resolved to the most literal reading; they are listed in the result JSON.
+  - **Where.** Code `src/ams_ecal/benchmarks/incremental_multiscale_classifier.py`; results `results/realistic_regime/exp018_incremental_classifier/`.
+- **Powered realistic production (2026-11-09/10, DONE).** Protons: 6,100 at 0.8-8 TeV. Electrons: 1,100 at 0.4-2 TeV. Same regime as the EXP-015 pilot; details in `OPEN_DECISIONS.md` section 0.
+- **EXP-019 powered incremental classifier** (registration 4efe4d15d845e6aa, approved 2026-11-11; EXPLORATORY).
+  - **Design.** As EXP-018, but on fresh powered events only (researcher's choice), with the EXP-018 standardisation frozen as constants. The smallest gain of interest is delta_min = 0.010 in log-loss. New seed 20261111.
+  - **Primary sample.** Fresh hard subset of 448 electrons and 640 interacting protons. The median matched proton-to-electron primary-energy ratio is 3.15.
+  - **Primary: "no gain as large as delta_min".** Change in log-loss (C + M minus C) +0.0012, 95% interval -0.0048 to +0.0072, half-width 0.006. Baseline log-loss 0.052, AUC 0.998. So any gain is below 0.0048 in log-loss, about 9% of the baseline.
+  - **Controls passed.** Permuted M: +0.0023 (-0.0025 to +0.0071). Electron vs electron: within 1.34 null standard errors.
+  - **Descriptive views.**
+    - Ablations: C + D0 gives +0.0012 and C + D1/D2 gives +0.0004; both intervals are inside ±0.010.
+    - Logistic regression: -0.0031 (-0.0079 to +0.0017).
+    - Protons passing at 90% electron efficiency: about 3 of 640 for both A and B.
+    - The θ ≤ 12° stratum is not testable (83 electrons).
+  - **Pooled secondary (pilot + fresh, 639 / 935): not to be read.** Its electron-vs-electron null failed: maximum deviation 3.42 null SE against a limit of 3. Its numbers (+0.0009, -0.0057 to +0.0075; θ ≤ 12° -0.0006, -0.0203 to +0.0191) are reported but not interpreted.
+  - **Response sensitivities (descriptive).** Poisson photoelectrons re-select the hard subset and shrink it.
+    - 10 p.e. per MIP: 179 / 364 events, -0.0037 (-0.0138 to +0.0064), inconclusive.
+    - 5 p.e. per MIP: 127 / 284 events, -0.0052 (-0.0207 to +0.0102), inconclusive.
+    - The point estimates lean toward M helping, but the intervals are wide.
+  - **Fibre saturation (R3), run under amendment 1** (hash 08f86018f9ec1a6a, researcher: "Amend and rerun R3"; written after the other EXP-019 results were known; descriptive only).
+    - **Why amended.** The first run failed the fibre-sum gate on a 0.0031 MeV difference against a 0.001 MeV absolute tolerance chosen in the code. The amendment reads "to float precision" as |d| <= 1e-3 MeV + 1e-5 |stored|.
+    - **Gate under the amendment: passes.** Largest relative difference 3.7e-7, which is float32 rounding, so the fibre-to-cell mapping is exact.
+    - **R3 with e_s = 260 MeV:** 448 / 656 events, -0.0046 (-0.0141 to +0.0049), inconclusive.
+    - **Pattern, descriptive only.** All three response variants have negative point estimates (-0.0037, -0.0052, -0.0046), while the scintillator-level primary is +0.0012. Every one of their intervals contains 0 and reaches below -delta_min, so this is not evidence of a gain under detector response; it is a question for a test designed for it.
+  - **Reading.** In this simulated hard subset, readout D0/D1/D2 add no information beyond the 24 conventional variables at the scale of 0.005 in log-loss. This bounds the estimand; it does not show that the features carry no information, and it does not cover detector response, AMS data or particle type separated from energy.
+  - **Where.** Code `src/ams_ecal/benchmarks/powered_incremental_classifier.py`; results `results/realistic_regime/exp019_powered_incremental_classifier/` (with `exp019_fig1_intervals.png`). The registration ambiguities were resolved to the most literal reading; they are listed in the result JSON.
 
 ## 5. Registered tests
 
@@ -157,6 +180,8 @@ Binding registrations were written before the numbers they govern. Their standal
 | 2026-11-09 EXP-016 3D controls from real showers | one window W* by per-event fitted occupancy saturation (A, D_f free) and 8 grid offsets; C0 machinery, C1 ordering, C2 same-class cross-energy matched null, C3 planted local disruption power at phi* = 0.2 (set by the researcher); verdicts fixed in advance | "estimator usable, matching insufficient for P1" (see 4.7) | 55a9e9489a51580e |
 | 2026-11-09 EXP-016 amendment 1 (after rung 0, before any C0-C3 statistic) | partial boxes are lateral only (the literal rule excluded every event because the coarsest box spans the full mesh depth); "C2 not testable" reporting note | applied in rung 1 | 795c2d71add4c1b0 |
 | 2026-11-09 EXP-018 incremental classifier on the realistic pilot | hard subset from the two matching keys only (>= 572 cells, common support 0.25 sd); HistGradientBoosting C (24) vs C + M (18), 5 x 20 cross-fit, class-balanced log-loss, Nadeau-Bengio 95% interval; "addition" if the upper limit < 0, "no addition detected" if the interval contains 0; permuted-M negative control and electron-vs-electron null must pass; "not testable" below 100 per class | "no addition detected" (+0.0065, -0.0065 to +0.0195); controls pass; theta <= 12 deg not testable (see 4.7) | 15f2e58a0b3d34d3 |
+| 2026-11-11 EXP-019 powered incremental classifier | as EXP-018 on fresh powered events (primary; pooled secondary), EXP-018 standardisation frozen, delta_min = 0.010 with four outcomes (adds / no gain as large as delta_min / inconclusive / worse), same controls, photoelectron and saturation sensitivities with re-selected hard subsets | primary "no gain as large as delta_min" (+0.0012, -0.0048 to +0.0072), controls pass; pooled not readable (same-class null failed); R1/R2 inconclusive; R3 inconclusive after amendment 1 | 4efe4d15d845e6aa |
+| 2026-11-11 EXP-019 amendment 1 (after the other results) | fibre-sum gate read as \|d\| <= 1e-3 MeV + 1e-5 \|stored\| (float32), R3 otherwise unchanged and descriptive | gate passes (max relative 3.7e-7); R3 -0.0046 (-0.0141 to +0.0049), inconclusive | 08f86018f9ec1a6a |
 
 EXP-015 and EXP-017 were approved plans with gates and figures fixed before data, recorded in the Research OS record (no separate registration text). The EXP-015 pooled matching is post hoc and labelled so.
 

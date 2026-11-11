@@ -33,8 +33,17 @@ _Design and evidence records behind each item are in the Obsidian vault, `01 Pro
    - **Files.** Configs `configs/geant4_realistic_regime_powered_{proton,electron}.yaml`. Resumable drivers `configs/run_realistic_regime_powered.sh` (all chunks) and `configs/run_realistic_regime_powered_overnight.sh`; both skip finished chunks. Logs in `data/geant4_realistic_regime_powered_logs/` (`driver.log` lists chunk starts and ends).
    - **Still to decide (in the step-2 registration):** whether the powered test may pool the pilot events EXP-018 already looked at, or must use fresh events only. Fresh-only gives about 1.5-3x the current size instead of about 2.5-4x.
    - Also feeds EXP-013 sizing.
-2. **DECIDE: a powered repeat of the incremental-classifier test.** DRAFTED 2026-11-11 as EXP-019, not binding and not hashed: `~/.research-os-backups/registrations/DRAFT_2026-11-11_exp019_powered_incremental_classifier.txt`.
-   - **Two choices are the researcher's.** DECIDE-A is the primary sample: fresh powered events only (agent's advice) or pilot + powered pooled. DECIDE-B is the smallest gain of interest; the agent proposes 0.010 in log-loss.
+2. **DONE 2026-11-11: powered repeat of the incremental-classifier test (EXP-019, registration 4efe4d15d845e6aa, approved "Approve and run").**
+   - **Primary (fresh, 448 / 640): "no gain as large as delta_min".** Change in log-loss +0.0012, interval -0.0048 to +0.0072; controls pass.
+   - **Pooled secondary: not readable** (the same-class null failed).
+   - **Photoelectron sensitivities:** inconclusive.
+   - **Saturation:** run after amendment 1 (hash 08f86018f9ec1a6a, a float32-relative gate tolerance). The gate passes and R3 is inconclusive: -0.0046, -0.0141 to +0.0049.
+   - **Open question for a future registration.** All three response variants lean negative (toward M helping), while the scintillator-level primary does not. Testing whether multiscale features matter more under realistic readout noise would need a design powered for it; the photoelectron hard subsets shrink to 127-179 electrons.
+   - Details in `COMPLETED_WORK.md` 4.7.
+
+   The draft record of this step: `~/.research-os-backups/registrations/DRAFT_2026-11-11_exp019_powered_incremental_classifier.txt`.
+   - **Both choices made 2026-11-11 by the researcher.** DECIDE-A: fresh powered events only is primary, with pilot + powered pooled as a secondary. DECIDE-B: smallest gain of interest 0.010 in log-loss.
+   - **Still needed:** approval of the full text before it is hashed and run.
    - **Counted before drafting**, from the matching keys only, with the EXP-018 standardisation frozen:
 
      | Sample | Electrons | Protons | θ ≤ 12° (e / p) | Projected half-width |

@@ -1,0 +1,4 @@
+primary: no gain as large as delta_min {'mean': 0.0011806538450925429, 's2': 3.55112817040721e-05, 'ratio_n_test_over_n_train': 0.25, 'variance_of_mean': 9.232933243058747e-06, 'standard_error': 0.0030385742122019574, 'degrees_of_freedom': 99, 't_quantile': 1.984216951586417, 'lower': -0.004848536615411923, 'upper': 0.0072098443055970095, 'half_width': 0.006029190460504466}
+R1_pe10 {'outcome': 'inconclusive at delta_min'}
+R2_pe5 {'outcome': 'inconclusive at delta_min'}
+overall: no gain as large as delta_min | total s 2004.9
