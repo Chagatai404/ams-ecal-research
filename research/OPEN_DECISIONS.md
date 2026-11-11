@@ -62,6 +62,36 @@ _Design and evidence records behind each item are in the Obsidian vault, `01 Pro
    - **Nothing else computed.** No feature and no classifier has been run on the powered events.
 
    The original plan for this step: A new registration on the step-1 data, fixing the sample size so that a stated minimum log-loss gain is detectable. Add the θ ≤ 12° stratum as a testable secondary, and the photoelectron and saturation response as sensitivities. Considering a matched-energy design to separate particle type from primary energy.
+2b. **DECIDE (scoped 2026-11-11): a benchmark that is not at the ceiling.** On the matched EXP-019 subset the conventional variables reach AUC 0.998, with about 3 of 640 protons passing at 90% electron efficiency, so classifier comparisons there measure noise. The researcher asked for "the fastest way to find a lead for making a machine learning comparison benchmark possible" and to scope the electron-like proton tail.
+   - **What the data show (exploratory, very few events).** Within each energy band, protons at least as bright as the dimmest 1% of same-band electrons (visible energy / primary energy) are 0.25-0.6% of interacting protons:
+     - counts: 8 of 1,366 at 0.8-2 TeV, and 4 of 1,380 at 2-4 TeV (against the 0.8-2 TeV electrons);
+     - almost all of them have at least 572 cells, so they are eligible for the multiscale features;
+     - they interact early (median 0.6-1.1 X0, against about 7 for the bulk) and are π0-rich (π0 energy fraction 0.4-0.7, against 0.15).
+   - **Literature (six scouts, verified where marked).**
+     - **AMS measures its rejection on flight data, verified.** It combines the ECAL estimator (16 variables) with E/p > 0.7 (Phys. Rep. 894 Sec. 1.7.3, p.21; Fig. 29, 1.03 billion protons). The rejection exceeds 10^4 at 90% efficiency, measured with a TRD-selected proton sample (Kounine 2017 Sec. 5, Fig. 17). Simulation is used for calibration and systematics.
+     - **AMS-MC deep learning hits the same ceiling, verified.** Hashmani et al. 2024 (MLST 5 045008) used about 5 million AMS-MC protons at 200 GeV-2 TeV (Table 1). Their best model rejects every test proton above 350 GeV at 90% efficiency (Fig. 13).
+     - **Physics features helped when data were scarce, verified.** On flight data at 50-70 GeV (about 30k electrons), adding physics features to a CvT improved rejection 2.4x (Fig. 14). With ample data above 1 TeV it made no difference (Sec. 6).
+     - **Other experiments (scout reports, not verified).**
+       - CALET, DAMPE and Fermi-LAT estimate proton contamination with MC templates normalised to flight data.
+       - CALET above 4.8 TeV uses weighted MC (2e5-1e6 protons per candidate).
+       - The hadronic-model systematic is quoted as below 10% by DAMPE (QGSP vs FTFP) and 0.2-0.3% by CALET (Geant4 vs EPICS).
+     - **Geant4 tooling (scout reports, not verified).** Built-in occurrence biasing is documented for neutral particles, and leading-particle biasing alters shower multiplicity, so neither suits charged protons. Ending an event from the stepping action after the first interaction is used in Geant4 examples (TestEm14, Hadr03).
+     - **Rare-event sampling.** Keep-and-sample stratification is unbiased with weights 1/p_keep. Classifiers should be trained on unweighted events and scored with weights.
+   - **Two leads (the agent's proposal).**
+     - **(L1, fastest, existing data) a registered sample-efficiency test (P5 style).** Learning curves at 25-300 training events per class on the fresh EXP-019 events:
+       - conventional variables against conventional + multiscale, plus a raw-image CNN;
+       - log-loss, plus parameter count and training/inference time as the compute-efficiency secondary.
+
+       Motivation: Hashmani's data-scarce gain. Limits: these events are already used in EXP-019, and the sizes are capped at about 360 per class.
+     - **(L2, the real hard set) two-stage proton-tail generation at 0.8-2 TeV.**
+       - Transport each proton to its first inelastic interaction.
+       - Fully simulate every proton passing an early, π0-rich filter, plus a fixed random fraction of the rest, weighted 1/p_keep.
+
+       The first step is a pilot measuring the filter's tail efficiency at TeV. An estimated 1.5-2e5 protons give a few hundred tail events overnight (an estimate from 12 tail events). It also needs:
+       - a backend change with tests;
+       - an FTFP_BERT vs QGSP_BERT comparison as the model systematic.
+
+       The result is a relative classifier comparison on a simulated hard set, never an AMS rejection number.
 3. **DECIDE: P1 redesign.** EXP-016 C2 showed that matching on occupancy and deposit leaves a dependence on primary energy. Add observable covariates (longitudinal profile, shower-start proxy) and register a new P1 design. The 3D route is usable only at 27-160 mm.
 4. **TODO: saturation follow-up.** Fit a two-parameter law with an onset, validate it on the EXP-015 electrons at 800-2000 GeV with theta <= 12 deg, then apply it as a sensitivity to the TeV bands.
 5. **Housekeeping.**
@@ -81,6 +111,71 @@ Researcher decisions of 2026-11-09 (answers to three questions): "fix the simula
 - Rungs 0 and 1 of EXP-015 and EXP-016 ran on 2026-11-09 (planned for Tuesday); EXP-017 ran the same day.
 - EXP-018 (incremental classifier): the researcher's go was "Yes to both" (presentation material, then the incremental-classifier test). It was registered before any model was fitted (hash 15f2e58a0b3d34d3, `~/.research-os-backups/registrations/2026-11-09_exp018_incremental_classifier_realistic_pilot.txt`) and run the same evening. Result: "no addition detected", EXPLORATORY.
 - GAPS still open (not found in what was searched): AMS zero-suppression threshold, cross-talk, numerical saturation constants (derived instead, EXP-017), incidence-angle distribution inside the acceptance, material below the ECAL. Vagelli, Crispoltoni and Crespo theses and AMS PRL 113, 221102 are now in the library.
+
+## 0b. Blockers met so far and realistic ways through them (written 2026-11-12 for the group presentation)
+
+Researcher, 2026-11-12: note "every blocker we faced ... and how we can realistically solve this"; "don't try to invent a solution we don't have evidence for. We can use this presentation to ask the questions we need to ask"; the researcher now works in an AMS group and may have access to the collaboration's simulation and data. Each entry gives: what happened · evidence · what was done · realistic path (only where there is evidence) or the question for the group · who acts.
+
+**New finding, 2026-11-12: the readout D_q mixes the two ECAL views.**
+- **What.** Superlayers alternate x-fibres and y-fibres. In the 18 x 72 readout image, column k is an x position in x-view rows and a y position in y-view rows. Readout boxes 3 or more rows tall, and every box after the random layer offsets, sum cells of both views. Every registered readout window contains such boxes.
+- **Evidence.** In the realistic regime the energy-weighted shower centres of the two views differ by a median of 18 cells (90th percentile 41-42; above 3 cells in 90-92% of events), the same for electrons and protons, pilot and powered. The mixed image therefore usually holds two separate shower strips whose distance is set by the entry point, not by shower physics.
+- **Consequences.**
+  - The readout D_q results EXP-015, EXP-018 and EXP-019 are computed on this mixed image.
+  - Both classes have the same entry distribution, but how the two view strips merge in a box depends on shower width, which differs between classes. So the mixing is NOT shown to be neutral, and the readout D_q class comparison is unverified until redone per view or in 3D (independent physics review, 2026-11-12).
+  - The D_q values are partly a geometry measurement. A swap test (re-pairing each event's y view with another offset) can quantify this without new data.
+  - The ideal-regime work used central normal-incidence beams, where the two views line up.
+  - The 3D voxel estimator (EXP-016) uses true 3D positions and is not affected.
+- **Done.** Found while preparing the presentation; recorded; not yet corrected or re-analysed.
+- **Question for the group.** How does AMS treat the x and y views in shower-shape variables, and is a per-view or 3D estimator the accepted practice?
+- **Who.** Researcher with the group; any re-analysis needs a new registration.
+
+**Physics and simulation**
+1. **The ideal regime was too easy.**
+   - Evidence: normal incidence and fixed energies gave AUC 0.9999; the registered 0.01 AUC-gain rule could never pass (largest possible gain at most 1e-4).
+   - Done: moved to the realistic regime and redesigned the controls.
+   - Path: settled for this question.
+2. **3D estimator eligibility.**
+   - Evidence: the original controls needed 23,721 occupied voxels; no development event qualified (S4, EXP-010). EXP-016 controls built from real showers make the estimator usable only at 27-160 mm.
+   - Path: settled at that range. Finer scales would need new evidence.
+3. **The energy confound.**
+   - Evidence: matching on visible energy forces protons to about 3-4.4x the electron primary energy (EXP-015, EXP-019). Electrons put about 5.5% of their primary energy into scintillator, interacting protons about 0.8%. At equal primary energy only 0.25-0.6% of interacting protons look electron-like at 0.8-4 TeV (12 events; exploratory).
+   - Question for the group: how is the electron-like proton population studied in AMS (flight data with TRD and E/p, official MC, or both)?
+4. **Hadronic modelling of that tail is unvalidated at TeV.**
+   - Evidence: no beam-test validation of the electron-like proton rate at TeV was found (scouts 2026-11-11). DAMPE and CALET quote model differences of under 10% and 0.2-0.3% (unverified).
+   - Question for the group: which hadronic models and validations does the AMS MC use for this tail?
+5. **AMS-internal detector parameters were not found in the literature.**
+   - Missing: zero-suppression threshold, cross-talk, the saturation parametrisation, light attenuation along fibres (Kounine 2017 gives 5-8%, not modelled), the angular distribution inside the acceptance, and material above and below the ECAL (TRD, TOF, upper tracker).
+   - Done: an effective saturation law derived from a published figure (EXP-017); photoelectron smearing at the published 10 p.e. per MIP (Kounine p.110).
+   - Question for the group: access to these values, or to the official simulation that contains them.
+6. **The deposit-to-fibre response (R-A) cannot meet 3% closure for protons.**
+   - Evidence: the noise floor is 2.7-4.4%; 8 registered versions closed without success (EXP-012).
+   - Done: unsplit tables kept with a disclosed error.
+   - Path: settled unless the group's simulation provides the fibre-level response directly.
+7. **The fast simulation (FastMC) does not match Geant4.**
+   - Evidence: cell occupancy is the main disagreement (AUC 1.00, 2026-10-05).
+   - Done: paused under DECIDE-3.
+   - Question: is a fast simulation needed at all if the official MC is available?
+
+**Statistics and design**
+8. **Planned matched comparisons had too few pairs.** EXP-015 per-band matching gave 2-40 pairs, so the pooled matching was chosen post hoc and labelled so.
+9. **The classifier ceiling (the main blocker for a benchmark).**
+   - Evidence: on the matched subset the conventional variables reach AUC 0.998, with about 3 of 640 protons passing at 90% electron efficiency, so comparisons measure noise.
+   - The published AMS-MC deep-learning study shares this limit: Hashmani et al. 2024 report that their CvT models reject all available protons above 350 GeV at 90% efficiency (Fig. 13), with about 5 million MC protons (Table 1).
+   - Path with evidence: AMS measures rejection on flight data with a TRD-selected proton sample (Kounine 2017 Sec. 5; Phys. Rep. 894 Sec. 1.7.3), and physics features helped a CvT when data were scarce (Hashmani Fig. 14).
+   - Question for the group: what evaluation sample would they accept for a classifier comparison?
+10. **Sensitivity strata and secondaries were underpowered or not readable.**
+    - θ ≤ 12° had 83 electrons (needs 100).
+    - The pooled EXP-019 secondary failed its same-class null.
+    - The photoelectron re-selection halves the matched subset.
+    - The three response checks used the same events, so they are not independent hints.
+    - Path: larger samples; to be decided after the group's input on data.
+11. **The registered efficiency endpoint P5 is out of date.** It targets 100 GeV and 1,000-3,000 events per class, which the realistic regime cannot supply. It needs re-specifying once the data source is known.
+
+**Compute and operations**
+12. **Compute cost.**
+    - Evidence: 0.8-2 TeV electrons cost about 300 CPU-s each; 1,100 electrons and 6,100 protons took one night on 14 workers.
+    - Interruptions: a terminal reset killed one chunk; closing the lid paused the run for 1 h 40 min. Runs are now launched as detached processes.
+    - Question: access to group computing or to existing MC samples.
 
 ## 1. Decisions waiting for the researcher
 

@@ -156,8 +156,13 @@ Research OS record `realistic-regime-multiscale` holds the full plans, decisions
     - **Why amended.** The first run failed the fibre-sum gate on a 0.0031 MeV difference against a 0.001 MeV absolute tolerance chosen in the code. The amendment reads "to float precision" as |d| <= 1e-3 MeV + 1e-5 |stored|.
     - **Gate under the amendment: passes.** Largest relative difference 3.7e-7, which is float32 rounding, so the fibre-to-cell mapping is exact.
     - **R3 with e_s = 260 MeV:** 448 / 656 events, -0.0046 (-0.0141 to +0.0049), inconclusive.
-    - **Pattern, descriptive only.** All three response variants have negative point estimates (-0.0037, -0.0052, -0.0046), while the scintillator-level primary is +0.0012. Every one of their intervals contains 0 and reaches below -delta_min, so this is not evidence of a gain under detector response; it is a question for a test designed for it.
-  - **Reading.** In this simulated hard subset, readout D0/D1/D2 add no information beyond the 24 conventional variables at the scale of 0.005 in log-loss. This bounds the estimand; it does not show that the features carry no information, and it does not cover detector response, AMS data or particle type separated from energy.
+    - **Pattern, descriptive only.** All three response variants (computed on the same fresh events, so not three independent hints; R1 and R2 also re-select a smaller subset) have negative point estimates (-0.0037, -0.0052, -0.0046), while the scintillator-level primary is +0.0012. Every one of their intervals contains 0 and reaches below -delta_min, so this is not evidence of a gain under detector response; it is a question for a test designed for it.
+  - **Caveat found 2026-11-12: the readout Dq mixes the two views.**
+    - The 18 x 72 readout image interleaves x-view and y-view layers (superlayers alternate). Readout boxes 3 or more rows tall, and offset boxes, sum cells of both projections.
+    - With full-face entry the two views' shower centres differ by a median 18 cells.
+    - So the readout Dq of EXP-015, EXP-018 and EXP-019 is partly a geometry (entry-point) measurement. Both classes share the entry distribution, but the effect on D_q depends on shower width, so it is not shown to be neutral and the comparison is unverified until redone per view or in 3D. The 3D estimator (EXP-016) is unaffected.
+    - Not yet corrected (`OPEN_DECISIONS.md` 0b).
+  - **Reading.** In this simulated hard subset, readout D0/D1/D2 as computed (views interleaved) add no information beyond the 24 conventional variables at the scale of 0.005 in log-loss. This bounds the estimand; it does not show that the features carry no information, and it does not cover detector response, AMS data or particle type separated from energy.
   - **Where.** Code `src/ams_ecal/benchmarks/powered_incremental_classifier.py`; results `results/realistic_regime/exp019_powered_incremental_classifier/` (with `exp019_fig1_intervals.png`). The registration ambiguities were resolved to the most literal reading; they are listed in the result JSON.
 
 ## 5. Registered tests
