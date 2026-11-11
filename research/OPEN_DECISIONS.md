@@ -13,7 +13,11 @@ _Design and evidence records behind each item are in the Obsidian vault, `01 Pro
 - **The decisive next test (former step 2).** Option (a) was chosen and run as EXP-018: "no addition detected".
 
 **Next steps, in the order the agent recommends (every one is the researcher's to approve):**
-1. **RUNNING overnight (started 2026-11-09 19:14 UTC): powered realistic production.** Researcher: "do this overnight today"; "Generate as much as you need. Time is not a problem here. ... focus on protons. If you need electrons as well, you can do electrons."
+1. **DONE 2026-11-10 18:17 UTC (overnight subset): powered realistic production.** All 11 overnight chunks exited 0.
+   - **Produced.** Protons: 2,500 at 0.8-2 TeV, 2,400 at 2-4 TeV, 1,200 at 4-8 TeV (50-53% truth-interacting). Electrons: 600 at 0.8-2 TeV, 500 at 0.4-0.8 TeV. Energies stay inside their bands and theta stays at or below 25 deg; no grid has a NaN.
+   - **Share with at least 572 occupied cells, before the fiducial cut.** Electrons: 46-61% at 0.8-2 TeV, 13% at 0.4-0.8 TeV. Protons (all, not only interacting): 23-34%.
+   - **Expected gain.** Roughly 350 new hard-subset electrons, an estimate from the pilot's fiducial and common-support fractions. With the pilot's 191, about 550, so electrons remain the smaller class.
+   - Started 2026-11-09 19:14 UTC; the details of the run follow. Researcher: "do this overnight today"; "Generate as much as you need. Time is not a problem here. ... focus on protons. If you need electrons as well, you can do electrons."
    - **Electrons are needed too.** The EXP-018 hard subset is limited by electrons: every pilot electron with at least 572 occupied cells was already in it (2 / 36 / 153 in the 200 / 400 / 800 GeV bands). Protons alone cannot enlarge it.
    - **Protons first.** Three bands in chunks: [0.8, 2) TeV 2 x 2,500; [2, 4) TeV 5 x 1,200; [4, 8) TeV 4 x 600. The [4, 8) TeV band is new: it is where the equal-deposit partners of 0.8-2 TeV electrons sit. The physical-spectrum weights there are an extrapolation, because the AMS proton fit stops at 1.8 TV.
    - **Then electrons.** [0.8, 2) TeV 12 x 150 and [0.4, 0.8) TeV 2 x 500.
@@ -24,6 +28,7 @@ _Design and evidence records behind each item are in the Obsidian vault, `01 Pro
      - Protons: 2,500 at [0.8, 2) TeV, 2,400 at [2, 4) TeV, 1,200 at [4, 8) TeV.
      - Electrons: 750 at [0.8, 2) TeV, 500 at [0.4, 0.8) TeV.
      - Expected new hard-subset events, from the pilot yields: about 400-450 electrons and about 650-700 protons. Pooled with the pilot, about 2.5-3x the EXP-018 hard subset, with an interval half-width of about 0.008.
+     - **Interrupted and restarted.** The first overnight pass finished three chunks: proton c01 (2,500 at 0.8-2 TeV), proton c03 (1,200 at 2-4 TeV) and electron c03 (150 at 0.8-2 TeV). It then died during proton c08 (4-8 TeV, no output) when the Claude app's terminal tabs were reset; the PC did not reboot. On 2026-11-10 06:32 UTC the same overnight driver and the keep-awake script were restarted as detached Windows processes (minimized windows, independent of the app), so an app restart cannot end them again. The remaining 8 chunks take about 8 h.
      - The remaining chunks (proton c02, c05-c07, c10-c11; electron c02, c08-c14) keep their seeds. A later run of the full driver produces exactly them, because it skips finished chunks.
    - **Files.** Configs `configs/geant4_realistic_regime_powered_{proton,electron}.yaml`. Resumable drivers `configs/run_realistic_regime_powered.sh` (all chunks) and `configs/run_realistic_regime_powered_overnight.sh`; both skip finished chunks. Logs in `data/geant4_realistic_regime_powered_logs/` (`driver.log` lists chunk starts and ends).
    - **Still to decide (in the step-2 registration):** whether the powered test may pool the pilot events EXP-018 already looked at, or must use fresh events only. Fresh-only gives about 1.5-3x the current size instead of about 2.5-4x.
