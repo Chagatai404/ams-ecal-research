@@ -8,6 +8,14 @@ _Design and evidence records behind each item are in the Obsidian vault, `01 Pro
 
 **Where it stands (details and numbers in `COMPLETED_WORK.md` section 4.7; quoted decisions in Research OS record `realistic-regime-multiscale`; branch `realistic-regime-pilot`, pushed).** Realistic-regime Geant4 option built and checked; EXP-015 pilot produced (1,500 electrons, 6,000 protons) and analysed: the pre-stated matching was not testable, the post-hoc pooled matching shows D1/D2 (not D0) differences at equal occupied cells and scintillator energy that survive photoelectron smearing (EXPLORATORY). EXP-016: 3D estimator usable at 27-160 mm, matching on occupancy and deposit insufficient for P1. EXP-017: our Geant4 matches the AMS MC without saturation within 3%; effective per-fibre saturation e_s = 260 MeV (shape off by 4-6% at 200-400 GeV). The Win32 event display does not draw interactively (offscreen PNG works). **EXP-018** (registered 15f2e58a0b3d34d3, commit 9ecd16a): on the matched hard subset (191 electrons, 206 protons, mostly 0.4-4 TeV) D0/D1/D2 added **nothing** to 24 conventional variables: log-loss change +0.0065, 95% interval -0.0065 to +0.0195. The controls passed. The interval excludes gains larger than about 0.0065 in log-loss (a gain is minus the change, so the lower limit bounds it); smaller gains remain possible. This is a low-power null, not a demonstration of no information (`COMPLETED_WORK.md` 4.7).
 
+**Update 2026-11-11.**
+- **Powered production done.** Protons: 6,100 at 0.8-8 TeV. Electrons: 1,100 at 0.4-2 TeV.
+- **EXP-019 (registered 4efe4d15d845e6aa, commit 03cac63) supersedes EXP-018.**
+  - On 448 fresh electrons and 640 protons: **no gain as large as 0.010**, change +0.0012 (-0.0048 to +0.0072), with the controls passing.
+  - Under photoelectron smearing and fibre saturation (amendment 08f86018f9ec1a6a) the results are inconclusive, leaning toward a small gain.
+  - The pooled pilot + fresh secondary is not readable, because its same-class null failed.
+- **Next decisions:** see steps 3-5 below. A new open question: whether multiscale features matter under realistic readout noise, which needs its own powered design.
+
 **Done since the list was written (2026-11-09).**
 - **Presentation material (former step 1).** A 17-slide deck for Thursday covers motivation, method, Phase 1, the realistic regime, EXP-015 to EXP-018, the claims, the plan and the questions. It was published as a private claude.ai artifact; the slide figures include the pooled matched D1/D2 distributions. Claims were not recorded in Research OS at "presentation" assurance.
 - **The decisive next test (former step 2).** Option (a) was chosen and run as EXP-018: "no addition detected".

@@ -7,12 +7,17 @@ from protons, and whether that information survives the detector's coarse
 readout. Classical machine learning comes first; quantum machine learning (QML)
 is deliberately last.
 
-> **Status as of 2026-10-22 (the date of the latest records).** Everything
+> **Status as of 2026-11-11 (the date of the latest records).** Everything
 > below is simulation (Geant4 11.4.1 or a fast parametric Monte Carlo), never
 > AMS data. No result in this repository is called *validated*: the sealed test
-> sets are unopened. The honest headline so far is mostly negative or
-> inconclusive (section 5). The next step waits on a decision by the researcher
-> (section 6).
+> sets are unopened.
+>
+> The newest result is EXP-019, a registered and powered test in an AMS-like
+> realistic regime. At equal occupied cells and readout energy, the multiscale
+> features D0, D1 and D2 add **no gain as large as 0.010** in log-loss beyond 24
+> conventional variables: any gain is below about 0.005. Under simulated detector
+> response the answer is inconclusive (section 5). The next steps wait on
+> decisions by the researcher (section 6).
 
 If you read only one more file, read
 [`research/COMPLETED_WORK.md`](research/COMPLETED_WORK.md) (what was done) and
@@ -205,6 +210,16 @@ voxel output, optional component tags (seven channels of where a deposit came
 from), and seeds that are a pure function of (base seed, energy). FTFP_BERT is
 the default physics list; QBBC and QGSP_BERT are used as systematics.
 
+**Realistic-regime option (2026-11-09).** Per event, it draws:
+- an incidence angle with dN/dΩ ∝ cos θ up to 25°, the AMS ECAL acceptance;
+- an entry point anywhere on the full 648 × 648 mm face;
+- an energy from E⁻¹ within bands. The AMS electron (E⁻³·¹⁸) and proton
+  (Phys. Rep. 894, Eq. 12) spectra are analysis weights, not generation spectra.
+
+Old configurations reproduce their stored events bit for bit. An offscreen event
+display (`geant4_simulation/event_display.py`) writes PNGs; the interactive
+window does not draw.
+
 ### Detector response
 
 - **R-A (deposit to fibre energy)**: class tables of the response ratio.
@@ -212,6 +227,12 @@ the default physics list; QBBC and QGSP_BERT are used as systematics.
   sensitivity scans only, because AMS corrects gain-type effects before
   clustering and several parameters (zero-suppression threshold, cross-talk,
   Birks constant, saturation) were not found in the literature.
+- **Effective fibre saturation (EXP-017).** The law is `e' = e / (1 + e/e_s)` per
+  fibre, with `e_s = 260 (+107/-68) MeV`. It was fitted to the published AMS
+  hottest-cell curve (Kounine 2017 Fig. 10), against which our Geant4 matches
+  the AMS simulation within 3% when saturation is left out. It is a project
+  calibration, not the AMS parametrisation, and is off by default
+  (`readout_response.apply_fibre_saturation`).
 
 ### Multiscale estimators and statistics
 
@@ -235,8 +256,41 @@ Chronology, from the git history.
 | 10-11 to 10-17 | R-A sampling response, R-B module, component-tagged proton sets; S3 re-read of 192 development verdicts, cell-shuffle excess, matched pairs; S4 part 1 (3D estimator, negative); benchmark harness dry run; notebooks regenerated |
 | 10-21 | research documents consolidated into `COMPLETED_WORK.md` and `OPEN_DECISIONS.md` (originals kept in git tag `docs-before-consolidation-2026-10-21`) |
 | 10-22 | R-A noise floor and capped round; EXP-010 3D control sensitivity check; EXP-011 high-energy pilot |
+| 11-09 | literature scouts on the AMS regime and readout; realistic-regime Geant4 option; EXP-015 realistic pilot (1,500 electrons, 6,000 protons) and its post-hoc pooled matching; EXP-016 3D controls from real showers; EXP-017 fibre saturation; EXP-018 incremental-classifier test |
+| 11-09 to 11-11 | powered realistic production (6,100 protons at 0.8-8 TeV, 1,100 electrons at 0.4-2 TeV); EXP-019 powered incremental-classifier test with its amendment 1 |
 
 ### Results in one page (details and caveats in `COMPLETED_WORK.md`)
+
+**Realistic regime (2026-11-09 to 11-11, all EXPLORATORY; `COMPLETED_WORK.md` section 4.7)**
+
+- **D1 and D2 differ between the classes at equal cells and energy (EXP-015, post
+  hoc).** In 234 pooled pairs matched on occupied cells and scintillator energy,
+  the KS statistic is 0.41 to 0.50 (Holm p = 6e-4) for D1 and D2; D0 does not
+  differ. The difference survives photoelectron smearing. Two caveats: the
+  matched protons carry about 4.4 times the electron energy, and the planned
+  per-band matching had too few pairs.
+- **But the difference adds no information a classifier lacks.** Tests used
+  gradient boosting on 24 conventional variables, with and without the 18
+  multiscale features.
+  - EXP-018 (pilot, 191 / 206 events): no addition detected, change +0.0065
+    (−0.0065 to +0.0195).
+  - **EXP-019 (powered, fresh 448 / 640 events), the headline:** no gain as
+    large as 0.010, change +0.0012 (−0.0048 to +0.0072). Both controls passed.
+  - So the D1/D2 difference is probably already carried by shower width, core
+    fraction and the longitudinal profile.
+- **Under detector response it is open.** The three response sensitivities are
+  each inconclusive, with point estimates leaning slightly toward a gain (−0.004
+  to −0.005):
+  - 10 photoelectrons per MIP;
+  - 5 photoelectrons per MIP;
+  - fibre saturation, run after a dated amendment.
+- **The 3D estimator works only from 27 to 160 mm (EXP-016).** Matching on
+  occupancy and deposit leaves a dependence on primary energy, so the planned
+  P1 design needs added covariates.
+- **The simulation agrees with AMS where checked (EXP-017).** Our Geant4
+  hottest-cell energy matches the AMS simulation without saturation within 3%.
+
+**Ideal regime (to 2026-10-22)**
 
 - **Electron against proton is trivially separable in ideal Geant4.** With fixed
   known energy, normal incidence and zero-threshold readout, AUC is 0.9999 to
@@ -284,26 +338,39 @@ Tests: 1,088 collected on 2026-10-26 (`pytest --collect-only`). The last
 The road to the classical benchmarks, in dependency order (full table with
 estimates in [`OPEN_DECISIONS.md`](research/OPEN_DECISIONS.md) section 2):
 
-1. **Decide the 3D control design** (the immediate blocker): register a new
-   control design reported beside the original verdict, accept the negative
-   result, or leave the finite-scale question to the readout-level statistics.
-2. **Amendment and freeze (DECIDE-1).** Replace the single AUC-gain rule with five
+Done since 2026-10-22:
+- The 3D control design was decided as option (i) and run as EXP-016.
+- The realistic regime was built (DECIDE-9, angles, full face and spectra).
+- The incremental-classifier question was answered in that regime (EXP-018, EXP-019).
+
+Next, from `OPEN_DECISIONS.md` section 0:
+
+1. **Multiscale features under readout noise.** A powered test, separately
+   registered, of whether D0/D1/D2 help once photoelectron statistics and
+   saturation are applied. The EXP-019 sensitivities hint at this but are
+   inconclusive.
+2. **P1 redesign.** Match on observable covariates beyond occupancy and deposit
+   (longitudinal profile, shower-start proxy), and register a new P1 design.
+3. **Saturation follow-up.** A two-parameter law with an onset, validated on the
+   realistic electrons at θ ≤ 12°.
+4. **Housekeeping.** Sync `research/graph/` (it stops at EXP-009) and rerun the
+   full test suite.
+5. **Amendment and freeze (DECIDE-1).** Replace the single AUC-gain rule with five
    endpoint families, each with one named primary: P1 physics difference, P2
    readout survival, P3 simulator fidelity (inactive), P4 realistic
    performance (inactive), P5 efficiency. Freeze windows, box sizes, strata and
    thresholds in a dated addendum before any confirmatory look.
-3. **Production for P1** (EXP-013) at energies and sizes to be chosen (a tenfold
-   pilot is about 1e6 CPU-seconds, one day on 14 workers).
-4. **Detector-response completion**: R-B scan design; whether to restate the 3%
+6. **Production for P1** (EXP-013) at energies and sizes to be chosen, after
+   the P1 redesign.
+7. **Detector-response completion**: R-B scan design; whether to restate the 3%
    R-A criterion in noise terms; validation of electron R-A tables above 200 GeV.
-5. **Realistic regime (DECIDE-9)**: incidence angles, full-face entry, spectra,
-   backsplash and material behind the ECAL (today only normal incidence and a
-   9 x 9 mm entry spot).
-6. **Detector-level dataset v1**, then fix the harness defects and register the
+   Backsplash and the material behind the ECAL remain outside the realistic
+   regime.
+8. **Detector-level dataset v1**, then fix the harness defects and register the
    benchmark protocol (classifier list, budgets, uncertainty procedure).
-7. **Independent reviews** (statistics, ML, simulation, physics, reproducibility)
+9. **Independent reviews** (statistics, ML, simulation, physics, reproducibility)
    of the frozen code and protocol.
-8. **Registered classical benchmarks**, then the sealed validation sets, once.
+10. **Registered classical benchmarks**, then the sealed validation sets, once.
 
 If decisions arrive promptly the estimate is four to six weeks of working time,
 3 to 6 days of it compute. A null result shrinks the claims, not the program:
