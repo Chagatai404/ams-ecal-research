@@ -4,8 +4,12 @@ Every figure states its sample, incidence, energy and simulation level. Simulati
 scintillator energy deposited in the fibres ("visible energy"), no light attenuation, no photoelectrons (unless stated), no
 saturation, no PMT/electronics effects, no material above the ECAL.
 
-    PYTHONPATH=src python -m ams_ecal.geant4_simulation.presentation_figures_2026_11
-writes results/presentation_2026_11/*.png and numbers.json.
+    PYTHONPATH=src python -m ams_ecal.geant4_simulation.presentation_figures_2026_11 [--theme ilimni]
+writes results/presentation_2026_11/[ilimni/]*.png and numbers.json.
+
+P1-P7 are physics and simulation-quality figures. P8 (pooled matched D_q, post hoc, exploratory) re-computes the EXP-015
+pooled matching exactly as the original analysis did; P9 re-plots the EXP-019 intervals from the saved result file
+(no refit). Labels use matplotlib mathtext so symbols render as mathematics.
 """
 
 from __future__ import annotations
@@ -20,6 +24,7 @@ import matplotlib.colors
 import matplotlib.pyplot as plt
 import numpy as np
 
+from ams_ecal.benchmarks.powered_incremental_classifier import DELTA_MIN
 from ams_ecal.geant4_simulation.geant4_backend import load_batch
 from ams_ecal.multiscale_estimators import multiscale as ms
 from ams_ecal.multiscale_estimators import (
@@ -39,7 +44,9 @@ WINDOW_BAND = "0.92"
 EVENT_CMAP = "magma"
 EVENT_FACE = "white"  # empty cells in the event displays
 FIXED_E = (10, 20, 50, 100)
+EXP019_RESULT = Path("results/realistic_regime/exp019_powered_incremental_classifier/exp019_result.json")
 numbers: dict = {}
+plt.rcParams["mathtext.fontset"] = "dejavusans"  # mathematics in the same face as the labels
 
 # Ilimni palette on white, for the slides of the group talk (ilimni-web/site/style.css: ink #101223, indigo #3B3BFF,
 # ember #F2542D, muted #62677A, soft panel #EFF1FF). Only colours change; every computed number is identical to the
@@ -101,7 +108,7 @@ def fig_longitudinal():
         else:
             shift = 0.0
         tmax.append((i + 0.5 + shift) * X0_PER_LAYER)
-    a1.set_xlabel("depth (X0, our geometry: 16.68 X0 in 18 layers)")
+    a1.set_xlabel(r"depth $t$ in radiation lengths $X_0$ (our geometry: 16.68 $X_0$ in 18 layers)")
     a1.set_ylabel("mean fraction of visible energy per layer")
     a1.legend(frameon=False, fontsize=8)
     style(a1, "Electrons, normal incidence, centre of the face")
@@ -109,13 +116,13 @@ def fig_longitudinal():
     slope, icpt = np.polyfit(lnE, tmax, 1)
     a2.plot(lnE, tmax, "o", color=NAVY)
     xx = np.linspace(lnE.min() - 0.2, lnE.max() + 0.2, 10)
-    a2.plot(xx, slope * xx + icpt, "-", color=NAVY, lw=1, label=f"fit: slope {slope:.2f} X0 per unit ln E")
-    a2.plot(xx, 1.0 * (xx - lnE[0]) + tmax[0], "--", color=GREY, lw=1, label="slope 1.0 (shower theory: t_max = ln(E/E_c) + const)")
+    a2.plot(xx, slope * xx + icpt, "-", color=NAVY, lw=1, label=rf"fit: slope {slope:.2f} $X_0$ per unit $\ln E$")
+    a2.plot(xx, 1.0 * (xx - lnE[0]) + tmax[0], "--", color=GREY, lw=1, label=r"slope 1 (shower theory: $t_{\max} = \ln(E/E_c) + C$)")
     a2.set_xticks(lnE, [f"{E}" for E in FIXED_E])
-    a2.set_xlabel("electron energy (GeV, log scale)")
-    a2.set_ylabel("depth of shower maximum (X0)")
+    a2.set_xlabel(r"electron energy $E$ (GeV, log scale)")
+    a2.set_ylabel(r"depth of shower maximum $t_{\max}$ ($X_0$)")
     a2.legend(frameon=False, fontsize=8)
-    style(a2, "Shower maximum moves deeper as ln E")
+    style(a2, r"Shower maximum $t_{\max}$ against $\ln E$")
     fig.tight_layout()
     fig.savefig(OUT / "P1_longitudinal_profile_and_shower_max.png", dpi=160)
     plt.close(fig)
@@ -145,17 +152,19 @@ def fig_resolution():
     a1.plot(E, 100 * np.array([r[2] for r in rows]), "o-", color=NAVY, label="our Geant4, visible energy (scintillator)")
     a1.plot(E, 100 * np.array([r[4] for r in rows]), "s--", color=AMBER, label="same + Poisson photoelectrons, 10 per MIP")
     ee = np.linspace(8, 120, 100)
-    a1.plot(ee, np.hypot(10.5 / np.sqrt(ee), 1.4), "-", color=GREY, label="AMS reconstructed energy, 10.5%/sqrt(E) + 1.4% (Kounine 2017 Fig. 14)")
+    # Kounine 2017 Fig. 14: sigma = sqrt(10.5^2 / E + 1.4^2) in %, E in GeV: the two terms add in quadrature.
+    a1.plot(ee, np.hypot(10.5 / np.sqrt(ee), 1.4), "-", color=GREY,
+            label=r"AMS reconstructed energy: $10.5\%/\sqrt{E/\mathrm{GeV}} \oplus 1.4\%$ (Kounine 2017, Fig. 14)")
     a1.set_xscale("log")
-    a1.set_xlabel("electron energy (GeV)")
-    a1.set_ylabel("sigma / mean (%)")
+    a1.set_xlabel(r"electron energy $E$ (GeV)")
+    a1.set_ylabel(r"relative spread $\sigma_E / \langle E \rangle$ (%)")
     a1.legend(frameon=False, fontsize=7)
-    style(a1, "Energy resolution (not like-for-like: see caption)")
+    style(a1, "Energy resolution (not like-for-like: AMS is leakage-corrected)")
     vf = np.array([r[1] for r in rows]) / E
     a2.plot(E, 100 * vf, "o-", color=NAVY)
     a2.set_xscale("log")
-    a2.set_xlabel("electron energy (GeV)")
-    a2.set_ylabel("visible / primary energy (%)")
+    a2.set_xlabel(r"electron energy $E$ (GeV)")
+    a2.set_ylabel(r"visible fraction $E_{\mathrm{vis}} / E$ (%)")
     style(a2, "Visible fraction falls slowly with energy (rear leakage)")
     fig.tight_layout()
     fig.savefig(OUT / "P2_resolution_and_visible_fraction_fixed_energy.png", dpi=160)
@@ -177,8 +186,9 @@ def fig_proton_interaction():
         surv = [(~occ).mean() + (occ & (z > t)).mean() for t in zz]
         ax.plot(zz, surv, "-", color=c, label=f"{E} GeV protons (n={len(occ)})")
         out[str(E)] = {"n": len(occ), "p_no_interaction": round(float((~occ).mean()), 4)}
-    ax.plot(zz, np.exp(-zz / PREFIX_MM * PREFIX_LAMBDA_I), "--", color=GREY, label=f"exp(-depth/lambda_I), our material: {PREFIX_LAMBDA_I:.3f} lambda_I in total")
-    ax.set_xlabel("depth into the ECAL (mm)")
+    ax.plot(zz, np.exp(-zz / PREFIX_MM * PREFIX_LAMBDA_I), "--", color=GREY,
+            label=rf"$\exp(-z/\lambda_I)$; our material: {PREFIX_LAMBDA_I:.3f} $\lambda_I$ in total")
+    ax.set_xlabel(r"depth $z$ into the ECAL (mm)")
     ax.set_ylabel("fraction with no inelastic interaction yet")
     ax.set_ylim(0.4, 1.02)
     ax.legend(frameon=False, fontsize=7)
@@ -227,11 +237,11 @@ def fig_visible_fraction_bands(electrons, protons):
         ax.text(10 ** -3.28, off + 0.35, f"{b / 1000:g}-{upper / 1000:g} TeV", fontsize=8)
     ax.set_xscale("log")
     ax.set_yticks([])
-    ax.set_xlabel("visible (scintillator) energy / primary energy")
+    ax.set_xlabel(r"visible fraction $E_{\mathrm{vis}} / E$ (scintillator energy over primary energy)")
     ax.plot([], [], color=NAVY, lw=6, alpha=0.55, label="electrons")
     ax.plot([], [], color=AMBER, lw=6, alpha=0.55, label="interacting protons")
     ax.legend(frameon=False, fontsize=8, loc="upper right")
-    style(ax, "Realistic regime (cos-weighted to 25 deg, full face, fiducial): the e/p energy gap by primary-energy band")
+    style(ax, r"Realistic regime ($\cos\theta$-weighted to 25$^\circ$, full face, fiducial): the e/p visible-energy gap by band")
     fig.tight_layout()
     fig.savefig(OUT / "P4_visible_fraction_by_band.png", dpi=160)
     plt.close(fig)
@@ -261,9 +271,9 @@ def fig_event_displays(electrons, protons):
         axes[r, 0].imshow(np.where(g[xv] > 0, g[xv], np.nan), **kw)
         axes[r, 1].imshow(np.where(g[~xv] > 0, g[~xv], np.nan), **kw)
         im = axes[r, 2].imshow(np.where(g > 0, g, np.nan), **kw)
-        axes[r, 0].set_title(f"{lab}: {E:.0f} GeV, theta {th:.0f} deg - x view (5 superlayers, 10 layers)", fontsize=8, loc="left")
-        axes[r, 1].set_title(f"y view (4 superlayers, 8 layers); visible {g.sum() / 1000:.1f} GeV", fontsize=8, loc="left")
-        axes[r, 2].set_title("readout image as used by the 2D D_q (views interleaved)", fontsize=8, loc="left")
+        axes[r, 0].set_title(rf"{lab}, {E:.0f} GeV, $\theta$ = {th:.0f}$^\circ$: x view (10 layers)", fontsize=8, loc="left")
+        axes[r, 1].set_title(f"y view (8 layers); visible {g.sum() / 1000:.1f} GeV", fontsize=8, loc="left")
+        axes[r, 2].set_title(r"readout image used by the 2D $D_q$ (views interleaved)", fontsize=8, loc="left")
         for a in axes[r]:
             a.set_xlabel("cell (9 mm)", fontsize=8)
             a.set_ylabel("layer (depth)", fontsize=8)
@@ -311,16 +321,96 @@ def fig_box_counting(electrons):
     fig, ax = plt.subplots(figsize=(5.5, 3.8))
     for q, c in ((0, GREY), (1, AMBER), (2, NAVY)):
         y = ms.log_measure(g, sides, q)
-        ax.plot(np.log(sides), y, "o-", color=c, label={0: "q=0: ln N(s) (occupied boxes)", 1: "q=1: entropy S(s)", 2: "q=2: ln sum p^2"}[q])
-    ax.axvspan(np.log(2) - 0.05, np.log(6) + 0.05, color=WINDOW_BAND, zorder=0, label="example fit window: sides 2-6 cells")
+        label = {
+            0: r"$q=0$: $\ln N(s)$, occupied boxes",
+            1: r"$q=1$: entropy $S(s) = -\sum_i p_i \ln p_i$",
+            2: r"$q=2$: $\ln \sum_i p_i^2$",
+        }[q]
+        ax.plot(np.log(sides), y, "o-", color=c, label=label)
+    ax.axvspan(np.log(2) - 0.05, np.log(6) + 0.05, color=WINDOW_BAND, zorder=0, label="example fit window: sides 2 to 6 cells")
     ax.set_xticks(np.log(sides), [str(s) for s in sides])
-    ax.set_xlabel("box side s (cells of 9 mm; log scale)")
-    ax.set_ylabel("ln Z_q(s)  (or S)")
-    ax.legend(frameon=False, fontsize=7)
-    style(ax, "D_q = slope over a finite window (finite-range scaling exponent)")
+    ax.set_xlabel(r"box side $s$ (cells of 9 mm; log scale)")
+    ax.set_ylabel(r"$\ln Z_q(s)$, or $S(s)$ at $q=1$")
+    ax.legend(frameon=False, fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=2)
+    style(ax, r"One electron: $D_q$ is the slope over a finite window of box sides")
     fig.tight_layout()
     fig.savefig(OUT / "P7_box_counting_one_event.png", dpi=160)
     plt.close(fig)
+
+
+def fig_pooled_dimensions():
+    """EXP-015 pooled matching (post hoc, exploratory): D_0, D_1, D_2 of matched electrons and interacting protons.
+
+    Same calls and seed as the original pilot analysis: pilot events, all electrons, interacting protons, pooled caliper
+    matching over every proton band (label "P-all"), window of box sides 1-2-3-6-9-18.
+    """
+    from scipy.stats import ks_2samp
+
+    e = rra.load_class_events(DATA / "geant4_realistic_regime_pilot_electron" / "pilot", "electron")
+    p = rra.load_class_events(DATA / "geant4_realistic_regime_pilot_proton" / "pilot", "proton")
+    ei = rra.build_class_images(e, np.ones(len(e), bool), "electron", 1)
+    pi = rra.build_class_images(p, p.truth_occurred.astype(bool), "proton_interacting", 2)
+    pool = rra.analyse_pooled(ei, pi, 200, np.random.default_rng([rra.ANALYSIS_SEED, 7]), with_excess=False, per_band=False)
+    pa = next(x for x in pool if x.label == "P-all")
+    names = rra.dimension_names()
+    de, dp = ei.dims(pa.electron_index), pi.dims(pa.proton_index)
+    fig, axs = plt.subplots(1, 3, figsize=(12, 4.2))
+    out = {"pairs": int(pa.result.pairs)}
+    for k, q in enumerate((0, 1, 2)):
+        j = names.index(f"D{q}@1-2-3-6-9-18")
+        ok = np.isfinite(de[:, j]) & np.isfinite(dp[:, j])
+        a, b = de[ok, j], dp[ok, j]
+        ks = float(ks_2samp(a, b).statistic)
+        out[f"D{q}"] = {"valid_pairs": int(ok.sum()), "ks": round(ks, 4)}
+        bins = np.linspace(min(a.min(), b.min()), max(a.max(), b.max()), 25)
+        ax = axs[k]
+        ax.hist(a, bins, histtype="step", color=NAVY, lw=2, label="matched electrons")
+        ax.hist(b, bins, histtype="step", color=AMBER, lw=2, ls="--", label="matched interacting protons")
+        ax.text(0.97, 0.95, f"KS = {ks:.3f}\nvalid pairs = {ok.sum()}", transform=ax.transAxes, ha="right", va="top", fontsize=9)
+        ax.set_xlabel(rf"$D_{q}$, window of box sides 1-2-3-6-9-18 cells")
+        ax.set_ylabel("events per bin" if k == 0 else "")
+        style(ax, rf"$D_{q}$")
+    fig.suptitle(f"Generalized dimensions of {out['pairs']} matched electron-proton pairs (pooled matching, post hoc, "
+                 "exploratory; pilot, scintillator level)", fontsize=10)
+    fig.legend(*axs[0].get_legend_handles_labels(), loc="upper center", bbox_to_anchor=(0.5, 0.93), ncol=2, frameon=False, fontsize=9)
+    fig.tight_layout(rect=(0, 0, 1, 0.88))
+    fig.savefig(OUT / "P8_pooled_matched_dimensions.png", dpi=160)
+    plt.close(fig)
+    numbers["pooled_matched_dimensions"] = out
+
+
+def fig_intervals():
+    """EXP-019 95% intervals (Nadeau-Bengio), re-plotted from the saved result; same rows as figure_intervals()."""
+    result = json.loads(EXP019_RESULT.read_text(encoding="utf-8"))
+    rows = []
+    blocks = (("primary_fresh", "fresh events (primary test)"), ("secondary_pooled", "pilot + fresh pooled"),
+              ("R1_pe10", "fresh, 10 p.e. per MIP"), ("R2_pe5", "fresh, 5 p.e. per MIP"), ("R3_saturation", r"fresh, saturation $e_s$ = 260 MeV"))
+    subs = (("negative_control", ": shuffled multiscale columns (control)"), ("theta_le_12_deg", r": only $\theta \leq 12^\circ$"))
+    for key, title in blocks:
+        block = result.get(key, {})
+        interval = block.get("primary", {}).get("interval")
+        if interval:
+            rows.append((title, interval))
+        for sub, sub_title in subs:
+            iv = block.get(sub, {}).get("interval") if isinstance(block.get(sub), dict) else None
+            if iv:
+                rows.append((title + sub_title, iv))
+    fig, ax = plt.subplots(figsize=(10.5, 0.45 * len(rows) + 2.2))
+    ax.axvspan(-DELTA_MIN, DELTA_MIN, color=WINDOW_BAND, zorder=0, label=rf"$|\Delta| < \delta$ = {DELTA_MIN}: smaller than the gain set in advance")
+    ax.axvline(0, color=GREY, lw=0.8)
+    for i, (_, iv) in enumerate(reversed(rows)):
+        ax.errorbar(iv["mean"], i, xerr=[[iv["mean"] - iv["lower"]], [iv["upper"] - iv["mean"]]], fmt="o", color=NAVY, capsize=3)
+    ax.set_yticks(range(len(rows)), [r[0] for r in reversed(rows)])
+    ax.set_xticks(np.arange(-0.02, 0.0201, 0.01))
+    ax.set_xlabel(r"$\Delta = \mathcal{L}_{C+M} - \mathcal{L}_{C}$, change in class-balanced log-loss" "\n"
+                  "(negative = the multiscale features help)")
+    fig.suptitle("EXP-019: 95% intervals (Nadeau-Bengio) for adding multiscale features M to conventional variables C",
+                 fontsize=10)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.3), fontsize=8, frameon=False)
+    fig.tight_layout()
+    fig.savefig(OUT / "P9_exp019_intervals.png", dpi=160)
+    plt.close(fig)
+    numbers["exp019_intervals"] = {title: {k: round(v, 5) for k, v in iv.items() if k in ("mean", "lower", "upper")} for title, iv in rows}
 
 
 def main():
@@ -337,6 +427,8 @@ def main():
     fig_event_displays(electrons, protons)
     fig_view_offset(electrons, protons)
     fig_box_counting(electrons)
+    fig_pooled_dimensions()
+    fig_intervals()
     (OUT / "numbers.json").write_text(json.dumps(numbers, indent=1), encoding="utf-8")
     print(json.dumps(numbers, indent=1))
 

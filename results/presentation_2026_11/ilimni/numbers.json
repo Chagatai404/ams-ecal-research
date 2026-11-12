@@ -70,5 +70,62 @@
   }
  },
  "view_centroid_offset_median_cells_electrons": 18.0,
- "view_centroid_offset_median_cells_protons": 17.7
+ "view_centroid_offset_median_cells_protons": 17.7,
+ "pooled_matched_dimensions": {
+  "pairs": 234,
+  "D0": {
+   "valid_pairs": 183,
+   "ks": 0.0874
+  },
+  "D1": {
+   "valid_pairs": 183,
+   "ks": 0.459
+  },
+  "D2": {
+   "valid_pairs": 183,
+   "ks": 0.4973
+  }
+ },
+ "exp019_intervals": {
+  "fresh events (primary test)": {
+   "mean": 0.00118,
+   "lower": -0.00485,
+   "upper": 0.00721
+  },
+  "fresh events (primary test): shuffled multiscale columns (control)": {
+   "mean": 0.00228,
+   "lower": -0.00251,
+   "upper": 0.00706
+  },
+  "pilot + fresh pooled": {
+   "mean": 0.00087,
+   "lower": -0.00575,
+   "upper": 0.00749
+  },
+  "pilot + fresh pooled: shuffled multiscale columns (control)": {
+   "mean": 0.00343,
+   "lower": -0.0025,
+   "upper": 0.00935
+  },
+  "pilot + fresh pooled: only $\\theta \\leq 12^\\circ$": {
+   "mean": -0.00062,
+   "lower": -0.02033,
+   "upper": 0.0191
+  },
+  "fresh, 10 p.e. per MIP": {
+   "mean": -0.00373,
+   "lower": -0.01385,
+   "upper": 0.00638
+  },
+  "fresh, 5 p.e. per MIP": {
+   "mean": -0.00524,
+   "lower": -0.02072,
+   "upper": 0.01024
+  },
+  "fresh, saturation $e_s$ = 260 MeV": {
+   "mean": -0.00463,
+   "lower": -0.01414,
+   "upper": 0.00487
+  }
+ }
 }
