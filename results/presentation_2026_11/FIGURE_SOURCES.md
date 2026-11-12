@@ -12,12 +12,12 @@ All numbers the figures report are written to `numbers.json` in the same folder;
 
 | Slide | Figure | Function | Inputs | sha256 (16) |
 |---|---|---|---|---|
-| Electron and proton, same visible energy | P5 event displays per view | `fig_event_displays` | `data/geant4_realistic_regime_powered_{electron,proton}` | 05038ac7f3175e1b |
+| Electron and proton, same visible energy | P5 event displays per view | `fig_event_displays` | `data/geant4_realistic_regime_powered_{electron,proton}` | da0f00b203415118 |
 | Check 1: where electron showers peak | P1 longitudinal profile and shower maximum | `fig_longitudinal` | `data/geant4_electron_sample/baseline/E{10,20,50,100}GeV` | 8b9e7b61042d5136 |
 | Check 2: energy response and leakage | P2 resolution and visible fraction | `fig_resolution` | same electrons; Poisson seed 20261112 | 8f76f62d9103e520 |
 | Check 3: proton interactions (left) | P3 first-interaction depth | `fig_proton_interaction` | `data/geant4_proton_pilot/baseline/E{10,20,50,100}GeV` | 4b7d0aa3e7e88417 |
 | Check 3: proton interactions (right) | P4 visible fraction by band | `fig_visible_fraction_bands` | realistic-regime pilot and powered samples, fiducial | 9eed1cd0c9ac8b0d |
-| The 2D estimator mixed the two views | P6 view offset | `fig_view_offset` | same realistic-regime samples | a6eadbffd8312e4b |
+| The 2D estimator mixed the two projections | P6 view offset | `fig_view_offset` | same realistic-regime samples | a53f714145c1a80c |
 | A finite-range slope, not a fractal dimension | P7 box counting, one event | `fig_box_counting` | one 0.8–2 TeV powered electron | 943929c0a86d5dac |
 | Look-alikes still differ in D₁ and D₂ | P8 pooled matched dimensions (post hoc) | `fig_pooled_dimensions` | `data/geant4_realistic_regime_pilot_{electron,proton}/pilot`; recomputes the EXP-015 pooled matching (234 pairs, 183 valid; KS 0.087, 0.459, 0.497) | d88184fd20221e28 |
 | Every interval of the test | P9 EXP-019 intervals | `fig_intervals` | `results/realistic_regime/exp019_powered_incremental_classifier/exp019_result.json` (no refit) | 4a80a35c79f8e976 |

@@ -82,9 +82,15 @@ def style(ax, title=None):
         ax.set_title(title, fontsize=10, loc="left")
 
 
-def x_view_rows() -> np.ndarray:
+def x_fibre_rows() -> np.ndarray:
+    """Readout rows whose fibres run along x; these measure y (readout.measured_axis_for_fiber).
+
+    configs/geometry.yaml: superlayer_fiber_axes = [x, y, x, ...], two readout rows per superlayer, so 5 superlayers
+    (10 rows) have fibres along x and measure y, and 4 superlayers (8 rows) have fibres along y and measure x
+    (Kounine et al. 2017, Sec. 2: 5 and 4 superlayers with fibres parallel to the x and y axes).
+    """
     rows = np.arange(LAYERS)
-    return ((rows // 2) % 2) == 0  # superlayers alternate starting with x (geometry.py)
+    return ((rows // 2) % 2) == 0
 
 
 def fixed_electrons(energy: int) -> dict:
@@ -258,8 +264,8 @@ def fig_event_displays(electrons, protons):
     e_row = ie[np.argmin(np.abs(vis_e - target))]
     vis_p = ev_p.readout_grid_mev[ip].sum(axis=(1, 2))
     p_row = ip[np.argmin(np.abs(vis_p - target))]
-    xv = x_view_rows()
-    fig, axes = plt.subplots(2, 3, figsize=(12, 5.2), gridspec_kw={"width_ratios": [1, 1, 1.1]})
+    xv = x_fibre_rows()
+    fig, axes = plt.subplots(2, 3, figsize=(12, 5.8), gridspec_kw={"width_ratios": [1, 1, 1.1]})
     for r, (ev, row, lab) in enumerate(((ev_e, e_row, "electron"), (ev_p, p_row, "interacting proton"))):
         g = ev.readout_grid_mev[row].astype(float)
         E = ev.primary_energy_gev[row]
@@ -271,14 +277,15 @@ def fig_event_displays(electrons, protons):
         axes[r, 0].imshow(np.where(g[xv] > 0, g[xv], np.nan), **kw)
         axes[r, 1].imshow(np.where(g[~xv] > 0, g[~xv], np.nan), **kw)
         im = axes[r, 2].imshow(np.where(g > 0, g, np.nan), **kw)
-        axes[r, 0].set_title(rf"{lab}, {E:.0f} GeV, $\theta$ = {th:.0f}$^\circ$: x view (10 layers)", fontsize=8, loc="left")
-        axes[r, 1].set_title(f"y view (8 layers); visible {g.sum() / 1000:.1f} GeV", fontsize=8, loc="left")
-        axes[r, 2].set_title(r"readout image used by the 2D $D_q$ (views interleaved)", fontsize=8, loc="left")
+        axes[r, 0].set_title(rf"{lab}: {E:.0f} GeV, $\theta$ = {th:.0f}$^\circ$" "\nfibres along x, measuring y (10 layers)", fontsize=8, loc="left")
+        axes[r, 1].set_title(f"visible energy {g.sum() / 1000:.1f} GeV\nfibres along y, measuring x (8 layers)", fontsize=8, loc="left")
+        axes[r, 2].set_title("readout image used by the 2D estimator\n(both projections interleaved by layer)", fontsize=8, loc="left")
         for a in axes[r]:
             a.set_xlabel("cell (9 mm)", fontsize=8)
             a.set_ylabel("layer (depth)", fontsize=8)
         fig.colorbar(im, ax=axes[r, 2], label="MeV per cell", fraction=0.04)
-    fig.suptitle("Same visible energy, different particles (realistic regime, scintillator level). Each view sees its own coordinate.", fontsize=9)
+    fig.suptitle("Same visible energy, different particles (realistic regime, scintillator level). "
+                 "Each layer measures the coordinate across its fibres.", fontsize=9)
     fig.tight_layout()
     fig.savefig(OUT / "P5_event_displays_views.png", dpi=160)
     plt.close(fig)
@@ -289,7 +296,7 @@ def fig_event_displays(electrons, protons):
 
 
 def fig_view_offset(electrons, protons):
-    xv = x_view_rows()
+    xv = x_fibre_rows()
     cols = np.arange(CELLS)
     fig, ax = plt.subplots(figsize=(5.5, 3.6))
     for parts, col, lab in ((electrons, NAVY, "electrons"), (protons, AMBER, "interacting protons")):
@@ -304,10 +311,10 @@ def fig_view_offset(electrons, protons):
         d = np.concatenate(d)
         ax.hist(d, bins=np.arange(0, 66, 2), histtype="step", lw=1.5, color=col, density=True, label=f"{lab} (median {np.median(d):.0f} cells)")
         numbers[f"view_centroid_offset_median_cells_{lab.split()[-1]}"] = round(float(np.median(d)), 1)
-    ax.set_xlabel("|x-view centre - y-view centre| in the interleaved image (cells)")
+    ax.set_xlabel("distance between the shower centres of the two projections\nin the interleaved image (cells)")
     ax.set_ylabel("density")
     ax.legend(frameon=False, fontsize=8)
-    style(ax, "Full-face entry separates the two views in the readout image")
+    style(ax, "Full-face entry separates the two projections in the readout image")
     fig.tight_layout()
     fig.savefig(OUT / "P6_view_offset_in_readout_image.png", dpi=160)
     plt.close(fig)
