@@ -33,9 +33,40 @@ X0_PER_LAYER = 16.684629744658373 / LAYERS  # our geometry's material table (pro
 PREFIX_LAMBDA_I = 0.6182108671949843  # same source
 PREFIX_MM = 166.5
 MIP_FIBRE_MEV = 0.5596
-NAVY, AMBER, GREY = "#1b3a6b", "#b07000", "#6b7785"
+NAVY, AMBER, GREY = "#1b3a6b", "#b07000", "#6b7785"  # electrons, protons, references
+ENERGY_RAMP = ("#9fb3d1", "#5f7fae", "#2f548c", NAVY)  # 10, 20, 50, 100 GeV: darker = higher energy
+WINDOW_BAND = "0.92"
+EVENT_CMAP = "magma"
+EVENT_FACE = "white"  # empty cells in the event displays
 FIXED_E = (10, 20, 50, 100)
 numbers: dict = {}
+
+# Ilimni palette on white, for the slides of the group talk (ilimni-web/site/style.css: ink #101223, indigo #3B3BFF,
+# ember #F2542D, muted #62677A, soft panel #EFF1FF). Only colours change; every computed number is identical to the
+# default run (numbers.json is written to the ilimni/ subfolder for comparison).
+ILIMNI = {
+    "NAVY": "#3B3BFF",  # electrons
+    "AMBER": "#E0451F",  # protons: ember, darkened slightly for thin lines on white
+    "GREY": "#62677A",  # references
+    "ENERGY_RAMP": ("#AEB0FF", "#7476FF", "#3B3BFF", "#1C1C8F"),  # darker = higher energy
+    "WINDOW_BAND": "#EFF1FF",
+    "rc": {
+        "axes.edgecolor": "#62677A",
+        "axes.labelcolor": "#101223",
+        "axes.titlecolor": "#101223",
+        "text.color": "#101223",
+        "xtick.color": "#3E4357",
+        "ytick.color": "#3E4357",
+    },
+}
+
+
+def use_ilimni_theme() -> None:
+    global NAVY, AMBER, GREY, ENERGY_RAMP, WINDOW_BAND, OUT
+    NAVY, AMBER, GREY = ILIMNI["NAVY"], ILIMNI["AMBER"], ILIMNI["GREY"]
+    ENERGY_RAMP, WINDOW_BAND = ILIMNI["ENERGY_RAMP"], ILIMNI["WINDOW_BAND"]
+    OUT = OUT / "ilimni"
+    plt.rcParams.update(ILIMNI["rc"])
 
 
 def style(ax, title=None):
@@ -57,7 +88,7 @@ def fig_longitudinal():
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(10, 3.8))
     depth = (np.arange(LAYERS) + 0.5) * X0_PER_LAYER
     tmax = []
-    for E, c in zip(FIXED_E, ("#9fb3d1", "#5f7fae", "#2f548c", NAVY), strict=True):
+    for E, c in zip(FIXED_E, ENERGY_RAMP, strict=True):
         g = fixed_electrons(E)["readout_grid_mev"].astype(float)
         prof = g.sum(axis=2)
         frac = prof / prof.sum(axis=1, keepdims=True)
@@ -139,7 +170,7 @@ def fig_proton_interaction():
     fig, ax = plt.subplots(figsize=(5.5, 3.8))
     out = {}
     zz = np.linspace(0, PREFIX_MM, 60)
-    for E, c in zip(FIXED_E, ("#9fb3d1", "#5f7fae", "#2f548c", NAVY), strict=True):
+    for E, c in zip(FIXED_E, ENERGY_RAMP, strict=True):
         a = load_batch(DATA / "geant4_proton_pilot" / "baseline" / f"E{E}GeV").arrays
         occ = np.asarray(a["truth_occurred"], bool)
         z = np.asarray(a["truth_z_mm"], float)
@@ -224,7 +255,9 @@ def fig_event_displays(electrons, protons):
         E = ev.primary_energy_gev[row]
         th = np.degrees(ev.primary_theta_rad[row])
         vmax = g.max()
-        kw = {"cmap": "magma", "norm": matplotlib.colors.LogNorm(vmin=max(vmax * 1e-4, 1e-3), vmax=vmax), "aspect": "auto", "origin": "upper"}
+        kw = {"cmap": EVENT_CMAP, "norm": matplotlib.colors.LogNorm(vmin=max(vmax * 1e-4, 1e-3), vmax=vmax), "aspect": "auto", "origin": "upper"}
+        for a in axes[r]:
+            a.set_facecolor(EVENT_FACE)
         axes[r, 0].imshow(np.where(g[xv] > 0, g[xv], np.nan), **kw)
         axes[r, 1].imshow(np.where(g[~xv] > 0, g[~xv], np.nan), **kw)
         im = axes[r, 2].imshow(np.where(g > 0, g, np.nan), **kw)
@@ -279,7 +312,7 @@ def fig_box_counting(electrons):
     for q, c in ((0, GREY), (1, AMBER), (2, NAVY)):
         y = ms.log_measure(g, sides, q)
         ax.plot(np.log(sides), y, "o-", color=c, label={0: "q=0: ln N(s) (occupied boxes)", 1: "q=1: entropy S(s)", 2: "q=2: ln sum p^2"}[q])
-    ax.axvspan(np.log(2) - 0.05, np.log(6) + 0.05, color="0.92", zorder=0, label="example fit window: sides 2-6 cells")
+    ax.axvspan(np.log(2) - 0.05, np.log(6) + 0.05, color=WINDOW_BAND, zorder=0, label="example fit window: sides 2-6 cells")
     ax.set_xticks(np.log(sides), [str(s) for s in sides])
     ax.set_xlabel("box side s (cells of 9 mm; log scale)")
     ax.set_ylabel("ln Z_q(s)  (or S)")
@@ -291,6 +324,10 @@ def fig_box_counting(electrons):
 
 
 def main():
+    import sys
+
+    if "--theme" in sys.argv and sys.argv[sys.argv.index("--theme") + 1] == "ilimni":
+        use_ilimni_theme()
     OUT.mkdir(parents=True, exist_ok=True)
     fig_longitudinal()
     fig_resolution()

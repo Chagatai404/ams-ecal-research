@@ -1,0 +1,74 @@
+{
+ "shower_max_x0": {
+  "10": 6.42,
+  "20": 7.15,
+  "50": 8.15,
+  "100": 8.91
+ },
+ "shower_max_slope_x0_per_ln_e": 1.082,
+ "fixed_energy_electrons": [
+  {
+   "E_gev": 10,
+   "mean_visible_gev_core": 0.617,
+   "rel_sigma_all": 0.0367,
+   "rel_sigma_core90": 0.0247,
+   "rel_sigma_all_pe10": 0.0377
+  },
+  {
+   "E_gev": 20,
+   "mean_visible_gev_core": 1.217,
+   "rel_sigma_all": 0.0434,
+   "rel_sigma_core90": 0.0257,
+   "rel_sigma_all_pe10": 0.0441
+  },
+  {
+   "E_gev": 50,
+   "mean_visible_gev_core": 2.968,
+   "rel_sigma_all": 0.0454,
+   "rel_sigma_core90": 0.0281,
+   "rel_sigma_all_pe10": 0.0457
+  },
+  {
+   "E_gev": 100,
+   "mean_visible_gev_core": 5.773,
+   "rel_sigma_all": 0.0582,
+   "rel_sigma_core90": 0.0366,
+   "rel_sigma_all_pe10": 0.0582
+  }
+ ],
+ "proton_no_interaction": {
+  "10": {
+   "n": 4000,
+   "p_no_interaction": 0.53
+  },
+  "20": {
+   "n": 4000,
+   "p_no_interaction": 0.5118
+  },
+  "50": {
+   "n": 4000,
+   "p_no_interaction": 0.5165
+  },
+  "100": {
+   "n": 4000,
+   "p_no_interaction": 0.5265
+  }
+ },
+ "proton_no_interaction_material_expectation": 0.5389,
+ "visible_fraction_median": {
+  "electron": 0.0552,
+  "proton_interacting": 0.0077
+ },
+ "event_display": {
+  "electron": {
+   "E_gev": 1333.8913871458067,
+   "visible_gev": 67.57132720947266
+  },
+  "proton": {
+   "E_gev": 7448.867976911703,
+   "visible_gev": 67.43651580810547
+  }
+ },
+ "view_centroid_offset_median_cells_electrons": 18.0,
+ "view_centroid_offset_median_cells_protons": 17.7
+}
